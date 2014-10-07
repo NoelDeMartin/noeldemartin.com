@@ -16,8 +16,8 @@
 		<tbody>
 			@foreach ($users as $user)
 				<tr>
-					<td>{{HTML::linkAction('users.show', $user->username, $user->id) }}</td>
-					<td>{{HTML::linkAction('users.edit', 'edit', $user->id) }}</td>
+					<td>{{HTML::linkRoute('users.show', $user->username, $user->id) }}</td>
+					<td>{{HTML::linkRoute('users.edit', 'edit', $user->id) }}</td>
 					<td>{{ $user->email }}</td>
 					<td>{{ implode(', ', $user->getRolesArray()) }}</td>
 					<td>{{ $user->created_at }}</td>
@@ -26,5 +26,5 @@
 			@endforeach
 		</tbody>
 	</table>
-	{{ Html::linkAction('users.create', 'New User', [], ['class' => 'btn btn-lg btn-primary', 'role' => 'button']) }}
+	{{ HTML::linkRoute('users.create', 'New User', [], ['class' => 'btn btn-lg btn-primary', 'role' => 'button']) }}
 @stop

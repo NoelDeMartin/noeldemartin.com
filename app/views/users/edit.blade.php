@@ -5,7 +5,7 @@
 
 	{{ var_dump($user) }}
 
-	{{ HTML::linkAction('users.destroy', 'Delete', $user->id, ['class' => 'btn btn-lg btn-danger', 'id' => 'destroy-user', 'role' => 'button']) }}
+	{{ HTML::linkRoute('users.destroy', 'Delete', $user->id, ['class' => 'btn btn-lg btn-danger', 'id' => 'destroy-user', 'role' => 'button']) }}
 @stop
 
 @section('scripts')

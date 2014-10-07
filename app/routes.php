@@ -12,6 +12,7 @@
 */
 
 Route::resource('users', 'UsersController');
+Route::resource('posts', 'PostsController');
 
 Route::get('/', function()
 {

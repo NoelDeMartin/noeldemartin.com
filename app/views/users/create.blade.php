@@ -7,18 +7,18 @@
 
 	<div class="form-group">
 		<label for="username">Username</label>
-		{{ Form::text('username', null, ['placeholder' => 'Username', 'class' => 'form-control']) }} <br>
+		{{ Form::text('username', null, ['placeholder' => 'Username', 'class' => 'form-control']) }}
 	</div>
 
 	<div class="form-group">
 		<label for="email">Email</label>
-		{{ Form::email('email', null, ['placeholder' => 'Email', 'class' => 'form-control']) }} <br>
+		{{ Form::email('email', null, ['placeholder' => 'Email', 'class' => 'form-control']) }}
 	</div>
 
 	<div class="form-group">
 		<label for="password">Password</label>
 		{{ Form::password('password', ['placeholder' => 'Password', 'class' => 'form-control']) }} <br>
-		{{ Form::password('confirm_password', ['placeholder' => 'Confirm Password', 'class' => 'form-control']) }} <br>
+		{{ Form::password('confirm_password', ['placeholder' => 'Confirm Password', 'class' => 'form-control']) }}
 	</div>
 
 	@foreach ($errors->all() as $error)
