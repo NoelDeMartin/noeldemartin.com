@@ -54,6 +54,20 @@ Route::filter('auth.basic', function()
 	return Auth::basic();
 });
 
+Route::filter('auth.reviewer', function()
+{
+	if (!Auth::check() || !Auth::user()->isReviewer()) {
+		App::abort(404);
+	}
+});
+
+Route::filter('auth.admin', function()
+{
+	if (!Auth::check() || !Auth::user()->isAdmin()) {
+		App::abort(404);
+	}
+});
+
 /*
 |--------------------------------------------------------------------------
 | Guest Filter

@@ -6,7 +6,9 @@
 		<thead>
 			<tr>
 				<th>Title</th>
-				<th></th>
+				@if (Auth::user()->isAdmin())
+					<th></th>
+				@endif
 				<th>Text</th>
 				<th>Published At</th>
 				<th>Created At</th>
@@ -17,7 +19,9 @@
 			@foreach ($posts as $post)
 				<tr>
 					<td>{{HTML::linkRoute('posts.show', $post->title, $post->id) }}</td>
-					<td>{{HTML::linkRoute('posts.edit', 'edit', $post->id) }}</td>
+					@if (Auth::user()->isAdmin())
+						<td>{{HTML::linkRoute('posts.edit', 'edit', $post->id) }}</td>
+					@endif
 					<td>{{ substr($post->text_markdown, 0, max(count($post->text_markdown), 15)) . '...' }}</td>
 					<td>{{ $post->published_at }}</td>
 					<td>{{ $post->created_at }}</td>
@@ -26,5 +30,7 @@
 			@endforeach
 		</tbody>
 	</table>
-	{{ HTML::linkRoute('posts.create', 'New Post', [], ['class' => 'btn btn-lg btn-primary', 'role' => 'button']) }}
+	@if (Auth::user()->isAdmin())
+		{{ HTML::linkRoute('posts.create', 'New Post', [], ['class' => 'btn btn-lg btn-primary', 'role' => 'button']) }}
+	@endif
 @stop

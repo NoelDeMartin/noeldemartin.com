@@ -17,7 +17,15 @@ class HomeController extends BaseController {
 
 	public function index()
 	{
-		return View::make('home.index');
+		if (Auth::check()) {
+			$user = Auth::user();
+			if ($user->isAdmin()) {
+				return View::make('home.index');
+			} else if ($user->isReviewer()) {
+				return Redirect::route('posts.index');
+			}
+		}
+		return View::make('home.under_construction');
 	}
 
 	public function login()

@@ -10,8 +10,15 @@ class UsersTableSeeder extends Seeder {
 		User::create([
 			'username'	=> 'Admin',
 			'email'		=> 'admin@fake.com',
-			'password'	=> Hash::make('admin'),
+			'password'	=> Hash::make('secret'),
 			'roles'		=> User::ADMIN | User::MODERATOR | User::REVIEWER
+		]);
+
+		User::create([
+			'username'	=> 'Reviewer',
+			'email'		=> 'reviewer@fake.com',
+			'password'	=> Hash::make('secret'),
+			'roles'		=> User::REVIEWER
 		]);
 
 		$faker = Faker::create();
