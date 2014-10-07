@@ -40,15 +40,27 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		'confirm_password'	=> 'same:password'
 	];
 
+	public function isAdmin() {
+		return ($this->roles & static::ADMIN) != 0;
+	}
+
+	public function isModerator() {
+		return ($this->roles & static::MODERATOR) != 0;
+	}
+
+	public function isReviewer() {
+		return ($this->roles & static::REVIEWER) != 0;
+	}
+
 	public function getRolesArray() {
 		$roles = [];
-		if (($this->roles & static::ADMIN) != 0) {
+		if ($this->isAdmin()) {
 			$roles[] = 'Admin';
 		}
-		if (($this->roles & static::MODERATOR) != 0) {
+		if ($this->isModerator()) {
 			$roles[] = 'Moderator';
 		}
-		if (($this->roles & static::REVIEWER) != 0) {
+		if ($this->isReviewer()) {
 			$roles[] = 'Reviewer';
 		}
 		return $roles;

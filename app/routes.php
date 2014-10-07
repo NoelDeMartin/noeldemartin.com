@@ -11,10 +11,10 @@
 |
 */
 
+Route::get('/', 		['uses' => 'HomeController@index',			'as' => 'home']);
+Route::get('/login',	['uses' => 'HomeController@login',			'as' => 'login']);
+Route::post('/login',	['uses' => 'HomeController@processLogin',	'as' => 'process_login']);
+Route::get('/logout',   ['uses' => 'HomeController@logout', 		'as' => 'logout']);
+
 Route::resource('users', 'UsersController');
 Route::resource('posts', 'PostsController');
-
-Route::get('/', function()
-{
-	return View::make('hello');
-});

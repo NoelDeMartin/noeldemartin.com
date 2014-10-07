@@ -15,9 +15,37 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function showWelcome()
+	public function index()
 	{
-		return View::make('hello');
+		return View::make('home.index');
+	}
+
+	public function login()
+	{
+		return View::make('home.login');
+	}
+
+	public function processLogin()
+	{
+		$credential = Input::get('credential');
+		$password = Input::get('password');
+		$remember = Input::get('remember', false);
+
+		// Credentials
+		if (!Auth::attempt(['email' => $credential, 'password' => $password], $remember)) {
+			if (!Auth::attempt(['username' => $credential, 'password' => $password], $remember)) {
+				return Redirect::back()
+							->withInput()
+							->withErrors(new Illuminate\Support\MessageBag(['email' => 'Credentials were not correct']));
+			}
+		}
+
+		return Redirect::home();
+	}
+
+	public function logout() {
+		Auth::logout();
+		return Redirect::home();
 	}
 
 }
