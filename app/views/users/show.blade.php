@@ -1,3 +1,7 @@
-<h1>{{ $user->username }}</h1>
+@extends('layouts.master')
 
-{{ var_dump($user) }}
+@section('content')
+	<h1>{{ $user->username }}</h1>
+
+	{{ var_dump($user) }}
+@stop

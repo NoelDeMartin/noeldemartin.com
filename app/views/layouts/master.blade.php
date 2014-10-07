@@ -18,26 +18,25 @@
 			@yield('content')
 		</div>
 		
-		<!-- JQuery with fallback - http://www.hanselman.com/blog/CDNsFailButYourScriptsDontHaveToFallbackFromCDNToLocalJQuery.aspx -->
+		<div id="css-cdn-check" class="hidden" style="height:1px;"></div>
+
+		<!-- JQuery and Bootstrap with fallbacks - http://eddmann.com/posts/providing-local-js-and-css-resources-for-cdn-fallbacks/ -->
 		<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
 		<script>window.jQuery || document.write('<script src="js/jquery-2.1.1.min.js"><\/script>')</script>
 
-		<!-- Bootstrap with fallback - http://stackoverflow.com/questions/12575203/how-to-fallback-twitter-bootstrap-cdn-to-local-copy -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-		<script>$.fn.modal || document.write('<script src="js/bootstrap.min.js"><\/script>')</script>
+		<script>window.jQuery.fn.modal || document.write('<script src="js/bootstrap.min.js"><\/script>')</script>	
 
-		<!-- StyleSheet CDN Fallbacks - http://stackoverflow.com/questions/7383163/how-to-fallback-to-local-stylesheet-not-script-if-cdn-fails -->
-		<script type="text/javascript">
-			$.each(document.styleSheets, function(i,sheet) {
-				var url = sheet.href;
-				if(url.indexOf('http') == 0) {
-					var rules = sheet.rules ? sheet.rules : sheet.cssRules;
-					if (rules.length == 0) {
-						$('<link rel="stylesheet" href="css/' + url.substring(url.lastIndexOf('/')) + '" />').appendTo('head');
-					}
-				}
-			});
+		<!-- StyleSheet CDN Fallbacks - http://theericbutler.wordpress.com/2014/03/20/how-to-fall-back-to-a-local-bootstrap-css-file-if-the-cdn-is-down/ -->
+		<script>
+			if ($('#css-cdn-check').is(':visible') === true) {
+				$('<link rel="stylesheet" type="text/css" href="/css/fallbacks/bootstrap.min.css">').appendTo('head');
+			}
 		</script>
+
+		{{ HTML::script('js/main.js') }}
+
+		@yield('scripts')
 
         <!-- Google Analytics -->
         <script>
