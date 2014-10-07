@@ -38,7 +38,11 @@ class UsersController extends \BaseController {
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 
-		User::create($data);
+		// Create User
+		$user = new User($data);
+		$user->roles = User::NO_ROLES;
+		$user->password = Hash::make($data['password']);
+		$user->save();
 
 		return Redirect::route('users.index');
 	}

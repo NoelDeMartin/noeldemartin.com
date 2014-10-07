@@ -1,1 +1,3 @@
-/home/vagrant/workspace/noeldemartin/app/views/users/show.blade.php
+<h1>{{ $user->username }}</h1>
+
+{{ var_dump($user) }}
