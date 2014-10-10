@@ -16,11 +16,11 @@ Route::get('/login',	['uses' => 'HomeController@login',			'as' => 'login']);
 Route::post('/login',	['uses' => 'HomeController@processLogin',	'as' => 'process_login']);
 Route::get('/logout',   ['uses' => 'HomeController@logout', 		'as' => 'logout']);
 
-Route::group(['before' => 'auth.reviewer'], function (){
-	Route::resource('posts', 'PostsController', ['only' => ['index', 'show']]);
-});
-
 Route::group(['before' => 'auth.admin'], function (){
 	Route::resource('users', 'UsersController');
 	Route::resource('posts', 'PostsController', ['except' => ['index', 'show']]);
+});
+
+Route::group(['before' => 'auth.reviewer'], function (){
+	Route::resource('posts', 'PostsController', ['only' => ['index', 'show']]);
 });

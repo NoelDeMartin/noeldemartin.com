@@ -39,9 +39,9 @@ class PostsController extends \BaseController {
 		}
 
 		// Create Post
+		// TODO: html should be scaped or something (do we trust the view?)...
 		$post = new Post($data);
 		$post->tag = Post::createTitleTag($data['title']);
-		$post->text_html = $data['text_markdown']; // TODO transform to html
 		$post->author_id = 1; // TODO user session
 		$post->published_at = Carbon\Carbon::createFromFormat(Post::DATE_FORMAT, $data['published_at'])->toDateTimeString();
 		$post->save();
