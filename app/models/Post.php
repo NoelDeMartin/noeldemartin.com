@@ -17,4 +17,13 @@ class Post extends Eloquent {
 		return strtolower(str_replace(' ', '-', $title));
 	}
 
+	public function isPublic() {
+		$date = new \Carbon\Carbon($this->published_at);
+		return $date->isPast();
+	}
+
+	public function getPublishedAtAttribute($date) {
+		return new \Carbon\Carbon($date);
+	}
+
 }

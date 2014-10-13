@@ -9,10 +9,8 @@
 				@if (Auth::user()->isAdmin())
 					<th></th>
 				@endif
-				<th>Text</th>
-				<th>Published At</th>
-				<th>Created At</th>
-				<th>Updated At</th>
+				<th>Publication Date</th>
+				<th>Public?</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -22,10 +20,12 @@
 					@if (Auth::user()->isAdmin())
 						<td>{{HTML::linkRoute('posts.edit', 'edit', $post->id) }}</td>
 					@endif
-					<td>{{ substr($post->text_markdown, 0, max(count($post->text_markdown), 15)) . '...' }}</td>
-					<td>{{ $post->published_at }}</td>
-					<td>{{ $post->created_at }}</td>
-					<td>{{ $post->updated_at }}</td>
+					<td>{{ $post->published_at->toFormattedDateString() }}</td>
+					@if ($post->isPublic())
+						<td class="bg-success">Yes</td>
+					@else
+						<td class="bg-danger">No</td>
+					@endif
 				</tr>
 			@endforeach
 		</tbody>
