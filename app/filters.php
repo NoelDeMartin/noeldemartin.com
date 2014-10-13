@@ -56,14 +56,14 @@ Route::filter('auth.basic', function()
 
 Route::filter('auth.reviewer', function()
 {
-	if (!Auth::check() || !Auth::user()->isReviewer()) {
+	if (!Auth::check() || !Auth::user()->is_reviewer) {
 		App::abort(404);
 	}
 });
 
 Route::filter('auth.admin', function()
 {
-	if (!Auth::check() || !Auth::user()->isAdmin()) {
+	if (!Auth::check() || !Auth::user()->is_admin) {
 		App::abort(404);
 	}
 });

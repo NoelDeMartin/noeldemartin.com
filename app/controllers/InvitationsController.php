@@ -44,7 +44,11 @@ class InvitationsController extends \BaseController {
 		$invitation->used = false;
 		$invitation->save();
 
-		// TODO send email
+		// Send Email
+		$email = $data['email'];
+		Mail::send('emails.invite_reviewer', ['token' => $invitation->token], function($message) use($email) {
+			$message->to($email)->subject('Are you ready to Review?');
+		});
 
 		return Redirect::route('invitations.index');
 	}

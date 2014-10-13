@@ -8,17 +8,18 @@ class UsersTableSeeder extends Seeder {
 	{
 
 		User::create([
-			'username'	=> 'Admin',
-			'email'		=> 'admin@fake.com',
-			'password'	=> Hash::make('secret'),
-			'roles'		=> User::ADMIN | User::MODERATOR | User::REVIEWER
+			'username'		=> 'Admin',
+			'email'			=> 'admin@fake.com',
+			'password'		=> Hash::make('secret'),
+			'is_admin'		=> true,
+			'is_reviewer'	=> true
 		]);
 
 		User::create([
-			'username'	=> 'Reviewer',
-			'email'		=> 'reviewer@fake.com',
-			'password'	=> Hash::make('secret'),
-			'roles'		=> User::REVIEWER
+			'username'		=> 'Reviewer',
+			'email'			=> 'reviewer@fake.com',
+			'password'		=> Hash::make('secret'),
+			'is_reviewer'	=> true
 		]);
 
 		$faker = Faker::create();
@@ -28,8 +29,7 @@ class UsersTableSeeder extends Seeder {
 			User::create([
 				'username'	=> $faker->name,
 				'email'		=> $faker->email,
-				'password'	=> Hash::make('secret'),
-				'roles'		=> User::NO_ROLES
+				'password'	=> Hash::make('secret')
 			]);
 		}
 	}

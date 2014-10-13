@@ -34,7 +34,7 @@ class UsersController extends \BaseController {
 
 		$invitation = $invitation = Invitation::where('token', Input::get('invitation_token', ''))->first();
 
-		if (($invitation == null || $invitation->used) && (Auth::guest() || !Auth::user()->isAdmin())) {
+		if (($invitation == null || $invitation->used) && (Auth::guest() || !Auth::user()->is_admin)) {
 			return Redirect::back();
 		}
 
@@ -47,11 +47,10 @@ class UsersController extends \BaseController {
 
 		// Create User
 		$user = new User($data);
-		$user->roles = User::NO_ROLES;
 		$user->password = Hash::make($data['password']);
 
 		if ($invitation != null) {
-			$user->roles = User::REVIEWER;
+			$user->is_reviewer = true;
 			$user->save();
 
 			$invitation->used = true;

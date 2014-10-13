@@ -17,7 +17,7 @@
 
 	<body>
 		<div class="container">
-			@if (!in_array(Route::getCurrentRoute()->getName(), ['home', 'login', 'register']) || (Route::getCurrentRoute()->getName() == 'home' && Auth::check() && Auth::user()->isAdmin()) )
+			@if (!in_array(Route::getCurrentRoute()->getName(), ['home', 'login', 'register']) || (Route::getCurrentRoute()->getName() == 'home' && Auth::check() && Auth::user()->is_admin) )
 				@if (Auth::check())
 					<p>Logged in as: {{ Auth::user()->username }} {{ HTML::linkRoute('logout', '(Logout)') }}</p>
 				@else

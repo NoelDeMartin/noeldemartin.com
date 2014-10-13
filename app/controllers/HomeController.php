@@ -18,7 +18,7 @@ class HomeController extends BaseController {
 	public function index()
 	{
 		if (Auth::check()) {
-			if (Auth::user()->isAdmin()) {
+			if (Auth::user()->is_admin) {
 				return View::make('home.index');
 			}
 		}

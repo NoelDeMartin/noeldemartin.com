@@ -15,7 +15,7 @@
 	<body>
 
 		<div id="top">
-			@if (Auth::check() && Auth::user()->isReviewer())
+			@if (Auth::check() && Auth::user()->is_reviewer)
 				<div id="alert">
 					Hello Reviewer! You can check which posts are pending <b>{{ HTML::linkRoute('posts.index', 'here') }}</b>. Cheers, and thanks for contributing.
 				</div>

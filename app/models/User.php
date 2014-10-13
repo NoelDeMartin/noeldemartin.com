@@ -7,12 +7,6 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
-	const NO_ROLES = 0;
-
-	const ADMIN = 1;
-	const MODERATOR = 2;
-	const REVIEWER = 4;
-
 	use UserTrait, RemindableTrait;
 
 	/**
@@ -31,7 +25,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	protected $fillable = array('username', 'email');
 
-	protected $guarded = array('id', 'password', 'roles');
+	protected $guarded = array('id', 'password', 'is_admin', 'is_reviewer');
 
 	public static $rules = [
 		'username'			=> 'required|min:3|max:16|unique:users',
@@ -40,27 +34,12 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		'confirm_password'	=> 'same:password'
 	];
 
-	public function isAdmin() {
-		return ($this->roles & static::ADMIN) != 0;
-	}
-
-	public function isModerator() {
-		return ($this->roles & static::MODERATOR) != 0;
-	}
-
-	public function isReviewer() {
-		return ($this->roles & static::REVIEWER) != 0;
-	}
-
 	public function getRolesArray() {
 		$roles = [];
-		if ($this->isAdmin()) {
+		if ($this->is_admin) {
 			$roles[] = 'Admin';
 		}
-		if ($this->isModerator()) {
-			$roles[] = 'Moderator';
-		}
-		if ($this->isReviewer()) {
+		if ($this->is_reviewer) {
 			$roles[] = 'Reviewer';
 		}
 		return $roles;
