@@ -38,10 +38,32 @@
 				right: 0;
 				top: 0;
 			}
+			#alert {
+				position: absolute;
+				left: 5%;
+				right: 5%;
+				top: 2%;
+				color: #8A6D3B;
+				background-color: #FCF8E3;
+				padding: 15px;
+				margin-bottom: 20px;
+				border: 1px solid #FAEBCC;
+				border-radius: 4px;
+				z-index: 10;
+			}
+			a {
+				color: #428BCA;
+				text-decoration: none;
+			}
 		</style>
 	</head>
 
 	<body>
+		@if (Auth::check() && Auth::user()->isReviewer())
+			<div id="alert">
+				Hello Reviewer! You can check which posts are pending <b>{{ HTML::linkRoute('posts.index', 'here') }}</b>. Cheers, and thanks for contributing.
+			</div>
+		@endif
 		<div style="display: table;height: 100%; width: 100%;">
 			<div style="display: table-cell; vertical-align: middle;">
 				<div id="under-construction">

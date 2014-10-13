@@ -31,6 +31,13 @@ class UsersController extends \BaseController {
 	 */
 	public function store()
 	{
+
+		$invitation = $invitation = Invitation::where('token', Input::get('invitation_token', ''))->first();
+
+		if (($invitation == null || $invitation->used) && (Auth::guest() || !Auth::user()->isAdmin())) {
+			return Redirect::back();
+		}
+
 		$validator = Validator::make($data = Input::all(), User::$rules);
 
 		if ($validator->fails())
@@ -42,9 +49,21 @@ class UsersController extends \BaseController {
 		$user = new User($data);
 		$user->roles = User::NO_ROLES;
 		$user->password = Hash::make($data['password']);
-		$user->save();
 
-		return Redirect::route('users.index');
+		if ($invitation != null) {
+			$user->roles = User::REVIEWER;
+			$user->save();
+
+			$invitation->used = true;
+			$invitation->save();
+
+			Auth::login($user);
+
+			return Redirect::route('home');
+		} else {
+			$user->save();
+			return Redirect::route('users.index');
+		}
 	}
 
 	/**

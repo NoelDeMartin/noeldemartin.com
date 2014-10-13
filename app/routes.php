@@ -11,14 +11,18 @@
 |
 */
 
-Route::get('/', 		['uses' => 'HomeController@index',			'as' => 'home']);
-Route::get('/login',	['uses' => 'HomeController@login',			'as' => 'login']);
-Route::post('/login',	['uses' => 'HomeController@processLogin',	'as' => 'process_login']);
-Route::get('/logout',   ['uses' => 'HomeController@logout', 		'as' => 'logout']);
+Route::get('/', 				['uses' => 'HomeController@index',			'as' => 'home']);
+Route::get('/login',			['uses' => 'HomeController@login',			'as' => 'login']);
+Route::post('/login',			['uses' => 'HomeController@processLogin',	'as' => 'process_login']);
+Route::get('/register/{token}',	['uses' => 'HomeController@register',		'as' => 'register']);
+Route::get('/logout',			['uses' => 'HomeController@logout', 		'as' => 'logout']);
+
+Route::resource('users', 'UsersController', ['only' => ['store']]);
 
 Route::group(['before' => 'auth.admin'], function (){
-	Route::resource('users', 'UsersController');
+	Route::resource('users', 'UsersController', ['except' => ['store']]);
 	Route::resource('posts', 'PostsController', ['except' => ['index', 'show']]);
+	Route::resource('invitations', 'InvitationsController', ['except' => 'show', 'edit', 'update']);
 });
 
 Route::group(['before' => 'auth.reviewer'], function (){

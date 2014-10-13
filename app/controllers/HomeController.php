@@ -18,11 +18,8 @@ class HomeController extends BaseController {
 	public function index()
 	{
 		if (Auth::check()) {
-			$user = Auth::user();
-			if ($user->isAdmin()) {
+			if (Auth::user()->isAdmin()) {
 				return View::make('home.index');
-			} else if ($user->isReviewer()) {
-				return Redirect::route('posts.index');
 			}
 		}
 		return View::make('home.under_construction');
@@ -30,6 +27,7 @@ class HomeController extends BaseController {
 
 	public function login()
 	{
+		Auth::logout();
 		return View::make('home.login');
 	}
 
@@ -49,6 +47,17 @@ class HomeController extends BaseController {
 		}
 
 		return Redirect::home();
+	}
+
+	public function register($token) {
+		Auth::logout();
+
+		$invitation = Invitation::where('token', $token)->first();
+		if ($invitation == null) {
+			App::abort(404);
+		}
+
+		return View::make('home.register', compact('invitation'));
 	}
 
 	public function logout() {

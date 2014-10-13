@@ -15,8 +15,8 @@ class CreateBasicSchema extends Migration {
 		Schema::create('users', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('username');
-			$table->string('email');
+			$table->string('username')->unique();
+			$table->string('email')->unique();
 			$table->string('password');
 			$table->rememberToken();
 			$table->integer('roles');
@@ -25,12 +25,20 @@ class CreateBasicSchema extends Migration {
 		Schema::create('posts', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('title');
-			$table->string('tag');
+			$table->string('title')->unique();
+			$table->string('tag')->unique();
 			$table->longText('text_markdown');
 			$table->longText('text_html');
 			$table->integer('author_id');
 			$table->timestamp('published_at');
+			$table->timestamps();
+		});
+		Schema::create('invitations', function(Blueprint $table)
+		{
+			$table->increments('id');
+			$table->string('token')->unique();
+			$table->string('email')->unique();
+			$table->boolean('used');
 			$table->timestamps();
 		});
 	}
@@ -44,6 +52,7 @@ class CreateBasicSchema extends Migration {
 	{
 		Schema::drop('users');
 		Schema::drop('posts');
+		Schema::drop('invitations');
 	}
 
 }
