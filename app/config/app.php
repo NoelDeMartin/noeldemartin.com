@@ -192,4 +192,9 @@ return array(
 
 	),
 
+	/**
+	* Google Analytics app id
+	*/
+	'google_analytics_id' => 'UA-55852829-1'
+
 );

@@ -15,4 +15,9 @@ return array(
 
 	'debug' => true,
 
+	/**
+	* Google Analytics app id
+	*/
+	'google_analytics_id' => 'UA-XXXXX-X'
+
 );
