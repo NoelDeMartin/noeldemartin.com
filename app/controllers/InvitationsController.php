@@ -9,7 +9,7 @@ class InvitationsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$invitations = Invitation::all();
+		$invitations = Invitation::orderBy('created_at', 'desc')->get();
 
 		return View::make('invitations.index', compact('invitations'));
 	}

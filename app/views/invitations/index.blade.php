@@ -1,12 +1,18 @@
 @extends('layouts.master')
 
+@section('styles')
+	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.3/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/plug-ins/a5734b29083/integration/bootstrap/3/dataTables.bootstrap.css">
+@stop
+
 @section('content')
 	<h1>Invitations</h1>
-	<table class="table">
+	<table id="invitations" class="table">
 		<thead>
 			<tr>
 				<th>Email</th>
 				<th></th>
+				<th>Created at</th>
 				<th>Token</th>
 				<th>Used?</th>
 			</tr>
@@ -16,6 +22,7 @@
 				<tr>
 					<td>{{ $invitation->email }}</td>
 					<td>{{HTML::linkRoute('invitations.destroy', 'delete', $invitation->id, ['class' => 'destroy-invitation', 'data-email' => $invitation->email]) }}</td>
+					<td data-order="{{ $invitation->created_at->timestamp }}">{{ $invitation->created_at->toFormattedDateString() }}</td>
 					<td>{{ $invitation->token }}</td>
 					@if ($invitation->used)
 						<td class="bg-success">Yes</td>
@@ -30,6 +37,8 @@
 @stop
 
 @section('scripts')
+	<script src="//cdn.datatables.net/1.10.3/js/jquery.dataTables.min.js"></script>
+	<script src="//cdn.datatables.net/plug-ins/a5734b29083/integration/bootstrap/3/dataTables.bootstrap.js"></script>
 	<script type="text/javascript">
 		$('.destroy-invitation').each(function() {
 			var link = $(this);
@@ -38,6 +47,22 @@
 				method: 'DELETE',
 				confirm: function() {
 					return confirm('Are you sure you want to delete invitation for ' + this.email + '?');
+				}
+			});
+		});
+		$(document).ready(function(){
+		    $('#users').DataTable({
+				'aaSorting': [[2,'desc']],
+				fnDrawCallback: function(oSettings) {
+					console.debug(oSettings._iDisplayLength);
+					console.debug(oSettings.aiDisplay);
+					if (oSettings.aiDisplay.length <= oSettings._iDisplayLength) {
+						$('.dataTables_paginate').hide();
+						$('.dataTables_info').hide();
+					} else {
+						$('.dataTables_paginate').show();
+						$('.dataTables_info').show();
+					}
 				}
 			});
 		});

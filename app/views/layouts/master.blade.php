@@ -18,16 +18,13 @@
 	<body>
 		<div class="container">
 			@if (!in_array(Route::getCurrentRoute()->getName(), ['home', 'login', 'register']) || (Route::getCurrentRoute()->getName() == 'home' && Auth::check() && Auth::user()->is_admin) )
-				@if (Auth::check())
-					<p>Logged in as: {{ Auth::user()->username }} {{ HTML::linkRoute('logout', '(Logout)') }}</p>
-				@else
-					<p>{{ HTML::linkRoute('login', 'Login') }}</p>
-				@endif
+				<br>
+				<div class="alert alert-info" role="alert">You are logged in as <b>{{ Auth::user()->username }}</b> {{ HTML::linkRoute('logout', '(Logout)') }}</div>
 			@endif
 			@yield('content')
 		</div>
 
-		<div id="css-cdn-check" class="hidden" style="height:1px;"></div>
+		<div id="bootstrap-cdn-check" class="hidden" style="height:1px;"></div>
 
 		<!-- JQuery and Bootstrap with fallbacks - http://eddmann.com/posts/providing-local-js-and-css-resources-for-cdn-fallbacks/ -->
 		<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -38,7 +35,7 @@
 
 		<!-- StyleSheet CDN Fallbacks - http://theericbutler.wordpress.com/2014/03/20/how-to-fall-back-to-a-local-bootstrap-css-file-if-the-cdn-is-down/ -->
 		<script>
-			if ($('#css-cdn-check').is(':visible') === true) {
+			if ($('#bootstrap-cdn-check').is(':visible') === true) {
 				$('<link rel="stylesheet" type="text/css" href="/css/fallbacks/bootstrap.min.css">').appendTo('head');
 			}
 		</script>

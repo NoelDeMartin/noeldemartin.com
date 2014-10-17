@@ -9,7 +9,7 @@ class UsersController extends \BaseController {
 	 */
 	public function index()
 	{
-		$users = User::all();
+		$users = User::orderBy('created_at', 'desc')->get();
 
 		return View::make('users.index', compact('users'));
 	}

@@ -17,7 +17,7 @@ class Post extends Eloquent {
 		return strtolower(str_replace(' ', '-', $title));
 	}
 
-	public function isPublic() {
+	public function isPublished() {
 		$date = new \Carbon\Carbon($this->published_at);
 		return $date->isPast();
 	}

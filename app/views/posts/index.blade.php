@@ -1,8 +1,13 @@
 @extends('layouts.master')
 
+@section('styles')
+	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.3/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/plug-ins/a5734b29083/integration/bootstrap/3/dataTables.bootstrap.css">
+@stop
+
 @section('content')
 	<h1>Posts</h1>
-	<table class="table">
+	<table id="posts" class="table">
 		<thead>
 			<tr>
 				<th>Title</th>
@@ -10,7 +15,6 @@
 					<th></th>
 				@endif
 				<th>Publication Date</th>
-				<th>Public?</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -20,12 +24,13 @@
 					@if (Auth::user()->is_admin)
 						<td>{{HTML::linkRoute('posts.edit', 'edit', $post->id) }}</td>
 					@endif
-					<td>{{ $post->published_at->toFormattedDateString() }}</td>
-					@if ($post->isPublic())
-						<td class="bg-success">Yes</td>
-					@else
-						<td class="bg-danger">No</td>
-					@endif
+					<td data-order="{{ $post->published_at->timestamp }}">
+						@if ($post->isPublished())
+							{{ $post->published_at->toFormattedDateString() }}
+						@else
+							{{ $post->published_at->toFormattedDateString() }} (Not Published)
+						@endif
+					</td>
 				</tr>
 			@endforeach
 		</tbody>
@@ -33,4 +38,27 @@
 	@if (Auth::user()->is_admin)
 		{{ HTML::linkRoute('posts.create', 'New Post', [], ['class' => 'btn btn-lg btn-primary', 'role' => 'button']) }}
 	@endif
+@stop
+
+@section('scripts')
+	<script src="//cdn.datatables.net/1.10.3/js/jquery.dataTables.min.js"></script>
+	<script src="//cdn.datatables.net/plug-ins/a5734b29083/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#posts').DataTable({
+				'aaSorting': [[{{ Auth::user()->is_admin? 2 : 1}},'desc']],
+				fnDrawCallback: function(oSettings) {
+					console.debug(oSettings._iDisplayLength);
+					console.debug(oSettings.aiDisplay);
+					if (oSettings.aiDisplay.length <= oSettings._iDisplayLength) {
+						$('.dataTables_paginate').hide();
+						$('.dataTables_info').hide();
+					} else {
+						$('.dataTables_paginate').show();
+						$('.dataTables_info').show();
+					}
+				}
+			});
+		});
+	</script>
 @stop
