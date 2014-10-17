@@ -51,7 +51,7 @@
 			});
 		});
 		$(document).ready(function(){
-		    $('#users').DataTable({
+		    $('#invitations').DataTable({
 				'aaSorting': [[2,'desc']],
 				fnDrawCallback: function(oSettings) {
 					console.debug(oSettings._iDisplayLength);

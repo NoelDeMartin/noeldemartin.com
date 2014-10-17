@@ -8,7 +8,7 @@ class Post extends Eloquent {
 		'title'			=> 'required',
 		'text_markdown'	=> 'required',
 		'text_html'		=> 'required',
-		'published_at'	=> 'required|date_format:' . Post::DATE_FORMAT
+		'published_at'	=> 'required|date_format:d/m/Y'
 	];
 
 	protected $fillable = ['title', 'text_markdown', 'text_html'];
