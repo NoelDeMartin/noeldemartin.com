@@ -19,3 +19,5 @@
 <p>Cheers,</p>
 
 <p>Noel De Martin</p>
+
+<p><i>PS: for the time being you can see the website is under construction, but if you have an account you can enter using {{ HTML::linkRoute('login') }}.</i></p>
