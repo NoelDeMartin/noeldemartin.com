@@ -1,0 +1,10 @@
+header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 200px;
+  background-color: #b8e0df;
+}
+#main-content {
+  margin-top: 200px;
+}
