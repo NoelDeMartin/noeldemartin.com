@@ -4,7 +4,49 @@ header {
   width: 100%;
   height: 200px;
   background-color: #b8e0df;
+  z-index: -1;
 }
-#main-content {
+nav {
   margin-top: 200px;
+  background-color: #000;
+  height: 50px;
+  width: 100%;
+}
+nav ul {
+  list-style: none;
+  margin: auto;
+  padding-left: 0;
+  width: 100%;
+}
+nav li {
+  float: left;
+  line-height: 50px;
+  text-align: center;
+  width: 25%;
+  font-weight: bold;
+}
+nav a {
+  display: block;
+  text-decoration: none !important;
+  width: 100%;
+  height: 50px;
+}
+nav a,
+nav a:visited,
+nav a:hover,
+nav a:active,
+nav a:link {
+  color: #fff;
+}
+nav a:hover {
+  background-color: #808080;
+}
+.navigation-stuck nav {
+  position: fixed;
+  top: 0;
+  margin-top: 0;
+  z-index: 1;
+}
+.navigation-stuck #main-content {
+  margin-top: 250px;
 }

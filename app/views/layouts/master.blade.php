@@ -20,6 +20,14 @@
 		<header>
 			<h1>NOEL DE MARTIN</h1>
 		</header>
+		<nav>
+			<ul>
+				<li><a href="javascript:void(0);">BLOG</a></li>
+				<li><a href="javascript:void(0);">ABOUT ME</a></li>
+				<li><a href="javascript:void(0);">PROJECTS</a></li>
+				<li><a href="javascript:void(0);">EXPERIMENTS</a></li>
+			</ul>
+		</nav>
 		<div id="main-content" class="container">
 			@if (!in_array(Route::getCurrentRoute()->getName(), ['home', 'login', 'register']) || (Route::getCurrentRoute()->getName() == 'home' && Auth::check() && Auth::user()->is_admin) )
 				<br>

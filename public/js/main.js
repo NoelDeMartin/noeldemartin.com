@@ -1,26 +1,40 @@
+/* METHODS */
+
+var $window = $(window);
+var $header, $body;
+var header_color_hue = Math.floor(Math.random() * (360));
+
+function update_header_color() {
+	header_color_hue = (header_color_hue + 1) % 360;
+	$header.css('background-color', 'hsl(' + header_color_hue + ', 40%, 80%)');
+}
+
+function update_navigation_bar() {
+	if ($window.scrollTop() > $header.height()) {
+		$body.addClass('navigation-stuck');
+	} else {
+		$body.removeClass('navigation-stuck');
+	}
+}
+
 /* GENERAL DOCUMENT READY OPERATIONS */
+
 $(document).ready(function(){
 
-	header = $('header');
+	$header = $('header');
+	$body = $('body');
 	setInterval(update_header_color, 100);
 
 });
 
 /* GENERAL WINDOW LOAD OPERATIONS */
-$(window).load(function(){
 
-	// Nothing to do!
+$window.load(function(){
+
+	update_navigation_bar();
+	$window.scroll(update_navigation_bar);
 
 });
-
-/* METHODS */
-
-var header, header_color_hue = Math.floor(Math.random() * (360));
-
-function update_header_color() {
-	header_color_hue = (header_color_hue + 1) % 360;
-	header.css('background-color', 'hsl(' + header_color_hue + ', 40%, 80%)');
-}
 
 /* JQUERY PLUGINS */
 /**
