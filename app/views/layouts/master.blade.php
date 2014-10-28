@@ -24,8 +24,8 @@
 			<ul>
 				<li><a href="javascript:void(0);">BLOG</a></li>
 				<li><a href="javascript:void(0);">ABOUT ME</a></li>
-				<li><a href="javascript:void(0);">PROJECTS</a></li>
 				<li><a href="javascript:void(0);">EXPERIMENTS</a></li>
+				<li id="chilli"><a href="javascript:void(0);"></a></li>
 			</ul>
 		</nav>
 		<div id="main-content" class="container">

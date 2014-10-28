@@ -1,8 +1,8 @@
 // Variables
 header_height = 200px
 nav_height = 50px
-nav_items_count = 4
-nav_item_width = 25%
+nav_item_width = 30%
+chilli_width = 10%
 
 // Styles
 header
@@ -23,26 +23,40 @@ nav
 		list-style none
 		margin auto
 		padding-left 0
-		width nav_item_width * nav_items_count
+		width 100%
+		max-width 1170px // bootstrap container width
 
 	li
 		float left
 		line-height nav_height
 		text-align center
-		width (100 / nav_items_count)%
+		width nav_item_width
 		font-weight bold
 
-	a
-		display block
-		text-decoration none !important
-		width 100%
+		a
+			display block
+			text-decoration none !important
+			width 100%
+			height nav_height
+
+		a, a:visited, a:hover, a:active, a:link
+			color white
+
+	li:hover
+			background-color gray
+
+	li#chilli
+		padding 5px 0
+		width chilli_width
 		height nav_height
 
-	a, a:visited, a:hover, a:active, a:link
-		color white
+		a
+			height 100%
+			width 100%
+			background url('../img/chilli-up.png') center / contain no-repeat;
 
-	a:hover
-		background-color grey
+		a:hover
+			background url('../img/chilli-down.png') center / contain no-repeat;
 
 .navigation-stuck
 
