@@ -1,20 +1,41 @@
 // Variables
-header_height = 200px
+header_height = 300px
 nav_height = 50px
 nav_item_width = 30%
 chilli_width = 10%
+bootstrap_width = 1170px
 
 // Styles
 header
-	position absolute
-	top 0
 	width 100%
-	height header_height
 	background-color #b8e0df
-	z-index: -1
+	overflow hidden
+
+	// We need a wrapper so that the height of #header-content is relative to #header-wrapper,
+	// not relative to header which can be bigger than bootstrap_width
+	#header-wrapper
+		width 100%
+		max-width bootstrap_width
+		margin auto
+
+		#header-content
+			position relative
+			height 0
+			padding-bottom 25%
+
+			img
+				width 47.5%
+				margin-left -15%
+				margin-top -12.5%
+
+			h1
+				position absolute
+				display inline-block
+				width 60%
+				bottom 0
+				margin-left 2%
 
 nav
-	margin-top header_height
 	background-color black
 	height nav_height
 	width 100%
@@ -24,7 +45,7 @@ nav
 		margin auto
 		padding-left 0
 		width 100%
-		max-width 1170px // bootstrap container width
+		max-width bootstrap_width
 
 	li
 		float left
@@ -65,6 +86,3 @@ nav
 		top 0
 		margin-top 0
 		z-index 1
-
-	#main-content
-		margin-top: header_height + nav_height

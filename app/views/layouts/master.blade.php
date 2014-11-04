@@ -18,7 +18,12 @@
 
 	<body>
 		<header>
-			<h1>NOEL DE MARTIN</h1>
+			<div id="header-wrapper">
+				<div id="header-content">
+					<img src="/img/myface.png">
+					<h1>NOEL<br>DE MARTIN</h1>
+				</div>
+			</div>
 		</header>
 		<nav>
 			<ul>
