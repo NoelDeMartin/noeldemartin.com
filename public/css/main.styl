@@ -1,21 +1,71 @@
-// Variables
-header_height = 300px
-nav_height = 50px
-nav_item_width = 30%
-chilli_width = 10%
+// Variables & Mixins
+base_fontsize = 16
 bootstrap_width = 1170px
+nav_height = (50 / base_fontsize) rem
+social_links_height = nav_height
+
+fit_to_bootstrap()
+	width 100%
+	max-width bootstrap_width
+
+// Media queries
+html
+	font-size base_fontsize px
+
+@media only screen and (max-width: 989px)
+	html
+		font-size 14px
+
+@media only screen and (max-width: 750px)
+	html
+		font-size 12px
 
 // Styles
+@font-face
+	font-family: 'HVD Comic Serif Pro Regular'
+	src url('fonts/HVD_Comic_Serif_Pro-webfont.eot')
+	src url('fonts/HVD_Comic_Serif_Pro-webfont.eot?#iefix') format('embedded-opentype'),
+		url('fonts/HVD_Comic_Serif_Pro-webfont.woff') format('woff'),
+		url('fonts/HVD_Comic_Serif_Pro-webfont.ttf') format('truetype'),
+		url('fonts/HVD_Comic_Serif_Pro-webfont.svg#hvd_comic_serif_proregular') format('svg')
+	font-weight normal
+	font-style normal
+
 header
+	position relative
 	width 100%
 	background-color #b8e0df
 	overflow hidden
 
+	#social-links
+		fit_to_bootstrap()
+		position absolute
+		z-index 1
+		top 5%
+		right 2%
+
+		a
+			float right
+			margin 1%
+			width social_links_height
+			height social_links_height
+			background-repeat no-repeat
+			background-position center
+			background-size contain
+
+			for social_network in 'twitter' 'linkedin' 'gmail'
+
+				&#{social_network}
+					background-image url('../img/' + social_network + '-gray.png')
+
+					&:hover, &:active
+						background-image url('../img/' + social_network + '.png')
+
+
 	// We need a wrapper so that the height of #header-content is relative to #header-wrapper,
 	// not relative to header which can be bigger than bootstrap_width
 	#header-wrapper
-		width 100%
-		max-width bootstrap_width
+		fit_to_bootstrap()
 		margin auto
 
 		#header-content
@@ -34,6 +84,8 @@ header
 				width 60%
 				bottom 0
 				margin-left 2%
+				font-size 5rem
+				font-family 'HVD Comic Serif Pro Regular', Arial, sans-serif
 
 nav
 	background-color black
@@ -41,48 +93,50 @@ nav
 	width 100%
 
 	ul
+		fit_to_bootstrap()
 		list-style none
 		margin auto
 		padding-left 0
-		width 100%
-		max-width bootstrap_width
 
 	li
 		float left
-		line-height nav_height
-		text-align center
-		width nav_item_width
-		font-weight bold
+		width 30%
 
 		a
-			display block
-			text-decoration none !important
 			width 100%
 			height nav_height
+			display block
+			line-height nav_height
+			font-size 1rem
+			text-align center
+			font-weight bold
+			text-decoration none !important
 
-		a, a:visited, a:hover, a:active, a:link
-			color white
+			&, &:visited, &:hover, &:active, &:link
+				color white
 
-	li:hover
-			background-color gray
+		&:hover
+				background-color gray
 
-	li#chilli
-		padding 5px 0
-		width chilli_width
-		height nav_height
+		&#chilli
+			width 10%
+			height nav_height
+			padding 5px 0
 
-		a
-			height 100%
-			width 100%
-			background url('../img/chilli-up.png') center / contain no-repeat;
+			a
+				width 100%
+				height 100%
+				background-repeat no-repeat
+				background-position center
+				background-size contain
+				background-image url('../img/chilli-up.png')
 
-		a:hover
-			background url('../img/chilli-down.png') center / contain no-repeat;
+				&:hover
+					background-image url('../img/chilli-down.png')
 
 .navigation-stuck
 
 	nav
 		position fixed
 		top 0
-		margin-top 0
-		z-index 1
+		z-index 2

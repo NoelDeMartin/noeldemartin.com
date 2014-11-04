@@ -1,36 +1,116 @@
+html {
+  font-size: 16px;
+}
+@media only screen and (max-width: 989px) {
+  html {
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 750px) {
+  html {
+    font-size: 12px;
+  }
+}
+@font-face {
+  font-family: 'HVD Comic Serif Pro Regular';
+  src: url("fonts/HVD_Comic_Serif_Pro-webfont.eot");
+  src: url("fonts/HVD_Comic_Serif_Pro-webfont.eot?#iefix") format('embedded-opentype'), url("fonts/HVD_Comic_Serif_Pro-webfont.woff") format('woff'), url("fonts/HVD_Comic_Serif_Pro-webfont.ttf") format('truetype'), url("fonts/HVD_Comic_Serif_Pro-webfont.svg#hvd_comic_serif_proregular") format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 header {
-  position: absolute;
-  top: 0;
+  position: relative;
   width: 100%;
-  height: 200px;
   background-color: #b8e0df;
-  z-index: -1;
+  overflow: hidden;
+}
+header #social-links {
+  width: 100%;
+  max-width: 1170px;
+  position: absolute;
+  z-index: 1;
+  top: 5%;
+  right: 2%;
+}
+header #social-links a {
+  float: right;
+  margin: 1%;
+  width: 3.125rem;
+  height: 3.125rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+header #social-links a#twitter {
+  background-image: url("../img/twitter-gray.png");
+}
+header #social-links a#twitter:hover,
+header #social-links a#twitter:active {
+  background-image: url("../img/twitter.png");
+}
+header #social-links a#linkedin {
+  background-image: url("../img/linkedin-gray.png");
+}
+header #social-links a#linkedin:hover,
+header #social-links a#linkedin:active {
+  background-image: url("../img/linkedin.png");
+}
+header #social-links a#gmail {
+  background-image: url("../img/gmail-gray.png");
+}
+header #social-links a#gmail:hover,
+header #social-links a#gmail:active {
+  background-image: url("../img/gmail.png");
+}
+header #header-wrapper {
+  width: 100%;
+  max-width: 1170px;
+  margin: auto;
+}
+header #header-wrapper #header-content {
+  position: relative;
+  height: 0;
+  padding-bottom: 25%;
+}
+header #header-wrapper #header-content img {
+  width: 47.5%;
+  margin-left: -15%;
+  margin-top: -12.5%;
+}
+header #header-wrapper #header-content h1 {
+  position: absolute;
+  display: inline-block;
+  width: 60%;
+  bottom: 0;
+  margin-left: 2%;
+  font-size: 5rem;
+  font-family: 'HVD Comic Serif Pro Regular', Arial, sans-serif;
 }
 nav {
-  margin-top: 200px;
   background-color: #000;
-  height: 50px;
+  height: 3.125rem;
   width: 100%;
 }
 nav ul {
+  width: 100%;
+  max-width: 1170px;
   list-style: none;
   margin: auto;
   padding-left: 0;
-  width: 100%;
-  max-width: 1170px;
 }
 nav li {
   float: left;
-  line-height: 50px;
-  text-align: center;
   width: 30%;
-  font-weight: bold;
 }
 nav li a {
-  display: block;
-  text-decoration: none !important;
   width: 100%;
-  height: 50px;
+  height: 3.125rem;
+  display: block;
+  line-height: 3.125rem;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none !important;
 }
 nav li a,
 nav li a:visited,
@@ -43,24 +123,23 @@ nav li:hover {
   background-color: #808080;
 }
 nav li#chilli {
-  padding: 5px 0;
   width: 10%;
-  height: 50px;
+  height: 3.125rem;
+  padding: 5px 0;
 }
 nav li#chilli a {
-  height: 100%;
   width: 100%;
-  background: url("../img/chilli-up.png") center/contain no-repeat;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-image: url("../img/chilli-up.png");
 }
 nav li#chilli a:hover {
-  background: url("../img/chilli-down.png") center/contain no-repeat;
+  background-image: url("../img/chilli-down.png");
 }
 .navigation-stuck nav {
   position: fixed;
   top: 0;
-  margin-top: 0;
-  z-index: 1;
-}
-.navigation-stuck #main-content {
-  margin-top: 250px;
+  z-index: 2;
 }

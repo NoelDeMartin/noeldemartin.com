@@ -36,8 +36,8 @@ $(document).ready(function(){
 
 $window.load(function(){
 
-	$('header h1').fitText(0.7);
 	update_navigation_bar();
+	$('header h1').fitText(0.7);
 	$window.scroll(update_navigation_bar);
 
 });

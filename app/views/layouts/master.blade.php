@@ -18,6 +18,11 @@
 
 	<body>
 		<header>
+			<div id="social-links">
+				<a id="twitter" href="javascript:void(0);"></a>
+				<a id="linkedin" href="javascript:void(0);"></a>
+				<a id="gmail" href="javascript:void(0);"></a>
+			</div>
 			<div id="header-wrapper">
 				<div id="header-content">
 					<img src="/img/myface.png">
