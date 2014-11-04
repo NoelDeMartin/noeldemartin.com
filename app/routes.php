@@ -16,6 +16,7 @@ Route::get('/login',			['uses' => 'HomeController@login',			'as' => 'login']);
 Route::post('/login',			['uses' => 'HomeController@processLogin',	'as' => 'process_login']);
 Route::get('/register/{token}',	['uses' => 'HomeController@register',		'as' => 'register']);
 Route::get('/logout',			['uses' => 'HomeController@logout', 		'as' => 'logout']);
+Route::get('/blog',				['uses' => 'HomeController@blog',			'as' => 'blog']);
 
 Route::resource('users', 'UsersController', ['only' => ['store']]);
 
@@ -26,5 +27,7 @@ Route::group(['before' => 'auth.admin'], function (){
 });
 
 Route::group(['before' => 'auth.reviewer'], function (){
-	Route::resource('posts', 'PostsController', ['only' => ['index', 'show']]);
+	Route::resource('posts', 'PostsController', ['only' => ['index']]);
 });
+
+Route::resource('posts', 'PostsController', ['only' => ['show']]);

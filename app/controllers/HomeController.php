@@ -17,12 +17,15 @@ class HomeController extends BaseController {
 
 	public function index()
 	{
-		if (Auth::check()) {
-			if (Auth::user()->is_admin) {
-				return View::make('home.index');
-			}
-		}
-		return View::make('home.under_construction');
+		return Redirect::to('blog');
+	}
+
+	public function blog()
+	{
+		$posts = Post::where('published_at', '<', Carbon\Carbon::now())
+							->orderBy('published_at', 'desc')
+							->get();
+		return View::make('home.blog', compact('posts'));
 	}
 
 	public function login()

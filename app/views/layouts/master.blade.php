@@ -32,17 +32,13 @@
 		</header>
 		<nav>
 			<ul>
-				<li><a href="javascript:void(0);">BLOG</a></li>
+				<li>{{ HTML::linkRoute('blog', 'BLOG') }}</li>
 				<li><a href="javascript:void(0);">ABOUT ME</a></li>
 				<li><a href="javascript:void(0);">EXPERIMENTS</a></li>
 				<li id="chilli"><a href="javascript:void(0);"></a></li>
 			</ul>
 		</nav>
 		<div id="main-content" class="container">
-			@if (!in_array(Route::getCurrentRoute()->getName(), ['home', 'login', 'register']) || (Route::getCurrentRoute()->getName() == 'home' && Auth::check() && Auth::user()->is_admin) )
-				<br>
-				<div class="alert alert-info" role="alert">You are logged in as <b>{{ Auth::user()->username }}</b> {{ HTML::linkRoute('logout', '(Logout)') }}</div>
-			@endif
 			@yield('content')
 		</div>
 

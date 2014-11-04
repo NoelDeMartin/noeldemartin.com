@@ -11,7 +11,7 @@
 		<thead>
 			<tr>
 				<th>Title</th>
-				@if (Auth::user()->is_admin)
+				@if (Auth::check() && Auth::user()->is_admin)
 					<th></th>
 				@endif
 				<th>Publication Date</th>
@@ -21,7 +21,7 @@
 			@foreach ($posts as $post)
 				<tr>
 					<td>{{HTML::linkRoute('posts.show', $post->title, $post->id) }}</td>
-					@if (Auth::user()->is_admin)
+					@if (Auth::check() && Auth::user()->is_admin)
 						<td>{{HTML::linkRoute('posts.edit', 'edit', $post->id) }}</td>
 					@endif
 					<td data-order="{{ $post->published_at->timestamp }}">
@@ -35,7 +35,7 @@
 			@endforeach
 		</tbody>
 	</table>
-	@if (Auth::user()->is_admin)
+	@if (Auth::check() && Auth::user()->is_admin)
 		{{ HTML::linkRoute('posts.create', 'New Post', [], ['class' => 'btn btn-lg btn-primary', 'role' => 'button']) }}
 	@endif
 @stop
@@ -46,7 +46,7 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$('#posts').DataTable({
-				'aaSorting': [[{{ Auth::user()->is_admin? 2 : 1}},'desc']],
+				'aaSorting': [[{{ Auth::check() && Auth::user()->is_admin? 2 : 1}},'desc']],
 				fnDrawCallback: function(oSettings) {
 					console.debug(oSettings._iDisplayLength);
 					console.debug(oSettings.aiDisplay);

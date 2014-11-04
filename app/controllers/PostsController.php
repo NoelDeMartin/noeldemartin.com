@@ -9,7 +9,14 @@ class PostsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$posts = Post::orderBy('published_at', 'desc')->get();
+		if (Auth::check() && (Auth::user()->is_reviewer || Auth::user()->is_admin)) {
+			$posts = Post::orderBy('published_at', 'desc')
+							->get();
+		} else {
+			$posts = Post::where('published_at', '<', Carbon\Carbon::now())
+							->orderBy('published_at', 'desc')
+							->get();
+		}
 
 		return View::make('posts.index', compact('posts'));
 	}
@@ -58,6 +65,10 @@ class PostsController extends \BaseController {
 	public function show($id)
 	{
 		$post = Post::findOrFail($id);
+
+		if (!$post->isPublished() && (!Auth::check() || !Auth::user()->is_reviewer)) {
+			App::abort(404);
+		}
 
 		return View::make('posts.show', compact('post'));
 	}
