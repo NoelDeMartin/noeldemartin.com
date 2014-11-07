@@ -48,8 +48,6 @@
 			$('#posts').DataTable({
 				'aaSorting': [[{{ Auth::check() && Auth::user()->is_admin? 2 : 1}},'desc']],
 				fnDrawCallback: function(oSettings) {
-					console.debug(oSettings._iDisplayLength);
-					console.debug(oSettings.aiDisplay);
 					if (oSettings.aiDisplay.length <= oSettings._iDisplayLength) {
 						$('.dataTables_paginate').hide();
 						$('.dataTables_info').hide();

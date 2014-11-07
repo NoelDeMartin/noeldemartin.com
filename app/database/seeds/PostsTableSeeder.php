@@ -14,7 +14,7 @@ class PostsTableSeeder extends Seeder {
 				'title' => $faker->sentence(3),
 				'tag' => $faker->sentence(3),
 				'text_markdown' => $faker->paragraph(5),
-				'text_html' => $faker->paragraph(5),
+				'text_html' => '<p>' . implode($faker->paragraphs(5), '</p><p>') . '</p>',
 				'author_id' => 1,
 				'published_at' => $faker->date
 			]);

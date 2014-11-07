@@ -1,9 +1,11 @@
 @extends('layouts.master')
 
 @section('content')
-	<ul>
-		@foreach ($posts as $post)
-			<li>{{ HTML::linkRoute('posts.show', $post->title, $post->id) }}</li>
-		@endforeach
-	</ul>
+	<div class="row">
+		<div class="col-xs-12">
+			@foreach ($posts as $post)
+				@include('assets.post_summary', ['post' => $post])
+			@endforeach
+		</div>
+	</div>
 @stop

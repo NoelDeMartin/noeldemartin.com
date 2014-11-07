@@ -19,9 +19,9 @@
 	<body>
 		<header>
 			<div id="social-links">
-				<a id="twitter" href="javascript:void(0);"></a>
-				<a id="linkedin" href="javascript:void(0);"></a>
-				<a id="gmail" href="javascript:void(0);"></a>
+				<a id="twitter" href="https://twitter.com/NoelDeMartin"></a>
+				<a id="linkedin" href="http://www.linkedin.com/pub/noel-de-martin-fernandez/41/a7b/64"></a>
+				<a id="gmail" href="mailto:noeldemartin@gmail.com"></a>
 			</div>
 			<div id="header-wrapper">
 				<div id="header-content">
@@ -32,10 +32,15 @@
 		</header>
 		<nav>
 			<ul>
-				<li>{{ HTML::linkRoute('blog', 'BLOG') }}</li>
-				<li><a href="javascript:void(0);">ABOUT ME</a></li>
-				<li><a href="javascript:void(0);">EXPERIMENTS</a></li>
-				<li id="chilli"><a href="javascript:void(0);"></a></li>
+				<li {{ Request::is('blog')? 'class="active"' : '' }} >
+					{{ HTML::linkRoute('blog', 'BLOG') }}
+				</li><li {{ Request::is('about')? 'class="active"' : '' }} >
+					{{ HTML::linkRoute('about', 'ABOUT ME') }}
+				</li><li {{ Request::is('experiments')? 'class="active"' : '' }} >
+					{{ HTML::linkRoute('experiments', 'EXPERIMENTS') }}
+				</li><li id="chilli">
+					<a href="http://www.lincolnschilli.com"></a>
+				</li>
 			</ul>
 		</nav>
 		<div id="main-content" class="container">
