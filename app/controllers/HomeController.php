@@ -28,6 +28,16 @@ class HomeController extends BaseController {
 		return View::make('home.blog', compact('posts'));
 	}
 
+	public function about()
+	{
+		return View::make('home.about');
+	}
+
+	public function experiments()
+	{
+		return View::make('home.experiments');
+	}
+
 	public function login()
 	{
 		Auth::logout();

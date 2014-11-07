@@ -44,6 +44,11 @@
 			</ul>
 		</nav>
 		<div id="main-content" class="container">
+			<div class="row">
+				<div class="alert alert-info" role="alert">
+					<b>Hi!</b> This week I am attending {{ HTML::link('https://www.apps-world.net/europe/', 'AppsWorld') }} in London.
+				</div>
+			</div>
 			@yield('content')
 		</div>
 
