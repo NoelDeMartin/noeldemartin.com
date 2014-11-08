@@ -1,9 +1,17 @@
 @extends('layouts.master')
 
 @section('content')
-	<h1>{{ $post->title }}</h1>
-	<p>{{ $post->text_html }}</p>
+	<article class="post">
+		<h1 class="title">{{ $post->title }}</h1>
+		<div class="body">{{ $post->text_html }}</div>
 
+		<div class="share">
+			<span class="text">Share:</span>
+			<a class="social-share twitter" href="javascript:void(0);">Share in Twitter</a>
+			<a class="social-share facebook" href="javascript:void(0);">Share in Facebook</a>
+			<a class="social-share gplus" href="javascript:void(0);">Share in Google</a>
+		</div>
+	</article>
 	@if (Auth::check() && Auth::user()->is_reviewer)
 		<div class="alert alert-info" role="alert">
 			Hi There! You're a reviewer, right? So, don't be shy and <b>tell me what you think!</b>

@@ -19,9 +19,9 @@
 	<body>
 		<header>
 			<div id="social-links">
-				<a id="twitter" href="https://twitter.com/NoelDeMartin"></a>
-				<a id="linkedin" href="http://www.linkedin.com/pub/noel-de-martin-fernandez/41/a7b/64"></a>
-				<a id="gmail" href="mailto:noeldemartin@gmail.com"></a>
+				<a id="twitter" href="https://twitter.com/NoelDeMartin">Twitter</a>
+				<a id="linkedin" href="http://www.linkedin.com/pub/noel-de-martin-fernandez/41/a7b/64">LinkedIn</a>
+				<a id="gmail" href="mailto:noeldemartin@gmail.com">Email</a>
 			</div>
 			<div id="header-wrapper">
 				<div id="header-content">

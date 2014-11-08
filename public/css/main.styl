@@ -52,6 +52,9 @@ header
 			background-repeat no-repeat
 			background-position center
 			background-size contain
+			text-indent 100%
+			white-space nowrap
+			overflow hidden
 
 			for social_network in 'twitter' 'linkedin' 'gmail'
 
@@ -115,8 +118,8 @@ nav
 			&, &:visited, &:hover, &:active, &:link
 				color white
 
-		&:hover
-				background-color gray
+		&:hover, &.active
+			background-color gray
 
 		&#chilli
 			width 10%
@@ -143,3 +146,55 @@ nav
 
 #login
 	margin-top 20px
+
+#main-content
+	padding 15px
+
+.post
+
+	.title
+		font-size 3rem
+		font-family "Lucida Grande","Tahoma",sans-serif
+		color black
+
+		a
+			text-decoration none
+			color inherit
+
+			&:hover, &:active
+				color #276c8c
+
+	.body
+		font-size 1.25rem
+
+	.share
+		background-color #eee
+		padding 5px
+		display inline-block
+
+		.text
+			font-size 1.75rem
+			font-weight bold
+			float left
+			line-height social_links_height
+			margin 5px
+
+		.social-share
+			float left
+			width social_links_height
+			height social_links_height
+			margin 5px
+			background-repeat no-repeat
+			background-position center
+			background-size contain
+			text-indent 100%
+			white-space nowrap
+			overflow hidden
+
+			for social_network in 'twitter' 'facebook' 'gplus'
+
+				&.{social_network}
+					background-image url('../img/' + social_network + '-gray.png')
+
+					&:hover, &:active
+						background-image url('../img/' + social_network + '.png')
