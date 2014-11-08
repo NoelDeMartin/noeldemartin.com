@@ -4,7 +4,11 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-		<title>Noel De Martin</title>
+		@if (Route::is('posts.show'))
+			<title>{{ $post->title }} | Noel De Martin</title>
+		@else
+			<title>Noel De Martin</title>
+		@endif
 
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,11 +36,11 @@
 		</header>
 		<nav>
 			<ul>
-				<li {{ Request::is('blog')? 'class="active"' : '' }} >
+				<li {{ Route::is('blog')? 'class="active"' : '' }} >
 					{{ HTML::linkRoute('blog', 'BLOG') }}
-				</li><li {{ Request::is('about')? 'class="active"' : '' }} >
+				</li><li {{ Route::is('about')? 'class="active"' : '' }} >
 					{{ HTML::linkRoute('about', 'ABOUT ME') }}
-				</li><li {{ Request::is('experiments')? 'class="active"' : '' }} >
+				</li><li {{ Route::is('experiments')? 'class="active"' : '' }} >
 					{{ HTML::linkRoute('experiments', 'EXPERIMENTS') }}
 				</li><li id="chilli">
 					<a href="http://www.lincolnschilli.com"></a>
