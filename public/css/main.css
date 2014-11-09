@@ -214,3 +214,10 @@ nav li#chilli a:hover {
 .post .share .social-share.gplus:active {
   background-image: url("../img/gplus.png");
 }
+.post .share .social-share.gmail {
+  background-image: url("../img/gmail-gray.png");
+}
+.post .share .social-share.gmail:hover,
+.post .share .social-share.gmail:active {
+  background-image: url("../img/gmail.png");
+}

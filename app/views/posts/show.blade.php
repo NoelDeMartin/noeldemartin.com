@@ -7,9 +7,10 @@
 
 		<div class="share">
 			<span class="text">Share:</span>
-			<a class="social-share twitter" href="{{ Social::tweetLink($post) }}">Share in Twitter</a>
-			<a class="social-share facebook" href="{{ Social::facebookShareLink($post) }}">Share in Facebook</a>
-			<a class="social-share gplus" href="{{ Social::googlePlusShareLink($post) }}">Share in Google</a>
+			<a class="social-share share-popup twitter" href="{{ Social::tweetLink($post) }}">Share in Twitter</a>
+			<a class="social-share share-popup facebook" href="{{ Social::facebookShareLink($post) }}">Share in Facebook</a>
+			<a class="social-share share-popup gplus" href="{{ Social::googlePlusShareLink($post) }}">Share in Google</a>
+			<a class="social-share gmail" href="{{ Social::mailShareLink($post) }}">Share in Gmail</a>
 		</div>
 	</article>
 	@if (Auth::check() && Auth::user()->is_reviewer)
@@ -26,7 +27,7 @@
 
 @section('scripts')
 	<script type="text/javascript">
-		$('.social-share').click(function () {
+		$('.share-popup').click(function () {
 			var width = Math.min(screen.width*0.8, 600),
 				height = Math.min(screen.height*0.6, 600),
 				left = (screen.width/2)-(width/2),

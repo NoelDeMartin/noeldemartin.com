@@ -16,4 +16,9 @@ class Social {
 		return 'https://plus.google.com/share?url=' . urlencode(route('posts.show', $post->id));
 	}
 
+	public static function mailShareLink(Post $post) {
+		return 'mailto:?subject=' . rawurlencode(utf8_encode($post->title)) .
+						'&body=' . rawurlencode('Check out "' . $post->title . '" by Noel De Martin: ' . route('posts.show', $post->id));
+	}
+
 }
