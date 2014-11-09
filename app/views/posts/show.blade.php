@@ -28,7 +28,7 @@
 	<script type="text/javascript">
 		$('.social-share').click(function () {
 			var width = Math.min(screen.width*0.8, 600),
-				height = Math.min(screen.height*0.8, 600),
+				height = Math.min(screen.height*0.6, 600),
 				left = (screen.width/2)-(width/2),
 				top = (screen.height/2)-(height/2);
 			window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes' +
