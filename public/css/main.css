@@ -11,6 +11,11 @@ html {
     font-size: 12px;
   }
 }
+@media only screen and (max-width: 500px) {
+  html {
+    font-size: 10px;
+  }
+}
 @font-face {
   font-family: 'HVD Comic Serif Pro Regular';
   src: url("fonts/HVD_Comic_Serif_Pro-webfont.eot");
