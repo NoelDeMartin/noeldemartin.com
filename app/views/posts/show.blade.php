@@ -3,7 +3,8 @@
 @section('content')
 	<article class="post">
 		<h1 class="title">{{ $post->title }}</h1>
-		<div class="body">{{ $post->text_html }}</div>
+		<div class="body readable-text">{{ $post->text_html }}</div>
+		<div class="publish-date readable-text">Published {{ $post->published_at->toFormattedDateString() }}</div>
 
 		<div class="share">
 			<span class="text">Share:</span>

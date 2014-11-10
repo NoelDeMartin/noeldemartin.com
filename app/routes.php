@@ -18,7 +18,7 @@ Route::get('/register/{token}',	['uses' => 'HomeController@register',		'as' => '
 Route::get('/logout',			['uses' => 'HomeController@logout', 		'as' => 'logout']);
 Route::get('/blog',				['uses' => 'HomeController@blog',			'as' => 'blog']);
 Route::get('/about',			['uses' => 'HomeController@about',			'as' => 'about']);
-Route::get('/experiments',		['uses' => 'HomeController@experiments',			'as' => 'experiments']);
+Route::get('/experiments',		['uses' => 'HomeController@experiments',	'as' => 'experiments']);
 
 Route::resource('users', 'UsersController', ['only' => ['store']]);
 

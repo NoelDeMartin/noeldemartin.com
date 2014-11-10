@@ -59,12 +59,16 @@ class PostsController extends \BaseController {
 	/**
 	 * Display the specified post.
 	 *
-	 * @param  int  $id
+	 * @param  int|string  $id
 	 * @return Response
 	 */
 	public function show($id)
 	{
-		$post = Post::findOrFail($id);
+		if(is_numeric($id)) {
+			$post = Post::findOrFail($id);
+		} else {
+			$post = Post::where('tag', $id)->firstOrFail();
+		}
 
 		if (!$post->isPublished() && (!Auth::check() || !Auth::user()->is_reviewer)) {
 			App::abort(404);

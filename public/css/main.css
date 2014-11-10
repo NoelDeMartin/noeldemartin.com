@@ -166,8 +166,9 @@ nav li#chilli a:hover {
 .post .title a:active {
   color: #276c8c;
 }
-.post .body {
-  font-size: 1.25rem;
+.post .publish-date {
+  font-weight: bold;
+  float: right;
 }
 .post .share {
   background-color: #eee;
@@ -220,4 +221,7 @@ nav li#chilli a:hover {
 .post .share .social-share.gmail:hover,
 .post .share .social-share.gmail:active {
   background-image: url("../img/gmail.png");
+}
+.readable-text {
+  font-size: 1.25rem;
 }
