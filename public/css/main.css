@@ -171,6 +171,11 @@ nav li#chilli a:hover {
 .post .title a:active {
   color: #276c8c;
 }
+.post .body img {
+  max-width: 100%;
+  display: block;
+  margin: auto;
+}
 .post .publish-date {
   font-weight: bold;
   float: right;
