@@ -2,20 +2,35 @@
 
 var $window = $(window);
 var $body, $header, $nav, $mainContent;
-var header_color_hue = Math.floor(Math.random() * (360));
+var header_timer_id, header_animation_running = false;
+
+function start_header_animation() {
+	header_animation_running = true;
+	header_timer_id = setInterval(update_header_color, 100);
+}
+
+function stop_header_animation() {
+	header_animation_running = false;
+	clearInterval(header_timer_id);
+}
 
 function update_header_color() {
-	header_color_hue = (header_color_hue + 1) % 360;
-	$header.css('background-color', 'hsl(' + header_color_hue + ', 40%, 80%)');
+	$header.css('background-color', 'hsl(' + ((new Date().getTime() / 100) % 360) + ', 40%, 80%)');
 }
 
 function update_navigation_bar() {
 	if ($window.scrollTop() > $header.height()) {
 		$body.addClass('navigation-stuck');
 		$mainContent.css('margin-top', $('nav').height() + 'px');
+		if (header_animation_running) {
+			stop_header_animation();
+		}
 	} else {
 		$body.removeClass('navigation-stuck');
 		$mainContent.css('margin-top', '0');
+		if (!header_animation_running) {
+			start_header_animation();
+		}
 	}
 }
 
@@ -27,8 +42,6 @@ $(document).ready(function(){
 	$header = $('header');
 	$nav = $('nav');
 	$mainContent = $('#main-content');
-
-	setInterval(update_header_color, 100);
 
 });
 

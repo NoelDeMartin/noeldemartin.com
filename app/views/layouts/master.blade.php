@@ -29,7 +29,11 @@
 			</div>
 			<div id="header-wrapper">
 				<div id="header-content">
-					<img src="/img/myface.png">
+					<!-- Applied this: http://alistapart.com/article/responsive-images-in-practice -->
+					<img src="/img/myface.png"
+							srcset="/img/myface.png 465w,
+									/img/myface-small.png  200w"
+							sizes="(min-width: 1170px) 555px, 47.5vw" />
 					<h1>NOEL<br>DE MARTIN</h1>
 				</div>
 			</div>
