@@ -21,6 +21,14 @@ class PostsController extends \BaseController {
 		return View::make('posts.index', compact('posts'));
 	}
 
+	public function rss() {
+		$posts = Post::where('published_at', '<', Carbon\Carbon::now())
+						->orderBy('published_at', 'desc')
+						->get();
+
+		return View::make('posts.rss', compact('posts'));
+	}
+
 	/**
 	 * Show the form for creating a new post
 	 *

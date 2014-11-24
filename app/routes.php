@@ -33,3 +33,5 @@ Route::group(['before' => 'auth.reviewer'], function (){
 });
 
 Route::resource('posts', 'PostsController', ['only' => ['show']]);
+Route::get('/blog/rss', ['uses' => 'PostsController@rss', 'as' => 'blog.rss']);
+Route::get('/blog/{id}', ['uses' => 'PostsController@show', 'as' => 'blog.show']);
