@@ -21,14 +21,6 @@ class PostsController extends \BaseController {
 		return View::make('posts.index', compact('posts'));
 	}
 
-	public function rss() {
-		$posts = Post::where('published_at', '<', Carbon\Carbon::now())
-						->orderBy('published_at', 'desc')
-						->get();
-
-		return View::make('posts.rss', compact('posts'));
-	}
-
 	/**
 	 * Show the form for creating a new post
 	 *
@@ -73,9 +65,9 @@ class PostsController extends \BaseController {
 	public function show($id)
 	{
 		if(is_numeric($id)) {
-			$post = Post::findOrFail($id);
+			$post = Post::with('comments')->findOrFail($id);
 		} else {
-			$post = Post::where('tag', $id)->firstOrFail();
+			$post = Post::with('comments')->where('tag', $id)->firstOrFail();
 		}
 
 		if (!$post->isPublished() && (!Auth::check() || !Auth::user()->is_reviewer)) {
@@ -83,6 +75,40 @@ class PostsController extends \BaseController {
 		}
 
 		return View::make('posts.show', compact('post'));
+	}
+
+	/**
+	 * Add a new comment to a post.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function comment($id) {
+
+		$post = Post::findOrFail($id);
+		$validator = Validator::make($data = Input::all(), PostComment::$rules);
+
+		if ($validator->fails())
+		{
+			return Redirect::back()->withErrors($validator)->withInput();
+		}
+
+		$comment = new PostComment($data);
+		if (strlen(trim($data['author'])) == 0) {
+			$comment->author = 'Anonymous';
+		}
+		if (strlen(trim($data['author_link'])) == 0) {
+			unset($comment->author_link);
+		}
+		$comment->post_id = $post->id;
+		$comment->save();
+
+		// Send Email
+		Mail::send('emails.post_comment', ['post' => $post, 'comment' => $comment], function($message) use($post) {
+			$message->to('noeldemartin@gmail.com')->subject('New comment in post ' . $post->title);
+		});
+
+		return Redirect::route('posts.show', $post->tag);
 	}
 
 	/**

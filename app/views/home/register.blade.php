@@ -10,7 +10,7 @@
 		{{ HTML::linkRoute('home', 'Ok', [], ['class' => 'btn btn-lg btn-primary', 'role' => 'button']) }}
 	@else
 
-		{{ Form::open(['route' => 'users.store'], ['role' => 'form']) }}
+		{{ Form::open(['route' => 'users.store', 'role' => 'form']) }}
 
 		<div class="form-group">
 			<label for="username">Username</label>

@@ -3,7 +3,7 @@
 @section('content')
 	<h1>Login</h1>
 
-	{{ Form::open(['route' => 'process_login'], ['role' => 'form']) }}
+	{{ Form::open(['route' => 'process_login', 'role' => 'form']) }}
 
 	<div class="form-group">
 		{{ Form::text('credential', null, ['placeholder' => 'Username or Email', 'class' => 'form-control']) }} <br>

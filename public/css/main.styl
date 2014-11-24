@@ -211,5 +211,46 @@ nav
 					&:hover, &:active
 						background-image url('../img/' + social_network + '.png')
 
+
+	.comments
+		margin-top 10px
+		border-top 1px solid #aaa
+
+		comments_first_color = #eee
+		comments_second_color = #ddd
+
+		.new-comment
+			padding 10px
+
+			textarea
+				margin 10px 0
+				width 100%
+
+			.comment-button
+				margin auto
+				width 60%
+				text-align center
+				background-color #97c1e6
+				color white
+				font-size 1.75rem
+				height 5rem
+				line-height 5rem
+
+				&:hover
+					background-color #5c9ad1
+					cursor pointer
+
+		.comment
+			background-color comments_first_color
+			overflow hidden
+			padding 10px
+
+			&:nth-child(2n)
+				background-color comments_second_color
+
+			.date
+				float right
+				font-style italic
+
 .readable-text
 	font-size 1.25rem

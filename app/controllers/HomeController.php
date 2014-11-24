@@ -28,6 +28,14 @@ class HomeController extends BaseController {
 		return View::make('home.blog', compact('posts'));
 	}
 
+	public function rss() {
+		$posts = Post::where('published_at', '<', Carbon\Carbon::now())
+						->orderBy('published_at', 'desc')
+						->get();
+
+		return View::make('posts.rss', compact('posts'));
+	}
+
 	public function about()
 	{
 		return View::make('home.about');

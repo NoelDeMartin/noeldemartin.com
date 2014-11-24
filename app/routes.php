@@ -17,6 +17,7 @@ Route::post('/login',			['uses' => 'HomeController@processLogin',	'as' => 'proce
 Route::get('/register/{token}',	['uses' => 'HomeController@register',		'as' => 'register']);
 Route::get('/logout',			['uses' => 'HomeController@logout', 		'as' => 'logout']);
 Route::get('/blog',				['uses' => 'HomeController@blog',			'as' => 'blog']);
+Route::get('/blog/rss',			['uses' => 'HomeController@rss',			'as' => 'blog.rss']);
 Route::get('/about',			['uses' => 'HomeController@about',			'as' => 'about']);
 Route::get('/experiments',		['uses' => 'HomeController@experiments',	'as' => 'experiments']);
 
@@ -32,6 +33,6 @@ Route::group(['before' => 'auth.reviewer'], function (){
 	Route::resource('posts', 'PostsController', ['only' => ['index']]);
 });
 
+Route::post('/posts/{id}/comment', ['uses' => 'PostsController@comment', 'as' => 'posts.comment']);
 Route::resource('posts', 'PostsController', ['only' => ['show']]);
-Route::get('/blog/rss', ['uses' => 'PostsController@rss', 'as' => 'blog.rss']);
 Route::get('/blog/{id}', ['uses' => 'PostsController@show', 'as' => 'blog.show']);

@@ -52,7 +52,7 @@
 @section('content')
 	<h1>Create Post</h1>
 
-	{{ Form::open(['route' => 'posts.store'], ['role' => 'form']) }}
+	{{ Form::open(['route' => 'posts.store', 'role' => 'form']) }}
 
 	<div class="form-group">
 		{{ Form::text('title', null, ['placeholder' => 'Title', 'class' => 'form-control']) }}

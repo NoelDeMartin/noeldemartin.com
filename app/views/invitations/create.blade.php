@@ -3,7 +3,7 @@
 @section('content')
 	<h1>Create Invitation</h1>
 
-	{{ Form::open(['route' => 'invitations.store'], ['role' => 'form']) }}
+	{{ Form::open(['route' => 'invitations.store', 'role' => 'form']) }}
 
 	<div class="form-group">
 		<label for="email">Email</label>

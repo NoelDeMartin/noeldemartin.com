@@ -17,6 +17,10 @@ class Post extends Eloquent {
 		return strtolower(str_replace(' ', '-', $title));
 	}
 
+	public function comments() {
+		return $this->hasMany('PostComment');
+	}
+
 	public function isPublished() {
 		$date = new \Carbon\Carbon($this->published_at);
 		return $date->isPast();

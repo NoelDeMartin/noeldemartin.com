@@ -232,6 +232,43 @@ nav li#chilli a:hover {
 .post .share .social-share.gmail:active {
   background-image: url("../img/gmail.png");
 }
+.post .comments {
+  margin-top: 10px;
+  border-top: 1px solid #aaa;
+}
+.post .comments .new-comment {
+  padding: 10px;
+}
+.post .comments .new-comment textarea {
+  margin: 10px 0;
+  width: 100%;
+}
+.post .comments .new-comment .comment-button {
+  margin: auto;
+  width: 60%;
+  text-align: center;
+  background-color: #97c1e6;
+  color: #fff;
+  font-size: 1.75rem;
+  height: 5rem;
+  line-height: 5rem;
+}
+.post .comments .new-comment .comment-button:hover {
+  background-color: #5c9ad1;
+  cursor: pointer;
+}
+.post .comments .comment {
+  background-color: #eee;
+  overflow: hidden;
+  padding: 10px;
+}
+.post .comments .comment:nth-child(2n) {
+  background-color: #ddd;
+}
+.post .comments .comment .date {
+  float: right;
+  font-style: italic;
+}
 .readable-text {
   font-size: 1.25rem;
 }
