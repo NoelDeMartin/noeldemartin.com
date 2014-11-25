@@ -32,8 +32,10 @@ class HomeController extends BaseController {
 		$posts = Post::where('published_at', '<', Carbon\Carbon::now())
 						->orderBy('published_at', 'desc')
 						->get();
-
-		return View::make('posts.rss', compact('posts'));
+		$view = View::make('posts.rss', compact('posts'));
+		$response = Response::make($view);
+		$response->header('Content-Type', 'application/rss+xml');
+		return $response;
 	}
 
 	public function about()
