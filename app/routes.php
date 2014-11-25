@@ -17,7 +17,7 @@ Route::post('/login',			['uses' => 'HomeController@processLogin',	'as' => 'proce
 Route::get('/register/{token}',	['uses' => 'HomeController@register',		'as' => 'register']);
 Route::get('/logout',			['uses' => 'HomeController@logout', 		'as' => 'logout']);
 Route::get('/blog',				['uses' => 'HomeController@blog',			'as' => 'blog']);
-Route::get('/blog/rss',			['uses' => 'HomeController@rss',			'as' => 'blog.rss']);
+Route::get('/blog/rss.xml',		['uses' => 'HomeController@rss',			'as' => 'blog.rss']);
 Route::get('/about',			['uses' => 'HomeController@about',			'as' => 'about']);
 Route::get('/experiments',		['uses' => 'HomeController@experiments',	'as' => 'experiments']);
 
