@@ -4,6 +4,7 @@ class PostComment extends Eloquent {
 
 	public static $rules = [
 		'author'		=> 'max:64',
+		'author_link'	=> 'email_or_url',
 		'text'			=> 'required|max:2048'
 	];
 

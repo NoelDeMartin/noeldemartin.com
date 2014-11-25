@@ -36,8 +36,8 @@
 				{{ Form::open(['route' => ['posts.comment', $post->id], 'role' => 'form', 'class' => 'form-inline']) }}
 
 				<div class="form-group">
-					{{ Form::text('author', null, ['placeholder' => 'Author', 'class' => 'form-control']) }}
-					{{ Form::text('author_link', null, ['placeholder' => 'Contact Link (Optional)', 'class' => 'form-control']) }}
+					{{ Form::text('author', null, ['placeholder' => 'Author (Optional)', 'class' => 'form-control']) }}
+					{{ Form::text('author_link', null, ['placeholder' => 'Contact Link or Email (Optional)', 'class' => 'form-control', 'size' => '32']) }}
 				</div>
 
 				{{ Form::textarea('text', '', ['placeholder' => 'Comment', 'class' => 'form-control']) }}

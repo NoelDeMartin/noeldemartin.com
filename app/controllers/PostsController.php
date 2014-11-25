@@ -93,12 +93,17 @@ class PostsController extends \BaseController {
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 
+		$author = trim($data['author']);
+		$author_link = trim($data['author_link']);
+
 		$comment = new PostComment($data);
-		if (strlen(trim($data['author'])) == 0) {
+		if (strlen($author) == 0) {
 			$comment->author = 'Anonymous';
 		}
-		if (strlen(trim($data['author_link'])) == 0) {
+		if (strlen($author_link) == 0) {
 			unset($comment->author_link);
+		} else if (filter_var($author_link, FILTER_VALIDATE_EMAIL) !== false) {
+			$comment->author_link = 'mailto:' . $author_link;
 		}
 		$comment->post_id = $post->id;
 		$comment->save();

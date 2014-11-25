@@ -79,3 +79,18 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
+
+/*
+|--------------------------------------------------------------------------
+| Extend validator
+|--------------------------------------------------------------------------
+|
+| Extend validator with custom validation rules.
+|
+*/
+
+Validator::extend('email_or_url', function($attribute, $value, $parameters)
+{
+	return (filter_var($value, FILTER_VALIDATE_EMAIL) !== false) ||
+			(filter_var($value, FILTER_VALIDATE_URL) !== false);
+});

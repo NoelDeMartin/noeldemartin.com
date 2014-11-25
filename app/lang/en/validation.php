@@ -70,6 +70,7 @@ return array(
 	),
 	"unique"               => "The :attribute has already been taken.",
 	"url"                  => "The :attribute format is invalid.",
+	"email_or_url"         => "The :attribute should be an email or url.",
 
 	/*
 	|--------------------------------------------------------------------------
