@@ -48,6 +48,8 @@ class UsersController extends \BaseController {
 		// Create User
 		$user = new User($data);
 		$user->password = Hash::make($data['password']);
+		$user->is_admin = false;
+		$user->is_reviewer = false;
 
 		if ($invitation != null) {
 			$user->is_reviewer = true;

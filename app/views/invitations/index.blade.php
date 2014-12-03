@@ -54,8 +54,6 @@
 		    $('#invitations').DataTable({
 				'aaSorting': [[2,'desc']],
 				fnDrawCallback: function(oSettings) {
-					console.debug(oSettings._iDisplayLength);
-					console.debug(oSettings.aiDisplay);
 					if (oSettings.aiDisplay.length <= oSettings._iDisplayLength) {
 						$('.dataTables_paginate').hide();
 						$('.dataTables_info').hide();

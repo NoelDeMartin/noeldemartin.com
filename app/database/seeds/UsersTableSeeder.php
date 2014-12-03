@@ -19,6 +19,7 @@ class UsersTableSeeder extends Seeder {
 			'username'		=> 'Reviewer',
 			'email'			=> 'reviewer@fake.com',
 			'password'		=> Hash::make('secret'),
+			'is_admin'		=> false,
 			'is_reviewer'	=> true
 		]);
 
@@ -27,9 +28,11 @@ class UsersTableSeeder extends Seeder {
 		foreach(range(1, 10) as $index)
 		{
 			User::create([
-				'username'	=> $faker->name,
-				'email'		=> $faker->email,
-				'password'	=> Hash::make('secret')
+				'username'		=> $faker->name,
+				'email'			=> $faker->email,
+				'password'		=> Hash::make('secret'),
+				'is_admin'		=> false,
+				'is_reviewer'	=> false
 			]);
 		}
 	}
