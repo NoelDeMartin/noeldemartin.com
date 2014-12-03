@@ -1,52 +1,7 @@
 @extends('layouts.master')
 
 @section('styles')
-
-	<style type="text/css">
-
-		#editor {
-			border: 1px solid #aaa;
-			height: 500px;
-		}
-
-		#editor .editor-text {
-			padding: 15px;
-			height: 100%;
-			width: 100%;
-			float: left;
-			overflow-y: hidden;
-		}
-
-		#editor.both .editor-text {
-			width: 49.5%;
-		}
-
-		#editor .editor-text:hover {
-			overflow-y: auto;
-		}
-
-		#editor #text-markdown {
-			border: 0px;
-			background: #d8d8d8;
-			resize: none;
-		}
-
-		#editor #column {
-			background: #aaa;
-			float: left;
-			width: 1%;
-			height: 100%;
-		}
-
-		#editor.preview #column,
-		#editor.preview #text-markdown,
-		#editor.write #column,
-		#editor.write #text-html {
-			display: none;
-		}
-
-	</style>
-
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css">
 @stop
 
 @section('content')
@@ -55,16 +10,16 @@
 	{{ Form::open(['route' => 'posts.store', 'role' => 'form']) }}
 
 	<div class="form-group">
-		{{ Form::text('title', null, ['placeholder' => 'Title', 'class' => 'form-control']) }}
+		{{ Form::text('title', Input::old('title'), ['placeholder' => 'Title', 'class' => 'form-control']) }}
 	</div>
 
 	<ul id="tabs" class="nav nav-tabs" role="tablist">
-		<li id="both" class="active"><a href="#">Both</a></li>
-		<li id="write"><a href="#">Write</a></li>
-		<li id="preview"><a href="#">Preview</a></li>
+		<li id="both" class="active"><a href="javascript:void(0);">Both</a></li>
+		<li id="write"><a href="javascript:void(0);">Write</a></li>
+		<li id="preview"><a href="javascript:void(0);">Preview</a></li>
 	</ul>
 	<div id="editor" class="both">
-		{{ Form::textarea('text_markdown', null, ['placeholder' => 'Markdown text goes here', 'id' => 'text-markdown', 'class' => 'editor-text']) }}
+		{{ Form::textarea('text_markdown', Input::old('text_markdown'), ['placeholder' => 'Markdown text goes here', 'id' => 'text-markdown', 'class' => 'editor-text']) }}
 		<div id="column"></div>
 		<div id="text-html" class="editor-text"></div>
 		<div class="clearfix"></div>
@@ -72,11 +27,10 @@
 
 	<br>
 	<div class="form-group">
-		{{ Form::text('published_at', null, ['placeholder' => 'Publication date (dd/mm/yyyy)', 'class' => 'form-control']) }}
+		{{ Form::text('published_at', Input::old('published_at'), ['placeholder' => 'Publication date (dd/mm/yyyy)', 'class' => 'form-control', 'id' => 'published_at']) }}
 	</div>
 
-	{{ Form::hidden('author_id', 1) }}
-	{{ Form::hidden('text_html', "") }}
+	{{ Form::hidden('text_html', Input::old('text_html', '')) }}
 
 	@foreach ($errors->all() as $error)
 		<div class="alert alert-danger" role="alert">{{ $error }}</div>
@@ -88,6 +42,7 @@
 
 @section('scripts')
 
+	<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>
 	<script src="/js/marked.min.js"></script>
 	<script type="text/javascript">
 		var editor = $('#editor'),
@@ -136,6 +91,11 @@
 					editor.attr('class', tab.attr('id'));
 				}
 			});
+		});
+
+		// Initialize components
+		$('#published_at').datepicker({
+			format: '{{ Post::DATE_FORMAT_JS }}'
 		});
 	</script>
 

@@ -3,6 +3,7 @@
 class Post extends Eloquent {
 
 	const DATE_FORMAT = 'd/m/Y';
+	const DATE_FORMAT_JS = 'dd/mm/yyyy';
 
 	public static $rules = [
 		'title'			=> 'required',

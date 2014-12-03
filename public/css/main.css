@@ -272,3 +272,40 @@ nav li#chilli a:hover {
 .readable-text {
   font-size: 1.25rem;
 }
+#editor {
+  border: 1px solid #aaa;
+  height: 500px;
+}
+#editor .editor-text {
+  padding: 15px;
+  height: 100%;
+  width: 100%;
+  float: left;
+  overflow-y: hidden;
+}
+#editor.both .editor-text {
+  width: 49.5%;
+}
+#editor .editor-text:hover {
+  overflow-y: auto;
+}
+#editor #text-markdown {
+  border: 0px;
+  background: #d8d8d8;
+  resize: none;
+}
+#editor #column {
+  background: #aaa;
+  float: left;
+  width: 1%;
+  height: 100%;
+}
+#editor.preview #column,
+#editor.preview #text-markdown,
+#editor.write #column,
+#editor.write #text-html {
+  display: none;
+}
+#destroy-post {
+  float: right;
+}

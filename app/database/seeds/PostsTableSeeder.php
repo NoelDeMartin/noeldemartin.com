@@ -8,11 +8,11 @@ class PostsTableSeeder extends Seeder {
 	{
 		$faker = Faker::create();
 
-		foreach(range(1, 10) as $index)
-		{
+		foreach(range(1, 10) as $index) {
+			$title = $faker->sentence(3);
 			Post::create([
-				'title' => $faker->sentence(3),
-				'tag' => $faker->sentence(3),
+				'title' => $title,
+				'tag' => Post::createTitleTag($title),
 				'text_markdown' => $faker->paragraph(5),
 				'text_html' => '<p>' . implode($faker->paragraphs(5), '</p><p>') . '</p>',
 				'author_id' => 1,

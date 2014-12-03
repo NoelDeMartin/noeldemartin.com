@@ -7,8 +7,7 @@ class PostsController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function index()
-	{
+	public function index() {
 		if (Auth::check() && (Auth::user()->is_reviewer || Auth::user()->is_admin)) {
 			$posts = Post::orderBy('published_at', 'desc')
 							->get();
@@ -26,8 +25,7 @@ class PostsController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create()
-	{
+	public function create() {
 		return View::make('posts.create');
 	}
 
@@ -36,12 +34,10 @@ class PostsController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function store()
-	{
+	public function store() {
 		$validator = Validator::make($data = Input::all(), Post::$rules);
 
-		if ($validator->fails())
-		{
+		if ($validator->fails()) {
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 
@@ -62,8 +58,7 @@ class PostsController extends \BaseController {
 	 * @param  int|string  $id
 	 * @return Response
 	 */
-	public function show($id)
-	{
+	public function show($id) {
 		if(is_numeric($id)) {
 			$post = Post::with('comments')->findOrFail($id);
 		} else {
@@ -88,8 +83,7 @@ class PostsController extends \BaseController {
 		$post = Post::findOrFail($id);
 		$validator = Validator::make($data = Input::all(), PostComment::$rules);
 
-		if ($validator->fails())
-		{
+		if ($validator->fails()) {
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 
@@ -122,10 +116,8 @@ class PostsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
-	{
+	public function edit($id) {
 		$post = Post::find($id);
-
 		return View::make('posts.edit', compact('post'));
 	}
 
@@ -135,18 +127,21 @@ class PostsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
-	{
+	public function update($id) {
 		$post = Post::findOrFail($id);
 
 		$validator = Validator::make($data = Input::all(), Post::$rules);
 
-		if ($validator->fails())
-		{
+		if ($validator->fails()) {
 			return Redirect::back()->withErrors($validator)->withInput();
+		} else if ($post->isPublished() && $post->tag != Post::createTitleTag($data['title'])) {
+			Session::flash('message', 'Cannot change posts title! (until redirect/missing feature is not implemented correctly)');
+			return Redirect::back()->withInput();
 		}
 
+		$post->published_at = Carbon\Carbon::createFromFormat(Post::DATE_FORMAT, $data['published_at'])->toDateTimeString();
 		$post->update($data);
+		Session::flash('message', 'The post was updated correctly');
 
 		return Redirect::route('posts.index');
 	}
@@ -157,9 +152,10 @@ class PostsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
-	{
-		Post::destroy($id);
+	public function destroy($id) {
+
+		// TODO Post::destroy($id);
+		Session::flash('message', 'Cannot delete posts! (until redirect/missing feature is not implemented correctly)');
 
 		return Redirect::route('posts.index');
 	}
