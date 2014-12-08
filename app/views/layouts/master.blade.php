@@ -6,6 +6,7 @@
 
 		@if (Route::is('posts.show'))
 			<title>{{ $post->title }} | Noel De Martin</title>
+			@include('assets.post_meta', $post)
 		@else
 			<title>Noel De Martin</title>
 		@endif
@@ -32,6 +33,7 @@
 				<div id="header-content">
 					<!-- Applied this: http://alistapart.com/article/responsive-images-in-practice -->
 					<img src="/img/myface.png"
+							alt="My Face"
 							srcset="/img/myface.png 465w,
 									/img/myface-small.png  200w"
 							sizes="(min-width: 1170px) 555px, 47.5vw" />
