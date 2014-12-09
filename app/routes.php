@@ -23,16 +23,22 @@ Route::get('/experiments',		['uses' => 'HomeController@experiments',	'as' => 'ex
 
 Route::resource('users', 'UsersController', ['only' => ['store']]);
 
-Route::group(['before' => 'auth.admin'], function (){
+Route::group(['before' => 'auth.admin'], function() {
 	Route::resource('users', 'UsersController', ['except' => ['store']]);
 	Route::resource('posts', 'PostsController', ['except' => ['index', 'show']]);
 	Route::resource('invitations', 'InvitationsController', ['except' => 'show', 'edit', 'update']);
 });
 
-Route::group(['before' => 'auth.reviewer'], function (){
+Route::group(['before' => 'auth.reviewer'], function() {
 	Route::resource('posts', 'PostsController', ['only' => ['index']]);
 });
 
 Route::post('/posts/{id}/comment', ['uses' => 'PostsController@comment', 'as' => 'posts.comment']);
 Route::resource('posts', 'PostsController', ['only' => ['show']]);
 Route::get('/blog/{id}', ['uses' => 'PostsController@show', 'as' => 'blog.show']);
+
+Route::group(['prefix' => 'experiments'], function() {
+	Route::get('freedom-calculator', function() {
+		return View::make('experiments.freedom_calculator', ['title' => 'Freedom Calculator']);
+	});
+});
