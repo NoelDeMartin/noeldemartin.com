@@ -38,7 +38,5 @@ Route::resource('posts', 'PostsController', ['only' => ['show']]);
 Route::get('/blog/{id}', ['uses' => 'PostsController@show', 'as' => 'blog.show']);
 
 Route::group(['prefix' => 'experiments'], function() {
-	Route::get('freedom-calculator', function() {
-		return View::make('experiments.freedom_calculator', ['title' => 'Freedom Calculator']);
-	});
+	Route::get('freedom-calculator', ['uses' => 'ExperimentsController@freedomCalculator', 'as' => 'experiments.freedom-calculator']);
 });
