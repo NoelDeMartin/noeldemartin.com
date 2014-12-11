@@ -40,3 +40,14 @@ Route::get('/blog/{id}', ['uses' => 'PostsController@show', 'as' => 'blog.show']
 Route::group(['prefix' => 'experiments'], function() {
 	Route::get('freedom-calculator', ['uses' => 'ExperimentsController@freedomCalculator', 'as' => 'experiments.freedom-calculator']);
 });
+
+if (!Config::get('app.debug')) {
+	App::error(function($exception) {
+		$controller = App::make('HomeController');
+		if ($exception instanceof Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
+			return $controller->notFound();
+		} else {
+			return $controller->error();
+		}
+	});
+}

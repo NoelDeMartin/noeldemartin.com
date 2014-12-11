@@ -2,26 +2,11 @@
 
 class HomeController extends BaseController {
 
-	/*
-	|--------------------------------------------------------------------------
-	| Default Home Controller
-	|--------------------------------------------------------------------------
-	|
-	| You may wish to use controllers instead of, or in addition to, Closure
-	| based routes. That's great! Here is an example controller method to
-	| get you started. To route to this controller, just add the route:
-	|
-	|	Route::get('/', 'HomeController@showWelcome');
-	|
-	*/
-
-	public function index()
-	{
+	public function index() {
 		return Redirect::to('blog');
 	}
 
-	public function blog()
-	{
+	public function blog() {
 		$posts = Post::where('published_at', '<', Carbon\Carbon::now())
 							->orderBy('published_at', 'desc')
 							->get();
@@ -38,24 +23,28 @@ class HomeController extends BaseController {
 		return $response;
 	}
 
-	public function about()
-	{
+	public function error() {
+		return View::make('home.error');
+	}
+
+	public function notFound() {
+		return View::make('home.404');
+	}
+
+	public function about() {
 		return View::make('home.about');
 	}
 
-	public function experiments()
-	{
+	public function experiments() {
 		return View::make('home.experiments');
 	}
 
-	public function login()
-	{
+	public function login() {
 		Auth::logout();
 		return View::make('home.login');
 	}
 
-	public function processLogin()
-	{
+	public function processLogin() {
 		$credential = Input::get('credential');
 		$password = Input::get('password');
 		$remember = Input::get('remember', false);
