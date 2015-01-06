@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<feed xmlns="http://www.w3.org/2005/Atom">
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:atom="http://www.w3.org/2005/Atom">
 	<title type="text">Noel De Martin Blog</title>
 	<subtitle type="text">Personal Blog of Noel De Martin - Developer Entrepreneur</subtitle>
-	<atom:link href="{{ route('blog.rss') }}" rel="self" type="application/rss+xml" />
+	<atom:link href="{{ route('blog.rss') }}" rel="self" />
 	<updated>{{ $posts->last()->published_at->format(DateTime::ATOM) }}</updated>
 	<id>{{ route('blog') }}</id>
 	<link type="text/html" href="{{ route('blog') }}" />
