@@ -14,6 +14,10 @@ class Post extends Eloquent {
 
 	protected $fillable = ['title', 'text_markdown', 'text_html'];
 
+	public function getSummary() {
+		return substr($this->text_html, 0, strpos($this->text_html, '<h2'));
+	}
+
 	public static function createTitleTag($title) {
 		return strtolower(str_replace(' ', '-', $title));
 	}
