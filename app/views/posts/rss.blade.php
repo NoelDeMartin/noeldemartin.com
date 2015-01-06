@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<feed xmlns:atom="http://www.w3.org/2005/Atom">
 	<title type="text">Noel De Martin Blog</title>
 	<subtitle type="text">Personal Blog of Noel De Martin - Developer Entrepreneur</subtitle>
 	<updated>{{ $posts->last()->published_at->format(DateTime::ATOM) }}</updated>
 	<id>{{ route('blog') }}</id>
-	<link type="text/html" rel="self" href="{{ route('blog') }}" />
-	<atom:link href="{{ route('blog.rss') }}" rel="self" type="application/rss+xml" />
+	<link type="text/html" href="{{ route('blog') }}" />
+	<atom:link type="application/atom+xml" rel="self" href="{{ route('blog.rss') }}" />
 	<category term="entrepreneurship"/>
 	<category term="development"/>
 	<logo>{{ asset('img/myface-small.png') }}</logo>
@@ -34,4 +34,4 @@
 			</content>
 		</entry>
 	@endforeach
-</rss>
+</feed>
