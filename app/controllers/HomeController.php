@@ -19,7 +19,7 @@ class HomeController extends BaseController {
 						->get();
 		$view = View::make('posts.rss', compact('posts'));
 		$response = Response::make($view);
-		$response->header('Content-Type', 'application/rss+xml');
+		$response->header('Content-Type', 'application/atom+xml');
 		return $response;
 	}
 
