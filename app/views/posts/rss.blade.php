@@ -27,9 +27,9 @@
 			<category term="development"/>
 			<published>{{ $post->published_at->format(DateTime::ATOM) }}</published>
 			<updated>{{ $post->updated_at->format(DateTime::ATOM) }}</updated>
-			<summary type="html">{{ htmlentities($post->getSummary()) }}</summary>
+			<summary type="html">{{ htmlspecialchars($post->getSummary()) }}</summary>
 			<content type="html" xml:base="{{ route('posts.show', $post->tag) }}">
-				{{ htmlentities($post->text_html) }}
+				{{ htmlspecialchars($post->text_html) }}
 			</content>
 		</entry>
 	@endforeach
