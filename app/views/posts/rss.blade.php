@@ -2,9 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<title type="text">Noel De Martin Blog</title>
 	<subtitle type="text">Personal Blog of Noel De Martin - Developer Entrepreneur</subtitle>
+	<atom:link href="{{ route('blog.rss') }}" rel="self" type="application/rss+xml" />
 	<updated>{{ $posts->last()->published_at->format(DateTime::ATOM) }}</updated>
-	<id>{{ url('blog') }}</id>
-	<link type="text/html" href="{{ url('blog') }}" />
+	<id>{{ route('blog') }}</id>
+	<link type="text/html" href="{{ route('blog') }}" />
 	<category term="entrepreneurship"/>
 	<category term="development"/>
 	<logo>{{ asset('img/myface-small.png') }}</logo>
