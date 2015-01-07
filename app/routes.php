@@ -20,6 +20,7 @@ Route::get('/blog',				['uses' => 'HomeController@blog',			'as' => 'blog']);
 Route::get('/blog/rss.xml',		['uses' => 'HomeController@rss',			'as' => 'blog.rss']);
 Route::get('/about',			['uses' => 'HomeController@about',			'as' => 'about']);
 Route::get('/experiments',		['uses' => 'HomeController@experiments',	'as' => 'experiments']);
+Route::get('/health',			['uses' => 'HomeController@health',			'as' => 'health']);
 
 Route::resource('users', 'UsersController', ['only' => ['store']]);
 

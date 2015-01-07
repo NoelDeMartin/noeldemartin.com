@@ -13,6 +13,18 @@ class HomeController extends BaseController {
 		return View::make('home.blog', compact('posts'));
 	}
 
+	public function health() {
+		$status = 'Everything is OK';
+		try {
+			if (!DB::connection()) {
+				$status = 'MySQL is not working correctly';
+			}
+		} catch (Exception $e) {
+			$status = 'MySQL is not working correctly';
+		}
+		return View::make('home.health', compact('status'));
+	}
+
 	public function rss() {
 		$posts = Post::where('published_at', '<', Carbon\Carbon::now())
 						->orderBy('published_at', 'desc')

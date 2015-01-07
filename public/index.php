@@ -1,5 +1,12 @@
 <?php
 /**
+* Setup new relic monitoring.
+*/
+if (extension_loaded('newrelic')) {
+	newrelic_set_appname("Noel De Martin");
+}
+
+/**
  * Laravel - A PHP Framework For Web Artisans
  *
  * @package  Laravel
