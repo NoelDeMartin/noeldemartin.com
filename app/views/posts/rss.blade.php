@@ -8,6 +8,7 @@
 	<link type="application/atom+xml" rel="self" href="{{ route('blog.rss') }}" />
 	<category term="entrepreneurship"/>
 	<category term="development"/>
+	<icon>{{ asset('favicon.ico') }}</icon>
 	<logo>{{ asset('img/myface-small.png') }}</logo>
 	<author>
 		<name>Noel De Martin</name>
