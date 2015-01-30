@@ -19,7 +19,8 @@ class Post extends Eloquent {
 	}
 
 	public static function createTitleTag($title) {
-		return strtolower(str_replace(' ', '-', $title));
+		$special_chars = [' ', '/', '!', '?', '.', ',', ';', '#', '$', '&', '(', ')'];
+		return urlencode(strtolower(preg_replace('/-+/', '-', str_replace($special_chars, '-', $title))));
 	}
 
 	public function comments() {

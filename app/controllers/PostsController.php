@@ -62,10 +62,10 @@ class PostsController extends \BaseController {
 		if(is_numeric($id)) {
 			$post = Post::with('comments')->findOrFail($id);
 		} else {
-			$post = Post::with('comments')->where('tag', $id)->firstOrFail();
+			$post = Post::with('comments')->where('tag', $id)->first();
 		}
 
-		if (!$post->isPublished() && (!Auth::check() || !Auth::user()->is_reviewer)) {
+		if ($post == null || (!$post->isPublished() && (!Auth::check() || !Auth::user()->is_reviewer))) {
 			App::abort(404);
 		}
 
