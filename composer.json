@@ -3,22 +3,27 @@
 	"description": "The Laravel Framework.",
 	"keywords": ["framework", "laravel"],
 	"license": "MIT",
+	"type": "project",
 	"require": {
-		"laravel/framework": "4.2.*"
+		"laravel/framework": "5.0.*",
+		"illuminate/html": "~5.0"
 	},
 	"require-dev": {
-		"way/generators": "~2.0",
+		"phpunit/phpunit": "~4.0",
+		"phpspec/phpspec": "~2.1",
 		"fzaninotto/faker": "~1.4"
 	},
 	"autoload": {
 		"classmap": [
-			"app/commands",
-			"app/controllers",
-			"app/models",
-			"app/libraries",
-			"app/database/migrations",
-			"app/database/seeds",
-			"app/tests/TestCase.php"
+			"database"
+		],
+		"psr-4": {
+			"App\\": "app/"
+		}
+	},
+	"autoload-dev": {
+		"classmap": [
+			"tests/TestCase.php"
 		]
 	},
 	"scripts": {
@@ -31,11 +36,11 @@
 			"php artisan optimize"
 		],
 		"post-create-project-cmd": [
+			"php -r \"copy('.env.example', '.env');\"",
 			"php artisan key:generate"
 		]
 	},
 	"config": {
 		"preferred-install": "dist"
-	},
-	"minimum-stability": "stable"
+	}
 }
