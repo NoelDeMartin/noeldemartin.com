@@ -25,97 +25,146 @@
 
 @section('scripts')
 
+	<!-- Peer Connection -->
 	<script type="text/javascript">
-		var senderPeerConnection = new mozRTCPeerConnection(null);
-		senderPeerConnection.onicecandidate = function(event) {
-			console.debug('onIceCandidate called in sender');
-			if(event.candidate != null) {
-				receiverPeerConnection.addIceCandidate(event.candidate,
-	                        	function (){
-	                        			console.debug('addIceCandidate success in sender');
-	                        	}, function (){
-	                        			console.debug('addIceCandidate error in sender');
-	                        	});
+
+		var userCounter = 0;
+
+		// Classes
+		function MeetingUser() {
+			var myself = this;
+			myself.peersData = {};
+			myself.id = userCounter++;
+			myself.onMessage = function(user, message) {
+				// empty
+				console.debug('I am ' + myself.id + ' message received from ' + user.id + ' is: ' + message);
 			}
-		};
-		senderPeerConnection.ondatachannel = function (e) {
-	    	console.debug('on data channel from sender');
-	    	e.channel.onmessage = function(e) {
-	    		console.debug('message received!!!');
-	    		console.debug(e);
-	    	}
-	    };
-		var senderChannel = senderPeerConnection.createDataChannel("channel-label");
-		senderChannel.onopen = function(event) {
-			console.debug('on open called in sender');
-		}
-		senderChannel.onmessage = function(event) {
-			console.debug('on message called, data:');
-		}
-		senderChannel.onclose = function(event) {
-			console.debug('on close called sender');
-			console.debug(event);
-		}
-		senderChannel.onerror = function (e) {
-	        console.debug('sender on error');
-	        console.debug(e);
-	    };
-
-
-		var receiverPeerConnection = new mozRTCPeerConnection(null);
-		receiverPeerConnection.onicecandidate = function(event) {
-			console.debug('onIceCandidate called in receiver');
-			if(event.candidate != null) {
-				senderPeerConnection.addIceCandidate(event.candidate,
-	                        	function (){
-	                        			console.debug('addIceCandidate success in receiver');
-	                        	}, function (){
-	                        			console.debug('addIceCandidate error in receiver');
-	                        	});
+			myself.requestConnect = function(user, otherConnection) {
+				var connection = createConnection(user);
+				myself.peersData[user.id] = {'user'			: user,
+											'connection'	: otherConnection,
+											'master'		: false,
+											'channels'		: []};
+				return connection;
 			}
-		};
-	    receiverPeerConnection.ondatachannel = function (e) {
-	    	console.debug('on data channel');
-	    	e.channel.onmessage = function(e) {
-	    		console.debug('message received!!!');
-	    		console.debug(e);
-	    	}
-	    	senderChannel.send("now we're talking bitch!");
-	    };
+			myself.connect = function(user) {
+					// Create channel and connections
+					var connection = createConnection(user);
+					var channel = createChannel(user, connection, 'default');
+					var otherConnection = user.requestConnect(myself, connection);
 
-		// Offer
-		senderPeerConnection.createOffer(function (offer) {
-			console.debug('createOffer succcess');
-			senderPeerConnection.setLocalDescription(offer, function() {
-				// Send offer to receiver
-				receiverPeerConnection.setRemoteDescription(new mozRTCSessionDescription(offer), function() {
-					receiverPeerConnection.createAnswer(function(answer) {
-						receiverPeerConnection.setLocalDescription(answer, function() {
-							console.debug('setLocal on receiver success');
-							senderPeerConnection.setRemoteDescription(new mozRTCSessionDescription(answer), function() {
-								console.debug('we should be connected now!');
-							}, function() {
-								console.debug('setRemoteDescription on sender error');
+					// Send offer and answer
+					connection.createOffer(function (offer) {
+					connection.setLocalDescription(offer, function() {
+						otherConnection.setRemoteDescription(new mozRTCSessionDescription(offer), function() {
+							otherConnection.createAnswer(function(answer) {
+								otherConnection.setLocalDescription(answer, function() {
+									connection.setRemoteDescription(new mozRTCSessionDescription(answer), function() {}, function(event) {
+										console.debug('error');
+										console.debug(event);
+									});
+								},
+								function (event) {
+									console.debug('error');
+									console.debug(event);
+								});
+							}, function(event) {
+								console.debug('error');
+								console.debug(event);
 							});
 						},
-						function () {
-							console.debug('setLocalDescription on receiver error');
+						function (event) {
+							console.debug('error');
+							console.debug(event);
 						});
-					}, function() {
-						console.debug('createAnswer failed');
+					}, function(event) {
+						console.debug('error');
+						console.debug(event);
 					});
 				},
-				function () {
-					console.debug('setRemoteDescription on receiver error');
+				function (error) {
+					console.debug('error');
+					console.debug(event);
 				});
-			}, function() {
-				console.debug('setLocalDescription on sender error');
-			});
-		},
-		function (error) {
-			console.debug('createOffer failed');
-			console.debug(error);
+
+				// Store data
+				myself.peersData[user.id] = {'user'			: user,
+											'connection'	: otherConnection,
+											'master'		: true,
+											'channels'		: [channel]};
+			}
+			myself.broadcastMessage = function(message) {
+				for (peerId in myself.peersData) {
+					for (channel in myself.peersData[peerId]['channels']) {
+						myself.peersData[peerId]['channels'][channel].send(message);
+					}
+				}
+			}
+
+			// private methods
+			function createChannel(user, connection, name) {
+				var channel = connection.createDataChannel(name);
+				channel.onmessage = function(event) {
+					myself.onMessage(user, event.data);
+				}
+				channel.onerror = function(event) {
+					console.debug(event);
+				}
+				return channel;
+			}
+			function createConnection(user) {
+				var connection = new mozRTCPeerConnection(null);
+				connection.onicecandidate = function(event) {
+					if(event.candidate != null) {
+						myself.peersData[user.id]['connection'].addIceCandidate(event.candidate, function(){}, function(event) {
+							console.debug(event);
+						});
+					}
+				}
+
+				// Listen to opened channels
+				connection.ondatachannel = function(event) {
+					myself.peersData[user.id]['channels'].push(event.channel);
+					event.channel.onmessage = function(event) {
+						myself.onMessage(user, event.data);
+					}
+					event.channel.onerror = function(event) {
+						console.debug(event);
+					}
+				}
+
+				return connection;
+			}
+		}
+
+		// Methods & Main
+		var users = [];
+
+		function addUser() {
+			var user = new MeetingUser();
+			for (other in users) {
+				users[other].connect(user);
+			}
+			users.push(user);
+		}
+
+		function getUser(index) {
+			return users[index];
+		}
+	</script>
+
+	<!-- DOM manipulation -->
+	<script type="text/javascript">
+		var $users = $('#users');
+		$('#new-user').click(function() {
+			$users.append('<div class="user"></div>');
+			addUser();
 		});
+		$('#test').click(function() {
+			getUser(0).broadcastMessage('This is a message from 0!!!');
+			getUser(1).broadcastMessage('This is a message from 1!!!');
+		});
+		$('#new-user').trigger('click');
 	</script>
 
 @stop
