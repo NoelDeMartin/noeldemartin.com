@@ -29,7 +29,7 @@ class HomeController extends Controller {
 			if (!DB::connection()) {
 				$status = 'MySQL is not working correctly';
 			}
-		} catch (Exception $e) {
+		} catch (\Exception $e) {
 			$status = 'MySQL is not working correctly';
 		}
 		return View::make('home.health', compact('status'));

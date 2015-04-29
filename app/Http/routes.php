@@ -40,4 +40,5 @@ Route::get('/blog/{id}', ['uses' => 'PostsController@show', 'as' => 'blog.show']
 
 Route::group(['prefix' => 'experiments'], function() {
 	Route::get('freedom-calculator', ['uses' => 'ExperimentsController@freedomCalculator', 'as' => 'experiments.freedom-calculator']);
+	Route::get('online-meeting', ['uses' => 'ExperimentsController@onlineMeeting', 'as' => 'experiments.online-meeting']);
 });
