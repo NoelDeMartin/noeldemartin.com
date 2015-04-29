@@ -24,5 +24,6 @@
 
 		@yield('scripts')
 
+		@include('assets.analytics')
 	</body>
 </html>
