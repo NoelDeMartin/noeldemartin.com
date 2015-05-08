@@ -182,9 +182,19 @@ nav li#chilli a:hover {
 .post .body p {
   margin-left: 10px;
 }
+.post .body blockquote {
+  margin-left: 15px;
+}
 .post .body h2 {
   color: #274a66;
   font-weight: bold;
+}
+.post .body .description {
+  font-size: 1rem;
+  font-style: italic;
+  margin: 5px 30px;
+  display: block;
+  text-align: center;
 }
 .post .read-more {
   margin-left: 15px;
@@ -192,11 +202,13 @@ nav li#chilli a:hover {
 .post .publish-date {
   font-weight: bold;
   float: right;
+  margin-bottom: 20px;
 }
 .post .share {
   background-color: #eee;
   padding: 5px;
   display: inline-block;
+  margin-bottom: 20px;
 }
 .post .share .text {
   font-size: 1.75rem;

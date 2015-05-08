@@ -45,6 +45,9 @@
 			link.restfulize({
 				email: link.data('email'),
 				method: 'DELETE',
+				params: {
+					'_token' : '{{ csrf_token() }}'
+				},
 				confirm: function() {
 					return confirm('Are you sure you want to delete invitation for ' + this.email + '?');
 				}

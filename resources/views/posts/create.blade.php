@@ -21,7 +21,7 @@
 	<div id="editor" class="both">
 		{!! Form::textarea('text_markdown', Input::old('text_markdown'), ['placeholder' => 'Markdown text goes here', 'id' => 'text-markdown', 'class' => 'editor-text']) !!}
 		<div id="column"></div>
-		<div id="text-html" class="editor-text"></div>
+		<div class="post editor-text"><div id="text-html" class="body readable-text"></div></div>
 		<div class="clearfix"></div>
 	</div>
 
@@ -75,7 +75,7 @@
 		});
 
 		$('form').on('submit', function() {
-			$('input[name="text_html"]').val(textHtml.html());
+			$('input[name="text_html"]').val(marked(textMarkdown.val()));
 			return true;
 		})
 

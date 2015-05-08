@@ -12,6 +12,9 @@
 	<script type="text/javascript">
 		$('#destroy-user').restfulize({
 			method: 'DELETE',
+			params: {
+				'_token' : '{{ csrf_token() }}'
+			},
 			confirm: function() {
 				return confirm('Are you sure you want to delete user {!! $user->username !!}?');
 			}

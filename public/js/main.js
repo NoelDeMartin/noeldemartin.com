@@ -78,15 +78,19 @@ $window.load(function(){
 	$.fn.restfulize = function (options) {
 		var defaults = {
 			confirm: function() { return true; },
-			method: 'POST'
+			method: 'POST',
+			params: {}
 		};
 		var options = $.extend(defaults, options);
 		return this.each(function(){
 			var $link = $(this);
-			$link.append(
-				"<form action='"+$link.attr('href')+"' method='POST' style='display:none'>"+
-					"<input type='hidden' name='_method' value='"+options.method+"'>"+
-				"</form>")
+			var formText = "<form action='"+$link.attr('href')+"' method='POST' style='display:none'>"+
+					"<input type='hidden' name='_method' value='"+options.method+"'>";
+			for (attr in options.params) {
+				formText += "<input name='" + attr + "' value='" + options.params[attr] + "'>";
+			}
+			formText += "</form>";
+			$link.append(formText)
 			.removeAttr('href')
 			.attr('style','cursor:pointer;')
 			.bind('click', function() {if(options.confirm())$(this).find("form").submit();});
