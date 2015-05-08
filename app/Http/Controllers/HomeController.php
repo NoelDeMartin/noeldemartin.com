@@ -68,7 +68,7 @@ class HomeController extends Controller {
 			if (!Auth::attempt(['username' => $credential, 'password' => $password], $remember)) {
 				return Redirect::back()
 							->withInput()
-							->withErrors(new Illuminate\Support\MessageBag(['email' => 'Credentials were not correct']));
+							->withErrors(new \Illuminate\Support\MessageBag(['email' => 'Credentials were not correct']));
 			}
 		}
 

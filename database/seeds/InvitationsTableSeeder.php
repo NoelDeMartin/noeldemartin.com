@@ -1,5 +1,5 @@
 <?php
-
+use App\Model\Invitation;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 

@@ -161,7 +161,7 @@ nav li#chilli a:hover {
 .post .title {
   font-size: 3rem;
   font-family: "Lucida Grande", "Tahoma", sans-serif;
-  color: #000;
+  font-weight: bold;
 }
 .post .title a {
   text-decoration: none;
@@ -171,10 +171,23 @@ nav li#chilli a:hover {
 .post .title a:active {
   color: #276c8c;
 }
+.post .body {
+  margin-left: 15px;
+}
 .post .body img {
   max-width: 100%;
   display: block;
   margin: auto;
+}
+.post .body p {
+  margin-left: 10px;
+}
+.post .body h2 {
+  color: #274a66;
+  font-weight: bold;
+}
+.post .read-more {
+  margin-left: 15px;
 }
 .post .publish-date {
   font-weight: bold;

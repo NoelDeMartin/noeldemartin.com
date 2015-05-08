@@ -1,5 +1,6 @@
 <?php
 
+use App\Model\Post;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 
@@ -14,8 +15,8 @@ class PostsTableSeeder extends Seeder {
 			Post::create([
 				'title' => $title,
 				'tag' => Post::createTitleTag($title),
-				'text_markdown' => $faker->paragraph(5),
-				'text_html' => '<p>' . implode($faker->paragraphs(5), '</p><p>') . '</p>',
+				'text_markdown' => $faker->paragraph(6),
+				'text_html' => '<p>' . $faker->paragraph() . '</p><h2>' . $faker->sentence(4) . '</h2><p>' . implode($faker->paragraphs(5), '</p><p>') . '</p>',
 				'author_id' => 1,
 				'published_at' => $faker->date
 			]);

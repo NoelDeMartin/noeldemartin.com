@@ -1,6 +1,7 @@
 // Variables & Mixins
 base_fontsize = 16
 bootstrap_width = 1170px
+post_inner_margin = 15px
 nav_height = (50 / base_fontsize) rem
 social_links_height = nav_height
 
@@ -159,7 +160,7 @@ nav
 	.title
 		font-size 3rem
 		font-family "Lucida Grande","Tahoma",sans-serif
-		color black
+		font-weight bold
 
 		a
 			text-decoration none
@@ -169,11 +170,22 @@ nav
 				color #276c8c
 
 	.body
+		margin-left post_inner_margin
 
 		img
 			max-width 100%
 			display block
 			margin auto
+
+		p
+			margin-left 10px
+
+		h2
+			color #274A66
+			font-weight bold
+
+	.read-more
+		margin-left post_inner_margin
 
 	.publish-date
 		font-weight bold
