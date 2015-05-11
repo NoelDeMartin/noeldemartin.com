@@ -2,32 +2,323 @@
 
 @section('styles')
 	<style type="text/css">
-		#users .user-canvas {
+
+		#rooms {
+			border: 1px solid #e3e3e3;
+			padding: 15px;
+			padding: 15px;
+		}
+
+		#room .board {
 			display: block;
 			width: 100%;
 			height: 150px;
 			margin: 10px;
 			background: #e3e3e3;
 		}
+
 	</style>
 @stop
 
 @section('content')
 	<div class="container">
-		<h1>Online Meeting Tool</h1>
+		<h1>Online Meeting Tool (<span id="user"></span>)</h1>
 
-		<a id="new-user" class="btn btn-primary">New User</a>
+		<div id="rooms">
+			<table id="rooms-list" class="table table-bordered"></table>
+			<form id="new-room" class="form-inline">
+				<input type="text" class="form-control" />
+				<a class="btn btn-primary">New Room</a>
+			</form>
+		</div>
+
+		<div id="room">
+			<h2>Room <span class="name"></span></h2>
+			<canvas class="board"></canvas>
+			<table class="table table-bordered users"></table>
+		</div>
+
+		<!--<a id="new-user" class="btn btn-primary">New User</a>
 		<a id="test" class="btn btn-primary">Test</a>
 
-		<div id="users"></div>
+		<div id="users"></div>-->
 	</div>
 @stop
 
 @section('scripts')
 
-	<!-- Peer Connection -->
+	<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+
 	<script type="text/javascript">
 
+		var firebase = new Firebase('https://brilliant-fire-1291.firebaseio.com'),
+			roomsRef = firebase.child('rooms'),
+			usersRef = firebase.child('users'),
+			roomRef, roomUsersRef;
+		var user;
+		var $user = $('#user'),
+			$room = $('#room'),
+			$roomName = $room.find('.name'),
+			$roomUsers = $room.find('.users'),
+			$roomBoard = $room.find('.board'),
+			$newRoomForm = $('#new-room'),
+			$newRoomButton = $newRoomForm.find('a'),
+			$newRoomInput = $newRoomForm.find('input'),
+			$roomsList = $('#rooms-list');
+
+		// Populate Rooms
+		roomsRef.on('child_added', function(snapshot) {
+			addRoom(snapshot.key(), snapshot.val());
+		}, function (error) {
+			console.log('The rooms listener failed: ' + error.code);
+		});
+
+		$roomsList.on('click', '.room', function() {
+			var $room = $(this);
+			enterRoom($room.data('key'), $room.data('data'));
+		});
+
+		// Initialize user
+		var userKey = '-Jp2wwFF77u6l1AYgGVo'; // NoelDeMartin
+		// var userKey = '-Jp2wt2APC6rJXtUIhG8'; // JinJiD
+		usersRef.child(userKey).once('value', function(snapshot) {
+			user = new MeetingUser(userKey, snapshot.val());
+			$user.text(user.name);
+		}, function (error) {
+			console.log('Error login user: ' + error.code);
+		});
+
+		// New Room
+		$newRoomButton.click(function() {
+			var newRoom = {
+				name: $newRoomInput.val(),
+				users: []
+			};
+			roomsRef.push(newRoom, function(error) {
+				if (error != null) {
+					console.debug('Error creating new room: ' + error.code);
+				}
+			});
+		});
+
+		/** Methods **/
+		function addRoom(roomKey, room) {
+			var $newRoom = $('<tr class="room"><td><a href="javascript:void(0);">' + room.name + '</a></td></tr>');
+			$newRoom.data('key', roomKey);
+			$newRoom.data('data', room);
+			$roomsList.append($newRoom);
+		}
+
+		function enterRoom(roomKey, room) {
+			roomUsersRef = roomsRef.child(roomKey + '/users');
+
+			// Update HTML
+			$roomName.text(room.name);
+			$roomUsers.empty();
+			$roomBoard.click(function() {
+				user.sendMessage('Foo bar!!');
+			});
+
+			// Enter room
+			roomUsersRef.once('value', function(snapshot) {
+				// Login user if not already inside
+				var inside = false;
+				var users = snapshot.val();
+				for (key in users) {
+					if (users[key].key == user.key) {
+						inside = true;
+						break;
+					}
+				}
+				if (!inside) {
+					roomUsersRef.push(user.toJSON(), function(error) {
+						if (error != null) {
+							console.debug('Error creating entering user to room: ' + error.code);
+						} else {
+							for (key in users) {
+								user.connect(users[key].key);
+							}
+						}
+					});
+				}
+
+				// Listen and retrieve room users
+				roomUsersRef.on('child_added', function(snapshot) {
+					var peer = snapshot.val();
+					$roomUsers.append('<tr class="room"><td>' + peer.name + '</td></tr>');
+				}, function (error) {
+					console.log('The room users listener failed: ' + error.code);
+				});
+			});
+		}
+
+		/** Classes **/
+		function MeetingUser(userKey, user) {
+			// Constructor
+			var myself = this;
+			myself.key = userKey;
+			myself.name = user.name;
+			myself.peers = {};
+
+			// Setup signaling listener
+			var userSignalingRef = usersRef.child(userKey + '/signaling');
+			userSignalingRef.on('child_added', function(snapshot) {
+				var signalingData = snapshot.val();
+				if (signalingData.session.type == 'offer') {
+					var connection = createConnection(signalingData.origin);
+					connection.setRemoteDescription(new mozRTCSessionDescription(signalingData.session), function() {
+						connection.createAnswer(function(answer) {
+							connection.setLocalDescription(answer, function() {
+								usersRef.child(signalingData.origin + '/signaling').push({origin: myself.key, session: answer.toJSON()}, function(error) {
+									if (error == null) {
+										userSignalingRef.child(snapshot.key()).remove(function(error) {
+											if (error != null) {
+												onError('Removing signaling data', error);
+											} else {
+												console.debug('connected (answerer)!');
+											}
+										});
+									} else {
+										onError('Sending answer signaling data', error);
+									}
+								});
+							}, function() {
+								onError('Setting local description', error);
+							});
+						}, function(error) {
+							onError('Creating answer', error);
+						});
+					}, function(error) {
+						onError('Setting remote description', error);
+					});
+				} else { // answer
+					var connection = myself.peers[signalingData.origin]['connection'];
+					connection.setRemoteDescription(new mozRTCSessionDescription(signalingData.session), function() {
+						userSignalingRef.child(snapshot.key()).remove(function(error) {
+							if (error != null) {
+								onError('Removing signaling data', error);
+							} else {
+								console.debug('connected (caller)!');
+							}
+						});
+					}, function(error) {
+						onError('Setting remote description', error);
+					});
+				}
+			}, function (error) {
+				console.log('ICE listener failed: ' + error.code);
+			});
+
+			// Setup ICE listener
+			var userIceRef = usersRef.child(userKey + '/ice');
+			userIceRef.on('child_added', function(snapshot) {
+				var iceData = snapshot.val();
+				myself.peers[iceData.origin]['connection'].addIceCandidate(new mozRTCIceCandidate(iceData.candidate), function() {
+					// consume ICE candidate
+					userIceRef.child(snapshot.key()).remove(function(error) {
+						if (error != null) {
+							onError('Removing ICE data', error);
+						}
+					});
+				}, function(error) {
+					onError('Adding ICE candidate', error);
+				});
+			}, function (error) {
+				onError('ICE listener', error);
+			});
+
+			/** Public Methods **/
+			myself.connect = function(peerKey) {
+				var connection = createConnection(peerKey);
+				createChannel(peerKey, 'board');
+
+				// Send Offer
+				connection.createOffer(function (offer) {
+					connection.setLocalDescription(offer, function() {
+						usersRef.child(peerKey + '/signaling').push({origin: myself.key, session: offer.toJSON()}, function(error) {
+							if (error != null) {
+								onError('Sending offer signaling data', error);
+							}
+						});
+					}, function(error) {
+						onError('Setting local description', error);
+					});
+				}, function(error) {
+					onError('Creating offer', error);
+				});
+			}
+			myself.toJSON = function() {
+				return {
+					key: myself.key,
+					name: myself.name
+				};
+			}
+			myself.sendMessage = function(message) {
+				$.each(myself.peers, function(key, peerData) {
+					$.each(peerData.channels, function(label, channel) {
+						channel.send(message);
+					});
+				});
+			}
+
+			/** Private Methods **/
+			function createConnection(peerKey) {
+				var peerData = {
+					connection: new mozRTCPeerConnection(null),
+					iceRef: usersRef.child(peerKey + '/ice'),
+					channels: {}
+				};
+				myself.peers[peerKey] = peerData;
+
+				// Setup ICE
+				peerData['connection'].onicecandidate = function(event) {
+					if(event.candidate != null) {
+						peerData.iceRef.push({origin: myself.key, candidate: event.candidate.toJSON()}, function(error) {
+							if (error != null) {
+								onError('Sending ICE candidate', error);
+							}
+						});
+					}
+				}
+
+				// Listen to opened channels
+				peerData['connection'].ondatachannel = function(event) {
+					var channelLabel = event.channel.label;
+					peerData['channels'][channelLabel] = event.channel;
+					var theChannel = event.channel;
+					event.channel.onmessage = function(event) {
+						console.debug('On Message called!!' + event.data);
+						//myself.onMessage(channelLabel, user, event.data);
+					}
+					event.channel.onerror = function (error) {
+						onError('Channel onError', error);
+					};
+				}
+
+				return peerData['connection'];
+			}
+			function createChannel(peerKey, name) {
+				var channel = myself.peers[peerKey]['connection'].createDataChannel(name);
+				var channelLabel = channel.label;
+				channel.onmessage = function(event) {
+					console.debug('On Message called!!' + event.data);
+					// myself.onMessage(channelLabel, user, event.data);
+				}
+				channel.onerror = myself.onError;
+				myself.peers[peerKey]['channels'][channelLabel] = channel;
+				return channel;
+			}
+			function onError(message, error) {
+				console.debug('Error: ' + message);
+				console.debug(error);
+			}
+		}
+
+	</script>
+
+	<!-- Peer Connection -->
+	<script type="text/javascript">
+	/*
 		var userCounter = 0;
 
 		// Classes
@@ -254,11 +545,13 @@
 		function getUser(index) {
 			return users[index];
 		}
+
+		*/
 	</script>
 
 	<!-- DOM manipulation -->
 	<script type="text/javascript">
-		var $users = $('#users');
+		/*var $users = $('#users');
 		$('#new-user').click(function() {
 			var canvas = $('<canvas class="user-canvas"></canvas>');
 			canvas.appendTo($users);
@@ -271,6 +564,7 @@
 			getUser(1).broadcastMessage('This is a message from 1!!!');
 		});
 		$('#new-user').trigger('click');
+		*/
 	</script>
 
 @stop
