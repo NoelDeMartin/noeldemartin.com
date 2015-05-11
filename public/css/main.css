@@ -189,6 +189,9 @@ nav li#chilli a:hover {
   color: #274a66;
   font-weight: bold;
 }
+.post .body h3 {
+  color: #274a66;
+}
 .post .body .description {
   font-size: 1rem;
   font-style: italic;
