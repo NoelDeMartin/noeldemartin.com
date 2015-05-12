@@ -80,7 +80,8 @@
 
 		// Initialize user
 		var userKey = '-Jp2wwFF77u6l1AYgGVo'; // NoelDeMartin
-		// var userKey = '-Jp2wt2APC6rJXtUIhG8'; // JinJiD
+		var userKey = '-Jp2wt2APC6rJXtUIhG8'; // JinJiD
+		//var userKey = '-Jp2wxrI5Los6eh_luDt'; // Guetaa
 		usersRef.child(userKey).once('value', function(snapshot) {
 			user = new MeetingUser(userKey, snapshot.val());
 			$user.text(user.name);
@@ -101,6 +102,10 @@
 			});
 		});
 
+		// Prepare Board
+		$roomBoard.attr('width', $roomBoard.width());
+		$roomBoard.attr('height', $roomBoard.height());
+
 		/** Methods **/
 		function addRoom(roomKey, room) {
 			var $newRoom = $('<tr class="room"><td><a href="javascript:void(0);">' + room.name + '</a></td></tr>');
@@ -110,14 +115,13 @@
 		}
 
 		function enterRoom(roomKey, room) {
-			roomUsersRef = roomsRef.child(roomKey + '/users');
+			roomRef = roomsRef.child(roomKey);
+			roomUsersRef = roomRef.child('users');
+			roomBoardPathsRef = roomRef.child('board-paths');
 
 			// Update HTML
 			$roomName.text(room.name);
 			$roomUsers.empty();
-			$roomBoard.click(function() {
-				user.sendMessage('Foo bar!!');
-			});
 
 			// Enter room
 			roomUsersRef.once('value', function(snapshot) {
@@ -159,6 +163,9 @@
 			myself.key = userKey;
 			myself.name = user.name;
 			myself.peers = {};
+			myself.drawingColor = getRandomColor();
+			myself.isDrawing = false;
+			myself.boardPaths = {};
 
 			// Setup signaling listener
 			var userSignalingRef = usersRef.child(userKey + '/signaling');
@@ -227,6 +234,31 @@
 				onError('ICE listener', error);
 			});
 
+			// Init canvas
+			$roomBoard.mousedown(function(event) {
+				// Create new path
+				startBoardPath(myself.key, myself.drawingColor);
+				myself.isDrawing = true;
+				$.each(myself.peers, function(key, peerData) {
+					peerData['channels']['board'].send(JSON.stringify({type: 'start-path', origin: myself.key, color: myself.drawingColor}));
+				});
+			});
+			$roomBoard.mousemove(function(event) {
+				if (myself.isDrawing) {
+					var point = {
+						x: event.pageX - $roomBoard[0].offsetLeft,
+						y: event.pageY - $roomBoard[0].offsetTop
+					};
+					addBoardPathPoint(myself.key, point);
+					$.each(myself.peers, function(key, peerData) {
+						peerData['channels']['board'].send(JSON.stringify({type: 'point', origin: myself.key, point: point}));
+					});
+				}
+			});
+			$roomBoard.mouseup(function(event) {
+				myself.isDrawing = false;
+			});
+
 			/** Public Methods **/
 			myself.connect = function(peerKey) {
 				var connection = createConnection(peerKey);
@@ -262,6 +294,14 @@
 			}
 
 			/** Private Methods **/
+			function getRandomColor() {
+				var letters = '0123456789ABCDEF'.split('');
+				var color = '#';
+				for (var i = 0; i < 6; i++ ) {
+					color += letters[Math.floor(Math.random() * 16)];
+				}
+				return color;
+			}
 			function createConnection(peerKey) {
 				var peerData = {
 					connection: new mozRTCPeerConnection(null),
@@ -287,8 +327,7 @@
 					peerData['channels'][channelLabel] = event.channel;
 					var theChannel = event.channel;
 					event.channel.onmessage = function(event) {
-						console.debug('On Message called!!' + event.data);
-						//myself.onMessage(channelLabel, user, event.data);
+						onMessage(channelLabel, peerKey, event.data);
 					}
 					event.channel.onerror = function (error) {
 						onError('Channel onError', error);
@@ -301,12 +340,71 @@
 				var channel = myself.peers[peerKey]['connection'].createDataChannel(name);
 				var channelLabel = channel.label;
 				channel.onmessage = function(event) {
-					console.debug('On Message called!!' + event.data);
-					// myself.onMessage(channelLabel, user, event.data);
+					onMessage(channelLabel, peerKey, event.data);
 				}
 				channel.onerror = myself.onError;
 				myself.peers[peerKey]['channels'][channelLabel] = channel;
 				return channel;
+			}
+			function startBoardPath(userKey, color) {
+				if (typeof myself.boardPaths[userKey] == 'undefined') {
+					myself.boardPaths[userKey] = [];
+				}
+				myself.boardPaths[userKey].push({color: color, x: [], y: []});
+			}
+			function addBoardPathPoint(userKey, point) {
+				var path = myself.boardPaths[userKey][myself.boardPaths[userKey].length -1];
+				path['x'].push(point.x);
+				path['y'].push(point.y);
+				drawBoard();
+			}
+			function drawBoard() {
+				// Clears the canvas
+				var canvasContext = $roomBoard[0].getContext('2d');
+				canvasContext.clearRect(0, 0, canvasContext.canvas.width, canvasContext.canvas.height);
+				$.each(myself.boardPaths, function(peerKey, paths) {
+					paths.forEach(function (path) {
+
+						// Define stroke
+						canvasContext.strokeStyle = path['color'];
+						canvasContext.lineJoin = "round";
+						canvasContext.lineWidth = 3;
+
+						// Draw path
+						if (path['x'].length > 1) {
+							var x, y,
+								xs = path['x'],
+								ys = path['y'],
+								prevX = xs[0],
+								prevY = ys[0];
+							canvasContext.beginPath();
+							for (var i = 1, finalI = xs.length; i < finalI; i++) {
+								x = xs[i - 1],
+								y = ys[i - 1];
+								canvasContext.moveTo(prevX, prevY);
+								canvasContext.lineTo(x, y);
+								prevX = x;
+								prevY = y;
+							}
+							canvasContext.closePath();
+							canvasContext.stroke();
+						}
+					});
+				});
+			}
+			function onMessage(channelLabel, peerKey, message) {
+				if (channelLabel == 'board') {
+					var message = JSON.parse(message);
+					// TODO use arraybuffer instead
+					if (message.type == 'start-path') {
+						startBoardPath(message.origin, message.color);
+					} else { // path point
+						addBoardPathPoint(message.origin, message.point);
+					}
+					drawCanvas();
+				} else {
+					console.debug('Message received on non-board channel (' + channelLabel + '): ' + message);
+				}
 			}
 			function onError(message, error) {
 				console.debug('Error: ' + message);
