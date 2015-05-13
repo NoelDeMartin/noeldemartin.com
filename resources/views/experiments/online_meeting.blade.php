@@ -48,10 +48,70 @@
 @section('scripts')
 
 	<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+	{!! Html::script('js/experiments/online-meeting.js') !!}
 
 	<script type="text/javascript">
 
-		var firebase = new Firebase('https://brilliant-fire-1291.firebaseio.com'),
+		var $user = $('#user'),
+			$room = $('#room'),
+			$roomName = $room.find('.name'),
+			$roomUsers = $room.find('.users'),
+			$roomBoard = $room.find('.board'),
+			$newRoomForm = $('#new-room'),
+			$newRoomButton = $newRoomForm.find('a'),
+			$newRoomInput = $newRoomForm.find('input'),
+			$roomsList = $('#rooms-list');
+		var roomsManager = new RoomsManager(),
+			currentUser;
+
+		// Initialize user
+		var userKey = '-Jp2wwFF77u6l1AYgGVo'; // NoelDeMartin
+		var userKey = '-Jp2wt2APC6rJXtUIhG8'; // JinJiD
+		var userKey = '-Jp2wxrI5Los6eh_luDt'; // Guetaa
+		loginUser(userKey, function(user) {
+			$user.text(user.name);
+			currentUser = user;
+		});
+
+		// Setup Listeners
+		roomsManager.setListeners({
+			onNewRoom: function(room) {
+				var $newRoom = $('<tr class="room"><td><a href="javascript:void(0);">' + room.name + '</a></td></tr>');
+				$newRoom.data('roomKey', room.key);
+				$roomsList.append($newRoom);
+			},
+			onRoomClosed: function(room) {
+				console.debug('room deleted');
+				console.debug(room);
+			}
+		});
+
+		// Enter Room
+		$roomsList.on('click', '.room', function() {
+			var room = roomsManager.rooms[$(this).data('roomKey')];
+			room.setListeners({
+				onNewUser: function(user) {
+					$roomUsers.append('<tr class="room"><td>' + user.name + '</td></tr>');
+				}
+			});
+			room.enter(currentUser);
+
+			// Send events
+			$roomBoard.click(function() {
+				room.sendMessage('event sent!');
+			});
+
+			// Update HTML
+			$roomName.text(room.name);
+			$roomUsers.empty();
+		});
+
+		// New Room
+		$newRoomButton.click(function() {
+			roomsManager.openNewRoom('user', $newRoomInput.val());
+		});
+
+		/*var firebase = new Firebase('https://brilliant-fire-1291.firebaseio.com'),
 			roomsRef = firebase.child('rooms'),
 			usersRef = firebase.child('users'),
 			roomRef, roomUsersRef;
@@ -81,7 +141,7 @@
 		// Initialize user
 		var userKey = '-Jp2wwFF77u6l1AYgGVo'; // NoelDeMartin
 		var userKey = '-Jp2wt2APC6rJXtUIhG8'; // JinJiD
-		//var userKey = '-Jp2wxrI5Los6eh_luDt'; // Guetaa
+		var userKey = '-Jp2wxrI5Los6eh_luDt'; // Guetaa
 		usersRef.child(userKey).once('value', function(snapshot) {
 			user = new MeetingUser(userKey, snapshot.val());
 			$user.text(user.name);
@@ -106,7 +166,10 @@
 		$roomBoard.attr('width', $roomBoard.width());
 		$roomBoard.attr('height', $roomBoard.height());
 
-		/** Methods **/
+		// TODO use onunload, onbeforeunload, Firebase.onDisconnect(), etc. for cleanup
+		// "I think the best you can do is have something set up where there is a real time type "buffer" using a socket or polling. When the client side stops responding, ensure that things are cleaned up at that point." - http://forum.wakanda.org/archive/index.php/t-6022.html?s=27947dba1a7a074e9036c28070e40b29
+
+		/ Methods /
 		function addRoom(roomKey, room) {
 			var $newRoom = $('<tr class="room"><td><a href="javascript:void(0);">' + room.name + '</a></td></tr>');
 			$newRoom.data('key', roomKey);
@@ -156,7 +219,7 @@
 			});
 		}
 
-		/** Classes **/
+		/ Classes /
 		function MeetingUser(userKey, user) {
 			// Constructor
 			var myself = this;
@@ -259,7 +322,7 @@
 				myself.isDrawing = false;
 			});
 
-			/** Public Methods **/
+			/ Public Methods /
 			myself.connect = function(peerKey) {
 				var connection = createConnection(peerKey);
 				createChannel(peerKey, 'board');
@@ -293,7 +356,7 @@
 				});
 			}
 
-			/** Private Methods **/
+			/ Private Methods /
 			function getRandomColor() {
 				var letters = '0123456789ABCDEF'.split('');
 				var color = '#';
@@ -410,7 +473,7 @@
 				console.debug('Error: ' + message);
 				console.debug(error);
 			}
-		}
+		}*/
 
 	</script>
 
