@@ -12,4 +12,8 @@ class ExperimentsController extends Controller {
 		return View::make('experiments.online_meeting', ['title' => 'Online Meeting Tool']);
 	}
 
+	function onlineMeetingRoom($roomKey) {
+		return View::make('experiments.online_meeting_room', ['roomKey' => $roomKey, 'title' => 'Online Meeting Tool']);
+	}
+
 }

@@ -1,10 +1,7 @@
-function loginUser(key, success) {
-	var firebase = new Firebase('https://brilliant-fire-1291.firebaseio.com'),
-		usersRef = firebase.child('users');
-	usersRef.child(key).once('value', function(snapshot) {
-		success(new User(key, snapshot.val()));
-	}, function (error) {
-		console.log('Error login user: ' + error.code);
+function initRoom(key, callback) {
+	var firebase = new Firebase('https://brilliant-fire-1291.firebaseio.com/rooms/' + key);
+	firebase.once('value', function(snapshot) {
+		callback(new Room(snapshot.key(), snapshot.val()));
 	});
 }
 
@@ -50,7 +47,7 @@ function RoomsManager() {
 		onNewRoom = listeners.onNewRoom;
 		onRoomClosed = listeners.onRoomClosed;
 	}
-	myself.openNewRoom = function(user, roomName, success) {
+	myself.openNewRoom = function(roomName, success) {
 		var roomRef = roomsRef.push({name: roomName}, function(error) {
 			if (error == null) {
 				if (typeof success == 'function') {
@@ -70,12 +67,13 @@ function Room(key, data) {
 	var myself = this;
 	myself.key = key;
 	myself.name = data.name;
-	myself.users = {};
+	myself.users = $.extend({}, data.users);
+	myself.boardPaths = {};
 
 	// Setup Private Attributes
 	var onNewUser = function(user) {},
 		onUserLeave = function(user) {},
-		onBoardUpdated = function(boardData) {},
+		onBoardUpdated = function(paths) {},
 		roomRef = new Firebase('https://brilliant-fire-1291.firebaseio.com/rooms/' + myself.key),
 		roomUsersRef = roomRef.child('users'),
 		roomBoardPathsRef = roomRef.child('board-paths'),
@@ -95,12 +93,12 @@ function Room(key, data) {
 		onUserLeave = listeners.onUserLeave;
 		onBoardUpdated = listeners.onBoardUpdated;
 	}
-	myself.enter = function(user) {
+	myself.enter = function(username, success) {
 		roomUsersRef.once('value', function(snapshot) {
 			var roomPreviousUsers = snapshot.val();
 
 			// Login user into room
-			var localUserRef = roomUsersRef.push(user.toJSON(), function(error) {
+			var localUserRef = roomUsersRef.push({name: username, drawingColor: getRandomColor()}, function(error) {
 				if (error == null) { // User was logged in correctly
 					// Initialize local user
 					peers = {};
@@ -124,18 +122,57 @@ function Room(key, data) {
 					}, function (error) {
 						console.log('The room users listener failed: ' + error.code);
 					});
+
+					if (typeof success == 'function') {
+						success();
+					}
 				} else {
 					console.log('Error entering user to room: ' + error.code);
 				}
 			});
 		});
 	}
-	// TODO remove this
-	myself.sendMessage = function(message) {
+	myself.startLocalDrawingPath = function(initialX, initialY) {
+		// Create new path
+		startBoardPath(localUserKey);
 		$.each(peers, function(key, peerData) {
-			peerData['channels']['board'].send(message);
+			if (typeof peerData['channels']['board'] != 'undefined') {
+				peerData['channels']['board'].send(JSON.stringify({type: 'start-path'}));
+			}
 		});
+
+		// Add initial point
+		var point = {x: initialX, y: initialY};
+		addBoardPathPoint(localUserKey, point);
+		$.each(peers, function(key, peerData) {
+			if (typeof peerData['channels']['board'] != 'undefined') {
+				peerData['channels']['board'].send(JSON.stringify({type: 'point', point: point}));
+			}
+		});
+
+		// Notify listener
+		onBoardUpdated(myself.boardPaths);
 	}
+	myself.addLocalDrawingPoint = function(x, y) {
+		// Add point
+		var point = {x: x, y: y};
+		addBoardPathPoint(localUserKey, point);
+		$.each(peers, function(key, peerData) {
+			if (typeof peerData['channels']['board'] != 'undefined') {
+				peerData['channels']['board'].send(JSON.stringify({type: 'point', point: point}));
+			}
+		});
+
+		// Notify listener
+		onBoardUpdated(myself.boardPaths);
+	}
+	myself.getUsersCount = function() {
+		var size = 0, key;
+		for (key in myself.users) {
+			if (myself.users.hasOwnProperty(key)) size++;
+		}
+		return size;
+	};
 
 	/* Private Methods */
 	function setUpSignaling() {
@@ -151,8 +188,6 @@ function Room(key, data) {
 									localUserSignalingRef.child(snapshot.key()).remove(function(error) {
 										if (error != null) {
 											onError('Removing signaling data', error);
-										} else {
-											console.debug('connected (answerer)!');
 										}
 									});
 								} else {
@@ -174,8 +209,6 @@ function Room(key, data) {
 					localUserSignalingRef.child(snapshot.key()).remove(function(error) {
 						if (error != null) {
 							onError('Removing signaling data', error);
-						} else {
-							console.debug('connected (caller)!');
 						}
 					});
 				}, function(error) {
@@ -247,13 +280,14 @@ function Room(key, data) {
 			peerData['channels'][channelLabel] = event.channel;
 			var theChannel = event.channel;
 			event.channel.onmessage = function(event) {
-				console.debug('message received');
-				console.debug(event.data);
-				// TODO onMessage(channelLabel, peerKey, event.data);
+				onMessage(channelLabel, peerKey, event.data);
 			}
 			event.channel.onerror = function (error) {
 				onError('Channel onError', error);
 			};
+			event.channel.onclosed = function() {
+				delete peerData['channels'][channelLabel];
+			}
 		}
 
 		return peerData['connection'];
@@ -261,31 +295,53 @@ function Room(key, data) {
 	function createChannel(peerKey, name) {
 		var channel = peers[peerKey]['connection'].createDataChannel(name);
 		var channelLabel = channel.label;
+		channel.onopen = function() {
+			peers[peerKey]['channels'][channelLabel] = channel;
+		}
+		channel.onclosed = function() {
+			delete peers[peerKey]['channels'][channelLabel];
+		}
 		channel.onmessage = function(event) {
-			console.debug('message received');
-			console.debug(event.data);
-			// TODO onMessage(channelLabel, peerKey, event.data);
+			onMessage(channelLabel, peerKey, event.data);
 		}
 		channel.onerror = myself.onError;
-		peers[peerKey]['channels'][channelLabel] = channel;
-		return channel;
+	}
+	function startBoardPath(userKey) {
+		if (typeof myself.boardPaths[userKey] == 'undefined') {
+			myself.boardPaths[userKey] = [];
+		}
+		myself.boardPaths[userKey].push({x: [], y: []});
+	}
+	function addBoardPathPoint(userKey, point) {
+		var path = myself.boardPaths[userKey][myself.boardPaths[userKey].length -1];
+		path['x'].push(point.x);
+		path['y'].push(point.y);
+	}
+	function getRandomColor() {
+		var letters = '0123456789ABCDEF'.split('');
+		var color = '#';
+		for (var i = 0; i < 6; i++ ) {
+			color += letters[Math.floor(Math.random() * 16)];
+		}
+		return color;
+	}
+	function onMessage(channelLabel, peerKey, message) {
+		if (channelLabel == 'board') {
+			var message = JSON.parse(message);
+			// TODO use arraybuffer instead
+			if (message.type == 'start-path') {
+				startBoardPath(peerKey);
+			} else { // path point
+				addBoardPathPoint(peerKey, message.point);
+			}
+			onBoardUpdated(myself.boardPaths);
+		} else {
+			console.debug('Message received on non-board channel (' + channelLabel + '): ' + message);
+		}
 	}
 	function onError(message, error) {
 		console.debug('Error: ' + message);
 		console.debug(error);
-	}
-}
-
-/* User class (for logged in user) */
-function User(key, data) {
-	var myself = this;
-	myself.key = key;
-	myself.name = data.name;
-	myself.toJSON = function() {
-		return {
-			key: myself.key,
-			name: myself.name
-		};
 	}
 }
 
@@ -295,4 +351,5 @@ function RoomUser(key, data) {
 	myself.key = key;
 	myself.userKey = data.key;
 	myself.name = data.name;
+	myself.drawingColor = data.drawingColor;
 }
