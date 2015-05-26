@@ -10,9 +10,14 @@
 				<th>#Participants</th>
 			</thead>
 		</table>
-		<form id="new-room" class="form-inline">
+		<form id="new-room">
 			<input type="text" class="form-control" />
-			<input type="submit" class="btn btn-primary" value="New Room" />
+			<div class="checkbox">
+				<input type="submit" class="btn btn-primary" value="New Room" />
+				<label>
+					<input type="checkbox"> Private Room
+				</label>
+			</div>
 		</form>
 	</div>
 @stop
@@ -24,7 +29,8 @@
 
 	<script type="text/javascript">
 		var $newRoomForm = $('#new-room'),
-			$newRoomInput = $newRoomForm.find('input'),
+			$newRoomInput = $newRoomForm.find('input[type="text"]'),
+			$newRoomPrivate = $newRoomForm.find('input[type="checkbox"]'),
 			$roomsList = $('#rooms-list');
 		var roomsManager = new RoomsManager();
 
@@ -54,7 +60,11 @@
 				event.preventDefault();
 			}
 
-			roomsManager.openNewRoom($newRoomInput.val());
+			roomsManager.openNewRoom($newRoomInput.val(), $newRoomPrivate.is(':checked'), function(room) {
+				if (room.private) {
+					alert('Use this url to access the private room {{ route('experiments.online-meeting') }}/' + room.key);
+				}
+			});
 
 			return false;
 		});

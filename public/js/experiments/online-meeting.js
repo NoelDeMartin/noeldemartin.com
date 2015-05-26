@@ -21,9 +21,11 @@ function RoomsManager() {
 		roomsRef = firebase.child('rooms');
 
 	roomsRef.on('child_added', function(snapshot) {
-		var room = new Room(snapshot.key(), snapshot.val());
-		myself.rooms[room.key] = room;
-		onNewRoom(room);
+		if (!snapshot.val().private) {
+			var room = new Room(snapshot.key(), snapshot.val());
+			myself.rooms[room.key] = room;
+			onNewRoom(room);
+		}
 	}, function (error) {
 		console.log('Rooms added listener failed: ' + error.code);
 	});
@@ -47,11 +49,16 @@ function RoomsManager() {
 		onNewRoom = listeners.onNewRoom;
 		onRoomClosed = listeners.onRoomClosed;
 	}
-	myself.openNewRoom = function(roomName, success) {
-		var roomRef = roomsRef.push({name: roomName}, function(error) {
+	myself.openNewRoom = function(roomName, private, success) {
+		var data = {name: roomName, private: private},
+		roomRef = roomsRef.push(data, function(error) {
 			if (error == null) {
 				if (typeof success == 'function') {
-					success(myself.rooms[roomRef.key()]);
+					if (private) {
+						success(new Room(roomRef.key(), data));
+					} else {
+						success(myself.rooms[roomRef.key()]);
+					}
 				}
 			} else {
 				console.log('Error creating new room: ' + error.code);
@@ -67,6 +74,7 @@ function Room(key, data) {
 	var myself = this;
 	myself.key = key;
 	myself.name = data.name;
+	myself.private = data.private;
 	myself.users = $.extend({}, data.users);
 	myself.boardPaths = {};
 
