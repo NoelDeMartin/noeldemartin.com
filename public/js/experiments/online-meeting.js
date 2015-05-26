@@ -1,3 +1,7 @@
+var RTCPeerConnection = window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
+var RTCIceCandidate = window.mozRTCIceCandidate || window.RTCIceCandidate;
+var RTCSessionDescription = window.mozRTCSessionDescription || window.RTCSessionDescription;
+
 function initRoom(key, callback) {
 	var firebase = new Firebase('https://brilliant-fire-1291.firebaseio.com/rooms/' + key);
 	firebase.once('value', function(snapshot) {
@@ -223,7 +227,7 @@ function Room(key, data) {
 			var signalingData = snapshot.val();
 			if (signalingData.session.type == 'offer') {
 				var connection = createConnection(signalingData.origin);
-				connection.setRemoteDescription(new mozRTCSessionDescription(signalingData.session), function() {
+				connection.setRemoteDescription(new RTCSessionDescription(signalingData.session), function() {
 					connection.createAnswer(function(answer) {
 						connection.setLocalDescription(answer, function() {
 							roomUsersRef.child(signalingData.origin).child('signaling').push({origin: localUserKey, session: answer.toJSON()}, function(error) {
@@ -248,7 +252,7 @@ function Room(key, data) {
 				});
 			} else { // answer
 				var connection = peers[signalingData.origin]['connection'];
-				connection.setRemoteDescription(new mozRTCSessionDescription(signalingData.session), function() {
+				connection.setRemoteDescription(new RTCSessionDescription(signalingData.session), function() {
 					localUserSignalingRef.child(snapshot.key()).remove(function(error) {
 						if (error != null) {
 							onError('Removing signaling data', error);
@@ -265,7 +269,7 @@ function Room(key, data) {
 	function setUpICE() {
 		localUserICERef.on('child_added', function(snapshot) {
 			var iceData = snapshot.val();
-			peers[iceData.origin]['connection'].addIceCandidate(new mozRTCIceCandidate(iceData.candidate), function() {
+			peers[iceData.origin]['connection'].addIceCandidate(new RTCIceCandidate(iceData.candidate), function() {
 				// consume ICE candidate
 				localUserICERef.child(snapshot.key()).remove(function(error) {
 					if (error != null) {
@@ -301,7 +305,7 @@ function Room(key, data) {
 	}
 	function createConnection(peerKey) {
 		var peerData = {
-			connection: new mozRTCPeerConnection(null),
+			connection: new RTCPeerConnection(null),
 			ICERef: roomUsersRef.child(peerKey).child('ICE'),
 			channels: {}
 		};
