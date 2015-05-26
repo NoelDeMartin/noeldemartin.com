@@ -33,10 +33,15 @@
 			onNewRoom: function(room) {
 				var $newRoom = $('<tr class="room" id="room-' + room.key + '">'
 									+ '<td><a href="{{route('experiments.online-meeting')}}/' + room.key + '">' + room.name + '</a></td>'
-									+ '<td>' + room.getUsersCount() + '</td>'
-								+ '</tr>');
+									+ '<td class="users-count">' + room.getUsersCount() + '</td>'
+								+ '</tr>'),
+					$usersCount = $newRoom.find('.users-count');
 				$newRoom.data('roomKey', room.key);
 				$roomsList.append($newRoom);
+
+				room.listenUsersCount(function(count) {
+					$usersCount.text(count);
+				});
 			},
 			onRoomClosed: function(room) {
 				$('#room-' + room.key).remove();

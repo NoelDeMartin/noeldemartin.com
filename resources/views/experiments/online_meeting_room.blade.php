@@ -21,8 +21,13 @@
 @section('content')
 	<div class="container">
 		<h1>Online Meeting Tool - Room <span id="room-name" /></h1>
-		<table id="users" class="table table-bordered" />
-		<canvas id="board" />
+		<table id="users" class="table table-bordered" ></table>
+		<canvas id="board" ></canvas>
+		<table id="chat"></table>
+		<form id="new-message" class="form-inline">
+			<input type="text" class="form-control" />
+			<input type="submit" class="btn btn-primary" value="Send" />
+		</form>
 	</div>
 @stop
 
@@ -33,7 +38,8 @@
 
 	<script type="text/javascript">
 		var $users = $('#users'),
-			$board = $('#board');
+			$board = $('#board'),
+			$chat = $('#chat');
 
 		// Enter Room
 		initRoom('{{ $roomKey }}', function(room) {
@@ -85,6 +91,9 @@
 							}
 						});
 					});
+				},
+				onChatMessage: function(user, message) {
+					$chat.append('<tr><td><strong>' + user.name + ':</strong> ' + message + '</td></tr>');
 				}
 			});
 
@@ -107,6 +116,19 @@
 				$board.mouseout(function(event) {
 					isDrawing = false;
 				});
+			});
+
+			// New Message
+			var $newMessageForm = $('#new-message'),
+				$newMessageInput = $newMessageForm.find('input');
+			$newMessageForm.submit(function(event) {
+				if (event.preventDefault) {
+					event.preventDefault();
+				}
+
+				room.sendChatMessage($newMessageInput.val());
+
+				return false;
 			});
 
 		});
