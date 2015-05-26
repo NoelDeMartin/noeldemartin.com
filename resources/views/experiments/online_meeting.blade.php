@@ -61,7 +61,7 @@
 			}
 
 			roomsManager.openNewRoom($newRoomInput.val(), $newRoomPrivate.is(':checked'), function(room) {
-				if (room.private) {
+				if (room.isPrivate) {
 					alert('Use this url to access the private room {{ route('experiments.online-meeting') }}/' + room.key);
 				}
 			});

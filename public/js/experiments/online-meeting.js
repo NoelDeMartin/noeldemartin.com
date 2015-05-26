@@ -21,7 +21,7 @@ function RoomsManager() {
 		roomsRef = firebase.child('rooms');
 
 	roomsRef.on('child_added', function(snapshot) {
-		if (!snapshot.val().private) {
+		if (!snapshot.val().isPrivate) {
 			var room = new Room(snapshot.key(), snapshot.val());
 			myself.rooms[room.key] = room;
 			onNewRoom(room);
@@ -49,12 +49,12 @@ function RoomsManager() {
 		onNewRoom = listeners.onNewRoom;
 		onRoomClosed = listeners.onRoomClosed;
 	}
-	myself.openNewRoom = function(roomName, private, success) {
-		var data = {name: roomName, private: private},
+	myself.openNewRoom = function(roomName, isPrivate, success) {
+		var data = {name: roomName, isPrivate: isPrivate},
 		roomRef = roomsRef.push(data, function(error) {
 			if (error == null) {
 				if (typeof success == 'function') {
-					if (private) {
+					if (isPrivate) {
 						success(new Room(roomRef.key(), data));
 					} else {
 						success(myself.rooms[roomRef.key()]);
@@ -74,7 +74,7 @@ function Room(key, data) {
 	var myself = this;
 	myself.key = key;
 	myself.name = data.name;
-	myself.private = data.private;
+	myself.isPrivate = data.isPrivate;
 	myself.users = $.extend({}, data.users);
 	myself.boardPaths = {};
 
