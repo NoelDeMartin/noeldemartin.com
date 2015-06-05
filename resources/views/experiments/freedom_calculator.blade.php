@@ -129,7 +129,7 @@
 				<select id="expense-rate">
 					<option value="day" {!! (Input::get('expense-rate') == 'day')? 'selected="selected"' : '' !!}>day</option>
 					<option value="week" {!! (Input::get('expense-rate') == 'week')? 'selected="selected"' : '' !!}>week</option>
-					<option value="month" {!! (Input::get('expense-rate') == 'month')? 'selected="selected"' : '' !!}>month</option>
+					<option value="month" {!! (Input::get('expense-rate', 'month') == 'month')? 'selected="selected"' : '' !!}>month</option>
 				</select>
 			</p>
 		</div>
