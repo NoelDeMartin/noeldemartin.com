@@ -140,28 +140,34 @@ function Room(key, data) {
 					// Listen and retrieve room users
 					roomUsersRef.on('child_added', function(snapshot) {
 						var newUser = new RoomUser(snapshot.key(), snapshot.val());
-						myself.users[newUser.key] = newUser;
-						onNewUser(newUser);
+						if (newUser.isValid()) {
+							myself.users[newUser.key] = newUser;
+							onNewUser(newUser);
+						}
 					}, function (error) {
 						console.log('The room users listener failed: ' + error.code);
 					});
 					roomUsersRef.on('child_changed', function(snapshot) {
-						var user = myself.users[snapshot.key()],
-							shouldUpdateBoard = user.diffBoard(snapshot.val());
-						user.update(snapshot.val());
-						onUserUpdated(user);
-						if (shouldUpdateBoard) {
-							onBoardUpdated(myself.boardPaths);
+						var user = myself.users[snapshot.key()];
+						if (exists(user)) {
+							var shouldUpdateBoard = user.diffBoard(snapshot.val());
+							user.update(snapshot.val());
+							onUserUpdated(user);
+							if (shouldUpdateBoard) {
+								onBoardUpdated(myself.boardPaths);
+							}
 						}
 					}, function (error) {
 						console.log('The room users listener failed: ' + error.code);
 					});
 					roomUsersRef.on('child_removed', function(snapshot) {
 						var user = myself.users[snapshot.key()];
-						clearUserPaths(user.key);
-						onUserLeave(user);
-						onBoardUpdated(myself.boardPaths);
-						delete myself.users[user.key];
+						if (exists(user)) {
+							clearUserPaths(user.key);
+							onUserLeave(user);
+							onBoardUpdated(myself.boardPaths);
+							delete myself.users[user.key];
+						}
 					}, function (error) {
 						console.log('The room users listener failed: ' + error.code);
 					});
@@ -194,7 +200,7 @@ function Room(key, data) {
 		// Create new path
 		startBoardPath(localUserKey);
 		$.each(peers, function(key, peerData) {
-			if (typeof peerData['channels']['board'] != 'undefined') {
+			if (exists(peerData['channels']['board'])) {
 				peerData['channels']['board'].send(JSON.stringify({type: 'start-path'}));
 			}
 		});
@@ -203,7 +209,7 @@ function Room(key, data) {
 		var point = {x: initialX, y: initialY};
 		addBoardPathPoint(localUserKey, point);
 		$.each(peers, function(key, peerData) {
-			if (typeof peerData['channels']['board'] != 'undefined') {
+			if (exists(peerData['channels']['board'])) {
 				peerData['channels']['board'].send(JSON.stringify({type: 'point', point: point}));
 			}
 		});
@@ -216,7 +222,7 @@ function Room(key, data) {
 		var point = {x: x, y: y};
 		addBoardPathPoint(localUserKey, point);
 		$.each(peers, function(key, peerData) {
-			if (typeof peerData['channels']['board'] != 'undefined') {
+			if (exists(peerData['channels']['board'])) {
 				peerData['channels']['board'].send(JSON.stringify({type: 'point', point: point}));
 			}
 		});
@@ -227,7 +233,7 @@ function Room(key, data) {
 	myself.clearLocalUserPaths = function() {
 		clearUserPaths(localUserKey);
 		$.each(peers, function(key, peerData) {
-			if (typeof peerData['channels']['board'] != 'undefined') {
+			if (exists(peerData['channels']['board'])) {
 				peerData['channels']['board'].send(JSON.stringify({type: 'clear-paths'}));
 			}
 		});
@@ -241,7 +247,7 @@ function Room(key, data) {
 	myself.sendChatMessage = function(message) {
 		onChatMessage(myself.users[localUserKey], message);
 		$.each(peers, function(key, peerData) {
-			if (typeof peerData['channels']['chat'] != 'undefined') {
+			if (exists(peerData['channels']['chat'])) {
 				peerData['channels']['chat'].send(message);
 			}
 		});
@@ -260,13 +266,14 @@ function Room(key, data) {
 	/* Private Methods */
 	function setUpSignaling() {
 		localUserSignalingRef.on('child_added', function(snapshot) {
-			var signalingData = snapshot.val();
-			if (signalingData.session.type == 'offer') {
+			var signalingData = snapshot.val(),
+				session = JSON.parse(signalingData.session);
+			if (session.type == 'offer') {
 				var connection = createConnection(signalingData.origin);
-				connection.setRemoteDescription(new RTCSessionDescription(signalingData.session), function() {
+				connection.setRemoteDescription(new RTCSessionDescription(session), function() {
 					connection.createAnswer(function(answer) {
 						connection.setLocalDescription(answer, function() {
-							roomUsersRef.child(signalingData.origin).child('signaling').push({origin: localUserKey, session: answer.toJSON()}, function(error) {
+							roomUsersRef.child(signalingData.origin).child('signaling').push({origin: localUserKey, session: JSON.stringify(answer)}, function(error) {
 								if (error == null) {
 									localUserSignalingRef.child(snapshot.key()).remove(function(error) {
 										if (error != null) {
@@ -288,7 +295,7 @@ function Room(key, data) {
 				});
 			} else { // answer
 				var connection = peers[signalingData.origin]['connection'];
-				connection.setRemoteDescription(new RTCSessionDescription(signalingData.session), function() {
+				connection.setRemoteDescription(new RTCSessionDescription(session), function() {
 					localUserSignalingRef.child(snapshot.key()).remove(function(error) {
 						if (error != null) {
 							onError('Removing signaling data', error);
@@ -305,7 +312,7 @@ function Room(key, data) {
 	function setUpICE() {
 		localUserICERef.on('child_added', function(snapshot) {
 			var iceData = snapshot.val();
-			peers[iceData.origin]['connection'].addIceCandidate(new RTCIceCandidate(iceData.candidate), function() {
+			peers[iceData.origin]['connection'].addIceCandidate(new RTCIceCandidate(JSON.parse(iceData.candidate)), function() {
 				// consume ICE candidate
 				localUserICERef.child(snapshot.key()).remove(function(error) {
 					if (error != null) {
@@ -327,7 +334,7 @@ function Room(key, data) {
 		// Send Offer
 		connection.createOffer(function (offer) {
 			connection.setLocalDescription(offer, function() {
-				roomUsersRef.child(peerKey).child('signaling').push({origin: localUserKey, session: offer.toJSON()}, function(error) {
+				roomUsersRef.child(peerKey).child('signaling').push({origin: localUserKey, session: JSON.stringify(offer)}, function(error) {
 					if (error != null) {
 						onError('Sending offer signaling data', error);
 					}
@@ -350,7 +357,7 @@ function Room(key, data) {
 		// Setup ICE
 		peerData['connection'].onicecandidate = function(event) {
 			if(event.candidate != null) {
-				peerData.ICERef.push({origin: localUserKey, candidate: event.candidate.toJSON()}, function(error) {
+				peerData.ICERef.push({origin: localUserKey, candidate: JSON.stringify(event.candidate)}, function(error) {
 					if (error != null) {
 						onError('Sending ICE candidate', error);
 					}
@@ -391,7 +398,7 @@ function Room(key, data) {
 		channel.onerror = myself.onError;
 	}
 	function startBoardPath(userKey) {
-		if (typeof myself.boardPaths[userKey] == 'undefined') {
+		if (!exists(myself.boardPaths[userKey])) {
 			myself.boardPaths[userKey] = [];
 		}
 		myself.boardPaths[userKey].push({x: [], y: []});
@@ -449,5 +456,12 @@ function RoomUser(key, data) {
 	myself.diffBoard = function(data) {
 		return data.drawingColor != myself.drawingColor;
 	}
+	myself.isValid = function() {
+		return exists(myself.name) && exists(myself.drawingColor);
+	}
 
+}
+
+function exists(obj) {
+	return typeof obj != 'undefined';
 }

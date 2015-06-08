@@ -196,7 +196,7 @@
 							'Crocodile', 'Crow', 'Fish', 'Duck', 'Eagle', 'Elephant', 'Lemur', 'Panda', 'Fox', 'Frog', 'Goat', 'Turtle',
 							'Horse', 'Koala', 'Lion', 'Tiger', 'Monkey', 'Mouse', 'Octopus', 'Penguin', 'Pig', 'Rabbit'],
 				adjectives = ['Dangerous', 'Funny', 'Twisted', 'Awesome', 'Lucky', 'Fancy', 'Red', 'Green', 'Blue', 'Dead', 'Lazy',
-								'Old', 'Young', 'Strong', 'Electric', 'Fat', 'Kind', 'Nice', 'Good', 'Bad', 'Wise'];
+								'Old', 'Young', 'Strong', 'Electric', 'Fat', 'Kind', 'Nice', 'Good', 'Bad', 'Wise', 'Plastic'];
 			do {
 				username = prompt('Please, confirm your username',
 									adjectives[Math.floor(Math.random()*adjectives.length)] + ' ' + names[Math.floor(Math.random()*names.length)]);
@@ -205,13 +205,11 @@
 			// Set Listeners
 			room.setListeners({
 				onNewUser: function(user) {
-					if (typeof user.name != 'undefined') {
-						var $user = $('<li style="background-color:' + user.drawingColor + ';" class="user" id="user-' + user.key + '">' + user.name + '</li>');
-						if (room.isLocalUser(user)) {
-							$user.addClass('local');
-						}
-						$users.append($user);
+					var $user = $('<li style="background-color:' + user.drawingColor + ';" class="user" id="user-' + user.key + '">' + user.name + '</li>');
+					if (room.isLocalUser(user)) {
+						$user.addClass('local');
 					}
+					$users.append($user);
 				},
 				onUserUpdated: function(user) {
 					var $user = $('#user-'+user.key);
@@ -309,32 +307,35 @@
 			canvasContext.clearRect(0, 0, width, height);
 
 			$.each(paths, function(userKey, paths) {
-				// Define stroke
-				canvasContext.strokeStyle = roomRef.users[userKey].drawingColor;
-				canvasContext.lineJoin = "round";
-				canvasContext.lineWidth = 3;
+				var user = roomRef.users[userKey];
+				if (typeof user != 'undefined') {
+					// Define stroke
+					canvasContext.strokeStyle = user.drawingColor;
+					canvasContext.lineJoin = "round";
+					canvasContext.lineWidth = 3;
 
-				// Draw paths
-				paths.forEach(function (path) {
-					if (path['x'].length > 1) {
-						var x, y,
-							xs = path['x'],
-							ys = path['y'],
-							prevX = xs[0] * width,
-							prevY = ys[0] * height;
-						canvasContext.beginPath();
-						for (var i = 1, finalI = xs.length; i < finalI; i++) {
-							x = xs[i - 1] * width,
-							y = ys[i - 1] * height;
-							canvasContext.moveTo(prevX, prevY);
-							canvasContext.lineTo(x, y);
-							prevX = x;
-							prevY = y;
+					// Draw paths
+					paths.forEach(function (path) {
+						if (path['x'].length > 1) {
+							var x, y,
+								xs = path['x'],
+								ys = path['y'],
+								prevX = xs[0] * width,
+								prevY = ys[0] * height;
+							canvasContext.beginPath();
+							for (var i = 1, finalI = xs.length; i < finalI; i++) {
+								x = xs[i - 1] * width,
+								y = ys[i - 1] * height;
+								canvasContext.moveTo(prevX, prevY);
+								canvasContext.lineTo(x, y);
+								prevX = x;
+								prevY = y;
+							}
+							canvasContext.closePath();
+							canvasContext.stroke();
 						}
-						canvasContext.closePath();
-						canvasContext.stroke();
-					}
-				});
+					});
+				}
 			});
 		}
 

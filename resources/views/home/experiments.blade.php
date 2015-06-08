@@ -5,6 +5,7 @@
 		<h1>Experiments</h1>
 		<ul>
 			<li>{!! Html::linkRoute('experiments.freedom-calculator', 'Freedom Calculator') !!}</li>
+			<li>{!! Html::linkRoute('experiments.online-meeting', 'Online Meeting') !!}</li>
 			<li>...</li>
 		</ul>
 	</article>
