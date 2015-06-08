@@ -241,21 +241,33 @@
 
 				// Init canvas
 				var isDrawing = false;
-				$board.mousedown(function(event) {
+				$board.on('touchstart', function(event) {
+					event.preventDefault();
+					isDrawing = true;
+					var touch = event.originalEvent.touches[0] || event.originalEvent.changedTouches[0];
+					room.startLocalDrawingPath((touch.pageX - $board[0].offsetLeft)/$board.width(),
+													(touch.pageY - $board[0].offsetTop)/$board.height());
+				});
+				$board.on('touchmove', function(event) {
+					if (isDrawing) {
+						event.preventDefault();
+						var touch = event.originalEvent.touches[0] || event.originalEvent.changedTouches[0];
+						room.addLocalDrawingPoint((touch.pageX - $board[0].offsetLeft)/$board.width(),
+													(touch.pageY - $board[0].offsetTop)/$board.height());
+					}
+				});
+				$board.on('mousedown', function(event) {
 					isDrawing = true;
 					room.startLocalDrawingPath((event.pageX - $board[0].offsetLeft)/$board.width(),
 													(event.pageY - $board[0].offsetTop)/$board.height());
 				});
-				$board.mousemove(function(event) {
+				$board.on('mousemove', function(event) {
 					if (isDrawing) {
 						room.addLocalDrawingPoint((event.pageX - $board[0].offsetLeft)/$board.width(),
 													(event.pageY - $board[0].offsetTop)/$board.height());
 					}
 				});
-				$board.mouseup(function(event) {
-					isDrawing = false;
-				});
-				$board.mouseout(function(event) {
+				$board.on('touchend touchleave touchcancel mouseup mouseout', function(e) {
 					isDrawing = false;
 				});
 
