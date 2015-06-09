@@ -62,7 +62,7 @@
 			padding: 0.5rem;
 		}
 
-		#info #controls #clear-board {
+		#info #controls .control {
 			width: 100%;
 		}
 
@@ -147,7 +147,12 @@
 					<label for="color-picker">Pick Color:</label>
 					<input id="color-picker" name="color-picker" type="range" value="0" min="0" max="360" />
 				</div>
-				<button id="clear-board" class="btn btn-primary">Clear Board</button>
+				<div class="form-group">
+					<button id="clear-board" class="btn btn-primary control">Clear Board</button>
+				</div>
+				<div class="form-group">
+					<button id="activate-sound" class="btn btn-primary control">Activate Sound</button>
+				</div>
 				<h3>Users:</h3>
 			</div>
 			<ul id="users" class="list-unstyled"></ul>
@@ -232,11 +237,14 @@
 			room.enter(username, function() {
 				// Init Controls
 				var $colorPicker = $('#color-picker');
+				$colorPicker.change(function(event) {
+					room.updateLocalUserColor($colorPicker.val());
+				});
 				$('#clear-board').click(function(event) {
 					room.clearLocalUserPaths();
 				});
-				$colorPicker.change(function(event) {
-					room.updateLocalUserColor($colorPicker.val());
+				$('#activate-sound').click(function(event) {
+					room.activateLocalSound();
 				});
 
 				// Init canvas

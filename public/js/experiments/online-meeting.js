@@ -1,6 +1,9 @@
+// Prefixes
 var RTCPeerConnection = window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
 var RTCIceCandidate = window.mozRTCIceCandidate || window.RTCIceCandidate;
 var RTCSessionDescription = window.mozRTCSessionDescription || window.RTCSessionDescription;
+var AudioContext = new (window.AudioContext || window.webkitAudioContext)();
+navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
 
 function initRoom(key, callback) {
 	var firebase = new Firebase('https://brilliant-fire-1291.firebaseio.com/rooms/' + key);
@@ -244,6 +247,9 @@ function Room(key, data) {
 	myself.updateLocalUserColor = function(color) {
 		localUserRef.update({drawingColor: getColor(color)});
 	}
+	myself.activateLocalSound = function() {
+		console.debug("TODO: activate local sound");
+	}
 	myself.sendChatMessage = function(message) {
 		onChatMessage(myself.users[localUserKey], message);
 		$.each(peers, function(key, peerData) {
@@ -331,19 +337,16 @@ function Room(key, data) {
 		createChannel(peerKey, 'board');
 		createChannel(peerKey, 'chat');
 
-		// Send Offer
-		connection.createOffer(function (offer) {
-			connection.setLocalDescription(offer, function() {
-				roomUsersRef.child(peerKey).child('signaling').push({origin: localUserKey, session: JSON.stringify(offer)}, function(error) {
-					if (error != null) {
-						onError('Sending offer signaling data', error);
-					}
-				});
-			}, function(error) {
-				onError('Setting local description', error);
+		// Open audio stream
+		navigator.getUserMedia({audio:true}, function(stream) {
+			$.each(peers, function(key, peerData) {
+				if (exists(peerData['connection'])) {
+					peerData['connection'].addStream(stream);
+				}
 			});
+			sendOffer(peerKey);
 		}, function(error) {
-			onError('Creating offer', error);
+			onError('Activating local sound', error);
 		});
 	}
 	function createConnection(peerKey) {
@@ -381,6 +384,12 @@ function Room(key, data) {
 			}
 		}
 
+		// Listen to opened streams
+		peerData['connection'].onaddstream = function(event) {
+			var source = AudioContext.createMediaStreamSource(event.stream);
+			source.connect(AudioContext.destination);
+		}
+
 		return peerData['connection'];
 	}
 	function createChannel(peerKey, name) {
@@ -396,6 +405,22 @@ function Room(key, data) {
 			onMessage(channelLabel, peerKey, event.data);
 		}
 		channel.onerror = myself.onError;
+	}
+	function sendOffer(peerKey) {
+		var connection = peers[peerKey]['connection'];
+		connection.createOffer(function (offer) {
+			connection.setLocalDescription(offer, function() {
+				roomUsersRef.child(peerKey).child('signaling').push({origin: localUserKey, session: JSON.stringify(offer)}, function(error) {
+					if (error != null) {
+						onError('Sending offer signaling data', error);
+					}
+				});
+			}, function(error) {
+				onError('Setting local description', error);
+			});
+		}, function(error) {
+			onError('Creating offer', error);
+		});
 	}
 	function startBoardPath(userKey) {
 		if (!exists(myself.boardPaths[userKey])) {
