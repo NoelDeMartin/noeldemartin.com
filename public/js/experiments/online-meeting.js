@@ -91,9 +91,12 @@ function Room(key, data) {
 		onUserLeave = function(user) {},
 		onBoardUpdated = function(paths) {},
 		onChatMessage = function(user, message) {},
+		onEnableAudio = function(user) {},
+		onDisableAudio = function(user) {},
 		roomRef = new Firebase('https://brilliant-fire-1291.firebaseio.com/rooms/' + myself.key),
 		roomUsersRef = roomRef.child('users'),
 		roomBoardPathsRef = roomRef.child('board-paths'),
+		audioStream = null,
 		peers = null,
 		localUserKey = null,
 		localUserRef = null,
@@ -107,7 +110,9 @@ function Room(key, data) {
 			onUserUpdated: onUserUpdated,
 			onUserLeave: onUserLeave,
 			onBoardUpdated: onBoardUpdated,
-			onChatMessage: onChatMessage
+			onChatMessage: onChatMessage,
+			onEnableAudio: onEnableAudio,
+			onDisableAudio: onDisableAudio
 		};
 		var listeners = $.extend(defaultListeners, listeners);
 		onNewUser = listeners.onNewUser;
@@ -115,6 +120,8 @@ function Room(key, data) {
 		onUserLeave = listeners.onUserLeave;
 		onBoardUpdated = listeners.onBoardUpdated;
 		onChatMessage = listeners.onChatMessage;
+		onEnableAudio = listeners.onEnableAudio;
+		onDisableAudio = listeners.onDisableAudio;
 	}
 	myself.enter = function(username, success) {
 		roomUsersRef.once('value', function(snapshot) {
@@ -128,6 +135,7 @@ function Room(key, data) {
 					localUserKey = localUserRef.key();
 					localUserSignalingRef = localUserRef.child('signaling');
 					localUserICERef = localUserRef.child('ICE');
+					myself.boardPaths[localUserKey] = [{x: [], y: []}];
 
 					// Listen for user leave
 					roomUsersRef.child(localUserKey).onDisconnect().remove();
@@ -135,49 +143,58 @@ function Room(key, data) {
 					setUpSignaling();
 					setUpICE();
 
-					// Connect with users
-					for (peerKey in roomPreviousUsers) {
-						connectWith(peerKey);
-					}
+					// This must be done before connecting because of this: http://stackoverflow.com/questions/25986267/webrtc-works-in-chrome-but-not-firefox
+					navigator.getUserMedia({audio:true}, function(stream) {
+						audioStream = stream;
 
-					// Listen and retrieve room users
-					roomUsersRef.on('child_added', function(snapshot) {
-						var newUser = new RoomUser(snapshot.key(), snapshot.val());
-						if (newUser.isValid()) {
-							myself.users[newUser.key] = newUser;
-							onNewUser(newUser);
+						// Connect with users
+						for (peerKey in roomPreviousUsers) {
+							connectWith(peerKey);
 						}
-					}, function (error) {
-						console.log('The room users listener failed: ' + error.code);
-					});
-					roomUsersRef.on('child_changed', function(snapshot) {
-						var user = myself.users[snapshot.key()];
-						if (exists(user)) {
-							var shouldUpdateBoard = user.diffBoard(snapshot.val());
-							user.update(snapshot.val());
-							onUserUpdated(user);
-							if (shouldUpdateBoard) {
-								onBoardUpdated(myself.boardPaths);
+
+						// Listen and retrieve room users
+						roomUsersRef.on('child_added', function(snapshot) {
+							var newUser = new RoomUser(snapshot.key(), snapshot.val());
+							if (newUser.isValid()) {
+								myself.users[newUser.key] = newUser;
+								onNewUser(newUser);
 							}
-						}
-					}, function (error) {
-						console.log('The room users listener failed: ' + error.code);
-					});
-					roomUsersRef.on('child_removed', function(snapshot) {
-						var user = myself.users[snapshot.key()];
-						if (exists(user)) {
-							clearUserPaths(user.key);
-							onUserLeave(user);
-							onBoardUpdated(myself.boardPaths);
-							delete myself.users[user.key];
-						}
-					}, function (error) {
-						console.log('The room users listener failed: ' + error.code);
-					});
+						}, function (error) {
+							console.log('The room users listener failed: ' + error.code);
+						});
+						roomUsersRef.on('child_changed', function(snapshot) {
+							var user = myself.users[snapshot.key()];
+							if (exists(user)) {
+								var shouldUpdateBoard = user.diffBoard(snapshot.val());
+								user.update(snapshot.val());
+								onUserUpdated(user);
+								if (shouldUpdateBoard) {
+									onBoardUpdated(myself.boardPaths);
+								}
+							}
+						}, function (error) {
+							console.log('The room users listener failed: ' + error.code);
+						});
+						roomUsersRef.on('child_removed', function(snapshot) {
+							var user = myself.users[snapshot.key()];
+							if (exists(user)) {
+								clearUserPaths(user.key);
+								onUserLeave(user);
+								onBoardUpdated(myself.boardPaths);
+								delete myself.users[user.key];
+							}
+						}, function (error) {
+							console.log('The room users listener failed: ' + error.code);
+						});
 
-					if (typeof success == 'function') {
-						success();
-					}
+						// TODO call this when all the offers have been resolved instead
+						if (typeof success == 'function') {
+							success();
+						}
+
+					}, function(error) {
+						onError('Activating local sound', error);
+					});
 				} else {
 					console.log('Error entering user to room: ' + error.code);
 				}
@@ -247,8 +264,19 @@ function Room(key, data) {
 	myself.updateLocalUserColor = function(color) {
 		localUserRef.update({drawingColor: getColor(color)});
 	}
-	myself.activateLocalSound = function() {
-		console.debug("TODO: activate local sound");
+	myself.enableAudio = function() {
+		$.each(peers, function(key, peerData) {
+			if (exists(peerData['channels']['audio'])) {
+				peerData['channels']['audio'].send('enable');
+			}
+		});
+	}
+	myself.disableAudio = function() {
+		$.each(peers, function(key, peerData) {
+			if (exists(peerData['channels']['audio'])) {
+				peerData['channels']['audio'].send('disable');
+			}
+		});
 	}
 	myself.sendChatMessage = function(message) {
 		onChatMessage(myself.users[localUserKey], message);
@@ -257,6 +285,18 @@ function Room(key, data) {
 				peerData['channels']['chat'].send(message);
 			}
 		});
+	}
+	myself.startUserAudio = function(userKey) {
+		if (exists(peers[userKey]['stream'])) {
+			peers[userKey]['audio-source'] = AudioContext.createMediaStreamSource(peers[userKey]['stream']);
+			peers[userKey]['audio-source'].connect(AudioContext.destination);
+		}
+	}
+	myself.stopUserAudio = function(userKey) {
+		if (exists(peers[userKey]['audio-source'])) {
+			peers[userKey]['audio-source'].disconnect();
+			peers[userKey]['audio-source'] = null;
+		}
 	}
 	myself.getUsersCount = function() {
 		var size = 0, key;
@@ -276,6 +316,7 @@ function Room(key, data) {
 				session = JSON.parse(signalingData.session);
 			if (session.type == 'offer') {
 				var connection = createConnection(signalingData.origin);
+				myself.boardPaths[signalingData.origin] = [{x: [], y: []}];
 				connection.setRemoteDescription(new RTCSessionDescription(session), function() {
 					connection.createAnswer(function(answer) {
 						connection.setLocalDescription(answer, function() {
@@ -334,20 +375,12 @@ function Room(key, data) {
 	}
 	function connectWith(peerKey) {
 		var connection = createConnection(peerKey);
-		createChannel(peerKey, 'board');
-		createChannel(peerKey, 'chat');
-
-		// Open audio stream
-		navigator.getUserMedia({audio:true}, function(stream) {
-			$.each(peers, function(key, peerData) {
-				if (exists(peerData['connection'])) {
-					peerData['connection'].addStream(stream);
-				}
-			});
-			sendOffer(peerKey);
-		}, function(error) {
-			onError('Activating local sound', error);
-		});
+		myself.boardPaths[peerKey] = [{x: [], y: []}];
+		createChannel(peerKey, 'board', processBoardMessage);
+		createChannel(peerKey, 'chat', processChatMessage);
+		createChannel(peerKey, 'audio', processAudioMessage);
+		createStream(peerKey);
+		sendOffer(peerKey);
 	}
 	function createConnection(peerKey) {
 		var peerData = {
@@ -372,9 +405,19 @@ function Room(key, data) {
 		peerData['connection'].ondatachannel = function(event) {
 			var channelLabel = event.channel.label;
 			peerData['channels'][channelLabel] = event.channel;
-			var theChannel = event.channel;
+			var theChannel = event.channel,
+				callback;
+			if (channelLabel == 'board') {
+				callback = processBoardMessage;
+			} else if (channelLabel == 'chat') {
+				callback = processChatMessage;
+			} else if (channelLabel == 'audio') {
+				callback = processAudioMessage;
+			} else {
+				console.debug('Created unknown data channel: ' + channelLabel);
+			}
 			event.channel.onmessage = function(event) {
-				onMessage(channelLabel, peerKey, event.data);
+				callback(peerKey, event.data);
 			}
 			event.channel.onerror = function (error) {
 				onError('Channel onError', error);
@@ -386,25 +429,28 @@ function Room(key, data) {
 
 		// Listen to opened streams
 		peerData['connection'].onaddstream = function(event) {
-			var source = AudioContext.createMediaStreamSource(event.stream);
-			source.connect(AudioContext.destination);
+			peerData['stream'] = event.stream;
 		}
 
 		return peerData['connection'];
 	}
-	function createChannel(peerKey, name) {
+	function createChannel(peerKey, name, callback) {
 		var channel = peers[peerKey]['connection'].createDataChannel(name);
-		var channelLabel = channel.label;
 		channel.onopen = function() {
-			peers[peerKey]['channels'][channelLabel] = channel;
+			peers[peerKey]['channels'][name] = channel;
 		}
 		channel.onclosed = function() {
-			delete peers[peerKey]['channels'][channelLabel];
+			delete peers[peerKey]['channels'][name];
 		}
 		channel.onmessage = function(event) {
-			onMessage(channelLabel, peerKey, event.data);
+			callback(peerKey, event.data);
 		}
 		channel.onerror = myself.onError;
+	}
+	function createStream(peerKey) {
+		if (audioStream != null) {
+			peers[peerKey]['connection'].addStream(audioStream);
+		}
 	}
 	function sendOffer(peerKey) {
 		var connection = peers[peerKey]['connection'];
@@ -423,9 +469,6 @@ function Room(key, data) {
 		});
 	}
 	function startBoardPath(userKey) {
-		if (!exists(myself.boardPaths[userKey])) {
-			myself.boardPaths[userKey] = [];
-		}
 		myself.boardPaths[userKey].push({x: [], y: []});
 	}
 	function addBoardPathPoint(userKey, point) {
@@ -442,22 +485,28 @@ function Room(key, data) {
 	function getColor(color) {
 		return 'hsl(' + color + ', 40%, 60%)'
 	}
-	function onMessage(channelLabel, peerKey, message) {
-		if (channelLabel == 'board') {
-			var message = JSON.parse(message);
-			// TODO use arraybuffer instead
-			if (message.type == 'point') {
-				addBoardPathPoint(peerKey, message.point);
-			} else if (message.type == 'start-path') {
-				startBoardPath(peerKey);
-			} else { // clear paths
-				clearUserPaths(peerKey);
-			}
-			onBoardUpdated(myself.boardPaths);
-		} else if (channelLabel == 'chat') {
-			onChatMessage(myself.users[peerKey], message);
+	function processBoardMessage(peerKey, message) {
+		var message = JSON.parse(message);
+		// TODO use arraybuffer instead
+		if (message.type == 'point') {
+			addBoardPathPoint(peerKey, message.point);
+		} else if (message.type == 'start-path') {
+			startBoardPath(peerKey);
+		} else { // clear paths
+			clearUserPaths(peerKey);
+		}
+		onBoardUpdated(myself.boardPaths);
+	}
+	function processChatMessage(peerKey, message) {
+		onChatMessage(myself.users[peerKey], message);
+	}
+	function processAudioMessage(peerKey, message) {
+		if (message == 'enable') {
+			onEnableAudio(myself.users[peerKey]);
+			myself.startUserAudio(peerKey);
 		} else {
-			console.debug('Message received on non-board channel (' + channelLabel + '): ' + message);
+			onDisableAudio(myself.users[peerKey]);
+			myself.stopUserAudio(peerKey);
 		}
 	}
 	function onError(message, error) {

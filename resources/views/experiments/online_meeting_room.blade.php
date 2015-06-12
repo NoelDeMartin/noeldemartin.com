@@ -87,6 +87,12 @@
 			text-decoration: underline;
 		}
 
+		#info #users .audio {
+			cursor: pointer;
+			float: right;
+			margin-right: 5px;
+		}
+
 		#chat {
 			float: right;
 			border-left: 0.5rem solid #aaa;
@@ -151,7 +157,8 @@
 					<button id="clear-board" class="btn btn-primary control">Clear Board</button>
 				</div>
 				<div class="form-group">
-					<button id="activate-sound" class="btn btn-primary control">Activate Sound</button>
+					<button id="enable-audio" class="btn btn-primary control">Enable Audio</button>
+					<button id="disable-audio" class="btn btn-danger control hidden">Disable Audio</button>
 				</div>
 				<h3>Users:</h3>
 			</div>
@@ -210,7 +217,9 @@
 			// Set Listeners
 			room.setListeners({
 				onNewUser: function(user) {
-					var $user = $('<li style="background-color:' + user.drawingColor + ';" class="user" id="user-' + user.key + '">' + user.name + '</li>');
+					var $user = $('<li class="user" id="user-' + user.key + '">' + user.name + '</li>');
+					$user.css('background-color', user.drawingColor);
+					$user.append('<span class="audio hidden glyphicon glyphicon-volume-up"></span>');
 					if (room.isLocalUser(user)) {
 						$user.addClass('local');
 					}
@@ -230,21 +239,48 @@
 						$message.addClass('local');
 					}
 					$messages.append($message);
+				},
+				onEnableAudio: function(user) {
+					$('#user-'+user.key+' .audio').removeClass('hidden');
+				},
+				onDisableAudio: function(user) {
+					$('#user-'+user.key+' .audio').addClass('hidden');
 				}
 			});
 
 			// Enter room
 			room.enter(username, function() {
 				// Init Controls
-				var $colorPicker = $('#color-picker');
+				var $colorPicker = $('#color-picker'),
+					$enableAudio = $('#enable-audio'),
+					$disableAudio = $('#disable-audio');
 				$colorPicker.change(function(event) {
 					room.updateLocalUserColor($colorPicker.val());
 				});
 				$('#clear-board').click(function(event) {
 					room.clearLocalUserPaths();
 				});
-				$('#activate-sound').click(function(event) {
-					room.activateLocalSound();
+				$enableAudio.click(function(event) {
+					room.enableAudio();
+					$disableAudio.removeClass('hidden');
+					$enableAudio.addClass('hidden');
+				});
+				$disableAudio.click(function(event) {
+					room.disableAudio();
+					$enableAudio.removeClass('hidden');
+					$disableAudio.addClass('hidden');
+				});
+
+				$users.delegate('.audio', 'click', function() {
+					var $audio = $(this),
+						userKey = $audio.parent('.user').attr('id').substring('user-'.length);
+					$audio.toggleClass('glyphicon-volume-up');
+					$audio.toggleClass('glyphicon-volume-off');
+					if ($audio.hasClass('glyphicon-volume-up')) {
+						room.startUserAudio(userKey);
+					} else {
+						room.stopUserAudio(userKey);
+					}
 				});
 
 				// Init canvas
