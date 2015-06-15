@@ -198,9 +198,8 @@
 			$board = $('#board'),
 			$messages = $('#messages'),
 			$newMessageForm = $('#new-message'),
-			$newMessageTextarea = $newMessageForm.find('textarea'),
-			audioObjects = [];
-		var roomRef;
+			$newMessageTextarea = $newMessageForm.find('textarea');
+		var room = null;
 
 		// Prepare Board
 		var $window = $(window);
@@ -220,54 +219,41 @@
 			}
 			$window.resize(function() {
 				fixDimensions();
-				if (roomRef != null) {
-					drawBoard(roomRef.boardPaths);
+				if (room != null) {
+					drawBoard(room.boardPaths);
 				}
 			});
 			fixDimensions();
 		});
 
-		/*bootbox.prompt({
-		title: "What is your real name?",
-		value: "makeusabrew",
-		callback: function(result) {
-			alert(result);
-		}
-		});*/
-
-		// Prepare audio objects (necessary to work in mobile, fore more info see: https://mauricebutler.wordpress.com/2014/02/22/android-chrome-does-not-allow-applications-to-play-html5-audio-without-an-explicit-action-by-the-user/
-		/*function initAudioObjects() {
-			alert('init audio!!');
-			for (var i = 0; i < 10; i++) {
-				audioObjects.push(document.createElement('audio'));
-			};
-			window.removeEventListener('keydown', initAudioObjects);
-			window.removeEventListener('mousedown', initAudioObjects);
-			window.removeEventListener('touchstart', initAudioObjects);
-		}
-
-		window.addEventListener('keydown', initAudioObjects);
-		window.addEventListener('mousedown', initAudioObjects);
-		window.addEventListener('touchstart', initAudioObjects);*/
-
-		// Enter Room
-		initRoom('{{ $roomKey }}', function(room) {
+		initRoom('{{ $roomKey }}', function(roomRef) {
+			room = roomRef;
 			$roomName.text(room.name);
-			roomRef = room;
 
-			var username;
 			var names = ['Cow', 'Cat', 'Dog', 'Bull', 'Donkey', 'Bat', 'Bee', 'Bear', 'Camel', 'Cheetah', 'Chicken', 'Snake',
 							'Crocodile', 'Crow', 'Fish', 'Duck', 'Eagle', 'Elephant', 'Lemur', 'Panda', 'Fox', 'Frog', 'Goat', 'Turtle',
 							'Horse', 'Koala', 'Lion', 'Tiger', 'Monkey', 'Mouse', 'Octopus', 'Penguin', 'Pig', 'Rabbit'],
 				adjectives = ['Dangerous', 'Funny', 'Twisted', 'Awesome', 'Lucky', 'Fancy', 'Red', 'Green', 'Blue', 'Dead', 'Lazy',
 								'Old', 'Young', 'Strong', 'Electric', 'Fat', 'Kind', 'Nice', 'Good', 'Bad', 'Wise', 'Plastic'];
-			do {
-				username = prompt('Please, confirm your username',
-									adjectives[Math.floor(Math.random()*adjectives.length)] + ' ' + names[Math.floor(Math.random()*names.length)]);
-			} while (username == null);
+			bootbox.prompt({
+				title: 'Please, confirm your username',
+				value: adjectives[Math.floor(Math.random()*adjectives.length)]
+							+ ' ' + names[Math.floor(Math.random()*names.length)],
+				callback: function(result) {
+					// TODO check if result is empty and ask again
+					// Prepare audio objects (necessary to work in mobile, fore more info see: https://mauricebutler.wordpress.com/2014/02/22/android-chrome-does-not-allow-applications-to-play-html5-audio-without-an-explicit-action-by-the-user/
+					var audioObjects = [];
+					for (var i = 0; i < 10; i++) {
+						audioObjects.push(document.createElement('audio'));
+					};
+					room.initAudio(audioObjects);
+					startRoom(result);
+				}
+			});
 
-			room.initAudio(audioObjects);
+		});
 
+		function startRoom(username) {
 			// Set Listeners
 			room.setListeners({
 				onNewUser: function(user) {
@@ -382,7 +368,7 @@
 
 				$loading.remove();
 			});
-		});
+		}
 
 		function drawBoard(paths) {
 			// Clears the canvas
@@ -392,7 +378,7 @@
 			canvasContext.clearRect(0, 0, width, height);
 
 			$.each(paths, function(userKey, paths) {
-				var user = roomRef.users[userKey];
+				var user = room.users[userKey];
 				if (typeof user != 'undefined') {
 					// Define stroke
 					canvasContext.strokeStyle = user.drawingColor;
