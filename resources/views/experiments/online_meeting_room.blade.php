@@ -180,7 +180,10 @@
 
 @section('scripts')
 
+	<!-- TODO add fallbacks -->
 	<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	{!! Html::script('js/experiments/bootbox.min.js') !!}
 	{!! Html::script('js/experiments/online-meeting.js') !!}
 
 	<script type="text/javascript">
@@ -195,8 +198,57 @@
 			$board = $('#board'),
 			$messages = $('#messages'),
 			$newMessageForm = $('#new-message'),
-			$newMessageTextarea = $newMessageForm.find('textarea');
+			$newMessageTextarea = $newMessageForm.find('textarea'),
+			audioObjects = [];
 		var roomRef;
+
+		// Prepare Board
+		var $window = $(window);
+		$window.ready(function() {
+			function fixDimensions() {
+				var screenWidth = $window.width(),
+					screenHeight = $window.height(),
+					chatTitleHeight = $chatTitle.outerHeight(),
+					boardDimensions = Math.min(screenWidth - $chat.width() - $info.width(), screenHeight)*0.9;
+				$users.css('max-height', (screenHeight - $infoTitle.outerHeight() - $controls.outerHeight()) + 'px');
+				$board.css('top', Math.max($roomName.outerHeight(), (screenHeight/2 - boardDimensions/2)) + 'px');
+				$board.css('left', (screenWidth/2 - boardDimensions/2) + 'px');
+				$board.attr('width', boardDimensions);
+				$board.attr('height', boardDimensions);
+				$messages.css('height', (screenHeight - chatTitleHeight)*0.8 + 'px');
+				$newMessageForm.css('height', (screenHeight - chatTitleHeight)*0.2 + 'px');
+			}
+			$window.resize(function() {
+				fixDimensions();
+				if (roomRef != null) {
+					drawBoard(roomRef.boardPaths);
+				}
+			});
+			fixDimensions();
+		});
+
+		/*bootbox.prompt({
+		title: "What is your real name?",
+		value: "makeusabrew",
+		callback: function(result) {
+			alert(result);
+		}
+		});*/
+
+		// Prepare audio objects (necessary to work in mobile, fore more info see: https://mauricebutler.wordpress.com/2014/02/22/android-chrome-does-not-allow-applications-to-play-html5-audio-without-an-explicit-action-by-the-user/
+		/*function initAudioObjects() {
+			alert('init audio!!');
+			for (var i = 0; i < 10; i++) {
+				audioObjects.push(document.createElement('audio'));
+			};
+			window.removeEventListener('keydown', initAudioObjects);
+			window.removeEventListener('mousedown', initAudioObjects);
+			window.removeEventListener('touchstart', initAudioObjects);
+		}
+
+		window.addEventListener('keydown', initAudioObjects);
+		window.addEventListener('mousedown', initAudioObjects);
+		window.addEventListener('touchstart', initAudioObjects);*/
 
 		// Enter Room
 		initRoom('{{ $roomKey }}', function(room) {
@@ -213,6 +265,8 @@
 				username = prompt('Please, confirm your username',
 									adjectives[Math.floor(Math.random()*adjectives.length)] + ' ' + names[Math.floor(Math.random()*names.length)]);
 			} while (username == null);
+
+			room.initAudio(audioObjects);
 
 			// Set Listeners
 			room.setListeners({
@@ -328,31 +382,6 @@
 
 				$loading.remove();
 			});
-		});
-
-		// Prepare Board
-		var $window = $(window);
-		$window.ready(function() {
-			function fixDimensions() {
-				var screenWidth = $window.width(),
-					screenHeight = $window.height(),
-					chatTitleHeight = $chatTitle.outerHeight(),
-					boardDimensions = Math.min(screenWidth - $chat.width() - $info.width(), screenHeight)*0.9;
-				$users.css('max-height', (screenHeight - $infoTitle.outerHeight() - $controls.outerHeight()) + 'px');
-				$board.css('top', Math.max($roomName.outerHeight(), (screenHeight/2 - boardDimensions/2)) + 'px');
-				$board.css('left', (screenWidth/2 - boardDimensions/2) + 'px');
-				$board.attr('width', boardDimensions);
-				$board.attr('height', boardDimensions);
-				$messages.css('height', (screenHeight - chatTitleHeight)*0.8 + 'px');
-				$newMessageForm.css('height', (screenHeight - chatTitleHeight)*0.2 + 'px');
-			}
-			$window.resize(function() {
-				fixDimensions();
-				if (roomRef != null) {
-					drawBoard(roomRef.boardPaths);
-				}
-			});
-			fixDimensions();
 		});
 
 		function drawBoard(paths) {

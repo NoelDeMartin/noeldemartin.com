@@ -2,8 +2,21 @@
 var RTCPeerConnection = window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
 var RTCIceCandidate = window.mozRTCIceCandidate || window.RTCIceCandidate;
 var RTCSessionDescription = window.mozRTCSessionDescription || window.RTCSessionDescription;
-var AudioContext = new (window.AudioContext || window.webkitAudioContext)();
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+var attachMediaStream;
+if (navigator.mozGetUserMedia) {
+	attachMediaStream = function(element, stream) {
+		element.mozSrcObject = stream;
+		element.play();
+	}
+} else if (navigator.webkitGetUserMedia) {
+	attachMediaStream = function(element, stream) {
+		element.src = (URL || webkitURL).createObjectURL(stream);
+		element.play();
+	}
+} else {
+	alert('Cant attach user media!!');
+}
 
 function initRoom(key, callback) {
 	var firebase = new Firebase('https://brilliant-fire-1291.firebaseio.com/rooms/' + key);
@@ -101,7 +114,8 @@ function Room(key, data) {
 		localUserKey = null,
 		localUserRef = null,
 		localUserSignalingRef = null,
-		localUserICERef = null;
+		localUserICERef = null,
+		freeAudioObjects = [];
 
 	/* Public Methods */
 	myself.setListeners = function(listeners) {
@@ -182,6 +196,7 @@ function Room(key, data) {
 								onUserLeave(user);
 								onBoardUpdated(myself.boardPaths);
 								delete myself.users[user.key];
+								delete peers[user.key]; // TODO close channels and streams before deleting this
 							}
 						}, function (error) {
 							console.log('The room users listener failed: ' + error.code);
@@ -286,16 +301,22 @@ function Room(key, data) {
 			}
 		});
 	}
+	// This should be called from the callback of a user event in order to work for mobile
+	// for more info see: https://mauricebutler.wordpress.com/2014/02/22/android-chrome-does-not-allow-applications-to-play-html5-audio-without-an-explicit-action-by-the-user/
+	myself.initAudio = function(audioObjects) {
+		freeAudioObjects = audioObjects;
+	}
 	myself.startUserAudio = function(userKey) {
-		if (exists(peers[userKey]['stream'])) {
-			peers[userKey]['audio-source'] = AudioContext.createMediaStreamSource(peers[userKey]['stream']);
-			peers[userKey]['audio-source'].connect(AudioContext.destination);
+		if (exists(peers[userKey]['stream']) && freeAudioObjects.length > 0) {
+			peers[userKey]['audio'] = freeAudioObjects.pop();
+			attachMediaStream(peers[userKey]['audio'], peers[userKey]['stream']);
 		}
 	}
 	myself.stopUserAudio = function(userKey) {
-		if (exists(peers[userKey]['audio-source'])) {
-			peers[userKey]['audio-source'].disconnect();
-			peers[userKey]['audio-source'] = null;
+		if (exists(peers[userKey]['audio'])) {
+			peers[userKey]['audio'].pause();
+			freeAudioObjects.push(peers[userKey]['audio']);
+			peers[userKey]['audio'] = null;
 		}
 	}
 	myself.getUsersCount = function() {
