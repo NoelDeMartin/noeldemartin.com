@@ -35,10 +35,11 @@
 			padding: 0 10%;
 		}
 
-		#room-name {
+		#room-title {
 			text-align: center;
 			font-size: 3rem;
 			position: fixed;
+			padding: 1rem 0;
 			width: 100%;
 			top: 0;
 			left: 0;
@@ -156,7 +157,12 @@
 			</div>
 			<ul id="users" class="list-unstyled"></ul>
 		</div>
-		<span id="room-name">Room Name</span>
+		<div id="room-title">
+			<span id="room-name">Room Name</span>
+			<button id="refresh" class="btn btn-primary">
+				<span class="glyphicon glyphicon-refresh"></span> Refresh
+			</button>
+		</div>
 		<canvas id="board" ></canvas>
 		<div id="chat" class="side-panel">
 			<p class="title">Chat</p>
@@ -179,7 +185,9 @@
 
 	<script type="text/javascript">
 		var $loading = $('#loading'),
-			$roomName = $('#room-name'),
+			$roomTitle = $('#room-title'),
+			$roomName = $roomTitle.find('#room-name'),
+			$refresh = $roomTitle.find('#refresh'),
 			$info = $('#info'),
 			$infoTitle = $info.find('.title'),
 			$controls = $info.find('#controls'),
@@ -192,7 +200,7 @@
 			$newMessage = $message.find('#new-message');
 		var room = null;
 
-		// Prepare Board
+		// Prepare Room
 		var $window = $(window);
 		$window.ready(function() {
 			function fixDimensions() {
@@ -201,7 +209,7 @@
 					chatTitleHeight = $chatTitle.outerHeight(),
 					boardDimensions = Math.min(screenWidth - $chat.width() - $info.width(), screenHeight)*0.9;
 				$users.css('max-height', (screenHeight - $infoTitle.outerHeight() - $controls.outerHeight()) + 'px');
-				$board.css('top', Math.max($roomName.outerHeight(), (screenHeight/2 - boardDimensions/2)) + 'px');
+				$board.css('top', Math.max($roomTitle.outerHeight(), (screenHeight/2 - boardDimensions/2)) + 'px');
 				$board.css('left', (screenWidth/2 - boardDimensions/2) + 'px');
 				$board.attr('width', boardDimensions);
 				$board.attr('height', boardDimensions);
@@ -214,6 +222,19 @@
 				}
 			});
 			fixDimensions();
+		});
+		$refresh.click(function() {
+			$refresh.removeClass('btn-primary');
+			$refresh.addClass('disabled');
+			$refresh.html('Refreshing...');
+			$loading.removeClass('hidden');
+			room.refresh(function() {
+				$refresh.removeClass('disabled');
+				$refresh.addClass('btn-primary');
+				$refresh.html('<span class="glyphicon glyphicon-refresh"></span> Refresh');
+				$loading.addClass('hidden');
+				drawBoard(room.boardPaths);
+			});
 		});
 
 		initRoom('{{ $roomKey }}', function(roomRef) {
@@ -366,7 +387,7 @@
 					appendChatMessage(room.users[message.user], message.message);
 				}
 
-				$loading.remove();
+				$loading.addClass('hidden');
 			});
 		}
 

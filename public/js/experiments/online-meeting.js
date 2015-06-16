@@ -15,13 +15,15 @@ if (navigator.mozGetUserMedia) {
 		element.play();
 	}
 } else {
-	alert('Cant attach user media!!');
+	alert("Your browser doesn't have the required features for the tool to work, plese use Firefox or Chrome instead");
 }
 
 function initRoom(key, callback) {
 	var firebase = new Firebase('https://brilliant-fire-1291.firebaseio.com/rooms/' + key);
 	firebase.once('value', function(snapshot) {
 		callback(new Room(snapshot.key(), snapshot.val()));
+	}, function() {
+		console.debug('Error entering room');
 	});
 }
 
@@ -153,9 +155,10 @@ function Room(key, data) {
 					localUserKey = localUserRef.key();
 					localUserSignalingRef = localUserRef.child('signaling');
 					localUserICERef = localUserRef.child('ICE');
-					myself.boardPaths[localUserKey] = [{x: [], y: []}];
+					if (!exists(myself.boardPaths[localUserKey])) {
+						myself.boardPaths[localUserKey] = [{x: [], y: []}];
+					}
 
-					// Listen for user leave
 					roomUsersRef.child(localUserKey).onDisconnect().remove();
 
 					setUpSignaling();
@@ -170,11 +173,32 @@ function Room(key, data) {
 							pendingUsersSync = [];
 							syncSuccessfulCallback = (typeof success == 'function')? success : function(){};
 							for (peerKey in roomPreviousUsers) {
-								pendingUsersSync.push(peerKey);
-								connectWith(peerKey);
+								if (exists(roomPreviousUsers[peerKey]['name'])) {
+									pendingUsersSync.push(peerKey);
+									connectWith(peerKey);
+								} else {
+									roomUsersRef.child(peerKey).remove();
+								}
 							}
-						} else if (typeof success == 'function') {
+						}
+						if ((!pendingUsersSync || pendingUsersSync.length == 0) && typeof success == 'function') {
 							success();
+						} else {
+							var checkSync = function() {
+								if (pendingUsersSync && pendingUsersSync.length > 0) {
+									for (i in pendingUsersSync) {
+										roomUsersRef.child(pendingUsersSync[i]).once('value', function(snapshot) {
+											var value = snapshot.val();
+											if (exists(value['ICE']) || exists(value['signaling'])) {
+												// This user is not responding...
+												onUserConnectionFinished(snapshot.key());
+											}
+										});
+									}
+									setTimeout(checkSync, 3000);
+								}
+							}
+							setTimeout(checkSync, 3000);
 						}
 
 						// Listen and retrieve room users
@@ -202,12 +226,17 @@ function Room(key, data) {
 						});
 						roomUsersRef.on('child_removed', function(snapshot) {
 							var user = myself.users[snapshot.key()];
-							if (exists(user)) {
+							if (exists(user) && exists(peers[user.key])) {
 								clearUserPaths(user.key);
+								onUserConnectionFinished(user.key);
 								onUserLeave(user);
+								onDisableAudio(user);
 								onBoardUpdated(myself.boardPaths);
+								if (exists(peers[user.key]['connection'])) {
+									peers[user.key]['connection'].close();
+								}
 								delete myself.users[user.key];
-								delete peers[user.key]; // TODO close channels and streams before deleting this
+								delete peers[user.key];
 							}
 						}, function (error) {
 							console.log('The room users listener failed: ' + error.code);
@@ -220,6 +249,54 @@ function Room(key, data) {
 					console.log('Error entering user to room: ' + error.code);
 				}
 			});
+		});
+	}
+	myself.refresh = function(success) {
+		// Clean up existing connections
+		$.each(peers, function(key, peerData) {
+			if (exists(peerData['connection'])) {
+				peerData['connection'].close();
+				delete peers[key];
+			}
+		});
+
+		// Reconnect
+		roomUsersRef.once('value', function(snapshot) {
+			var roomPreviousUsers = snapshot.val();
+			delete roomPreviousUsers[localUserKey];
+
+			// Connect with users
+			if (getDictionaryCount(roomPreviousUsers) > 0) {
+				pendingUsersSync = [];
+				syncSuccessfulCallback = (typeof success == 'function')? success : function(){};
+				for (peerKey in roomPreviousUsers) {
+					if (exists(roomPreviousUsers[peerKey]['name'])) {
+						pendingUsersSync.push(peerKey);
+						connectWith(peerKey);
+					} else {
+						roomUsersRef.child(peerKey).remove();
+					}
+				}
+			}
+			if ((!pendingUsersSync || pendingUsersSync.length == 0) && typeof success == 'function') {
+				success();
+			} else {
+				var checkSync = function() {
+					if (pendingUsersSync && pendingUsersSync.length > 0) {
+						for (i in pendingUsersSync) {
+							roomUsersRef.child(pendingUsersSync[i]).once('value', function(snapshot) {
+								var value = snapshot.val();
+								if (exists(value['ICE']) || exists(value['signaling'])) {
+									// This user is not responding...
+									onUserConnectionFinished(snapshot.key());
+								}
+							});
+						}
+						setTimeout(checkSync, 3000);
+					}
+				}
+				setTimeout(checkSync, 3000);
+			}
 		});
 	}
 	myself.listenUsersCount = function(callback) {
@@ -343,11 +420,13 @@ function Room(key, data) {
 			if (session.type == 'offer') {
 				var connection = createConnection(signalingData.origin);
 				createAudioStream(signalingData.origin);
-				myself.boardPaths[signalingData.origin] = [{x: [], y: []}];
+				if (!exists(myself.boardPaths[signalingData.origin])) {
+					myself.boardPaths[signalingData.origin] = [{x: [], y: []}];
+				}
 				connection.setRemoteDescription(new RTCSessionDescription(session), function() {
 					connection.createAnswer(function(answer) {
 						connection.setLocalDescription(answer, function() {
-							roomUsersRef.child(signalingData.origin).child('signaling').push({origin: localUserKey, session: JSON.stringify(answer)}, function(error) {
+							roomUsersRef.child(signalingData.origin).child('signaling').push({origin: localUserKey, session: JSON.stringify(answer), time: new Date().getTime()}, function(error) {
 								if (error == null) {
 									localUserSignalingRef.child(snapshot.key()).remove(function(error) {
 										if (error != null) {
@@ -404,7 +483,9 @@ function Room(key, data) {
 	}
 	function connectWith(peerKey) {
 		var connection = createConnection(peerKey);
-		myself.boardPaths[peerKey] = [{x: [], y: []}];
+		if (!exists(myself.boardPaths[peerKey])) {
+			myself.boardPaths[peerKey] = [{x: [], y: []}];
+		}
 		createChannel(peerKey, 'sync', processSyncMessage);
 		createChannel(peerKey, 'board', processBoardMessage);
 		createChannel(peerKey, 'chat', processChatMessage);
@@ -423,7 +504,7 @@ function Room(key, data) {
 		// Setup ICE
 		peerData['connection'].onicecandidate = function(event) {
 			if(event.candidate != null) {
-				peerData.ICERef.push({origin: localUserKey, candidate: JSON.stringify(event.candidate)}, function(error) {
+				peerData.ICERef.push({origin: localUserKey, candidate: JSON.stringify(event.candidate), time: new Date().getTime()}, function(error) {
 					if (error != null) {
 						onError('Sending ICE candidate', error);
 					}
@@ -492,7 +573,7 @@ function Room(key, data) {
 		var connection = peers[peerKey]['connection'];
 		connection.createOffer(function (offer) {
 			connection.setLocalDescription(offer, function() {
-				roomUsersRef.child(peerKey).child('signaling').push({origin: localUserKey, session: JSON.stringify(offer)}, function(error) {
+				roomUsersRef.child(peerKey).child('signaling').push({origin: localUserKey, session: JSON.stringify(offer), time: new Date().getTime()}, function(error) {
 					if (error != null) {
 						onError('Sending offer signaling data', error);
 					}
@@ -505,13 +586,24 @@ function Room(key, data) {
 		});
 	}
 	function onUserConnectionFinished(peerKey) {
-		var index = pendingUsersSync.indexOf(peerKey);
-		if (index >= 0) {
-			pendingUsersSync.splice(index, 1);
-			if (pendingUsersSync.length == 0) {
-				if (exists(peers[peerKey]['channels']['sync'])) {
+		if (pendingUsersSync) {
+			var index = pendingUsersSync.indexOf(peerKey);
+			if (index >= 0) {
+				pendingUsersSync.splice(index, 1);
+				if (pendingUsersSync.length == 0) {
 					pendingUsersSync = null;
-					peers[peerKey]['channels']['sync'].send(JSON.stringify({type: 'request'}));
+					// Contact any user for the room data
+					for (userKey in peers) {
+						if (exists(peers[userKey]['channels']['sync'])) {
+							peers[userKey]['channels']['sync'].send(JSON.stringify({type: 'request'}));
+							return;
+						}
+					}
+					// If no user could be contacted, start anyways
+					if (syncSuccessfulCallback != null) {
+						syncSuccessfulCallback();
+						syncSuccessfulCallback = null;
+					}
 				}
 			}
 		}
@@ -590,7 +682,6 @@ function Room(key, data) {
 function RoomUser(key, data) {
 	var myself = this;
 	myself.key = key;
-	myself.userKey = data.key;
 	myself.name = data.name;
 	myself.drawingColor = data.drawingColor;
 
