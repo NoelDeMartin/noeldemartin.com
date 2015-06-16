@@ -97,6 +97,8 @@ function Room(key, data) {
 	myself.isPrivate = data.isPrivate;
 	myself.users = $.extend({}, data.users);
 	myself.boardPaths = {};
+	myself.chatMessages = [];
+	myself.enabledAudios = [];
 
 	// Setup Private Attributes
 	var onNewUser = function(user) {},
@@ -115,6 +117,8 @@ function Room(key, data) {
 		localUserRef = null,
 		localUserSignalingRef = null,
 		localUserICERef = null,
+		pendingUsersSync = null,
+		syncSuccessfulCallback = null,
 		freeAudioObjects = [];
 
 	/* Public Methods */
@@ -162,8 +166,15 @@ function Room(key, data) {
 						audioStream = stream;
 
 						// Connect with users
-						for (peerKey in roomPreviousUsers) {
-							connectWith(peerKey);
+						if (getDictionaryCount(roomPreviousUsers) > 0) {
+							pendingUsersSync = [];
+							syncSuccessfulCallback = (typeof success == 'function')? success : function(){};
+							for (peerKey in roomPreviousUsers) {
+								pendingUsersSync.push(peerKey);
+								connectWith(peerKey);
+							}
+						} else if (typeof success == 'function') {
+							success();
 						}
 
 						// Listen and retrieve room users
@@ -201,11 +212,6 @@ function Room(key, data) {
 						}, function (error) {
 							console.log('The room users listener failed: ' + error.code);
 						});
-
-						// TODO call this when all the offers have been resolved instead
-						if (typeof success == 'function') {
-							success();
-						}
 
 					}, function(error) {
 						onError('Activating local sound', error);
@@ -280,6 +286,7 @@ function Room(key, data) {
 		localUserRef.update({drawingColor: getColor(color)});
 	}
 	myself.enableAudio = function() {
+		myself.enabledAudios.push(localUserKey);
 		$.each(peers, function(key, peerData) {
 			if (exists(peerData['channels']['audio'])) {
 				peerData['channels']['audio'].send('enable');
@@ -287,6 +294,7 @@ function Room(key, data) {
 		});
 	}
 	myself.disableAudio = function() {
+		removeFromArray(myself.enabledAudios, localUserKey);
 		$.each(peers, function(key, peerData) {
 			if (exists(peerData['channels']['audio'])) {
 				peerData['channels']['audio'].send('disable');
@@ -294,6 +302,7 @@ function Room(key, data) {
 		});
 	}
 	myself.sendChatMessage = function(message) {
+		myself.chatMessages.push({user: localUserKey, message: message});
 		onChatMessage(myself.users[localUserKey], message);
 		$.each(peers, function(key, peerData) {
 			if (exists(peerData['channels']['chat'])) {
@@ -320,14 +329,10 @@ function Room(key, data) {
 		}
 	}
 	myself.getUsersCount = function() {
-		var size = 0, key;
-		for (key in myself.users) {
-			if (myself.users.hasOwnProperty(key)) size++;
-		}
-		return size;
+		return getDictionaryCount(myself.users);
 	}
 	myself.isLocalUser = function(user) {
-		return user.key == localUserKey;
+		return user && user.key == localUserKey;
 	}
 
 	/* Private Methods */
@@ -367,6 +372,8 @@ function Room(key, data) {
 					localUserSignalingRef.child(snapshot.key()).remove(function(error) {
 						if (error != null) {
 							onError('Removing signaling data', error);
+						} else {
+							onUserConnectionFinished(signalingData.origin);
 						}
 					});
 				}, function(error) {
@@ -397,6 +404,7 @@ function Room(key, data) {
 	function connectWith(peerKey) {
 		var connection = createConnection(peerKey);
 		myself.boardPaths[peerKey] = [{x: [], y: []}];
+		createChannel(peerKey, 'sync', processSyncMessage);
 		createChannel(peerKey, 'board', processBoardMessage);
 		createChannel(peerKey, 'chat', processChatMessage);
 		createChannel(peerKey, 'audio', processAudioMessage);
@@ -434,6 +442,8 @@ function Room(key, data) {
 				callback = processChatMessage;
 			} else if (channelLabel == 'audio') {
 				callback = processAudioMessage;
+			} else if (channelLabel == 'sync') {
+				callback = processSyncMessage;
 			} else {
 				console.debug('Created unknown data channel: ' + channelLabel);
 			}
@@ -459,6 +469,10 @@ function Room(key, data) {
 		var channel = peers[peerKey]['connection'].createDataChannel(name);
 		channel.onopen = function() {
 			peers[peerKey]['channels'][name] = channel;
+			if (name == 'sync' && pendingUsersSync && pendingUsersSync.length == 0) {
+				pendingUsersSync = null;
+				channel.send(JSON.stringify({type: 'request'}));
+			}
 		}
 		channel.onclosed = function() {
 			delete peers[peerKey]['channels'][name];
@@ -489,6 +503,18 @@ function Room(key, data) {
 			onError('Creating offer', error);
 		});
 	}
+	function onUserConnectionFinished(peerKey) {
+		var index = pendingUsersSync.indexOf(peerKey);
+		if (index >= 0) {
+			pendingUsersSync.splice(index, 1);
+			if (pendingUsersSync.length == 0) {
+				if (exists(peers[peerKey]['channels']['sync'])) {
+					pendingUsersSync = null;
+					peers[peerKey]['channels']['sync'].send(JSON.stringify({type: 'request'}));
+				}
+			}
+		}
+	}
 	function startBoardPath(userKey) {
 		myself.boardPaths[userKey].push({x: [], y: []});
 	}
@@ -506,6 +532,28 @@ function Room(key, data) {
 	function getColor(color) {
 		return 'hsl(' + color + ', 40%, 60%)'
 	}
+	function processSyncMessage(peerKey, message) {
+		var message = JSON.parse(message);
+		// TODO use arraybuffer instead
+		if (message.type == 'request') {
+			if (exists(peers[peerKey]['channels']['sync'])) {
+				var data = {
+					boardPaths: myself.boardPaths,
+					chatMessages: myself.chatMessages,
+					enabledAudios: myself.enabledAudios
+				};
+				peers[peerKey]['channels']['sync'].send(JSON.stringify({type: 'data', data: data}));
+			}
+		} else {
+			myself.boardPaths = message.data.boardPaths;
+			myself.chatMessages = message.data.chatMessages;
+			myself.enabledAudios = message.data.enabledAudios;
+			if (syncSuccessfulCallback != null) {
+				syncSuccessfulCallback();
+				syncSuccessfulCallback = null;
+			}
+		}
+	}
 	function processBoardMessage(peerKey, message) {
 		var message = JSON.parse(message);
 		// TODO use arraybuffer instead
@@ -519,15 +567,16 @@ function Room(key, data) {
 		onBoardUpdated(myself.boardPaths);
 	}
 	function processChatMessage(peerKey, message) {
+		myself.chatMessages.push({user: peerKey, message: message});
 		onChatMessage(myself.users[peerKey], message);
 	}
 	function processAudioMessage(peerKey, message) {
 		if (message == 'enable') {
+			myself.enabledAudios.push(peerKey);
 			onEnableAudio(myself.users[peerKey]);
-			myself.startUserAudio(peerKey);
 		} else {
+			removeFromArray(myself.enabledAudios, peerKey);
 			onDisableAudio(myself.users[peerKey]);
-			myself.stopUserAudio(peerKey);
 		}
 	}
 	function onError(message, error) {
@@ -557,6 +606,21 @@ function RoomUser(key, data) {
 
 }
 
-function exists(obj) {
-	return typeof obj != 'undefined';
+function exists(object) {
+	return typeof object != 'undefined';
+}
+
+function getDictionaryCount(object) {
+	var size = 0, key;
+	for (key in object) {
+		if (object.hasOwnProperty(key)) size++;
+	}
+	return size;
+}
+
+function removeFromArray(array, object) {
+	var index = array.indexOf(object);
+	if (index >= 0) {
+		array.splice(index, 1);
+	}
 }

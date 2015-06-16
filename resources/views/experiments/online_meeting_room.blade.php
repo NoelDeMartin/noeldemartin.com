@@ -291,17 +291,10 @@
 					$('#user-' + user.key).remove();
 				},
 				onBoardUpdated: drawBoard,
-				onChatMessage: function(user, message) {
-					var $message = $('<li class="message"><strong>' + user.name + ':</strong> ' + message + '</li>');
-					if (room.isLocalUser(user)) {
-						$message.addClass('local');
-					}
-					$messages.append($message);
-				},
-				onEnableAudio: function(user) {
-					$('#user-'+user.key+' .audio').removeClass('hidden');
-				},
+				onChatMessage: appendChatMessage,
+				onEnableAudio: enableAudio,
 				onDisableAudio: function(user) {
+					room.stopUserAudio(user.key);
 					$('#user-'+user.key+' .audio').addClass('hidden');
 				}
 			});
@@ -328,7 +321,6 @@
 					$enableAudio.removeClass('hidden');
 					$disableAudio.addClass('hidden');
 				});
-
 				$users.delegate('.audio', 'click', function() {
 					var $audio = $(this),
 						userKey = $audio.parent('.user').attr('id').substring('user-'.length);
@@ -340,6 +332,10 @@
 						room.stopUserAudio(userKey);
 					}
 				});
+
+				for (i in room.enabledAudios) {
+					enableAudio(room.users[room.enabledAudios[i]]);
+				}
 
 				// Init canvas
 				var isDrawing = false;
@@ -372,6 +368,7 @@
 				$board.on('touchend touchleave touchcancel mouseup mouseout', function(e) {
 					isDrawing = false;
 				});
+				drawBoard(room.boardPaths);
 
 				// Init Chat
 				$newMessageForm.submit(function(event) {
@@ -379,10 +376,17 @@
 						event.preventDefault();
 					}
 
+					$newMessageTextarea.val('');
 					room.sendChatMessage($newMessageTextarea.val());
 
 					return false;
 				});
+
+				var message;
+				for (i in room.chatMessages) {
+					message = room.chatMessages[i];
+					appendChatMessage(room.users[message.user], message.message);
+				}
 
 				$loading.remove();
 			});
@@ -426,6 +430,22 @@
 					});
 				}
 			});
+		}
+
+		function appendChatMessage(user, message) {
+			var userName = user? user.name : 'Unkown';
+			var $message = $('<li class="message"><strong>' + userName + ':</strong> ' + message + '</li>');
+			if (room.isLocalUser(user)) {
+				$message.addClass('local');
+			}
+			$messages.append($message);
+		}
+
+		function enableAudio(user) {
+			if (user) {
+				room.startUserAudio(user.key);
+				$('#user-'+user.key+' .audio').removeClass('hidden');
+			}
 		}
 
 	</script>
