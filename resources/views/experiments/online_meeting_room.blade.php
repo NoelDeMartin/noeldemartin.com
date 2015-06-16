@@ -23,6 +23,18 @@
 			font-size: 10rem;
 		}
 
+		.bootbox {
+			display: table;
+			width: 100%;
+			height: 100%;
+		}
+
+		.bootbox .modal-dialog {
+			display: table-cell;
+			vertical-align: middle;
+			padding: 0 10%;
+		}
+
 		#room-name {
 			text-align: center;
 			font-size: 3rem;
@@ -234,23 +246,29 @@
 							'Crocodile', 'Crow', 'Fish', 'Duck', 'Eagle', 'Elephant', 'Lemur', 'Panda', 'Fox', 'Frog', 'Goat', 'Turtle',
 							'Horse', 'Koala', 'Lion', 'Tiger', 'Monkey', 'Mouse', 'Octopus', 'Penguin', 'Pig', 'Rabbit'],
 				adjectives = ['Dangerous', 'Funny', 'Twisted', 'Awesome', 'Lucky', 'Fancy', 'Red', 'Green', 'Blue', 'Dead', 'Lazy',
-								'Old', 'Young', 'Strong', 'Electric', 'Fat', 'Kind', 'Nice', 'Good', 'Bad', 'Wise', 'Plastic'];
-			bootbox.prompt({
-				title: 'Please, confirm your username',
-				value: adjectives[Math.floor(Math.random()*adjectives.length)]
-							+ ' ' + names[Math.floor(Math.random()*names.length)],
-				callback: function(result) {
-					// TODO check if result is empty and ask again
-					// Prepare audio objects (necessary to work in mobile, fore more info see: https://mauricebutler.wordpress.com/2014/02/22/android-chrome-does-not-allow-applications-to-play-html5-audio-without-an-explicit-action-by-the-user/
-					var audioObjects = [];
-					for (var i = 0; i < 10; i++) {
-						audioObjects.push(document.createElement('audio'));
-					};
-					room.initAudio(audioObjects);
-					startRoom(result);
-				}
-			});
-
+								'Old', 'Young', 'Strong', 'Electric', 'Fat', 'Kind', 'Nice', 'Good', 'Bad', 'Wise', 'Plastic'],
+				promptData = {
+					title: 'Please, confirm your username',
+					value: adjectives[Math.floor(Math.random()*adjectives.length)]
+								+ ' ' + names[Math.floor(Math.random()*names.length)],
+					closeButton: false,
+					callback: function(result) {
+						if (!result || result.length == 0) {
+							bootbox.prompt(promptData);
+							return;
+						}
+						// Prepare audio objects (necessary to work in mobile, fore more info see: https://mauricebutler.wordpress.com/2014/02/22/android-chrome-does-not-allow-applications-to-play-html5-audio-without-an-explicit-action-by-the-user/
+						var audioObjects = [], audio;
+						for (var i = 0; i < 10; i++) {
+							audio = document.createElement('audio');
+							audio.load();
+							audioObjects.push(audio);
+						};
+						room.initAudio(audioObjects);
+						startRoom(result);
+					}
+				};
+			bootbox.prompt(promptData);
 		});
 
 		function startRoom(username) {
