@@ -125,29 +125,9 @@
 			background-color: #eee;
 		}
 
-		#chat #new-message {
+		#chat #message {
+			width: 100%;
 			padding: 5px;
-		}
-
-		#chat #new-message textarea {
-			box-sizing: border-box;
-			height: 100%;
-			width: 80%;
-			float: left;
-			resize: none;
-			border-radius: 15px 0 0 15px;
-			border: 1px solid #bbb;
-			padding: 5px
-		}
-
-		#chat #new-message input[type="submit"] {
-			box-sizing: border-box;
-			height: 100%;
-			width: 20%;
-			margin: 0;
-			float: right;
-			border-radius: 0 15px 15px 0;
-			border: 1px solid #bbb;
 		}
 
 	</style>
@@ -182,10 +162,9 @@
 			<p class="title">Chat</p>
 			<ul id="messages" class="list-unstyled">
 			</ul>
-			<form id="new-message" class="form-inline">
-				<textarea></textarea>
-				<input type="submit" class="btn btn-primary" value="Send" />
-			</form>
+			<div id="message">
+				<input type="text" class="form-control" id="new-message" placeholder="Say something...">
+			</div>
 		</div>
 	</div>
 @stop
@@ -202,15 +181,15 @@
 		var $loading = $('#loading'),
 			$roomName = $('#room-name'),
 			$info = $('#info'),
-			$chat = $('#chat'),
 			$infoTitle = $info.find('.title'),
-			$chatTitle = $chat.find('.title'),
-			$controls = $('#controls'),
-			$users = $('#users'),
+			$controls = $info.find('#controls'),
+			$users = $info.find('#users'),
 			$board = $('#board'),
-			$messages = $('#messages'),
-			$newMessageForm = $('#new-message'),
-			$newMessageTextarea = $newMessageForm.find('textarea');
+			$chat = $('#chat'),
+			$chatTitle = $chat.find('.title'),
+			$messages = $chat.find('#messages'),
+			$message = $chat.find('#message'),
+			$newMessage = $message.find('#new-message');
 		var room = null;
 
 		// Prepare Board
@@ -226,8 +205,7 @@
 				$board.css('left', (screenWidth/2 - boardDimensions/2) + 'px');
 				$board.attr('width', boardDimensions);
 				$board.attr('height', boardDimensions);
-				$messages.css('height', (screenHeight - chatTitleHeight)*0.8 + 'px');
-				$newMessageForm.css('height', (screenHeight - chatTitleHeight)*0.2 + 'px');
+				$messages.css('height', (screenHeight - chatTitleHeight - $message.outerHeight()) + 'px');
 			}
 			$window.resize(function() {
 				fixDimensions();
@@ -371,15 +349,15 @@
 				drawBoard(room.boardPaths);
 
 				// Init Chat
-				$newMessageForm.submit(function(event) {
-					if (event.preventDefault) {
+				$newMessage.keypress(function(event) {
+					if (event.which == 13) {
 						event.preventDefault();
+						var text = $newMessage.val().trim();
+						$newMessage.val('');
+						if (text.length > 0) {
+							room.sendChatMessage(text);
+						}
 					}
-
-					$newMessageTextarea.val('');
-					room.sendChatMessage($newMessageTextarea.val());
-
-					return false;
 				});
 
 				var message;

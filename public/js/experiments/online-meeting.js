@@ -342,6 +342,7 @@ function Room(key, data) {
 				session = JSON.parse(signalingData.session);
 			if (session.type == 'offer') {
 				var connection = createConnection(signalingData.origin);
+				createAudioStream(signalingData.origin);
 				myself.boardPaths[signalingData.origin] = [{x: [], y: []}];
 				connection.setRemoteDescription(new RTCSessionDescription(session), function() {
 					connection.createAnswer(function(answer) {
@@ -408,7 +409,7 @@ function Room(key, data) {
 		createChannel(peerKey, 'board', processBoardMessage);
 		createChannel(peerKey, 'chat', processChatMessage);
 		createChannel(peerKey, 'audio', processAudioMessage);
-		createStream(peerKey);
+		createAudioStream(peerKey);
 		sendOffer(peerKey);
 	}
 	function createConnection(peerKey) {
@@ -482,7 +483,7 @@ function Room(key, data) {
 		}
 		channel.onerror = myself.onError;
 	}
-	function createStream(peerKey) {
+	function createAudioStream(peerKey) {
 		if (audioStream != null) {
 			peers[peerKey]['connection'].addStream(audioStream);
 		}
@@ -607,7 +608,11 @@ function RoomUser(key, data) {
 }
 
 function exists(object) {
-	return typeof object != 'undefined';
+	if (object && typeof object != 'undefined') {
+		return true;
+	} else {
+		return false;
+	}
 }
 
 function getDictionaryCount(object) {
