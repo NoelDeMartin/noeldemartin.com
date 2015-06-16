@@ -120,6 +120,7 @@ function Room(key, data) {
 		localUserSignalingRef = null,
 		localUserICERef = null,
 		pendingUsersSync = null,
+		pendingChannels = {},
 		syncSuccessfulCallback = null,
 		freeAudioObjects = [];
 
@@ -184,20 +185,6 @@ function Room(key, data) {
 						if ((!pendingUsersSync || pendingUsersSync.length == 0) && typeof success == 'function') {
 							success();
 						} else {
-							var checkSync = function() {
-								if (pendingUsersSync && pendingUsersSync.length > 0) {
-									for (i in pendingUsersSync) {
-										roomUsersRef.child(pendingUsersSync[i]).once('value', function(snapshot) {
-											var value = snapshot.val();
-											if (exists(value['ICE']) || exists(value['signaling'])) {
-												// This user is not responding...
-												onUserConnectionFinished(snapshot.key());
-											}
-										});
-									}
-									setTimeout(checkSync, 3000);
-								}
-							}
 							setTimeout(checkSync, 3000);
 						}
 
@@ -281,20 +268,6 @@ function Room(key, data) {
 			if ((!pendingUsersSync || pendingUsersSync.length == 0) && typeof success == 'function') {
 				success();
 			} else {
-				var checkSync = function() {
-					if (pendingUsersSync && pendingUsersSync.length > 0) {
-						for (i in pendingUsersSync) {
-							roomUsersRef.child(pendingUsersSync[i]).once('value', function(snapshot) {
-								var value = snapshot.val();
-								if (exists(value['ICE']) || exists(value['signaling'])) {
-									// This user is not responding...
-									onUserConnectionFinished(snapshot.key());
-								}
-							});
-						}
-						setTimeout(checkSync, 3000);
-					}
-				}
 				setTimeout(checkSync, 3000);
 			}
 		});
@@ -452,8 +425,6 @@ function Room(key, data) {
 					localUserSignalingRef.child(snapshot.key()).remove(function(error) {
 						if (error != null) {
 							onError('Removing signaling data', error);
-						} else {
-							onUserConnectionFinished(signalingData.origin);
 						}
 					});
 				}, function(error) {
@@ -492,6 +463,12 @@ function Room(key, data) {
 		createChannel(peerKey, 'audio', processAudioMessage);
 		createAudioStream(peerKey);
 		sendOffer(peerKey);
+	}
+	function reconnectWith(peerKey) {
+		if (exists(peers[peerKey]['connection'])) {
+			peers[peerKey]['connection'].close();
+		}
+		connectWith(peerKey);
 	}
 	function createConnection(peerKey) {
 		var peerData = {
@@ -549,11 +526,20 @@ function Room(key, data) {
 	}
 	function createChannel(peerKey, name, callback) {
 		var channel = peers[peerKey]['connection'].createDataChannel(name);
+		if (!exists(pendingChannels[peerKey])) {
+			pendingChannels[peerKey] = [];
+		}
+		pendingChannels[peerKey].push(channel);
 		channel.onopen = function() {
 			peers[peerKey]['channels'][name] = channel;
 			if (name == 'sync' && pendingUsersSync && pendingUsersSync.length == 0) {
 				pendingUsersSync = null;
-				channel.send(JSON.stringify({type: 'request'}));
+				channel.send(JSON.stringify({type: 'full'}));
+			}
+			removeFromArray(pendingChannels[peerKey], channel);
+			if (pendingChannels[peerKey].length == 0) {
+				delete pendingChannels[peerKey];
+				onUserConnectionFinished(peerKey);
 			}
 		}
 		channel.onclosed = function() {
@@ -595,7 +581,7 @@ function Room(key, data) {
 					// Contact any user for the room data
 					for (userKey in peers) {
 						if (exists(peers[userKey]['channels']['sync'])) {
-							peers[userKey]['channels']['sync'].send(JSON.stringify({type: 'request'}));
+							peers[userKey]['channels']['sync'].send(JSON.stringify({type: 'full'}));
 							return;
 						}
 					}
@@ -606,6 +592,24 @@ function Room(key, data) {
 					}
 				}
 			}
+		}
+	}
+	function checkSync() {
+		if (pendingUsersSync && pendingUsersSync.length > 0) {
+			for (i in pendingUsersSync) {
+				roomUsersRef.child(pendingUsersSync[i]).once('value', function(snapshot) {
+					var value = snapshot.val();
+					if (exists(value['ICE']) || exists(value['signaling'])) {
+						// This user is not responding...
+						onUserConnectionFinished(snapshot.key());
+					} else if (exists(pendingChannels[snapshot.key()])) {
+						// Channels are still connecting...
+						delete pendingChannels[snapshot.key()];
+						reconnectWith(snapshot.key());
+					}
+				});
+			}
+			setTimeout(checkSync, 3000);
 		}
 	}
 	function startBoardPath(userKey) {
@@ -628,7 +632,7 @@ function Room(key, data) {
 	function processSyncMessage(peerKey, message) {
 		var message = JSON.parse(message);
 		// TODO use arraybuffer instead
-		if (message.type == 'request') {
+		if (message.type == 'full') {
 			if (exists(peers[peerKey]['channels']['sync'])) {
 				var data = {
 					boardPaths: myself.boardPaths,
