@@ -29,6 +29,10 @@ function isAudioAvailable() {
 	return exists(navigator.getUserMedia) && exists(attachMediaStream);
 }
 
+function isWebRTCAvailable() {
+	return exists(RTCPeerConnection) && exists(RTCIceCandidate) && exists(RTCSessionDescription);
+}
+
 /* RoomsManager class */
 
 function RoomsManager() {

@@ -60,7 +60,13 @@
 				event.preventDefault();
 			}
 
-			roomsManager.openNewRoom($newRoomInput.val(), $newRoomPrivate.is(':checked'), function(room) {
+			var roomName = $newRoomInput.val();
+			if (roomName.length < 4 || roomName.length > 254) {
+				alert('The name of a room must have between 4 and 254 characters');
+				return;
+			}
+
+			roomsManager.openNewRoom(roomName, $newRoomPrivate.is(':checked'), function(room) {
 				if (room.isPrivate) {
 					alert('Use this url to access the private room {{ route('experiments.online-meeting') }}/' + room.key);
 				}

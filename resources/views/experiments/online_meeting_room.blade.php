@@ -191,286 +191,293 @@
 	{!! Html::script('js/experiments/online-meeting.js') !!}
 
 	<script type="text/javascript">
-		var $loading = $('#loading'),
-			$roomTitle = $('#room-title'),
-			$roomName = $roomTitle.find('#room-name'),
-			$refresh = $roomTitle.find('#refresh'),
-			$alerts = $roomTitle.find('#alerts'),
-			$info = $('#info'),
-			$infoTitle = $info.find('.title'),
-			$controls = $info.find('#controls'),
-			$users = $info.find('#users'),
-			$board = $('#board'),
-			$chat = $('#chat'),
-			$chatTitle = $chat.find('.title'),
-			$messages = $chat.find('#messages'),
-			$message = $chat.find('#message'),
-			$newMessage = $message.find('#new-message');
-		var room = null,
-			fixDimensions = function() {};
-
-		// Prepare Room
-		var $window = $(window);
-		$window.ready(function() {
-			fixDimensions = function() {
-				var screenWidth = $window.width(),
-					screenHeight = $window.height(),
-					chatTitleHeight = $chatTitle.outerHeight(),
-					boardDimensions = Math.min(screenWidth - $chat.width() - $info.width(), screenHeight - $roomTitle.outerHeight())*0.9;
-				$users.css('max-height', (screenHeight - $infoTitle.outerHeight() - $controls.outerHeight()) + 'px');
-				$board.css('top', Math.max($roomTitle.outerHeight(), (screenHeight/2 - boardDimensions/2)) + 'px');
-				$board.css('left', (screenWidth/2 - boardDimensions/2) + 'px');
-				$board.attr('width', boardDimensions);
-				$board.attr('height', boardDimensions);
-				$messages.css('height', (screenHeight - chatTitleHeight - $message.outerHeight()) + 'px');
+		(function () {
+			if (!isWebRTCAvailable()) {
+				alert("This Browser doesn't support WebRTC! please try another browser");
+				return;
 			}
-			$window.resize(function() {
+
+			var $loading = $('#loading'),
+				$roomTitle = $('#room-title'),
+				$roomName = $roomTitle.find('#room-name'),
+				$refresh = $roomTitle.find('#refresh'),
+				$alerts = $roomTitle.find('#alerts'),
+				$info = $('#info'),
+				$infoTitle = $info.find('.title'),
+				$controls = $info.find('#controls'),
+				$users = $info.find('#users'),
+				$board = $('#board'),
+				$chat = $('#chat'),
+				$chatTitle = $chat.find('.title'),
+				$messages = $chat.find('#messages'),
+				$message = $chat.find('#message'),
+				$newMessage = $message.find('#new-message');
+			var room = null,
+				fixDimensions = function() {};
+
+			// Prepare Room
+			var $window = $(window);
+			$window.ready(function() {
+				fixDimensions = function() {
+					var screenWidth = $window.width(),
+						screenHeight = $window.height(),
+						chatTitleHeight = $chatTitle.outerHeight(),
+						boardDimensions = Math.min(screenWidth - $chat.width() - $info.width(), screenHeight - $roomTitle.outerHeight())*0.9;
+					$users.css('max-height', (screenHeight - $infoTitle.outerHeight() - $controls.outerHeight()) + 'px');
+					$board.css('top', Math.max($roomTitle.outerHeight(), (screenHeight/2 - boardDimensions/2)) + 'px');
+					$board.css('left', (screenWidth/2 - boardDimensions/2) + 'px');
+					$board.attr('width', boardDimensions);
+					$board.attr('height', boardDimensions);
+					$messages.css('height', (screenHeight - chatTitleHeight - $message.outerHeight()) + 'px');
+				}
+				$window.resize(function() {
+					fixDimensions();
+					if (room != null) {
+						drawBoard(room.boardPaths);
+					}
+				});
 				fixDimensions();
-				if (room != null) {
+			});
+			$refresh.click(function() {
+				$refresh.removeClass('btn-primary');
+				$refresh.addClass('disabled');
+				$refresh.html('Refreshing...');
+				$loading.removeClass('hidden');
+				room.refresh(function() {
+					$refresh.removeClass('disabled');
+					$refresh.addClass('btn-primary');
+					$refresh.html('<span class="glyphicon glyphicon-refresh"></span> Refresh');
+					$loading.addClass('hidden');
 					drawBoard(room.boardPaths);
-				}
-			});
-			fixDimensions();
-		});
-		$refresh.click(function() {
-			$refresh.removeClass('btn-primary');
-			$refresh.addClass('disabled');
-			$refresh.html('Refreshing...');
-			$loading.removeClass('hidden');
-			room.refresh(function() {
-				$refresh.removeClass('disabled');
-				$refresh.addClass('btn-primary');
-				$refresh.html('<span class="glyphicon glyphicon-refresh"></span> Refresh');
-				$loading.addClass('hidden');
-				drawBoard(room.boardPaths);
-			});
-		});
-
-		initRoom('{{ $roomKey }}', function(roomRef) {
-			room = roomRef;
-			$roomName.text(room.name);
-
-			var names = ['Cow', 'Cat', 'Dog', 'Bull', 'Donkey', 'Bat', 'Bee', 'Bear', 'Camel', 'Cheetah', 'Chicken', 'Snake',
-							'Crocodile', 'Crow', 'Fish', 'Duck', 'Eagle', 'Elephant', 'Lemur', 'Panda', 'Fox', 'Frog', 'Goat', 'Turtle',
-							'Horse', 'Koala', 'Lion', 'Tiger', 'Monkey', 'Mouse', 'Octopus', 'Penguin', 'Pig', 'Rabbit'],
-				adjectives = ['Dangerous', 'Funny', 'Twisted', 'Awesome', 'Lucky', 'Fancy', 'Red', 'Green', 'Blue', 'Dead', 'Lazy',
-								'Old', 'Young', 'Strong', 'Electric', 'Fat', 'Kind', 'Nice', 'Good', 'Bad', 'Wise', 'Plastic'],
-				promptData = {
-					title: 'Please, confirm your username',
-					value: adjectives[Math.floor(Math.random()*adjectives.length)]
-								+ ' ' + names[Math.floor(Math.random()*names.length)],
-					closeButton: false,
-					callback: function(result) {
-						if (!result || result.length == 0) {
-							bootbox.prompt(promptData);
-							return;
-						}
-						if (room.audioAvailable) {
-							// Prepare audio objects (necessary to work in mobile, fore more info see: https://mauricebutler.wordpress.com/2014/02/22/android-chrome-does-not-allow-applications-to-play-html5-audio-without-an-explicit-action-by-the-user/
-							var audioObjects = [], audio;
-							for (var i = 0; i < 10; i++) {
-								audio = document.createElement('audio');
-								audio.load();
-								audioObjects.push(audio);
-							};
-							room.initAudio(audioObjects);
-						}
-						startRoom(result);
-					}
-				};
-			bootbox.prompt(promptData);
-		});
-
-		function startRoom(username) {
-			// Set Listeners
-			room.setListeners({
-				onNewUser: function(user) {
-					var $user = $('<li class="user" id="user-' + user.key + '">' + user.name + '</li>');
-					$user.css('background-color', user.drawingColor);
-					$user.append('<span class="audio hidden glyphicon glyphicon-volume-up"></span>');
-					if (room.isLocalUser(user)) {
-						$user.addClass('local');
-					}
-					$users.append($user);
-				},
-				onUserUpdated: function(user) {
-					var $user = $('#user-'+user.key);
-					$user.css('background-color', user.drawingColor);
-				},
-				onUserLeave: function(user) {
-					$('#user-' + user.key).remove();
-				},
-				onBoardUpdated: drawBoard,
-				onChatMessage: appendChatMessage,
-				onEnableAudio: enableAudio,
-				onDisableAudio: function(user) {
-					room.stopUserAudio(user.key);
-					$('#user-'+user.key+' .audio').addClass('hidden');
-				}
+				});
 			});
 
-			// Enter room
-			room.enter(username, function() {
-				// Init Controls
-				var $colorPicker = $('#color-picker'),
-					$enableAudio = $('#enable-audio'),
-					$disableAudio = $('#disable-audio');
-				$colorPicker.change(function(event) {
-					room.updateLocalUserColor($colorPicker.val());
-				});
-				$('#clear-board').click(function(event) {
-					room.clearLocalUserPaths();
-				});
-				$enableAudio.click(function(event) {
-					room.enableAudio();
-					$disableAudio.removeClass('hidden');
-					$enableAudio.addClass('hidden');
-				});
-				$disableAudio.click(function(event) {
-					room.disableAudio();
-					$enableAudio.removeClass('hidden');
-					$disableAudio.addClass('hidden');
-				});
-				$users.delegate('.audio', 'click', function() {
-					var $audio = $(this),
-						userKey = $audio.parent('.user').attr('id').substring('user-'.length);
-					$audio.toggleClass('glyphicon-volume-up');
-					$audio.toggleClass('glyphicon-volume-off');
-					if ($audio.hasClass('glyphicon-volume-up')) {
-						room.startUserAudio(userKey);
-					} else {
-						room.stopUserAudio(userKey);
-					}
-				});
+			initRoom('{{ $roomKey }}', function(roomRef) {
+				room = roomRef;
+				$roomName.text(room.name);
 
-				if (room.audioAvailable) {
-					for (i in room.enabledAudios) {
-						enableAudio(room.users[room.enabledAudios[i]]);
-					}
-				}
-
-				// Init canvas
-				var isDrawing = false;
-				$board.on('touchstart', function(event) {
-					event.preventDefault();
-					isDrawing = true;
-					var touch = event.originalEvent.touches[0] || event.originalEvent.changedTouches[0];
-					room.startLocalDrawingPath((touch.pageX - $board[0].offsetLeft)/$board.width(),
-													(touch.pageY - $board[0].offsetTop)/$board.height());
-				});
-				$board.on('touchmove', function(event) {
-					if (isDrawing) {
-						event.preventDefault();
-						var touch = event.originalEvent.touches[0] || event.originalEvent.changedTouches[0];
-						room.addLocalDrawingPoint((touch.pageX - $board[0].offsetLeft)/$board.width(),
-													(touch.pageY - $board[0].offsetTop)/$board.height());
-					}
-				});
-				$board.on('mousedown', function(event) {
-					isDrawing = true;
-					room.startLocalDrawingPath((event.pageX - $board[0].offsetLeft)/$board.width(),
-													(event.pageY - $board[0].offsetTop)/$board.height());
-				});
-				$board.on('mousemove', function(event) {
-					if (isDrawing) {
-						room.addLocalDrawingPoint((event.pageX - $board[0].offsetLeft)/$board.width(),
-													(event.pageY - $board[0].offsetTop)/$board.height());
-					}
-				});
-				$board.on('touchend touchleave touchcancel mouseup mouseout', function(e) {
-					isDrawing = false;
-				});
-				drawBoard(room.boardPaths);
-
-				// Init Chat
-				$newMessage.keypress(function(event) {
-					if (event.which == 13) {
-						event.preventDefault();
-						var text = $newMessage.val().trim();
-						$newMessage.val('');
-						if (text.length > 0) {
-							room.sendChatMessage(text);
-						}
-					}
-				});
-
-				var message;
-				for (i in room.chatMessages) {
-					message = room.chatMessages[i];
-					appendChatMessage(room.users[message.user], message.message);
-				}
-
-				// Final modifications
-				if (!room.audioAvailable) {
-					$enableAudio.addClass('hidden');
-					addMessage('Audio is not available in your browser', 'warning');
-				}
-
-				$loading.addClass('hidden');
-			});
-		}
-
-		function drawBoard(paths) {
-			// Clears the canvas
-			var canvasContext = $board[0].getContext('2d'),
-				width = $board.width(),
-				height = $board.height();
-			canvasContext.clearRect(0, 0, width, height);
-
-			$.each(paths, function(userKey, paths) {
-				var user = room.users[userKey];
-				if (typeof user != 'undefined') {
-					// Define stroke
-					canvasContext.strokeStyle = user.drawingColor;
-					canvasContext.lineJoin = "round";
-					canvasContext.lineWidth = 3;
-
-					// Draw paths
-					paths.forEach(function (path) {
-						if (path['x'].length > 1) {
-							var x, y,
-								xs = path['x'],
-								ys = path['y'],
-								prevX = xs[0] * width,
-								prevY = ys[0] * height;
-							canvasContext.beginPath();
-							for (var i = 1, finalI = xs.length; i < finalI; i++) {
-								x = xs[i - 1] * width,
-								y = ys[i - 1] * height;
-								canvasContext.moveTo(prevX, prevY);
-								canvasContext.lineTo(x, y);
-								prevX = x;
-								prevY = y;
+				var names = ['Cow', 'Cat', 'Dog', 'Bull', 'Donkey', 'Bat', 'Bee', 'Bear', 'Camel', 'Cheetah', 'Chicken', 'Snake',
+								'Crocodile', 'Crow', 'Fish', 'Duck', 'Eagle', 'Elephant', 'Lemur', 'Panda', 'Fox', 'Frog', 'Goat', 'Turtle',
+								'Horse', 'Koala', 'Lion', 'Tiger', 'Monkey', 'Mouse', 'Octopus', 'Penguin', 'Pig', 'Rabbit'],
+					adjectives = ['Dangerous', 'Funny', 'Twisted', 'Awesome', 'Lucky', 'Fancy', 'Red', 'Green', 'Blue', 'Dead', 'Lazy',
+									'Old', 'Young', 'Strong', 'Electric', 'Fat', 'Kind', 'Nice', 'Good', 'Bad', 'Wise', 'Plastic'],
+					promptData = {
+						title: 'Please, confirm your username',
+						value: adjectives[Math.floor(Math.random()*adjectives.length)]
+									+ ' ' + names[Math.floor(Math.random()*names.length)],
+						closeButton: false,
+						callback: function(result) {
+							if (!result || result.length < 1 || result.length > 25) {
+								alert('The username must be between 1 and 25 characters long');
+								bootbox.prompt(promptData);
+								return;
 							}
-							canvasContext.closePath();
-							canvasContext.stroke();
+							if (room.audioAvailable) {
+								// Prepare audio objects (necessary to work in mobile, fore more info see: https://mauricebutler.wordpress.com/2014/02/22/android-chrome-does-not-allow-applications-to-play-html5-audio-without-an-explicit-action-by-the-user/
+								var audioObjects = [], audio;
+								for (var i = 0; i < 10; i++) {
+									audio = document.createElement('audio');
+									audio.load();
+									audioObjects.push(audio);
+								};
+								room.initAudio(audioObjects);
+							}
+							startRoom(result);
+						}
+					};
+				bootbox.prompt(promptData);
+			});
+
+			function startRoom(username) {
+				// Set Listeners
+				room.setListeners({
+					onNewUser: function(user) {
+						var $user = $('<li class="user" id="user-' + user.key + '">' + user.name + '</li>');
+						$user.css('background-color', user.drawingColor);
+						$user.append('<span class="audio hidden glyphicon glyphicon-volume-up"></span>');
+						if (room.isLocalUser(user)) {
+							$user.addClass('local');
+						}
+						$users.append($user);
+					},
+					onUserUpdated: function(user) {
+						var $user = $('#user-'+user.key);
+						$user.css('background-color', user.drawingColor);
+					},
+					onUserLeave: function(user) {
+						$('#user-' + user.key).remove();
+					},
+					onBoardUpdated: drawBoard,
+					onChatMessage: appendChatMessage,
+					onEnableAudio: enableAudio,
+					onDisableAudio: function(user) {
+						room.stopUserAudio(user.key);
+						$('#user-'+user.key+' .audio').addClass('hidden');
+					}
+				});
+
+				// Enter room
+				room.enter(username, function() {
+					// Init Controls
+					var $colorPicker = $('#color-picker'),
+						$enableAudio = $('#enable-audio'),
+						$disableAudio = $('#disable-audio');
+					$colorPicker.change(function(event) {
+						room.updateLocalUserColor($colorPicker.val());
+					});
+					$('#clear-board').click(function(event) {
+						room.clearLocalUserPaths();
+					});
+					$enableAudio.click(function(event) {
+						room.enableAudio();
+						$disableAudio.removeClass('hidden');
+						$enableAudio.addClass('hidden');
+					});
+					$disableAudio.click(function(event) {
+						room.disableAudio();
+						$enableAudio.removeClass('hidden');
+						$disableAudio.addClass('hidden');
+					});
+					$users.delegate('.audio', 'click', function() {
+						var $audio = $(this),
+							userKey = $audio.parent('.user').attr('id').substring('user-'.length);
+						$audio.toggleClass('glyphicon-volume-up');
+						$audio.toggleClass('glyphicon-volume-off');
+						if ($audio.hasClass('glyphicon-volume-up')) {
+							room.startUserAudio(userKey);
+						} else {
+							room.stopUserAudio(userKey);
 						}
 					});
+
+					if (room.audioAvailable) {
+						for (i in room.enabledAudios) {
+							enableAudio(room.users[room.enabledAudios[i]]);
+						}
+					}
+
+					// Init canvas
+					var isDrawing = false;
+					$board.on('touchstart', function(event) {
+						event.preventDefault();
+						isDrawing = true;
+						var touch = event.originalEvent.touches[0] || event.originalEvent.changedTouches[0];
+						room.startLocalDrawingPath((touch.pageX - $board[0].offsetLeft)/$board.width(),
+														(touch.pageY - $board[0].offsetTop)/$board.height());
+					});
+					$board.on('touchmove', function(event) {
+						if (isDrawing) {
+							event.preventDefault();
+							var touch = event.originalEvent.touches[0] || event.originalEvent.changedTouches[0];
+							room.addLocalDrawingPoint((touch.pageX - $board[0].offsetLeft)/$board.width(),
+														(touch.pageY - $board[0].offsetTop)/$board.height());
+						}
+					});
+					$board.on('mousedown', function(event) {
+						isDrawing = true;
+						room.startLocalDrawingPath((event.pageX - $board[0].offsetLeft)/$board.width(),
+														(event.pageY - $board[0].offsetTop)/$board.height());
+					});
+					$board.on('mousemove', function(event) {
+						if (isDrawing) {
+							room.addLocalDrawingPoint((event.pageX - $board[0].offsetLeft)/$board.width(),
+														(event.pageY - $board[0].offsetTop)/$board.height());
+						}
+					});
+					$board.on('touchend touchleave touchcancel mouseup mouseout', function(e) {
+						isDrawing = false;
+					});
+					drawBoard(room.boardPaths);
+
+					// Init Chat
+					$newMessage.keypress(function(event) {
+						if (event.which == 13) {
+							event.preventDefault();
+							var text = $newMessage.val().trim();
+							$newMessage.val('');
+							if (text.length > 0) {
+								room.sendChatMessage(text);
+							}
+						}
+					});
+
+					var message;
+					for (i in room.chatMessages) {
+						message = room.chatMessages[i];
+						appendChatMessage(room.users[message.user], message.message);
+					}
+
+					// Final modifications
+					if (!room.audioAvailable) {
+						$enableAudio.addClass('hidden');
+						addMessage('Audio is not available in your browser', 'warning');
+					}
+
+					$loading.addClass('hidden');
+				});
+			}
+
+			function drawBoard(paths) {
+				// Clears the canvas
+				var canvasContext = $board[0].getContext('2d'),
+					width = $board.width(),
+					height = $board.height();
+				canvasContext.clearRect(0, 0, width, height);
+
+				$.each(paths, function(userKey, paths) {
+					var user = room.users[userKey];
+					if (typeof user != 'undefined') {
+						// Define stroke
+						canvasContext.strokeStyle = user.drawingColor;
+						canvasContext.lineJoin = "round";
+						canvasContext.lineWidth = 3;
+
+						// Draw paths
+						paths.forEach(function (path) {
+							if (path['x'].length > 1) {
+								var x, y,
+									xs = path['x'],
+									ys = path['y'],
+									prevX = xs[0] * width,
+									prevY = ys[0] * height;
+								canvasContext.beginPath();
+								for (var i = 1, finalI = xs.length; i < finalI; i++) {
+									x = xs[i - 1] * width,
+									y = ys[i - 1] * height;
+									canvasContext.moveTo(prevX, prevY);
+									canvasContext.lineTo(x, y);
+									prevX = x;
+									prevY = y;
+								}
+								canvasContext.closePath();
+								canvasContext.stroke();
+							}
+						});
+					}
+				});
+			}
+
+			function appendChatMessage(user, message) {
+				var userName = user? user.name : 'Unkown';
+				var $message = $('<li class="message"><strong>' + userName + ':</strong> ' + message + '</li>');
+				if (room.isLocalUser(user)) {
+					$message.addClass('local');
 				}
-			});
-		}
-
-		function appendChatMessage(user, message) {
-			var userName = user? user.name : 'Unkown';
-			var $message = $('<li class="message"><strong>' + userName + ':</strong> ' + message + '</li>');
-			if (room.isLocalUser(user)) {
-				$message.addClass('local');
+				$messages.append($message);
 			}
-			$messages.append($message);
-		}
 
-		function enableAudio(user) {
-			if (user) {
-				room.startUserAudio(user.key);
-				$('#user-'+user.key+' .audio').removeClass('hidden');
+			function enableAudio(user) {
+				if (user) {
+					room.startUserAudio(user.key);
+					$('#user-'+user.key+' .audio').removeClass('hidden');
+				}
 			}
-		}
 
-		function addMessage(text, type) {
-			$alerts.append('<li class="alert alert-' + type + '" role="alert">' + text + '</li>');
-			fixDimensions();
-		}
-
+			function addMessage(text, type) {
+				$alerts.append('<li class="alert alert-' + type + '" role="alert">' + text + '</li>');
+				fixDimensions();
+			}
+		})();
 	</script>
 
 @stop
