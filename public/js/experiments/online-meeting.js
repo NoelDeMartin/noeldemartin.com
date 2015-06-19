@@ -663,23 +663,36 @@ function Room(key, data) {
 	function processSyncMessage(peerKey, message) {
 		var message = JSON.parse(message);
 		// TODO use arraybuffer instead
-		if (message.type == 'full') {
-			if (exists(peers[peerKey]['channels']['sync'])) {
-				var data = {
-					boardPaths: myself.boardPaths,
-					chatMessages: myself.chatMessages,
-					enabledAudios: myself.enabledAudios
-				};
-				peers[peerKey]['channels']['sync'].send(JSON.stringify({type: 'data', data: data}));
-			}
-		} else {
-			myself.boardPaths = message.data.boardPaths;
-			myself.chatMessages = message.data.chatMessages;
-			myself.enabledAudios = message.data.enabledAudios;
-			if (syncSuccessfulCallback != null) {
-				syncSuccessfulCallback();
-				syncSuccessfulCallback = null;
-			}
+		switch(message.type) {
+			case 'full':
+				var channel = peers[peerKey]['channels']['sync'];
+				// TODO sending audio from non-audio capable clients may cause errors (like missing enabled audios)
+				channel.send(JSON.stringify({type: 'audio', enabledAudios: myself.enabledAudios}));
+				$.each(myself.boardPaths, function(peerKey, paths) {
+					$.each(paths, function(index, path) {
+						channel.send(JSON.stringify({type: 'board-path', peerKey: peerKey, path: path}));
+					});
+				});
+				$.each(myself.chatMessages, function(key, message) {
+					channel.send(JSON.stringify({type: 'chat-message', message: message}));
+				});
+				channel.send(JSON.stringify({type: 'end'}));
+				break;
+			case 'audio':
+				myself.enabledAudios = message.enabledAudios;
+				break;
+			case 'board-path':
+				myself.boardPaths[message.peerKey].push(message.path);
+				break;
+			case 'chat-message':
+				myself.chatMessages.push(message.message);
+				break;
+			case 'end':
+				if (syncSuccessfulCallback != null) {
+					syncSuccessfulCallback();
+					syncSuccessfulCallback = null;
+				}
+				break;
 		}
 	}
 	function processBoardMessage(peerKey, message) {
