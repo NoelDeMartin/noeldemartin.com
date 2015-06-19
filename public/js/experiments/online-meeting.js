@@ -19,7 +19,12 @@ if (navigator.mozGetUserMedia) {
 function initRoom(key, callback) {
 	var firebase = new Firebase('https://brilliant-fire-1291.firebaseio.com/rooms/' + key);
 	firebase.once('value', function(snapshot) {
-		callback(new Room(snapshot.key(), snapshot.val()));
+		var roomData = snapshot.val();
+		if (exists(roomData)) {
+			callback(new Room(snapshot.key(), roomData));
+		} else {
+			callback(null);
+		}
 	}, function() {
 		console.debug('Error entering room');
 	});

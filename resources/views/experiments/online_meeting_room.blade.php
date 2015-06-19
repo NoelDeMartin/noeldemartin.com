@@ -253,6 +253,10 @@
 			});
 
 			initRoom('{{ $roomKey }}', function(roomRef) {
+				if (roomRef == null) {
+					alert("This room is closed or doesn't exist!");
+					return;
+				}
 				room = roomRef;
 				$roomName.text(room.name);
 
