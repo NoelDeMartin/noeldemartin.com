@@ -14,8 +14,6 @@ if (navigator.mozGetUserMedia) {
 		element.src = (URL || webkitURL).createObjectURL(stream);
 		element.play();
 	}
-} else {
-	alert("Your browser doesn't have the required features for the tool to work, plese use Firefox or Chrome instead");
 }
 
 function initRoom(key, callback) {
@@ -25,6 +23,10 @@ function initRoom(key, callback) {
 	}, function() {
 		console.debug('Error entering room');
 	});
+}
+
+function isAudioAvailable() {
+	return exists(navigator.getUserMedia) && exists(attachMediaStream);
 }
 
 /* RoomsManager class */
@@ -101,6 +103,7 @@ function Room(key, data) {
 	myself.boardPaths = {};
 	myself.chatMessages = [];
 	myself.enabledAudios = [];
+	myself.audioAvailable = isAudioAvailable();
 
 	// Setup Private Attributes
 	var onNewUser = function(user) {},
@@ -165,73 +168,18 @@ function Room(key, data) {
 					setUpSignaling();
 					setUpICE();
 
-					// This must be done before connecting because of this: http://stackoverflow.com/questions/25986267/webrtc-works-in-chrome-but-not-firefox
-					navigator.getUserMedia({audio:true}, function(stream) {
-						audioStream = stream;
-
-						// Connect with users
-						if (getDictionaryCount(roomPreviousUsers) > 0) {
-							pendingUsersSync = [];
-							syncSuccessfulCallback = (typeof success == 'function')? success : function(){};
-							for (peerKey in roomPreviousUsers) {
-								if (exists(roomPreviousUsers[peerKey]['name'])) {
-									pendingUsersSync.push(peerKey);
-									connectWith(peerKey);
-								} else {
-									roomUsersRef.child(peerKey).remove();
-								}
-							}
-						}
-						if ((!pendingUsersSync || pendingUsersSync.length == 0) && typeof success == 'function') {
-							success();
-						} else {
-							setTimeout(checkSync, 3000);
-						}
-
-						// Listen and retrieve room users
-						roomUsersRef.on('child_added', function(snapshot) {
-							var newUser = new RoomUser(snapshot.key(), snapshot.val());
-							if (newUser.isValid()) {
-								myself.users[newUser.key] = newUser;
-								onNewUser(newUser);
-							}
-						}, function (error) {
-							console.log('The room users listener failed: ' + error.code);
+					if (myself.audioAvailable) {
+						// This must be done before connecting because of this: http://stackoverflow.com/questions/25986267/webrtc-works-in-chrome-but-not-firefox
+						navigator.getUserMedia({audio:true}, function(stream) {
+							audioStream = stream;
+							init(roomPreviousUsers, success);
+						}, function(error) {
+							myself.audioAvailable = false;
+							init(roomPreviousUsers, success);
 						});
-						roomUsersRef.on('child_changed', function(snapshot) {
-							var user = myself.users[snapshot.key()];
-							if (exists(user)) {
-								var shouldUpdateBoard = user.diffBoard(snapshot.val());
-								user.update(snapshot.val());
-								onUserUpdated(user);
-								if (shouldUpdateBoard) {
-									onBoardUpdated(myself.boardPaths);
-								}
-							}
-						}, function (error) {
-							console.log('The room users listener failed: ' + error.code);
-						});
-						roomUsersRef.on('child_removed', function(snapshot) {
-							var user = myself.users[snapshot.key()];
-							if (exists(user) && exists(peers[user.key])) {
-								clearUserPaths(user.key);
-								onUserConnectionFinished(user.key);
-								onUserLeave(user);
-								onDisableAudio(user);
-								onBoardUpdated(myself.boardPaths);
-								if (exists(peers[user.key]['connection'])) {
-									peers[user.key]['connection'].close();
-								}
-								delete myself.users[user.key];
-								delete peers[user.key];
-							}
-						}, function (error) {
-							console.log('The room users listener failed: ' + error.code);
-						});
-
-					}, function(error) {
-						onError('Activating local sound', error);
-					});
+					} else {
+						init(roomPreviousUsers, success);
+					}
 				} else {
 					console.log('Error entering user to room: ' + error.code);
 				}
@@ -336,20 +284,24 @@ function Room(key, data) {
 		localUserRef.update({drawingColor: getColor(color)});
 	}
 	myself.enableAudio = function() {
-		myself.enabledAudios.push(localUserKey);
-		$.each(peers, function(key, peerData) {
-			if (exists(peerData['channels']['audio'])) {
-				peerData['channels']['audio'].send('enable');
-			}
-		});
+		if (myself.audioAvailable) {
+			myself.enabledAudios.push(localUserKey);
+			$.each(peers, function(key, peerData) {
+				if (exists(peerData['channels']['audio'])) {
+					peerData['channels']['audio'].send('enable');
+				}
+			});
+		}
 	}
 	myself.disableAudio = function() {
-		removeFromArray(myself.enabledAudios, localUserKey);
-		$.each(peers, function(key, peerData) {
-			if (exists(peerData['channels']['audio'])) {
-				peerData['channels']['audio'].send('disable');
-			}
-		});
+		if (myself.audioAvailable) {
+			removeFromArray(myself.enabledAudios, localUserKey);
+			$.each(peers, function(key, peerData) {
+				if (exists(peerData['channels']['audio'])) {
+					peerData['channels']['audio'].send('disable');
+				}
+			});
+		}
 	}
 	myself.sendChatMessage = function(message) {
 		myself.chatMessages.push({user: localUserKey, message: message});
@@ -363,7 +315,9 @@ function Room(key, data) {
 	// This should be called from the callback of a user event in order to work for mobile
 	// for more info see: https://mauricebutler.wordpress.com/2014/02/22/android-chrome-does-not-allow-applications-to-play-html5-audio-without-an-explicit-action-by-the-user/
 	myself.initAudio = function(audioObjects) {
-		freeAudioObjects = audioObjects;
+		if (myself.audioAvailable) {
+			freeAudioObjects = audioObjects;
+		}
 	}
 	myself.startUserAudio = function(userKey) {
 		if (exists(peers[userKey]['stream']) && freeAudioObjects.length > 0) {
@@ -386,13 +340,78 @@ function Room(key, data) {
 	}
 
 	/* Private Methods */
+	function init(roomPreviousUsers, success) {
+		// Connect with users
+		if (getDictionaryCount(roomPreviousUsers) > 0) {
+			pendingUsersSync = [];
+			syncSuccessfulCallback = (typeof success == 'function')? success : function(){};
+			for (peerKey in roomPreviousUsers) {
+				if (exists(roomPreviousUsers[peerKey]['name'])) {
+					pendingUsersSync.push(peerKey);
+					connectWith(peerKey);
+				} else {
+					roomUsersRef.child(peerKey).remove();
+				}
+			}
+		}
+		if ((!pendingUsersSync || pendingUsersSync.length == 0) && typeof success == 'function') {
+			success();
+		} else {
+			setTimeout(checkSync, 3000);
+		}
+
+		// Listen and retrieve room users
+		roomUsersRef.on('child_added', function(snapshot) {
+			var newUser = new RoomUser(snapshot.key(), snapshot.val());
+			if (newUser.isValid()) {
+				myself.users[newUser.key] = newUser;
+				onNewUser(newUser);
+			}
+		}, function (error) {
+			console.log('The room users listener failed: ' + error.code);
+		});
+		roomUsersRef.on('child_changed', function(snapshot) {
+			var user = myself.users[snapshot.key()];
+			if (exists(user)) {
+				var shouldUpdateBoard = user.diffBoard(snapshot.val());
+				user.update(snapshot.val());
+				onUserUpdated(user);
+				if (shouldUpdateBoard) {
+					onBoardUpdated(myself.boardPaths);
+				}
+			}
+		}, function (error) {
+			console.log('The room users listener failed: ' + error.code);
+		});
+		roomUsersRef.on('child_removed', function(snapshot) {
+			var user = myself.users[snapshot.key()];
+			if (exists(user) && exists(peers[user.key])) {
+				clearUserPaths(user.key);
+				onUserConnectionFinished(user.key);
+				onUserLeave(user);
+				if (myself.audioAvailable) {
+					onDisableAudio(user);
+				}
+				onBoardUpdated(myself.boardPaths);
+				if (exists(peers[user.key]['connection'])) {
+					peers[user.key]['connection'].close();
+				}
+				delete myself.users[user.key];
+				delete peers[user.key];
+			}
+		}, function (error) {
+			console.log('The room users listener failed: ' + error.code);
+		});
+	}
 	function setUpSignaling() {
 		localUserSignalingRef.on('child_added', function(snapshot) {
 			var signalingData = snapshot.val(),
 				session = JSON.parse(signalingData.session);
 			if (session.type == 'offer') {
 				var connection = createConnection(signalingData.origin);
-				createAudioStream(signalingData.origin);
+				if (myself.audioAvailable) {
+					createAudioStream(signalingData.origin);
+				}
 				if (!exists(myself.boardPaths[signalingData.origin])) {
 					myself.boardPaths[signalingData.origin] = [{x: [], y: []}];
 				}
@@ -460,8 +479,10 @@ function Room(key, data) {
 		createChannel(peerKey, 'sync', processSyncMessage);
 		createChannel(peerKey, 'board', processBoardMessage);
 		createChannel(peerKey, 'chat', processChatMessage);
-		createChannel(peerKey, 'audio', processAudioMessage);
-		createAudioStream(peerKey);
+		if (myself.audioAvailable) {
+			createChannel(peerKey, 'audio', processAudioMessage);
+			createAudioStream(peerKey);
+		}
 		sendOffer(peerKey);
 	}
 	function reconnectWith(peerKey) {
@@ -500,6 +521,7 @@ function Room(key, data) {
 			} else if (channelLabel == 'chat') {
 				callback = processChatMessage;
 			} else if (channelLabel == 'audio') {
+				if (!myself.audioAvailable) return;
 				callback = processAudioMessage;
 			} else if (channelLabel == 'sync') {
 				callback = processSyncMessage;

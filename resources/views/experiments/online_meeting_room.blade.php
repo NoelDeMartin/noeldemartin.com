@@ -37,13 +37,19 @@
 
 		#room-title {
 			text-align: center;
-			font-size: 3rem;
 			position: fixed;
 			padding: 1rem 0;
-			width: 100%;
+			width: 58%;
 			top: 0;
-			left: 0;
-			right: 0;
+			left: 21%;
+		}
+
+		#room-title #room-name {
+			font-size: 3rem;
+		}
+
+		#room-title #alerts .alert {
+			margin: 10px;
 		}
 
 		#board {
@@ -162,6 +168,7 @@
 			<button id="refresh" class="btn btn-primary">
 				<span class="glyphicon glyphicon-refresh"></span> Refresh
 			</button>
+			<ul id="alerts" class="list-unstyled"/>
 		</div>
 		<canvas id="board" ></canvas>
 		<div id="chat" class="side-panel">
@@ -188,6 +195,7 @@
 			$roomTitle = $('#room-title'),
 			$roomName = $roomTitle.find('#room-name'),
 			$refresh = $roomTitle.find('#refresh'),
+			$alerts = $roomTitle.find('#alerts'),
 			$info = $('#info'),
 			$infoTitle = $info.find('.title'),
 			$controls = $info.find('#controls'),
@@ -198,16 +206,17 @@
 			$messages = $chat.find('#messages'),
 			$message = $chat.find('#message'),
 			$newMessage = $message.find('#new-message');
-		var room = null;
+		var room = null,
+			fixDimensions = function() {};
 
 		// Prepare Room
 		var $window = $(window);
 		$window.ready(function() {
-			function fixDimensions() {
+			fixDimensions = function() {
 				var screenWidth = $window.width(),
 					screenHeight = $window.height(),
 					chatTitleHeight = $chatTitle.outerHeight(),
-					boardDimensions = Math.min(screenWidth - $chat.width() - $info.width(), screenHeight)*0.9;
+					boardDimensions = Math.min(screenWidth - $chat.width() - $info.width(), screenHeight - $roomTitle.outerHeight())*0.9;
 				$users.css('max-height', (screenHeight - $infoTitle.outerHeight() - $controls.outerHeight()) + 'px');
 				$board.css('top', Math.max($roomTitle.outerHeight(), (screenHeight/2 - boardDimensions/2)) + 'px');
 				$board.css('left', (screenWidth/2 - boardDimensions/2) + 'px');
@@ -256,14 +265,16 @@
 							bootbox.prompt(promptData);
 							return;
 						}
-						// Prepare audio objects (necessary to work in mobile, fore more info see: https://mauricebutler.wordpress.com/2014/02/22/android-chrome-does-not-allow-applications-to-play-html5-audio-without-an-explicit-action-by-the-user/
-						var audioObjects = [], audio;
-						for (var i = 0; i < 10; i++) {
-							audio = document.createElement('audio');
-							audio.load();
-							audioObjects.push(audio);
-						};
-						room.initAudio(audioObjects);
+						if (room.audioAvailable) {
+							// Prepare audio objects (necessary to work in mobile, fore more info see: https://mauricebutler.wordpress.com/2014/02/22/android-chrome-does-not-allow-applications-to-play-html5-audio-without-an-explicit-action-by-the-user/
+							var audioObjects = [], audio;
+							for (var i = 0; i < 10; i++) {
+								audio = document.createElement('audio');
+								audio.load();
+								audioObjects.push(audio);
+							};
+							room.initAudio(audioObjects);
+						}
 						startRoom(result);
 					}
 				};
@@ -332,8 +343,10 @@
 					}
 				});
 
-				for (i in room.enabledAudios) {
-					enableAudio(room.users[room.enabledAudios[i]]);
+				if (room.audioAvailable) {
+					for (i in room.enabledAudios) {
+						enableAudio(room.users[room.enabledAudios[i]]);
+					}
 				}
 
 				// Init canvas
@@ -385,6 +398,12 @@
 				for (i in room.chatMessages) {
 					message = room.chatMessages[i];
 					appendChatMessage(room.users[message.user], message.message);
+				}
+
+				// Final modifications
+				if (!room.audioAvailable) {
+					$enableAudio.addClass('hidden');
+					addMessage('Audio is not available in your browser', 'warning');
 				}
 
 				$loading.addClass('hidden');
@@ -445,6 +464,11 @@
 				room.startUserAudio(user.key);
 				$('#user-'+user.key+' .audio').removeClass('hidden');
 			}
+		}
+
+		function addMessage(text, type) {
+			$alerts.append('<li class="alert alert-' + type + '" role="alert">' + text + '</li>');
+			fixDimensions();
 		}
 
 	</script>
