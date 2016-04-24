@@ -158,6 +158,9 @@ nav li#chilli a:hover {
 #main-content {
   padding: 15px;
 }
+#about {
+  text-align: justify;
+}
 .post .title {
   font-size: 3rem;
   font-family: "Lucida Grande", "Tahoma", sans-serif;

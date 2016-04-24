@@ -61,7 +61,6 @@
 			@if (Session::has('message'))
 				<div class="alert alert-info">{!! Session::get('message') !!}</div>
 			@endif
-			<div class="alert alert-info"><strong>Hi There!</strong> I just started a <strong>{!! Html::linkRoute('posts.show', 'call for Mentor / Mastermind', 'call-for-mentor-mastermind') !!}</strong>, if you are interested or know anyone who may be <strong>{!! Html::link('mailto:noeldemartin@gmail.com', 'let me know') !!}</strong>.</div>
 			@yield('content')
 		</div>
 
