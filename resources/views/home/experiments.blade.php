@@ -6,6 +6,7 @@
 		<ul>
 			<li>{!! Html::linkRoute('experiments.freedom-calculator', 'Freedom Calculator') !!}</li>
 			<li>{!! Html::linkRoute('experiments.online-meeting', 'Online Meeting') !!}</li>
+			<li>{!! Html::linkRoute('experiments.synonymizer', 'Random Synonymizer') !!}</li>
 			<li>...</li>
 		</ul>
 	</article>

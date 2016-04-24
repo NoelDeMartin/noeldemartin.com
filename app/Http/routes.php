@@ -42,4 +42,6 @@ Route::group(['prefix' => 'experiments'], function() {
 	Route::get('freedom-calculator', ['uses' => 'ExperimentsController@freedomCalculator', 'as' => 'experiments.freedom-calculator']);
 	Route::get('online-meeting', ['uses' => 'ExperimentsController@onlineMeeting', 'as' => 'experiments.online-meeting']);
 	Route::get('online-meeting/{roomKey}', ['uses' => 'ExperimentsController@onlineMeetingRoom', 'as' => 'experiments.online-meeting-room']);
+	Route::get('synonymizer', ['uses' => 'ExperimentsController@synonymizer', 'as' => 'experiments.synonymizer']);
+	Route::post('synonymize-text', ['uses' => 'ExperimentsController@synonymizeText', 'as' => 'experiments.synonymize_text']);
 });
