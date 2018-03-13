@@ -1,11 +1,10 @@
-<?php namespace App\Http\Controllers;
+<?php
 
-use App\Model\Invitation;
-use View;
-use Validator;
-use Input;
+namespace App\Http\Controllers;
+
 use Mail;
-use Redirect;
+use Validator;
+use App\Models\Invitation;
 
 class InvitationsController extends Controller {
 
@@ -18,7 +17,7 @@ class InvitationsController extends Controller {
 	{
 		$invitations = Invitation::orderBy('created_at', 'desc')->get();
 
-		return View::make('invitations.index', compact('invitations'));
+		return view('invitations.index', compact('invitations'));
 	}
 
 	/**
@@ -28,7 +27,7 @@ class InvitationsController extends Controller {
 	 */
 	public function create()
 	{
-		return View::make('invitations.create');
+		return view('invitations.create');
 	}
 
 	/**
@@ -38,11 +37,11 @@ class InvitationsController extends Controller {
 	 */
 	public function store()
 	{
-		$validator = Validator::make($data = Input::all(), Invitation::$rules);
+		$validator = Validator::make($data = request()->all(), Invitation::$rules);
 
 		if ($validator->fails())
 		{
-			return Redirect::back()->withErrors($validator)->withInput();
+			return redirect()->back()->withErrors($validator)->withInput();
 		}
 
 		// Create Invitation
@@ -57,7 +56,7 @@ class InvitationsController extends Controller {
 			$message->to($email)->subject('Are you ready to Review?');
 		});
 
-		return Redirect::route('invitations.index');
+		return redirect()->route('invitations.index');
 	}
 
 	/**
@@ -70,7 +69,7 @@ class InvitationsController extends Controller {
 	{
 		Invitation::destroy($id);
 
-		return Redirect::route('invitations.index');
+		return redirect()->route('invitations.index');
 	}
 
 }

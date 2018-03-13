@@ -1,7 +1,7 @@
 <?php
-use App\Model\Invitation;
-use Illuminate\Database\Seeder;
+use App\Models\Invitation;
 use Faker\Factory as Faker;
+use Illuminate\Database\Seeder;
 
 class InvitationsTableSeeder extends Seeder {
 

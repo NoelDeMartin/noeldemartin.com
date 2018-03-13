@@ -25,7 +25,7 @@
 @section('scripts')
 
 	<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
-	{!! Html::script('js/experiments/online-meeting.js') !!}
+	<script type="text/javascript" src="{!! asset('js/experiments/online-meeting.js') !!}"></script>
 
 	<script type="text/javascript">
 		var $newRoomForm = $('#new-room'),

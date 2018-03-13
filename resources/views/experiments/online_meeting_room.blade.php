@@ -186,9 +186,9 @@
 
 	<!-- TODO add fallbacks -->
 	<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-	{!! Html::script('js/experiments/bootbox.min.js') !!}
-	{!! Html::script('js/experiments/online-meeting.js') !!}
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>ç
+	<script type="text/javascript" src="{!! asset('js/experiments/bootbox.min.js') !!}"></script>
+	<script type="text/javascript" src="{!! asset('js/experiments/online-meeting.js') !!}"></script>
 
 	<script type="text/javascript">
 		(function () {

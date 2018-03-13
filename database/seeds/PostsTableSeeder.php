@@ -1,8 +1,8 @@
 <?php
 
-use App\Model\Post;
-use Illuminate\Database\Seeder;
+use App\Models\Post;
 use Faker\Factory as Faker;
+use Illuminate\Database\Seeder;
 
 class PostsTableSeeder extends Seeder {
 

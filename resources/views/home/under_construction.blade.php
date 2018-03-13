@@ -17,7 +17,7 @@
 		<div id="top">
 			@if (Auth::check() && Auth::user()->is_reviewer)
 				<div id="alert">
-					Hello Reviewer! You can check which posts are pending <b>{!! Html::linkRoute('posts.index', 'here') !!}</b>. Cheers, and thanks for contributing.
+					Hello Reviewer! You can check which posts are pending <b><a href="{!! route('posts.index') !!}">here</a></b>. Cheers, and thanks for contributing.
 				</div>
 			@endif
 			@include('assets.twitter')
@@ -31,8 +31,6 @@
 		</table>
 
 		<h1 id="title">Under<br>Construction</h1>
-
-		@include('assets.analytics')
 
 	</body>
 </html>

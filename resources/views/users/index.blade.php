@@ -21,8 +21,8 @@
 		<tbody>
 			@foreach ($users as $user)
 				<tr>
-					<td>{!! Html::linkRoute('users.show', $user->username, $user->id) !!}</td>
-					<td>{!! Html::linkRoute('users.edit', 'edit', $user->id) !!}</td>
+					<td><a href="{!! route('users.show', [$user->id]) !!}">{{ $user->username }}</a></td>
+					<td><a href="{!! route('users.edit', [$user->id]) !!}">edit</a></td>
 					<td>{!! $user->email !!}</td>
 					<td>{!! implode(', ', $user->getRolesArray()) !!}</td>
 					<td data-order="{!! $user->created_at->timestamp !!}">{!! $user->created_at->toFormattedDateString() !!}</td>
@@ -31,7 +31,7 @@
 			@endforeach
 		</tbody>
 	</table>
-	{!! Html::linkRoute('users.create', 'New User', [], ['class' => 'btn btn-lg btn-primary', 'role' => 'button']) !!}
+	<a href="{!! route('users.create') !!}" class="btn btn-lg btn-primary" role="button">New User</a>
 @stop
 
 @section('scripts')

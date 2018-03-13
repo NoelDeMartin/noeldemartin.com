@@ -3,9 +3,9 @@
 @section('content')
 	<h1>Edit {!! $user->username !!}</h1>
 
-	{!! var_dump($user) !!}
+	<pre>{!! $user->toJson() !!}</pre>
 
-	{!! Html::linkRoute('users.destroy', 'Delete', $user->id, ['class' => 'btn btn-lg btn-danger', 'id' => 'destroy-user', 'role' => 'button']) !!}
+	<a href="{!! route('users.destroy', [$user->id]) !!}" id="destroy-user" role="button" class="btn btn-lg btn-danger">Delete</a>
 @stop
 
 @section('scripts')

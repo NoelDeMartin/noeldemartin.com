@@ -12,6 +12,8 @@ class ThesaurusTableSeeder extends Seeder {
 			fgets($thesaurus);
 
 			// Parse File
+			$count = 0;
+			$isProduction = app()->environment('production');
 			while (($wordLine = fgets($thesaurus)) !== false) {
 				$info = explode('|', $wordLine);
 				$word = $info[0];
@@ -32,8 +34,10 @@ class ThesaurusTableSeeder extends Seeder {
 					'word' => $word,
 					'data' => json_encode($data)
 				]);
+
+				if (!$isProduction && $count++ == 1000) break;
 			}
-			if (!feof($thesaurus)) {
+			if ($isProduction && !feof($thesaurus)) {
 				echo "Error: unexpected fgets() fail\n";
 			}
 			fclose($thesaurus);

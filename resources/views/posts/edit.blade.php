@@ -5,39 +5,64 @@
 @stop
 
 @section('content')
-	<h1>Edit Post {!! Html::linkRoute('posts.destroy', 'Delete', $post->id, ['class' => 'btn btn-lg btn-danger', 'id' => 'destroy-post', 'role' => 'button']) !!}</h1>
+	<h1>
+		Edit Post
+		<a
+			href="{!! route('posts.destroy', [$post->id]) !!}"
+			class="btn btn-lg btn-danger"
+			id="destroy-post"
+			role="button"
+		>
+			Delete
+		</a>
+	</h1>
 
-	{!! Form::open(['route' => ['posts.update', $post->id], 'method' => 'PATCH', 'role' => 'form']) !!}
+	<form action="{!! route('posts.update', [$post->id]) !!}" method="POST" role="form">
 
-	<div class="form-group">
-		{!! Form::text('title', Input::old('title', $post->title), ['placeholder' => 'Title', 'class' => 'form-control']) !!}
-	</div>
+		<div class="form-group">
+			<input type="text" name="title" value="{{ old('title', $post->title) }}" placeholder="Title" class="form-control">
+		</div>
 
-	<ul id="tabs" class="nav nav-tabs" role="tablist">
-		<li id="both" class="active"><a href="javascript:void(0);">Both</a></li>
-		<li id="write"><a href="javascript:void(0);">Write</a></li>
-		<li id="preview"><a href="javascript:void(0);">Preview</a></li>
-	</ul>
-	<div id="editor" class="both">
-		{!! Form::textarea('text_markdown', Input::old('text_markdown', $post->text_markdown), ['placeholder' => 'Markdown text goes here', 'id' => 'text-markdown', 'class' => 'editor-text']) !!}
-		<div id="column"></div>
-		<div class="post editor-text"><div id="text-html" class="body readable-text"></div></div>
-		<div class="clearfix"></div>
-	</div>
+		<ul id="tabs" class="nav nav-tabs" role="tablist">
+			<li id="both" class="active"><a href="javascript:void(0);">Both</a></li>
+			<li id="write"><a href="javascript:void(0);">Write</a></li>
+			<li id="preview"><a href="javascript:void(0);">Preview</a></li>
+		</ul>
+		<div id="editor" class="both">
+			<textarea
+				name="text_markdown"
+				placeholder="Markdown text goes here"
+				id="text-markdown"
+				class="editor-text"
+			>{{ old('text_markdown', $post->text_markdown) }}</textarea>
+			<div id="column"></div>
+			<div class="post editor-text"><div id="text-html" class="body readable-text"></div></div>
+			<div class="clearfix"></div>
+		</div>
 
-	<br>
-	<div class="form-group">
-		{!! Form::text('published_at', Input::old('published_at', $post->published_at->format(App\Model\Post::DATE_FORMAT)), ['placeholder' => 'Publication date (dd/mm/yyyy)', 'class' => 'form-control', 'id' => 'published_at']) !!}
-	</div>
+		<br>
+		<div class="form-group">
+			<input
+				type="text"
+				name="published_at"
+				value="{{ old('published_at', $post->published_at->format(App\Models\Post::DATE_FORMAT)) }}"
+				placeholder="Publication date (dd/mm/yyyy)"
+				class="form-control"
+				id="published_at"
+			>
+		</div>
 
-	{!! Form::hidden('text_html', Input::old('text_html', $post->text_html)) !!}
+		<input type="hidden" name="text_html" value="{{ old('text_html', $post->text_html) }}">
 
-	@foreach ($errors->all() as $error)
-		<div class="alert alert-danger" role="alert">{!! $error !!}</div>
-	@endforeach
+		@foreach ($errors->all() as $error)
+			<div class="alert alert-danger" role="alert">{!! $error !!}</div>
+		@endforeach
 
-	{!! Form::submit('Submit', ['class' => 'btn btn-default']) !!}
-	{!! Form::close() !!}
+		<input type="hidden" name="_method" value="PATCH" />
+		<input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+		<input type="submit" value="Submit" class="btn btn-default">
+	</form>
 @stop
 
 @section('scripts')
@@ -95,7 +120,7 @@
 
 		// Initialize components
 		$('#published_at').datepicker({
-			format: '{!! App\Model\Post::DATE_FORMAT_JS !!}'
+			format: '{!! App\Models\Post::DATE_FORMAT_JS !!}'
 		});
 		$('#destroy-post').restfulize({
 			method: 'DELETE',

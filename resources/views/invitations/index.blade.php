@@ -21,7 +21,13 @@
 			@foreach ($invitations as $invitation)
 				<tr>
 					<td>{!! $invitation->email !!}</td>
-					<td>{!! Html::linkRoute('invitations.destroy', 'delete', $invitation->id, ['class' => 'destroy-invitation', 'data-email' => $invitation->email]) !!}</td>
+					<td>
+						<a
+							href="{!! route('invitations.destroy', [$invitation->id]) !!}"
+							class="destroy-invitation"
+							data-email="{!! $invitation->email !!}"
+						>delete</a>
+					</td>
 					<td data-order="{!! $invitation->created_at->timestamp !!}">{!! $invitation->created_at->toFormattedDateString() !!}</td>
 					<td>{!! $invitation->token !!}</td>
 					@if ($invitation->used)
@@ -33,7 +39,7 @@
 			@endforeach
 		</tbody>
 	</table>
-	{!! Html::linkRoute('invitations.create', 'New Invitation', [], ['class' => 'btn btn-lg btn-primary', 'role' => 'button']) !!}
+	<a href="{!! route('invitations.create') !!}" class="btn btn-lg btn-primary" role="button">New Invitation</a>
 @stop
 
 @section('scripts')

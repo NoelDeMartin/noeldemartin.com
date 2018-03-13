@@ -11,6 +11,6 @@
 	<br />
 	<div class="alert alert-info">
 		<span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
-		<strong>You can add {!! Html::linkRoute('blog.rss', 'this') !!} to your rss feed to keep up to date.</strong>
+		<strong>You can add <a href="{!! route('blog.rss') !!}">this</a> to your rss feed to keep up to date.</strong>
 	</div>
 @stop

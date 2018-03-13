@@ -21,33 +21,39 @@
 					(This post hasn't been published yet, it will be public on {!! $post->published_at->toFormattedDateString() !!})
 				@endif
 			</div>
-			{!! Html::link('mailto:noeldemartin+blog.review@gmail.com?subject='.rawurlencode('[Post Review] '.$post->title.' (by '.Auth::user()->username.')'), 'Send Feedback', ['class' => 'btn btn-lg btn-danger', 'role' => 'button']) !!}
+			<a class="btn btn-lg btn-danger" role="button" href="mailto:noeldemartin+blog.review@gmail.com?subject={!! rawurlencode('[Post Review] '.$post->title.' (by '.Auth::user()->username.')') !!}">Send Feedback</a>
 		@endif
 		<div class="comments">
 			@foreach ($post->comments as $comment)
 				<div class="comment">
-					<span class="author"><strong>{!! $comment->author_link? Html::link($comment->author_link, $comment->author) : $comment->author !!}</strong></span>
+					<span class="author"><strong>{!! $comment->author_link? '<a href="' . $comment->author_link . '">' . $comment->author . '</a>' : $comment->author !!}</strong></span>
 					<p class="text">{!! nl2br($comment->text) !!}</p>
 					<span class="date">{!! $comment->created_at->toFormattedDateString() !!}</span>
 				</div>
 			@endforeach
 
 			<div class="new-comment">
-				{!! Form::open(['route' => ['posts.comment', $post->id], 'role' => 'form', 'class' => 'form-inline']) !!}
+				<form action="{!! route('posts.comment', [$post->id]) !!}" method="POST" role="form" class="form-inline">
 
-				<div class="form-group">
-					{!! Form::text('author', null, ['placeholder' => 'Author (Optional)', 'class' => 'form-control']) !!}
-					{!! Form::text('author_link', null, ['placeholder' => 'Contact Link or Email (Optional)', 'class' => 'form-control', 'size' => '32']) !!}
-				</div>
+					<div class="form-group">
+						<input type="text" name="author" placeholder="Author (Optional)" class="form-control">
+						<input type="text" name="author_link" placeholder="Contact Link or Email (Optional)" class="form-control" size="32">
+					</div>
 
-				{!! Form::textarea('text', '', ['placeholder' => 'Comment', 'class' => 'form-control']) !!}
+					<textarea
+						name="text"
+						placeholder="Comment"
+						class="form-control"
+					></textarea>
 
-				@foreach ($errors->all() as $error)
-					<div class="alert alert-danger" role="alert">{!! $error !!}</div>
-				@endforeach
+					@foreach ($errors->all() as $error)
+						<div class="alert alert-danger" role="alert">{!! $error !!}</div>
+					@endforeach
 
-				{!! Form::submit('Add Comment', ['class' => 'btn btn-default']) !!}
-				{!! Form::close() !!}
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
+					<input type="submit" value="Add Comment" class="btn btn-default">
+
+				</form>
 
 				<div class="comment-button hidden">
 					<span class="glyphicon glyphicon-plus"></span> ADD A NEW COMMENT

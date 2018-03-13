@@ -47,13 +47,13 @@
 		<nav>
 			<ul>
 				<li {!! Route::is('blog')? 'class="active"' : '' !!} >
-					{!! Html::linkRoute('blog', 'BLOG') !!}
+					<a href="{!! route('blog') !!}">BLOG</a>
 				</li><li {!! Route::is('about')? 'class="active"' : '' !!} >
-					{!! Html::linkRoute('about', 'ABOUT ME') !!}
+					<a href="{!! route('about') !!}">ABOUT ME</a>
 				</li><li {!! Route::is('experiments')? 'class="active"' : '' !!} >
-					{!! Html::linkRoute('experiments', 'EXPERIMENTS') !!}
+					<a href="{!! route('experiments') !!}">EXPERIMENTS</a>
 				</li><li id="chilli">
-					<a href="http://www.lincolnschilli.com"></a>
+					<a href="https://lincolnschilli.com" target="_blank"></a>
 				</li>
 			</ul>
 		</nav>
@@ -80,10 +80,8 @@
 			}
 		</script>
 
-		{!! Html::script('js/main.js') !!}
+		<script type="text/javascript" src="{!! asset('js/main.js') !!}"></script>
 
 		@yield('scripts')
-
-		@include('assets.analytics')
 	</body>
 </html>

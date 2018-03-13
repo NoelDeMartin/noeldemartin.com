@@ -124,12 +124,12 @@
 	<p id="explanation">How much freedom do you have right now? Until when will you last if your income drops to 0 right now?</p>
 	<div id="wrapper">
 		<div id="calculator">
-			<p>How much do you have? <input id="wealth" value="{!! Input::get('wealth', '0') !!}" type="text" onclick="this.select();"/></p>
-			<p>How much do you spend? <input id="expenses" value="{!! Input::get('expenses', '0') !!}" type="text" onclick="this.select();"/> every
+			<p>How much do you have? <input id="wealth" value="{!! request()->get('wealth', '0') !!}" type="text" onclick="this.select();"/></p>
+			<p>How much do you spend? <input id="expenses" value="{!! request()->get('expenses', '0') !!}" type="text" onclick="this.select();"/> every
 				<select id="expense-rate">
-					<option value="day" {!! (Input::get('expense-rate') == 'day')? 'selected="selected"' : '' !!}>day</option>
-					<option value="week" {!! (Input::get('expense-rate') == 'week')? 'selected="selected"' : '' !!}>week</option>
-					<option value="month" {!! (Input::get('expense-rate', 'month') == 'month')? 'selected="selected"' : '' !!}>month</option>
+					<option value="day" {!! (request()->get('expense-rate') == 'day')? 'selected="selected"' : '' !!}>day</option>
+					<option value="week" {!! (request()->get('expense-rate') == 'week')? 'selected="selected"' : '' !!}>week</option>
+					<option value="month" {!! (request()->get('expense-rate', 'month') == 'month')? 'selected="selected"' : '' !!}>month</option>
 				</select>
 			</p>
 		</div>

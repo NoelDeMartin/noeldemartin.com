@@ -1,4 +1,6 @@
-<?php namespace App\Model;
+<?php
+
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -6,7 +8,7 @@ class PostComment extends Model {
 
 	public static $rules = [
 		'author'		=> 'max:64',
-		'author_link'	=> 'email_or_url',
+		'author_link'	=> '', // TODO email_or_url
 		'text'			=> 'required|max:2048'
 	];
 

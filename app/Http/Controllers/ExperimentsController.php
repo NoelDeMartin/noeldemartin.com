@@ -1,34 +1,32 @@
-<?php namespace App\Http\Controllers;
+<?php
 
-use DB;
-use View;
-use Input;
+namespace App\Http\Controllers;
 
 class ExperimentsController extends Controller {
 
 	function freedomCalculator() {
-		return View::make('experiments.freedom_calculator', ['title' => 'Freedom Calculator']);
+		return view('experiments.freedom_calculator', ['title' => 'Freedom Calculator']);
 	}
 
 	function onlineMeeting() {
-		return View::make('experiments.online_meeting', ['title' => 'Online Meeting Tool']);
+		return view('experiments.online_meeting', ['title' => 'Online Meeting Tool']);
 	}
 
 	function onlineMeetingRoom($roomKey) {
-		return View::make('experiments.online_meeting_room', ['roomKey' => $roomKey, 'title' => 'Online Meeting Tool']);
+		return view('experiments.online_meeting_room', ['roomKey' => $roomKey, 'title' => 'Online Meeting Tool']);
 	}
 
 	function synonymizer() {
-		return View::make('experiments.synonymizer', ['title' => 'Random Synonymizer']);
+		return view('experiments.synonymizer', ['title' => 'Random Synonymizer']);
 	}
 
 	function synonymizeText() {
-		$text = explode(' ', Input::get('text'));
+		$text = explode(' ', request('text'));
 		foreach ($text as $key => $word) {
 			if (strlen($word) > 2) {
 				$originalWord = trim($word);
 				$singularWord = str_singular($originalWord);
-				$wordData = DB::table('thesaurus')->where('word', $singularWord)->first();
+				$wordData = app('db')->table('thesaurus')->where('word', $singularWord)->first();
 				if (!is_null($wordData)) {
 					$meanings = json_decode($wordData->data);
 					$randomMeaning = $meanings[array_rand($meanings)];

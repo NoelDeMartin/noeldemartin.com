@@ -7,35 +7,37 @@
 		<div class="alert alert-warning" role="alert">
 			Seems like this invitation has already been used...
 		</div>
-		{!! Html::linkRoute('home', 'Ok', [], ['class' => 'btn btn-lg btn-primary', 'role' => 'button']) !!}
+		<a href="{!! route('home') !!}" class="btn btn-lg btn-primary" role="button">Ok</a>
 	@else
 
-		{!! Form::open(['route' => 'users.store', 'role' => 'form']) !!}
+		<form action="{!! route('users.store') !!}" role="form" method="POST">
 
-		<div class="form-group">
-			<label for="username">Username</label>
-			{!! Form::text('username', null, ['placeholder' => 'Username', 'class' => 'form-control']) !!}
-		</div>
+			<div class="form-group">
+				<label for="username">Username</label>
+				<input type="text" name="username" placeholder="Username" class="form-control">
+			</div>
 
-		<div class="form-group">
-			<label for="email">Email</label>
-			{!! Form::email('email', $invitation->email, ['placeholder' => 'Email', 'class' => 'form-control']) !!}
-		</div>
+			<div class="form-group">
+				<label for="email">Email</label>
+				<input type="email" name="email" value="{!! $invitation->email !!}" placeholder="Email" class="form-control">
+			</div>
 
-		<div class="form-group">
-			<label for="password">Password</label>
-			{!! Form::password('password', ['placeholder' => 'Password', 'class' => 'form-control']) !!} <br>
-			{!! Form::password('confirm_password', ['placeholder' => 'Confirm Password', 'class' => 'form-control']) !!}
-		</div>
+			<div class="form-group">
+				<label for="password">Password</label>
+				<input type="password" name="password" placeholder="Password" class="form-control"> <br>
+				<input type="password" name="confirm_password" placeholder="Confirm Password" class="form-control">
+			</div>
 
-		{!! Form::hidden('invitation_token', $invitation->token) !!}
+			<input type="hidden" name="invitation_token" value="{!! $invitation->token !!}">
 
-		@foreach ($errors->all() as $error)
-			<div class="alert alert-danger" role="alert">{!! $error !!}</div>
-		@endforeach
+			@foreach ($errors->all() as $error)
+				<div class="alert alert-danger" role="alert">{!! $error !!}</div>
+			@endforeach
 
-		{!! Form::submit('Submit', ['class' => 'btn btn-default']) !!}
-		{!! Form::close() !!}
+			<input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+			<input type="submit" value="Submit" class="btn btn-default">
+		</form>
 
 	@endif
 

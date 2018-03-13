@@ -20,9 +20,9 @@
 		<tbody>
 			@foreach ($posts as $post)
 				<tr>
-					<td>{!! Html::linkRoute('posts.show', $post->title, $post->id) !!}</td>
+					<td><a href="{!! route('posts.show', [$post->id]) !!}">{{ $post->title }}</a></td>
 					@if (Auth::check() && Auth::user()->is_admin)
-						<td>{!! Html::linkRoute('posts.edit', 'edit', $post->id) !!}</td>
+						<td><a href="{!! route('posts.edit', [$post->id]) !!}">edit</a></td>
 					@endif
 					<td data-order="{!! $post->published_at->timestamp !!}">
 						@if ($post->isPublished())
@@ -36,7 +36,7 @@
 		</tbody>
 	</table>
 	@if (Auth::check() && Auth::user()->is_admin)
-		{!! Html::linkRoute('posts.create', 'New Post', [], ['class' => 'btn btn-lg btn-primary', 'role' => 'button']) !!}
+		<a href="{!! route('posts.create') !!}" class="btn btn-lg btn-primary" role="button">New Post</a>
 	@endif
 @stop
 

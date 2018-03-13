@@ -1,94 +1,78 @@
-<?php namespace App\Http\Controllers;
+<?php
 
-use Redirect;
-use App\Model\Post;
-use View;
-use Response;
-use DB;
-use Input;
-use Auth;
-use App;
-use Carbon\Carbon;
+namespace App\Http\Controllers;
+
+use Exception;
+use App\Models\Post;
+use App\Models\Invitation;
+use Illuminate\Support\MessageBag;
 
 class HomeController extends Controller {
 
-	public function index() {
-		return Redirect::to('blog');
-	}
+    public function blog() {
+        // TODO pagination
+        $posts =
+            Post::where('published_at', '<', now())
+                ->orderBy('published_at', 'desc')
+                ->get();
+        return view('home.blog', compact('posts'));
+    }
 
-	public function blog() {
-		$posts = Post::where('published_at', '<', Carbon::now())
-							->orderBy('published_at', 'desc')
-							->get();
-		return View::make('home.blog', compact('posts'));
-	}
+    public function rss() {
+        $posts =
+            Post::where('published_at', '<', now())
+                ->orderBy('published_at', 'desc')
+                ->get();
+        return view('posts.rss', compact('posts'))->header('Content-Type', 'application/atom+xml');
+    }
 
-	public function health() {
-		$status = 'Everything is OK';
-		try {
-			if (!DB::connection()) {
-				$status = 'MySQL is not working correctly';
-			}
-		} catch (\Exception $e) {
-			$status = 'MySQL is not working correctly';
-		}
-		return View::make('home.health', compact('status'));
-	}
+    public function health() {
+        $status = 'Everything is OK';
+        try {
+            if (!app('db')->connection()) {
+                $status = 'MySQL is not working correctly';
+            }
+        } catch (Exception $e) {
+            $status = 'MySQL is not working correctly';
+        }
+        return $status;
+    }
 
-	public function rss() {
-		$posts = Post::where('published_at', '<', Carbon::now())
-						->orderBy('published_at', 'desc')
-						->get();
-		$view = View::make('posts.rss', compact('posts'));
-		$response = Response::make($view);
-		$response->header('Content-Type', 'application/atom+xml');
-		return $response;
-	}
+    public function login() {
+        auth()->logout();
+        return view('home.login');
+    }
 
-	public function about() {
-		return View::make('home.about');
-	}
+    public function processLogin() {
+        $credential = request('credential');
+        $password = request('password');
+        $remember = request()->get('remember', false);
 
-	public function experiments() {
-		return View::make('home.experiments');
-	}
+        // Credentials
+        if (!auth()->attempt(['email' => $credential, 'password' => $password], $remember)) {
+            if (!auth()->attempt(['username' => $credential, 'password' => $password], $remember)) {
+                return redirect()
+                    ->back()
+                    ->withInput()
+                    ->withErrors(new MessageBag(['email' => 'Credentials were not correct']));
+            }
+        }
 
-	public function login() {
-		Auth::logout();
-		return View::make('home.login');
-	}
+        return redirect()->home();
+    }
 
-	public function processLogin() {
-		$credential = Input::get('credential');
-		$password = Input::get('password');
-		$remember = Input::get('remember', false);
+    public function register($token) {
+        auth()->logout();
 
-		// Credentials
-		if (!Auth::attempt(['email' => $credential, 'password' => $password], $remember)) {
-			if (!Auth::attempt(['username' => $credential, 'password' => $password], $remember)) {
-				return Redirect::back()
-							->withInput()
-							->withErrors(new \Illuminate\Support\MessageBag(['email' => 'Credentials were not correct']));
-			}
-		}
+        $invitation = Invitation::where('token', $token)->first();
 
-		return Redirect::home();
-	}
+        abort_if($invitation == null, 404);
 
-	public function register($token) {
-		Auth::logout();
+        return view('home.register', compact('invitation'));
+    }
 
-		$invitation = Invitation::where('token', $token)->first();
-		if ($invitation == null) {
-			App::abort(404);
-		}
-
-		return View::make('home.register', compact('invitation'));
-	}
-
-	public function logout() {
-		Auth::logout();
-		return Redirect::home();
-	}
-
+    public function logout() {
+        auth()->logout();
+        return redirect()->home();
+    }
 }

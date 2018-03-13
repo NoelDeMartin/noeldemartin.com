@@ -1,41 +1,40 @@
-<?php namespace App\Model;
+<?php
+
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model {
 
-	const DATE_FORMAT = 'd/m/Y';
-	const DATE_FORMAT_JS = 'dd/mm/yyyy';
+    const DATE_FORMAT = 'd/m/Y';
+    const DATE_FORMAT_JS = 'dd/mm/yyyy';
 
-	public static $rules = [
-		'title'			=> 'required',
-		'text_markdown'	=> 'required',
-		'text_html'		=> 'required',
-		'published_at'	=> 'required|date_format:d/m/Y'
-	];
+    public static $rules = [
+        'title'         => 'required',
+        'text_markdown' => 'required',
+        'text_html'     => 'required',
+        'published_at'  => 'required|date_format:d/m/Y'
+    ];
 
-	protected $fillable = ['title', 'text_markdown', 'text_html'];
+    protected $dates = ['created_at', 'updated_at', 'published_at'];
 
-	public function getSummary() {
-		return substr($this->text_html, 0, strpos($this->text_html, '<h2'));
-	}
+    protected $fillable = ['title', 'tag', 'text_markdown', 'text_html', 'author_id', 'published_at'];
 
-	public static function createTitleTag($title) {
-		$special_chars = [' ', '/', '!', '?', '.', ',', ';', '#', '$', '&', '(', ')', ':'];
-		return urlencode(strtolower(preg_replace('/-+/', '-', str_replace($special_chars, '-', $title))));
-	}
+    public static function createTitleTag($title) {
+        $special_chars = [' ', '/', '!', '?', '.', ',', ';', '#', '$', '&', '(', ')', ':'];
+        return urlencode(strtolower(preg_replace('/-+/', '-', str_replace($special_chars, '-', $title))));
+    }
 
-	public function comments() {
-		return $this->hasMany('App\Model\PostComment');
-	}
+    public function comments() {
+        return $this->hasMany(PostComment::class);
+    }
 
-	public function isPublished() {
-		$date = new \Carbon\Carbon($this->published_at);
-		return $date->isPast();
-	}
+    public function isPublished() {
+        return $this->published_at->isPast();
+    }
 
-	public function getPublishedAtAttribute($date) {
-		return new \Carbon\Carbon($date);
-	}
+    public function getSummaryAttribute() {
+        return substr($this->text_html, 0, strpos($this->text_html, '<h2'));
+    }
 
 }
