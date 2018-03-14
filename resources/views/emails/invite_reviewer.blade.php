@@ -19,5 +19,3 @@
 <p>Cheers,</p>
 
 <p>Noel De Martin</p>
-
-<p><i>PS: for the time being you can see the website is under construction, but if you have an account you can enter using <a href="{!! route('login') !!}">{!! route('login') !!}</a>.</i></p>
