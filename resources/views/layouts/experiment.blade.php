@@ -18,7 +18,7 @@
 	<body>
 		@yield('content')
 
-		<!-- JQuery and Bootstrap with fallbacks - http://eddmann.com/posts/providing-local-js-and-css-resources-for-cdn-fallbacks/ -->
+		<!-- JQuery with fallbacks - http://eddmann.com/posts/providing-local-js-and-css-resources-for-cdn-fallbacks/ -->
 		<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
 		<script>window.jQuery || document.write('<script src="js/jquery-2.1.1.min.js"><\/script>')</script>
 

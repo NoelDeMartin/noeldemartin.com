@@ -1,0 +1,8 @@
+.alert {
+    @apply .bg-blue-lightest .border-l-4 .border-blue .text-blue-dark .p-4;
+
+    a {
+        @apply .text-blue-dark .font-bold;
+    }
+
+}

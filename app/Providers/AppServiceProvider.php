@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +14,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Blade::directive('class', function ($args) {
+            return "<?php echo blade_class({$args}); ?>";
+        });
+
+        Blade::directive('icon', function ($args) {
+            return "<?php echo blade_icon({$args}); ?>";
+        });
     }
 
     /**

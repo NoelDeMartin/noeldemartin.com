@@ -1,87 +1,165 @@
+@inject('router', 'Illuminate\Routing\Router')
+
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-		@if (Route::is('posts.show') && isset($post))
-			<title>{!! $post->title !!} | Noel De Martin</title>
-			@include('assets.post_meta', $post)
-		@else
-			<title>Noel De Martin</title>
-		@endif
+        @if ($router->is('posts.show') && isset($post))
+            <title>{{ $post->title }} | Noel De Martin</title>
+            @include('assets.post_meta', $post)
+        @else
+            <title>Noel De Martin</title>
+        @endif
 
-		<meta name="pocket-site-verification" content="a7da21e29497dd96109d3eaf4d2529" />
-		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="pocket-site-verification" content="a7da21e29497dd96109d3eaf4d2529" />
+        <meta name="description" content="Noel De Martin's personal website">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-		<link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-		<!-- stylesheets -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-		<link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        <link rel="stylesheet" href="{{ mix('css/main.css') }}">
 
-		@yield('styles')
-	</head>
+        @yield('styles')
+    </head>
 
-	<body>
-		<header>
-			<div id="social-links">
-				<a id="twitter" href="https://twitter.com/NoelDeMartin">Twitter</a>
-				<a id="linkedin" href="http://www.linkedin.com/pub/noel-de-martin-fernandez/41/a7b/64">LinkedIn</a>
-				<a id="gmail" href="mailto:noeldemartin@gmail.com">Email</a>
-			</div>
-			<div id="header-wrapper">
-				<div id="header-content">
-					<!-- Applied this: http://alistapart.com/article/responsive-images-in-practice -->
-					<img src="/img/myface.png"
-							alt="My Face"
-							srcset="/img/myface.png 465w,
-									/img/myface-small.png  200w"
-							sizes="(min-width: 1170px) 555px, 47.5vw" />
-					<h1>NOEL<br>DE MARTIN</h1>
-				</div>
-			</div>
-		</header>
-		<nav>
-			<ul>
-				<li {!! Route::is('blog')? 'class="active"' : '' !!} >
-					<a href="{!! route('blog') !!}">BLOG</a>
-				</li><li {!! Route::is('about')? 'class="active"' : '' !!} >
-					<a href="{!! route('about') !!}">ABOUT ME</a>
-				</li><li {!! Route::is('experiments')? 'class="active"' : '' !!} >
-					<a href="{!! route('experiments') !!}">EXPERIMENTS</a>
-				</li><li id="chilli">
-					<a href="https://lincolnschilli.com" target="_blank"></a>
-				</li>
-			</ul>
-		</nav>
-		<div id="main-content" class="container">
-			@if (Session::has('message'))
-				<div class="alert alert-info">{!! Session::get('message') !!}</div>
-			@endif
-			@yield('content')
-		</div>
+    <body class="bg-white">
 
-		<div id="bootstrap-cdn-check" class="hidden" style="height:1px;"></div>
+        <header class="w-full h-32 pb-12 md:h-44 lg:h-60" style="background-color: #b8e0df">
 
-		<!-- JQuery and Bootstrap with fallbacks - http://eddmann.com/posts/providing-local-js-and-css-resources-for-cdn-fallbacks/ -->
-		<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
-		<script>window.jQuery || document.write('<script src="js/jquery-2.1.1.min.js"><\/script>')</script>
+            <div class="container h-full overflow-hidden mx-auto flex items-center justify-start">
+                <img
+                    src="/img/myface.png"
+                    alt="My Face"
+                    class="h-48 mt-4 md:h-64 md:mt-6 lg:h-76 lg:mt-8"
+                />
+                <h1 class="font-comic font-medium text-4xl ml-4 md:text-5xl md:ml-10 lg:ml-12 lg:text-7xl">NOEL<br>DE MARTIN</h1>
+            </div>
 
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-		<script>window.jQuery.fn.modal || document.write('<script src="js/bootstrap.min.js"><\/script>')</script>
+            <nav class="h-12 bg-overlay">
 
-		<!-- StyleSheet CDN Fallbacks - http://theericbutler.wordpress.com/2014/03/20/how-to-fall-back-to-a-local-bootstrap-css-file-if-the-cdn-is-down/ -->
-		<script>
-			if ($('#bootstrap-cdn-check').is(':visible') === true) {
-				$('<link rel="stylesheet" type="text/css" href="/css/fallbacks/bootstrap.min.css">').appendTo('head');
-			}
-		</script>
+                <div class="max-w-content h-full mx-auto flex justify-between">
 
-		<script type="text/javascript" src="{!! asset('js/main.js') !!}"></script>
+                    <!-- Sections -->
 
-		@yield('scripts')
-	</body>
+                    @php
+                        $sections = [
+                            (object) [
+                                'route' => 'blog',
+                                'icon'  => 'blog',
+                                'text'  => 'Blog'
+                            ],
+                            (object) [
+                                'route' => 'about',
+                                'icon'  => 'about',
+                                'text'  => 'About me'
+                            ],
+                            (object) [
+                                'route' => 'experiments',
+                                'icon'  => 'experiments',
+                                'text'  => 'Experiments'
+                            ],
+                        ];
+                    @endphp
+
+                    <ul class="list-reset flex">
+
+                        @foreach ($sections as $section)
+                            <li class="flex">
+                                <a
+                                    href="{{ route($section->route) }}"
+                                    @class(
+                                        '
+                                            group
+                                            p-2 no-underline
+                                            text-black font-bold uppercase
+                                            flex items-center
+                                            opacity-50
+                                            hover:opacity-100 hover:bg-overlay
+                                        ',
+                                        [ 'opacity-100' => $router->is($section->route) ]
+                                    )
+                                >
+                                    @icon($section->icon, 'h-6 mr-2 fill-current')
+                                    <span
+                                        @class(
+                                            'border-b-2 border-transparent group-hover:border-black',
+                                            [ 'border-black' => $router->is($section->route) ]
+                                        )
+                                    >
+                                        {{ $section->text }}
+                                    </span>
+                                </a>
+                            </li>
+                        @endforeach
+
+                    </ul>
+
+                    <!-- Socials -->
+
+                    @php
+                        $socials = [
+                            (object) [
+                                'url'  => 'https://lincolnschilli.com',
+                                'icon' => 'lincolnschilli',
+                            ],
+                            (object) [
+                                'url'  => 'https://twitter.com/NoelDeMartin',
+                                'icon' => 'twitter',
+                            ],
+                            (object) [
+                                'url'  => 'https://github.com/NoelDeMartin',
+                                'icon' => 'github',
+                            ],
+                            (object) [
+                                'url'  => 'https://www.linkedin.com/in/noeldemartin',
+                                'icon' => 'linkedin',
+                            ],
+                            (object) [
+                                'url'  => 'mailto:noeldemartin@gmail.com',
+                                'icon' => 'gmail',
+                            ],
+                        ];
+                    @endphp
+
+                    <ul class="list-reset flex">
+
+                        @foreach ($socials as $social)
+                            <li class="flex">
+                                <a href="{{ $social->url }}" class="px-2 flex items-center grayscale-60 hover:grayscale-0">
+                                    @icon($social->icon, 'h-6')
+                                </a>
+                            </li>
+                        @endforeach
+
+                    </ul>
+
+                </div>
+
+            </nav>
+
+        </header>
+
+        <div class="max-w-content mx-auto px-4 py-8">
+            @if (session()->has('message'))
+                <div class="alert" role="alert">
+                    <p>{!! session('message') !!}</p>
+                </div>
+            @endif
+            @yield('content')
+        </div>
+
+        <!-- JQuery and Bootstrap with fallbacks - http://eddmann.com/posts/providing-local-js-and-css-resources-for-cdn-fallbacks/ -->
+        <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/jquery-2.1.1.min.js"><\/script>')</script>
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script>window.jQuery.fn.modal || document.write('<script src="js/bootstrap.min.js"><\/script>')</script>
+
+        <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
+
+        @yield('scripts')
+    </body>
 </html>

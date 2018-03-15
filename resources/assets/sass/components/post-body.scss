@@ -1,0 +1,24 @@
+.post-body {
+    @apply .text-base;
+
+    img {
+        @apply .mx-auto .block .max-w-full;
+    }
+
+    a {
+        @apply .text-blue-dark;
+    }
+
+    p {
+        @apply .mb-2;
+    }
+
+    blockquote {
+        @apply .bg-grey-lighter .border-grey .border-l-4 .rounded .p-2 .ml-4;
+    }
+
+    h2 {
+        @apply .text-2xl .mt-4;
+    }
+
+}
