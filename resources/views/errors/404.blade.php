@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
-	<div class="container-fluid">
+	<article>
 		<h1>404</h1>
-		The page you're looking for doesn't exist...
-	</div>
+		<p>The page you're looking for doesn't exist...</p>
+	</article>
 @stop

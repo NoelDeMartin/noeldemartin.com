@@ -33,6 +33,8 @@ View the full documentation at https://tailwindcss.com.
 const colors = {
     'transparent': 'transparent',
 
+    'black-light': '#4a4a4a',
+
     'black': '#22292f',
     'grey-darkest': '#3d4852',
     'grey-darker': '#606f7b',
@@ -44,7 +46,7 @@ const colors = {
     'white': '#ffffff',
 
     'blue-darkest': '#12283a',
-    'blue-darker': '#1c3d5a',
+    'blue-darker': '#266193',
     'blue-dark': '#2779bd',
     'blue': '#3490dc',
     'blue-light': '#6cb2eb',
@@ -52,6 +54,7 @@ const colors = {
     'blue-lightest': '#eff8ff',
 
     'overlay': 'rgba(0, 0, 0, 0.075)',
+    'overlay-dark': 'rgba(0, 0, 0, 0.7)',
 };
 
 const screens = {
@@ -118,39 +121,9 @@ module.exports = {
     */
 
     fonts: {
-        'sans': [
-            'system-ui',
-            'BlinkMacSystemFont',
-            '-apple-system',
-            'Segoe UI',
-            'Roboto',
-            'Oxygen',
+        'ubuntu': [
             'Ubuntu',
-            'Cantarell',
-            'Fira Sans',
-            'Droid Sans',
-            'Helvetica Neue',
             'sans-serif',
-        ],
-        'serif': [
-            'Constantia',
-            'Lucida Bright',
-            'Lucidabright',
-            'Lucida Serif',
-            'Lucida',
-            'DejaVu Serif',
-            'Bitstream Vera Serif',
-            'Liberation Serif',
-            'Georgia',
-            'serif',
-        ],
-        'mono': [
-            'Menlo',
-            'Monaco',
-            'Consolas',
-            'Liberation Mono',
-            'Courier New',
-            'monospace',
         ],
         'comic': [
             'HVD Comic Serif Pro Regular',
@@ -485,6 +458,7 @@ module.exports = {
 
     minWidth: {
         '0': '0',
+        '10': '2.5rem',
         'full': '100%',
     },
 
@@ -534,6 +508,7 @@ module.exports = {
         '4xl': '90rem',
         '5xl': '100rem',
         'full': '100%',
+        'readable': '670px',
         'content': screens.xl,
     },
 

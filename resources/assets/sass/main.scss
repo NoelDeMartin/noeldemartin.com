@@ -35,8 +35,9 @@
  * @import "components/buttons";
  * @import "components/forms";
  */
+@import "components/toast";
 @import "components/alert";
-@import "components/post-body";
+@import "components/summary";
 
 /**
  * This injects all of Tailwind's utility classes, generated based on your

@@ -1,8 +1,6 @@
 <svg
     class=":class"
-    version="1.1"
     xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
     viewBox="0 0 512 512"
 >
     <polygon style="fill:#F2F2F2;" points="484.973,122.808 452.288,451.017 59.712,451.017 33.379,129.16 256,253.802" />

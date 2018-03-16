@@ -8,6 +8,27 @@ function update_header_color() {
 	requestAnimationFrame(update_header_color);
 }
 
+function showToast(text) {
+	var toast = document.createElement('div');
+	var message = document.createElement('p');
+	toast.classList.add('toast');
+	toast.classList.add('opacity-100');
+	toast.appendChild(message);
+	message.innerText = text;
+
+	// Add
+	document.body.appendChild(toast);
+
+	// Remove
+	setTimeout(function() {
+		toast.classList.remove('opacity-100');
+		toast.classList.add('opacity-0');
+		setTimeout(() => {
+			toast.remove();
+		}, 500);
+	}, 2000);
+}
+
 /* GENERAL DOCUMENT READY OPERATIONS */
 
 $(document).ready(function(){

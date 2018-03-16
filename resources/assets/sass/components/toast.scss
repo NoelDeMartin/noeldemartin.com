@@ -1,0 +1,4 @@
+.toast {
+    @apply .bg-overlay-dark .text-white .fixed .pin-b .pin-x-center .m-4 .p-4 .rounded .max-w-full;
+    transition: 0.5s;
+}

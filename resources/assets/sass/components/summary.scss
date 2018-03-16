@@ -1,0 +1,12 @@
+.summary {
+    @apply .text-black-light;
+
+    h1 {
+        @apply .font-normal .tracking-normal;
+    }
+
+    p {
+        @apply .my-2;
+    }
+
+}

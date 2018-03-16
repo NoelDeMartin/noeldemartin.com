@@ -1,4 +1,59 @@
-a {
-    outline: none !important;
-    @apply .no-underline;
+html {
+    @apply .font-ubuntu .font-normal .text-base .text-black-light;
+}
+
+main {
+
+    a {
+        outline: none !important;
+        @apply .no-underline .text-blue-dark;
+
+        &:hover {
+            @apply .text-blue-darker;
+        }
+
+    }
+
+    h1 {
+        @apply .mb-4 .text-3xl .text-blue-darkest .tracking-wide;
+    }
+
+    h2 {
+        @apply .my-4 .text-2xl .text-blue-darkest;
+    }
+
+    h3 {
+        @apply .my-4 .text-xl .text-blue-darkest;
+    }
+
+    p {
+        @apply .leading-normal .my-6;
+    }
+
+    img {
+        @apply .mx-auto .block .max-w-full;
+    }
+
+    blockquote {
+        @apply .border-grey .border-l-2 .italic .p-2 .ml-4 .my-4;
+
+        p:first-child {
+            @apply .mt-0;
+        }
+
+        p:last-child {
+            @apply .mb-0;
+        }
+
+    }
+
+    time {
+        @apply .flex .items-center .text-blue-darker .font-normal .text-xs;
+
+        &:not(:first-child) {
+            @apply .ml-2;
+        }
+
+    }
+
 }

@@ -13,13 +13,14 @@
             <title>Noel De Martin</title>
         @endif
 
-        <meta name="pocket-site-verification" content="a7da21e29497dd96109d3eaf4d2529" />
+        <meta name="pocket-site-verification" content="a7da21e29497dd96109d3eaf4d2529">
         <meta name="description" content="Noel De Martin's personal website">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         <link rel="icon" href="favicon.ico" type="image/x-icon">
 
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
         <link rel="stylesheet" href="{{ mix('css/main.css') }}">
 
         @yield('styles')
@@ -27,13 +28,22 @@
 
     <body class="bg-white">
 
-        <header class="w-full h-32 pb-12 md:h-44 lg:h-60" style="background-color: #b8e0df">
+        <header
+            style="background-color: #b8e0df"
+            @class(
+                'w-full pb-12',
+                [
+                    'h-32 md:h-44 lg:h-60' => ! $router->is('posts.show'),
+                    'h-12'                 =>   $router->is('posts.show'),
+                ]
+            )
+        >
 
             <div class="container h-full overflow-hidden mx-auto flex items-center justify-start">
                 <img
                     src="/img/myface.png"
                     alt="My Face"
-                    class="h-48 mt-4 md:h-64 md:mt-6 lg:h-76 lg:mt-8"
+                    class="h-48 ml-4 mt-4 md:h-64 md:mt-6 lg:h-76 lg:mt-8"
                 />
                 <h1 class="font-comic font-medium text-4xl ml-4 md:text-5xl md:ml-10 lg:ml-12 lg:text-7xl">NOEL<br>DE MARTIN</h1>
             </div>
@@ -128,7 +138,10 @@
 
                         @foreach ($socials as $social)
                             <li class="flex">
-                                <a href="{{ $social->url }}" class="px-2 flex items-center grayscale-60 hover:grayscale-0">
+                                <a
+                                    href="{{ $social->url }}"
+                                    class="px-2 min-w-10 flex items-center justify-center grayscale-60 hover:bg-overlay hover:grayscale-0"
+                                >
                                     @icon($social->icon, 'h-6')
                                 </a>
                             </li>
@@ -142,14 +155,14 @@
 
         </header>
 
-        <div class="max-w-content mx-auto px-4 py-8">
+        <main class="max-w-content mx-auto px-4 py-8">
             @if (session()->has('message'))
                 <div class="alert" role="alert">
                     <p>{!! session('message') !!}</p>
                 </div>
             @endif
             @yield('content')
-        </div>
+        </main>
 
         <!-- JQuery and Bootstrap with fallbacks - http://eddmann.com/posts/providing-local-js-and-css-resources-for-cdn-fallbacks/ -->
         <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>

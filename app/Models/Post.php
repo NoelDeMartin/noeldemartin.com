@@ -34,7 +34,12 @@ class Post extends Model {
     }
 
     public function getSummaryAttribute() {
-        return substr($this->text_html, 0, strpos($this->text_html, '<h2'));
+        $summary = substr($this->text_html, 0, strpos($this->text_html, '<h2'));
+        return preg_replace('/<a(\s|>)[^>]*>(.*?)<\/a>/', '$2', $summary);
+    }
+
+    public function getDurationAttribute() {
+        return round(str_word_count(strip_tags($this->text_html)) / 200);
     }
 
 }

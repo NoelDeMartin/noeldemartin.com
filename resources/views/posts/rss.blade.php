@@ -13,7 +13,7 @@
 	<author>
 		<name>Noel De Martin</name>
 		<email>noeldemartin@gmail.com</email>
-		<uri>{!! url() !!}</uri>
+		<uri>{!! route('home') !!}</uri>
 	</author>
 	@foreach($posts as $post)
 		<entry>
@@ -21,7 +21,7 @@
 			<author>
 				<name>Noel De Martin</name>
 				<email>noeldemartin@gmail.com</email>
-				<uri>{!! url() !!}</uri>
+				<uri>{!! route('home') !!}</uri>
 			</author>
 			<link href="{!! route('posts.show', $post->tag) !!}" />
 			<id>{!! route('posts.show', $post->tag) !!}</id>
@@ -29,7 +29,7 @@
 			<category term="development"/>
 			<published>{!! $post->published_at->format(DateTime::ATOM) !!}</published>
 			<updated>{!! $post->updated_at->format(DateTime::ATOM) !!}</updated>
-			<summary type="html">{!! htmlspecialchars($post->getSummary()) !!}</summary>
+			<summary type="html">{!! htmlspecialchars($post->summary) !!}</summary>
 			<content type="html" xml:base="{!! route('posts.show', $post->tag) !!}">
 				{!! htmlspecialchars($post->text_html) !!}
 			</content>

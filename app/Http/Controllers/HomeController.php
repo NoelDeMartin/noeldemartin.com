@@ -23,7 +23,10 @@ class HomeController extends Controller {
             Post::where('published_at', '<', now())
                 ->orderBy('published_at', 'desc')
                 ->get();
-        return view('posts.rss', compact('posts'))->header('Content-Type', 'application/atom+xml');
+
+        return response()
+                    ->view('posts.rss', compact('posts'))
+                    ->header('Content-Type', 'application/atom+xml');
     }
 
     public function health() {
