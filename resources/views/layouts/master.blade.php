@@ -114,22 +114,27 @@
                             (object) [
                                 'url'  => 'https://lincolnschilli.com',
                                 'icon' => 'lincolnschilli',
+                                'name' => "Lincoln's Chilli",
                             ],
                             (object) [
                                 'url'  => 'https://twitter.com/NoelDeMartin',
                                 'icon' => 'twitter',
+                                'name' => 'My Twitter',
                             ],
                             (object) [
                                 'url'  => 'https://github.com/NoelDeMartin',
                                 'icon' => 'github',
+                                'name' => 'My Github',
                             ],
                             (object) [
                                 'url'  => 'https://www.linkedin.com/in/noeldemartin',
                                 'icon' => 'linkedin',
+                                'name' => 'My Linkedin',
                             ],
                             (object) [
                                 'url'  => 'mailto:noeldemartin@gmail.com',
                                 'icon' => 'gmail',
+                                'name' => 'My Email',
                             ],
                         ];
                     @endphp
@@ -140,7 +145,8 @@
                             <li class="flex">
                                 <a
                                     href="{{ $social->url }}"
-                                    class="px-2 min-w-10 flex items-center justify-center grayscale-60 hover:bg-overlay hover:grayscale-0"
+                                    title="{{ $social->name }}"
+                                    class="px-2 min-w-10 flex items-center justify-center opacity-50 hover:bg-overlay hover:opacity-100"
                                 >
                                     @icon($social->icon, 'h-6')
                                 </a>
