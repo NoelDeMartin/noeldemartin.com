@@ -31,7 +31,7 @@
                     how long it would take to pay something in parts, etc.
                 </p>
                 <p>
-                    You don't have to worry about me knowing anything on your finances, since I don't record any information (in fact, I don't even use
+                    You don't have to worry about me knowing anything on your finances, since I don't record any information (furthermore, I don't even use
                     analytics on the site).
                 </p>
             @endexperiment

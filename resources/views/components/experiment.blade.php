@@ -21,9 +21,10 @@
     </h2>
 
     <div class="overflow-hidden" style="height:0" data-target="expandable-item.content">
-        <div class="px-4 pt-2">
+        <div class="px-4 pb-4">
+            {{ $slot }}
             <div class="flex items-center justify-end">
-                Find it here:
+                Check it out:
                 @if(isset($extras))
                     @foreach($extras as $extra)
                         <a
@@ -45,7 +46,6 @@
                     @icon('link-round', 'h-8 fill-current')
                 </a>
             </div>
-            {{ $slot }}
         </div>
     </div>
 
