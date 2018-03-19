@@ -29,6 +29,7 @@
     <body class="bg-white">
 
         <header
+            data-controller="header"
             style="background-color: #b8e0df"
             @class(
                 'w-full pb-12',

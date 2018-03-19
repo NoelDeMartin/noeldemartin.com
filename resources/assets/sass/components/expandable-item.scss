@@ -1,0 +1,16 @@
+.expandable-item {
+    @apply .border-t-1 .border-b-1 .border-grey;
+
+    .arrow {
+        transition: 0.3s;
+    }
+
+    &.expanded .arrow {
+        transform: rotate(90deg);
+    }
+
+    & + .expandable-item {
+        @apply .border-t-0;
+    }
+
+}

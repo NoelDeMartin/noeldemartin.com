@@ -28,9 +28,13 @@ if (! function_exists('blade_class')) {
 
 if (! function_exists('blade_icon')) {
 
-    function blade_icon($name, $class = '')
+    function blade_icon($name, $class = '', $attrs = [])
     {
-        return str_replace(':class', $class, file_get_contents(resource_path("assets/icons/{$name}.svg")));
+        $attrsString = "class=\"{$class}\"";
+        foreach ($attrs as $attr => $value) {
+            $attrsString .= " {$attr}=\"{$value}\"";
+        }
+        return str_replace(':attrs', $attrsString, file_get_contents(resource_path("assets/icons/{$name}.svg")));
     }
 
 }

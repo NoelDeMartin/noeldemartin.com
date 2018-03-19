@@ -13,31 +13,13 @@
             but at least I hope they can pique your interest :D.
         </p>
 
-        <div class="border-1 mb-8 border-grey rounded">
+        <div data-controller="expandable-items-list">
 
-            <h2 class="border-b-1 border-grey rounded-t bg-grey-light my-0 p-2 flex items-center justify-between">
-                <div class="flex">
-                    <a
-                        href="{{ route('experiments.freedom-calculator') }}"
-                        class="flex items-center text-blue-darkest hover:text-blue"
-                    >
-                        Freedom Calculator
-                    </a>
-                    <time>
-                        @icon('calendar', 'h-4 fill-current')
-                        <span class="ml-2">December 2014</span>
-                    </time>
-                </div>
-                <a
-                    href="{{ route('experiments.freedom-calculator') }}"
-                    title="Freedom Calculator"
-                    class="flex items-center text-blue-darkest hover:text-blue"
-                >
-                    @icon('link-round', 'h-8 fill-current')
-                </a>
-            </h2>
-
-            <div class="p-4">
+            @experiment([
+                'name' => 'Freedom Calculator',
+                'date' => 'December 2014',
+                'url'  => route('experiments.freedom-calculator'),
+            ])
                 <p>
                     This a <i>Financial</i> Freedom Calculator (yeah I don't know how to calculate personal freedom yet, I'll let you know when I do ;D).
                     Indicate how much money you have and how much you spend every day/week/month, and you will know when your cash runs out!
@@ -52,35 +34,13 @@
                     You don't have to worry about me knowing anything on your finances, since I don't record any information (in fact, I don't even use
                     analytics on the site).
                 </p>
-            </div>
+            @endexperiment
 
-        </div>
-
-        <div class="border-1 mb-8 border-grey rounded">
-
-            <h2 class="border-b-1 border-grey rounded-t bg-grey-light my-0 p-2 flex items-center justify-between">
-                <div class="flex">
-                    <a
-                        href="{{ route('experiments.online-meeting') }}"
-                        class="flex items-center text-blue-darkest hover:text-blue"
-                    >
-                        Online Meeting
-                    </a>
-                    <time>
-                        @icon('calendar', 'h-4 fill-current')
-                        <span class="ml-2">April 2015</span>
-                    </time>
-                </div>
-                <a
-                    href="{{ route('experiments.online-meeting') }}"
-                    title="Online Meeting"
-                    class="flex items-center text-blue-darkest hover:text-blue"
-                >
-                    @icon('link-round', 'h-8 fill-current')
-                </a>
-            </h2>
-
-            <div class="p-4">
+            @experiment([
+                'name' => 'Online Meeting',
+                'date' => 'April 2015',
+                'url'  => route('experiments.online-meeting'),
+            ])
                 <p>
                     Back in 2015 I learned about <a href="https://webrtc.org/" target="_blank">WebRTC</a>. The first thing that came to mind were
                     online meetings. I was suffering the typical issues with online communication: bad connection, problems signing up,
@@ -100,35 +60,13 @@
                     now in 2018 and it seems to work in Firefox and Chrome in desktop. I may clean it up and upload it to Github some day, but until then you can
                     see <a href="{{ asset('js/experiments/online-meeting.js') }}" target="_blank">this file</a> and inspect inline scripts on the website.
                 </p>
-            </div>
+            @endexperiment
 
-        </div>
-
-        <div class="border-1 mb-8 border-grey rounded">
-
-            <h2 class="border-b-1 border-grey rounded-t bg-grey-light my-0 p-2 flex items-center justify-between">
-                <div class="flex">
-                    <a
-                        href="{{ route('experiments.synonymizer') }}"
-                        class="flex items-center text-blue-darkest hover:text-blue"
-                    >
-                        Random Synonymizer
-                    </a>
-                    <time>
-                        @icon('calendar', 'h-4 fill-current')
-                        <span class="ml-2">April 2016</span>
-                    </time>
-                </div>
-                <a
-                    href="{{ route('experiments.synonymizer') }}"
-                    title="Random Synonymizer"
-                    class="flex items-center text-blue-darkest hover:text-blue"
-                >
-                    @icon('link-round', 'h-8 fill-current')
-                </a>
-            </h2>
-
-            <div class="p-4">
+            @experiment([
+                'name' => 'Random Synonymizer',
+                'date' => 'April 2016',
+                'url'  => route('experiments.synonymizer'),
+            ])
                 <p>
                     Well, this is just silly. I was using <a href="http://www.thesaurus.com" target="_blank">Thesaurus</a> for searching synonims,
                     when it ocurred to me: Wouldn't it be funny to have a website were you introduce a sentence and it substitutes random words with
@@ -140,44 +78,20 @@
                     is that you get something that doesn't even make sense. This could be improved with some NLP and such, but I guess this is were I'll
                     leave it.
                 </p>
-            </div>
+            @endexperiment
 
-        </div>
-
-        <div class="border-1 mb-8 border-grey rounded">
-
-            <h2 class="border-b-1 border-grey rounded-t bg-grey-light my-0 p-2 flex items-center justify-between">
-                <div class="flex">
-                    <a
-                        href="https://noeldemartin.github.io/DC-Motor-Sandbox/"
-                        class="flex items-center text-blue-darkest hover:text-blue"
-                    >
-                        DC Motor Sandbox
-                    </a>
-                    <time>
-                        @icon('calendar', 'h-4 fill-current')
-                        <span class="ml-2">March 2018</span>
-                    </time>
-                </div>
-                <div class="flex">
-                    <a
-                        href="https://github.com/NoelDeMartin/DC-Motor-Sandbox/"
-                        title="DC Motor Sandbox on Github"
-                        class="flex items-center text-blue-darkest hover:text-blue"
-                    >
-                        @icon('github', 'h-8 fill-current')
-                    </a>
-                    <a
-                        href="https://noeldemartin.github.io/DC-Motor-Sandbox/"
-                        title="DC Motor Sandbox"
-                        class="ml-2 flex items-center text-blue-darkest hover:text-blue"
-                    >
-                        @icon('link-round', 'h-8 fill-current')
-                    </a>
-                </div>
-            </h2>
-
-            <div class="p-4">
+            @experiment([
+                'name'   => 'DC Motor Sandbox',
+                'date'   => 'Match 2018',
+                'url'    => 'https://noeldemartin.github.io/DC-Motor-Sandbox/',
+                'extras' => [
+                    (object) [
+                        'name' => 'Github',
+                        'icon' => 'github',
+                        'url'  => 'https://github.com/NoelDeMartin/DC-Motor-Sandbox/'
+                    ],
+                ],
+            ])
                 <p>
                     I have always wanted to work with robotics, since Artificial Intelligence and Computer Vision were my favourite subjects in
                     university. That's why I started working on an experiment involving wheels with DC motors (I'll publish about it here if I
@@ -190,7 +104,7 @@
                     reduction, number of wheels, etc.) and calculates the maximum load the vehicle would handle. I guess there may be some things that
                     don't make sense, but I didn't find anything similar to this online so at least it'll be useful to me.
                 </p>
-            </div>
+            @endexperiment
 
         </div>
 

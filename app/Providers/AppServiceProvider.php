@@ -14,6 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Blade::component('components.experiment', 'experiment');
         Blade::directive('class', function ($args) {
             return "<?php echo blade_class({$args}); ?>";
         });

@@ -1,0 +1,19 @@
+{
+    "parser": "babel-eslint",
+    "extends": [
+        "standard"
+    ],
+    "plugins": [
+        "babel"
+    ],
+    "env": {
+        "browser": true,
+        "es6": true
+    },
+    "rules": {
+        "indent": ["error", 4, { "SwitchCase": 1 }],
+        "space-before-function-paren": "off",
+        "semi": ["error", "always"],
+        "comma-dangle": ["error", "always-multiline"]
+    }
+}
