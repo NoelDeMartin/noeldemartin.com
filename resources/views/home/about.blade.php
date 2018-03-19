@@ -17,7 +17,7 @@
         </p>
 
         <p>
-            You can check me out in <a href="https://twitter.com/NoelDeMartin">Twitter</a>
+            You can check me out in <a href="https://twitter.com/NoelDeMartin">Twitter</a>, <a href="https://github.com/NoelDeMartin">Github</a>
             or <a href="https://www.linkedin.com/in/noeldemartin/">LinkedIn</a> for more information.
             If you want to contact me, don't hesitate on <a href="mailto:noeldemartin@gmail.com">sending an email</a>.
         </p>
