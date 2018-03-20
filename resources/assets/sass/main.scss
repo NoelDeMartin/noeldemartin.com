@@ -37,6 +37,7 @@
  */
 @import "components/toast";
 @import "components/alert";
+@import "components/table";
 @import "components/summary";
 @import "components/expandable-item";
 
@@ -67,6 +68,3 @@
 @import "theme/base";
 @import "theme/fonts";
 @import "theme/utilities";
-
-// TODO remove this
-@import "theme";

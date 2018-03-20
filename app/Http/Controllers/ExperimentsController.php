@@ -4,26 +4,6 @@ namespace App\Http\Controllers;
 
 class ExperimentsController extends Controller
 {
-    public function freedomCalculator()
-    {
-        return view('experiments.freedom_calculator', ['title' => 'Freedom Calculator']);
-    }
-
-    public function onlineMeeting()
-    {
-        return view('experiments.online_meeting', ['title' => 'Online Meeting Tool']);
-    }
-
-    public function onlineMeetingRoom($roomKey)
-    {
-        return view('experiments.online_meeting_room', ['roomKey' => $roomKey, 'title' => 'Online Meeting Tool']);
-    }
-
-    public function synonymizer()
-    {
-        return view('experiments.synonymizer', ['title' => 'Random Synonymizer']);
-    }
-
     public function synonymizeText()
     {
         $text = explode(' ', request('text'));

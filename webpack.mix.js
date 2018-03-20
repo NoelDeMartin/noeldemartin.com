@@ -5,8 +5,6 @@ const tailwindcss = require('tailwindcss');
 mix
     .js('resources/assets/js/main.js', 'public/js')
     .sass('resources/assets/sass/main.scss', 'public/css')
-    .copy('resources/assets/fonts', 'public/fonts')
-    .copy('resources/assets/img', 'public/images')
     .options({
         processCssUrls: false,
         postCss: [

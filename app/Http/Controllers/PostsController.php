@@ -36,7 +36,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return View::make('posts.create');
+        return view('posts.create');
     }
 
     /**
@@ -161,23 +161,6 @@ class PostsController extends Controller
         $data['published_at'] = Carbon::createFromFormat(Post::DATE_FORMAT, $data['published_at']);
         $post->update($data);
         session()->flash('message', 'The post was updated correctly');
-
-        return redirect()->route('posts.index');
-    }
-
-    /**
-     * Remove the specified post from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        // TODO Post::destroy($id);
-        session()->flash(
-            'message',
-            'Cannot delete posts! (until redirect/missing feature is not implemented correctly)'
-        );
 
         return redirect()->route('posts.index');
     }

@@ -1,3 +1,5 @@
+@inject('router', 'Illuminate\Routing\Router')
+
 <header
     data-controller="chamaleon menu"
     data-menu-collapsed="true"

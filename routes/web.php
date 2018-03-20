@@ -12,39 +12,39 @@
 */
 
 Route::redirect('/', 'blog')->name('home');
-Route::get('login', 'HomeController@login')->name('login');
-Route::post('login', 'HomeController@processLogin')->name('process_login');
-Route::get('register/{token}', 'HomeController@register')->name('register');
-Route::get('logout', 'HomeController@logout')->name('logout');
 
-Route::prefix('blog')->group(function() {
+Route::view('login', 'auth.login');
+Route::post('login', 'AuthController@login')->name('login');
+Route::get('logout', 'AuthController@logout')->name('logout');
+
+Route::prefix('blog')->group(function () {
     Route::get('/', 'HomeController@blog')->name('blog');
     Route::get('rss.xml', 'HomeController@rss')->name('blog.rss');
 });
 
-Route::resource('users', 'UsersController', ['only' => ['store']]);
+Route::view('about', 'about')->name('about');
 
-Route::group(['middleware' => 'auth.admin'], function() {
-    Route::resource('users', 'UsersController', ['except' => ['store']]);
-    Route::resource('posts', 'PostsController', ['except' => ['index', 'show']]);
-    Route::resource('invitations', 'InvitationsController', ['except' => 'show', 'edit', 'update']);
+Route::prefix('experiments')->group(function () {
+    Route::view('/', 'experiments')->name('experiments');
+    Route::view('freedom-calculator', 'experiments.freedom_calculator')->name('experiments.freedom-calculator');
+    Route::view('online-meeting', 'experiments.online_meeting')->name('experiments.online-meeting');
+    Route::view('online-meeting/{roomKey}', 'experiments.online_meeting_room')->name('experiments.online-meeting-room');
+    Route::view('synonymizer', 'experiments.synonymizer')->name('experiments.synonymizer');
+    Route::post('synonymize-text', 'ExperimentsController@synonymizeText')->name('experiments.synonymize_text');
 });
 
-Route::prefix('posts')->group(function() {
-    Route::get('/', 'PostsController@index')->middleware('auth.reviewer')->name('posts.index');
+Route::middleware('auth.admin')->group(function () {
+    Route::resource('users', 'UsersController', ['only' => ['index', 'show', 'destroy']]);
+    Route::resource('posts', 'PostsController', ['except' => ['index', 'show']]);
+});
+
+Route::prefix('posts')->middleware('auth.reviewer')->group(function () {
+    Route::get('/', 'PostsController@index')->name('posts.index');
+});
+
+Route::prefix('posts')->group(function () {
     Route::get('{id}', 'PostsController@show')->name('posts.show');
     Route::post('{id}/comment', 'PostsController@comment')->name('posts.comment');
-});
-
-Route::view('about', 'home.about')->name('about');
-
-Route::prefix('experiments')->group(function() {
-    Route::view('/', 'home.experiments')->name('experiments');
-    Route::get('freedom-calculator', 'ExperimentsController@freedomCalculator')->name('experiments.freedom-calculator');
-    Route::get('online-meeting', 'ExperimentsController@onlineMeeting')->name('experiments.online-meeting');
-    Route::get('online-meeting/{roomKey}', 'ExperimentsController@onlineMeetingRoom')->name('experiments.online-meeting-room');
-    Route::get('synonymizer', 'ExperimentsController@synonymizer')->name('experiments.synonymizer');
-    Route::post('synonymize-text', 'ExperimentsController@synonymizeText')->name('experiments.synonymize_text');
 });
 
 Route::get('health', 'HomeController@health')->name('health');

@@ -10,6 +10,7 @@
         <exclude name="Symfony.ControlStructure.YodaConditions.Invalid" />
         <exclude name="Symfony.Formatting.ReturnOrThrow.Invalid" />
         <exclude name="Generic.Files.LineLength.TooLong" />
+        <exclude name="Generic.ControlStructures.InlineControlStructure.NotAllowed" />
         <exclude name="Zend.NamingConventions.ValidVariableName.NotCamelCaps" />
         <exclude name="Squiz.Strings.ConcatenationSpacing.PaddingFound" />
     </rule>

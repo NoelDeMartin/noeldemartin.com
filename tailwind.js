@@ -53,6 +53,8 @@ const colors = {
     'blue-lighter': '#bcdefa',
     'blue-lightest': '#eff8ff',
 
+    'error': '#f44336',
+
     'overlay': 'rgba(0, 0, 0, 0.075)',
     'overlay-dark': 'rgba(0, 0, 0, 0.7)',
 };
@@ -768,7 +770,7 @@ module.exports = {
         pointerEvents: ['responsive'],
         position: ['responsive'],
         resize: ['responsive'],
-        shadows: ['responsive'],
+        shadows: ['responsive', 'hover', 'focus'],
         svgFill: [],
         svgStroke: [],
         textAlign: ['responsive'],

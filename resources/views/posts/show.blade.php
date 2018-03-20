@@ -2,6 +2,16 @@
 
 @extends('layouts.master')
 
+@section('title', $post->title . ' | Noel De Martin')
+
+@push('meta')
+    <meta property="og:title" content="{{ $post->title }}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:article:published_time" content="{{ $post->published_at->format(DateTime::ISO8601) }}" />
+    <meta property="og:article:author:first_name" content="Noel" />
+    <meta property="og:article:author:last_name" content="De Martin	" />
+@endpush
+
 @section('content')
     <article class="max-w-readable mx-auto">
 
@@ -28,33 +38,38 @@
     <div id="share" class="text-right">
         <a
             data-controller="popup"
-            href="{!! $links->twitter($post) !!}"
-            class="text-blue-darkest hover:text-blue"
             data-action="popup#show"
+            data-popup-url="{{ $links->twitter($post) }}"
+            data-popup-twitter="true"
+            href="{{ $links->twitter($post) }}"
+            class="text-blue-darkest hover:text-blue"
         >
             @icon('twitter-round', 'h-8 fill-current')
         </a>
         <a
             data-controller="popup"
-            href="{!! $links->linkedin($post) !!}"
-            class="text-blue-darkest hover:text-blue"
             data-action="popup#show"
+            data-popup-url="{{ $links->linkedin($post) }}"
+            href="{{ $links->linkedin($post) }}"
+            class="text-blue-darkest hover:text-blue"
         >
             @icon('linkedin-round', 'h-8 fill-current')
         </a>
         <a
-            href="{!! $links->email($post) !!}"
+            href="{{ $links->email($post) }}"
             class="text-blue-darkest hover:text-blue"
         >
             @icon('email-round', 'h-8 fill-current')
         </a>
         <a
             data-controller="clipboard"
-            href="{!! $links->raw($post) !!}"
-            class="text-blue-darkest hover:text-blue"
+            data-clipboard-data="{{ $links->raw($post) }}"
+            data-clipboard-success="Link copied to clipboard!"
             data-action="clipboard#copy"
+            href="{{ $links->raw($post) }}"
+            class="text-blue-darkest hover:text-blue"
         >
             @icon('link-round', 'h-8 fill-current')
         </a>
     </div>
-@stop
+@endsection

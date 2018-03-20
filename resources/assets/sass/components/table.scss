@@ -1,0 +1,17 @@
+.table {
+    border-collapse: collapse;
+    @apply .w-full;
+
+    th {
+        @apply .bg-grey-lighter .text-lg .font-semibold;
+    }
+
+    td {
+        @apply .text-base;
+    }
+
+    th, td {
+        @apply .p-4 .border-1 .border-grey .text-center;
+    }
+
+}

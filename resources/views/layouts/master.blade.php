@@ -1,17 +1,14 @@
-@inject('router', 'Illuminate\Routing\Router')
-
 <!DOCTYPE html>
 <html>
+
     <head>
+
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-        @if ($router->is('posts.show') && isset($post))
-            <title>{{ $post->title }} | Noel De Martin</title>
-            @include('assets.post_meta', $post)
-        @else
-            <title>Noel De Martin</title>
-        @endif
+        <title>@yield('title', 'Noel De Martin')</title>
+
+        @stack('meta')
 
         <meta name="pocket-site-verification" content="a7da21e29497dd96109d3eaf4d2529">
         <meta name="description" content="Noel De Martin's personal website">
@@ -23,7 +20,8 @@
         <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
         <link rel="stylesheet" href="{{ mix('css/main.css') }}">
 
-        @yield('styles')
+        <script type="text/javascript" src="{{ mix('js/main.js') }}" async></script>
+
     </head>
 
     <body class="bg-white pt-12 lg:pt-0">
@@ -78,28 +76,22 @@
 
         @endphp
 
-        @include('layouts.desktop-navigation', compact('sections', 'socials'))
+        @include('layouts.navigation.desktop', compact('sections', 'socials'))
 
-        @include('layouts.mobile-navigation', compact('sections', 'socials'))
+        @include('layouts.navigation.mobile', compact('sections', 'socials'))
 
         <main class="max-w-content mx-auto px-4 py-8">
+
             @if (session()->has('message'))
                 <div class="alert" role="alert">
                     <p>{!! session('message') !!}</p>
                 </div>
             @endif
+
             @yield('content')
+
         </main>
 
-        <!-- JQuery and Bootstrap with fallbacks - http://eddmann.com/posts/providing-local-js-and-css-resources-for-cdn-fallbacks/ -->
-        <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/jquery-2.1.1.min.js"><\/script>')</script>
-
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-        <script>window.jQuery.fn.modal || document.write('<script src="js/bootstrap.min.js"><\/script>')</script>
-
-        <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
-
-        @yield('scripts')
     </body>
+
 </html>
