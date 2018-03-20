@@ -5,8 +5,8 @@ use Validator;
 use App\Models\User;
 use App\Models\Invitation;
 
-class UsersController extends Controller {
-
+class UsersController extends Controller
+{
     /**
      * Display a listing of users
      *
@@ -36,17 +36,15 @@ class UsersController extends Controller {
      */
     public function store()
     {
-
         $invitation = $invitation = Invitation::where('token', request()->get('invitation_token', ''))->first();
 
-        if (($invitation == null || $invitation->used) && (auth()->guest() || !auth()->user()->is_admin)) {
+        if (($invitation === null || $invitation->used) && (auth()->guest() || !auth()->user()->is_admin)) {
             return redirect()->back();
         }
 
         $validator = Validator::make($data = request()->all(), User::$rules);
 
-        if ($validator->fails())
-        {
+        if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
@@ -56,7 +54,7 @@ class UsersController extends Controller {
         $user->is_admin = false;
         $user->is_reviewer = false;
 
-        if ($invitation != null) {
+        if ($invitation !== null) {
             $user->is_reviewer = true;
             $user->save();
 
@@ -68,6 +66,7 @@ class UsersController extends Controller {
             return redirect()->route('home');
         } else {
             $user->save();
+
             return redirect()->route('users.index');
         }
     }
@@ -110,8 +109,7 @@ class UsersController extends Controller {
 
         $validator = Validator::make($data = request()->all(), User::$rules);
 
-        if ($validator->fails())
-        {
+        if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
@@ -132,5 +130,4 @@ class UsersController extends Controller {
 
         return redirect()->route('users.index');
     }
-
 }

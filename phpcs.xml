@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<ruleset>
+
+    <rule ref="PSR1" />
+    <rule ref="PSR2" />
+
+    <rule ref="./vendor/escapestudios/symfony2-coding-standard/Symfony"/>
+    <rule ref="./vendor/escapestudios/symfony2-coding-standard/Symfony">
+        <exclude name="Symfony.Commenting"/>
+        <exclude name="Symfony.ControlStructure.YodaConditions.Invalid" />
+        <exclude name="Symfony.Formatting.ReturnOrThrow.Invalid" />
+        <exclude name="Generic.Files.LineLength.TooLong" />
+        <exclude name="Zend.NamingConventions.ValidVariableName.NotCamelCaps" />
+        <exclude name="Squiz.Strings.ConcatenationSpacing.PaddingFound" />
+    </rule>
+
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax.Found" />
+
+    <rule ref="Squiz.Strings.DoubleQuoteUsage.NotRequired" />
+    <rule ref="Squiz.WhiteSpace.ControlStructureSpacing" />
+    <rule ref="Squiz.WhiteSpace.FunctionOpeningBraceSpace.SpacingAfter" />
+
+    <!-- TODO missing a rule to indicate the first line of a class cannot be newline -->
+
+</ruleset>

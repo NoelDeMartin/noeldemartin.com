@@ -8,14 +8,15 @@ use App\Models\Post;
 use App\Models\PostComment;
 use Illuminate\Support\Carbon;
 
-class PostsController extends Controller {
-
+class PostsController extends Controller
+{
     /**
      * Display a listing of posts
      *
      * @return Response
      */
-    public function index() {
+    public function index()
+    {
         if (auth()->check() && (auth()->user()->is_reviewer || auth()->user()->is_admin)) {
             $posts = Post::orderBy('published_at', 'desc')
                 ->get();
@@ -33,7 +34,8 @@ class PostsController extends Controller {
      *
      * @return Response
      */
-    public function create() {
+    public function create()
+    {
         return View::make('posts.create');
     }
 
@@ -42,7 +44,8 @@ class PostsController extends Controller {
      *
      * @return Response
      */
-    public function store() {
+    public function store()
+    {
         $validator = Validator::make($data = request()->all(), Post::$rules);
 
         if ($validator->fails()) {
@@ -66,14 +69,15 @@ class PostsController extends Controller {
      * @param  int|string  $id
      * @return Response
      */
-    public function show($id) {
-        if(is_numeric($id)) {
+    public function show($id)
+    {
+        if (is_numeric($id)) {
             $post = Post::with('comments')->findOrFail($id);
         } else {
             $post = Post::with('comments')->where('tag', $id)->first();
         }
 
-        if ($post == null || (!$post->isPublished() && (!auth()->check() || !auth()->user()->is_reviewer))) {
+        if ($post === null || (!$post->isPublished() && (!auth()->check() || !auth()->user()->is_reviewer))) {
             abort(404);
         }
 
@@ -86,8 +90,8 @@ class PostsController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function comment($id) {
-
+    public function comment($id)
+    {
         $post = Post::findOrFail($id);
         $validator = Validator::make($data = request()->all(), PostComment::$rules);
 
@@ -99,19 +103,19 @@ class PostsController extends Controller {
         $author_link = trim($data['author_link']);
 
         $comment = new PostComment($data);
-        if (strlen($author) == 0) {
+        if (strlen($author) === 0) {
             $comment->author = 'Anonymous';
         }
-        if (strlen($author_link) == 0) {
+        if (strlen($author_link) === 0) {
             unset($comment->author_link);
-        } else if (filter_var($author_link, FILTER_VALIDATE_EMAIL) !== false) {
+        } elseif (filter_var($author_link, FILTER_VALIDATE_EMAIL) !== false) {
             $comment->author_link = 'mailto:' . $author_link;
         }
         $comment->post_id = $post->id;
         $comment->save();
 
         // Send Email
-        Mail::send('emails.post_comment', ['post' => $post, 'comment' => $comment], function($message) use($post) {
+        Mail::send('emails.post_comment', ['post' => $post, 'comment' => $comment], function ($message) use ($post) {
             $message->to('noeldemartin@gmail.com')->subject('New comment in post ' . $post->title);
         });
 
@@ -124,8 +128,10 @@ class PostsController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function edit($id) {
+    public function edit($id)
+    {
         $post = Post::find($id);
+
         return view('posts.edit', compact('post'));
     }
 
@@ -135,15 +141,20 @@ class PostsController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function update($id) {
+    public function update($id)
+    {
         $post = Post::findOrFail($id);
 
         $validator = Validator::make($data = request()->all(), Post::$rules);
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
-        } else if ($post->isPublished() && $post->tag != Post::createTitleTag($data['title'])) {
-            session()->flash('message', 'Cannot change posts title! (until redirect/missing feature is not implemented correctly)');
+        } elseif ($post->isPublished() && $post->tag !== Post::createTitleTag($data['title'])) {
+            session()->flash(
+                'message',
+                'Cannot change posts title! (until redirect/missing feature is not implemented correctly)'
+            );
+
             return redirect()->back()->withInput();
         }
 
@@ -160,12 +171,14 @@ class PostsController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id) {
-
+    public function destroy($id)
+    {
         // TODO Post::destroy($id);
-        session()->flash('message', 'Cannot delete posts! (until redirect/missing feature is not implemented correctly)');
+        session()->flash(
+            'message',
+            'Cannot delete posts! (until redirect/missing feature is not implemented correctly)'
+        );
 
         return redirect()->route('posts.index');
     }
-
 }

@@ -4,12 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Invitation extends Model {
+class Invitation extends Model
+{
+    protected $fillable = ['email'];
 
-	protected $fillable = ['email'];
-
-	public static $rules = [
-		'email' => 'required|email|unique:invitations'
-	];
-
+    public static $rules = [
+        'email' => 'required|email|unique:invitations',
+    ];
 }

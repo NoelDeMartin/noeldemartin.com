@@ -7,18 +7,21 @@ use App\Models\Post;
 use App\Models\Invitation;
 use Illuminate\Support\MessageBag;
 
-class HomeController extends Controller {
-
-    public function blog() {
+class HomeController extends Controller
+{
+    public function blog()
+    {
         // TODO pagination
         $posts =
             Post::where('published_at', '<', now())
                 ->orderBy('published_at', 'desc')
                 ->get();
+
         return view('home.blog', compact('posts'));
     }
 
-    public function rss() {
+    public function rss()
+    {
         $posts =
             Post::where('published_at', '<', now())
                 ->orderBy('published_at', 'desc')
@@ -29,7 +32,8 @@ class HomeController extends Controller {
                     ->header('Content-Type', 'application/atom+xml');
     }
 
-    public function health() {
+    public function health()
+    {
         $status = 'Everything is OK';
         try {
             if (!app('db')->connection()) {
@@ -38,15 +42,19 @@ class HomeController extends Controller {
         } catch (Exception $e) {
             $status = 'MySQL is not working correctly';
         }
+
         return $status;
     }
 
-    public function login() {
+    public function login()
+    {
         auth()->logout();
+
         return view('home.login');
     }
 
-    public function processLogin() {
+    public function processLogin()
+    {
         $credential = request('credential');
         $password = request('password');
         $remember = request()->get('remember', false);
@@ -64,18 +72,21 @@ class HomeController extends Controller {
         return redirect()->home();
     }
 
-    public function register($token) {
+    public function register($token)
+    {
         auth()->logout();
 
         $invitation = Invitation::where('token', $token)->first();
 
-        abort_if($invitation == null, 404);
+        abort_if($invitation === null, 404);
 
         return view('home.register', compact('invitation'));
     }
 
-    public function logout() {
+    public function logout()
+    {
         auth()->logout();
+
         return redirect()->home();
     }
 }

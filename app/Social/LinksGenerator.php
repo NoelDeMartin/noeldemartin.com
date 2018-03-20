@@ -4,7 +4,8 @@ namespace App\Social;
 
 use App\Models\Post;
 
-class LinksGenerator {
+class LinksGenerator
+{
     public function twitter(Post $post)
     {
         return 'https://twitter.com/intent/tweet' .
@@ -23,7 +24,9 @@ class LinksGenerator {
     public function email(Post $post)
     {
         return 'mailto:?subject=' . rawurlencode(utf8_encode($post->title)) .
-                        '&body=' . rawurlencode('Check out "' . $post->title . '" by Noel De Martin: ' . route('posts.show', $post->tag));
+                        '&body=' . rawurlencode(
+                            'Check out "' . $post->title . '" by Noel De Martin: ' . route('posts.show', $post->tag)
+                        );
     }
 
     public function raw(Post $post)

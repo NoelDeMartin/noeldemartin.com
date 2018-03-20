@@ -1,0 +1,21 @@
+{
+    "emmet.syntaxProfiles": {
+        "blade": "html"
+    },
+    "emmet.includeLanguages": {
+        "blade": "html"
+    },
+    "eslint.validate": [
+        "javascript"
+    ],
+    "files.associations": {
+        ".stylelintrc": "json"
+    },
+    "files.trimTrailingWhitespace": true,
+    "vsicons.projectDetection.autoReload": true,
+    "workbench.iconTheme": "vscode-icons",
+    "php.suggest.basic": false,
+    "css.validate": false,
+    "scss.validate": false,
+    "stylelint.enable": true
+}
