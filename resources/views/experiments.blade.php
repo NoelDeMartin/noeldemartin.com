@@ -82,7 +82,7 @@
 
             @experiment([
                 'name'   => 'DC Motor Sandbox',
-                'date'   => 'Match 2018',
+                'date'   => 'March 2018',
                 'url'    => 'https://noeldemartin.github.io/DC-Motor-Sandbox/',
                 'extras' => [
                     (object) [
