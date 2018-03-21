@@ -16,9 +16,10 @@
         <div data-controller="expandable-items-list">
 
             @experiment([
-                'name' => 'Freedom Calculator',
-                'date' => 'December 2014',
-                'url'  => route('experiments.freedom-calculator'),
+                'name'     => 'Freedom Calculator',
+                'date'     => 'December 2014',
+                'url'      => route('experiments.freedom-calculator'),
+                'expanded' => true,
             ])
                 <p>
                     This a <i>Financial</i> Freedom Calculator (yeah I don't know how to calculate personal freedom yet, I'll let you know when I do ;D).
@@ -109,4 +110,4 @@
         </div>
 
     </article>
-@stop
+@endsection

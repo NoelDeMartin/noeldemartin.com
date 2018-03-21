@@ -3,7 +3,7 @@
 <header
     data-controller="chamaleon"
     data-target="chamaleon.skin"
-    style="background-color: #b8e0df"
+    style="background-color: hsl({{ (round(microtime(true) * 10) % 360) }}, 40%, 80%)"
     @class(
         'w-full pb-12 hidden lg:block',
         [

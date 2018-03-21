@@ -4,7 +4,7 @@
     data-controller="chamaleon menu"
     data-menu-collapsed="true"
     data-target="chamaleon.skin"
-    style="background-color: #b8e0df"
+    style="background-color: hsl({{ (round(microtime(true) * 10) % 360) }}, 40%, 80%)"
     class="fixed pin-t pin-x h-12 flex items-center lg:hidden"
 >
 

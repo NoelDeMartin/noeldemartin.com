@@ -1,6 +1,18 @@
+@php
+    if (!isset($expanded)) $expanded = false;
+@endphp
+
 <div
-    class="expandable-item"
+    @class(
+        'expandable-item',
+        [
+            'collapsed' => !$expanded,
+            'expanded'  => $expanded,
+        ]
+    )
     data-controller="expandable-item"
+    data-target="expandable-items-list.item"
+    data-expandable-item-collapsed="{{ $expanded ? 'false' : 'true' }}"
     data-expandable-item-animation-duration="300"
 >
 
@@ -20,7 +32,7 @@
         @icon('arrow-right', 'arrow h-4 fill-current')
     </h2>
 
-    <div class="overflow-hidden" style="height:0" data-target="expandable-item.content">
+    <div class="overflow-hidden" style="height:{{ $expanded ? 'auto' : '0' }}" data-target="expandable-item.content">
         <div class="px-4 pb-4">
             {{ $slot }}
             <div class="flex items-center justify-end">

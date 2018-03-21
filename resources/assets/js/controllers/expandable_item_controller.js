@@ -4,14 +4,16 @@ export default class extends Controller {
     static targets = ['content'];
 
     initialize() {
-        this.collapsed = true;
         this.animating = false;
         this.contentHeight = this.__calculateContentHeight();
     }
 
-    toggle() {
+    toggle(broadcast = true) {
         if (!this.animating) {
-            this.element.dispatchEvent(new Event('toggle'));
+            if (broadcast) {
+                this.element.dispatchEvent(new Event('toggle'));
+            }
+
             this.animating = true;
             this.collapsed = !this.collapsed;
 
@@ -31,6 +33,12 @@ export default class extends Controller {
             };
 
             requestAnimationFrame(update);
+        }
+    }
+
+    collapse() {
+        if (!this.collapsed) {
+            this.toggle(false);
         }
     }
 

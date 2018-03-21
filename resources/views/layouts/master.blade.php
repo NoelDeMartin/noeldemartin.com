@@ -14,6 +14,8 @@
         <meta name="description" content="Noel De Martin's personal website">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <meta name="turbolinks-cache-control" content="no-preview">
+
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -93,6 +95,8 @@
             @yield('content')
 
         </main>
+
+        @stack('scripts')
 
     </body>
 
