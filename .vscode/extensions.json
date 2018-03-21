@@ -5,6 +5,7 @@
         "dbaeumer.vscode-eslint",
         "cjhowe7.laravel-blade",
         "shinnn.stylelint",
-        "ikappas.phpcs"
+        "ikappas.phpcs",
+        "octref.vetur"
     ]
 }

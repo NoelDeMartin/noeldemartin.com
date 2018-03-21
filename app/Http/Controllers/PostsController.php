@@ -7,14 +7,10 @@ use Validator;
 use App\Models\Post;
 use App\Models\PostComment;
 use Illuminate\Support\Carbon;
+use App\Http\Requests\PostRequest;
 
 class PostsController extends Controller
 {
-    /**
-     * Display a listing of posts
-     *
-     * @return Response
-     */
     public function index()
     {
         if (auth()->check() && (auth()->user()->is_reviewer || auth()->user()->is_admin)) {
@@ -29,46 +25,6 @@ class PostsController extends Controller
         return view('posts.index', compact('posts'));
     }
 
-    /**
-     * Show the form for creating a new post
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        return view('posts.create');
-    }
-
-    /**
-     * Store a newly created post in storage.
-     *
-     * @return Response
-     */
-    public function store()
-    {
-        $validator = Validator::make($data = request()->all(), Post::$rules);
-
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-
-        // Create Post
-        // TODO: html should be scaped or something (do we trust the view?)...
-        $post = new Post($data);
-        $post->tag = Post::createTitleTag($data['title']);
-        $post->author_id = 1; // TODO user session
-        $post->published_at = Carbon::createFromFormat(Post::DATE_FORMAT, $data['published_at'])->toDateTimeString();
-        $post->save();
-
-        return redirect()->route('posts.index');
-    }
-
-    /**
-     * Display the specified post.
-     *
-     * @param  int|string  $id
-     * @return Response
-     */
     public function show($id)
     {
         if (is_numeric($id)) {
@@ -77,19 +33,16 @@ class PostsController extends Controller
             $post = Post::with('comments')->where('tag', $id)->first();
         }
 
-        if ($post === null || (!$post->isPublished() && (!auth()->check() || !auth()->user()->is_reviewer))) {
+        if (
+            $post === null ||
+            (!$post->isPublished() && (!auth()->check() || !(auth()->user()->is_reviewer || auth()->user()->is_admin)))
+        ) {
             abort(404);
         }
 
         return view('posts.show', compact('post'));
     }
 
-    /**
-     * Add a new comment to a post.
-     *
-     * @param  int  $id
-     * @return Response
-     */
     public function comment($id)
     {
         $post = Post::findOrFail($id);
@@ -122,12 +75,20 @@ class PostsController extends Controller
         return redirect()->route('posts.show', $post->tag);
     }
 
-    /**
-     * Show the form for editing the specified post.
-     *
-     * @param  int  $id
-     * @return Response
-     */
+    public function store(PostRequest $request)
+    {
+        Post::create([
+            'tag'           => Post::createTitleTag(request('title')),
+            'title'         => request('title'),
+            'text_html'     => request('text_html'),
+            'text_markdown' => request('text_markdown'),
+            'author_id'     => auth()->id(),
+            'published_at'  => Carbon::parse(request('published_at')),
+        ]);
+
+        return redirect()->route('posts.index');
+    }
+
     public function edit($id)
     {
         $post = Post::find($id);
@@ -135,31 +96,17 @@ class PostsController extends Controller
         return view('posts.edit', compact('post'));
     }
 
-    /**
-     * Update the specified post in storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function update($id)
+    public function update(PostRequest $request, $id)
     {
         $post = Post::findOrFail($id);
 
-        $validator = Validator::make($data = request()->all(), Post::$rules);
+        $post->update([
+            'title'         => request('title'),
+            'text_html'     => request('text_html'),
+            'text_markdown' => request('text_markdown'),
+            'published_at'  => Carbon::parse(request('published_at')),
+        ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        } elseif ($post->isPublished() && $post->tag !== Post::createTitleTag($data['title'])) {
-            session()->flash(
-                'message',
-                'Cannot change posts title! (until redirect/missing feature is not implemented correctly)'
-            );
-
-            return redirect()->back()->withInput();
-        }
-
-        $data['published_at'] = Carbon::createFromFormat(Post::DATE_FORMAT, $data['published_at']);
-        $post->update($data);
         session()->flash('message', 'The post was updated correctly');
 
         return redirect()->route('posts.index');

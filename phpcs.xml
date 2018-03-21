@@ -2,13 +2,16 @@
 <ruleset>
 
     <rule ref="PSR1" />
-    <rule ref="PSR2" />
 
-    <rule ref="./vendor/escapestudios/symfony2-coding-standard/Symfony"/>
+    <rule ref="PSR2">
+        <exclude name="PSR2.ControlStructures.ControlStructureSpacing.SpacingAfterOpenBrace" />
+    </rule>
+
     <rule ref="./vendor/escapestudios/symfony2-coding-standard/Symfony">
         <exclude name="Symfony.Commenting"/>
         <exclude name="Symfony.ControlStructure.YodaConditions.Invalid" />
         <exclude name="Symfony.Formatting.ReturnOrThrow.Invalid" />
+        <exclude name="Symfony.NamingConventions.ValidClassName.InvalidTraitName" />
         <exclude name="Generic.Files.LineLength.TooLong" />
         <exclude name="Generic.ControlStructures.InlineControlStructure.NotAllowed" />
         <exclude name="Zend.NamingConventions.ValidVariableName.NotCamelCaps" />

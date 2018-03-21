@@ -17,10 +17,12 @@
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
         <link rel="stylesheet" href="{{ mix('css/main.css') }}">
 
         <script type="text/javascript" src="{{ mix('js/main.js') }}" async></script>
+
+        @stack('head')
 
     </head>
 
@@ -83,7 +85,7 @@
         <main class="max-w-content mx-auto px-4 py-8">
 
             @if (session()->has('message'))
-                <div class="alert" role="alert">
+                <div class="alert mb-4" role="alert">
                     <p>{!! session('message') !!}</p>
                 </div>
             @endif

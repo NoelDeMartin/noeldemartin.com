@@ -7,11 +7,6 @@ use App\Models\Invitation;
 
 class UsersController extends Controller
 {
-    /**
-     * Display a listing of users
-     *
-     * @return Response
-     */
     public function index()
     {
         $users = User::orderBy('created_at', 'desc')->get();
@@ -19,12 +14,6 @@ class UsersController extends Controller
         return view('users.index', compact('users'));
     }
 
-    /**
-     * Display the specified user.
-     *
-     * @param  int  $id
-     * @return Response
-     */
     public function show($id)
     {
         $user = User::findOrFail($id);
@@ -32,12 +21,6 @@ class UsersController extends Controller
         return view('users.show', compact('user'));
     }
 
-    /**
-     * Remove the specified user from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
     public function destroy($id)
     {
         User::destroy($id);

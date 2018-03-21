@@ -30,13 +30,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     protected $guarded = ['id', 'password', 'is_admin', 'is_reviewer'];
 
-    public static $rules = [
-        'username'         => 'required|min:3|max:16|unique:users',
-        'email'            => 'required|email|unique:users',
-        'password'         => 'required|min:6|max:50',
-        'confirm_password' => 'same:password',
-    ];
-
     public function getRolesArray()
     {
         $roles = [];

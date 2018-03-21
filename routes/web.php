@@ -35,7 +35,8 @@ Route::prefix('experiments')->group(function () {
 
 Route::middleware('auth.admin')->group(function () {
     Route::resource('users', 'UsersController', ['only' => ['index', 'show', 'destroy']]);
-    Route::resource('posts', 'PostsController', ['except' => ['index', 'show']]);
+    Route::resource('posts', 'PostsController', ['except' => ['index', 'show', 'create']]);
+    Route::view('posts/create', 'posts.create')->name('posts.create');
 });
 
 Route::prefix('posts')->middleware('auth.reviewer')->group(function () {

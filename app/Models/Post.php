@@ -9,13 +9,6 @@ class Post extends Model
     const DATE_FORMAT = 'd/m/Y';
     const DATE_FORMAT_JS = 'dd/mm/yyyy';
 
-    public static $rules = [
-        'title'         => 'required',
-        'text_markdown' => 'required',
-        'text_html'     => 'required',
-        'published_at'  => 'required|date_format:d/m/Y',
-    ];
-
     protected $dates = ['created_at', 'updated_at', 'published_at'];
 
     protected $fillable = ['title', 'tag', 'text_markdown', 'text_html', 'author_id', 'published_at'];

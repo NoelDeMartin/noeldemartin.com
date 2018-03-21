@@ -1,10 +1,11 @@
 {
-    "parser": "babel-eslint",
     "extends": [
-        "standard"
+        "standard",
+        "plugin:vue/recommended"
     ],
     "plugins": [
-        "babel"
+        "babel",
+        "vue"
     ],
     "env": {
         "browser": true,
@@ -12,8 +13,12 @@
     },
     "rules": {
         "indent": ["error", 4, { "SwitchCase": 1 }],
+        "vue/html-indent": ["error", 4],
         "space-before-function-paren": "off",
         "semi": ["error", "always"],
         "comma-dangle": ["error", "always-multiline"]
+    },
+    "parserOptions": {
+        "parser": "babel-eslint"
     }
 }
