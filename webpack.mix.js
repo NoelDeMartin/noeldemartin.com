@@ -31,9 +31,6 @@ mix
                     use: [
                         {
                             loader: 'vue-loader',
-                            options: {
-                                extractCSS: true,
-                            },
                         },
                         'eslint-loader',
                     ],

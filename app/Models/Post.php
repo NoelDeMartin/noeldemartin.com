@@ -15,9 +15,11 @@ class Post extends Model
 
     public static function createTitleTag($title)
     {
-        $special_chars = [' ', '/', '!', '?', '.', ',', ';', '#', '$', '&', '(', ')', ':'];
+        $tag = preg_replace('/[^a-zA-Z0-9]/', '-', $title);
+        $tag = preg_replace('/-+/', '-', $tag);
+        $tag = urlencode(strtolower($tag));
 
-        return urlencode(strtolower(preg_replace('/-+/', '-', str_replace($special_chars, '-', $title))));
+        return $tag;
     }
 
     public function comments()

@@ -12,7 +12,7 @@
             data-controller="post-editor"
             data-post-editor-title="{{ old('title', $post->title) }}"
             data-post-editor-text="{{ old('text_markdown', $post->text_markdown) }}"
-            data-post-editor-date="{{ old('published_at', $post->published_at->toDateString()) }}"
+            data-post-editor-date="{{ old('published_at', $post->published_at->toW3cString()) }}"
         ></div>
 
         @foreach ($errors->all() as $error)

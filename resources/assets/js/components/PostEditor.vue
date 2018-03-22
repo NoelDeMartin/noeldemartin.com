@@ -114,3 +114,22 @@ export default {
     },
 };
 </script>
+
+<style lang="scss">
+    .vdatetime-popup__header,
+    .vdatetime-calendar__month__day--selected > span > span,
+    .vdatetime-calendar__month__day--selected:hover > span > span {
+        background: config('colors.blue-dark');
+    }
+
+    .vdatetime-popup__actions__button {
+        text-transform: uppercase;
+        color: config('colors.blue-dark');
+
+        &:hover {
+            color: config('colors.blue-darker');
+            background: config('colors.overlay');
+        }
+
+    }
+</style>

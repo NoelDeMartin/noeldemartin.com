@@ -34,6 +34,10 @@ main {
         @apply .leading-normal .my-6;
     }
 
+    li p {
+        @apply .my-4;
+    }
+
     img {
         @apply .mx-auto .block .max-w-full;
     }
