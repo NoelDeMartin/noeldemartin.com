@@ -10,11 +10,11 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        @stack('styles')
+        @stack('head')
 
     </head>
 
-    <body>
+    <body class="@yield('body-class')">
 
         @yield('content')
 

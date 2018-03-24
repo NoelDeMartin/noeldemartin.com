@@ -7,8 +7,8 @@
     @class(
         'w-full pb-12 hidden lg:block',
         [
-            'h-32 md:h-44 lg:h-60' => ! $router->is('posts.show'),
-            'h-12'                 =>   $router->is('posts.show'),
+            'h-32 md:h-44 lg:h-60' => $header,
+            'h-12'                 => ! $header,
         ]
     )
 >

@@ -1,8 +1,23 @@
-@extends('layouts.master')
+@extends('layouts.master', [ 'header' => false ])
+
+@push('head')
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="{{ mix('css/main.css') }}">
+@endpush
+
+@php
+    $header = false;
+@endphp
 
 @section('content')
-	<article>
-		<h1>404</h1>
-		<p>The page you're looking for doesn't exist...</p>
-	</article>
-@stop
+    <div class="fixed pin mt-12 flex items-center justify-center">
+        <a href="https://xkcd.com/1969/" alt="Not Found" target="_blank">
+            <img
+                class="max-w-full max-h-full"
+                src="https://imgs.xkcd.com/comics/not_available.png"
+                title="Not Found"
+            >
+        </a>
+    </div>
+@endsection

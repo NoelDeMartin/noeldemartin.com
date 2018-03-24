@@ -1,10 +1,11 @@
 @inject('links', 'App\Social\LinksGenerator')
 
-@extends('layouts.master')
+@extends('layouts.master', [ 'header' => false ])
 
 @section('title', $post->title . ' | Noel De Martin')
 
-@push('meta')
+
+@push('head')
     <meta property="og:title" content="{{ $post->title }}" />
     <meta property="og:type" content="article" />
     <meta property="og:article:published_time" content="{{ $post->published_at->format(DateTime::ISO8601) }}" />
