@@ -19,7 +19,6 @@
                 'name'     => 'Freedom Calculator',
                 'date'     => 'December 2014',
                 'url'      => route('experiments.freedom-calculator'),
-                'expanded' => true,
             ])
                 <p>
                     This a <i>Financial</i> Freedom Calculator (yeah I don't know how to calculate personal freedom yet, I'll let you know when I do ;D).
@@ -78,6 +77,39 @@
                     It doesn't even work as it should; the point was to give a different "funny" meaning to a sentence, but most of the time what happens
                     is that you get something that doesn't even make sense. This could be improved with some NLP and such, but I guess this is were I'll
                     leave it.
+                </p>
+            @endexperiment
+
+            @experiment([
+                'name'     => 'Zazen Meditation Timer',
+                'date'     => 'September 2017',
+                'url'      => 'https://noeldemartin.github.io/zazen-meditation-timer/',
+                'extras' => [
+                    (object) [
+                        'name' => 'Github',
+                        'icon' => 'github',
+                        'url'  => 'https://github.com/NoelDeMartin/zazen-meditation-timer/'
+                    ],
+                ],
+            ])
+                <p>
+                    I had been meditating on and off for a couple of years, and one of the reasons why I didn't do it as much was that my setup was
+                    quite bad. I played an audio file with a fixed length on my phone, so I couldn't change the time, and there was a nasty white-noise
+                    on the background. The solutions I found didn't really convince me, and I had recently been thinking about PWA (Progressive Web Apps),
+                    so this was the perfect chance to try doing one and also improve my meditation setup.
+                </p>
+                <p>
+                    The final result is quite simple (and that was the idea), but the cool part is the architecture. It is a PWA, which means it can be
+                    hosted in <a href="https://pages.github.com" target="_blank">github pages</a> for free, an deploying is done straight from the repository.
+                    Another cool feature I added more recently is offline support with service workers. With this two aspects combined, this is really
+                    equivalent to a native app without any appstores! If you have an Android device, try visiting the app url with Google Chrome and use the option
+                    <i>Add to Home screen</i>. After doing that, you'll have the web app installed on your device and it'll work even if you don't have
+                    internet connection.
+                </p>
+                <p>
+                    Oh and yes, since then I did find a solution that I liked for meditating, so if you are interested check out the
+                    <a href="https://insighttimer.com/" target="_blank">Insight Timer</a> app. And if you don't meditate, I suggest that you do, it really
+                    has a ton of benefits :D.
                 </p>
             @endexperiment
 
