@@ -29,14 +29,14 @@
 
         $sections = [
             (object) [
-                'route' => 'blog',
-                'icon'  => 'blog',
-                'text'  => 'Blog'
-            ],
-            (object) [
                 'route' => 'about',
                 'icon'  => 'about',
                 'text'  => 'About me'
+            ],
+            (object) [
+                'route' => 'blog',
+                'icon'  => 'blog',
+                'text'  => 'Blog'
             ],
             (object) [
                 'route' => 'experiments',

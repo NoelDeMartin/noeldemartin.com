@@ -25,7 +25,7 @@
 
         <ul class="list-reset flex flex-col">
 
-            @foreach ($sections as $section)
+            @foreach ($sections as $i => $section)
                 <li class="flex">
                     <a
                         href="{{ route($section->route) }}"
@@ -37,14 +37,14 @@
                                 flex flex-grow items-center
                                 hover:bg-overlay
                             ',
-                            [ 'bg-overlay' => $router->is($section->route) ]
+                            [ 'bg-overlay' => $router->is($section->route) || $i == 0 && $router->is('home')]
                         )
                     >
                         @icon($section->icon, 'h-6 mr-2 fill-current')
                         <span
                             @class(
                                 'border-b-2 border-transparent group-hover:border-black',
-                                [ 'border-black' => $router->is($section->route) ]
+                                [ 'border-black' => $router->is($section->route) || $i == 0 && $router->is('home') ]
                             )
                         >
                             {{ $section->text }}

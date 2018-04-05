@@ -3,14 +3,16 @@
 @section('content')
     <article>
 
-        <h1>Experiments</h1>
+        <h1>Welcome to my lab</h1>
 
         <p>
-            Here you will find small projects I have done when I wanted to explore an idea. Some are useful, some are
-            an itch that needed to be scratched, and some are just exploring something I was interested in.
+            Here you will find small projects I have done when I wanted to explore an idea. Some are useful, some are an itch that needed to be
+            scratched, and some are just exploring a topic I was interested in. I hope they can also pique your interest :D.
+        </p>
 
-            Maybe they don't work in your browser because my point when doing these wasn't compatibility (specially the ones testing new APIs),
-            but at least I hope they can pique your interest :D.
+        <p>
+            If you want to see more, you can also find finished products in <a href="https://lincolnschilli.com/" target="_blank">Lincoln's Chilli</a>.
+            I call it my "Entrepreneurial Sandbox", because I use it to publish MVPs and test the waters.
         </p>
 
         <div data-controller="expandable-items-list">

@@ -11,7 +11,7 @@
 |
 */
 
-Route::redirect('/', 'blog')->name('home');
+Route::view('/', 'about')->name('home');
 
 Route::view('login', 'auth.login');
 Route::post('login', 'AuthController@login')->name('login');
