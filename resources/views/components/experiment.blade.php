@@ -49,14 +49,16 @@
                         </a>
                     @endforeach
                 @endif
-                <a
-                    href="{{ $url }}"
-                    target="_blank"
-                    title="{{ $name }}"
-                    class="flex items-center text-blue-darkest ml-2 hover:text-blue"
-                >
-                    @icon('link-round', 'h-8 fill-current')
-                </a>
+                @if(isset($url))
+                    <a
+                        href="{{ $url }}"
+                        target="_blank"
+                        title="{{ $name }}"
+                        class="flex items-center text-blue-darkest ml-2 hover:text-blue"
+                    >
+                        @icon('link-round', 'h-8 fill-current')
+                    </a>
+                @endif
             </div>
         </div>
     </div>
