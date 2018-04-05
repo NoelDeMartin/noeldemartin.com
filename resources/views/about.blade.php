@@ -89,8 +89,8 @@
         </p>
 
         <p>
-            More interests include different ranges of rock and heavy metal, doing sports, personal development and I should really start reading
-            more books. My favorite saga is Sherlock Holmes.
+            More interests include different ranges of rock and heavy metal music, doing sports, personal development and I should really start reading
+            more books. My favorite book is Sherlock Holmes Anthology.
         </p>
 
         <p class="text-lg">So, in a nutshell, that's me!</p>
