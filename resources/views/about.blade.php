@@ -6,8 +6,12 @@
         <h1>Hi there!</h1>
 
         <p class="text-lg">
-            My name is Noel, and I love to learn, solve problems and build <i>stuff</i>.
+            My name is Noel, I am a developer and entrepreneur who loves to learn, solve problems and build <i>stuff</i>.
+            I have been working on the software industry since 2011 in all kinds of projects and I’m always looking
+            for new challenges.
+        </p>
 
+        <p class="text-lg">
             It's awesome that you are here! Take your time to look around, and if you want to talk with me don't hesitate on
             <a href="mail:noeldemartin@gmail.com">sending an email</a>.
         </p>
