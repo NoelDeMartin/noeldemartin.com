@@ -6,9 +6,9 @@
         <h1>Hi there!</h1>
 
         <p class="text-lg">
-            My name is Noel, I am a developer and entrepreneur who loves to learn, solve problems and build <i>stuff</i>.
-            I have been working on the software industry since 2011 in all kinds of projects and I’m always looking
-            for new challenges.
+            My name is Noel, I am a developer and entrepreneur who loves to learn, solve problems and build
+            <i title="From fun experiments to products that make an impact">stuff</i>. I have been working on the software industry
+            since 2011 in all kinds of projects and I’m always looking for new challenges.
         </p>
 
         <p class="text-lg">
@@ -94,7 +94,7 @@
 
         <p>
             More interests include different ranges of rock and heavy metal music, doing sports, personal development and I should really start reading
-            more books. My favorite book is Sherlock Holmes Anthology.
+            more books. My favorite book is the Sherlock Holmes Anthology.
         </p>
 
         <p class="text-lg">So, in a nutshell, that's me!</p>
