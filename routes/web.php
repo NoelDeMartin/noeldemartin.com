@@ -19,6 +19,7 @@ Route::get('logout', 'AuthController@logout')->name('logout');
 
 Route::prefix('blog')->group(function () {
     Route::get('/', 'HomeController@blog')->name('blog');
+    Route::get('{id}', 'PostsController@show')->name('posts.show');
     Route::get('rss.xml', 'HomeController@rss')->name('blog.rss');
 });
 
@@ -44,7 +45,7 @@ Route::prefix('posts')->middleware('auth.reviewer')->group(function () {
 });
 
 Route::prefix('posts')->group(function () {
-    Route::get('{id}', 'PostsController@show')->name('posts.show');
+    Route::get('{id}', 'PostsController@show');
     Route::post('{id}/comment', 'PostsController@comment')->name('posts.comment');
 });
 
