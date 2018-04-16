@@ -72,15 +72,15 @@
             I had no idea of what programming was (really, I didn't even know the concept of a "variable"). And the funny story is that I
             choose that degree because I liked to use photoshop and math. Soon I found how different it is to use software and build software.
             But luckily for me, I fell in love with programming. Since then, I have always been passionate about coding and to this day I
-            still enjoy learning about it. If I had to say what I like so much about programming, it would be my drive to solve problems
+            still enjoy learning about it. If I had to say why I like programming so much, it would be my drive to solve problems
             and how much I enjoy algorithmics and software architecture.
         </p>
 
         <p>
-            The other side of the coin is Entrepreneurship. I'm not sure that I like the word, because it's the same as hacking, it can have
-            so many connotations. What it means to me is not only thinking about a problem, but taking action and getting results. From early
-            on I've always cared about the purpose of my work and how it would affect the people using it. I also champion innovation and
-            creativity; I believe programming is an extremely creative activity, and I always try to challenge preconceptions and improve.
+            The other side of the coin is Entrepreneurship. I'm not sure that I like the word, because it can have so many connotations.
+            What it means to me is not only thinking about a problem, but taking action and working towards results. From early on I've
+            always cared about the purpose of my work and how it would affect the people using it. I also champion innovation and creativity;
+            I believe programming is an extremely creative activity, and I always try to challenge preconceptions and improve.
         </p>
 
         <h2>Beyond the code</h2>
