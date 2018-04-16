@@ -52,9 +52,8 @@
         <h2>My values</h2>
 
         <p>
-            <i>Values</i> is such an abstract concept, don't you think? Sometimes they may seem like random words. But values
-            are important to me. And I try to keep them in mind in all my actions and are core to everything in my life. These
-            are my values:
+            <i>Values</i> is such an abstract concept, don't you think? Sometimes they may seem random words. But values are
+            important to me. I try to embed them in my actions and are core to everything in my life. These are my values:
         </p>
 
         <ul>
@@ -69,12 +68,12 @@
         <h2>Programming & Entrepreneurship</h2>
 
         <p>
-            I have been a developer since 2011. My story is quite uncommon, because when I started studying computer science
-            in university, I had no idea of what programming was (really, I didn't even know the concept of a "variable"). And the funny
-            story is that I choose that degree because I liked to use photoshop and math. Soon I found how different it is to use software
-            and build software. But luckily for me, I fell in love with programming. Since then, I have always been passionate about coding
-            and to this day I still enjoy to keep learning. If I had to say what I like so much about programming, it would be my drive
-            to solve problems and how much I enjoy algorithmics and software architecture.
+            I have been a developer since 2011. My story is quite uncommon, because when I started studying computer science in university,
+            I had no idea of what programming was (really, I didn't even know the concept of a "variable"). And the funny story is that I
+            choose that degree because I liked to use photoshop and math. Soon I found how different it is to use software and build software.
+            But luckily for me, I fell in love with programming. Since then, I have always been passionate about coding and to this day I
+            still enjoy learning about it. If I had to say what I like so much about programming, it would be my drive to solve problems
+            and how much I enjoy algorithmics and software architecture.
         </p>
 
         <p>
