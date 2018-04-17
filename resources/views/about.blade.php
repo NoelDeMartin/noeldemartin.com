@@ -22,6 +22,14 @@
 
             <div class="flex-1 bg-grey-lightest m-2 p-4 items-center justify-center flex text-center flex-col">
 
+                <h2>Am</h2>
+
+                <span class="leading-normal">Keep reading!<br><br></span>
+
+            </div>
+
+            <div class="flex-1 bg-grey-lightest m-2 p-4 items-center justify-center flex text-center flex-col">
+
                 <h2>Think</h2>
 
                 <span class="leading-normal">Go read my <a href="{{ route('blog') }}">Blog</a><br><br></span>
@@ -36,14 +44,6 @@
                     Check out my <a href="{{ route('experiments') }}">Experiments</a><br>
                     or browse my <a href="https://github.com/NoelDeMartin">GitHub</a>
                 </span>
-
-            </div>
-
-            <div class="flex-1 bg-grey-lightest m-2 p-4 items-center justify-center flex text-center flex-col">
-
-                <h2>Am</h2>
-
-                <span class="leading-normal">Keep reading!<br><br></span>
 
             </div>
 
