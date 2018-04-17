@@ -16,7 +16,7 @@
             <a href="mail:noeldemartin@gmail.com">sending an email</a>.
         </p>
 
-        <h2 class="text-xl">If you want to learn how I...</h2>
+        <h2 class="text-2xl text-center">If you want to learn how I...</h2>
 
         <div class="flex flex-col md:flex-row">
 
