@@ -36,7 +36,10 @@ class Post extends Model
     {
         $summary = substr($this->text_html, 0, strpos($this->text_html, '<h2'));
 
-        return preg_replace('/<a(\s|>)[^>]*>(.*?)<\/a>/', '$2', $summary);
+        $summary = preg_replace('/<a(\s|>)[^>]*>(.*?)<\/a>/', '$2', $summary);
+        $summary = preg_replace('/<img[^>]*>/', '', $summary);
+
+        return $summary;
     }
 
     public function getDurationAttribute()
