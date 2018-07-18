@@ -19,8 +19,8 @@ Route::get('logout', 'AuthController@logout')->name('logout');
 
 Route::prefix('blog')->group(function () {
     Route::get('/', 'HomeController@blog')->name('blog');
-    Route::get('{id}', 'PostsController@show')->name('posts.show');
     Route::get('rss.xml', 'HomeController@rss')->name('blog.rss');
+    Route::get('{id}', 'PostsController@show')->name('posts.show');
 });
 
 Route::view('about', 'about')->name('about');
