@@ -1,7 +1,5 @@
 @extends('layouts.base')
 
-@section('title', 'Random Synonymizer')
-
 @push('head')
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <style type="text/css">
@@ -27,7 +25,7 @@
 
 @section('content')
     <div class="container">
-        <h1>Random Synonymizer</h1>
+        <h1>Synonymizer</h1>
 
         <textarea rows="10"></textarea>
 

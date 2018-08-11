@@ -1,7 +1,5 @@
 @extends('layouts.base')
 
-@section('title', 'Online Meeting Tool')
-
 @push('head')
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 @endpush

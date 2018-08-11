@@ -105,7 +105,7 @@
             @endexperiment
 
             @experiment([
-                'name' => 'Random Synonymizer',
+                'name' => 'Synonymizer',
                 'date' => 'April 2016',
                 'url'  => route('experiments.synonymizer'),
             ])

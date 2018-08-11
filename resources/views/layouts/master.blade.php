@@ -1,11 +1,8 @@
 @extends('layouts.base')
 
-@section('title', 'Noel De Martin')
-
 @push('head')
 
     <meta name="pocket-site-verification" content="a7da21e29497dd96109d3eaf4d2529">
-    <meta name="description" content="Noel De Martin's personal website">
 
     <meta name="turbolinks-cache-control" content="no-preview">
 

@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use NoelDeMartin\SemanticSEO\Support\Facades\SemanticSEO;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -48,6 +49,8 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        SemanticSEO::hide();
+
         return parent::render($request, $exception);
     }
 }

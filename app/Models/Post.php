@@ -42,8 +42,24 @@ class Post extends Model
         return $summary;
     }
 
+    public function getImageUrlAttribute()
+    {
+        preg_match('/<img[^>]*src="([^"]*)"/', $this->text_html, $matches);
+        return count($matches) > 1 ? url($matches[1]) : null;
+    }
+
+    public function getWordCountAttribute()
+    {
+        return str_word_count(strip_tags($this->text_html));
+    }
+
     public function getDurationAttribute()
     {
-        return round(str_word_count(strip_tags($this->text_html)) / 200);
+        return round($this->word_count / 200);
+    }
+
+    public function getModifiedAtAttribute()
+    {
+        return $this->updated_at > $this->published_at ? $this->updated_at : $this->published_at;
     }
 }

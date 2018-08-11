@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use Mail;
 use Validator;
 use App\Models\Post;
+use App\SemanticSEO\Logo;
 use App\Models\PostComment;
 use Illuminate\Support\Carbon;
+use App\SemanticSEO\NoelDeMartin;
 use App\Http\Requests\PostRequest;
+use App\SemanticSEO\NoelDeMartinOrganization;
+use NoelDeMartin\SemanticSEO\Support\Facades\SemanticSEO;
 
 class PostsController extends Controller
 {
@@ -25,12 +29,12 @@ class PostsController extends Controller
         return view('posts.index', compact('posts'));
     }
 
-    public function show($id)
+    public function show($idOrTag)
     {
-        if (is_numeric($id)) {
-            $post = Post::with('comments')->findOrFail($id);
+        if (is_numeric($idOrTag)) {
+            $post = Post::with('comments')->findOrFail($idOrTag);
         } else {
-            $post = Post::with('comments')->where('tag', $id)->first();
+            $post = Post::with('comments')->where('tag', $idOrTag)->first();
         }
 
         if (
@@ -39,6 +43,23 @@ class PostsController extends Controller
         ) {
             abort(404);
         }
+
+        SemanticSEO::canonical(route('posts.show', $post->tag));
+
+        SemanticSEO::article()
+            ->name($post->title)
+            ->headline($post->title)
+            ->description($post->summary)
+            ->image(is_null($post->image_url) ? Logo::class : $post->image_url)
+            ->wordCount($post->word_count)
+            ->articleSection('Blog')
+            ->author(NoelDeMartin::class)
+            ->creator(NoelDeMartin::class)
+            ->publisher(NoelDeMartinOrganization::class)
+            ->mainEntityOfPage(route('home'))
+            ->datePublished($post->published_at)
+            ->dateCreated($post->published_at)
+            ->dateModified(max($post->published_at, $post->updated_at));
 
         return view('posts.show', compact('post'));
     }

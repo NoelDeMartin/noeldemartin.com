@@ -11,9 +11,10 @@
 |
 */
 
-Route::view('/', 'about')->name('home');
+Route::get('/', 'HomeController@about')->name('home');
+Route::get('about', 'HomeController@about')->name('about');
 
-Route::view('login', 'auth.login');
+Route::view('login', 'auth.login')->middleware('semantic-seo:hide');
 Route::post('login', 'AuthController@login')->name('login');
 Route::get('logout', 'AuthController@logout')->name('logout');
 
@@ -23,28 +24,28 @@ Route::prefix('blog')->group(function () {
     Route::get('{id}', 'PostsController@show')->name('posts.show');
 });
 
-Route::view('about', 'about')->name('about');
-
 Route::prefix('experiments')->group(function () {
-    Route::view('/', 'experiments')->name('experiments');
-    Route::view('freedom-calculator', 'experiments.freedom_calculator')->name('experiments.freedom-calculator');
-    Route::view('online-meeting', 'experiments.online_meeting')->name('experiments.online-meeting');
-    Route::view('online-meeting/{roomKey}', 'experiments.online_meeting_room')->name('experiments.online-meeting-room');
-    Route::view('synonymizer', 'experiments.synonymizer')->name('experiments.synonymizer');
+    Route::get('/', 'HomeController@experiments')->name('experiments');
+    Route::get('freedom-calculator', 'ExperimentsController@freedomCalculator')->name('experiments.freedom-calculator');
+    Route::get('online-meeting', 'ExperimentsController@onlineMeeting')->name('experiments.online-meeting');
+    Route::view('online-meeting/{roomKey}', 'experiments.online_meeting_room')
+        ->name('experiments.online-meeting-room')
+        ->middleware('semantic-seo:hide');
+    Route::get('synonymizer', 'ExperimentsController@synonymizer')->name('experiments.synonymizer');
     Route::post('synonymize-text', 'ExperimentsController@synonymizeText')->name('experiments.synonymize_text');
 });
 
-Route::middleware('auth.admin')->group(function () {
+Route::middleware(['auth.admin', 'semantic-seo:hide'])->group(function () {
     Route::resource('users', 'UsersController', ['only' => ['index', 'show', 'destroy']]);
     Route::resource('posts', 'PostsController', ['except' => ['index', 'show', 'create']]);
     Route::view('posts/create', 'posts.create')->name('posts.create');
 });
 
-Route::prefix('posts')->middleware('auth.reviewer')->group(function () {
+Route::prefix('posts')->middleware(['auth.reviewer', 'semantic-seo:hide'])->group(function () {
     Route::get('/', 'PostsController@index')->name('posts.index');
 });
 
-Route::prefix('posts')->group(function () {
+Route::prefix('posts')->middleware('semantic-seo:hide')->group(function () {
     Route::get('{id}', 'PostsController@show');
     Route::post('{id}/comment', 'PostsController@comment')->name('posts.comment');
 });

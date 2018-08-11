@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use NoelDeMartin\SemanticSEO\Support\Facades\SemanticSEO;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('icon', function ($args) {
             return "<?php echo blade_icon({$args}); ?>";
         });
+
+        SemanticSEO::titleSuffix(trans('seo.title_suffix'));
     }
 
     /**

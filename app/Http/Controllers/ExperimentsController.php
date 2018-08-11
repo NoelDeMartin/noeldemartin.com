@@ -2,8 +2,40 @@
 
 namespace App\Http\Controllers;
 
+use App\SemanticSEO\Experiments\Synonymizer;
+use App\SemanticSEO\Experiments\OnlineMeeting;
+use App\SemanticSEO\Experiments\FreedomCalculator;
+use NoelDeMartin\SemanticSEO\Support\Facades\SemanticSEO;
+
 class ExperimentsController extends Controller
 {
+    public function freedomCalculator()
+    {
+        SemanticSEO::meta(trans('seo.freedom_calculator'));
+
+        SemanticSEO::is(FreedomCalculator::class);
+
+        return view('experiments.freedom_calculator');
+    }
+
+    public function onlineMeeting()
+    {
+        SemanticSEO::meta(trans('seo.online_meeting'));
+
+        SemanticSEO::is(OnlineMeeting::class);
+
+        return view('experiments.online_meeting');
+    }
+
+    public function synonymizer()
+    {
+        SemanticSEO::meta(trans('seo.synonymizer'));
+
+        SemanticSEO::is(Synonymizer::class);
+
+        return view('experiments.synonymizer');
+    }
+
     public function synonymizeText()
     {
         $text = explode(' ', request('text'));

@@ -1,7 +1,5 @@
 @extends('layouts.base')
 
-@section('title', 'Freedom Calculator')
-
 @push('head')
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <style type="text/css">
