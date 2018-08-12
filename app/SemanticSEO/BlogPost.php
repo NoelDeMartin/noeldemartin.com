@@ -14,6 +14,7 @@ class BlogPost extends Article
         $this->name($post->title);
         $this->headline($post->title);
         $this->description($post->summary);
+        $this->url(route('posts.show', $post->tag));
         $this->image(is_null($post->image_url) ? Logo::class : $post->image_url);
         $this->wordCount($post->word_count);
         $this->articleSection('Blog');

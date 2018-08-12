@@ -149,7 +149,7 @@
 
 @push('scripts')
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript">
+    <script>
         (function() {
             var $freedomMessage = freedomDeadline = $('#freedom-message'),
                 $freedomDeadline = $('#freedom-deadline'),

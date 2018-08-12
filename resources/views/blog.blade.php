@@ -30,7 +30,7 @@
             </article>
         </a>
 
-        <hr class="my-2 h-px bg-grey-lightest"></hr>
+        <hr class="my-2 h-px bg-grey-lightest">
 
     @endforeach
 

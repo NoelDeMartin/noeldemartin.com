@@ -29,8 +29,8 @@
 @push('scripts')
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
-    <script type="text/javascript" src="{{ asset('js/experiments/online-meeting.js') }}"></script>
-    <script type="text/javascript">
+    <script src="{{ asset('js/experiments/online-meeting.js') }}"></script>
+    <script>
         var $newRoomForm = $('#new-room'),
             $newRoomInput = $newRoomForm.find('input[type="text"]'),
             $newRoomPrivate = $newRoomForm.find('input[type="checkbox"]'),

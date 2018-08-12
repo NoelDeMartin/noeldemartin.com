@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
     <link rel="stylesheet" href="{{ mix('css/main.css') }}">
 
-    <script type="text/javascript" src="{{ mix('js/main.js') }}" async></script>
+    <script src="{{ mix('js/main.js') }}" async></script>
 
 @endpush
 

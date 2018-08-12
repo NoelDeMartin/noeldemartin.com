@@ -16,21 +16,21 @@
     data-expandable-item-animation-duration="300"
 >
 
-    <h2
+    <div
         class="my-0 p-3 flex items-center justify-between cursor-pointer hover:bg-overlay"
         data-action="click->expandable-item#toggle"
     >
         <div class="flex flex-grow">
-            <span class="text-2xl font-medium">
+            <h2 class="m-0 text-2xl font-medium">
                 {{ $name }}
-            </span>
-            <time class="ml-2">
+            </h2>
+            <time class="ml-2" datetime="{{ $datetime }}">
                 @icon('calendar', 'h-4 fill-current')
                 <span class="ml-2">{{ $date }}</span>
             </time>
         </div>
         @icon('arrow-right', 'arrow h-4 fill-current')
-    </h2>
+    </div>
 
     <div class="overflow-hidden" style="height:{{ $expanded ? 'auto' : '0' }}" data-target="expandable-item.content">
         <div class="px-4 pb-4">

@@ -18,10 +18,11 @@
         <div data-controller="expandable-items-list">
 
             @experiment([
-                'name'   => 'DC Motor Sandbox',
-                'date'   => 'March 2018',
-                'url'    => 'https://noeldemartin.github.io/DC-Motor-Sandbox/',
-                'extras' => [
+                'name'     => 'DC Motor Sandbox',
+                'date'     => 'March 2018',
+                'datetime' => '2018-03',
+                'url'      => 'https://noeldemartin.github.io/DC-Motor-Sandbox/',
+                'extras'   => [
                     (object) [
                         'name' => 'Github',
                         'icon' => 'github',
@@ -46,8 +47,9 @@
             @experiment([
                 'name'     => 'Zazen Meditation Timer',
                 'date'     => 'September 2017',
+                'datetime' => '2017-09',
                 'url'      => 'https://noeldemartin.github.io/zazen-meditation-timer/',
-                'extras' => [
+                'extras'   => [
                     (object) [
                         'name' => 'Github',
                         'icon' => 'github',
@@ -79,7 +81,8 @@
             @experiment([
                 'name'     => 'Japanese Character Recognition',
                 'date'     => 'June 2017',
-                'extras' => [
+                'datetime' => '2017-06',
+                'extras'   => [
                     (object) [
                         'name' => 'Github',
                         'icon' => 'github',
@@ -105,9 +108,10 @@
             @endexperiment
 
             @experiment([
-                'name' => 'Synonymizer',
-                'date' => 'April 2016',
-                'url'  => route('experiments.synonymizer'),
+                'name'     => 'Synonymizer',
+                'date'     => 'April 2016',
+                'datetime' => '2016-04',
+                'url'      => route('experiments.synonymizer'),
             ])
                 <p>
                     Well, this is just silly. I was using <a href="http://www.thesaurus.com" target="_blank">Thesaurus</a> for searching synonims,
@@ -123,9 +127,10 @@
             @endexperiment
 
             @experiment([
-                'name' => 'Online Meeting',
-                'date' => 'April 2015',
-                'url'  => route('experiments.online-meeting'),
+                'name'     => 'Online Meeting',
+                'date'     => 'April 2015',
+                'datetime' => '2015-04',
+                'url'      => route('experiments.online-meeting'),
             ])
                 <p>
                     Back in 2015 I learned about <a href="https://webrtc.org/" target="_blank">WebRTC</a>. The first thing that came to mind were
@@ -151,6 +156,7 @@
             @experiment([
                 'name'     => 'Freedom Calculator',
                 'date'     => 'December 2014',
+                'datetime' => '2014-12',
                 'url'      => route('experiments.freedom-calculator'),
             ])
                 <p>
