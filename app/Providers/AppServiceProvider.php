@@ -26,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         SemanticSEO::titleSuffix(trans('seo.title_suffix'));
+        SemanticSEO::openGraph('site_name', 'Noel De Martin');
         SemanticSEO::rss(url('blog/rss.xml'), trans('seo.rss'));
         SemanticSEO::sitemap(url('sitemap.xml'), trans('seo.sitemap'));
     }

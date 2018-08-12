@@ -32,6 +32,7 @@
                     <li class="flex">
                         <a
                             href="{{ route($section->route) }}"
+                            title="{{ $section->text }}"
                             @class(
                                 '
                                     group

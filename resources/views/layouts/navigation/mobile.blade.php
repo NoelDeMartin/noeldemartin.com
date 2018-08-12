@@ -15,7 +15,7 @@
         @icon('menu', 'h-8 fill-current')
     </a>
 
-    <h1 class="font-comic font-medium text-xl">NOEL DE MARTIN</h1>
+    <span class="font-comic font-medium text-xl">NOEL DE MARTIN</span>
 
     <nav
         class="fixed pin-l pin-y bg-grey mt-12 z-20 flex flex-col min-w-sidebar"
@@ -29,6 +29,7 @@
                 <li class="flex">
                     <a
                         href="{{ route($section->route) }}"
+                        title="{{ $section->text }}"
                         @class(
                             '
                                 group

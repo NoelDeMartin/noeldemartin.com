@@ -1,8 +1,8 @@
 <?php echo '<?xml version="1.0" encoding="utf-8" ?>'; ?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<title type="text">Noel De Martin Blog</title>
-	<subtitle type="text">Personal Blog of Noel De Martin - Developer Entrepreneur</subtitle>
-	<updated>{!! $posts->last()->published_at->format(DateTime::ATOM) !!}</updated>
+	<subtitle type="text">Blog of Noel De Martin - Developer Entrepreneur</subtitle>
+	<updated>{!! $posts->first()->published_at->format(DateTime::ATOM) !!}</updated>
 	<id>{!! route('blog') !!}</id>
 	<link type="text/html" href="{!! route('blog') !!}" />
 	<link type="application/atom+xml" rel="self" href="{!! route('blog.rss') !!}" />
