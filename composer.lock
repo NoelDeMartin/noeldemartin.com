@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "150d2269047c4776418194c37f34196d",
+    "content-hash": "ae47a03d3858dd268200b6a03a871c58",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -923,16 +923,16 @@
         },
         {
             "name": "noeldemartin/laravel-semantic-seo",
-            "version": "dev-master",
+            "version": "v0.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/NoelDeMartin/laravel-semantic-seo.git",
-                "reference": "97dc11c248cca80e31d8fac4206e73592abddb3c"
+                "reference": "f11bd94d94e64be6d450f0d24803ce6c50604cfe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/NoelDeMartin/laravel-semantic-seo/zipball/97dc11c248cca80e31d8fac4206e73592abddb3c",
-                "reference": "97dc11c248cca80e31d8fac4206e73592abddb3c",
+                "url": "https://api.github.com/repos/NoelDeMartin/laravel-semantic-seo/zipball/f11bd94d94e64be6d450f0d24803ce6c50604cfe",
+                "reference": "f11bd94d94e64be6d450f0d24803ce6c50604cfe",
                 "shasum": ""
             },
             "require": {
@@ -951,7 +951,10 @@
                 "laravel": {
                     "providers": [
                         "NoelDeMartin\\SemanticSEO\\SemanticSEOServiceProvider"
-                    ]
+                    ],
+                    "aliases": {
+                        "SemanticSEO": "NoelDeMartin\\SemanticSEO\\Support\\Facades\\SemanticSEO"
+                    }
                 }
             },
             "autoload": {
@@ -969,12 +972,14 @@
                     "email": "noeldemartin@gmail.com"
                 }
             ],
-            "description": "Provide utilites to add Semantic SEO to Laravel Applications.",
+            "description": "Provide utilities to add Semantic SEO to Laravel Applications.",
             "keywords": [
                 "laravel",
+                "semantic-html",
+                "semantic-seo",
                 "seo"
             ],
-            "time": "2018-08-11T17:17:00+00:00"
+            "time": "2018-08-12T10:51:01+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -4149,9 +4154,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "noeldemartin/laravel-semantic-seo": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
