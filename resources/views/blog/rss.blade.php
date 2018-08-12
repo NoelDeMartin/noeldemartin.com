@@ -29,7 +29,7 @@
 			<category term="development"/>
 			<published>{!! $post->published_at->format(DateTime::ATOM) !!}</published>
 			<updated>{!! $post->updated_at->format(DateTime::ATOM) !!}</updated>
-			<summary type="html">{!! htmlspecialchars($post->summary) !!}</summary>
+			<summary type="html">{!! htmlspecialchars($post->summary_html) !!}</summary>
 			<content type="html" xml:base="{!! route('posts.show', $post->tag) !!}">
 				{!! htmlspecialchars($post->text_html) !!}
 			</content>

@@ -9,7 +9,7 @@
 
                 <h1>{{ $post->title }}</h1>
 
-                {!! $post->summary !!}
+                {!! $post->summary_html !!}
 
                 <div class="flex justify-end mt-2">
 

@@ -7,6 +7,7 @@ use Validator;
 use App\Models\Post;
 use App\SemanticSEO\Logo;
 use App\Models\PostComment;
+use App\SemanticSEO\BlogPost;
 use Illuminate\Support\Carbon;
 use App\SemanticSEO\NoelDeMartin;
 use App\Http\Requests\PostRequest;
@@ -46,20 +47,7 @@ class PostsController extends Controller
 
         SemanticSEO::canonical(route('posts.show', $post->tag));
 
-        SemanticSEO::article()
-            ->name($post->title)
-            ->headline($post->title)
-            ->description($post->summary)
-            ->image(is_null($post->image_url) ? Logo::class : $post->image_url)
-            ->wordCount($post->word_count)
-            ->articleSection('Blog')
-            ->author(NoelDeMartin::class)
-            ->creator(NoelDeMartin::class)
-            ->publisher(NoelDeMartinOrganization::class)
-            ->mainEntityOfPage(route('home'))
-            ->datePublished($post->published_at)
-            ->dateCreated($post->published_at)
-            ->dateModified(max($post->published_at, $post->updated_at));
+        SemanticSEO::is(new BlogPost($post));
 
         return view('posts.show', compact('post'));
     }

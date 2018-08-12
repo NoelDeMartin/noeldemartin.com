@@ -34,6 +34,11 @@ class Post extends Model
 
     public function getSummaryAttribute()
     {
+        return strip_tags($this->summary_html);
+    }
+
+    public function getSummaryHtmlAttribute()
+    {
         $summary = substr($this->text_html, 0, strpos($this->text_html, '<h2'));
 
         $summary = preg_replace('/<a(\s|>)[^>]*>(.*?)<\/a>/', '$2', $summary);

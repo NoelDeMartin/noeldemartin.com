@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Exception;
 use App\Models\Post;
 use App\SemanticSEO\Logo;
+use App\SemanticSEO\BlogPost;
 use Illuminate\Support\Carbon;
 use App\SemanticSEO\NoelDeMartin;
 use App\SemanticSEO\Experiments\Synonymizer;
@@ -67,6 +68,9 @@ class HomeController extends Controller
                 'https://medium.com/@NoelDeMartin',
                 'https://steemit.com/@noeldemartin',
             ])
+            ->hasPart($posts->map(function ($post) {
+                return new BlogPost($post);
+            })->all())
             ->discussionUrl('https://twitter.com/NoelDeMartin')
             ->inLanguage('English')
             ->author(NoelDeMartin::class)
