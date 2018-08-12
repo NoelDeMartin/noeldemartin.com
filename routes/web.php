@@ -13,6 +13,7 @@
 
 Route::get('/', 'HomeController@about')->name('home');
 Route::get('about', 'HomeController@about')->name('about');
+Route::get('sitemap.xml', 'HomeController@sitemap')->name('sitemap');
 
 Route::view('login', 'auth.login')->middleware('semantic-seo:hide');
 Route::post('login', 'AuthController@login')->name('login');

@@ -2,12 +2,14 @@
 
 @section('content')
 
+    <h1 class="hidden">Blog</h1>
+
     @foreach ($posts as $post)
 
         <a href="{{ route('posts.show', $post->tag) }}" title="Read &quot;{{ $post->title }}&quot;">
             <article class="summary p-2 rounded hover:bg-overlay">
 
-                <h1>{{ $post->title }}</h1>
+                <h2>{{ $post->title }}</h2>
 
                 {!! $post->summary_html !!}
 

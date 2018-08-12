@@ -3,6 +3,8 @@
 return [
 
     'title_suffix' => ' | Noel De Martin',
+    'rss' => 'Noel De Martin Blog',
+    'sitemap' => 'Noel De Martin',
 
     'home' => [
         'title' => 'Noel De Martin',
@@ -11,7 +13,7 @@ return [
 
     'schema:website' => [
         'name' => "Noel De Martin's website",
-        'description' => "Noel De Martin's personal website",
+        'description' => "In this website you'll find information about me and my latest posts and projects on software, entrepreneurship and more.",
     ],
 
     'schema:noeldemartin' => [
@@ -34,7 +36,7 @@ return [
 
     'schema:blog' => [
         'name' => "Noel De Martin's Blog",
-        'description' => 'Personal blog of Noel De Martin',
+        'description' => "Noel De Martin's blog on software, entrepreneurship and more.",
     ],
 
     'experiments' => [
@@ -43,7 +45,7 @@ return [
 
     'schema:experiments' => [
         'name' => "Noel De Martin's Experiments",
-        'description' => 'Experiments and works from Noel De Martin',
+        'description' => 'My latest experiments and projects.',
     ],
 
     'freedom_calculator' => [

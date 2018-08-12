@@ -19,7 +19,7 @@
             alt="My Face"
             class="h-48 ml-4 mt-4 md:h-64 md:mt-6 lg:h-76 lg:mt-8"
         />
-        <h1 class="font-comic font-medium text-4xl ml-4 md:text-5xl md:ml-10 lg:ml-12 lg:text-7xl">NOEL<br>DE MARTIN</h1>
+        <span class="font-comic font-medium text-4xl ml-4 md:text-5xl md:ml-10 lg:ml-12 lg:text-7xl">NOEL<br>DE MARTIN</span>
     </div>
 
     <nav class="h-12 bg-overlay">

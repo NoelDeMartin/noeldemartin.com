@@ -118,6 +118,18 @@ class HomeController extends Controller
         return view('experiments');
     }
 
+    public function sitemap()
+    {
+        $posts =
+            Post::where('published_at', '<', now())
+                ->orderBy('published_at', 'desc')
+                ->get();
+
+        return response()
+            ->view('sitemap', compact('posts'))
+            ->header('Content-Type', 'application/xml');
+    }
+
     public function health()
     {
         $status = 'Everything is OK';
