@@ -38,6 +38,10 @@ main {
         @apply .my-4;
     }
 
+    hr {
+        @apply .h-px .bg-grey-dark .mt-4;
+    }
+
     img {
         @apply .mx-auto .block .max-w-full;
     }
