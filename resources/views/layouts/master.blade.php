@@ -49,6 +49,11 @@
                 'name' => "Lincoln's Chilli",
             ],
             (object) [
+                'url'  => 'https://noeldemartin.social',
+                'icon' => 'mastodon',
+                'name' => 'My Mastodon',
+            ],
+            (object) [
                 'url'  => 'https://twitter.com/NoelDeMartin',
                 'icon' => 'twitter',
                 'name' => 'My Twitter',
