@@ -38,3 +38,17 @@ if (! function_exists('blade_icon')) {
     }
 
 }
+
+if (!function_exists('blade_attrs')) {
+
+    function blade_attrs($attrs)
+    {
+        $html = '';
+        foreach ($attrs as $key => $value) {
+            $html .= $key . '="' . $value . '" ';
+        }
+
+        return $html;
+    }
+
+}

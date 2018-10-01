@@ -52,21 +52,25 @@
                 'url'  => 'https://noeldemartin.social',
                 'icon' => 'mastodon',
                 'name' => 'My Mastodon',
+                'extras' => [ 'rel' => 'me' ],
             ],
             (object) [
                 'url'  => 'https://twitter.com/NoelDeMartin',
                 'icon' => 'twitter',
                 'name' => 'My Twitter',
+                'extras' => [ 'rel' => 'me' ],
             ],
             (object) [
                 'url'  => 'https://github.com/NoelDeMartin',
                 'icon' => 'github',
                 'name' => 'My Github',
+                'extras' => [ 'rel' => 'me' ],
             ],
             (object) [
                 'url'  => 'https://www.linkedin.com/in/noeldemartin',
                 'icon' => 'linkedin',
                 'name' => 'My Linkedin',
+                'extras' => [ 'rel' => 'me' ],
             ],
             (object) [
                 'url'  => 'mailto:noeldemartin@gmail.com',

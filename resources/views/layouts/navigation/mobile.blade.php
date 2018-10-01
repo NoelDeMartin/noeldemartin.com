@@ -64,6 +64,7 @@
                         href="{{ $social->url }}"
                         title="{{ $social->name }}"
                         class="px-2 h-12 min-w-10 text-black-light text-sm flex flex-grow items-center justify-start hover:bg-overlay"
+                        @attrs($social->extras)
                     >
                         @icon($social->icon, 'min-w-10 h-6') {{ $social->name }}
                     </a>

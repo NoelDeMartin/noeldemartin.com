@@ -25,6 +25,10 @@ class AppServiceProvider extends ServiceProvider
             return "<?php echo blade_icon({$args}); ?>";
         });
 
+        Blade::directive('attrs', function ($args) {
+            return "<?php echo isset({$args}) ? blade_attrs({$args}) : ''; ?>";
+        });
+
         SemanticSEO::titleSuffix(trans('seo.title_suffix'));
         SemanticSEO::openGraph('site_name', 'Noel De Martin');
         SemanticSEO::rss(url('blog/rss.xml'), trans('seo.rss'));
