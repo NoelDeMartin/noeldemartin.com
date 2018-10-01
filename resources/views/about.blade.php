@@ -49,7 +49,7 @@
 
         </div>
 
-        <h2>My values</h2>
+        <h2 id="values">My values</h2>
 
         <p>
             <i>Values</i> is such an abstract concept, don't you think? Sometimes they may seem random words. But values are
@@ -65,7 +65,7 @@
             <li class="my-2">Privacy</li>
         </ul>
 
-        <h2>Programming & Entrepreneurship</h2>
+        <h2 id="programming-and-entrepreneurship">Programming & Entrepreneurship</h2>
 
         <p>
             I have been a developer since 2011. My story is quite uncommon, because when I started studying computer science in university,
@@ -83,7 +83,7 @@
             I believe programming is an extremely creative activity, and I always try to challenge preconceptions and improve.
         </p>
 
-        <h2>Beyond the code</h2>
+        <h2 id="beyond-code">Beyond the code</h2>
 
         <p>
             Other than what this website is mostly about, I have multiple interests that I try to balance with everything else. I love to travel
@@ -92,8 +92,8 @@
         </p>
 
         <p>
-            More interests include different ranges of rock and heavy metal music, doing sports, personal development and I should really start reading
-            more books. My favorite book is the Sherlock Holmes Anthology.
+            More interests include different ranges of rock and heavy metal music, doing sports and personal development.
+            My favorite book is the Sherlock Holmes Anthology.
         </p>
 
         <p class="text-lg">So, in a nutshell, that's me!</p>
