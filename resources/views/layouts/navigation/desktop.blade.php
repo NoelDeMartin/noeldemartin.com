@@ -49,7 +49,7 @@
                                     text-black font-bold uppercase
                                     flex items-center
                                     opacity-50
-                                    hover:opacity-100 hover:bg-overlay
+                                    hover:opacity-100 hover:bg-overlay hover:no-underline
                                 ',
                                 [ 'opacity-100' => $router->is($section->route) || $i == 0 && $router->is('home') ]
                             )

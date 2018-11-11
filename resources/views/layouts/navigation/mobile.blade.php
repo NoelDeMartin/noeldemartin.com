@@ -36,7 +36,7 @@
                                 p-4 no-underline
                                 text-black font-bold uppercase
                                 flex flex-grow items-center
-                                hover:bg-overlay
+                                hover:bg-overlay hover:no-underline
                             ',
                             [ 'bg-overlay' => $router->is($section->route) || $i == 0 && $router->is('home')]
                         )

@@ -19,6 +19,23 @@
 
         @stack('scripts')
 
+        @if (!session()->has('timezone'))
+            <script>
+                (function() {
+                    fetch('{{ route('api.timezone.store') }}', {
+                        credentials: 'same-origin',
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            offset: (new Date).getTimezoneOffset(),
+                        }),
+                    });
+                })();
+            </script>
+        @endif
+
     </body>
 
 </html>

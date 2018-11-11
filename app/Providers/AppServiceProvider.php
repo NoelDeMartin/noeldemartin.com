@@ -59,20 +59,28 @@ class AppServiceProvider extends ServiceProvider
     protected function bootCarbon()
     {
         Carbon::macro('display', function ($format = 'datetime') {
-            // TODO adjust date for frontend timezone
+            $date = $this;
+
+            if (session()->has('timezone')) {
+                $timezone = session('timezone');
+
+                $date = $date->copy();
+
+                $date->subMinutes($timezone['offset']);
+            }
 
             switch($format) {
                 case 'date-short':
-                    return $this->format('M d, Y');
+                    return $date->format('M d, Y');
                 case 'date':
-                    return $this->format('F d, Y');
+                    return $date->format('F d, Y');
                 case 'time':
-                    return $this->format('H:i');
+                    return $date->format('H:i');
                 case 'datetime-short':
-                    return $this->format('M d, Y H:i');
+                    return $date->format('M d, Y H:i');
                 case 'datetime':
                 default:
-                    return $this->format('F d, Y H:i');
+                    return $date->format('F d, Y H:i');
             }
         });
     }
