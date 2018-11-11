@@ -16,7 +16,7 @@ class CreateOpenProductivityTables extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('slug')->unique();
+            $table->string('slug', 191)->unique();
             $table->longText('description_markdown');
             $table->longText('description_html');
             $table->timestamp('completed_at')->nullable();
