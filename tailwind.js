@@ -127,6 +127,10 @@ module.exports = {
             'Ubuntu',
             'sans-serif',
         ],
+        'mono': [
+            'Ubuntu Mono',
+            'sans-serif',
+        ],
         'comic': [
             'HVD Comic Serif Pro Regular',
             'system-ui',

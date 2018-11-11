@@ -4,59 +4,57 @@
     <article>
 
         <span class="float-right text-sm italic">
-            Last Update: <time datetime="{{ $events->first()->date->toDateTimeString() }}">
+            Last update: <time datetime="{{ $events->first()->date->toDateTimeString() }}">
                 {{ $events->first()->date->display('date') }}
             </time>
         </span>
 
         <h1>What I'm doing now</h1>
 
-        <p>Here I practice <a href="{{ url('blog/open-productivity') }}">Open Productivity</a>.</p>
+        <p>I practice <a href="{{ url('blog/open-productivity') }}">Open Productivity</a>, and here you can see what I'm up to these days.</p>
 
         <ul class="list-reset">
 
             @foreach ($tasks as $task)
 
-                <li class="flex flex-col mb-4">
-                    <a
-                        class="mb-2"
-                        href="{{ $task->url }}"
-                    >
-                        {{ $task->name }}
-                    </a>
+                <li class="flex flex-col mb-4 border-b-1 border-grey">
+                    <div class="flex justify-between">
+                        <h2 class="text-2xl m-0 font-normal">
+                            <a href="{{ $task->url }}">
+                                {{ $task->name }}
+                            </a>
+                        </h2>
+                        <span class="text-sm italic">
+                            Started {{ $task->created_at->diffForHumans() }}
+                        </span>
+                    </div>
                     {!! $task->description_html !!}
                 </li>
 
             @endforeach
 
-            <li>
+            <li class="text-center">
                 <a href="{{ route('tasks.index') }}">See all tasks</a>
             </li>
 
         </ul>
 
-        <hr>
-
-        <h2>Activity log</h2>
+        <h3>Activity log</h3>
 
         <ul class="list-reset">
 
             @foreach ($events as $event)
 
-                <li class="flex">
-                    <time class="mr-2" datetime="{{ $event->date->toDateTimeString() }}">
-                        [{{ $event->date->display('datetime') }}]
+                <li class="mb-2 flex items-center">
+                    <time
+                        class="font-mono mr-2 text-sm"
+                        datetime="{{ $event->date->toDateTimeString() }}"
+                    >
+                        {{ $event->date->display('datetime-short') }}
                     </time>
-                    {!! $event->description !!}
+                    <span class="mr-2">|</span>
+                    <span>{!! $event->description !!}</span>
                 </li>
-
-                @if (!is_null($event->contents))
-
-                    <li class="italic text-sm">
-                        {!! $event->contents !!}
-                    </li>
-
-                @endif
 
             @endforeach
 

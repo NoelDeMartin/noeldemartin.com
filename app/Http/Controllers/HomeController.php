@@ -142,7 +142,8 @@ class HomeController extends Controller
 
     public function now()
     {
-        $tasks = Task::whereNull('completed_at')->get();
+        $tasks = Task::whereNull('completed_at')->orderBy('created_at', 'desc')->get();
+
         $events = collect()
             ->merge(ActivityEvent::fromTasks(Task::all()))
             ->merge(ActivityEvent::fromTaskComments(TaskComment::with('task')->get()))

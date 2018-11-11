@@ -16,8 +16,7 @@ class ActivityEvent
                         trans('app.events.task_started', [
                             'url' => $task->url,
                             'task' => $task->name,
-                        ]),
-                        $task->description_html
+                        ])
                     ),
                 ];
 
@@ -44,8 +43,7 @@ class ActivityEvent
                     trans('app.events.comment_posted', [
                         'url' => $comment->task->url,
                         'task' => $comment->task->name,
-                    ]),
-                    $comment->text_html
+                    ])
                 );
             });
     }
@@ -64,12 +62,10 @@ class ActivityEvent
 
     public $date;
     public $description;
-    public $contents;
 
-    private function __construct(Carbon $date, $description, $contents = null)
+    private function __construct(Carbon $date, $description)
     {
         $this->date = $date;
         $this->description = $description;
-        $this->contents = $contents;
     }
 }

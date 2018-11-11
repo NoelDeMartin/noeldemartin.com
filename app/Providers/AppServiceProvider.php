@@ -62,10 +62,14 @@ class AppServiceProvider extends ServiceProvider
             // TODO adjust date for frontend timezone
 
             switch($format) {
+                case 'date-short':
+                    return $this->format('M d, Y');
                 case 'date':
                     return $this->format('F d, Y');
                 case 'time':
                     return $this->format('H:i');
+                case 'datetime-short':
+                    return $this->format('M d, Y H:i');
                 case 'datetime':
                 default:
                     return $this->format('F d, Y H:i');

@@ -6,7 +6,7 @@
 
     @foreach ($posts as $post)
 
-        <a href="{{ route('posts.show', $post->tag) }}" title="Read &quot;{{ $post->title }}&quot;">
+        <a href="{{ route('posts.show', $post->tag) }}" class="hover:no-underline" title="Read &quot;{{ $post->title }}&quot;">
             <article class="summary p-2 rounded hover:bg-overlay">
 
                 <h2>{{ $post->title }}</h2>

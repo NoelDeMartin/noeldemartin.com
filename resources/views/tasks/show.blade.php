@@ -5,9 +5,9 @@
 
         <h1>{{ $task->name }}</h1>
 
-        <table>
+        <table class="text-sm">
             <tr>
-                <th>Started:</th>
+                <th class="text-right">Started:</th>
                 <td>
                     {{ $task->created_at->display('date') }}
                     @if ($task->isOngoing())
@@ -17,7 +17,7 @@
             </tr>
             @if ($task->isCompleted())
                 <tr>
-                    <th>Completed:</th>
+                    <th class="text-right">Completed:</th>
                     <td>{{ $task->completed_at->display('date') }}</td>
                 </tr>
             @endif
@@ -40,14 +40,14 @@
 
         {!! $task->description_html !!}
 
-        <hr>
+        <h2 class="text-xl">Activity</h2>
 
         <ul class="list-reset">
 
-            <li class="mb-2 bg-grey-lighter p-2 overflow-hidden">
-                <p>Task created</p>
+            <li class="mb-2 bg-grey-light p-2 overflow-hidden rounded">
+                <p>Task started</p>
                 <time
-                    class="float-right text-sm italic mt-4"
+                    class="float-right text-sm italic"
                     datetime="{{ $task->created_at->toDateTimeString() }}"
                 >
                     {{ $task->created_at->display('datetime') }}
@@ -56,10 +56,10 @@
 
             @foreach ($task->comments as $comment)
 
-                <li class="mb-2 bg-grey-lighter p-2 overflow-hidden">
+                <li class="mb-2 bg-grey-light p-2 overflow-hidden rounded">
                     {!! $comment->text_html !!}
                     <time
-                        class="float-right text-sm italic mt-4"
+                        class="float-right text-sm italic"
                         datetime="{{ $comment->created_at->toDateTimeString() }}"
                     >
                         {{ $comment->created_at->display('datetime') }}
@@ -70,10 +70,10 @@
 
             @if ($task->isCompleted())
 
-                <li class="mb-2 bg-grey-lighter p-2 overflow-hidden">
+                <li class="mb-2 bg-grey-light p-2 overflow-hidden rounded">
                     <p>Task completed</p>
                     <time
-                        class="float-right text-sm italic mt-4"
+                        class="float-right text-sm italic"
                         datetime="{{ $task->completed_at->toDateTimeString() }}"
                     >
                         {{ $task->completed_at->display('datetime') }}

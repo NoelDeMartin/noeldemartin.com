@@ -18,7 +18,12 @@
 
             @foreach ($tasks as $task)
 
-                <li>
+                <li class="text-xl mb-2">
+                    @if ($task->isCompleted())
+                        <span>[Completed]</span>
+                    @else
+                        <span>[Ongoing]</span>
+                    @endif
                     <a href="{{ $task->url }}">{{ $task->name }}</a>
                 </li>
 

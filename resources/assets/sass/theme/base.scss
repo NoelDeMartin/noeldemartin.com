@@ -5,6 +5,11 @@ html {
 a {
     outline: none !important;
     @apply .no-underline;
+
+    &:hover {
+        @apply .underline;
+    }
+
 }
 
 main {
