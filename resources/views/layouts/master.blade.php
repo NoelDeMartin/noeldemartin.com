@@ -40,6 +40,11 @@
                 'icon'  => 'experiments',
                 'text'  => 'Experiments'
             ],
+            (object) [
+                'route' => 'now',
+                'icon'  => 'now',
+                'text'  => 'Now',
+            ],
         ];
 
         $socials = [
@@ -92,13 +97,6 @@
                 <p>{!! session('message') !!}</p>
             </div>
         @endif
-
-        <div class="alert mb-4" role="alert">
-            <p>
-                I am currently looking for new opportunities, you can read about it <a href="{{ url('blog/finding-opportunities-that-fit-your-values') }}">here</a> and read
-                my <a href="{{ asset('cv.pdf') }}" target="_blank" rel="nofollow">CV</a>.
-            </p>
-        </div>
 
         @yield('content')
 

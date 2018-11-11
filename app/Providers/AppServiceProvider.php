@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use NoelDeMartin\SemanticSEO\Support\Facades\SemanticSEO;
@@ -14,6 +15,23 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
+    {
+        $this->bootBlade();
+        $this->bootSemanticSEO();
+        $this->bootCarbon();
+    }
+
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+
+    protected function bootBlade()
     {
         Blade::component('components.experiment', 'experiment');
 
@@ -28,20 +46,30 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('attrs', function ($args) {
             return "<?php echo isset({$args}) ? blade_attrs({$args}) : ''; ?>";
         });
+    }
 
+    protected function bootSemanticSEO()
+    {
         SemanticSEO::titleSuffix(trans('seo.title_suffix'));
         SemanticSEO::openGraph('site_name', 'Noel De Martin');
         SemanticSEO::rss(url('blog/rss.xml'), trans('seo.rss'));
         SemanticSEO::sitemap(url('sitemap.xml'), trans('seo.sitemap'));
     }
 
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
+    protected function bootCarbon()
     {
-        //
+        Carbon::macro('display', function ($format = 'datetime') {
+            // TODO adjust date for frontend timezone
+
+            switch($format) {
+                case 'date':
+                    return $this->format('F d, Y');
+                case 'time':
+                    return $this->format('H:i');
+                case 'datetime':
+                default:
+                    return $this->format('F d, Y H:i');
+            }
+        });
     }
 }

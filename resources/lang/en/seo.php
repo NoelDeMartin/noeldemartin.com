@@ -90,4 +90,8 @@ return [
         'description' => 'Calculate DC Motor specifications',
     ],
 
+    'now' => [
+        'title' => "What I'm doing now",
+    ],
+
 ];

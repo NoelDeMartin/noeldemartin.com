@@ -13,6 +13,8 @@
 
 Route::get('/', 'HomeController@about')->name('home');
 Route::get('about', 'HomeController@about')->name('about');
+Route::get('now', 'HomeController@now')->name('now');
+
 Route::get('sitemap.xml', 'HomeController@sitemap')->name('sitemap');
 
 Route::view('login', 'auth.login')->middleware('semantic-seo:hide');
@@ -22,7 +24,7 @@ Route::get('logout', 'AuthController@logout')->name('logout');
 Route::prefix('blog')->group(function () {
     Route::get('/', 'HomeController@blog')->name('blog');
     Route::get('rss.xml', 'HomeController@rss')->name('blog.rss');
-    Route::get('{id}', 'PostsController@show')->name('posts.show');
+    Route::get('{idOrTag}', 'PostsController@show')->name('posts.show');
 });
 
 Route::prefix('experiments')->group(function () {
@@ -34,6 +36,11 @@ Route::prefix('experiments')->group(function () {
         ->middleware('semantic-seo:hide');
     Route::get('synonymizer', 'ExperimentsController@synonymizer')->name('experiments.synonymizer');
     Route::post('synonymize-text', 'ExperimentsController@synonymizeText')->name('experiments.synonymize_text');
+});
+
+Route::prefix('tasks')->group(function () {
+    Route::get('/', 'TasksController@index')->name('tasks.index');
+    Route::get('{slug}', 'TasksController@show')->name('tasks.show');
 });
 
 Route::middleware(['auth.admin', 'semantic-seo:hide'])->group(function () {

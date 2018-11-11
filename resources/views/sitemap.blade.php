@@ -31,4 +31,21 @@
         <loc>{{ route('experiments.freedom-calculator') }}</loc>
         <priority>0.6</priority>
     </url>
+    <url>
+        <loc>{{ route('now') }}</loc>
+        <lastmod>{{ $nowLastModifiedAt->toW3cString() }}</lastmod>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>{{ route('tasks.index') }}</loc>
+        <lastmod>{{ $tasks->last()->created_at->toW3cString() }}</lastmod>
+        <priority>0.8</priority>
+    </url>
+    @foreach($tasks as $task)
+        <url>
+            <loc>{{ $task->url }}</loc>
+            <lastmod>{{ $task->modified_at->toW3cString() }}</lastmod>
+            <priority>0.6</priority>
+        </url>
+    @endforeach
 </urlset>

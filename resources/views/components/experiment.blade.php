@@ -24,7 +24,10 @@
             <h2 class="m-0 text-2xl font-medium">
                 {{ $name }}
             </h2>
-            <time class="ml-2" datetime="{{ $datetime }}">
+            <time
+                class="flex items-center text-blue-darker font-normal text-xs ml-2"
+                datetime="{{ $datetime }}"
+            >
                 @icon('calendar', 'h-4 fill-current')
                 <span class="ml-2">{{ $date }}</span>
             </time>

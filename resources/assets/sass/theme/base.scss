@@ -59,13 +59,4 @@ main {
 
     }
 
-    time {
-        @apply .flex .items-center .text-blue-darker .font-normal .text-xs;
-
-        &:not(:first-child) {
-            @apply .ml-2;
-        }
-
-    }
-
 }

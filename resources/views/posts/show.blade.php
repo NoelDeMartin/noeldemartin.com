@@ -9,12 +9,18 @@
 
         <div class="flex mb-4">
 
-            <time datetime="{{ $post->published_at->toDateTimeString() }}">
+            <time
+                class="flex items-center text-blue-darker font-normal text-xs"
+                datetime="{{ $post->published_at->toDateTimeString() }}"
+            >
                 @icon('calendar', 'h-4 fill-current')
                 <span class="ml-1">{{ $post->published_at->toFormattedDateString() }}</span>
             </time>
 
-            <time datetime="{{ $post->duration }}M">
+            <time
+                class="flex items-center text-blue-darker font-normal text-xs ml-2"
+                datetime="{{ $post->duration }}M"
+            >
                 @icon('timer', 'h-4 fill-current')
                 <span class="ml-1">{{ $post->duration }} min.</span>
             </time>

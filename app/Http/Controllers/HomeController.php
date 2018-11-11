@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Exception;
 use App\Models\Post;
+use App\Models\Task;
 use App\SemanticSEO\Logo;
+use App\Models\TaskComment;
+use App\Models\ActivityEvent;
 use App\SemanticSEO\BlogPost;
 use Illuminate\Support\Carbon;
 use App\SemanticSEO\NoelDeMartin;
@@ -118,6 +121,22 @@ class HomeController extends Controller
         return view('experiments');
     }
 
+    public function now()
+    {
+        SemanticSEO::meta(trans('seo.now'));
+
+        // TODO more SEO
+
+        $tasks = Task::whereNull('completed_at')->get();
+        $events = collect()
+            ->merge(ActivityEvent::fromTasks(Task::all()))
+            ->merge(ActivityEvent::fromTaskComments(TaskComment::with('task')->get()))
+            ->merge(ActivityEvent::fromPosts(Post::all()))
+            ->sortByDesc->date;
+
+        return view('now', compact('tasks', 'events'));
+    }
+
     public function sitemap()
     {
         $posts =
@@ -125,8 +144,12 @@ class HomeController extends Controller
                 ->orderBy('published_at', 'desc')
                 ->get();
 
+        $tasks = Task::with('comments')->get();
+
+        $nowLastModifiedAt = $this->getNowLastModifiedAt($posts, $tasks);
+
         return response()
-            ->view('sitemap', compact('posts'))
+            ->view('sitemap', compact('posts', 'tasks', 'nowLastModifiedAt'))
             ->header('Content-Type', 'application/xml');
     }
 
@@ -142,5 +165,23 @@ class HomeController extends Controller
         }
 
         return $status;
+    }
+
+    protected function getNowLastModifiedAt($posts, $tasks)
+    {
+        $dates = [
+            $posts->last()->published_at,
+            $tasks->last()->created_at,
+        ];
+
+        foreach ($tasks as $task) {
+            if ($task->isCompleted()) {
+                $dates[] = $task->completed_at;
+            }
+        }
+
+        $dates[] = TaskComment::orderBy('created_at', 'desc')->first()->created_at;
+
+        return max($dates);
     }
 }
