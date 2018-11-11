@@ -23,6 +23,21 @@
             @endif
         </table>
 
+        @if($task->isOngoing() && auth()->check())
+            <form action="{{ route('tasks.complete', $task->id) }}" method="POST" role="form">
+
+                @csrf
+                @method('PUT')
+
+                <button
+                    type="submit"
+                    class="bg-blue-dark hover:bg-blue-darker text-white font-bold py-2 px-4 rounded"
+                >
+                    Complete
+                </button>
+            </form>
+        @endif
+
         {!! $task->description_html !!}
 
         <hr>
@@ -68,6 +83,22 @@
             @endif
 
         </ul>
+
+        @auth()
+            <form action="{{ route('task-comments.store', $task->id) }}" method="POST" role="form">
+
+                @csrf
+
+                <div
+                    data-controller="task-comment-editor"
+                    data-task-editor-text="{{ old('text') }}"
+                ></div>
+
+                @foreach ($errors->all() as $error)
+                    <p class="text-error my-2">{{ $error }}</p>
+                @endforeach
+            </form>
+        @endauth
 
     </article>
 @endsection

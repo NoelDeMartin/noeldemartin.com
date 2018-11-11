@@ -40,6 +40,16 @@ Route::prefix('experiments')->group(function () {
 
 Route::prefix('tasks')->group(function () {
     Route::get('/', 'TasksController@index')->name('tasks.index');
+
+    Route::middleware(['auth.admin', 'semantic-seo:hide'])->group(function () {
+        Route::view('create', 'tasks.create')->name('tasks.create');
+        Route::post('/', 'TasksController@store')->name('tasks.store');
+
+        Route::put('{task}/complete', 'TasksController@complete')->name('tasks.complete');
+
+        Route::post('{task}/comment', 'TaskCommentsController@store')->name('task-comments.store');
+    });
+
     Route::get('{slug}', 'TasksController@show')->name('tasks.show');
 });
 
