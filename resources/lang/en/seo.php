@@ -94,4 +94,18 @@ return [
         'title' => "What I'm doing now",
     ],
 
+    'schema:now' => [
+        'name' => "Noel De Martin's Now page",
+        'description' => "A page where you can find out what I'm up to now",
+    ],
+
+    'tasks' => [
+        'title' => 'Tasks',
+    ],
+
+    'schema:tasks' => [
+        'name' => "Noel De Martin's Tasks",
+        'description' => 'A collection with all my ongoing and completed tasks.',
+    ],
+
 ];

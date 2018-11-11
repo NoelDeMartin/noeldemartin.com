@@ -7,15 +7,20 @@ use App\Models\Post;
 use App\Models\Task;
 use App\SemanticSEO\Logo;
 use App\Models\TaskComment;
+use App\SemanticSEO\WebPage;
 use App\Models\ActivityEvent;
 use App\SemanticSEO\BlogPost;
+use App\SemanticSEO\ItemList;
 use Illuminate\Support\Carbon;
 use App\SemanticSEO\NoelDeMartin;
+use NoelDeMartin\SemanticSEO\Types\Blog;
 use App\SemanticSEO\Experiments\Synonymizer;
+use NoelDeMartin\SemanticSEO\Types\AboutPage;
 use App\SemanticSEO\NoelDeMartinOrganization;
 use App\SemanticSEO\Experiments\OnlineMeeting;
 use App\SemanticSEO\Experiments\DCMotorSandbox;
 use App\SemanticSEO\Experiments\FreedomCalculator;
+use NoelDeMartin\SemanticSEO\Types\CollectionPage;
 use App\SemanticSEO\Experiments\ZazenMeditationTimer;
 use NoelDeMartin\SemanticSEO\Support\Facades\SemanticSEO;
 use App\SemanticSEO\Experiments\JapaneseCharacterRecognition;
@@ -33,6 +38,20 @@ class HomeController extends Controller
             ->image(Logo::class)
             ->discussionUrl('https://twitter.com/NoelDeMartin')
             ->inLanguage('English')
+            ->hasPart([
+                (new AboutPage)
+                    ->setAttributes(trans('seo.schema:about'))
+                    ->url(route('home')),
+                (new Blog)
+                    ->setAttributes(trans('seo.schema:blog'))
+                    ->url(route('blog')),
+                (new CollectionPage)
+                    ->setAttributes(trans('seo.schema:experiments'))
+                    ->url(route('experiments')),
+                (new WebPage)
+                    ->setAttributes(trans('seo.schema:now'))
+                    ->url(route('now')),
+            ])
             ->about(NoelDeMartin::class)
             ->author(NoelDeMartin::class)
             ->creator(NoelDeMartin::class)
@@ -123,16 +142,28 @@ class HomeController extends Controller
 
     public function now()
     {
-        SemanticSEO::meta(trans('seo.now'));
-
-        // TODO more SEO
-
         $tasks = Task::whereNull('completed_at')->get();
         $events = collect()
             ->merge(ActivityEvent::fromTasks(Task::all()))
             ->merge(ActivityEvent::fromTaskComments(TaskComment::with('task')->get()))
             ->merge(ActivityEvent::fromPosts(Post::all()))
             ->sortByDesc->date;
+
+        SemanticSEO::meta(trans('seo.now'));
+
+        SemanticSEO::is(WebPage::class)
+            ->setAttributes(trans('seo.schema:now'))
+            ->url(route('now'))
+            ->image(Logo::class)
+            ->discussionUrl('https://twitter.com/NoelDeMartin')
+            ->inLanguage('English')
+            ->about(NoelDeMartin::class)
+            ->author(NoelDeMartin::class)
+            ->creator(NoelDeMartin::class)
+            ->publisher(NoelDeMartinOrganization::class)
+            ->datePublished(Carbon::create(2018, 11, 11)->startOfDay())
+            ->dateCreated(Carbon::create(2018, 11, 11)->startOfDay())
+            ->dateModified($events->first()->date);
 
         return view('now', compact('tasks', 'events'));
     }

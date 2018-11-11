@@ -33,6 +33,11 @@ class Task extends Model
         return route('tasks.show', $this->slug);
     }
 
+    public function getSummaryAttribute()
+    {
+        return str_limit(strip_tags($this->description_html));
+    }
+
     public function getModifiedAtAttribute()
     {
         $dates = [$this->created_at];
