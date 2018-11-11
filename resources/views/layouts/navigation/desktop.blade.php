@@ -5,10 +5,10 @@
     data-target="chamaleon.skin"
     style="background-color: hsl({{ (round(microtime(true) * 10) % 360) }}, 40%, 80%)"
     @class(
-        'w-full pb-12 hidden lg:block',
+        'w-full pb-10 hidden lg:block',
         [
-            'h-32 md:h-44 lg:h-60' => $header,
-            'h-12'                 => ! $header,
+            'h-24 md:h-32 lg:h-44' => $header,
+            'h-10'                 => ! $header,
         ]
     )
 >
@@ -17,12 +17,21 @@
         <img
             src="/img/myface.png"
             alt="My Face"
-            class="h-48 ml-4 mt-4 md:h-64 md:mt-6 lg:h-76 lg:mt-8"
+            class="h-32 ml-4 mt-4 md:h-48 md:mt-6 lg:h-48 lg:mt-8"
         />
-        <span class="font-comic font-medium text-4xl ml-4 md:text-5xl md:ml-10 lg:ml-12 lg:text-7xl">NOEL<br>DE MARTIN</span>
+        <span
+            class="
+                font-comic font-medium text-4xl ml-4
+                md:text-4xl md:ml-10
+                lg:text-6xl lg:ml-12
+            "
+        >
+            NOEL<br>
+            DE MARTIN
+        </span>
     </div>
 
-    <nav class="h-12 bg-overlay">
+    <nav class="h-10 bg-overlay">
 
         <div class="max-w-content h-full mx-auto flex justify-between">
 
@@ -45,7 +54,7 @@
                                 [ 'opacity-100' => $router->is($section->route) || $i == 0 && $router->is('home') ]
                             )
                         >
-                            @icon($section->icon, 'h-6 mr-2 fill-current')
+                            @icon($section->icon, 'h-5 mr-2 fill-current')
                             <span
                                 @class(
                                     'border-b-2 border-transparent group-hover:border-black',
