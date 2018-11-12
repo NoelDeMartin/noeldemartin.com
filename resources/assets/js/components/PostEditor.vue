@@ -49,6 +49,7 @@
 
             <datetime
                 v-model="date"
+                type="datetime"
                 placeholder="Publication date"
                 input-class="appearance-none border rounded mb-4 py-2 px-3 text-grey-darker focus:shadow"
             />
