@@ -4,9 +4,9 @@
     <article>
 
         <div class="flex flex-col justify-between md:flex-row lg:flex-row xl:flex-row">
-            <h1>What I'm doing now</h1>
+            <h1 class="mb-2 md:mb-4 lg:mb-4 xl:mb-4">What I'm doing now</h1>
 
-            <span class="text-sm italic">
+            <span class="mb-2 text-sm italic md:mb-0 lg:mb-0 xl:mb-0">
                 Last update: <time datetime="{{ $events->first()->date->toDateTimeString() }}">
                     {{ $events->first()->date->display('date') }}
                 </time>
