@@ -18,7 +18,7 @@
 
             @foreach ($tasks as $task)
 
-                <li class="text-xl mb-2">
+                <li class="text-lg mb-2 md:text-xl lg:text-xl xl:text-xl">
                     @if ($task->isCompleted())
                         <span>[Completed]</span>
                     @else
