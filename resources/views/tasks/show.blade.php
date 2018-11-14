@@ -45,7 +45,7 @@
         <ul class="list-reset">
 
             <li id="comment-1" class="mb-2 border-b-1 border-grey-light p-2 overflow-hidden rounded">
-                <p>Task started</p>
+                <p>Started working on it.</p>
                 <time
                     class="float-right text-sm italic"
                     datetime="{{ $task->created_at->toDateTimeString() }}"
@@ -71,7 +71,7 @@
             @if ($task->isCompleted())
 
                 <li id="comment-{{ $task->comments->count() + 2 }}" class="mb-2 p-2 overflow-hidden rounded">
-                    <p>Task completed</p>
+                    <p>Task completed 🎉</p>
                     <time
                         class="float-right text-sm italic"
                         datetime="{{ $task->completed_at->toDateTimeString() }}"
