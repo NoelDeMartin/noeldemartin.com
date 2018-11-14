@@ -13,15 +13,15 @@
             </span>
         </div>
 
-        <p>I practice <a href="{{ url('blog/open-productivity') }}">Open Productivity</a>, and here you can see what I'm up to these days.</p>
+        <p class="mt-2">I practice <a href="{{ url('blog/open-productivity') }}">Open Productivity</a>, and here you can see what I'm up to these days.</p>
 
         <ul class="list-reset">
 
             @foreach ($tasks as $task)
 
                 <li class="flex flex-col mb-4 border-b-1 border-grey">
-                    <div class="flex flex-col justify-between md:flex-row lg:flex-row xl:flex-row">
-                        <h2 class="text-2xl m-0 font-normal">
+                    <div class="flex flex-col justify-between items-center md:flex-row lg:flex-row xl:flex-row">
+                        <h2 class="text-2xl m-0 font-normal underline text-blue">
                             <a href="{{ $task->url }}">
                                 {{ $task->name }}
                             </a>

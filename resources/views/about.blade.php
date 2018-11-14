@@ -42,6 +42,7 @@
 
                 <span class="leading-normal">
                     Check out my <a href="{{ route('experiments') }}">Experiments</a><br>
+                    or see <a href="{{ route('now') }}">What I'm doing now</a><br>
                     or browse my <a href="https://github.com/NoelDeMartin">GitHub</a>
                 </span>
 
