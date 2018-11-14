@@ -44,7 +44,7 @@
 
         <ul class="list-reset">
 
-            <li class="mb-2 bg-grey-light p-2 overflow-hidden rounded">
+            <li id="comment-1" class="mb-2 border-b-1 border-grey-light p-2 overflow-hidden rounded">
                 <p>Task started</p>
                 <time
                     class="float-right text-sm italic"
@@ -54,9 +54,9 @@
                 </time>
             </li>
 
-            @foreach ($task->comments as $comment)
+            @foreach ($task->comments as $i => $comment)
 
-                <li class="mb-2 bg-grey-light p-2 overflow-hidden rounded">
+                <li id="comment-{{ $i+2 }}" class="mb-2 border-b-1 border-grey-light p-2 overflow-hidden rounded">
                     {!! $comment->text_html !!}
                     <time
                         class="float-right text-sm italic"
@@ -70,7 +70,7 @@
 
             @if ($task->isCompleted())
 
-                <li class="mb-2 bg-grey-light p-2 overflow-hidden rounded">
+                <li id="comment-{{ $task->comments->count() + 2 }}" class="mb-2 p-2 overflow-hidden rounded">
                     <p>Task completed</p>
                     <time
                         class="float-right text-sm italic"
