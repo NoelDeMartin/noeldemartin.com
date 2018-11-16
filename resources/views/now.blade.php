@@ -21,7 +21,7 @@
 
                 <li class="flex flex-col mb-4 border-b-1 border-grey">
                     <div class="flex flex-col justify-between items-center md:flex-row lg:flex-row xl:flex-row">
-                        <h2 class="text-2xl m-0 font-normal underline text-blue">
+                        <h2 class="text-2xl text-center m-0 font-normal underline text-blue md:text-left lg:text-left xl:text-left">
                             <a href="{{ $task->url }}">
                                 {{ $task->name }}
                             </a>
