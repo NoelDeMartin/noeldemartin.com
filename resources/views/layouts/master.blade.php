@@ -102,4 +102,12 @@
 
     </main>
 
+    <!-- Sites Verification -->
+
+    <div class="hidden">
+        <a rel="me" href="https://community.thoughtshrapnel.com/@noeldemartin">
+            Thought Shrapnel Mastodon
+        </a>
+    </div>
+
 @overwrite
