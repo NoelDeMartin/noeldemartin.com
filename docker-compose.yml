@@ -1,0 +1,19 @@
+version: '3.2'
+services:
+  mysql:
+    image: 'mariadb:10.3'
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - './docker/mysql/data:/var/lib/mysql'
+  nginx:
+    build: './docker/nginx'
+    volumes:
+      - './:/app'
+  app:
+    build: './docker/app'
+    volumes:
+      - './:/app'
