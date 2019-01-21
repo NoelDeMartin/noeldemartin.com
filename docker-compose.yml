@@ -9,11 +9,15 @@ services:
       - MYSQL_PASSWORD=${DB_PASSWORD}
     volumes:
       - './docker/mysql/data:/var/lib/mysql'
-  nginx:
-    build: './docker/nginx'
-    volumes:
-      - './:/app'
   app:
     build: './docker/app'
     volumes:
       - './:/app'
+    networks:
+      default:
+        aliases:
+         - noeldemartin
+networks:
+  default:
+    external:
+      name: nginx-agora
