@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 set -e
 
@@ -24,3 +24,12 @@ DB_UID=`docker-compose run mysql id -u mysql | sed 's/\r$//'`
 
 sudo chown -R $WEB_UID:docker .
 sudo chown -R $DB_UID:docker ./docker/mysql
+
+# Initialize services
+
+docker-compose up -d
+
+docker-compose exec app composer install --no-dev
+docker-compose exec app php artisan migrate --force
+
+docker run -v `pwd`:/app -w /app node bash -c "npm install && npm run production"
