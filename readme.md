@@ -13,6 +13,7 @@ cd /var/www
 sudo mkdir noeldemartin
 sudo chown noel:noel noeldemartin
 git clone -b live --single-branch git@bitbucket.org:ndemartin/noeldemartin.git
+cd noeldemartin
 scripts/init.sh
 ```
 
@@ -20,6 +21,8 @@ If you are using [nginx-agora](https://github.com/noeldemartin/nginx-agora), ins
 
 ```sh
 nginx-agora install nginx/noeldemartin.com.conf /var/www/noeldemartin/public
+ln -s ../sites_available/noeldemartin.com.conf /var/www/nginx-agora/sites_enabled
+nginx-agora start
 ```
 
 ### Fetch updates
