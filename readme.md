@@ -11,6 +11,7 @@ Once the system has all the dependencies installed, execute the following comman
 ```sh
 cd /var/www
 sudo mkdir noeldemartin
+sudo chmod 775 noeldemartin
 sudo chown noel:noel noeldemartin
 git clone -b live --single-branch git@bitbucket.org:ndemartin/noeldemartin.git
 cd noeldemartin
