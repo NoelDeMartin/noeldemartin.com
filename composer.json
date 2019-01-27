@@ -10,7 +10,9 @@
         "fideloper/proxy": "~4.0",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "~1.0",
-        "noeldemartin/laravel-semantic-seo": "^0.0.1"
+        "league/flysystem-aws-s3-v3": "^1.0",
+        "noeldemartin/laravel-semantic-seo": "^0.0.1",
+        "spatie/laravel-backup": "^6.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
