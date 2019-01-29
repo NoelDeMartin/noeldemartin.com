@@ -20,10 +20,22 @@ scripts/init.sh
 
 Complete the .env file by introducing the values for `DO_SPACES_KEY` and `DO_SPACES_SECRET`.
 
+Finish the installation by starting the containers, installing dependencies and building assets:
+
+```sh
+docker-compose up -d
+docker-compose exec app composer install --no-dev
+docker run -v `pwd`:/app -w /app node bash -c "npm install && npm run production"
+```
+
 If you want to restore a database backup, run the following commands:
 
-```
-docker cp ./mysql-noeldemartin.sql noeldemartin_mysql_1:/tmp
+```sh
+wget -O backup.zip "{backup url}"
+unzip backup.zip
+docker cp ./db-dumps/mysql-noeldemartin.sql noeldemartin_mysql_1:/tmp
+
+# Retrieve database password for the next steps
 docker-compose exec mysql sh -l
 cd /tmp
 mysql --database noeldemartin --user noeldemartin --password < mysql-noeldemartin.sql
@@ -31,12 +43,10 @@ mysql --database noeldemartin --user noeldemartin --password < mysql-noeldemarti
 
 Otherwise, run laravel migrations with `docker-compose exec app php artisan migrate --force`.
 
-Finish the installation by starting the containers, installing dependencies and building assets:
+If you need to activate your let's encrypt certificate:
 
-```
-docker-compose up -d
-docker-compose exec app composer install --no-dev
-docker run -v `pwd`:/app -w /app node bash -c "npm install && npm run production"
+```sh
+sudo letsencrypt certonly -d noeldemartin.com --manual
 ```
 
 If you are using [nginx-agora](https://github.com/noeldemartin/nginx-agora), install the website with the following command:
