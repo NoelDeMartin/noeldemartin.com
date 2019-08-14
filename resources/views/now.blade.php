@@ -35,6 +35,13 @@
 
             @endforeach
 
+            @if($tasks->isEmpty())
+                <p class="text-2xl text-center mb-0">🌮🌶️🌯</p>
+                <p class="text-2xl text-center mt-0">
+                    I'm on holidays in Mexico until September, so there aren't any active tasks at the moment! You can check out what I've done in the past here:
+                </p>
+            @endif
+
             <li class="text-center">
                 <a href="{{ route('tasks.index') }}">See all tasks</a>
             </li>
