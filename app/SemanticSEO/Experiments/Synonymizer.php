@@ -2,10 +2,10 @@
 
 namespace App\SemanticSEO\Experiments;
 
-use Illuminate\Support\Carbon;
 use App\SemanticSEO\NoelDeMartin;
-use NoelDeMartin\SemanticSEO\Types\WebSite;
 use App\SemanticSEO\NoelDeMartinOrganization;
+use Illuminate\Support\Carbon;
+use NoelDeMartin\SemanticSEO\Types\WebSite;
 
 class Synonymizer extends WebSite
 {

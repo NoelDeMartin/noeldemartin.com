@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Task extends Model
 {
@@ -35,7 +36,7 @@ class Task extends Model
 
     public function getSummaryAttribute()
     {
-        return str_limit(strip_tags($this->description_html));
+        return Str::limit(strip_tags($this->description_html));
     }
 
     public function getModifiedAtAttribute()

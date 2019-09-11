@@ -16,10 +16,9 @@ class PostsTableSeeder extends Seeder
                 'title' => $title,
                 'tag' => Post::createTitleTag($title),
                 'text_markdown' => $faker->paragraph(6),
-                'text_html' =>
-                    '<p>' . $faker->paragraph() . '</p>' .
-                    '<h2>' . $faker->sentence(4) . '</h2>' .
-                    '<p>' . implode($faker->paragraphs(5), '</p><p>') . '</p>',
+                'text_html' => '<p>'.$faker->paragraph().'</p>'.
+                    '<h2>'.$faker->sentence(4).'</h2>'.
+                    '<p>'.implode($faker->paragraphs(5), '</p><p>').'</p>',
                 'author_id' => 1,
                 'published_at' => $faker->date,
             ]);

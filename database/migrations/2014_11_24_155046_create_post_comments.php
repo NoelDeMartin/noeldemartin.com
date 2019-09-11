@@ -5,7 +5,6 @@ use Illuminate\Database\Schema\Blueprint;
 
 class CreatePostComments extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -22,7 +21,6 @@ class CreatePostComments extends Migration
             $table->timestamps();
         });
     }
-
 
     /**
      * Reverse the migrations.

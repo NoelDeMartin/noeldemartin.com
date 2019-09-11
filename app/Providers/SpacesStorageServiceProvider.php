@@ -21,7 +21,7 @@ class SpacesStorageServiceProvider extends ServiceProvider
             $client = new S3Client([
                 'credentials' => [
                     'key' => $config['key'],
-                    'secret' => $config['secret']
+                    'secret' => $config['secret'],
                 ],
                 'region' => $config['region'],
                 'version' => 'latest',

@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateThesaurusTable extends Migration
 {
@@ -17,7 +17,6 @@ class CreateThesaurusTable extends Migration
             $table->text('data');
         });
     }
-
 
     /**
      * Reverse the migrations.

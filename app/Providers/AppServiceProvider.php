@@ -69,7 +69,7 @@ class AppServiceProvider extends ServiceProvider
                 $date->subMinutes($timezone['offset']);
             }
 
-            switch($format) {
+            switch ($format) {
                 case 'date-short':
                     return $date->format('M d, Y');
                 case 'date':
