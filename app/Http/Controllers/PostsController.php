@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Mail;
-use Validator;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Mail;
+
+use App\Http\Requests\CreatePostCommentRequest;
+use App\Http\Requests\PostRequest;
 use App\Models\Post;
-use App\SemanticSEO\Logo;
 use App\Models\PostComment;
 use App\SemanticSEO\BlogPost;
-use Illuminate\Support\Carbon;
-use App\SemanticSEO\NoelDeMartin;
-use App\Http\Requests\PostRequest;
-use App\SemanticSEO\NoelDeMartinOrganization;
+
 use NoelDeMartin\SemanticSEO\Support\Facades\SemanticSEO;
 
 class PostsController extends Controller
@@ -52,15 +51,8 @@ class PostsController extends Controller
         return view('posts.show', compact('post'));
     }
 
-    public function comment($id)
+    public function comment(CreatePostCommentRequest $request, Post $post)
     {
-        $post = Post::findOrFail($id);
-        $validator = Validator::make($data = request()->all(), PostComment::$rules);
-
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-
         $author = trim($data['author']);
         $author_link = trim($data['author_link']);
 
@@ -105,10 +97,8 @@ class PostsController extends Controller
         return view('posts.edit', compact('post'));
     }
 
-    public function update(PostRequest $request, $id)
+    public function update(PostRequest $request, Post $post)
     {
-        $post = Post::findOrFail($id);
-
         $post->update([
             'title'         => request('title'),
             'text_html'     => request('text_html'),

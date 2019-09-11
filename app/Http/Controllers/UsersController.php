@@ -1,9 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use Hash;
-use Validator;
 use App\Models\User;
-use App\Models\Invitation;
 
 class UsersController extends Controller
 {
