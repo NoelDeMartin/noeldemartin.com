@@ -2,6 +2,7 @@
 
 namespace App\SemanticSEO;
 
+use Illuminate\Support\Str;
 use NoelDeMartin\SemanticSEO\SemanticSEO;
 use NoelDeMartin\SemanticSEO\Types\Organization;
 use NoelDeMartin\SemanticSEO\Types\Person;
@@ -34,7 +35,7 @@ class Action extends Thing
     // TODO move this to Thing class instead
     protected function isType($type, $value)
     {
-        if (starts_with($type, 'enumeration:')) {
+        if (Str::startsWith($type, 'enumeration:')) {
             $enumValues = explode(',', substr($type, 12));
 
             return in_array($value, $enumValues);
@@ -46,7 +47,7 @@ class Action extends Thing
     // TODO move this to Thing class instead
     protected function castValue($type, $value)
     {
-        if (starts_with($type, 'enumeration:')) {
+        if (Str::startsWith($type, 'enumeration:')) {
             $castedValue = (string) $value;
 
             return $this->isType($type, $castedValue) ? $castedValue : null;

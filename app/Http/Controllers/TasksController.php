@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
 use App\Http\Requests\TaskRequest;
 use App\Models\Task;
 use App\SemanticSEO\ItemList;
@@ -47,7 +48,7 @@ class TasksController extends Controller
         $count = 0;
 
         do {
-            $slug = str_slug($name).($count > 0 ? '-'.$count : '');
+            $slug = Str::slug($name).($count > 0 ? '-'.$count : '');
             $count++;
         } while (Task::where('slug', $slug)->count() > 0);
 

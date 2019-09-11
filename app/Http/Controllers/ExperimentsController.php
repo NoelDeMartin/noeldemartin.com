@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
 use App\SemanticSEO\Experiments\FreedomCalculator;
 use App\SemanticSEO\Experiments\OnlineMeeting;
 use App\SemanticSEO\Experiments\Synonymizer;
@@ -42,14 +43,14 @@ class ExperimentsController extends Controller
         foreach ($text as $key => $word) {
             if (strlen($word) > 2) {
                 $originalWord = trim($word);
-                $singularWord = str_singular($originalWord);
+                $singularWord = Str::singular($originalWord);
                 $wordData = app('db')->table('thesaurus')->where('word', $singularWord)->first();
                 if (! is_null($wordData)) {
                     $meanings = json_decode($wordData->data);
                     $randomMeaning = $meanings[array_rand($meanings)];
                     $substitution = $randomMeaning->synonyms[array_rand($randomMeaning->synonyms)];
                     if (strcmp($originalWord, $singularWord) !== 0) {
-                        $text[$key] = str_plural($substitution);
+                        $text[$key] = Str::plural($substitution);
                     } else {
                         $text[$key] = $substitution;
                     }
