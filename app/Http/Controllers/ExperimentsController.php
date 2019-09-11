@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Str;
 use App\SemanticSEO\Experiments\FreedomCalculator;
 use App\SemanticSEO\Experiments\OnlineMeeting;
 use App\SemanticSEO\Experiments\Synonymizer;
+use Illuminate\Support\Str;
 use NoelDeMartin\SemanticSEO\Support\Facades\SemanticSEO;
 
 class ExperimentsController extends Controller

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Str;
 use App\Http\Requests\TaskRequest;
 use App\Models\Task;
 use App\SemanticSEO\ItemList;
 use App\SemanticSEO\Task as TaskSEO;
+use Illuminate\Support\Str;
 use NoelDeMartin\SemanticSEO\Support\Facades\SemanticSEO;
 
 class TasksController extends Controller

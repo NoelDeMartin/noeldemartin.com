@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Str;
 use Faker\Generator as Faker;
+use Illuminate\Support\Str;
 
 $factory->define(App\Models\Task::class, function (Faker $faker, $defaults = []) {
     $name = isset($defaults['name']) ? $defaults['name'] : $faker->unique->sentence;
