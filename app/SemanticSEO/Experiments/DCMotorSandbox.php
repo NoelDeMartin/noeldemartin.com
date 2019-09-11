@@ -2,9 +2,9 @@
 
 namespace App\SemanticSEO\Experiments;
 
-use Illuminate\Support\Carbon;
 use App\SemanticSEO\NoelDeMartin;
 use App\SemanticSEO\NoelDeMartinOrganization;
+use Illuminate\Support\Carbon;
 use NoelDeMartin\SemanticSEO\Types\CreativeWork;
 
 class DCMotorSandbox extends CreativeWork

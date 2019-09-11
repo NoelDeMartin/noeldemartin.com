@@ -3,8 +3,8 @@
 namespace App\Exceptions;
 
 use Exception;
-use NoelDeMartin\SemanticSEO\Support\Facades\SemanticSEO;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use NoelDeMartin\SemanticSEO\Support\Facades\SemanticSEO;
 
 class Handler extends ExceptionHandler
 {

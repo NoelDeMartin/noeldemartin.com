@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     const DATE_FORMAT = 'd/m/Y';
+
     const DATE_FORMAT_JS = 'dd/mm/yyyy';
 
     protected $dates = ['created_at', 'updated_at', 'published_at'];
@@ -50,6 +51,7 @@ class Post extends Model
     public function getImageUrlAttribute()
     {
         preg_match('/<img[^>]*src="([^"]*)"/', $this->text_html, $matches);
+
         return count($matches) > 1 ? url($matches[1]) : null;
     }
 

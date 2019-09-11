@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Mail;
-
 use App\Http\Requests\CreatePostCommentRequest;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use App\Models\PostComment;
 use App\SemanticSEO\BlogPost;
-
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Mail;
 use NoelDeMartin\SemanticSEO\Support\Facades\SemanticSEO;
 
 class PostsController extends Controller
@@ -39,7 +37,7 @@ class PostsController extends Controller
 
         if (
             $post === null ||
-            (!$post->isPublished() && (!auth()->check() || !(auth()->user()->is_reviewer || auth()->user()->is_admin)))
+            (! $post->isPublished() && (! auth()->check() || ! (auth()->user()->is_reviewer || auth()->user()->is_admin)))
         ) {
             abort(404);
         }
@@ -63,14 +61,14 @@ class PostsController extends Controller
         if (strlen($author_link) === 0) {
             unset($comment->author_link);
         } elseif (filter_var($author_link, FILTER_VALIDATE_EMAIL) !== false) {
-            $comment->author_link = 'mailto:' . $author_link;
+            $comment->author_link = 'mailto:'.$author_link;
         }
         $comment->post_id = $post->id;
         $comment->save();
 
         // Send Email
         Mail::send('emails.post_comment', ['post' => $post, 'comment' => $comment], function ($message) use ($post) {
-            $message->to('noeldemartin@gmail.com')->subject('New comment in post ' . $post->title);
+            $message->to('noeldemartin@gmail.com')->subject('New comment in post '.$post->title);
         });
 
         return redirect()->route('posts.show', $post->tag);

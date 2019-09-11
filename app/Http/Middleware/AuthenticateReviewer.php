@@ -34,7 +34,7 @@ class AuthenticateReviewer
      */
     public function handle($request, Closure $next)
     {
-        if (!$this->auth->check() || !$this->auth->user()->is_reviewer) {
+        if (! $this->auth->check() || ! $this->auth->user()->is_reviewer) {
             abort(404);
         }
 

@@ -9,7 +9,7 @@ $factory->define(App\Models\Task::class, function (Faker $faker, $defaults = [])
         'name' => $name,
         'slug' => str_slug($name),
         'description_markdown' => $faker->paragraph(6),
-        'description_html' => '<p>' . $faker->paragraph() . '</p>',
+        'description_html' => '<p>'.$faker->paragraph().'</p>',
         'completed_at' => $faker->boolean ? $faker->dateTime : null,
     ];
 });

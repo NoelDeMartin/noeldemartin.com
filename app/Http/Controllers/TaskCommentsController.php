@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TaskCommentRequest;
 use App\Models\Task;
 use App\Models\TaskComment;
-use App\Http\Requests\TaskCommentRequest;
 
 class TaskCommentsController extends Controller
 {

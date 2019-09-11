@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\SemanticSEO\Experiments\Synonymizer;
-use App\SemanticSEO\Experiments\OnlineMeeting;
 use App\SemanticSEO\Experiments\FreedomCalculator;
+use App\SemanticSEO\Experiments\OnlineMeeting;
+use App\SemanticSEO\Experiments\Synonymizer;
 use NoelDeMartin\SemanticSEO\Support\Facades\SemanticSEO;
 
 class ExperimentsController extends Controller
@@ -44,7 +44,7 @@ class ExperimentsController extends Controller
                 $originalWord = trim($word);
                 $singularWord = str_singular($originalWord);
                 $wordData = app('db')->table('thesaurus')->where('word', $singularWord)->first();
-                if (!is_null($wordData)) {
+                if (! is_null($wordData)) {
                     $meanings = json_decode($wordData->data);
                     $randomMeaning = $meanings[array_rand($meanings)];
                     $substitution = $randomMeaning->synonyms[array_rand($randomMeaning->synonyms)];

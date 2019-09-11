@@ -3,9 +3,9 @@
 namespace App\SemanticSEO;
 
 use NoelDeMartin\SemanticSEO\SemanticSEO;
-use NoelDeMartin\SemanticSEO\Types\Thing;
-use NoelDeMartin\SemanticSEO\Types\Person;
 use NoelDeMartin\SemanticSEO\Types\Organization;
+use NoelDeMartin\SemanticSEO\Types\Person;
+use NoelDeMartin\SemanticSEO\Types\Thing;
 
 class Action extends Thing
 {
@@ -25,7 +25,7 @@ class Action extends Thing
     {
         return array_merge(parent::getAttributeDefinitions(), [
             'agent' => [Organization::class, Person::class],
-            'actionStatus' => 'enumeration:' . implode(',', ActionStatusType::values()),
+            'actionStatus' => 'enumeration:'.implode(',', ActionStatusType::values()),
             'startTime' => 'date',
             'endTime' => 'date',
         ]);

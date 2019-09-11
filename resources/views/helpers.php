@@ -1,7 +1,6 @@
 <?php
 
 if (! function_exists('blade_class')) {
-
     function blade_class(...$args)
     {
         $staticClasses = [];
@@ -10,7 +9,6 @@ if (! function_exists('blade_class')) {
             $conditionalClasses = $args[1];
         } else {
             $conditionalClasses = $args[0];
-
         }
 
         foreach ($conditionalClasses as $class => $condition) {
@@ -23,32 +21,28 @@ if (! function_exists('blade_class')) {
 
         return "class=\"{$classString}\"";
     }
-
 }
 
 if (! function_exists('blade_icon')) {
-
     function blade_icon($name, $class = '', $attrs = [])
     {
         $attrsString = "class=\"{$class}\"";
         foreach ($attrs as $attr => $value) {
             $attrsString .= " {$attr}=\"{$value}\"";
         }
+
         return str_replace(':attrs', $attrsString, file_get_contents(resource_path("assets/icons/{$name}.svg")));
     }
-
 }
 
-if (!function_exists('blade_attrs')) {
-
+if (! function_exists('blade_attrs')) {
     function blade_attrs($attrs)
     {
         $html = '';
         foreach ($attrs as $key => $value) {
-            $html .= $key . '="' . $value . '" ';
+            $html .= $key.'="'.$value.'" ';
         }
 
         return $html;
     }
-
 }

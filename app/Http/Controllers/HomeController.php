@@ -2,28 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use Exception;
+use App\Models\ActivityEvent;
 use App\Models\Post;
 use App\Models\Task;
-use App\SemanticSEO\Logo;
 use App\Models\TaskComment;
-use App\SemanticSEO\WebPage;
-use App\Models\ActivityEvent;
 use App\SemanticSEO\BlogPost;
-use App\SemanticSEO\ItemList;
-use Illuminate\Support\Carbon;
-use App\SemanticSEO\NoelDeMartin;
-use NoelDeMartin\SemanticSEO\Types\Blog;
-use App\SemanticSEO\Experiments\Synonymizer;
-use NoelDeMartin\SemanticSEO\Types\AboutPage;
-use App\SemanticSEO\NoelDeMartinOrganization;
-use App\SemanticSEO\Experiments\OnlineMeeting;
 use App\SemanticSEO\Experiments\DCMotorSandbox;
 use App\SemanticSEO\Experiments\FreedomCalculator;
-use NoelDeMartin\SemanticSEO\Types\CollectionPage;
-use App\SemanticSEO\Experiments\ZazenMeditationTimer;
-use NoelDeMartin\SemanticSEO\Support\Facades\SemanticSEO;
 use App\SemanticSEO\Experiments\JapaneseCharacterRecognition;
+use App\SemanticSEO\Experiments\OnlineMeeting;
+use App\SemanticSEO\Experiments\Synonymizer;
+use App\SemanticSEO\Experiments\ZazenMeditationTimer;
+use App\SemanticSEO\ItemList;
+use App\SemanticSEO\Logo;
+use App\SemanticSEO\NoelDeMartin;
+use App\SemanticSEO\NoelDeMartinOrganization;
+use App\SemanticSEO\WebPage;
+use Exception;
+use Illuminate\Support\Carbon;
+use NoelDeMartin\SemanticSEO\Support\Facades\SemanticSEO;
+use NoelDeMartin\SemanticSEO\Types\AboutPage;
+use NoelDeMartin\SemanticSEO\Types\Blog;
+use NoelDeMartin\SemanticSEO\Types\CollectionPage;
 
 class HomeController extends Controller
 {
@@ -58,7 +58,7 @@ class HomeController extends Controller
             ->publisher(NoelDeMartinOrganization::class)
             ->datePublished(Carbon::create(2014, 10, 24)->startOfDay())
             ->dateCreated(Carbon::create(2014, 10, 24)->startOfDay());
-            // TODO ->dateModified(); git log -1 --format=%cd or Post::last()->updated_at
+        // TODO ->dateModified(); git log -1 --format=%cd or Post::last()->updated_at
 
         SemanticSEO::is(NoelDeMartin::class);
 
@@ -188,8 +188,9 @@ class HomeController extends Controller
     public function health()
     {
         $status = 'Everything is OK';
+
         try {
-            if (!app('db')->connection()) {
+            if (! app('db')->connection()) {
                 $status = 'MySQL is not working correctly';
             }
         } catch (Exception $e) {

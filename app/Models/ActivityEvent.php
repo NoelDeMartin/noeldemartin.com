@@ -61,6 +61,7 @@ class ActivityEvent
     }
 
     public $date;
+
     public $description;
 
     private function __construct(Carbon $date, $description)

@@ -40,9 +40,11 @@ class ThesaurusTableSeeder extends Seeder
                     'data' => json_encode($data),
                 ]);
 
-                if (!$isProduction && $count++ === 1000) break;
+                if (! $isProduction && $count++ === 1000) {
+                    break;
+                }
             }
-            if ($isProduction && !feof($thesaurus)) {
+            if ($isProduction && ! feof($thesaurus)) {
                 echo "Error: unexpected fgets() fail\n";
             }
             fclose($thesaurus);
