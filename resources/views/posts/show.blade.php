@@ -1,4 +1,4 @@
-@inject('links', \App\Social\LinksGenerator::class)
+@inject('links', 'App\Social\LinksGenerator')
 
 @extends('layouts.master', [ 'header' => false ])
 
