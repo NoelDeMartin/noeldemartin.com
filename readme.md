@@ -20,11 +20,12 @@ scripts/init.sh
 
 Complete the .env file by introducing the values for `DO_SPACES_KEY` and `DO_SPACES_SECRET`.
 
-Finish the installation by starting the containers, installing dependencies and building assets:
+Finish the installation by starting the containers, installing dependencies and preparing assets:
 
 ```sh
 docker-compose up -d
 docker-compose exec app composer install --no-dev
+docker-compose exec app php artisan nova:link
 docker run -v `pwd`:/app -w /app node bash -c "npm install && npm run production"
 ```
 
