@@ -3,11 +3,10 @@ FROM php:7.3-fpm-alpine
 # Install PHP Dependencies
 RUN set -x \
     && apk update \
-    && apk add zlib-dev libzip-dev \
-    && php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer \
-    && docker-php-ext-install pdo pdo_mysql zip \
-    && apk add mariadb-client \
-    && apk add git
+    && apk add git zlib-dev libzip-dev mariadb-client \
+    && docker-php-ext-install pdo pdo_mysql zip bcmath \
+    && docker-php-ext-enable bcmath \
+    && php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer
 
 # Prepare Supervisor
 RUN apk add --no-cache supervisor
