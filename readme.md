@@ -25,7 +25,7 @@ Finish the installation by starting the containers, installing dependencies and 
 ```sh
 docker-compose up -d
 docker-compose exec app composer install --no-dev
-docker-compose exec app php artisan nova:link
+docker-compose exec app php artisan vendor:publish --tag nova-assets --force
 docker run -v `pwd`:/app -w /app node bash -c "npm install && npm run production"
 ```
 
