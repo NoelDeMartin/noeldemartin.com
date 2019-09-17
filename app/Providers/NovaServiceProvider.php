@@ -2,11 +2,15 @@
 
 namespace App\Providers;
 
+use Parsedown;
+
 use Illuminate\Support\Facades\Gate;
 
 use Laravel\Nova\Nova;
 use Laravel\Nova\Cards\Help;
 use Laravel\Nova\NovaApplicationServiceProvider;
+
+use App\Models\TaskComment;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -18,6 +22,12 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function boot()
     {
         parent::boot();
+
+        Nova::serving(function () {
+            TaskComment::saving(function ($taskComment) {
+                $taskComment->text_html = (new Parsedown())->text($taskComment->text_markdown);
+            });
+        });
     }
 
     /**

@@ -4,10 +4,11 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Textarea;
+use Laravel\Nova\Fields\Markdown;
+use Laravel\Nova\Fields\Text;
 
 class TaskComment extends Resource
 {
@@ -47,16 +48,21 @@ class TaskComment extends Resource
         return [
             ID::make()->hideFromIndex()->sortable(),
 
-            Textarea::make('Text', 'text_markdown')
-                ->showOnIndex()
-                ->displayUsing(function ($value) {
-                    return Str::limit($value, 42);
-                }),
+            BelongsTo::make('Task')
+                ->hideWhenUpdating()
+                ->sortable(),
 
+            Text::make('Text', 'text_markdown')
+                ->onlyOnIndex()
+                ->displayUsing(function ($value) { return Str::limit($value, 42); }),
+
+            Markdown::make('Text', 'text_markdown'),
 
             DateTime::make('Created At')
                 ->sortable()
-                ->format('DD MMM YYYY'),
+                ->format('DD MMM YYYY')
+                ->hideWhenCreating()
+                ->hideWhenUpdating(),
         ];
     }
 
