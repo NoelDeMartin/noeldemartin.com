@@ -11,6 +11,6 @@ class AuthController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
-        return redirect()->route('posts.index');
+        return redirect()->to(config('nova.path'));
     }
 }
