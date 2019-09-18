@@ -56,7 +56,7 @@ class TaskComment extends Resource
                 ->onlyOnIndex()
                 ->displayUsing(function ($value) { return Str::limit($value, 42); }),
 
-            Markdown::make('Text', 'text_markdown'),
+            Markdown::make('Text', 'text_markdown')->stacked(),
 
             DateTime::make('Created At')
                 ->sortable()
