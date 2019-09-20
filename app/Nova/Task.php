@@ -36,10 +36,7 @@ class Task extends Resource
 
     public function fields(Request $request)
     {
-        [, $formsDescriptionField] = $this->markdownFields(
-            'Description',
-            'description_markdown'
-        );
+        [, $formsDescriptionField] = $this->markdownFields('Description', 'description_markdown');
 
         return [
             $this->idField(),

@@ -4,8 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Laravel\Nova\Actions\Actionable;
+
 class Post extends Model
 {
+    use Actionable;
+
     const DATE_FORMAT = 'd/m/Y';
 
     const DATE_FORMAT_JS = 'dd/mm/yyyy';
@@ -16,9 +20,12 @@ class Post extends Model
 
     public static function createTitleTag($title)
     {
-        $tag = preg_replace('/[^a-zA-Z0-9]/', '-', $title);
-        $tag = preg_replace('/-+/', '-', $tag);
-        $tag = urlencode(strtolower($tag));
+        $count = 0;
+
+        do {
+            $tag = Str::slug($title).($count > 0 ? '-'.$count : '');
+            $count++;
+        } while (Task::where('slug', $tag)->count() > 0);
 
         return $tag;
     }
@@ -46,6 +53,11 @@ class Post extends Model
         $summary = preg_replace('/<img[^>]*>/', '', $summary);
 
         return $summary;
+    }
+
+    public function getUrlAttribute()
+    {
+        return route('posts.show', $this->tag);
     }
 
     public function getImageUrlAttribute()

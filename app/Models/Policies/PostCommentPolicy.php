@@ -2,17 +2,17 @@
 
 namespace App\Models\Policies;
 
-use App\Models\Invitation;
+use App\Models\PostComment;
 use App\Models\User;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class InvitationPolicy
+class PostCommentPolicy
 {
     use HandlesAuthorization;
 
     /**
-     * Determine whether the user can view any invitations.
+     * Determine whether the user can view any post comments.
      *
      * @param  \App\Models\User  $user
      * @return mixed
@@ -23,13 +23,13 @@ class InvitationPolicy
     }
 
     /**
-     * Determine whether the user can view the invitation.
+     * Determine whether the user can view the post comment.
      *
      * @param  \App\Models\User         $user
-     * @param  \App\Models\Invitation   $invitation
+     * @param  \App\Models\PostComment  $comment
      * @return mixed
      */
-    public function view(User $user, Invitation $invitation)
+    public function view(User $user, PostComment $comment)
     {
         return $user->is_admin;
     }

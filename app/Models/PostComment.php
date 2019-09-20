@@ -7,4 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class PostComment extends Model
 {
     protected $fillable = ['author', 'author_link', 'text'];
+
+    public function post()
+    {
+        return $this->belongsTo(Post::class);
+    }
 }
