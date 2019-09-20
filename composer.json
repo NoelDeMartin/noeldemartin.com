@@ -18,6 +18,7 @@
         "laravel/tinker": "^1.0",
         "league/flysystem-aws-s3-v3": "^1.0",
         "noeldemartin/laravel-semantic-seo": "^0.1.0",
+        "pdewit/nova-external-url": "^1.0",
         "spatie/laravel-backup": "^6.4"
     },
     "require-dev": {

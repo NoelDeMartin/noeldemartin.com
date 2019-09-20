@@ -7,6 +7,8 @@ use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Text;
 
+use Pdewit\ExternalUrl\ExternalUrl;
+
 use App\Models\Task as TaskModel;
 use App\Support\Markdown;
 
@@ -41,8 +43,9 @@ class Task extends Resource
         return [
             $this->idField(),
 
-            // TODO make clickable
-            Text::make('Url')->onlyOnDetail(),
+            ExternalUrl::make('Url', 'url')
+                ->linkText('View Task')
+                ->onlyOnDetail(),
 
             Text::make('Name')
                 ->sortable()

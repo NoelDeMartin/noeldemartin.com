@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
+
+use Pdewit\ExternalUrl\ExternalUrl;
 
 use App\Models\Post as PostModel;
 use App\Support\Markdown;
-use Laravel\Nova\Fields\Number;
 
 class Post extends Resource
 {
@@ -48,8 +50,9 @@ class Post extends Resource
         return [
             $this->idField(),
 
-            // TODO make clickable
-            Text::make('Url')->onlyOnDetail(),
+            ExternalUrl::make('Url', 'url')
+                ->linkText('View Post')
+                ->onlyOnDetail(),
 
             Text::make('Title')
                 ->sortable()

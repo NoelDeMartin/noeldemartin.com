@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fa22da44bddc1724a53a8680bd31be74",
+    "content-hash": "2f5221f6dd16b7cd339c1e93d62fdddf",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1953,6 +1953,47 @@
                 "random"
             ],
             "time": "2018-07-02T15:55:56+00:00"
+        },
+        {
+            "name": "pdewit/nova-external-url",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pdewit/nova-external-url.git",
+                "reference": "3fe3b8cb62740dd833773665cbf4380c345c3206"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pdewit/nova-external-url/zipball/3fe3b8cb62740dd833773665cbf4380c345c3206",
+                "reference": "3fe3b8cb62740dd833773665cbf4380c345c3206",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Pdewit\\ExternalUrl\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Pdewit\\ExternalUrl\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "An external URL Laravel Nova field.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "time": "2018-11-26T14:51:33+00:00"
         },
         {
             "name": "phpoption/phpoption",
