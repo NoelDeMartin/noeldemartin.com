@@ -30,7 +30,7 @@ class Task extends Resource
         });
 
         TaskModel::updating(function ($task) {
-            $task->description_html = TaskModel::text($task->description_markdown);
+            $task->description_html = Markdown::text($task->description_markdown);
         });
     }
 
@@ -79,6 +79,8 @@ class Task extends Resource
 
     public function actions(Request $request)
     {
-        return [];
+        return [
+            new Actions\CompleteTask,
+        ];
     }
 }
