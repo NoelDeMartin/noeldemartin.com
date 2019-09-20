@@ -5,96 +5,79 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
-use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
+
+use App\Models\Task as TaskModel;
+use App\Support\Markdown;
 
 class Task extends Resource
 {
-    /**
-     * The model the resource corresponds to.
-     *
-     * @var string
-     */
-    public static $model = \App\Models\Task::class;
+    public static $model = TaskModel::class;
 
-    /**
-     * The single value that should be used to represent the resource when being displayed.
-     *
-     * @var string
-     */
     public static $title = 'name';
 
-    /**
-     * The columns that should be searched.
-     *
-     * @var array
-     */
     public static $search = [
         'name', 'description_markdown',
     ];
 
-    /**
-     * Get the fields displayed by the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
+    public static function boot()
+    {
+        parent::boot();
+
+        TaskModel::creating(function ($task) {
+            $task->slug = TaskModel::newSlug($task->name);
+            $task->description_html = Markdown::text($task->description_markdown);
+        });
+
+        TaskModel::updating(function ($task) {
+            $task->description_html = TaskModel::text($task->description_markdown);
+        });
+    }
+
     public function fields(Request $request)
     {
+        [, $formsDescriptionField] = $this->markdownFields(
+            'Description',
+            'description_markdown'
+        );
+
         return [
-            ID::make()->hideFromIndex()->sortable(),
+            $this->idField(),
+
+            // TODO make clickable
+            Text::make('Url')->onlyOnDetail(),
 
             Text::make('Name')->sortable(),
 
-            HasMany::make('Comments', 'comments', TaskComment::class),
+            $formsDescriptionField,
 
-            DateTime::make('Created At')
+            DateTime::make('Completed', 'completed_at')
                 ->sortable()
+                ->nullable()
                 ->format('DD MMM YYYY')
-                ->hideWhenCreating()
-                ->hideWhenUpdating(),
+                ->hideWhenCreating(),
+
+            $this->createdField(),
+
+            HasMany::make('Comments', 'comments', TaskComment::class),
         ];
     }
 
-    /**
-     * Get the cards available for the request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
     public function cards(Request $request)
     {
         return [];
     }
 
-    /**
-     * Get the filters available for the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
     public function filters(Request $request)
     {
         return [];
     }
 
-    /**
-     * Get the lenses available for the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
     public function lenses(Request $request)
     {
         return [];
     }
 
-    /**
-     * Get the actions available for the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
     public function actions(Request $request)
     {
         return [];

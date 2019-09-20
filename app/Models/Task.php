@@ -8,6 +8,18 @@ use Illuminate\Support\Str;
 
 class Task extends Model
 {
+    public static function newSlug($name)
+    {
+        $count = 0;
+
+        do {
+            $slug = Str::slug($name).($count > 0 ? '-'.$count : '');
+            $count++;
+        } while (Task::where('slug', $slug)->count() > 0);
+
+        return $slug;
+    }
+
     protected $dates = ['created_at', 'updated_at', 'completed_at'];
 
     protected $fillable = [

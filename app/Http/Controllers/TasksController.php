@@ -6,7 +6,6 @@ use App\Http\Requests\TaskRequest;
 use App\Models\Task;
 use App\SemanticSEO\ItemList;
 use App\SemanticSEO\Task as TaskSEO;
-use Illuminate\Support\Str;
 use NoelDeMartin\SemanticSEO\Support\Facades\SemanticSEO;
 
 class TasksController extends Controller
@@ -45,15 +44,9 @@ class TasksController extends Controller
     public function store(TaskRequest $request)
     {
         $name = request('name');
-        $count = 0;
-
-        do {
-            $slug = Str::slug($name).($count > 0 ? '-'.$count : '');
-            $count++;
-        } while (Task::where('slug', $slug)->count() > 0);
 
         Task::create([
-            'slug'                 => $slug,
+            'slug'                 => Task::newSlug($name),
             'name'                 => $name,
             'description_html'     => request('description_html'),
             'description_markdown' => request('description_markdown'),

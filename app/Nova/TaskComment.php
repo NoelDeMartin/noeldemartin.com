@@ -3,108 +3,67 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
+
 use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Markdown;
-use Laravel\Nova\Fields\Text;
+
+use App\Models\TaskComment as TaskCommentModel;
+use App\Support\Markdown;
 
 class TaskComment extends Resource
 {
-    /**
-     * The model the resource corresponds to.
-     *
-     * @var string
-     */
-    public static $model = \App\Models\TaskComment::class;
+    public static $model = TaskCommentModel::class;
 
-    /**
-     * The single value that should be used to represent the resource when being displayed.
-     *
-     * @var string
-     */
     public static $title = 'id';
 
-    /**
-     * The columns that should be searched.
-     *
-     * @var array
-     */
     public static $search = [
         'id', 'text_markdown',
     ];
 
     public static $defaultOrderings = ['created_at' => 'desc'];
 
-    /**
-     * Get the fields displayed by the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
+    public static function boot()
+    {
+        parent::boot();
+
+        TaskCommentModel::saving(function ($comment) {
+            $comment->text_html = Markdown::text($comment->text_markdown);
+        });
+    }
+
     public function fields(Request $request)
     {
+        [$indexTextField, $formsTextField] = $this->markdownFields('Text', 'text_markdown');
+
         return [
-            ID::make()->hideFromIndex()->sortable(),
+            $this->idField(),
 
             BelongsTo::make('Task')
                 ->hideWhenUpdating()
                 ->sortable(),
 
-            Text::make('Text', 'text_markdown')
-                ->onlyOnIndex()
-                ->displayUsing(function ($value) { return Str::limit($value, 42); }),
+            $indexTextField,
 
-            Markdown::make('Text', 'text_markdown')->stacked(),
+            $formsTextField,
 
-            DateTime::make('Created At')
-                ->sortable()
-                ->format('DD MMM YYYY')
-                ->hideWhenCreating()
-                ->hideWhenUpdating(),
+            $this->createdField(),
         ];
     }
 
-    /**
-     * Get the cards available for the request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
     public function cards(Request $request)
     {
         return [];
     }
 
-    /**
-     * Get the filters available for the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
     public function filters(Request $request)
     {
         return [];
     }
 
-    /**
-     * Get the lenses available for the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
     public function lenses(Request $request)
     {
         return [];
     }
 
-    /**
-     * Get the actions available for the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
     public function actions(Request $request)
     {
         return [];
