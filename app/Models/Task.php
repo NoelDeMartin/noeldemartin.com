@@ -6,8 +6,12 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
+use Laravel\Nova\Actions\Actionable;
+
 class Task extends Model
 {
+    use Actionable;
+
     public static function newSlug($name)
     {
         $count = 0;

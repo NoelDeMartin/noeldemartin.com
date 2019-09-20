@@ -5,21 +5,16 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 
 use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\Text;
 
-class User extends Resource
+class Invitation extends Resource
 {
-    public static $model = \App\Models\User::class;
+    public static $model = \App\Models\Invitation::class;
 
-    public static $title = 'username';
+    public static $title = 'id';
 
     public static $search = [
-        'id', 'username', 'email',
-    ];
-
-    public static $defaultOrderings = [
-        'id' => 'asc',
+        'id', 'token', 'email',
     ];
 
     public function fields(Request $request)
@@ -27,15 +22,11 @@ class User extends Resource
         return [
             $this->idField(),
 
-            Gravatar::make(),
+            Text::make('Email')->sortable(),
 
-            Text::make('Username')->sortable(),
+            Text::make('Token')->hideFromIndex(),
 
-            Text::make('Email')->hideFromIndex(),
-
-            Boolean::make('Admin', 'is_admin')->sortable(),
-
-            Boolean::make('Reviewer', 'is_reviewer')->sortable(),
+            Boolean::make('Used')->sortable(),
 
             $this->createdField(),
         ];

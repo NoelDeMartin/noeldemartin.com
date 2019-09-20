@@ -4,8 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Laravel\Nova\Actions\Actionable;
+
 class TaskComment extends Model
 {
+    use Actionable;
+
     protected $fillable = ['text_html', 'text_markdown'];
 
     public function task()
