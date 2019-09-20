@@ -13,7 +13,7 @@ use Laravel\Nova\Resource as NovaResource;
 
 abstract class Resource extends NovaResource
 {
-    public static $defaultOrderings = ['id' => 'asc'];
+    public static $defaultOrderings = ['created_at' => 'desc'];
 
     public static function boot()
     {
@@ -61,7 +61,9 @@ abstract class Resource extends NovaResource
                 ->onlyOnIndex()
                 ->displayUsing(function ($value) { return Str::limit($value, 42); }),
 
-            Markdown::make($name, $column)->stacked(),
+            Markdown::make($name, $column)
+                ->rules('required')
+                ->stacked(),
         ];
     }
 

@@ -47,7 +47,9 @@ class Task extends Resource
             // TODO make clickable
             Text::make('Url')->onlyOnDetail(),
 
-            Text::make('Name')->sortable(),
+            Text::make('Name')
+                ->sortable()
+                ->rules('required'),
 
             $formsDescriptionField,
 

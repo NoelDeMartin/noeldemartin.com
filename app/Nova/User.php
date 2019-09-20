@@ -18,6 +18,10 @@ class User extends Resource
         'id', 'username', 'email',
     ];
 
+    public static $defaultOrderings = [
+        'id' => 'asc',
+    ];
+
     public function fields(Request $request)
     {
         return [

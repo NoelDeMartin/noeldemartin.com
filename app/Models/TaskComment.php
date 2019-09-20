@@ -12,4 +12,19 @@ class TaskComment extends Model
     {
         return $this->belongsTo(Task::class);
     }
+
+    public function getUrlAttribute()
+    {
+        if (is_null($this->task))
+            return null;
+
+        $index = $this->task->comments->search(function ($comment) {
+            return $comment->id === $this->id;
+        });
+
+        // Comments are indexed starting at 1 and there is an auto-generated first comment
+        $index += 2;
+
+        return route('tasks.show', $this->task->slug) . '#comment-' . $index;
+    }
 }

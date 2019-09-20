@@ -5,6 +5,7 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Text;
 
 use App\Models\TaskComment as TaskCommentModel;
 use App\Support\Markdown;
@@ -18,8 +19,6 @@ class TaskComment extends Resource
     public static $search = [
         'id', 'text_markdown',
     ];
-
-    public static $defaultOrderings = ['created_at' => 'desc'];
 
     public static function boot()
     {
@@ -40,6 +39,9 @@ class TaskComment extends Resource
             BelongsTo::make('Task')
                 ->hideWhenUpdating()
                 ->sortable(),
+
+            // TODO make clickable
+            Text::make('Url')->onlyOnDetail(),
 
             $indexTextField,
 
