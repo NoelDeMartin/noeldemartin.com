@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2f5221f6dd16b7cd339c1e93d62fdddf",
+    "content-hash": "4bb54e26b64b26487aebd2c755f0902c",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -989,6 +989,50 @@
             "time": "2019-07-01T23:21:34+00:00"
         },
         {
+            "name": "inspheric/nova-url-field",
+            "version": "v1.32",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/inspheric/nova-url-field.git",
+                "reference": "d85ca6369c9c28e4717e903a329da6ad504da99f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/inspheric/nova-url-field/zipball/d85ca6369c9c28e4717e903a329da6ad504da99f",
+                "reference": "d85ca6369c9c28e4717e903a329da6ad504da99f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Inspheric\\Fields\\UrlFieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Inspheric\\Fields\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova url field.",
+            "keywords": [
+                "field",
+                "href",
+                "laravel",
+                "nova",
+                "url"
+            ],
+            "time": "2019-06-02T13:02:53+00:00"
+        },
+        {
             "name": "jakub-onderka/php-console-color",
             "version": "v0.2",
             "source": {
@@ -1953,47 +1997,6 @@
                 "random"
             ],
             "time": "2018-07-02T15:55:56+00:00"
-        },
-        {
-            "name": "pdewit/nova-external-url",
-            "version": "1.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/pdewit/nova-external-url.git",
-                "reference": "3fe3b8cb62740dd833773665cbf4380c345c3206"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/pdewit/nova-external-url/zipball/3fe3b8cb62740dd833773665cbf4380c345c3206",
-                "reference": "3fe3b8cb62740dd833773665cbf4380c345c3206",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Pdewit\\ExternalUrl\\FieldServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Pdewit\\ExternalUrl\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "An external URL Laravel Nova field.",
-            "keywords": [
-                "laravel",
-                "nova"
-            ],
-            "time": "2018-11-26T14:51:33+00:00"
         },
         {
             "name": "phpoption/phpoption",

@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Text;
 
-use Pdewit\ExternalUrl\ExternalUrl;
+use Inspheric\Fields\Url;
 
 use App\Models\PostComment as PostCommentModel;
 
@@ -37,13 +37,7 @@ class PostComment extends Resource
                 ->onlyOnIndex()
                 ->displayUsing(function ($value) { return Str::limit($value, 42); }),
 
-            ExternalUrl::make('Author Link', 'author_link')
-                ->linkText('Open Link')
-                ->onlyOnDetail(),
-
-            Text::make('Author Link')
-                ->hideFromDetail()
-                ->sortable(),
+            Url::make('Author Link')->clickable()->onlyOnDetail(),
 
             Text::make('Text')->hideFromIndex(),
 

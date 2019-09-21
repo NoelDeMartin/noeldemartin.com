@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use Laravel\Nova\Fields\BelongsTo;
 
-use Pdewit\ExternalUrl\ExternalUrl;
+use Inspheric\Fields\Url;
 
 use App\Models\TaskComment as TaskCommentModel;
 use App\Support\Markdown;
@@ -41,9 +41,7 @@ class TaskComment extends Resource
                 ->hideWhenUpdating()
                 ->sortable(),
 
-            ExternalUrl::make('Url', 'url')
-                ->linkText('View Comment')
-                ->onlyOnDetail(),
+            Url::make('Url')->clickable()->onlyOnDetail(),
 
             $indexTextField,
 

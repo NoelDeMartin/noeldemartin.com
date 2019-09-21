@@ -9,7 +9,7 @@ use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 
-use Pdewit\ExternalUrl\ExternalUrl;
+use Inspheric\Fields\Url;
 
 use App\Models\Post as PostModel;
 use App\Support\Markdown;
@@ -50,9 +50,7 @@ class Post extends Resource
         return [
             $this->idField(),
 
-            ExternalUrl::make('Url', 'url')
-                ->linkText('View Post')
-                ->onlyOnDetail(),
+            Url::make('Url')->clickable()->onlyOnDetail(),
 
             Text::make('Title')
                 ->sortable()
