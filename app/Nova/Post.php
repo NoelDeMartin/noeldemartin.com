@@ -39,7 +39,7 @@ class Post extends Resource
         });
 
         PostModel::updating(function ($post) {
-            $post->text_html = PostModel::text($post->text_markdown);
+            $post->text_html = Markdown::text($post->text_markdown);
         });
     }
 
