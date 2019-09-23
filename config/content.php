@@ -38,7 +38,7 @@ return [
             'extras' => ['rel' => 'me'],
         ],
         (object) [
-            'url'  => 'mailto:noeldemartin@gmail.com',
+            'url'  => 'mailto:noeldemartin@gmail.com?subject=Hi there!',
             'icon' => 'gmail',
             'name' => 'My Email',
             'short_name' => 'Email',
