@@ -87,36 +87,6 @@
         #freedom #freedom-save {
             float: right;
         }
-
-        #social {
-            text-align: center;
-        }
-
-        #social .social-share {
-            display: inline-block;
-            width: 4rem;
-            height: 4rem;
-            margin: 0.5rem;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
-            text-indent: 100%;
-            white-space: nowrap;
-            overflow: hidden;
-        }
-
-        #social .social-share.twitter {
-            background-image: url('../img/twitter.png');
-        }
-
-        #social .social-share.facebook {
-            background-image: url('../img/facebook.png');
-        }
-
-        #social .social-share.gplus {
-            background-image: url('../img/gplus.png');
-        }
-
     </style>
 @endpush
 
@@ -139,11 +109,6 @@
             <p id="freedom-deadline"></p>
             <a id="freedom-save" target="_blank">Save this result</a>
         </div>
-    </div>
-    <div id="social">
-        <a class="social-share share-popup twitter" href="https://twitter.com/intent/tweet?text=Calculate your freedom with this calculator&url={!! urlencode(route('experiments.freedom-calculator')) !!}&via=NoelDeMartin">Twitter</a>
-        <a class="social-share share-popup facebook" href="https://www.facebook.com/sharer/sharer.php?u={!! urlencode(route('experiments.freedom-calculator')) !!}">Facebook</a>
-        <a class="social-share share-popup gplus" href="https://plus.google.com/share?url={!! urlencode(route('experiments.freedom-calculator')) !!}">Google+</a>
     </div>
 @stop
 
