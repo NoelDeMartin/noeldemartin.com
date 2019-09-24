@@ -10,6 +10,7 @@ use Laravel\Nova\Fields\Text;
 use Inspheric\Fields\Url;
 
 use App\Models\Task as TaskModel;
+use App\Nova\Actions\CompleteTask;
 use App\Nova\Fields\Markdown;
 
 class Task extends Resource
@@ -74,7 +75,7 @@ class Task extends Resource
     public function actions(Request $request)
     {
         return [
-            new Actions\CompleteTask,
+            new CompleteTask,
         ];
     }
 }

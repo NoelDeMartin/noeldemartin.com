@@ -22,28 +22,17 @@ class CompleteTask extends Action
      */
     public function handle(ActionFields $fields, Collection $tasks)
     {
-        $count = 0;
-
         foreach ($tasks as $task) {
             if ($task->isCompleted()) {
+                $this->markAsFailed($task);
+
                 continue;
             }
 
             $task->update(['completed_at' => now()]);
-            $count++;
-        }
 
-        return $count === $tasks->count()
-            ? (
-                $count === 1
-                    ? Action::message("The task has been completed")
-                    : Action::message("{$count} tasks have been completed")
-            )
-            : (
-                $count === 0
-                    ? Action::message("No tasks needed to be completed")
-                    : Action::message("Only {$count} tasks have been completed")
-            );
+            $this->markAsFinished($task);
+        }
     }
 
     /**
