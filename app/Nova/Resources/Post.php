@@ -12,7 +12,7 @@ use Laravel\Nova\Fields\Text;
 use Inspheric\Fields\Url;
 
 use App\Models\Post as PostModel;
-use App\Support\Markdown;
+use App\Nova\Fields\Markdown;
 
 class Post extends Resource
 {
@@ -30,23 +30,14 @@ class Post extends Resource
 
     public static function boot()
     {
-        parent::boot();
-
         PostModel::creating(function ($post) {
             $post->tag = PostModel::createTitleTag($post->title);
             $post->author_id = auth()->id();
-            $post->text_html = Markdown::text($post->text_markdown);
-        });
-
-        PostModel::updating(function ($post) {
-            $post->text_html = Markdown::text($post->text_markdown);
         });
     }
 
     public function fields(Request $request)
     {
-        [, $formsTextField] = $this->markdownFields('Text', 'text_markdown');
-
         return [
             $this->idField(),
 
@@ -64,7 +55,9 @@ class Post extends Resource
                     return $duration . ' min.';
                 }),
 
-            $formsTextField,
+            Markdown::make('Text')
+                ->rules('required')
+                ->stacked(),
 
             DateTime::make('Published', 'published_at')
                 ->sortable()

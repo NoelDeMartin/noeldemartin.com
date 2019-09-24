@@ -3,17 +3,18 @@
 namespace App\Nova\Resources;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Text;
 
 use Inspheric\Fields\Url;
 
-use App\Models\TaskComment as TaskCommentModel;
-use App\Support\Markdown;
+use App\Nova\Fields\Markdown;
 
 class TaskComment extends Resource
 {
-    public static $model = TaskCommentModel::class;
+    public static $model = \App\Models\TaskComment::class;
 
     public static $title = 'id';
 
@@ -21,19 +22,8 @@ class TaskComment extends Resource
         'id', 'text_markdown',
     ];
 
-    public static function boot()
-    {
-        parent::boot();
-
-        TaskCommentModel::saving(function ($comment) {
-            $comment->text_html = Markdown::text($comment->text_markdown);
-        });
-    }
-
     public function fields(Request $request)
     {
-        [$indexTextField, $formsTextField] = $this->markdownFields('Text', 'text_markdown');
-
         return [
             $this->idField(),
 
@@ -43,9 +33,15 @@ class TaskComment extends Resource
 
             Url::make('Url')->clickable()->onlyOnDetail(),
 
-            $indexTextField,
+            Text::make('Text', 'text_markdown')
+                ->onlyOnIndex()
+                ->displayUsing(function ($value) {
+                    return Str::limit($value, 42);
+                }),
 
-            $formsTextField,
+            Markdown::make('Text')
+                ->rules('required')
+                ->stacked(),
 
             $this->createdField(),
         ];

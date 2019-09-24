@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 use Laravel\Nova\Actions\Actionable;
 
@@ -25,7 +26,7 @@ class Post extends Model
         do {
             $tag = Str::slug($title).($count > 0 ? '-'.$count : '');
             $count++;
-        } while (Task::where('slug', $tag)->count() > 0);
+        } while (Post::where('tag', $tag)->count() > 0);
 
         return $tag;
     }

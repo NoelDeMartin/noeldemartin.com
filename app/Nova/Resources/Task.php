@@ -10,7 +10,7 @@ use Laravel\Nova\Fields\Text;
 use Inspheric\Fields\Url;
 
 use App\Models\Task as TaskModel;
-use App\Support\Markdown;
+use App\Nova\Fields\Markdown;
 
 class Task extends Resource
 {
@@ -24,22 +24,13 @@ class Task extends Resource
 
     public static function boot()
     {
-        parent::boot();
-
         TaskModel::creating(function ($task) {
             $task->slug = TaskModel::newSlug($task->name);
-            $task->description_html = Markdown::text($task->description_markdown);
-        });
-
-        TaskModel::updating(function ($task) {
-            $task->description_html = Markdown::text($task->description_markdown);
         });
     }
 
     public function fields(Request $request)
     {
-        [, $formsDescriptionField] = $this->markdownFields('Description', 'description_markdown');
-
         return [
             $this->idField(),
 
@@ -49,7 +40,9 @@ class Task extends Resource
                 ->sortable()
                 ->rules('required'),
 
-            $formsDescriptionField,
+            Markdown::make('Description')
+                ->rules('required')
+                ->stacked(),
 
             DateTime::make('Completed', 'completed_at')
                 ->sortable()
