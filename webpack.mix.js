@@ -14,6 +14,7 @@ mix
             tailwindcss('tailwind.js'),
         ],
     })
+    .version()
     .webpackConfig({
         output: {
             publicPath: '/',
