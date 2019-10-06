@@ -53,8 +53,8 @@ sudo letsencrypt certonly -d noeldemartin.com --manual
 If you are using [nginx-agora](https://github.com/noeldemartin/nginx-agora), install the website with the following command:
 
 ```sh
-nginx-agora install nginx/noeldemartin.com.conf /var/www/noeldemartin/public
-ln -s ../sites_available/noeldemartin.com.conf /var/www/nginx-agora/sites_enabled
+nginx-agora install ./nginx/noeldemartin.com.conf ./public
+nginx-agora enable
 nginx-agora start
 ```
 
