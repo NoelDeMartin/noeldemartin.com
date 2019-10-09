@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 set -e
+scripts_dir=`cd $(readlink -f $0 | xargs dirname) && pwd`
 
 if [ -f ".env" ]; then
    echo ".env file already exists"
@@ -18,9 +19,5 @@ sed -i "s/APP_KEY=/APP_KEY=base64:$APP_KEY/" .env
 sed -i "s/DB_PASSWORD=/DB_PASSWORD=$DB_PASSWORD/" .env
 
 # Prepare file permissions
+$scripts_dir/prepare-permissions.sh
 
-WEB_UID=`docker-compose run app id -u www-data | sed 's/\r$//'`
-DB_UID=`docker-compose run mysql id -u mysql | sed 's/\r$//'`
-
-sudo chown -R $WEB_UID:docker .
-sudo chown -R $DB_UID:docker ./docker/mysql

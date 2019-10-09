@@ -1,18 +1,14 @@
 #!/usr/bin/env bash
 
 set -e
+scripts_dir=`cd $(readlink -f $0 | xargs dirname) && pwd`
 
 # Update code
 
 git pull
 
 # Rebuild permissions
-
-WEB_UID=`docker-compose run app id -u www-data | sed 's/\r$//'`
-DB_UID=`docker-compose run mysql id -u mysql | sed 's/\r$//'`
-
-sudo chown -R $WEB_UID:docker .
-sudo chown -R $DB_UID:docker ./docker/mysql
+$scripts_dir/prepare-permissions.sh
 
 # Rebuild assets and cache
 
