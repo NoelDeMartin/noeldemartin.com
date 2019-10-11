@@ -46,3 +46,14 @@ if (! function_exists('blade_attrs')) {
         return $html;
     }
 }
+
+if (!function_exists('content_socials')) {
+    function content_socials()
+    {
+        $socials = config('content.socials');
+
+        return array_map(function ($social) {
+            return (object) $social;
+        }, $socials);
+    }
+}

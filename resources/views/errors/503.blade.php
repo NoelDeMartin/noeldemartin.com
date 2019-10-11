@@ -11,11 +11,8 @@
     <h1 class="text-center text-2xl font-bold mb-4">Site under maintenance, I'll be right back!</h1>
     <h2 class="text-center text-sm mb-2">In the meanwhile, you can find me here:</h2>
 
-
-    @php($socials = config('content.socials'))
-
     <ul class="flex flex-wrap justify-center">
-        @foreach ($socials as $social)
+        @foreach (content_socials() as $social)
             @if (isset($social->hide_in_maintenance))
                 @continue
             @endif

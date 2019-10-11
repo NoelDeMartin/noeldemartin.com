@@ -46,7 +46,7 @@
             ],
         ];
 
-        $socials = config('content.socials');
+        $socials = content_socials();
 
     @endphp
 
