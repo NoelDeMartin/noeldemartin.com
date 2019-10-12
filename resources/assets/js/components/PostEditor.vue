@@ -1,14 +1,14 @@
 <template>
     <div>
 
-        <ul class="list-reset flex justify-end">
+        <ul class="flex justify-end">
             <li
                 v-for="_mode in ['both', 'editor', 'preview']"
                 :key="_mode"
             >
                 <a
                     :class="{ 'bg-grey-lighter': mode === _mode }"
-                    class="block p-2 mb-2 cursor-pointer hover:bg-overlay"
+                    class="block p-2 mb-2 underline cursor-pointer hover:bg-overlay"
                     @click="mode = _mode"
                 >
                     {{ capitalize(_mode) }}
@@ -23,7 +23,7 @@
             class="block appearance-none border rounded mb-4 py-2 px-3 text-grey-darker w-full focus:shadow"
         >
 
-        <div class="w-full flex border-1 border-grey-light">
+        <div class="w-full flex border border-grey-light">
 
             <textarea
                 :class="{ 'hidden': mode === 'preview' }"
@@ -120,16 +120,16 @@ export default {
     .vdatetime-popup__header,
     .vdatetime-calendar__month__day--selected > span > span,
     .vdatetime-calendar__month__day--selected:hover > span > span {
-        background: config('colors.blue-dark');
+        background: theme('colors.blue-dark');
     }
 
     .vdatetime-popup__actions__button {
         text-transform: uppercase;
-        color: config('colors.blue-dark');
+        color: theme('colors.blue-dark');
 
         &:hover {
-            color: config('colors.blue-darker');
-            background: config('colors.overlay');
+            color: theme('colors.blue-darker');
+            background: theme('colors.overlay');
         }
 
     }

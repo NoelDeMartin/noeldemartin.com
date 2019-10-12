@@ -1,14 +1,14 @@
 <template>
     <div>
 
-        <ul class="list-reset flex justify-end">
+        <ul class="flex justify-end">
             <li
                 v-for="_mode in ['both', 'editor', 'preview']"
                 :key="_mode"
             >
                 <a
                     :class="{ 'bg-grey-lighter': mode === _mode }"
-                    class="block p-2 mb-2 cursor-pointer hover:bg-overlay"
+                    class="block p-2 mb-2 underline cursor-pointer hover:bg-overlay"
                     @click="mode = _mode"
                 >
                     {{ capitalize(_mode) }}
@@ -16,7 +16,7 @@
             </li>
         </ul>
 
-        <div class="w-full flex border-1 border-grey-light">
+        <div class="w-full flex border border-grey-light">
 
             <textarea
                 :class="{ 'hidden': mode === 'preview' }"

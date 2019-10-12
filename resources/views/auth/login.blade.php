@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <form method="POST" action="{{ route('login') }}" class="rounded border-1 p-4 border-grey mx-auto max-w-md">
+    <form method="POST" action="{{ route('login') }}" class="rounded border p-4 border-grey mx-auto max-w-xl">
 
         @csrf
 

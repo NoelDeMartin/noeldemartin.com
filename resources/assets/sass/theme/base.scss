@@ -1,10 +1,9 @@
 html {
-    @apply .font-ubuntu .font-normal .text-base .text-black-light;
+    @apply .font-ubuntu .font-normal .text-base .text-black-light .leading-tight;
 }
 
 a {
     outline: none !important;
-    @apply .no-underline;
 
     &:hover {
         @apply .underline;
@@ -24,15 +23,15 @@ main {
     }
 
     h1 {
-        @apply .mb-4 .text-3xl .text-blue-darkest .tracking-wide;
+        @apply .mb-4 .text-3xl .font-medium .text-blue-darkest .tracking-wide;
     }
 
     h2 {
-        @apply .my-4 .text-2xl .text-blue-darkest;
+        @apply .my-4 .text-2xl .font-medium .text-blue-darkest;
     }
 
     h3 {
-        @apply .my-4 .text-xl .text-blue-darkest;
+        @apply .my-4 .text-xl .font-medium .text-blue-darkest;
     }
 
     p {

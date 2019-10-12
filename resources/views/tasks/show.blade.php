@@ -42,9 +42,9 @@
 
         <h2 class="text-xl">Activity</h2>
 
-        <ul class="list-reset">
+        <ul>
 
-            <li id="comment-1" class="mb-2 border-b-1 border-grey-light p-2 overflow-hidden rounded">
+            <li id="comment-1" class="mb-2 border-b border-grey-light p-2 overflow-hidden rounded">
                 <p>Started working on it.</p>
                 <time
                     class="float-right text-sm italic"
@@ -56,7 +56,7 @@
 
             @foreach ($task->comments as $i => $comment)
 
-                <li id="comment-{{ $i+2 }}" class="mb-2 border-b-1 border-grey-light p-2 overflow-hidden rounded">
+                <li id="comment-{{ $i+2 }}" class="mb-2 border-b border-grey-light p-2 overflow-hidden rounded">
                     {!! $comment->text_html !!}
                     <time
                         class="float-right text-sm italic"

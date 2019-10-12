@@ -15,11 +15,11 @@
 
         <p class="mt-2">I practice <a href="{{ url('blog/open-productivity') }}">Open Productivity</a>, and here you can see what I'm up to these days.</p>
 
-        <ul class="list-reset">
+        <ul>
 
             @foreach ($tasks as $task)
 
-                <li class="flex flex-col mb-4 border-b-1 border-grey">
+                <li class="flex flex-col mb-4 border-b border-grey">
                     <div class="flex flex-col justify-between items-center md:flex-row lg:flex-row xl:flex-row">
                         <h2 class="text-2xl text-center m-0 font-normal underline text-blue md:text-left lg:text-left xl:text-left">
                             <a href="{{ $task->url }}">
@@ -43,12 +43,12 @@
 
         <h3>Activity log</h3>
 
-        <ul class="list-reset">
+        <ul>
 
             @foreach ($events as $event)
 
                 <li class="
-                    mb-2 flex flex-col items-start border-grey-light border-b-1
+                    mb-2 flex flex-col items-start border-grey-light border-b
                     md:items-center lg:items-center xl:items-center
                     md:border-b-0 lg:border-b-0 xl:border-b-0
                     md:flex-row lg:flex-row xl:flex-row

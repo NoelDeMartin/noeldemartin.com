@@ -31,7 +31,7 @@
 
     </article>
 
-    <div id="share" class="text-right">
+    <div id="share" class="flex justify-end">
         <a
             data-controller="popup"
             data-action="popup#show"
@@ -39,7 +39,7 @@
             data-popup-twitter="true"
             href="{{ $links->twitter($post) }}"
             title="Share article on Twitter"
-            class="text-blue-darkest hover:no-underline hover:text-blue"
+            class="mr-2 text-blue-darkest hover:text-blue"
         >
             @icon('twitter-round', 'h-8 fill-current')
         </a>
@@ -49,13 +49,13 @@
             data-popup-url="{{ $links->linkedin($post) }}"
             href="{{ $links->linkedin($post) }}"
             title="Share article on LinkedIn"
-            class="text-blue-darkest hover:no-underline hover:text-blue"
+            class="mr-2 text-blue-darkest hover:text-blue"
         >
             @icon('linkedin-round', 'h-8 fill-current')
         </a>
         <a
             href="{{ $links->email($post) }}"
-            class="text-blue-darkest hover:no-underline hover:text-blue"
+            class="mr-2 text-blue-darkest hover:text-blue"
             title="Share article with an Email"
         >
             @icon('email-round', 'h-8 fill-current')
@@ -67,7 +67,7 @@
             data-action="clipboard#copy"
             href="{{ $links->raw($post) }}"
             title="Copy article link"
-            class="text-blue-darkest hover:no-underline hover:text-blue"
+            class="mr-2 text-blue-darkest hover:text-blue"
         >
             @icon('link-round', 'h-8 fill-current')
         </a>

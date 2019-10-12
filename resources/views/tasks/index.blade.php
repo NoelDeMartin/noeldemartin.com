@@ -14,7 +14,7 @@
 
         <h1>All Tasks</h1>
 
-        <ul>
+        <ul class="list-disk pl-4">
 
             @foreach ($tasks as $task)
 

@@ -11,7 +11,7 @@ mix
         processCssUrls: false,
         postCss: [
             stylelint(),
-            tailwindcss('tailwind.js'),
+            tailwindcss(),
         ],
     })
     .version()

@@ -5,7 +5,7 @@
     data-menu-collapsed="true"
     data-target="chamaleon.skin"
     style="background-color: hsl({{ (round(microtime(true) * 10) % 360) }}, 40%, 80%)"
-    class="fixed pin-t pin-x h-12 flex items-center lg:hidden"
+    class="fixed top-0 inset-x-0 h-12 flex items-center lg:hidden"
 >
 
     <a
@@ -18,12 +18,12 @@
     <span class="font-comic font-medium text-xl">NOEL DE MARTIN</span>
 
     <nav
-        class="fixed pin-l pin-y bg-grey mt-12 z-20 flex flex-col min-w-sidebar"
+        class="fixed left-0 inset-y-0 bg-grey mt-12 z-20 flex flex-col min-w-sidebar"
         style="transform:translateX(-100%);transition:0.5s"
         data-target="chamaleon.skin menu.sidebar"
     >
 
-        <ul class="list-reset flex flex-col">
+        <ul class="flex flex-col">
 
             @foreach ($sections as $i => $section)
                 <li class="flex">
@@ -33,10 +33,10 @@
                         @class(
                             '
                                 group
-                                p-4 no-underline
+                                p-4
                                 text-black font-bold uppercase
                                 flex flex-grow items-center
-                                hover:bg-overlay hover:no-underline
+                                hover:bg-overlay
                             ',
                             [ 'bg-overlay' => $router->is($section->route) || $i == 0 && $router->is('home')]
                         )
@@ -56,7 +56,7 @@
 
         </ul>
 
-        <ul class="list-reset flex flex-col">
+        <ul class="flex flex-col">
 
             @foreach ($socials as $social)
                 <li class="flex flex-grow">

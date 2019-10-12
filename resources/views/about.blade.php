@@ -57,7 +57,7 @@
             important to me. I try to embed them in my actions and are core to everything in my life. These are my values:
         </p>
 
-        <ul>
+        <ul class="list-disc pl-4">
             <li class="my-2">Work-life balance</li>
             <li class="my-2">Sustainability</li>
             <li class="my-2">Quality > quantity</li>

@@ -7,7 +7,7 @@
     @class(
         'w-full pb-10 hidden lg:block',
         [
-            'h-24 md:h-32 lg:h-44' => $header,
+            'h-24 md:h-32 lg:h-40' => $header,
             'h-10'                 => ! $header,
         ]
     )
@@ -17,13 +17,13 @@
         <img
             src="/img/myface.png"
             alt="My Face"
-            class="h-32 ml-4 mt-4 md:h-48 md:mt-6 lg:h-48 lg:mt-8"
+            class="h-32 ml-4 mt-4 md:h-48 md:mt-6 lg:h-40 lg:mt-8"
         />
         <span
             class="
                 font-comic font-medium text-4xl ml-4
                 md:text-4xl md:ml-10
-                lg:text-6xl lg:ml-12
+                lg:text-5xl lg:ml-12
             "
         >
             NOEL<br>
@@ -35,7 +35,7 @@
 
         <div class="max-w-content h-full mx-auto flex justify-between">
 
-            <ul class="list-reset flex">
+            <ul class="flex">
 
                 @foreach ($sections as $i => $section)
                     <li class="flex">
@@ -45,11 +45,11 @@
                             @class(
                                 '
                                     group
-                                    p-2 no-underline
+                                    p-2
                                     text-black font-bold uppercase
                                     flex items-center
                                     opacity-50
-                                    hover:opacity-100 hover:bg-overlay hover:no-underline
+                                    hover:opacity-100 hover:bg-overlay
                                 ',
                                 [ 'opacity-100' => $router->is($section->route) || $i == 0 && $router->is('home') ]
                             )
@@ -69,7 +69,7 @@
 
             </ul>
 
-            <ul class="list-reset flex">
+            <ul class="flex">
 
                 @foreach ($socials as $social)
                     <li class="flex">
