@@ -2,6 +2,7 @@ const mix = require('laravel-mix');
 const stylelint = require('stylelint');
 const tailwindcss = require('tailwindcss');
 const CleanPlugin = require('clean-webpack-plugin');
+const purgecss = require('@fullhuman/postcss-purgecss');
 
 mix
     .js('resources/assets/js/main.js', 'public/js')
@@ -12,6 +13,13 @@ mix
         postCss: [
             stylelint(),
             tailwindcss(),
+            purgecss({
+                content: [
+                    './resources/views/**/*.blade.php',
+                    './resources/assets/js/**/*.vue',
+                ],
+                defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
+            }),
         ],
     })
     .version()
