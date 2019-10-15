@@ -15,6 +15,10 @@ module.exports = {
             'grey-lightest': '#f8fafc',
             'white': '#ffffff',
 
+            'jade-darker': '#10714d',
+            'jade': '#00a86b',
+            'jade-lighter': '#a4ffde',
+
             'blue-darkest': '#12283a',
             'blue-darker': '#266193',
             'blue-dark': '#2779bd',
@@ -27,12 +31,6 @@ module.exports = {
 
             'overlay': 'rgba(0, 0, 0, 0.075)',
             'overlay-dark': 'rgba(0, 0, 0, 0.7)',
-        },
-        screens: {
-            'sm': '576px',
-            'md': '768px',
-            'lg': '992px',
-            'xl': '1200px',
         },
         fontFamily: {
             'ubuntu': [
@@ -69,8 +67,8 @@ module.exports = {
                 'sidebar': '65vw',
             }),
             maxWidth: theme => ({
-                'readable': '670px',
-                'content': theme('screens.xl'),
+                'readable': '640px',
+                'content': '900px',
             }),
             minHeight: {
                 'editor': '25rem',

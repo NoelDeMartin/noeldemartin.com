@@ -3,7 +3,7 @@
 @extends('layouts.master', [ 'header' => false ])
 
 @section('content')
-    <article class="max-w-readable mx-auto">
+    <article class="max-w-readable">
 
         <h1>{{ $post->title }}</h1>
 
@@ -30,46 +30,4 @@
         {!! $post->text_html !!}
 
     </article>
-
-    <div id="share" class="flex justify-end">
-        <a
-            data-controller="popup"
-            data-action="popup#show"
-            data-popup-url="{{ $links->twitter($post) }}"
-            data-popup-twitter="true"
-            href="{{ $links->twitter($post) }}"
-            title="Share article on Twitter"
-            class="mr-2 text-blue-darkest hover:text-blue"
-        >
-            @icon('twitter-round', 'h-8 fill-current')
-        </a>
-        <a
-            data-controller="popup"
-            data-action="popup#show"
-            data-popup-url="{{ $links->linkedin($post) }}"
-            href="{{ $links->linkedin($post) }}"
-            title="Share article on LinkedIn"
-            class="mr-2 text-blue-darkest hover:text-blue"
-        >
-            @icon('linkedin-round', 'h-8 fill-current')
-        </a>
-        <a
-            href="{{ $links->email($post) }}"
-            class="mr-2 text-blue-darkest hover:text-blue"
-            title="Share article with an Email"
-        >
-            @icon('email-round', 'h-8 fill-current')
-        </a>
-        <a
-            data-controller="clipboard"
-            data-clipboard-data="{{ $links->raw($post) }}"
-            data-clipboard-success="Link copied to clipboard!"
-            data-action="clipboard#copy"
-            href="{{ $links->raw($post) }}"
-            title="Copy article link"
-            class="mr-2 text-blue-darkest hover:text-blue"
-        >
-            @icon('link-round', 'h-8 fill-current')
-        </a>
-    </div>
 @endsection

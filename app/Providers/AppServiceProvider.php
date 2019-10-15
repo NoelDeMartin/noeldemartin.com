@@ -34,6 +34,8 @@ class AppServiceProvider extends ServiceProvider
     protected function bootBlade()
     {
         Blade::component('components.experiment', 'experiment');
+        Blade::component('components.content-card', 'contentcard');
+        Blade::component('components.task-comment', 'taskcomment');
 
         Blade::directive('class', function ($args) {
             return "<?php echo blade_class({$args}); ?>";
@@ -76,6 +78,8 @@ class AppServiceProvider extends ServiceProvider
                     return $date->format('F d, Y');
                 case 'time':
                     return $date->format('H:i');
+                case 'month':
+                    return $date->format('F Y');
                 case 'datetime-short':
                     return $date->format('M d, Y H:i');
                 case 'datetime':

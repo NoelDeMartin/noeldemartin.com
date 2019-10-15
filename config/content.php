@@ -4,12 +4,6 @@ return [
 
     'socials' => [
         [
-            'url'  => 'https://lincolnschilli.com',
-            'icon' => 'lincolnschilli',
-            'name' => "Lincoln's Chilli",
-            'hide_in_maintenance' => true,
-        ],
-        [
             'url'  => 'https://noeldemartin.social',
             'icon' => 'mastodon',
             'name' => 'My Mastodon',

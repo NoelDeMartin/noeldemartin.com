@@ -13,7 +13,7 @@
     )
 >
 
-    <div class="container h-full overflow-hidden mx-auto flex items-center justify-start">
+    <div class="max-w-content h-full overflow-hidden mx-auto flex items-center justify-start">
         <img
             src="/img/myface.png"
             alt="My Face"

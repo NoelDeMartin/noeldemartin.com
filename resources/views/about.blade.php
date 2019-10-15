@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    <article>
+    <article class="max-w-readable">
 
         <h1>Hi there!</h1>
 
@@ -20,7 +20,7 @@
 
         <div class="flex flex-col md:flex-row">
 
-            <div class="flex-1 bg-grey-lightest m-2 p-4 items-center justify-center flex text-center flex-col">
+            <div class="flex-1 bg-grey-lighter m-2 p-4 items-center justify-center flex text-center flex-col">
 
                 <h2>Am</h2>
 
@@ -28,22 +28,20 @@
 
             </div>
 
-            <div class="flex-1 bg-grey-lightest m-2 p-4 items-center justify-center flex text-center flex-col">
+            <div class="flex-1 bg-grey-lighter m-2 p-4 items-center justify-center flex text-center flex-col">
 
                 <h2>Think</h2>
 
-                <span class="leading-normal">Go read my <a href="{{ route('blog') }}">Blog</a><br><br></span>
+                <span class="leading-normal">Read my <a href="{{ route('blog') }}">Blog</a><br><br></span>
 
             </div>
 
-            <div class="flex-1 bg-grey-lightest m-2 p-4 items-center justify-center flex text-center flex-col">
+            <div class="flex-1 bg-grey-lighter m-2 p-4 items-center justify-center flex text-center flex-col">
 
                 <h2>Work</h2>
 
                 <span class="leading-normal">
-                    Check out my <a href="{{ route('experiments') }}">Experiments</a><br>
-                    or see <a href="{{ route('now') }}">What I'm doing now</a><br>
-                    or browse my <a href="https://github.com/NoelDeMartin">GitHub</a>
+                    Check out <a href="{{ route('now') }}">What I'm doing now</a><br>
                 </span>
 
             </div>
@@ -57,7 +55,7 @@
             important to me. I try to embed them in my actions and are core to everything in my life. These are my values:
         </p>
 
-        <ul class="list-disc pl-4">
+        <ul class="list-disc pl-4 ml-4">
             <li class="my-2">Work-life balance</li>
             <li class="my-2">Sustainability</li>
             <li class="my-2">Quality > quantity</li>

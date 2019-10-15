@@ -8,15 +8,17 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@1.1.2/dist/tailwind.min.css">
 </head>
 <body class="w-screen h-screen flex flex-col bg-gray-300 justify-center items-center p-8">
+    <img
+        src="/img/myface.png"
+        alt="My Face"
+        class="h-40 m-4"
+    />
+
     <h1 class="text-center text-2xl font-bold mb-4">Site under maintenance, I'll be right back!</h1>
     <h2 class="text-center text-sm mb-2">In the meanwhile, you can find me here:</h2>
 
     <ul class="flex flex-wrap justify-center">
         @foreach (content_socials() as $social)
-            @if (isset($social->hide_in_maintenance))
-                @continue
-            @endif
-
             <li class="flex">
                 <a
                     href="{{ $social->url }}"

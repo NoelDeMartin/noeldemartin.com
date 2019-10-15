@@ -2,15 +2,6 @@ html {
     @apply .font-ubuntu .font-normal .text-base .text-black-light .leading-tight;
 }
 
-a {
-    outline: none !important;
-
-    &:hover {
-        @apply .underline;
-    }
-
-}
-
 main {
 
     a {
