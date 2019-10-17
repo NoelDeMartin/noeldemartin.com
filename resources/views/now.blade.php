@@ -36,21 +36,12 @@
 
         @foreach ($events as $event)
 
-            <li class="
-                mb-2 flex flex-col items-start border-grey-light border-b
-                md:items-center lg:items-center xl:items-center
-                md:border-b-0 lg:border-b-0 xl:border-b-0
-                md:flex-row lg:flex-row xl:flex-row
-            ">
-                <time
-                    class="font-mono mr-2 text-sm"
-                    datetime="{{ $event->date->toDateTimeString() }}"
-                >
-                    {{ $event->date->display('datetime-short') }}
-                </time>
-                <span class="mr-2 hidden md:block lg:block xl:block">|</span>
-                <span class="my-2 md:my-0 lg:my-0 xl:my-0">{!! $event->description !!}</span>
-            </li>
+            @comment([
+                'tag' => 'li',
+                'date' => $event->date,
+            ])
+                <p class="md:m-0">{!! $event->description !!}</p>
+            @endcomment
 
         @endforeach
 

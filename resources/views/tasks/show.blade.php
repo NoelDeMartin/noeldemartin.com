@@ -29,32 +29,41 @@
 
         <h2 class="text-xl mb-6">Activity</h2>
 
-        @taskcomment([
-            'id' => 1,
+        @comment([
             'date' => $task->created_at,
+            'short' => false,
+            'attributes' => [
+                'id' => 'comment-1',
+            ],
         ])
             <p>Started working on it.</p>
-        @endtaskcomment
+        @endcomment
 
         @foreach ($task->comments as $i => $comment)
 
-            @taskcomment([
-                'id' => $loop->index + 2,
+            @comment([
                 'date' => $comment->created_at,
+                'short' => false,
+                'attributes' => [
+                    'id' => 'comment-' . ($loop->index + 2),
+                ],
             ])
                 {!! $comment->text_html !!}
-            @endtaskcomment
+            @endcomment
 
         @endforeach
 
         @if ($task->isCompleted())
 
-            @taskcomment([
-                'id' => $task->comments->count() + 2,
+            @comment([
                 'date' => $task->completed_at,
+                'short' => false,
+                'attributes' => [
+                    'id' => 'comment-' . $task->comments->count() + 2,
+                ],
             ])
                 <p>Task completed 🎉</p>
-            @endtaskcomment
+            @endcomment
 
         @endif
 
