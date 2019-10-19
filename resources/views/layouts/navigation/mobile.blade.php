@@ -5,7 +5,7 @@
     data-menu-collapsed="true"
     data-target="chamaleon.skin"
     style="background-color: hsl({{ (round(microtime(true) * 10) % 360) }}, 40%, 80%)"
-    class="fixed top-0 inset-x-0 h-12 flex items-center lg:hidden"
+    class="fixed top-0 inset-x-0 h-12 flex items-center z-10 lg:hidden"
 >
 
     <a
@@ -76,7 +76,7 @@
     </nav>
 
     <div
-        class="bg-overlay fixed pin mt-12 hidden z-10"
+        class="bg-overlay fixed inset-0 mt-12 hidden z-10"
         style="transition:5s"
         data-target="menu.overlay"
         data-action="click->menu#toggle"

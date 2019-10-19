@@ -5,7 +5,7 @@
     data-target="chamaleon.skin"
     style="background-color: hsl({{ (round(microtime(true) * 10) % 360) }}, 40%, 80%)"
     @class(
-        'w-full pb-10 hidden lg:block',
+        'w-full pb-10 hidden z-10 lg:block',
         [
             'h-24 md:h-32 lg:h-40' => $header,
             'h-10'                 => ! $header,
