@@ -8,6 +8,10 @@ main {
         @apply .text-blue-dark;
 
         &:hover {
+            @apply .underline;
+        }
+
+        &:visited {
             @apply .text-blue-darker;
         }
 

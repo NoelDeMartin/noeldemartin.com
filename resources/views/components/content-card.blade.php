@@ -5,7 +5,8 @@
             href="{{ $url }}"
             class="
                 font-bold text-blue-darkest
-                hover:underline hover:text-blue-darkest
+                hover:text-blue-darkest
+                visited:text-blue-darkest
             "
         >
             {{ $title }}
