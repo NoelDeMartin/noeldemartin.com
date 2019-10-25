@@ -15,44 +15,11 @@
 
 @endpush
 
-@section('body-class', 'bg-white pt-12 lg:pt-0')
+@section('body-class', 'bg-white')
 
 @section('content')
 
-    @php
-
-        $header = isset($header)? $header : true;
-
-        $sections = [
-            (object) [
-                'route' => 'about',
-                'icon'  => 'about',
-                'text'  => 'About me'
-            ],
-            (object) [
-                'route' => 'blog',
-                'icon'  => 'blog',
-                'text'  => 'Blog'
-            ],
-            (object) [
-                'route' => 'experiments',
-                'icon'  => 'experiments',
-                'text'  => 'Experiments'
-            ],
-            (object) [
-                'route' => 'now',
-                'icon'  => 'now',
-                'text'  => 'Now',
-            ],
-        ];
-
-        $socials = content_socials();
-
-    @endphp
-
-    @include('layouts.navigation.desktop', compact('header', 'sections', 'socials'))
-
-    @include('layouts.navigation.mobile', compact('sections', 'socials'))
+    @include('components.header')
 
     <main class="max-w-content mx-auto px-4 py-8">
 

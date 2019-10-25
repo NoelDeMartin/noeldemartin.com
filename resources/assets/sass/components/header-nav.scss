@@ -1,0 +1,80 @@
+header nav {
+    @apply w-full;
+
+    .sections a {
+        @apply relative p-2 text-black font-bold uppercase flex items-center opacity-50;
+
+        &:hover, &.active {
+            @apply opacity-100 bg-overlay;
+
+            span {
+                @apply border-black;
+            }
+
+        }
+
+        span {
+            @apply border-b-2 border-transparent;
+        }
+
+    }
+
+    .socials a {
+        @apply px-2 min-w-10 flex items-center justify-center opacity-50;
+
+        &:hover {
+            @apply bg-overlay opacity-100;
+        }
+
+    }
+
+    // Tablet & Desktop
+    @media (min-width: theme('screens.md')) {
+        background: theme('colors.overlay') !important;
+
+        .wrapper {
+            @apply max-w-content h-full mx-auto flex justify-between;
+
+            .sections, .socials {
+                @apply flex;
+            }
+
+            .socials a span {
+                @apply hidden;
+            }
+
+        }
+
+    }
+
+    // Mobile
+    @media (max-width: theme('screens.md')) {
+        top: theme('spacing.16');
+        transition: right 1s;
+
+        @apply fixed bottom-0;
+
+        &:not(.open) {
+            right: 100%;
+        }
+
+        &.open {
+            right: 0;
+        }
+
+        .sections a {
+            @apply px-4 py-3 opacity-100;
+        }
+
+        .socials a {
+            @apply px-4 py-3 justify-start opacity-100;
+
+            span {
+                @apply ml-2;
+            }
+
+        }
+
+    }
+
+}
