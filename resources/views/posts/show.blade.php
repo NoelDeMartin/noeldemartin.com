@@ -1,6 +1,6 @@
 @inject('links', 'App\Social\LinksGenerator')
 
-@extends('layouts.master', [ 'header' => false ])
+@extends('layouts.master')
 
 @section('content')
     <article class="max-w-readable">

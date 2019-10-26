@@ -1,14 +1,10 @@
-@extends('layouts.master', [ 'header' => false ])
+@extends('layouts.master')
 
 @push('head')
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="{{ mix('css/main.css') }}">
 @endpush
-
-@php
-    $header = false;
-@endphp
 
 @section('content')
     <div class="fixed inset-0 mt-12 flex items-center justify-center">
