@@ -39,7 +39,7 @@
             <p>Started working on it.</p>
         @endcomment
 
-        @foreach ($task->comments as $i => $comment)
+        @foreach ($task->comments as $comment)
 
             @comment([
                 'date' => $comment->created_at,
@@ -59,7 +59,7 @@
                 'date' => $task->completed_at,
                 'short' => false,
                 'attributes' => [
-                    'id' => 'comment-' . $task->comments->count() + 2,
+                    'id' => 'comment-' . ($task->comments->count() + 2),
                 ],
             ])
                 <p>Task completed 🎉</p>
