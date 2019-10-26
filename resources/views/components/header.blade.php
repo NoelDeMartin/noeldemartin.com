@@ -43,14 +43,16 @@
             @icon('menu', 'h-8 fill-current')
         </a>
 
-        <img
-            src="/img/myface.png"
-            alt="My Face"
-            class="mr-2 md:mr-4 lg:mr-8"
-            style="height:160%;transform:translateY(-15%)"
-        />
+        <a href="{{ route('home') }}" title="Home" class="flex">
+            <img
+                src="/img/myface.png"
+                alt="My Face"
+                class="mr-2 md:mr-4 lg:mr-8"
+                style="height:160%;transform:translateY(-15%)"
+            />
 
-        @icon('site-title', 'self-center fill-current', ['style' => 'height: 80%'])
+            @icon('site-title', 'self-center fill-current', ['style' => 'height: 80%'])
+        </a>
 
     </div>
 
