@@ -62,15 +62,20 @@ header nav {
             right: 0;
         }
 
-        .sections a {
-            @apply px-4 py-3 opacity-100;
-        }
+        .wrapper {
+            @apply max-h-full overflow-auto;
 
-        .socials a {
-            @apply px-4 py-3 justify-start opacity-100;
+            .sections a {
+                @apply px-4 py-3 opacity-100;
+            }
 
-            span {
-                @apply ml-2;
+            .socials a {
+                @apply px-4 py-3 justify-start opacity-100;
+
+                span {
+                    @apply ml-2;
+                }
+
             }
 
         }

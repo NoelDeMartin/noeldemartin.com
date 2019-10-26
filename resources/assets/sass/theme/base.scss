@@ -59,3 +59,17 @@ main {
     }
 
 }
+
+// Mobile
+@media (max-width: theme('screens.md')) {
+
+    body.navigation-open {
+        @apply overflow-hidden;
+
+        header {
+            @apply fixed top-0 inset-x-0;
+        }
+
+    }
+
+}

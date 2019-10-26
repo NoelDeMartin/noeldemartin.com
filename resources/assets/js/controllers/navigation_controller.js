@@ -14,5 +14,6 @@ export default class extends Controller {
     set open(value) {
         this.data.set('open', value);
         this.navTarget.classList.toggle('open', value);
+        document.body.classList.toggle('navigation-open', value);
     }
 }
