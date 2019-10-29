@@ -19,7 +19,7 @@ mix
                         purgecss({
                             content: [
                                 './resources/views/**/*.blade.php',
-                                './resources/assets/js/**/*.vue',
+                                './resources/assets/sass/**/*.scss',
                             ],
                             defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
                         }),
@@ -40,16 +40,6 @@ mix
                     test: /\.js$/,
                     use: ['babel-loader', 'eslint-loader'],
                     exclude: /node_modules/,
-                },
-                {
-                    test: /\.vue$/,
-                    use: [
-                        {
-                            loader: 'vue-loader',
-                        },
-                        'eslint-loader',
-                    ],
-                    exclude: /bower_components/,
                 },
             ],
         },

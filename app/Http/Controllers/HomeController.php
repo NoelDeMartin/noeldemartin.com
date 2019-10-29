@@ -73,7 +73,6 @@ class HomeController extends Controller
 
     public function blog()
     {
-        // TODO pagination
         $posts =
             Post::where('published_at', '<', now())
                 ->orderBy('published_at', 'desc')
