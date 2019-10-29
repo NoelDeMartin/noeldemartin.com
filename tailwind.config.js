@@ -51,12 +51,9 @@ module.exports = {
                 '10': theme('spacing.10'),
                 'sidebar': '65vw',
             }),
-            maxWidth: theme => ({
+            maxWidth: {
                 'readable': '640px',
                 'content': '900px',
-            }),
-            minHeight: {
-                'editor': '25rem',
             },
         },
     },
