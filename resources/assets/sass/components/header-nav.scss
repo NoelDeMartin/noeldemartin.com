@@ -1,3 +1,6 @@
+$svg-stroke-width: 10px;
+$svg-stroke-color: rgba(0,0,0,.3);
+
 header nav {
     @apply w-full;
 
@@ -24,6 +27,25 @@ header nav {
 
         &:hover {
             @apply bg-overlay opacity-100;
+        }
+
+    }
+
+    [data-platform="twitter"],
+    [data-platform="linkedin"] {
+
+        path {
+            stroke-width: $svg-stroke-width;
+            stroke: $svg-stroke-color;
+        }
+
+    }
+
+    [data-platform="mastodon"] {
+
+        path:first-child {
+            stroke-width: $svg-stroke-width;
+            stroke: $svg-stroke-color;
         }
 
     }

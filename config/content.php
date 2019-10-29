@@ -8,14 +8,20 @@ return [
             'icon' => 'mastodon',
             'name' => 'My Mastodon',
             'short_name' => 'Mastodon',
-            'extras' => ['rel' => 'me'],
+            'extras' => [
+                'rel' => 'me',
+                'data-platform' => 'mastodon',
+            ],
         ],
         [
             'url'  => 'https://twitter.com/NoelDeMartin',
             'icon' => 'twitter',
             'name' => 'My Twitter',
             'short_name' => 'Twitter',
-            'extras' => ['rel' => 'me'],
+            'extras' => [
+                'rel' => 'me',
+                'data-platform' => 'twitter',
+            ],
         ],
         [
             'url'  => 'https://github.com/NoelDeMartin',
@@ -29,7 +35,10 @@ return [
             'icon' => 'linkedin',
             'name' => 'My Linkedin',
             'short_name' => 'LinkedIn',
-            'extras' => ['rel' => 'me'],
+            'extras' => [
+                'rel' => 'me',
+                'data-platform' => 'linkedin',
+            ],
         ],
         [
             'url'  => 'mailto:noeldemartin@gmail.com?subject=Hi there!',
