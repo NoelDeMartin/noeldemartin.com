@@ -11,8 +11,7 @@
 |
 */
 
-Route::get('/', 'HomeController@about')->name('home');
-Route::get('about', 'HomeController@about')->name('about');
+Route::get('/', 'HomeController@index')->name('home');
 Route::get('now', 'HomeController@now')->name('now');
 
 Route::get('sitemap.xml', 'HomeController@sitemap')->name('sitemap');
@@ -24,7 +23,7 @@ Route::get('logout', 'AuthController@logout')->name('logout');
 Route::prefix('blog')->group(function () {
     Route::get('/', 'HomeController@blog')->name('blog');
     Route::get('rss.xml', 'HomeController@rss')->name('blog.rss');
-    Route::get('{idOrTag}', 'PostsController@show')->name('posts.show');
+    Route::get('{tag}', 'PostsController@show')->name('posts.show');
 });
 
 Route::prefix('experiments')->group(function () {
@@ -59,13 +58,7 @@ Route::middleware(['auth.admin', 'semantic-seo:hide'])->group(function () {
     Route::view('posts/create', 'posts.create')->name('posts.create');
 });
 
-Route::prefix('posts')->middleware(['auth.reviewer', 'semantic-seo:hide'])->group(function () {
-    Route::get('/', 'PostsController@index')->name('posts.index');
-});
-
-Route::prefix('posts')->middleware('semantic-seo:hide')->group(function () {
-    Route::get('{id}', 'PostsController@show');
-    Route::post('{id}/comment', 'PostsController@comment')->name('posts.comment');
-});
-
 Route::get('health', 'HomeController@health')->name('health');
+
+Route::permanentRedirect('about', '/');
+Route::permanentRedirect('posts/{tag?}', '/blog/{tag}');

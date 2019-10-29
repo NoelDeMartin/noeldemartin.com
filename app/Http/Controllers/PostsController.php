@@ -27,13 +27,15 @@ class PostsController extends Controller
         return view('posts.index', compact('posts'));
     }
 
-    public function show($idOrTag)
+    public function show($tag)
     {
-        if (is_numeric($idOrTag)) {
-            $post = Post::with('comments')->findOrFail($idOrTag);
-        } else {
-            $post = Post::with('comments')->where('tag', $idOrTag)->first();
+        if (is_numeric($tag)) {
+            $post = Post::findOrFail($tag);
+
+            return redirect(route('posts.show', [$post->tag]), 301);
         }
+
+        $post = Post::with('comments')->where('tag', $tag)->first();
 
         if (
             $post === null ||

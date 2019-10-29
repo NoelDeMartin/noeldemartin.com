@@ -13,7 +13,6 @@ use App\SemanticSEO\Experiments\JapaneseCharacterRecognition;
 use App\SemanticSEO\Experiments\OnlineMeeting;
 use App\SemanticSEO\Experiments\Synonymizer;
 use App\SemanticSEO\Experiments\ZazenMeditationTimer;
-use App\SemanticSEO\ItemList;
 use App\SemanticSEO\Logo;
 use App\SemanticSEO\NoelDeMartin;
 use App\SemanticSEO\NoelDeMartinOrganization;
@@ -27,7 +26,7 @@ use NoelDeMartin\SemanticSEO\Types\CollectionPage;
 
 class HomeController extends Controller
 {
-    public function about()
+    public function index()
     {
         SemanticSEO::meta(trans('seo.home'));
         SemanticSEO::canonical(route('home'));
@@ -69,7 +68,7 @@ class HomeController extends Controller
             ->author(NoelDeMartin::class)
             ->creator(NoelDeMartin::class);
 
-        return view('about');
+        return view('index');
     }
 
     public function blog()
