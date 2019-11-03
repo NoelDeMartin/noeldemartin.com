@@ -33,6 +33,10 @@ main {
         @apply leading-normal my-6;
     }
 
+    ul {
+        @apply list-disc ml-4 pl-4;
+    }
+
     li p {
         @apply my-4;
     }

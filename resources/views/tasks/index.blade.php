@@ -3,18 +3,9 @@
 @section('content')
     <article>
 
-        @auth()
-            <a
-                href="{{ route('tasks.create') }}"
-                class="bg-blue-dark hover:bg-blue-darker hover:text-white text-white font-bold py-2 px-4 rounded float-right"
-            >
-                Create
-            </a>
-        @endauth
-
         <h1>All Tasks</h1>
 
-        <ul class="list-disk pl-4">
+        <ul class="list-none ml-0 pl-0">
 
             @foreach ($tasks as $task)
 

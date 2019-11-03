@@ -32,7 +32,7 @@
 
     <h3>Activity</h3>
 
-    <ul>
+    <ul class="list-none ml-0 pl-0">
 
         @foreach ($events as $event)
 
