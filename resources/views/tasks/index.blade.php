@@ -33,7 +33,7 @@
                     >
                         <time
                             class="
-                                px-2 py-1 mr-2 rounded-lg text-sm
+                                px-2 py-1 mr-2 rounded-lg text-sm font-mono
                                 {{
                                     $task->isCompleted()
                                         ? 'bg-jade-lighter text-jade-darker'
