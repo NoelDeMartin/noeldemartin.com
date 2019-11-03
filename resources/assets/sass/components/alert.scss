@@ -1,12 +1,12 @@
 .alert {
-    @apply .bg-blue-lightest .border-l-4 .border-blue .text-blue-dark .p-4;
+    @apply bg-blue-lightest border-l-4 border-blue text-blue-dark p-4;
 
     a {
-        @apply .text-blue-dark .font-bold .underline;
+        @apply text-blue-dark font-bold underline;
     }
 
     p {
-        @apply .m-0;
+        @apply m-0;
     }
 
 }

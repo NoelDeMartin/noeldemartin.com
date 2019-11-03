@@ -1,5 +1,5 @@
 html {
-    @apply .font-ubuntu .font-normal .text-base .text-black-light .leading-tight;
+    @apply font-ubuntu font-normal text-base text-black-light leading-tight;
 }
 
 main {
@@ -18,42 +18,42 @@ main {
     }
 
     h1 {
-        @apply .mb-4 .text-3xl .font-medium .text-blue-darkest .tracking-wide;
+        @apply mb-4 text-3xl font-medium text-blue-darkest tracking-wide;
     }
 
     h2 {
-        @apply .my-4 .text-2xl .font-medium .text-blue-darkest;
+        @apply my-4 text-2xl font-medium text-blue-darkest;
     }
 
     h3 {
-        @apply .my-4 .text-xl .font-medium .text-blue-darkest;
+        @apply my-4 text-xl font-medium text-blue-darkest;
     }
 
     p {
-        @apply .leading-normal .my-6;
+        @apply leading-normal my-6;
     }
 
     li p {
-        @apply .my-4;
+        @apply my-4;
     }
 
     hr {
-        @apply .h-px .bg-grey-dark .mt-4;
+        @apply h-px bg-grey-dark mt-4;
     }
 
     img {
-        @apply .mx-auto .max-w-full;
+        @apply mx-auto max-w-full;
     }
 
     blockquote {
-        @apply .border-grey .border-l-2 .italic .p-2 .ml-4 .my-4;
+        @apply border-grey border-l-2 italic p-2 ml-4 my-4;
 
         p:first-child {
-            @apply .mt-0;
+            @apply mt-0;
         }
 
         p:last-child {
-            @apply .mb-0;
+            @apply mb-0;
         }
 
     }
