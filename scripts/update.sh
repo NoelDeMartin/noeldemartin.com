@@ -18,5 +18,5 @@ docker-compose up -d
 docker-compose exec app composer install --no-dev
 docker-compose exec app php artisan view:clear
 docker-compose exec app php artisan config:cache
-docker-compose exec app php artisan routes:cache
+docker-compose exec app php artisan route:cache
 docker run -v `pwd`:/app -w /app node bash -c "npm install && npm run production"
