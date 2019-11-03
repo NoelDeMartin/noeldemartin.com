@@ -3,29 +3,33 @@ module.exports = {
         colors: {
             'transparent': 'transparent',
 
-            'black-light': '#4a4a4a',
-
-            'black': '#22292f',
-            'grey-darkest': '#3d4852',
-            'grey-darker': '#606f7b',
-            'grey-dark': '#8795a1',
-            'grey': '#b8c2cc',
-            'grey-light': '#dae1e7',
-            'grey-lighter': '#f1f5f8',
-            'grey-lightest': '#f8fafc',
             'white': '#ffffff',
 
-            'jade-darker': '#10714d',
-            'jade': '#00a86b',
-            'jade-lighter': '#a4ffde',
+            'black-light': '#4a4a4a',
+            'black': '#22292f',
+            'black-dark': '#000000',
 
-            'blue-darkest': '#12283a',
-            'blue-darker': '#266193',
-            'blue-dark': '#2779bd',
-            'blue': '#3490dc',
-            'blue-light': '#6cb2eb',
-            'blue-lighter': '#bcdefa',
+            'grey-lightest': '#f8fafc',
+            'grey-lighter': '#f1f5f8',
+            'grey-light': '#dae1e7',
+            'grey': '#b8c2cc',
+            'grey-dark': '#8795a1',
+            'grey-darker': '#606f7b',
+            'grey-darkest': '#3d4852',
+
+            'jade-lighter': '#bdead9',
+            'jade': '#00af6f',
+            'jade-darker': '#007047',
+
+            'link': '#A46FB3',
+
             'blue-lightest': '#eff8ff',
+            'blue-lighter': '#bcdefa',
+            'blue-light': '#6cb2eb',
+            'blue': '#3490dc',
+            'blue-dark': '#2779bd',
+            'blue-darker': '#266193',
+            'blue-darkest': '#12283a',
 
             'error': '#f44336',
 

@@ -5,14 +5,14 @@ html {
 main {
 
     a {
-        @apply .text-blue-dark;
+        @apply underline;
 
         &:hover {
-            @apply .underline;
+            color: theme('colors.black-dark') !important;
         }
 
         &:visited {
-            @apply .text-blue-darker;
+            @apply text-blue-darkest;
         }
 
     }

@@ -4,8 +4,8 @@
         <a
             href="{{ $url }}"
             class="
-                font-bold text-blue-darkest
-                hover:text-blue-darkest
+                font-bold text-blue-darkest no-underline
+                hover:text-blue-darkest hover:underline
                 visited:text-blue-darkest
             "
         >
