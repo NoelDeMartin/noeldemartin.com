@@ -8,12 +8,16 @@ header nav {
         @apply relative p-2 text-black font-bold uppercase flex items-center opacity-50;
 
         &:hover, &.active {
-            @apply opacity-100 bg-overlay;
+            @apply opacity-100;
 
             span {
                 @apply border-black;
             }
 
+        }
+
+        &:hover {
+            @apply bg-overlay;
         }
 
         span {

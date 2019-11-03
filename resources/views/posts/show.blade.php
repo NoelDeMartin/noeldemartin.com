@@ -30,4 +30,10 @@
         {!! $post->text_html !!}
 
     </article>
+
+    <div class="mt-8 text-left md:text-right">
+        <a href="{{ route('blog') }}">
+            Read more posts →
+        </a>
+    </div>
 @endsection
