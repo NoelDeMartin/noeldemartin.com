@@ -5,9 +5,9 @@
 
     <a
         class="
-            flex items-center justify-center float-right opacity-75
-            bg-rss text-white p-1 rounded no-underline text-sm
-            hover:opacity-100 hover:text-white
+            items-center justify-center float-right opacity-75
+            bg-rss text-white p-1 rounded no-underline text-sm hidden
+            md:flex hover:opacity-100 hover:text-white
         "
         href="{{ route('blog.rss') }}"
         title="Open RSS feed"
