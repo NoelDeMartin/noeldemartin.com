@@ -7,12 +7,12 @@ main {
     a {
         @apply underline;
 
-        &:hover {
-            color: theme('colors.black-dark') !important;
-        }
-
         &:visited {
             @apply text-blue-darkest;
+        }
+
+        &:hover {
+            color: theme('colors.black-dark');
         }
 
     }

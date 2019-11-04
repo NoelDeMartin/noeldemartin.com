@@ -21,7 +21,7 @@ module.exports = {
             'jade': '#00af6f',
             'jade-darker': '#007047',
 
-            'link': '#A46FB3',
+            'rss': '#ff6600',
 
             'blue-lightest': '#eff8ff',
             'blue-lighter': '#bcdefa',
