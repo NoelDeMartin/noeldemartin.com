@@ -3,45 +3,56 @@
 @section('content')
     <article class="max-w-readable">
 
-        <h1>Hi there!</h1>
+        <h1 class="hidden">Noel De Martin</h1>
+
+        <span class="mb-4 text-3xl font-medium text-blue-darkest tracking-wide">
+            Hi there!
+        </span>
 
         <p class="text-lg">
-            My name is Noel, I am a developer and entrepreneur who loves to learn, solve problems and build products that
-            make an impact. I have been working on the software industry since 2011 in all kinds of projects and
-            I’m always looking for new challenges.
+            My name is Noel, I am a developer and entrepreneur who loves to learn,
+            solve problems and build products that make an impact.
         </p>
 
         <p class="text-lg">
-            It's awesome that you are here! Take your time to look around, and if you want to talk with me don't hesitate on
-            <a href="mail:noeldemartin@gmail.com">sending an email</a>.
+            It's awesome that you are here! Take your time to look around, and if you
+            want to talk with me don't hesitate on
+            <a href="{{ config('content.socials.email.url') }}">sending an email</a>.
         </p>
 
-        <h2 class="text-2xl text-center">If you want to learn how I...</h2>
+        <span class="block my-4 text-2xl text-center font-medium text-blue-darkest w-full">
+            If you want to learn how I...
+        </span>
 
         <div class="flex flex-col md:flex-row">
 
-            <div class="flex-1 bg-grey-lighter m-2 p-4 items-center justify-center flex text-center flex-col">
+            <div class="flex-1 bg-grey-lighter border border-grey-light rounded m-2 p-4 items-center justify-center flex text-center flex-col">
 
-                <h2>Am</h2>
+                <span class="my-4 text-2xl font-medium text-blue-darkest">Am</span>
 
                 <span class="leading-normal">Keep reading!<br><br></span>
 
             </div>
 
-            <div class="flex-1 bg-grey-lighter m-2 p-4 items-center justify-center flex text-center flex-col">
+            <div class="flex-1 bg-grey-lighter border border-grey-light rounded m-2 p-4 items-center justify-center flex text-center flex-col">
 
-                <h2>Think</h2>
+                <span class="my-4 text-2xl font-medium text-blue-darkest">Think</span>
 
                 <span class="leading-normal">Read my <a href="{{ route('blog') }}">Blog</a><br><br></span>
 
             </div>
 
-            <div class="flex-1 bg-grey-lighter m-2 p-4 items-center justify-center flex text-center flex-col">
+            <div class="flex-1 bg-grey-lighter border border-grey-light rounded m-2 p-4 items-center justify-center flex text-center flex-col">
 
-                <h2>Work</h2>
+                <span class="my-4 text-2xl font-medium text-blue-darkest">Work</span>
 
                 <span class="leading-normal">
-                    Check out <a href="{{ route('now') }}">What I'm doing now</a><br>
+                    Check out
+                    <a href="{{ config('content.socials.github.url') }}" target="_blank">
+                        my GitHub
+                    </a>
+                    or
+                    <a href="{{ route('now') }}">What I'm doing now</a><br>
                 </span>
 
             </div>
@@ -51,17 +62,22 @@
         <h2 id="values">My values</h2>
 
         <p>
-            <i>Values</i> is such an abstract concept, don't you think? Sometimes they may seem random words. But values are
-            important to me. I try to embed them in my actions and are core to everything in my life. These are my values:
+            Values are abstract concepts, and sometimes they can be perceived as
+            buzzwords. But they are important to me and I try to embed them in my actions.
         </p>
 
-        <ul>
-            <li class="my-2">Work-life balance</li>
-            <li class="my-2">Sustainability</li>
-            <li class="my-2">Quality > quantity</li>
-            <li class="my-2">Knowledge</li>
-            <li class="my-2">Creativity</li>
-            <li class="my-2">Privacy</li>
+        <p class="mb-2">These are my values:</p>
+
+        <ul class="flex flex-wrap">
+            <li class="my-1 w-full md:w-1/2">Autonomy</li>
+            <li class="my-1 w-full md:w-1/2">Awareness</li>
+            <li class="my-1 w-full md:w-1/2">Continuous improvement</li>
+            <li class="my-1 w-full md:w-1/2">Openness</li>
+            <li class="my-1 w-full md:w-1/2">Privacy</li>
+            <li class="my-1 w-full md:w-1/2">Quality over quantity</li>
+            <li class="my-1 w-full md:w-1/2">Self-expression and creativity</li>
+            <li class="my-1 w-full md:w-1/2">Sustainability</li>
+            <li class="my-1 w-full md:w-1/2">Work-life balance</li>
         </ul>
 
         <h2 id="programming-and-entrepreneurship">Programming & Entrepreneurship</h2>

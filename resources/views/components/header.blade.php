@@ -82,6 +82,7 @@
                     <a
                         href="{{ $social->url }}"
                         title="{{ $social->name }}"
+                        target="_blank"
                         @attrs($social->extras)
                     >
                         @icon($social->icon, 'h-6')

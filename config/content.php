@@ -3,7 +3,7 @@
 return [
 
     'socials' => [
-        [
+        'mastodon' => [
             'url'  => 'https://noeldemartin.social',
             'icon' => 'mastodon',
             'name' => 'My Mastodon',
@@ -13,7 +13,7 @@ return [
                 'data-platform' => 'mastodon',
             ],
         ],
-        [
+        'twitter' => [
             'url'  => 'https://twitter.com/NoelDeMartin',
             'icon' => 'twitter',
             'name' => 'My Twitter',
@@ -23,14 +23,14 @@ return [
                 'data-platform' => 'twitter',
             ],
         ],
-        [
+        'github' => [
             'url'  => 'https://github.com/NoelDeMartin',
             'icon' => 'github',
             'name' => 'My Github',
             'short_name' => 'Github',
             'extras' => ['rel' => 'me'],
         ],
-        [
+        'linkedin' => [
             'url'  => 'https://www.linkedin.com/in/noeldemartin',
             'icon' => 'linkedin',
             'name' => 'My Linkedin',
@@ -40,7 +40,7 @@ return [
                 'data-platform' => 'linkedin',
             ],
         ],
-        [
+        'email' => [
             'url'  => 'mailto:noeldemartin@gmail.com?subject=Hi there!',
             'icon' => 'gmail',
             'name' => 'My Email',
