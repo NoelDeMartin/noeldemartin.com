@@ -167,6 +167,13 @@ class HomeController extends Controller
         return view('now', compact('tasks', 'events'));
     }
 
+    public function site()
+    {
+        // TODO SemanticSEO
+
+        return view('site');
+    }
+
     public function sitemap()
     {
         $posts =

@@ -48,4 +48,8 @@
             <priority>0.6</priority>
         </url>
     @endforeach
+    <url>
+        <loc>{{ route('site') }}</loc>
+        <priority>0.4</priority>
+    </url>
 </urlset>

@@ -2,7 +2,12 @@ html {
     @apply font-ubuntu font-normal text-base text-black-light leading-tight;
 }
 
+body {
+    @apply flex flex-col min-h-screen;
+}
+
 main {
+    @apply flex-grow w-full;
 
     a {
         @apply underline;

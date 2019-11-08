@@ -42,6 +42,8 @@ Route::prefix('tasks')->group(function () {
     Route::get('{slug}', 'TasksController@show')->name('tasks.show');
 });
 
+Route::get('site', 'HomeController@site')->name('site');
+
 Route::get('health', 'HomeController@health')->name('health');
 
 Route::permanentRedirect('about', '/');

@@ -21,7 +21,7 @@
 
     @include('components.header')
 
-    <main class="max-w-content mx-auto p-4 pt-8">
+    <main class="max-w-content mx-auto p-4 pt-8 md:px-2">
 
         @if (session()->has('message'))
             <div class="alert mb-4" role="alert">
@@ -32,6 +32,8 @@
         @yield('content')
 
     </main>
+
+    @include('components.footer')
 
     <!-- Sites Verification -->
 
