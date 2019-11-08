@@ -11,7 +11,12 @@ class TasksController extends Controller
 {
     public function index()
     {
-        $tasks = Task::orderBy('created_at', 'desc')->get();
+        $tasks = Task::all()->sort(function ($task1, $task2) {
+            $date1 = $task1->completed_at ?? $task1->created_at;
+            $date2 = $task2->completed_at ?? $task2->created_at;
+
+            return $date1 > $date2 ? -1 : 1;
+        });
 
         SemanticSEO::meta(trans('seo.tasks'));
 
