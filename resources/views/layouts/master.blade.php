@@ -21,7 +21,7 @@
 
     @include('components.header')
 
-    <main class="max-w-content mx-auto px-2 py-8">
+    <main class="max-w-content mx-auto p-4 pt-8">
 
         @if (session()->has('message'))
             <div class="alert mb-4" role="alert">
