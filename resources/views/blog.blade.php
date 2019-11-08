@@ -13,7 +13,7 @@
         title="Open RSS feed"
         target="_blank"
     >
-       @icon('rss', 'inline h-4 fill-current')
+       @icon('rss', 'inline h-4 text-white fill-current')
     </a>
 
     @foreach ($posts as $post)
