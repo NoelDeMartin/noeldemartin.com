@@ -34,7 +34,7 @@
     class="flex flex-col items-center h-16 md:h-32 lg:h-40"
 >
 
-    <div class="max-w-content flex overflow-hidden">
+    <div class="w-full max-w-content flex overflow-hidden">
 
         <a
             class="px-3 mr-2 h-full cursor-pointer flex items-center hover:bg-overlay md:hidden"
@@ -51,7 +51,9 @@
                 style="height:160%;transform:translateY(-15%)"
             />
 
-            @icon('site-title', 'self-center fill-current', ['style' => 'height: 80%'])
+            <div class="flex-grow my-auto" style="height:80%">
+                @icon('site-title', 'h-full text-black fill-current')
+            </div>
         </a>
 
     </div>
