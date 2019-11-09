@@ -16,7 +16,7 @@
     @if($tasks->isEmpty())
         <div class="flex flex-col items-center justify-center w-full bg-grey-lighter p-8 rounded-lg border border-grey-light">
             @icon('task-completed', 'w-20 h-20')
-            <p class="text-lg mt-8 mb-0">
+            <p class="text-lg text-center mt-8 mb-0">
                 Seems like I have completed all my tasks! Come back later or check out my
                 <a href="{{ route('tasks.index') }}">previous tasks</a>.
             </p>
