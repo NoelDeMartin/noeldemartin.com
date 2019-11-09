@@ -26,6 +26,11 @@ use NoelDeMartin\SemanticSEO\Types\CollectionPage;
 
 class HomeController extends Controller
 {
+    private $discussionUrls = [
+        'https://twitter.com/NoelDeMartin',
+        'https://noeldemartin.social/@noeldemartin',
+    ];
+
     public function index()
     {
         SemanticSEO::meta(trans('seo.home'));
@@ -35,7 +40,7 @@ class HomeController extends Controller
             ->setAttributes(trans('seo.schema:website'))
             ->url(route('home'))
             ->image(Logo::class)
-            ->discussionUrl('https://twitter.com/NoelDeMartin')
+            ->discussionUrl($this->discussionUrls)
             ->inLanguage('English')
             ->hasPart([
                 (new AboutPage)
@@ -94,7 +99,7 @@ class HomeController extends Controller
             ->hasPart($posts->map(function ($post) {
                 return new BlogPost($post);
             })->all())
-            ->discussionUrl('https://twitter.com/NoelDeMartin')
+            ->discussionUrl($this->discussionUrls)
             ->inLanguage('English')
             ->author(NoelDeMartin::class)
             ->creator(NoelDeMartin::class)
@@ -157,7 +162,7 @@ class HomeController extends Controller
             ->setAttributes(trans('seo.schema:now'))
             ->url(route('now'))
             ->image(Logo::class)
-            ->discussionUrl('https://twitter.com/NoelDeMartin')
+            ->discussionUrl($this->discussionUrls)
             ->inLanguage('English')
             ->about(NoelDeMartin::class)
             ->author(NoelDeMartin::class)
@@ -178,7 +183,7 @@ class HomeController extends Controller
             ->setAttributes(trans('seo.schema:site'))
             ->url(route('site'))
             ->image(Logo::class)
-            ->discussionUrl('https://twitter.com/NoelDeMartin')
+            ->discussionUrl($this->discussionUrls)
             ->inLanguage('English')
             ->about((new WebPage)->url(route('home')))
             ->author(NoelDeMartin::class)
