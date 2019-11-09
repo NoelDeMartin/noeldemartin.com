@@ -50,6 +50,9 @@ class HomeController extends Controller
                 (new WebPage)
                     ->setAttributes(trans('seo.schema:now'))
                     ->url(route('now')),
+                (new WebPage)
+                    ->setAttributes(trans('seo.schema:site'))
+                    ->url(route('site')),
             ])
             ->about(NoelDeMartin::class)
             ->author(NoelDeMartin::class)
@@ -169,7 +172,18 @@ class HomeController extends Controller
 
     public function site()
     {
-        // TODO SemanticSEO
+        SemanticSEO::meta(trans('seo.site'));
+
+        SemanticSEO::is(WebPage::class)
+            ->setAttributes(trans('seo.schema:site'))
+            ->url(route('site'))
+            ->image(Logo::class)
+            ->discussionUrl('https://twitter.com/NoelDeMartin')
+            ->inLanguage('English')
+            ->about((new WebPage)->url(route('home')))
+            ->author(NoelDeMartin::class)
+            ->creator(NoelDeMartin::class)
+            ->publisher(NoelDeMartinOrganization::class);
 
         return view('site');
     }

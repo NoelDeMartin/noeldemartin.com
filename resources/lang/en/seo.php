@@ -99,6 +99,15 @@ return [
         'description' => "A page where you can find out what I'm up to now",
     ],
 
+    'site' => [
+        'title' => 'About this site',
+    ],
+
+    'schema:site' => [
+        'name' => 'About noeldemartin.com',
+        'description' => 'Description of technologies used at noeldemartin.com',
+    ],
+
     'tasks' => [
         'title' => 'Tasks',
     ],
