@@ -16,10 +16,6 @@ Route::get('now', 'HomeController@now')->name('now');
 
 Route::get('sitemap.xml', 'HomeController@sitemap')->name('sitemap');
 
-Route::view('login', 'auth.login')->middleware('semantic-seo:hide');
-Route::post('login', 'AuthController@login')->name('login');
-Route::get('logout', 'AuthController@logout')->name('logout');
-
 Route::prefix('blog')->group(function () {
     Route::get('/', 'HomeController@blog')->name('blog');
     Route::get('rss.xml', 'HomeController@rss')->name('blog.rss');

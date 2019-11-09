@@ -19,7 +19,7 @@
 
         @stack('scripts')
 
-        @if (!session()->has('timezone'))
+        @if (! has_timezone_offset())
             <script>
                 (function() {
                     fetch('{{ route('api.timezone.store') }}', {

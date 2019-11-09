@@ -8,8 +8,6 @@ class TimezoneController extends Controller
 {
     public function store()
     {
-        session()->put('timezone', [
-            'offset' => request('offset'),
-        ]);
+        set_timezone_offset(request('offset'));
     }
 }

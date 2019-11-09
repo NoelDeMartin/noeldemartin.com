@@ -63,13 +63,8 @@ class AppServiceProvider extends ServiceProvider
         Carbon::macro('display', function ($format = 'datetime') {
             $date = $this;
 
-            if (session()->has('timezone')) {
-                $timezone = session('timezone');
-
-                $date = $date->copy();
-
-                $date->subMinutes($timezone['offset']);
-            }
+            if (has_timezone_offset())
+                $date = $date->copy()->subMinutes(get_timezone_offset());
 
             switch ($format) {
                 case 'date-short':
