@@ -20,3 +20,7 @@ docker-compose exec app php artisan view:clear
 docker-compose exec app php artisan config:cache
 docker-compose exec app php artisan route:cache
 docker run -v `pwd`:/app -w /app node bash -c "npm install && npm run production"
+
+# Restart nginx-agora
+
+nginx-agora restart
