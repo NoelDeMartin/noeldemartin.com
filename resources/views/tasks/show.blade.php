@@ -31,12 +31,14 @@
 
         @comment([
             'date' => $task->created_at,
-            'short' => false,
             'attributes' => [
                 'id' => 'comment-1',
             ],
         ])
-            <p>Started working on it.</p>
+            <p class="flex items-center md:m-0">
+                Task started
+                @icon('task-ongoing', 'w-4 h-4 ml-2')
+            </p>
         @endcomment
 
         @foreach ($task->comments as $comment)
@@ -57,12 +59,14 @@
 
             @comment([
                 'date' => $task->completed_at,
-                'short' => false,
                 'attributes' => [
                     'id' => 'comment-' . ($task->comments->count() + 2),
                 ],
             ])
-                <p>Task completed 🎉</p>
+                <p class="flex items-center md:m-0">
+                    Task completed
+                    @icon('task-completed', 'w-4 h-4 ml-2')
+                </p>
             @endcomment
 
         @endif
