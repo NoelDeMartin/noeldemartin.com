@@ -38,9 +38,7 @@
     <!-- Sites Verification -->
 
     <div class="hidden">
-        <a rel="me" href="https://community.thoughtshrapnel.com/@noeldemartin">
-            Thought Shrapnel Mastodon
-        </a>
+        <a rel="me" href="https://noeldemartin.social/@noeldemartin">Mastodon</a>
     </div>
 
 @overwrite
