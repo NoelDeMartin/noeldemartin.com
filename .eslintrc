@@ -16,7 +16,8 @@
         "vue/html-indent": ["error", 4],
         "space-before-function-paren": "off",
         "semi": ["error", "always"],
-        "comma-dangle": ["error", "always-multiline"]
+        "comma-dangle": ["error", "always-multiline"],
+        "curly": "off"
     },
     "parserOptions": {
         "parser": "babel-eslint"

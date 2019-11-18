@@ -7,27 +7,25 @@ const CleanPlugin = require('clean-webpack-plugin');
 mix
     .js('resources/assets/js/main.js', 'public/js')
     .copy('resources/assets/js/experiments', 'public/js/experiments')
-    .sass('resources/assets/sass/main.scss', 'public/css')
-    .options({
-        processCssUrls: false,
-        postCss: [
-            stylelint(),
-            tailwindcss(),
-            ...(
-                process.env.NODE_ENV === 'production'
-                    ? [
-                        purgecss({
-                            content: [
-                                './resources/views/**/*.blade.php',
-                                './resources/assets/sass/**/*.scss',
-                            ],
-                            defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
-                        }),
-                    ]
-                    : []
-            ),
-        ],
-    })
+    .sass('resources/assets/sass/main.scss', 'public/css', {}, [
+        stylelint(),
+        tailwindcss(),
+        ...(
+            process.env.NODE_ENV === 'production'
+                ? [
+                    purgecss({
+                        content: [
+                            './resources/views/**/*.blade.php',
+                            './resources/assets/sass/**/*.scss',
+                        ],
+                        defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
+                    }),
+                ]
+                : []
+        ),
+    ])
+    .sass('resources/assets/sass/code-highlighter.scss', 'public/css')
+    .options({ processCssUrls: false })
     .version()
     .webpackConfig({
         output: {
