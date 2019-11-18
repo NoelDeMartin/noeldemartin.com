@@ -1,5 +1,3 @@
-@inject('links', 'App\Social\LinksGenerator')
-
 @extends('layouts.master')
 
 @push('head')
