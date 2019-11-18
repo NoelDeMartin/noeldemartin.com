@@ -29,8 +29,8 @@
         <ul>
             <li class="mb-1"><a href="https://design.ubuntu.com/font/" target="_blank">Ubuntu font</a></li>
             <li class="mb-1"><a href="https://www.hvdfonts.com/fonts/hvd-comic-serif" target="_blank">HVD Comic Serif font</a></li>
-            <li class="mb-1"><a href="https://prismjs.com/">PrismJS</a></li>
-            <li class="mb-1"><a href="https://www.zondicons.com/">Zondicons</a></li>
+            <li class="mb-1"><a href="https://prismjs.com/" target="_blank">PrismJS</a></li>
+            <li class="mb-1"><a href="https://www.zondicons.com/" target="_blank">Zondicons</a></li>
             <li class="mb-1"><a href="https://twemoji.twitter.com/" target="_blank">Twemoji</a></li>
             <li class="mb-1">
                 <a href="https://www.flaticon.com" target="_blank">Flaticon</a> icons by
