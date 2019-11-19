@@ -12,6 +12,6 @@
         <div class="flex-grow"></div>
         <a href="{{ route('site') }}" class="underline mt-4 md:mt-0 hover:text-blue-darkest">
             about this site
-        </span>
+        </a>
     </div>
 </footer>
