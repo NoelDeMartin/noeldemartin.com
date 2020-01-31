@@ -108,10 +108,10 @@ class HomeController extends Controller
             ->dateCreated(Carbon::create(2014, 10, 24)->startOfDay())
             ->dateModified($posts->first()->updated_at);
 
-        return view('blog', compact('posts'));
+        return view('blog.index', compact('posts'));
     }
 
-    public function rss()
+    public function blogRss()
     {
         $posts =
             Post::where('published_at', '<', now())
@@ -151,7 +151,7 @@ class HomeController extends Controller
         $tasks = Task::whereNull('completed_at')->orderBy('created_at', 'desc')->get();
 
         $events = collect()
-            ->merge(ActivityEvent::fromTasks(Task::all()))
+            ->merge(ActivityEvent::fromTasks(Task::with('comments')->get()))
             ->merge(ActivityEvent::fromTaskComments(TaskComment::with('task')->get()))
             ->merge(ActivityEvent::fromPosts(Post::all()))
             ->sortByDesc->date;
@@ -172,7 +172,20 @@ class HomeController extends Controller
             ->dateCreated(Carbon::create(2018, 11, 11)->startOfDay())
             ->dateModified($events->first()->date);
 
-        return view('now', compact('tasks', 'events'));
+        return view('now.index', compact('tasks', 'events'));
+    }
+
+    public function nowRss()
+    {
+        $events = collect()
+            ->merge(ActivityEvent::fromTasks(Task::with('comments')->get()))
+            ->merge(ActivityEvent::fromTaskComments(TaskComment::with('task')->get()))
+            ->merge(ActivityEvent::fromPosts(Post::all()))
+            ->sortByDesc->date;
+
+        return response()
+            ->view('now.rss', compact('events'))
+            ->header('Content-Type', 'application/atom+xml');
     }
 
     public function site()

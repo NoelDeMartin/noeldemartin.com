@@ -3,10 +3,14 @@
 return [
 
     'events' => [
-        'task_started' => 'Started <a href=":url">:task</a>',
-        'task_completed' => 'Completed <a href=":url">:task</a>',
-        'comment_posted' => 'Commented on <a href=":url">:task</a>',
-        'post_published' => 'Published <a href=":url">:post</a>',
+        'task_started' => 'Started :task',
+        'task_started_long' => 'I just started a new task: :task',
+        'task_completed' => 'Completed :task',
+        'task_completed_long' => 'I just completed the task :task.',
+        'comment_posted' => 'Commented on :task',
+        'comment_posted_long' => '<p>I just added a new comment to :task:<p>:comment',
+        'post_published' => 'Published :post',
+        'post_published_long' => 'I just published a new blog post: :post',
     ],
 
 ];

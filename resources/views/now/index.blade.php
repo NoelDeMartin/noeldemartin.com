@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="flex flex-col mb-4">
+    <div class="flex flex-col relative mb-4">
         <h1 class="mb-0">What I'm doing now</h1>
 
         <span class="text-sm text-blue-darker">
@@ -9,6 +9,19 @@
                 {{ $events->first()->date->display('date') }}
             </time>
         </span>
+
+        <a
+            class="
+                items-center justify-center opacity-75 absolute top-0 right-0
+                bg-rss text-white p-1 rounded no-underline text-sm flex
+                hover:opacity-100 hover:text-white
+            "
+            href="{{ route('now.rss') }}"
+            title="Open RSS feed"
+            target="_blank"
+        >
+            @icon('rss', 'inline h-4 text-white fill-current')
+        </a>
     </div>
 
     <p class="mt-2">I practice <a href="{{ url('blog/open-productivity') }}">Open Productivity</a>, and here you can see what I'm up to these days.</p>

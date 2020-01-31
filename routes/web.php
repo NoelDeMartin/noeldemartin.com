@@ -12,14 +12,18 @@
 */
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('now', 'HomeController@now')->name('now');
 
 Route::get('sitemap.xml', 'HomeController@sitemap')->name('sitemap');
 
 Route::prefix('blog')->group(function () {
     Route::get('/', 'HomeController@blog')->name('blog');
-    Route::get('rss.xml', 'HomeController@rss')->name('blog.rss');
+    Route::get('rss.xml', 'HomeController@blogRss')->name('blog.rss');
     Route::get('{tag}', 'PostsController@show')->name('posts.show');
+});
+
+Route::prefix('now')->group(function () {
+    Route::get('/', 'HomeController@now')->name('now');
+    Route::get('rss.xml', 'HomeController@nowRss')->name('now.rss');
 });
 
 Route::prefix('experiments')->group(function () {
