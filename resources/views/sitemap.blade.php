@@ -33,7 +33,7 @@
     </url>
     <url>
         <loc>{{ route('now') }}</loc>
-        <lastmod>{{ $nowLastModifiedAt->toW3cString() }}</lastmod>
+        <lastmod>{{ $lastModificationDate->toW3cString() }}</lastmod>
         <priority>1.0</priority>
     </url>
     <url>

@@ -3,7 +3,8 @@
 return [
 
     'title_suffix' => ' | Noel De Martin',
-    'rss' => 'Noel De Martin Blog',
+    'rss' => 'Noel De Martin',
+    'rss_now' => 'Noel De Martin [Journal]',
     'sitemap' => 'Noel De Martin',
 
     'home' => [

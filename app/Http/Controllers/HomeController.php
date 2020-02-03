@@ -19,6 +19,7 @@ use App\SemanticSEO\NoelDeMartinOrganization;
 use App\SemanticSEO\WebPage;
 use Exception;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Cache;
 use NoelDeMartin\SemanticSEO\Support\Facades\SemanticSEO;
 use NoelDeMartin\SemanticSEO\Types\AboutPage;
 use NoelDeMartin\SemanticSEO\Types\Blog;
@@ -150,13 +151,10 @@ class HomeController extends Controller
     {
         $tasks = Task::whereNull('completed_at')->orderBy('created_at', 'desc')->get();
 
-        $events = collect()
-            ->merge(ActivityEvent::fromTasks(Task::with('comments')->get()))
-            ->merge(ActivityEvent::fromTaskComments(TaskComment::with('task')->get()))
-            ->merge(ActivityEvent::fromPosts(Post::all()))
-            ->sortByDesc->date;
+        $events = $this->getActivityEvents();
 
         SemanticSEO::meta(trans('seo.now'));
+        SemanticSEO::rss(url('now/rss.xml'), trans('seo.rss_now'));
 
         SemanticSEO::is(WebPage::class)
             ->setAttributes(trans('seo.schema:now'))
@@ -177,11 +175,7 @@ class HomeController extends Controller
 
     public function nowRss()
     {
-        $events = collect()
-            ->merge(ActivityEvent::fromTasks(Task::with('comments')->get()))
-            ->merge(ActivityEvent::fromTaskComments(TaskComment::with('task')->get()))
-            ->merge(ActivityEvent::fromPosts(Post::all()))
-            ->sortByDesc->date;
+        $events = $this->getActivityEvents();
 
         return response()
             ->view('now.rss', compact('events'))
@@ -215,10 +209,10 @@ class HomeController extends Controller
 
         $tasks = Task::with('comments')->get();
 
-        $nowLastModifiedAt = $this->getNowLastModifiedAt($posts, $tasks);
+        $lastModificationDate = $this->getSiteLastModificationDate($posts, $tasks);
 
         return response()
-            ->view('sitemap', compact('posts', 'tasks', 'nowLastModifiedAt'))
+            ->view('sitemap', compact('posts', 'tasks', 'lastModificationDate'))
             ->header('Content-Type', 'application/xml');
     }
 
@@ -237,21 +231,32 @@ class HomeController extends Controller
         return $status;
     }
 
-    protected function getNowLastModifiedAt($posts, $tasks)
+    protected function getActivityEvents()
     {
-        $dates = [
-            $posts->last()->published_at,
-            $tasks->last()->created_at,
-        ];
+        $lastModificationDate = $this->getSiteLastModificationDate();
 
-        foreach ($tasks as $task) {
-            if ($task->isCompleted()) {
-                $dates[] = $task->completed_at;
+        return Cache::remember(
+            'events_' . $lastModificationDate->timestamp,
+            86400, // 24 hours
+            function () {
+                return collect()
+                    ->merge(ActivityEvent::fromTasks(Task::with('comments')->get()))
+                    ->merge(ActivityEvent::fromTaskComments(TaskComment::with('task')->get()))
+                    ->merge(ActivityEvent::fromPosts(Post::all()))
+                    ->sortByDesc->date;
             }
-        }
+        );
+    }
 
-        $dates[] = TaskComment::orderBy('created_at', 'desc')->first()->created_at;
-
-        return max($dates);
+    protected function getSiteLastModificationDate()
+    {
+        return collect([
+            Task::orderByDesc('created_at')->first()->created_at,
+            Task::orderByDesc('completed_at')->first()->completed_at,
+            TaskComment::orderByDesc('created_at')->first()->created_at,
+            Post::orderByDesc('published_at')->first()->published_at,
+        ])
+            ->sort()
+            ->last();
     }
 }

@@ -13,7 +13,7 @@
         title="Open RSS feed"
         target="_blank"
     >
-       @icon('rss', 'inline h-4 text-white fill-current')
+        @icon('rss', 'inline h-4 text-white fill-current')
     </a>
 
     @foreach ($posts as $post)
@@ -24,5 +24,21 @@
             {!! $post->summary_html !!}
         @endcontentcard
     @endforeach
+
+    <div class="flex justify-end">
+        <a
+            class="
+                flex items-center bg-rss p-2 rounded text-white no-underline opacity-75
+                hover:opacity-100
+                md:hidden
+            "
+            href="{{ route('blog.rss') }}"
+            title="Open RSS feed"
+            target="_blank"
+        >
+            <span class="mr-1 text-white">Subscribe</span>
+            @icon('rss', 'inline h-3 text-white fill-current')
+        </a>
+    </div>
 
 @stop
