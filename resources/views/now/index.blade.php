@@ -24,7 +24,12 @@
         </a>
     </div>
 
-    <p class="mt-2">I practice <a href="{{ url('blog/open-productivity') }}">Open Productivity</a>, and here you can see what I'm up to these days.</p>
+    <p class="mt-2">
+        I am currently working at <a href="https://moodle.com/" target="_blank">Moodle</a>
+        4 days a week and doing side projects the rest of the time. I practice
+        <a href="{{ url('blog/open-productivity') }}">Open Productivity</a>, and here
+        you can see what I'm up to these days:
+    </p>
 
     @if($tasks->isEmpty())
         <div class="flex flex-col items-center justify-center w-full bg-grey-lighter p-8 rounded-lg border border-grey-light">

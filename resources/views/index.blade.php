@@ -146,7 +146,7 @@
                     On occasion I like going for a hike, and I love traveling and learning about other
                     cultures. You may like to know that my two favorite novels are
                     <a href="https://en.wikipedia.org/wiki/Canon_of_Sherlock_Holmes" target="_blank">The Sherlock Holmes Anthology</a>
-                    and <a href="https://noeldemartin.com/blog/lessons-learned-musashi-by-eiji-yoshikawa">Musashi</a>.
+                    and <a href="{{ url('blog/lessons-learned-musashi-by-eiji-yoshikawa') }}">Musashi</a>.
                     I enjoy many art forms, and I have more content pending to consume than I'll
                     be able in my life-time. Which makes for a very fun ride :).
                 </p>
