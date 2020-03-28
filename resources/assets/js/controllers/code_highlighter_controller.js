@@ -15,6 +15,7 @@ async function loadPrism() {
 
     Prism = await import(/* webpackChunkName: "code-highlighter" */ 'prismjs');
     await import(/* webpackChunkName: "code-highlighter" */ 'prismjs/components/prism-php');
+    await import(/* webpackChunkName: "code-highlighter" */ 'prismjs/components/prism-scss');
     await import(/* webpackChunkName: "code-highlighter" */ 'prismjs/components/prism-markup-templating');
 }
 

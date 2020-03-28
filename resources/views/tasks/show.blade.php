@@ -1,7 +1,11 @@
 @extends('layouts.master')
 
+@push('head')
+    <link rel="stylesheet" href="{{ mix('css/code-highlighter.css') }}">
+@endpush
+
 @section('content')
-    <article class="max-w-readable">
+    <article class="max-w-readable" data-controller="code-highlighter">
 
         <h1>{{ $task->name }}</h1>
 
