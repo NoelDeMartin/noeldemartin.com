@@ -16,6 +16,7 @@ mix
                     purgecss({
                         content: [
                             './resources/views/**/*.blade.php',
+                            './storage/recipes/**/*.md',
                             './resources/assets/sass/**/*.scss',
                         ],
                         defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],

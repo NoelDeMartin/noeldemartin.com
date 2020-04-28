@@ -38,8 +38,16 @@ main {
         @apply leading-normal my-6;
     }
 
+    ul, ol {
+        @apply ml-4 pl-4;
+    }
+
     ul {
-        @apply list-disc ml-4 pl-4;
+        @apply list-disc;
+    }
+
+    ol {
+        @apply list-decimal;
     }
 
     li p {
@@ -87,6 +95,19 @@ main {
             @apply mt-16;
         }
 
+    }
+
+}
+
+// Print
+@media print {
+
+    body {
+        @apply block;
+    }
+
+    p, li {
+        page-break-inside: avoid;
     }
 
 }
