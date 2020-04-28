@@ -47,6 +47,6 @@
 
 2. Chop the onion and mince it in relatively small pieces, but not too small. When you're done take the bowl out of the fridge for a second, mix the onion, and put it back into the fridge. Repeat this process with the cucumber and the avocado.
 
-3. After adding the avocado you're done with the basic recipe, the only thing that's left is adding cilantro and serving. To serve it, keep it inside of the bowl and provide your guests with spoons and crackers. The idea is that each person will use the spoon to load the mixture on top of the crackers and put mayonnaise before proceeding to eat them. One additional tip for spice lovers, you can mix the mayonnaise with chipotle beforehand (you're welcome). If you don't like the idea of everyone sharing the same bowl, divide the mixture in individual bowls to be consumed in the same way.
+3. After adding the avocado you're done with the basic recipe, the only thing that's left is adding cilantro and serving. To serve it, keep it inside of the bowl and provide your guests with spoons and crackers. The idea is that each person will use a spoon to load the mixture on top of the crackers and season with mayonnaise before proceeding to eat them. One additional tip for spice lovers is to mix the mayonnaise with chipotle beforehand (you're welcome). If you don't like the idea of everyone sharing the same bowl, divide the mixture in individual bowls to be consumed in the same way.
 
 4. Send me pictures of the end result!
