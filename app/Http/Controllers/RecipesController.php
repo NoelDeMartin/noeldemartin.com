@@ -18,9 +18,16 @@ class RecipesController extends Controller
 
         $parsedown = new Parsedown;
         $markdown = file_get_contents($filepath);
+        $title = $this->getRecipeTitle($markdown);
+
+        $markdown = str_replace(
+            ':email-url:',
+            'mailto:noeldemartin@gmail.com?subject=' . rawurlencode($title . ' pics'),
+            $markdown
+        );
 
         SemanticSEO::hide();
-        SemanticSEO::title($this->getRecipeTitle($markdown));
+        SemanticSEO::title($title);
 
         return view('recipes.show', [
             'recipeHtml' => $parsedown->text($markdown),
