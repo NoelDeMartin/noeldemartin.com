@@ -15,7 +15,6 @@ class NoelDeMartinOrganization extends Organization
             'https://twitter.com/NoelDeMartin',
             'https://noeldemartin.social/@noeldemartin',
             'https://github.com/NoelDeMartin',
-            'https://www.linkedin.com/in/noeldemartin/',
         ]);
         $this->logo(Logo::class);
         $this->url(route('home'));

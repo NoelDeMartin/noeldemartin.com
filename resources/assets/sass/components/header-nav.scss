@@ -35,8 +35,7 @@ header nav {
 
     }
 
-    [data-platform="twitter"],
-    [data-platform="linkedin"] {
+    [data-platform="twitter"] {
 
         path {
             stroke-width: $svg-stroke-width;

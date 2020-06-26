@@ -8,7 +8,7 @@ return [
         'task_completed' => 'Completed :task',
         'task_completed_long' => 'I just completed the task :task.',
         'comment_posted' => 'Commented on :task',
-        'comment_posted_long' => '<p>I just added a new comment to :task:<p>:comment',
+        'comment_posted_long' => '<p>I just added the following comment on :task:<p>:comment',
         'post_published' => 'Published :post',
         'post_published_long' => 'I just published a new blog post: :post',
     ],

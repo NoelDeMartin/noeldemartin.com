@@ -12,7 +12,7 @@
     <logo>{!! asset('img/myface-small.png') !!}</logo>
     <author>
         <name>Noel De Martin</name>
-        <email>noeldemartin@gmail.com</email>
+        <email>noeldemartin@hey.com</email>
         <uri>{!! route('home') !!}</uri>
     </author>
     @foreach($posts as $post)
@@ -20,7 +20,7 @@
             <title type="text">{!! $post->title !!}</title>
             <author>
                 <name>Noel De Martin</name>
-                <email>noeldemartin@gmail.com</email>
+                <email>noeldemartin@hey.com</email>
                 <uri>{!! route('home') !!}</uri>
             </author>
             <link href="{!! route('posts.show', $post->tag) !!}" />

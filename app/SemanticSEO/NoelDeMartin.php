@@ -15,7 +15,6 @@ class NoelDeMartin extends Person
             'https://twitter.com/NoelDeMartin',
             'https://noeldemartin.social/@noeldemartin',
             'https://github.com/NoelDeMartin',
-            'https://www.linkedin.com/in/noeldemartin/',
         ]);
         $this->image(Logo::class);
         $this->url(route('home'));
