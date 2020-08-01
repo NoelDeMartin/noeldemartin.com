@@ -72,6 +72,45 @@ class Task extends Model
         return max($dates);
     }
 
+    public function getDisplayCommentsAttribute()
+    {
+        $comments = $this->comments->slice(0);
+
+        TaskComment::unguarded(function () use ($comments) {
+            $comments->push(new TaskComment([
+                'created_at' => $this->created_at->copy()->subMillis(1),
+                'text_html' =>
+                    '<p class="flex items-center md:m-0">' .
+                        'Task started ' .
+                        blade_icon('task-started', 'w-4 h-4 ml-2') .
+                    '</p>',
+            ]));
+
+            if ($this->isCompleted()) {
+                $comments->push(new TaskComment([
+                    'created_at' => $this->completed_at,
+                    'text_html' =>
+                        '<p class="flex items-center md:m-0">' .
+                            'Task completed ' .
+                            blade_icon('task-completed', 'w-4 h-4 ml-2') .
+                        '</p>',
+                ]));
+            }
+        });
+
+        return $comments->sortBy->created_at;
+    }
+
+    public function getCommentsBeforeClosingAttribute()
+    {
+        if (!$this->isCompleted())
+            return $this->comments->slice(0);
+
+        return $this->comments->filter(function ($comment) {
+            return $comment->created_at < $this->completed_at;
+        });
+    }
+
     public function newQuery()
     {
         $builder = parent::newQuery();

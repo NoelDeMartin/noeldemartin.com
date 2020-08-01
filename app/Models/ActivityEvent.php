@@ -21,13 +21,15 @@ class ActivityEvent
                         ]),
                         trans('app.events.task_started_long', [
                             'task' => "<a href=\"{$task->url}\">{$task->name}</a>",
+                            'description' => $task->description_html,
                         ]),
                         $task->url
                     ),
                 ];
 
                 if ($task->isCompleted()) {
-                    $url = $task->url . '#comment-' . ($task->comments->count() + 2);
+                    $url = $task->url . '#comment-' . ($task->comments_before_closing->count() + 2);
+
                     $events[] = new static(
                         $task->completed_at,
                         trans('app.events.task_completed', [
@@ -112,6 +114,10 @@ class ActivityEvent
                 }
 
                 $taskCommentIndexes[$taskId][$comment->id] = count($taskCommentIndexes[$taskId]);
+
+                if ($comment->task->isCompleted() && $comment->task->completed_at < $comment->created_at) {
+                    $taskCommentIndexes[$taskId][$comment->id]++;
+                }
             });
 
         return array_reduce($taskCommentIndexes, function ($indexes, $comments) {

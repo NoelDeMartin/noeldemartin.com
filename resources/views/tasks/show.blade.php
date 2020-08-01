@@ -33,47 +33,19 @@
 
         <h2 class="text-xl mb-6">Activity</h2>
 
-        @comment([
-            'date' => $task->created_at,
-            'attributes' => [
-                'id' => 'comment-1',
-            ],
-        ])
-            <p class="flex items-center md:m-0">
-                Task started
-                @icon('task-ongoing', 'w-4 h-4 ml-2')
-            </p>
-        @endcomment
-
-        @foreach ($task->comments as $comment)
+        @foreach ($task->display_comments as $comment)
 
             @comment([
                 'date' => $comment->created_at,
-                'short' => false,
+                'short' => !$comment->exists,
                 'attributes' => [
-                    'id' => 'comment-' . ($loop->index + 2),
+                    'id' => 'comment-' . ($loop->index + 1),
                 ],
             ])
                 {!! $comment->text_html !!}
             @endcomment
 
         @endforeach
-
-        @if ($task->isCompleted())
-
-            @comment([
-                'date' => $task->completed_at,
-                'attributes' => [
-                    'id' => 'comment-' . ($task->comments->count() + 2),
-                ],
-            ])
-                <p class="flex items-center md:m-0">
-                    Task completed
-                    @icon('task-completed', 'w-4 h-4 ml-2')
-                </p>
-            @endcomment
-
-        @endif
 
     </article>
 @endsection

@@ -4,7 +4,7 @@ return [
 
     'events' => [
         'task_started' => 'Started :task',
-        'task_started_long' => 'I just started a new task: :task',
+        'task_started_long' => '<p>I just started a new task: :task</p>:description',
         'task_completed' => 'Completed :task',
         'task_completed_long' => 'I just completed the task :task.',
         'comment_posted' => 'Commented on :task',
