@@ -2,7 +2,7 @@
 
 namespace App\Nova\Fields;
 
-use Parsedown;
+use App\Support\Parsedown;
 
 use Laravel\Nova\Fields\Markdown as NovaMarkdown;
 use Laravel\Nova\Http\Requests\NovaRequest;
