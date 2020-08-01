@@ -5,3 +5,12 @@
     }
 
 }
+
+// Tablet & Desktop
+@media (min-width: theme('screens.md')) {
+
+    .content-card .title time {
+        height: 28px;
+    }
+
+}
