@@ -58,7 +58,7 @@
         <hr class="w-full mt-4 bg-grey-lighter hidden md:block">
     @endif
 
-    <h3>Activity</h3>
+    <h2>Activity</h2>
 
     <ul class="list-none ml-0 pl-0">
 

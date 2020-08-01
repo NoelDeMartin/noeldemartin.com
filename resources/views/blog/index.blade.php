@@ -20,6 +20,7 @@
         @contentcard([
             'url' => $post->url,
             'title' => $post->title,
+            'date' => $post->published_at,
         ])
             {!! $post->summary_html !!}
         @endcontentcard
