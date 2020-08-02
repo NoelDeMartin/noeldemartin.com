@@ -24,7 +24,19 @@
         </a>
     </div>
 
-    <p class="mt-2">
+    <div
+        class="
+            bg-blue-lightest text-center text-blue-darker max-w-readable rounded border border-blue-dark
+            p-4 mb-4
+            flex flex-col justify-center items-center md:flex-row
+        "
+    >
+        <span class="m-1">🥾🐚⛰️</span>
+        <span>I'll be on a break until August 24th</span>
+        <span class="m-1">⛰️🐚🥾</span>
+    </div>
+
+    <p class="mt-2 max-w-readable">
         I am currently working at <a href="https://moodle.com/" target="_blank">Moodle</a>
         4 days a week and doing side projects the rest of the time. I practice
         <a href="{{ url('blog/open-productivity') }}">Open Productivity</a>, and here
