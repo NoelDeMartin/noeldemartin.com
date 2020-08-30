@@ -14,11 +14,11 @@
             'icon'  => 'blog',
             'text'  => 'Blog'
         ],
-        (object) [
-            'route' => 'experiments',
-            'icon'  => 'experiments',
-            'text'  => 'Experiments'
-        ],
+        // (object) [
+        //    'route' => 'experiments',
+        //    'icon'  => 'experiments',
+        //    'text'  => 'Experiments'
+        // ],
         (object) [
             'route' => 'now',
             'icon'  => 'now',
