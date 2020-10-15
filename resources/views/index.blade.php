@@ -45,7 +45,7 @@
 
         </div>
 
-        <h2 class="md:mt-10">My values</h2>
+        <h2 class="md:mt-10" id="my-values">My values</h2>
 
         <div class="flex w-full">
 
@@ -81,7 +81,7 @@
 
         </div>
 
-        <h2 class="md:mt-10">My background</h2>
+        <h2 class="md:mt-10" id="my-background">My background</h2>
 
         <div class="flex w-full">
 
@@ -124,7 +124,7 @@
 
         </div>
 
-        <h2 class="md:mt-10">Beyond the code</h2>
+        <h2 class="md:mt-10" id="beyond-the-code">Beyond the code</h2>
 
         <div class="flex w-full">
 
@@ -160,10 +160,6 @@
             </div>
 
         </div>
-
-        <p class="mt-10 text-lg text-center">
-            There you have it, now you know more about me than you cared about!
-        </p>
 
     </article>
 @stop
