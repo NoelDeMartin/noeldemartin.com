@@ -124,6 +124,24 @@ class HomeController extends Controller
             ->header('Content-Type', 'application/atom+xml');
     }
 
+    public function projects()
+        {
+        SemanticSEO::meta(trans('seo.projects'));
+
+        SemanticSEO::is(WebPage::class)
+            ->setAttributes(trans('seo.schema:projects'))
+            ->url(route('projects'))
+            ->image(Logo::class)
+            ->discussionUrl($this->discussionUrls)
+            ->inLanguage('English')
+            ->about((new WebPage)->url(route('home')))
+            ->author(NoelDeMartin::class)
+            ->creator(NoelDeMartin::class)
+            ->publisher(NoelDeMartinOrganization::class);
+
+        return view('projects');
+    }
+
     public function experiments()
     {
         SemanticSEO::meta(trans('seo.experiments'));

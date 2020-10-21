@@ -24,9 +24,9 @@
     <main class="relative max-w-content mx-auto p-4 pt-8 md:px-2">
 
         @if (session()->has('message'))
-            <div class="alert mb-4" role="alert">
-                <p>{!! session('message') !!}</p>
-            </div>
+            <aside class="alert mb-4" role="alert">
+                {!! session('message') !!}
+            </aside>
         @endif
 
         @yield('content')

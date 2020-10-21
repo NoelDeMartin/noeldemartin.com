@@ -36,6 +36,7 @@ class AppServiceProvider extends ServiceProvider
         Blade::component('components.experiment', 'experiment');
         Blade::component('components.content-card', 'contentcard');
         Blade::component('components.comment', 'comment');
+        Blade::component('components.project', 'project');
 
         Blade::directive('class', function ($args) {
             return "<?php echo blade_class({$args}); ?>";

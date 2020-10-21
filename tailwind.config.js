@@ -31,6 +31,10 @@ module.exports = {
             'blue-darker': '#266193',
             'blue-darkest': '#12283a',
 
+            'yellow-lighter': '#faf089',
+            'yellow-darker': '#b7791f',
+            'yellow-darkest': '#744210',
+
             'error': '#f44336',
 
             'overlay': 'rgba(0, 0, 0, 0.075)',

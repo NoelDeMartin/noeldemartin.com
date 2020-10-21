@@ -5,6 +5,11 @@
 
         <h1>Welcome to my lab</h1>
 
+        <aside class="alert mb-4" role="alert">
+            This page is archived! You may want to check out the
+            <a href="{{ route('projects') }}">projects</a> page instead.
+        </aside>
+
         <p>
             Here you will find small projects I have done when I wanted to explore an idea. Some are useful, some are an itch that needed to be
             scratched, and some are just exploring a topic I was interested in. I hope they can also pique your interest :D.

@@ -46,6 +46,8 @@ Route::get('recipes/{slug}', 'RecipesController@show')->name('recipes.show');
 
 Route::get('site', 'HomeController@site')->name('site');
 
+Route::get('projects', 'HomeController@projects')->name('projects');
+
 Route::get('health', 'HomeController@health')->name('health');
 
 Route::permanentRedirect('about', '/');

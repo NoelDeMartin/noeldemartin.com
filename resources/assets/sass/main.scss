@@ -1,6 +1,7 @@
 @tailwind base;
 
 @tailwind components;
+@import "components/alert";
 @import "components/content-card";
 @import "components/expandable-item";
 @import "components/header-nav";

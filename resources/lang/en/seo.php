@@ -40,6 +40,15 @@ return [
         'description' => "Noel De Martin's blog on software, entrepreneurship and more.",
     ],
 
+    'projects' => [
+        'title' => 'Projects',
+    ],
+
+    'schema:projects' => [
+        'name' => "Noel De Martin's Projects",
+        'description' => 'My projects.',
+    ],
+
     'experiments' => [
         'title' => 'Experiments',
     ],

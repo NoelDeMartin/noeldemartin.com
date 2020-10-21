@@ -1,11 +1,8 @@
 {
     "recommendations": [
         "bmewburn.vscode-intelephense-client",
-        "rebornix.project-snippets",
         "dbaeumer.vscode-eslint",
-        "cjhowe7.laravel-blade",
-        "shinnn.stylelint",
-        "ikappas.phpcs",
+        "onecentlin.laravel-blade",
         "octref.vetur"
     ]
 }
