@@ -35,12 +35,8 @@
             @endcomponent
 
             @component('components.call-to-action-card', ['title' => 'Work'])
-                Check out
-                <a href="{{ config('content.socials.github.url') }}" target="_blank">
-                    my GitHub
-                </a><br>
-                or
-                <a href="{{ route('now') }}">What I'm doing now</a>
+                Check out <a href="{{ route('projects') }}">my Projects</a><br>
+                or <a href="{{ route('now') }}">What I'm doing now</a>
             @endcomponent
 
         </div>
