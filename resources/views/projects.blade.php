@@ -168,7 +168,7 @@
             @endproject
         </ul>
 
-        <h2 class="mt-8 font-bold">Discountinued</h2>
+        <h2 class="mt-8 font-bold">Discontinued</h2>
         <ul class="grid grid-cols-1 gap-4 list-none ml-0 pl-0 md:grid-cols-2">
             @project([
                 'title' => 'Travel Postcards',
