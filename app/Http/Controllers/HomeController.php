@@ -172,7 +172,6 @@ class HomeController extends Controller
         $events = $this->getActivityEvents();
 
         SemanticSEO::meta(trans('seo.now'));
-        SemanticSEO::rss(url('now/rss.xml'), trans('seo.rss_now'));
 
         SemanticSEO::is(WebPage::class)
             ->setAttributes(trans('seo.schema:now'))

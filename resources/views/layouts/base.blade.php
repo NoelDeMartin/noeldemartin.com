@@ -7,6 +7,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <link rel="alternate" type="application/rss+xml" title="{{ trans('seo.rss') }}" href="url('blog/rss.xml')">
+        <link rel="alternate" type="application/rss+xml" title="{{ trans('seo.rss_now') }}" href="url('now/rss.xml')">
+
         @semanticSEO
 
         @stack('head')
