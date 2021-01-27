@@ -50,5 +50,6 @@ Route::get('projects', 'HomeController@projects')->name('projects');
 
 Route::get('health', 'HomeController@health')->name('health');
 
+Route::redirect('solid-world', 'https://speakerdeck.com/noeldemartin/media-kraken-at-solid-world');
 Route::permanentRedirect('about', '/');
 Route::permanentRedirect('posts/{tag?}', '/blog/{tag}');
