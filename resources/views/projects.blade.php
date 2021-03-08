@@ -151,7 +151,7 @@
                 'iconClasses' => 'px-2',
                 'status' => 'EXPERIMENTAL',
                 'statusColor' => 'yellow',
-                'url' => 'https://noeldemartin.github.io/autonomous-data',
+                'url' => 'https://autonomous-data.noeldemartin.com',
             ])
                 Application architecture that respects users privacy and data ownership.
             @endproject
