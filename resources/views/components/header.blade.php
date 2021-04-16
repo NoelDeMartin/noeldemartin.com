@@ -37,7 +37,7 @@
     <div class="w-full max-w-content flex overflow-hidden">
 
         <a
-            class="px-3 mr-2 h-full cursor-pointer flex items-center hover:bg-overlay md:hidden"
+            class="px-3 mr-2 h-full cursor-pointer flex items-center hover:bg-overlay md:hidden print:hidden"
             data-action="navigation#toggle"
         >
             @icon('menu', 'h-8 fill-current')
@@ -47,8 +47,7 @@
             <img
                 src="/img/myface.png"
                 alt="My Face"
-                class="mr-2 md:mr-4 lg:mr-8"
-                style="height:160%;transform:translateY(-15%)"
+                class="mr-2 transform md:mr-4 lg:mr-8 h-16/10 translate-y-m15/100 print:h-full print:translate-y-0"
             />
 
             <div class="flex-grow my-auto" style="height:80%">

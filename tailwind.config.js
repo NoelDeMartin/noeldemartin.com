@@ -55,6 +55,15 @@ module.exports = {
             default: theme('colors.grey-light', 'currentColor'),
         }),
         extend: {
+            screens: {
+                'print': {'raw': 'print'},
+            },
+            height: {
+                '16/10': '160%',
+            },
+            translate: {
+                'm15/100': '-15%',
+            },
             minWidth: theme => ({
                 '10': theme('spacing.10'),
                 'sidebar': '65vw',

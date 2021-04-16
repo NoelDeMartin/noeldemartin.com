@@ -1,4 +1,4 @@
-<footer class="p-4 bg-grey-light">
+<footer class="p-4 bg-grey-light print:hidden">
     <div class="flex flex-col max-w-content mx-auto text-sm items-center md:flex-row">
         <div class="flex items-center">
             Built with
