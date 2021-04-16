@@ -6,7 +6,8 @@ RUN set -x \
     && apk add git zlib-dev libzip-dev mariadb-client \
     && docker-php-ext-install pdo pdo_mysql zip bcmath \
     && docker-php-ext-enable bcmath \
-    && php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer
+    && php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer \
+    && composer self-update --1
 
 # Prepare Supervisor
 RUN apk add --no-cache supervisor
