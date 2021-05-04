@@ -22,7 +22,7 @@ class RecipesController extends Controller
 
         $markdown = str_replace(
             ':email-url:',
-            'mailto:noeldemartin@hey.com?subject=' . rawurlencode($title . ' pics'),
+            'mailto:hey@noeldemartin.com?subject=' . rawurlencode($title . ' pics'),
             $markdown
         );
 

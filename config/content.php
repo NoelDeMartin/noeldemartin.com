@@ -31,7 +31,7 @@ return [
             'extras' => ['rel' => 'me'],
         ],
         'email' => [
-            'url'  => 'mailto:noeldemartin@hey.com?subject=Hi there!',
+            'url'  => 'mailto:hey@noeldemartin.com?subject=Hi there!',
             'icon' => 'email',
             'name' => 'My Email',
             'short_name' => 'Email',
