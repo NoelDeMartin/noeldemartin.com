@@ -33,7 +33,7 @@
     <div class="max-w-readable">
         {!! $slot !!}
 
-        <a href="{{ $url }}">Read more</a>
+        <a href="{{ $url }}" aria-hidden="true">Read more</a>
     </div>
 
 </article>
