@@ -19,9 +19,13 @@
 
 @section('content')
 
+    <a href="#main" data-turbolinks="false" class="bg-white z-20 border border-blue-darkest sr-only focus:not-sr-only focus:fixed focus:m-2 focus:p-2">
+        Skip to content
+    </a>
+
     @include('components.header')
 
-    <main class="relative max-w-content mx-auto p-4 pt-8 md:px-2">
+    <main id="main" class="relative max-w-content mx-auto p-4 pt-8 md:px-2">
 
         @if (session()->has('message'))
             <aside class="alert mb-4" role="alert">

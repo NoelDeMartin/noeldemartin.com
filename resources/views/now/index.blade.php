@@ -15,8 +15,10 @@
                 items-center justify-center opacity-75 absolute top-0 right-0
                 bg-rss text-white p-1 rounded no-underline text-sm flex
                 hover:opacity-100 hover:text-white
+                focus:opacity-100
             "
             href="{{ route('now.rss') }}"
+            aria-label="Open RSS feed"
             title="Open RSS feed"
             target="_blank"
         >

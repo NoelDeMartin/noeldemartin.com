@@ -3,7 +3,7 @@
 @section('content')
     <article>
 
-        <h1 class="hidden">Noel De Martin</h1>
+        <h1 class="sr-only">Noel De Martin</h1>
 
         <span class="mb-4 text-3xl font-medium text-blue-darkest tracking-wide">
             Hi there!

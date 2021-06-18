@@ -1,13 +1,13 @@
 @extends('layouts.master')
 
 @section('content')
-    <h1 class="hidden">Blog</h1>
+    <h1 class="sr-only">Blog</h1>
 
     <a
         class="
             items-center justify-center float-right opacity-75
             bg-rss text-white p-1 rounded no-underline text-sm hidden
-            md:flex hover:opacity-100 hover:text-white
+            md:flex hover:opacity-100 hover:text-white focus:opacity-100
         "
         href="{{ route('blog.rss') }}"
         title="Open RSS feed"

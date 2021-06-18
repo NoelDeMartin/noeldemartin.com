@@ -12,6 +12,7 @@
             <img
                 class="max-w-full max-h-full"
                 src="https://imgs.xkcd.com/comics/not_available.png"
+                alt="Not Found XKCD webcomic"
                 title="Not Found"
             >
         </a>

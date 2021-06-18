@@ -45,6 +45,7 @@
                         <a
                             href="{{ $extra->url }}"
                             target="_blank"
+                            aria-label="{{ $name }} on {{ $extra->name }}"
                             title="{{ $name }} on {{ $extra->name }}"
                             class="flex items-center text-blue-darkest ml-2 hover:text-blue"
                         >
@@ -56,6 +57,7 @@
                     <a
                         href="{{ $url }}"
                         target="_blank"
+                        aria-label="{{ $name }}"
                         title="{{ $name }}"
                         class="flex items-center text-blue-darkest ml-2 hover:text-blue"
                     >

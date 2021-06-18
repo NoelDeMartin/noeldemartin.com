@@ -43,7 +43,7 @@
             @icon('menu', 'h-8 fill-current')
         </a>
 
-        <a href="{{ route('home') }}" title="Home" class="flex">
+        <a href="{{ route('home') }}" aria-label="Home" title="Home" class="flex" tabindex="-1">
             <img
                 src="/img/myface.png"
                 alt="My Face"
@@ -69,6 +69,7 @@
                 @foreach ($sections as $i => $section)
                     <a
                         href="{{ route($section->route) }}"
+                        aria-label="{{ $section->text }}"
                         title="{{ $section->text }}"
                         @class(['active' => $router->is($section->route)])
                     >
@@ -82,6 +83,7 @@
                 @foreach (content_socials() as $social)
                     <a
                         href="{{ $social->url }}"
+                        aria-label="{{ $social->name }}"
                         title="{{ $social->name }}"
                         target="_blank"
                         @attrs($social->extras)

@@ -9,6 +9,7 @@
                     font-bold text-blue-darkest no-underline
                     hover:text-blue-darkest hover:underline
                     visited:text-blue-darkest
+                    focus:underline
                 "
             >
                 {{ $title }}

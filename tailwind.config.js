@@ -76,6 +76,10 @@ module.exports = {
     },
     variants: {
         borderColor: ['responsive', 'hover', 'focus', 'group-hover'],
+        borderWidth: ['responsive', 'focus'],
+        margin: ['responsive', 'focus'],
+        padding: ['responsive', 'focus'],
+        position: ['responsive', 'focus'],
         textColor: ['responsive', 'hover', 'focus', 'visited'],
     },
 };

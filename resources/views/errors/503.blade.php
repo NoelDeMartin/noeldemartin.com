@@ -22,6 +22,7 @@
             <li class="flex">
                 <a
                     href="{{ $social->url }}"
+                    aria-label="{{ $social->name }}"
                     title="{{ $social->name }}"
                     class="text-sm underline mx-2 text-blue-600 hover:text-blue-800"
                     @attrs($social->extras)
