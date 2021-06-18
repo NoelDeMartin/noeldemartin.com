@@ -31,7 +31,8 @@
     data-controller="chamaleon navigation"
     data-target="chamaleon.skin"
     style="background-color: hsl({{ $hue }}, 40%, 80%)"
-    class="flex flex-col items-center z-10 h-16 md:h-32 lg:h-40"
+    class="flex flex-col items-center z-10 h-16 md:h-32 lg:h-40 {{ $startCollapsed ? 'collapsed' : '' }}"
+    data-collapsed="@json($collapsed)"
 >
 
     <div class="w-full max-w-content flex overflow-hidden">

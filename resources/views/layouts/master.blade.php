@@ -23,7 +23,10 @@
         Skip to content
     </a>
 
-    @include('components.header')
+    @include('components.header', [
+        'collapsed' => $minimal ?? false,
+        'startCollapsed' => request()->header('X-Header-Collapsed') === 'true',
+    ])
 
     <main id="main" class="relative max-w-content mx-auto p-4 pt-8 md:px-2">
 

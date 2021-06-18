@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.master', ['minimal' => true])
 
 @push('head')
     <link rel="stylesheet" href="{{ mix('css/code-highlighter.css') }}">
