@@ -168,8 +168,10 @@ class HomeController extends Controller
     public function now()
     {
         $tasks = Task::whereNull('completed_at')->orderBy('created_at', 'desc')->get();
-
-        $events = $this->getActivityEvents();
+        $events = $this->getActivityEvents()->groupBy(function (ActivityEvent $event) {
+            return $event->date->year;
+        });
+        $updatedAt = $events->first()->first()->date;
 
         SemanticSEO::meta(trans('seo.now'));
 
@@ -185,9 +187,9 @@ class HomeController extends Controller
             ->publisher(NoelDeMartinOrganization::class)
             ->datePublished(Carbon::create(2018, 11, 11)->startOfDay())
             ->dateCreated(Carbon::create(2018, 11, 11)->startOfDay())
-            ->dateModified($events->first()->date);
+            ->dateModified($updatedAt);
 
-        return view('now.index', compact('tasks', 'events'));
+        return view('now.index', compact('tasks', 'events', 'updatedAt'));
     }
 
     public function nowRss()

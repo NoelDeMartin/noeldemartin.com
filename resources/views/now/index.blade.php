@@ -5,8 +5,8 @@
         <h1 class="mb-0">What I'm doing now</h1>
 
         <span class="text-sm text-blue-darker">
-            Last updated <time datetime="{{ $events->first()->date->toDateTimeString() }}">
-                {{ $events->first()->date->display('date') }}
+            Last updated <time datetime="{{ $updatedAt->toDateTimeString() }}">
+                {{ $updatedAt->display('date') }}
             </time>
         </span>
 
@@ -64,14 +64,26 @@
 
     <ul class="list-none ml-0 pl-0">
 
-        @foreach ($events as $event)
+        @foreach ($events as $year => $yearEvents)
 
-            @comment([
-                'tag' => 'li',
-                'date' => $event->date,
-            ])
-                <p class="md:m-0">{!! $event->description !!}</p>
-            @endcomment
+            <details {{ $loop->first ? 'open' : '' }} class="mb-4">
+
+                <summary class="mb-2 hover:cursor-pointer hover:text-blue-darkest focus:text-blue-darkest">
+                    {{ $year }}
+                </summary>
+
+                @foreach ($yearEvents as $event)
+
+                    @comment([
+                        'tag' => 'li',
+                        'date' => $event->date,
+                    ])
+                        <p class="md:m-0">{!! $event->description !!}</p>
+                    @endcomment
+
+                @endforeach
+
+            </details>
 
         @endforeach
 
