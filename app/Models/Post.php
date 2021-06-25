@@ -12,12 +12,12 @@ class Post extends Model
     use Actionable;
 
     const DATE_FORMAT = 'd/m/Y';
-
     const DATE_FORMAT_JS = 'dd/mm/yyyy';
 
     protected $dates = ['created_at', 'updated_at', 'published_at'];
-
     protected $fillable = ['title', 'tag', 'text_markdown', 'text_html', 'author_id', 'published_at'];
+
+    private $_landmarks = null;
 
     public static function createTitleTag($title)
     {
@@ -81,5 +81,104 @@ class Post extends Model
     public function getModifiedAtAttribute()
     {
         return $this->updated_at > $this->published_at ? $this->updated_at : $this->published_at;
+    }
+
+    public function getLandmarksAttribute()
+    {
+        if (is_null($this->_landmarks)) {
+            $headers = $this->parseHtmlHeaders($this->text_html);
+            $currentLandmark = (object) [
+                'level' => 1,
+                'children' => [],
+            ];
+
+            foreach ($headers as $header) {
+                $currentLandmark = $currentLandmark->level >= $header->level
+                    ? $this->createAncestorLandmark($currentLandmark, $header)
+                    : $this->createDescendantLandmark($currentLandmark, $header);
+            }
+
+            $this->_landmarks = $this->cleanLandmarkTree($currentLandmark)->children ?? [];
+        }
+
+        return $this->_landmarks;
+    }
+
+    /** @return object[] */
+    private function parseHtmlHeaders($html) {
+        preg_match_all('/<h(\d) id="([^"]+)"[^>]*>(.+?)<\/h\d>/', $html, $matches);
+
+        return array_map(
+            function ($_, $level, $anchor, $title) {
+                return (object) [
+                    'title' => $title,
+                    'anchor' => "#$anchor",
+                    'level' => intval($level),
+                ];
+            },
+            ...$matches
+        );
+    }
+
+    private function createAncestorLandmark($previousLandmark, $header) {
+        while ($previousLandmark->level !== $header->level) {
+            $previousLandmark = $previousLandmark->parent;
+        }
+
+        $landmark = (object) [
+            'level' => $header->level,
+            'title' => $header->title,
+            'anchor' => $header->anchor,
+            'parent' => $previousLandmark->parent,
+            'children' => [],
+        ];
+
+        return tap($landmark, function ($landmark) use ($previousLandmark) {
+            $previousLandmark->parent->children[] = $landmark;
+        });
+    }
+
+    private function createDescendantLandmark($previousLandmark, $header) {
+        while ($previousLandmark->level !== $header->level - 1) {
+            $childLandmark = (object) [
+                'level' => $previousLandmark->level + 1,
+                'parent' => $previousLandmark,
+                'children' => [],
+            ];
+
+            $previousLandmark->children[] = $childLandmark;
+            $previousLandmark = $childLandmark;
+        }
+
+        $landmark = (object) [
+            'level' => $header->level,
+            'title' => $header->title,
+            'anchor' => $header->anchor,
+            'parent' => $previousLandmark,
+            'children' => [],
+        ];
+
+        return tap($landmark, function ($landmark) use ($previousLandmark) {
+            $previousLandmark->children[] = $landmark;
+        });
+    }
+
+    private function cleanLandmarkTree($landmark) {
+        while ($landmark->level !== 1) {
+            $landmark = $landmark->parent;
+        }
+
+        $this->cleanLandmark($landmark);
+
+        return $landmark;
+    }
+
+    private function cleanLandmark(&$landmark) {
+        unset($landmark->parent);
+
+        if (empty($landmark->children))
+            unset($landmark->children);
+        else
+            array_map([$this, 'cleanLandmark'], $landmark->children);
     }
 }

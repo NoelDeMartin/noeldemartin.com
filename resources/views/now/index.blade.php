@@ -62,15 +62,15 @@
 
     <h2>Activity</h2>
 
-    <ul class="list-none ml-0 pl-0">
+    @foreach ($events as $year => $yearEvents)
 
-        @foreach ($events as $year => $yearEvents)
+        <details {{ $loop->first ? 'open' : '' }} class="mb-4">
 
-            <details {{ $loop->first ? 'open' : '' }} class="mb-4">
+            <summary class="mb-2 hover:cursor-pointer hover:text-blue-darkest focus:text-blue-darkest">
+                {{ $year }}
+            </summary>
 
-                <summary class="mb-2 hover:cursor-pointer hover:text-blue-darkest focus:text-blue-darkest">
-                    {{ $year }}
-                </summary>
+            <ul class="list-none ml-0 p-0">
 
                 @foreach ($yearEvents as $event)
 
@@ -83,9 +83,10 @@
 
                 @endforeach
 
-            </details>
+            </ul>
 
-        @endforeach
+        </details>
 
-    </ul>
+    @endforeach
+
 @endsection

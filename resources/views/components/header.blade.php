@@ -62,6 +62,7 @@
     <nav
         data-target="chamaleon.skin navigation.nav"
         style="background-color: hsl({{ $hue }}, 40%, 80%)"
+        aria-label="Site navigation"
     >
 
         <div class="wrapper">

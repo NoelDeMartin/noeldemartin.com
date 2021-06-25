@@ -61,6 +61,9 @@ module.exports = {
             height: {
                 '16/10': '160%',
             },
+            padding: {
+                '.5': '.125rem',
+            },
             translate: {
                 'm15/100': '-15%',
             },
@@ -75,9 +78,11 @@ module.exports = {
         },
     },
     variants: {
+        backgroundColor: ['responsive', 'hover', 'focus', 'group-hover'],
         borderColor: ['responsive', 'hover', 'focus', 'group-hover'],
         borderWidth: ['responsive', 'focus'],
         cursor: ['responsive', 'hover'],
+        display: ['responsive', 'group-hover'],
         margin: ['responsive', 'focus'],
         padding: ['responsive', 'focus'],
         position: ['responsive', 'focus'],

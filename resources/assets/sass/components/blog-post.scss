@@ -1,0 +1,25 @@
+.blog-post {
+    --progress: 0%;
+
+    .blog-post--toc-button {
+        right: calc(max(0px, (100vw - theme('maxWidth.content')) / 2));
+    }
+
+    .blog-post--toc-menu {
+
+        a {
+            @apply no-underline;
+
+            &:hover, &:focus, &.current {
+                @apply underline;
+            }
+
+        }
+
+    }
+
+    .blog-post--progress {
+        background-image: conic-gradient(theme('colors.blue-darker') var(--progress), transparent 0);
+    }
+
+}

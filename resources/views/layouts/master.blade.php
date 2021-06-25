@@ -1,18 +1,19 @@
 @extends('layouts.base')
 
 @push('head')
-
     <meta name="pocket-site-verification" content="a7da21e29497dd96109d3eaf4d2529">
-
     <meta name="turbolinks-cache-control" content="no-preview">
 
+    <style>
+        html { --default-display: none; }
+        svg { display: var(--default-display); }
+        header img { display: var(--default-display); }
+    </style>
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-
     <link rel="stylesheet" href="{{ mix('css/main.css') }}">
 
     <script src="{{ mix('js/main.js') }}" async></script>
-
 @endpush
 
 @section('body-class', 'bg-white')
@@ -25,7 +26,7 @@
 
     @include('components.header', [
         'collapsed' => $minimal ?? false,
-        'startCollapsed' => request()->header('X-Header-Collapsed') === 'true',
+        'startCollapsed' => (request()->header('X-Header-Collapsed') ?? (($minimal ?? false) ? 'true' : 'false')) === 'true',
     ])
 
     <main id="main" class="relative max-w-content mx-auto p-4 pt-8 md:px-2">
