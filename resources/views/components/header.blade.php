@@ -15,7 +15,7 @@
             'text'  => 'Blog'
         ],
         (object) [
-            'route' => 'projects',
+            'route' => 'projects.index',
             'icon'  => 'projects',
             'text'  => 'Projects'
         ],

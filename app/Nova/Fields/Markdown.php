@@ -34,8 +34,6 @@ class Markdown extends NovaMarkdown
 
     private function convertMarkdownToHtml($markdown)
     {
-        $parsedown = new Parsedown;
-
-        return $parsedown->text($markdown);
+        return Parsedown::render($markdown);
     }
 }

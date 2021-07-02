@@ -49,6 +49,24 @@ return [
         'description' => 'My projects.',
     ],
 
+    'projects.geemba' => [
+        'title' => 'Geemba'
+    ],
+
+    'schema:projects.geemba' => [
+        'name' => 'Geemba',
+        'description' => 'Geemba was a startup active from 2016 to 2018 that aimed to make fitness more accessible by granting access to sport facilities charging by the minute.',
+    ],
+
+    'projects.beastmasters' => [
+        'title' => 'BeastMasters: Twin Soul Legends'
+    ],
+
+    'schema:projects.beastmasters' => [
+        'name' => 'BeastMasters: Twin Soul Legends',
+        'description' => 'BeastMasters: Twin Soul Legends was a strategy card game that launched in 2015 but is no longer available.',
+    ],
+
     'experiments' => [
         'title' => 'Experiments',
     ],

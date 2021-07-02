@@ -8,6 +8,10 @@ use Parsedown as BaseParsedown;
 class Parsedown extends BaseParsedown
 {
 
+    public static function render($text) {
+        return (new static)->text($text);
+    }
+
     protected function inlineLink($excerpt)
     {
         $result = parent::inlineLink($excerpt);

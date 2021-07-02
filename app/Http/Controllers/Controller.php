@@ -10,4 +10,9 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    protected $discussionUrls = [
+        'https://twitter.com/NoelDeMartin',
+        'https://noeldemartin.social/@noeldemartin',
+    ];
 }

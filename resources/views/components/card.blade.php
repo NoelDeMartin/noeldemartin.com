@@ -1,15 +1,17 @@
+@php($target = $target ?? '_blank')
+
 <li>
     <a
         href="{{ $url }}"
         aria-label="{{ $title }}"
-        target="_blank"
+        {{ $target !== '_self' ? "target=\"$target\"" : '' }}
         class="
             relative flex h-full p-4 rounded-lg shadow-md bg-grey-lightest border border-grey-light no-underline
-            transform transition-all duration-300 hover:scale-105 hover:shadow-lg
+            transform transition-all duration-300 hover:scale-105 hover:shadow-lg focus:scale-105 focus:shadow-lg
         "
     >
         @if(isset($icon) || isset($image))
-            <div class="flex-shrink-0 w-20 h-20 mr-2">
+            <div class="flex-shrink-0 w-20 h-20 {{ $imageWrapperClasses ?? 'mr-2' }}">
                 @isset($icon)
                     @icon($icon, 'w-full h-full ' . ($iconClasses ?? ''))
                 @endisset

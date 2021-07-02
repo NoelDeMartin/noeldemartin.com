@@ -7,7 +7,7 @@
 
         <aside class="alert mb-4" role="alert">
             This page is archived! You may want to check out the
-            <a href="{{ route('projects') }}">projects</a> page instead.
+            <a href="{{ route('projects.index') }}">projects</a> page instead.
         </aside>
 
         <p>

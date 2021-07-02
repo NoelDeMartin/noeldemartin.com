@@ -46,7 +46,10 @@ Route::get('recipes/{slug}', 'RecipesController@show')->name('recipes.show');
 
 Route::get('site', 'HomeController@site')->name('site');
 
-Route::get('projects', 'HomeController@projects')->name('projects');
+Route::prefix('projects')->group(function () {
+    Route::get('/', 'ProjectsController@index')->name('projects.index');
+    Route::get('{slug}', 'ProjectsController@show')->name('projects.show');
+});
 
 Route::get('health', 'HomeController@health')->name('health');
 

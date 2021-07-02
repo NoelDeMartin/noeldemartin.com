@@ -16,6 +16,16 @@
         </url>
     @endforeach
     <url>
+        <loc>{{ route('projects.index') }}</loc>
+        <priority>1.0</priority>
+    </url>
+    @foreach($projects as $project)
+        <url>
+            <loc>{{ route('projects.show', $project) }}</loc>
+            <priority>0.8</priority>
+        </url>
+    @endforeach
+    <url>
         <loc>{{ route('experiments') }}</loc>
         <priority>0.8</priority>
     </url>

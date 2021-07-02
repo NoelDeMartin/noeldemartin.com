@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Support\Parsedown;
 use Illuminate\Support\Str;
 use NoelDeMartin\SemanticSEO\Support\Facades\SemanticSEO;
-use Parsedown;
 
 class RecipesController extends Controller
 {
@@ -16,7 +16,6 @@ class RecipesController extends Controller
         if (!file_exists($filepath))
             abort(404);
 
-        $parsedown = new Parsedown;
         $markdown = file_get_contents($filepath);
         $title = $this->getRecipeTitle($markdown);
 
@@ -30,7 +29,7 @@ class RecipesController extends Controller
         SemanticSEO::title($title);
 
         return view('recipes.show', [
-            'recipeHtml' => $parsedown->text($markdown),
+            'recipeHtml' => Parsedown::render($markdown),
         ]);
     }
 

@@ -63,6 +63,7 @@ module.exports = {
             },
             padding: {
                 '.5': '.125rem',
+                full: '100%',
             },
             translate: {
                 'm15/100': '-15%',
@@ -74,6 +75,9 @@ module.exports = {
             maxWidth: {
                 'readable': '640px',
                 'content': '900px',
+            },
+            width: {
+                '112': '28rem',
             },
         },
     },

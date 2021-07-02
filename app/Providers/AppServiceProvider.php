@@ -33,10 +33,11 @@ class AppServiceProvider extends ServiceProvider
 
     protected function bootBlade()
     {
+        Blade::component('components.card', 'card');
+        Blade::component('components.carousel', 'carousel');
         Blade::component('components.comment', 'comment');
         Blade::component('components.content-card', 'contentcard');
         Blade::component('components.experiment', 'experiment');
-        Blade::component('components.project', 'project');
         Blade::component('components.table-of-contents', 'tableofcontents');
 
         Blade::directive('class', function ($args) {

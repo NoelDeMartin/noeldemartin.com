@@ -27,11 +27,6 @@ use NoelDeMartin\SemanticSEO\Types\CollectionPage;
 
 class HomeController extends Controller
 {
-    private $discussionUrls = [
-        'https://twitter.com/NoelDeMartin',
-        'https://noeldemartin.social/@noeldemartin',
-    ];
-
     public function index()
     {
         SemanticSEO::meta(trans('seo.home'));
@@ -124,24 +119,6 @@ class HomeController extends Controller
             ->header('Content-Type', 'application/atom+xml');
     }
 
-    public function projects()
-        {
-        SemanticSEO::meta(trans('seo.projects'));
-
-        SemanticSEO::is(WebPage::class)
-            ->setAttributes(trans('seo.schema:projects'))
-            ->url(route('projects'))
-            ->image(Logo::class)
-            ->discussionUrl($this->discussionUrls)
-            ->inLanguage('English')
-            ->about((new WebPage)->url(route('home')))
-            ->author(NoelDeMartin::class)
-            ->creator(NoelDeMartin::class)
-            ->publisher(NoelDeMartinOrganization::class);
-
-        return view('projects');
-    }
-
     public function experiments()
     {
         SemanticSEO::meta(trans('seo.experiments'));
@@ -228,10 +205,12 @@ class HomeController extends Controller
 
         $tasks = Task::with('comments')->get();
 
+        $projects = ['beastmasters', 'geemba'];
+
         $lastModificationDate = $this->getSiteLastModificationDate($posts, $tasks);
 
         return response()
-            ->view('sitemap', compact('posts', 'tasks', 'lastModificationDate'))
+            ->view('sitemap', compact('posts', 'tasks', 'projects', 'lastModificationDate'))
             ->header('Content-Type', 'application/xml');
     }
 

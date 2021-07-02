@@ -16,6 +16,7 @@ mix
                     purgecss({
                         content: [
                             './resources/views/**/*.blade.php',
+                            './storage/projects/**/*.md',
                             './storage/recipes/**/*.md',
                             './resources/assets/sass/**/*.scss',
                         ],
