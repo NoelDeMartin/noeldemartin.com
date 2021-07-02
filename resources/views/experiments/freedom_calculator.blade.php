@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @push('head')
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url('external/css/bootstrap.min.css') }}">
     <style type="text/css">
         html {
             background: #CAFCF7;
@@ -113,7 +113,7 @@
 @stop
 
 @push('scripts')
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="{{ url('external/js/jquery-2.1.1.min.js') }}"></script>
     <script>
         (function() {
             var $freedomMessage = freedomDeadline = $('#freedom-message'),
