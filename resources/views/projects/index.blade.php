@@ -198,8 +198,9 @@
                 'platform' => 'Android',
                 'status' => 'ARCHIVED',
                 'statusColor' => 'yellow',
-                'url' => route('projects.show', 'beastmasters'),
-                'target' => '_self',
+                'url' => url('downloads/beastmasters.apk'),
+                // 'url' => route('projects.show', 'beastmasters'),
+                // 'target' => '_self',
             ])
                 Recruit powerful beasts and build your deck in this strategy card game.
             @endcard
@@ -210,8 +211,9 @@
                 'platform' => 'Android | iOS',
                 'status' => 'ARCHIVED',
                 'statusColor' => 'yellow',
-                'url' => route('projects.show', 'geemba'),
-                'target' => '_self',
+                'url' => 'https://web.archive.org/web/20161003075400/http://geemba.com/#why',
+                // 'url' => route('projects.show', 'geemba'),
+                // 'target' => '_self',
             ])
                 Access sport facilities near you and pay only by the minute.
             @endcard
