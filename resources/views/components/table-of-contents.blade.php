@@ -3,7 +3,7 @@
         @isset($landmark->title)
             <li class="mb-1">
                 <a
-                    href="{{ $landmark->anchor }}" style="margin-left: {{ ($landmark->level - 2) * .5 }}rem"
+                    href="{{ $landmark->anchor }}" style="margin-left: {{ ($landmark->level - 2) }}rem"
                     data-action="click->blog-post#toggleTableOfContents"
                 >
                     {!! $landmark->title !!}

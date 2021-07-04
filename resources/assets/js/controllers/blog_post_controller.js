@@ -1,10 +1,11 @@
 import { Controller } from 'stimulus';
 
 export default class extends Controller {
-    static targets = ['tableOfContents'];
+    static targets = ['tableOfContents', 'overlay'];
 
     initialize() {
         this.scrollListener = null;
+        this.tableOfContentsOpen = false;
     }
 
     connect() {
@@ -24,7 +25,24 @@ export default class extends Controller {
     }
 
     toggleTableOfContents() {
+        this.tableOfContentsOpen = !this.tableOfContentsOpen;
         this.tableOfContentsTarget.classList.toggle('-translate-x-full');
+
+        if (this.tableOfContentsOpen) {
+            this.overlayTarget.classList.remove('hidden');
+
+            setTimeout(() => {
+                this.overlayTarget.classList.remove('opacity-0');
+                this.overlayTarget.classList.add('opacity-100');
+            });
+        } else {
+            this.overlayTarget.classList.add('opacity-0');
+            this.overlayTarget.classList.remove('opacity-100');
+
+            setTimeout(() => {
+                this.overlayTarget.classList.add('hidden');
+            }, 300);
+        }
     }
 
     __updateProgress() {

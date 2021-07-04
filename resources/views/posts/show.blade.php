@@ -40,12 +40,24 @@
             <aside
                 data-target="blog-post.tableOfContents"
                 data-turbolinks="false"
-                class="fixed left-0 inset-y-0 overflow-y-auto z-40 bg-white shadow-md px-8 pt-4 transform -translate-x-full transition-transform duration-200"
+                class="
+                    fixed left-0 inset-y-0 overflow-y-auto z-40 bg-white shadow-md px-8 pt-4
+                    transform -translate-x-full transition-transform duration-200
+                    w-screen md:w-auto
+                "
             >
+                <button
+                    type="button"
+                    aria-label="Close"
+                    data-action="click->blog-post#toggleTableOfContents"
+                    class="absolute right-0 top-0 mt-5 mr-4 md:hidden"
+                >
+                    @icon('close', 'w-4 h-4')
+                </button>
                 <nav aria-label="Table of contents" class="blog-post--toc-menu">
                     <a
                         href="#main"
-                        class="font-semibold text-blue-darkest mb-3 block text-lg"
+                        class="font-semibold text-blue-darkest mb-3 block text-lg pr-2 md:pr-0"
                         aria-hidden="true"
                         data-action="click->blog-post#toggleTableOfContents"
                     >
@@ -56,6 +68,12 @@
                     @endtableofcontents
                 </nav>
             </aside>
+
+            <div
+                data-target="blog-post.overlay"
+                class="bg-overlay-dark fixed inset-0 z-10 hidden transition-opacity duration-300 opacity-0"
+                data-action="click->blog-post#toggleTableOfContents"
+            ></div>
 
             <button
                 type="button"
