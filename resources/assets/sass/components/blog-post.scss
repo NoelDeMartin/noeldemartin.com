@@ -1,9 +1,10 @@
 .blog-post {
     --progress: 0%;
 
-    .blog-post--toc-button {
-        right: calc(max(0px, (100vw - theme('maxWidth.content')) / 2));
-    }
+    // @todo this compiles into invalid CSS in production, using inline styles for now
+    // .blog-post--toc-button {
+    //     right: calc(max(0px, (100vw - theme('maxWidth.content')) / 2));
+    // }
 
     .blog-post--toc-menu {
 
