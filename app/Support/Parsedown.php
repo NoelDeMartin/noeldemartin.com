@@ -17,7 +17,9 @@ class Parsedown extends BaseParsedown
         $result = parent::inlineLink($excerpt);
 
         $result['element']['attributes'] = $result['element']['attributes'] ?? [];
-        $result['element']['attributes']['target'] = '_blank';
+
+        if (! Str::startsWith($result['element']['attributes']['href'] ?? '', '#'))
+            $result['element']['attributes']['target'] = '_blank';
 
         return $result;
     }

@@ -19,6 +19,9 @@ class MarkdownFieldTest extends TestCase {
 Would it be nice to create anchors automatically?
 
 ## Yes, it would be nice indeed
+
+[Local link, so no target](#local)
+[Remote link, so target blank](https://duckduckgo.com)
 EOF;
 
         /** @var NovaRequest */
@@ -34,6 +37,8 @@ EOF;
         $this->assertEquals($text, $post->text_markdown);
         $this->assertStringContainsString('<p>Would it be nice to create anchors automatically?</p>', $post->text_html);
         $this->assertStringContainsString('<h2 id="yes-it-would-be-nice-indeed">Yes, it would be nice indeed</h2>', $post->text_html);
+        $this->assertStringContainsString('<a href="#local">Local link, so no target</a>', $post->text_html);
+        $this->assertStringContainsString('<a href="https://duckduckgo.com" target="_blank">Remote link, so target blank</a>', $post->text_html);
     }
 
 }
