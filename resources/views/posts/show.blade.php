@@ -82,7 +82,7 @@
                 data-action="click->blog-post#toggleTableOfContents"
             >
                 <div class="absolute inset-0 bg-grey-light rounded-full hidden group-hover:block"></div>
-                <div class="blog-post--progress absolute inset-0 rounded-full p-1 md:p-.5">
+                <div class="blog-post--progress absolute inset-0 rounded-full p-1 md:p-125rem">
                     <div class="w-full h-full bg-white rounded-full group-hover:bg-grey-light"></div>
                 </div>
 

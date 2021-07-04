@@ -62,7 +62,7 @@ module.exports = {
                 '16/10': '160%',
             },
             padding: {
-                '.5': '.125rem',
+                '125rem': '.125rem',
                 full: '100%',
             },
             translate: {
