@@ -30,6 +30,8 @@ class Task extends Model
         'name', 'slug', 'description_markdown', 'description_html', 'completed_at',
     ];
 
+    private $_landmarks = null;
+
     public function comments()
     {
         return $this->hasMany(TaskComment::class);
@@ -78,7 +80,7 @@ class Task extends Model
 
         TaskComment::unguarded(function () use ($comments) {
             $comments->push(new TaskComment([
-                'created_at' => $this->created_at->copy()->subMillis(1),
+                'created_at' => $this->created_at->copy()->subSeconds(1),
                 'text_html' =>
                     '<p class="flex items-center md:m-0">' .
                         'Task started ' .
@@ -109,6 +111,36 @@ class Task extends Model
         return $this->comments->filter(function ($comment) {
             return $comment->created_at < $this->completed_at;
         });
+    }
+
+    public function getLandmarksAttribute()
+    {
+        if (is_null($this->_landmarks)) {
+            $startDate = $this->created_at->copy()->subSeconds(1);
+
+            $this->_landmarks = collect($this->display_comments)
+                ->values()
+                ->map(function ($comment, $index) use ($startDate) {
+                    $title = $comment->created_at->display('datetime-short');
+
+                    if ($comment->created_at->eq($startDate)) {
+                        $icon = blade_icon('task-started', 'w-4 h-4 mr-2');
+                    } else if ($comment->created_at->eq($this->completed_at)) {
+                        $icon = blade_icon('task-completed', 'w-4 h-4 mr-2');
+                    } else {
+                        $icon = blade_icon('timer', 'w-4 h-4 mr-2 text-blue-darker fill-current');
+                    }
+
+                    return (object) [
+                        'level' => 2,
+                        'title' => "<div class=\"flex\">$icon <span>$title</span></div>",
+                        'anchor' => '#comment-' . ($index + 1),
+                    ];
+                })
+                ->toArray();
+        }
+
+        return $this->_landmarks;
     }
 
     public function newQuery()

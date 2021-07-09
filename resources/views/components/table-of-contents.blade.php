@@ -4,7 +4,7 @@
             <li class="mb-1">
                 <a
                     href="{{ $landmark->anchor }}" style="margin-left: {{ ($landmark->level - 2) }}rem"
-                    data-action="click->blog-post#toggleTableOfContents"
+                    data-action="click->table-of-contents#toggleMenu"
                 >
                     {!! $landmark->title !!}
                 </a>

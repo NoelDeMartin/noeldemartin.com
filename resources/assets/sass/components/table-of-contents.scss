@@ -1,12 +1,12 @@
-.blog-post {
+.table-of-contents {
     --progress: 0%;
 
     // @todo this compiles into invalid CSS in production, using inline styles for now
-    // .blog-post--toc-button {
+    // .table-of-contents--button {
     //     right: calc(max(0px, (100vw - theme('maxWidth.content')) / 2));
     // }
 
-    .blog-post--toc-menu {
+    .table-of-contents--menu {
 
         a {
             @apply no-underline;
@@ -19,7 +19,7 @@
 
     }
 
-    .blog-post--progress {
+    .table-of-contents--progress {
         background-image: conic-gradient(theme('colors.blue-darker') var(--progress), transparent 0);
     }
 
