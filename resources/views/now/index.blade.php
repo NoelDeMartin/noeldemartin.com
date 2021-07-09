@@ -60,7 +60,7 @@
         <hr class="w-full mt-4 bg-grey-lighter hidden md:block">
     @endif
 
-    <h2>Activity</h2>
+    <h2>Past activity</h2>
 
     @foreach ($events as $year => $yearEvents)
 
