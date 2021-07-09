@@ -17,10 +17,19 @@ async function loadPrism() {
     await import(/* webpackChunkName: "code-highlighter" */ 'prismjs/components/prism-php');
     await import(/* webpackChunkName: "code-highlighter" */ 'prismjs/components/prism-scss');
     await import(/* webpackChunkName: "code-highlighter" */ 'prismjs/components/prism-markup-templating');
+    await import(/* webpackChunkName: "code-highlighter" */ 'prismjs/components/prism-turtle');
 }
 
 async function highlightCodeElement(element, language) {
     await loadPrism();
+
+    if (
+        element.parentElement &&
+        element.parentElement.tagName &&
+        element.parentElement.tagName.toLowerCase() === 'pre'
+    ) {
+        element.parentElement.classList.add(`language-${language}`);
+    }
 
     element.innerHTML = Prism.highlight(element.innerText, Prism.languages[language], language);
 }

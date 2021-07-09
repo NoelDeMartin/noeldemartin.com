@@ -28,7 +28,7 @@
         @endif
     </time>
 
-    <div class="ml-2 {{ $short ? '' : 'md:ml-4' }}">
+    <div class="ml-2 {{ $short ? '' : 'md:ml-4' }} comment">
         {!! $slot !!}
     </div>
 </{{ $tag }}>

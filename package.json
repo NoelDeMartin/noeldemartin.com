@@ -27,7 +27,7 @@
     "eslint-plugin-standard": "^3.0.1",
     "eslint-plugin-vue": "^4.3.0",
     "laravel-mix": "^5.0.0",
-    "prismjs": "^1.17.1",
+    "prismjs": "^1.24.1",
     "sass": "^1.23.6",
     "sass-loader": "^8.0.0",
     "style-loader": "^0.20.3",

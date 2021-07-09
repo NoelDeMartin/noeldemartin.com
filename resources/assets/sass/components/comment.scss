@@ -1,0 +1,4 @@
+.comment pre {
+    // screen width - p-4 - ml-2
+    max-width: calc(100vw - 2 * theme('spacing.4') - theme('spacing.2'));
+}
