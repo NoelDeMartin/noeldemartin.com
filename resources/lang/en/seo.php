@@ -64,7 +64,7 @@ return [
 
     'schema:projects.beastmasters' => [
         'name' => 'BeastMasters: Twin Soul Legends',
-        'description' => 'BeastMasters: Twin Soul Legends was a strategy card game that launched in 2015 but is no longer available.',
+        'description' => 'BeastMasters: Twin Soul Legends is a strategy card game that launched in 2015 but is no longer available.',
     ],
 
     'experiments' => [
