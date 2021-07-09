@@ -127,10 +127,10 @@ class Task extends Model
                         $icon = blade_icon('task-started', 'w-4 h-4 mr-2');
                     } else if ($this->isCompleted() && $comment->created_at->eq($this->completed_at)) {
                         $icon = blade_icon('task-completed', 'w-4 h-4 mr-2');
-                    } else if ($this->isCompleted() && $comment->created_at->lt($this->completed_at)) {
-                        $icon = blade_icon('timer', 'w-4 h-4 mr-2 text-blue-darker fill-current');
-                    } else {
+                    } else if ($this->isCompleted() && $comment->created_at->gt($this->completed_at)) {
                         $icon = blade_icon('checkmark', 'w-4 h-4 mr-2 text-jade-darker fill-current');
+                    } else {
+                        $icon = blade_icon('timer', 'w-4 h-4 mr-2 text-blue-darker fill-current');
                     }
 
                     return (object) [
