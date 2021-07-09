@@ -79,7 +79,7 @@ header nav {
     // Mobile
     @media (max-width: theme('screens.md')) {
         top: theme('spacing.16');
-        transition: right 1s;
+        transition: right 300ms;
 
         @apply fixed bottom-0;
 
