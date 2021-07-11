@@ -90,31 +90,35 @@
             <div class="max-w-readable">
 
                 <p class="mt-0">
-                    I have been working in the software industry since 2011. I enjoy programming
-                    in and of itself, but I've always cared about the impact of my code. That's
-                    what led me to entrepreneurship. For the most part of my career I've been
-                    involved with startups and bootstrapped projects. Although I am now migrating
-                    into mission-driven organizations.
+                    I have been working in the software industry since 2011.
+                    I enjoy programming in and of itself, but I've always cared about the impact
+                    of my code. That's what led me to entrepreneurship. I was involved with startups and
+                    bootstrapped projects for some years, but I've recently migrated into
+                    <strong class="font-medium">mission-driven</strong> organizations and I'm working
+                    on my own projects on the side.
                 </p>
 
                 <p>
-                    I don't like showcasing my skills, because experience and first principles are
-                    what's really important. But skills have an impact on our daily lives and shape
+                    I don't like talking about skills, because I think that experience and first principles
+                    are what's really important. But skills have an impact on our daily lives and shape
                     our way of thinking, so they are worth mentioning. I've worked as a
-                    <strong class="font-medium">Fullstack developer</strong> for mobile and web
+                    <strong class="font-medium">fullstack developer</strong> for mobile and web
                     applications, and I love interacting with UI and UX designers. My frameworks
                     of choice are
                     <a href="https://laravel.com/" target="_blank"><strong class="font-medium">Laravel</strong></a>
                     for the backend and
                     <a href="https://vuejs.org/" target="_blank"><strong class="font-medium">Vue</strong></a>
-                    for the frontend. For mobile I prefer building PWAs or hybrid apps.
-                    Whenever possible, I rely on The Web and open technologies.
+                    for the frontend (although I don't do much backend these days because I'm building
+                    <a href="https://solidproject.org/" target="_blank">Solid apps</a>). For mobile I prefer
+                    building PWAs or hybrid apps. Whenever possible, I rely on The Web and open technologies.
                 </p>
 
-                <p class="mb-0">
-                    If you want to learn more about my skills and background check out my
-                    <a href="/cv.pdf">CV</a>.
+                <p>
+                    I recently wrote a summary of my career in my blog: <a href="/blog/10-years-as-a-software-developer">
+                    10 Years as a Software Developer</a>.
                 </p>
+
+                <p class="mb-0">Or, if you prefer, you can just read <a href="/cv.pdf">my CV</a>.</p>
 
             </div>
 
