@@ -8,4 +8,4 @@ We also provided a service to publish dedicated applications for each gym. Peopl
 
 The service has been discontinued, but you can look at the PDF and screenshots below to get an idea of what it was like.
 
-<a href="/downloads/geemba-assistant.pdf" target="_blank" class="mx-auto w-64 h-10 flex items-center justify-center rounded no-underline border-2 font-semibold tracking-wider opacity-75 hover:bg-overlay hover:opacity-100 focus:bg-overlay focus:opacity-100" style="border-color:#00168e;color:#00168e"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="w-5 h-5" aria-hidden="true"><path d="M4 18h12V6h-4V2H4v16zm-2 1V0h12l4 4v16H2v-1z" fill="#00168e"/></svg><span class="ml-2">Download overview</span></a>
+<a href="/downloads/geemba-assistant.pdf" target="_blank" class="button button--geemba w-64"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="w-5 h-5" aria-hidden="true"><path d="M4 18h12V6h-4V2H4v16zm-2 1V0h12l4 4v16H2v-1z" /></svg><span>Download overview</span></a>

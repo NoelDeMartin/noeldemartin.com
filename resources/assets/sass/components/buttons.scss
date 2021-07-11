@@ -1,0 +1,34 @@
+.button {
+    @apply mx-auto h-10 flex items-center justify-center rounded no-underline font-semibold tracking-wider;
+
+    svg {
+        @apply fill-current;
+    }
+
+    span {
+        @apply ml-2;
+    }
+
+}
+
+.button--android {
+    color: #3dda84 !important;
+    background: #073042;
+
+    &:hover,
+    &:focus {
+        box-shadow: rgb(255, 255, 255) 0px 0px 0px 0px, rgb(61, 218, 132) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+    }
+
+}
+
+.button--geemba {
+    color: white !important;
+    background: #00168e;
+
+    &:hover,
+    &:focus {
+        box-shadow: rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 22, 142, .5) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+    }
+
+}

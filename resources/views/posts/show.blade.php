@@ -78,7 +78,7 @@
 
                 <button
                     type="button"
-                    class="table-of-contents--button group fixed top-0 mr-4 mt-4 w-12 h-12 flex items-center justify-center md:mt-16 md:w-8 md:h-8"
+                    class="table-of-contents--button group fixed top-0 mr-4 mt-4 w-12 h-12 flex items-center justify-center md:-mr-1 md:mt-16 md:w-8 md:h-8"
                     style="right: calc(max(0px, (100vw - 900px) / 2))"
                     data-action="click->table-of-contents#toggleMenu"
                 >
