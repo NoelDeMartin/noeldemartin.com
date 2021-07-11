@@ -135,7 +135,7 @@ class Task extends Model
 
                     return (object) [
                         'level' => 2,
-                        'title' => "<div class=\"flex\">$icon <span>$title</span></div>",
+                        'title' => "<div class=\"flex font-mono\">$icon <span>$title</span></div>",
                         'anchor' => '#comment-' . ($index + 1),
                     ];
                 })
