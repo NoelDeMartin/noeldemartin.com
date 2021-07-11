@@ -205,8 +205,7 @@ class HomeController extends Controller
 
         $tasks = Task::with('comments')->get();
 
-        $projects = [];
-        // $projects = ['beastmasters', 'geemba'];
+        $projects = ['beastmasters', 'geemba'];
 
         $lastModificationDate = $this->getSiteLastModificationDate($posts, $tasks);
 
