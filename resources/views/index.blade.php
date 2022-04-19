@@ -142,6 +142,12 @@
                     all the way to Folk.
                 </p>
 
+                <p>
+                    I also enjoy cooking (and eating, of course!). I specially like spicy food and craft
+                    beer, and I recently started growing plants at home. Eventually it would be nice to
+                    have a small vegetable garden, but for now I'm just learning to keep plants alive.
+                </p>
+
                 <p class="mb-0">
                     On occasion I like going for a hike, and I love traveling and learning about other
                     cultures. You may like to know that my two favorite novels are
