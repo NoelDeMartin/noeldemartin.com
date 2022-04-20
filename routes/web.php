@@ -38,6 +38,7 @@ Route::prefix('experiments')->group(function () {
 });
 
 Route::prefix('tasks')->group(function () {
+    Route::redirect('attending-laracon-us', 'attending-laracon-eu');
     Route::get('/', 'TasksController@index')->name('tasks.index');
     Route::get('{slug}', 'TasksController@show')->name('tasks.show');
 });
