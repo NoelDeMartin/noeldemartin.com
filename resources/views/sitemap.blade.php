@@ -27,19 +27,19 @@
     @endforeach
     <url>
         <loc>{{ route('experiments') }}</loc>
-        <priority>0.8</priority>
+        <priority>0.4</priority>
     </url>
     <url>
         <loc>{{ route('experiments.synonymizer') }}</loc>
-        <priority>0.6</priority>
+        <priority>0.2</priority>
     </url>
     <url>
         <loc>{{ route('experiments.online-meeting') }}</loc>
-        <priority>0.6</priority>
+        <priority>0.2</priority>
     </url>
     <url>
         <loc>{{ route('experiments.freedom-calculator') }}</loc>
-        <priority>0.6</priority>
+        <priority>0.2</priority>
     </url>
     <url>
         <loc>{{ route('now') }}</loc>
