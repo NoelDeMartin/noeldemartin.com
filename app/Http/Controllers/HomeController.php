@@ -196,6 +196,24 @@ class HomeController extends Controller
         return view('site');
     }
 
+    public function moodlenet()
+    {
+        SemanticSEO::meta(trans('seo.moodlenet'));
+
+        SemanticSEO::is(WebPage::class)
+            ->setAttributes(trans('seo.schema:moodlenet'))
+            ->url(route('moodlenet'))
+            ->image(Logo::class)
+            ->discussionUrl($this->discussionUrls)
+            ->inLanguage('English')
+            ->about((new WebPage)->url(route('home')))
+            ->author(NoelDeMartin::class)
+            ->creator(NoelDeMartin::class)
+            ->publisher(NoelDeMartinOrganization::class);
+
+        return view('moodlenet');
+    }
+
     public function sitemap()
     {
         $posts =

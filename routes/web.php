@@ -46,6 +46,7 @@ Route::prefix('tasks')->group(function () {
 Route::get('recipes/{slug}', 'RecipesController@show')->name('recipes.show');
 
 Route::get('site', 'HomeController@site')->name('site');
+Route::get('moodlenet', 'HomeController@moodlenet')->name('moodlenet');
 
 Route::prefix('projects')->group(function () {
     Route::get('/', 'ProjectsController@index')->name('projects.index');

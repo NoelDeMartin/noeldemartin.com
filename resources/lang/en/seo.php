@@ -136,6 +136,15 @@ return [
         'description' => 'Description of technologies used at noeldemartin.com',
     ],
 
+    'moodlenet' => [
+        'title' => 'About my MoodleNet instance',
+    ],
+
+    'schema:moodlenet' => [
+        'name' => 'About my MoodleNet instance',
+        'description' => 'Current status of my MoodleNet instance',
+    ],
+
     'tasks' => [
         'title' => 'Tasks',
     ],
