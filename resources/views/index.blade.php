@@ -58,11 +58,13 @@
                     <li class="my-1 w-full md:w-1/2"><strong class="font-medium">Autonomy</strong></li>
                     <li class="my-1 w-full md:w-1/2"><strong class="font-medium">Awareness</strong></li>
                     <li class="my-1 w-full md:w-1/2"><strong class="font-medium">Continuous improvement</strong></li>
+                    <li class="my-1 w-full md:w-1/2"><strong class="font-medium">Creativity</strong></li>
                     <li class="my-1 w-full md:w-1/2"><strong class="font-medium">Education</strong></li>
+                    <li class="my-1 w-full md:w-1/2"><strong class="font-medium">Joy</strong></li>
                     <li class="my-1 w-full md:w-1/2"><strong class="font-medium">Openness</strong></li>
                     <li class="my-1 w-full md:w-1/2"><strong class="font-medium">Privacy</strong></li>
-                    <li class="my-1 w-full md:w-1/2"><strong class="font-medium">Quality over quantity</strong></li>
-                    <li class="my-1 w-full md:w-1/2"><strong class="font-medium">Self-expression and creativity</strong></li>
+                    <li class="my-1 w-full md:w-1/2"><strong class="font-medium">Quality > Quantity</strong></li>
+                    <li class="my-1 w-full md:w-1/2"><strong class="font-medium">Simplicity > Complexity</strong></li>
                     <li class="my-1 w-full md:w-1/2 md:mb-0"><strong class="font-medium">Sustainability</strong></li>
                     <li class="my-1 w-full md:w-1/2 md:mb-0"><strong class="font-medium">Work-life balance</strong></li>
                 </ul>
