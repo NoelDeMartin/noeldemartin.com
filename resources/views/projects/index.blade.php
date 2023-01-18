@@ -7,6 +7,17 @@
         <h2 class="mt-0 font-bold">Apps</h2>
         <ul class="grid grid-cols-1 gap-4 list-none ml-0 pl-0 md:grid-cols-2">
             @card([
+                'title' => 'Umai',
+                'icon' => 'umai',
+                'iconClasses' => 'px-1',
+                'status' => 'LIVE',
+                'platform' => 'pwa',
+                'url' => 'https://umai.noeldemartin.com',
+            ])
+                Manage and share all your precious recipes
+            @endcard
+
+            @card([
                 'title' => 'Media Kraken',
                 'icon' => 'media-kraken',
                 'status' => 'LIVE',
