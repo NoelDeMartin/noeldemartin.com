@@ -85,7 +85,7 @@
             @card([
                 'title' => 'Soukai',
                 'icon' => 'soukai',
-                'status' => 'v0.4',
+                'status' => 'v0.5',
                 'url' => 'https://soukai.js.org',
             ])
                 Active Record library for non-relational databases, written in JavaScript.
@@ -94,7 +94,7 @@
             @card([
                 'title' => 'Soukai Solid',
                 'icon' => 'soukai-solid',
-                'status' => 'v0.4',
+                'status' => 'v0.5',
                 'url' => 'https://github.com/NoelDeMartin/soukai-solid',
             ])
                 Soukai engine to store data in a Solid POD.
