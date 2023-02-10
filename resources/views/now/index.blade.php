@@ -27,8 +27,9 @@
     </div>
 
     <p class="mt-2 max-w-readable">
-        I am currently working at <a href="https://moodle.com/" target="_blank">Moodle</a>
-        4 days a week and doing side projects the rest of the time. I practice
+        I am currently based in <a href="https://en.wikipedia.org/wiki/Barcelona" target="_blank">Barcelona</a>, working
+        at <a href="https://moodle.com/" target="_blank">Moodle</a>
+        4 days a week, and doing side projects the rest of the time. I practice
         <a href="{{ url('blog/open-productivity') }}">Open Productivity</a>, and here
         you can see what I'm up to these days:
     </p>
