@@ -10,8 +10,8 @@
         </span>
 
         <p class="text-xl">
-            My name is Noel, I am a developer and entrepreneur who loves to learn,
-            solve problems and build products that make an impact.
+            My name is Noel. I am a developer and entrepreneur who loves to learn,
+            solve problems, and build products that make an impact.
         </p>
 
         <p class="text-xl">
@@ -110,8 +110,8 @@
                     <a href="https://laravel.com/" target="_blank"><strong class="font-medium">Laravel</strong></a>
                     for the backend and
                     <a href="https://vuejs.org/" target="_blank"><strong class="font-medium">Vue</strong></a>
-                    for the frontend (although I don't do much backend these days because I'm building
-                    <a href="https://solidproject.org/" target="_blank">Solid apps</a>). For mobile I prefer
+                    for the frontend (although I don't do much backend these days because <a href="/fosdem" target="_blank">
+                    I'm building Solid Apps</a>). For mobile I prefer
                     building PWAs or hybrid apps. Whenever possible, I rely on The Web and open technologies.
                 </p>
 
@@ -120,7 +120,7 @@
                     10 Years as a Software Developer</a>.
                 </p>
 
-                <p class="mb-0">Or, if you prefer, you can just read <a href="/cv.pdf">my CV</a>.</p>
+                <p class="mb-0">Or, if you prefer, you can just read <a href="/cv.pdf" target="_blank">my CV</a>.</p>
 
             </div>
 

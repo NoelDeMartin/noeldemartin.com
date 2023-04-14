@@ -178,6 +178,24 @@ class HomeController extends Controller
             ->header('Content-Type', 'application/atom+xml');
     }
 
+    public function talks()
+    {
+        SemanticSEO::meta(trans('seo.talks'));
+
+        SemanticSEO::is(WebPage::class)
+            ->setAttributes(trans('seo.schema:talks'))
+            ->url(route('talks'))
+            ->image(Logo::class)
+            ->discussionUrl($this->discussionUrls)
+            ->inLanguage('English')
+            ->about(NoelDeMartin::class)
+            ->author(NoelDeMartin::class)
+            ->creator(NoelDeMartin::class)
+            ->publisher(NoelDeMartinOrganization::class);
+
+        return view('talks');
+    }
+
     public function site()
     {
         SemanticSEO::meta(trans('seo.site'));

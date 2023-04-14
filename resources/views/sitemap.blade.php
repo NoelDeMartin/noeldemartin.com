@@ -26,6 +26,10 @@
         </url>
     @endforeach
     <url>
+        <loc>{{ route('talks') }}</loc>
+        <priority>0.6</priority>
+    </url>
+    <url>
         <loc>{{ route('experiments') }}</loc>
         <priority>0.4</priority>
     </url>

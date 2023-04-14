@@ -2,7 +2,14 @@
 
 @section('content')
     <article class="mb-8">
-        <h1 class="sr-only">My Projects</h1>
+        <h1>Projects</h1>
+
+        <p>
+            In this page, you can find what I've been working on throughout my career. This only includes personal projects though,
+            if you're curious about my professional experience you can look at <a href="/cv.pdf" target="_blank">my CV</a>.
+        </p>
+
+        <p>I've also given <a href="{{ route('talks') }}">some talks</a> you may want to check out.</p>
 
         <h2 class="mt-0 font-bold">Apps</h2>
         <ul class="grid grid-cols-1 gap-4 list-none ml-0 pl-0 md:grid-cols-2">
@@ -140,8 +147,8 @@
                 'title' => 'Metal',
                 'icon' => 'docker',
                 'iconClasses' => 'px-1',
-                'status' => 'WIP',
-                'statusColor' => 'blue',
+                'status' => 'EXPERIMENTAL',
+                'statusColor' => 'yellow',
                 'url' => 'https://github.com/NoelDeMartin/metal',
             ])
                 Docker wrapper that makes it a breeze to set up your development environment.
@@ -149,8 +156,8 @@
 
             @card([
                 'title' => 'Rireki',
-                'status' => 'WIP',
-                'statusColor' => 'blue',
+                'status' => 'EXPERIMENTAL',
+                'statusColor' => 'yellow',
                 'url' => 'https://github.com/NoelDeMartin/rireki',
             ])
                 CLI application to schedule backups, supports uploads to AWS and DigitalOcean.
@@ -218,7 +225,7 @@
             @card([
                 'title' => 'Geemba',
                 'image' => '/img/logos/geemba.png',
-                'platform' => 'Android | iOS',
+                'platform' => 'Android & iOS',
                 'status' => 'ARCHIVED',
                 'statusColor' => 'yellow',
                 'url' => route('projects.show', 'geemba'),

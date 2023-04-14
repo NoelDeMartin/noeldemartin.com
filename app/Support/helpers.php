@@ -1,5 +1,7 @@
 <?php
 
+use App\Support\Parsedown;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Config;
 
 if (! function_exists('get_timezone_offset')) {
@@ -30,6 +32,24 @@ if (! function_exists('has_timezone_offset')) {
     function has_timezone_offset()
     {
         return ! is_null(get_timezone_offset());
+    }
+
+}
+
+if (! function_exists('markdown')) {
+
+    function markdown(string $text)
+    {
+        return Parsedown::render($text);
+    }
+
+}
+
+if (! function_exists('carbon')) {
+
+    function carbon(string $date)
+    {
+        return new Carbon($date);
     }
 
 }

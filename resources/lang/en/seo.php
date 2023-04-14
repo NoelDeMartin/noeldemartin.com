@@ -10,6 +10,7 @@ return [
     'home' => [
         'title' => 'Noel De Martin',
         'title_suffix' => '',
+        'description' => 'My name is Noel. I am a developer and entrepreneur who loves to learn, solve problems, and build products that make an impact. This is my personal website, take your time to look around.',
     ],
 
     'schema:website' => [
@@ -33,6 +34,7 @@ return [
 
     'blog' => [
         'title' => 'Blog',
+        'description' => "Noel De Martin's blog on software, entrepreneurship and more.",
     ],
 
     'schema:blog' => [
@@ -42,15 +44,17 @@ return [
 
     'projects' => [
         'title' => 'Projects',
+        'description' => "Noel De Martin's past and ongoing projects.",
     ],
 
     'schema:projects' => [
         'name' => "Noel De Martin's Projects",
-        'description' => 'My projects.',
+        'description' => "Noel De Martin's past and ongoing projects.",
     ],
 
     'projects.geemba' => [
-        'title' => 'Geemba'
+        'title' => 'Geemba',
+        'description' => 'Geemba was a startup active from 2016 to 2018 that aimed to make fitness more accessible by granting access to sport facilities charging by the minute.',
     ],
 
     'schema:projects.geemba' => [
@@ -59,7 +63,8 @@ return [
     ],
 
     'projects.beastmasters' => [
-        'title' => 'BeastMasters: Twin Soul Legends'
+        'title' => 'BeastMasters: Twin Soul Legends',
+        'description' => 'BeastMasters: Twin Soul Legends is a strategy card game that launched in 2015 but is no longer available.',
     ],
 
     'schema:projects.beastmasters' => [
@@ -69,11 +74,12 @@ return [
 
     'experiments' => [
         'title' => 'Experiments',
+        'description' => "Noel De Martin's latest experiments and projects.",
     ],
 
     'schema:experiments' => [
         'name' => "Noel De Martin's Experiments",
-        'description' => 'My latest experiments and projects.',
+        'description' => "Noel De Martin's latest experiments and projects.",
     ],
 
     'freedom_calculator' => [
@@ -120,6 +126,7 @@ return [
 
     'now' => [
         'title' => "What I'm doing now",
+        'description' => "A page where you can find out what I'm up to now",
     ],
 
     'schema:now' => [
@@ -129,6 +136,7 @@ return [
 
     'site' => [
         'title' => 'About this site',
+        'description' => 'Description of technologies used at noeldemartin.com',
     ],
 
     'schema:site' => [
@@ -138,6 +146,7 @@ return [
 
     'moodlenet' => [
         'title' => 'About my MoodleNet instance',
+        'description' => 'Current status of my MoodleNet instance',
     ],
 
     'schema:moodlenet' => [
@@ -147,11 +156,22 @@ return [
 
     'tasks' => [
         'title' => 'Tasks',
+        'description' => 'A collection of all my ongoing and completed tasks.',
     ],
 
     'schema:tasks' => [
         'name' => "Noel De Martin's Tasks",
-        'description' => 'A collection with all my ongoing and completed tasks.',
+        'description' => 'A collection of all my ongoing and completed tasks.',
+    ],
+
+    'talks' => [
+        'title' => 'Talks',
+        'description' => "A list of all the talks I've given.",
+    ],
+
+    'schema:talks' => [
+        'name' => "Noel De Martin's Talks",
+        'description' => "A list of all the talks I've given.",
     ],
 
 ];
