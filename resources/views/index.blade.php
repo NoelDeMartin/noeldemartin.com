@@ -35,7 +35,7 @@
             @endcomponent
 
             @component('components.call-to-action-card', ['title' => 'Work'])
-                Check out <a href="{{ route('projects.index') }}">my Projects</a><br>
+                Check out my <a href="{{ route('projects.index') }}">Projects</a><br>
                 or <a href="{{ route('now') }}">What I'm doing now</a>
             @endcomponent
 
