@@ -10,7 +10,7 @@
             </time>
         </span>
 
-        <div class="absolute top-0 right-0 flex flex-col gap-2">
+        <div class="flex flex-row gap-2 mt-2 md:flex-col md:absolute md:top-0 md:right-0">
             <a
                 class="
                     items-center justify-start opacity-75
