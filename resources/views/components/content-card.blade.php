@@ -34,13 +34,19 @@
         {!! $slot !!}
 
         @isset($links)
-            <span class="block">
+            <span class="flex gap-1">
                 @foreach ($links as $linkText => $linkUrl)
-                    <a href="{{ $linkUrl }}" target="_blank">{{ $linkText }}</a>
-
-                    @if (!$loop->last)
-                        |
-                    @endif
+                    <a
+                        href="{{ $linkUrl }}"
+                        target="_blank"
+                        class="
+                            bg-blue text-white px-2 py-1 rounded no-underline text-sm
+                            hover:bg-blue-darker hover:text-white
+                            visited:text-white
+                        "
+                    >
+                        {{ $linkText }}
+                    </a>
                 @endforeach
             </span>
         @endisset

@@ -41,9 +41,9 @@
 
         </div>
 
-        <h2 class="md:mt-10" id="my-values">My values</h2>
+        <h2 class="text-center text-3xl mt-10 md:text-2xl md:text-left" id="my-values">My values</h2>
 
-        <div class="flex w-full">
+        <div class="flex flex-col-reverse w-full md:flex-row">
 
             <div class="max-w-readable">
 
@@ -71,20 +71,30 @@
 
             </div>
 
-            <div class="relative flex-grow self-stretch ml-4 hidden md:block">
-                <div class="absolute flex items-center justify-center inset-0 m-8">
+            <div class="relative flex flex-grow self-stretch justify-center mb-4 md:mb-0 md:ml-4">
+                <div
+                    class="
+                        flex items-center justify-center w-32 h-32
+                        md:absolute md:inset-0 md:m-8 md:w-auto md:h-auto
+                    "
+                >
                     @icon('my-values', 'w-full')
                 </div>
             </div>
 
         </div>
 
-        <h2 class="md:mt-10" id="my-background">My background</h2>
+        <h2 class="text-center text-3xl mt-10 md:text-2xl md:text-left" id="my-background">My background</h2>
 
-        <div class="flex w-full">
+        <div class="flex flex-col w-full md:flex-row">
 
-            <div class="relative flex-grow self-stretch mr-4 hidden md:block">
-                <div class="absolute flex items-center justify-center inset-0 m-8">
+            <div class="relative flex flex-grow self-stretch justify-center mb-4 md:mb-0 md:mr-4">
+                <div
+                    class="
+                        flex items-center justify-center w-32 h-32
+                        md:absolute md:inset-0 md:m-8 md:w-auto md:h-auto
+                    "
+                >
                     @icon('my-background', 'w-full')
                 </div>
             </div>
@@ -126,9 +136,9 @@
 
         </div>
 
-        <h2 class="md:mt-10" id="beyond-the-code">Beyond the code</h2>
+        <h2 class="text-center text-3xl mt-10 md:text-2xl md:text-left" id="beyond-the-code">Beyond the code</h2>
 
-        <div class="flex w-full">
+        <div class="flex flex-col-reverse w-full md:flex-row">
 
             <div class="max-w-readable">
 
@@ -161,8 +171,13 @@
 
             </div>
 
-            <div class="relative flex-grow self-stretch ml-4 hidden md:block">
-                <div class="absolute inset-0 m-8">
+            <div class="relative flex flex-grow self-stretch justify-center mb-4 md:mb-0 md:ml-4">
+                <div
+                    class="
+                        flex items-center justify-center w-32 h-32
+                        md:absolute md:inset-0 md:m-8 md:w-auto md:h-auto
+                    "
+                >
                     @icon('beyond-code', 'w-full')
                 </div>
             </div>
