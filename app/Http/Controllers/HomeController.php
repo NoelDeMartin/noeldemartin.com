@@ -196,6 +196,24 @@ class HomeController extends Controller
         return view('talks');
     }
 
+    public function japanTips()
+    {
+        SemanticSEO::meta(trans('seo.japan-tips'));
+
+        SemanticSEO::is(WebPage::class)
+            ->setAttributes(trans('seo.schema:japan-tips'))
+            ->url(route('japan-tips'))
+            ->image(Logo::class)
+            ->discussionUrl($this->discussionUrls)
+            ->inLanguage('English')
+            ->about((new WebPage)->url(route('home')))
+            ->author(NoelDeMartin::class)
+            ->creator(NoelDeMartin::class)
+            ->publisher(NoelDeMartinOrganization::class);
+
+        return view('japan-tips');
+    }
+
     public function site()
     {
         SemanticSEO::meta(trans('seo.site'));

@@ -134,6 +134,16 @@ return [
         'description' => "A page where you can find out what I'm up to now",
     ],
 
+    'japan-tips' => [
+        'title' => 'Tips about traveling to Japan',
+        'description' => 'A list of tips I\'ve gathered from my trips to Japan',
+    ],
+
+    'schema:japan-tips' => [
+        'name' => 'Tips about traveling to Japan',
+        'description' => 'A list of tips I\'ve gathered from my trips to Japan',
+    ],
+
     'site' => [
         'title' => 'About this site',
         'description' => 'Description of technologies used at noeldemartin.com',
