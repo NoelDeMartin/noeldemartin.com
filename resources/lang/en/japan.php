@@ -45,18 +45,19 @@ return [
 
         ## Shopping
 
-        - [Mandarake](https://en.wikipedia.org/wiki/Mandarake) (specially the ones in Shibuya and Nakano broadway)
-        - [Book off](https://en.wikipedia.org/wiki/Book_Off) (SUPER cheap second hand manga :D)
-        - [Don Quijote](https://en.wikipedia.org/wiki/Don_Quijote_(store))
+        - [Mandarakes](https://en.wikipedia.org/wiki/Mandarake) (specially the ones in Shibuya and Nakano Broadway)
+        - [Book offs](https://en.wikipedia.org/wiki/Book_Off) (SUPER cheap second hand manga :D)
+        - [Don Quijotes](https://en.wikipedia.org/wiki/Don_Quijote_(store))
         - [Sunshine City](https://en.wikipedia.org/wiki/Sunshine_City,_Tokyo)
         - [Nakano Broadway](https://en.wikipedia.org/wiki/Nakano_Broadway)
-        - [Jump Shop](https://www.shonenjump.com/j/jumpshop/) (I didn't buy anything, but it's cool to visit)
-        - [Mugiwara Store](https://www.mugiwara-store.com/store?hl=en) (I didn't buy anything, but it's cool to visit)
+        - [Jump Shops](https://www.shonenjump.com/j/jumpshop/) (I didn't buy anything, but it's cool to visit)
+        - [Mugiwara Stores](https://www.mugiwara-store.com/store?hl=en) (I didn't buy anything, but it's cool to visit)
 
         ## Others
 
         - [Cat cafés](https://en.wikipedia.org/wiki/Cat_caf%C3%A9) (also Owl cafés, Hedgehog cafés, and pretty much any-animal-you-can-imagine cafés)
         - [Internet cafés](https://en.wikipedia.org/wiki/Internet_caf%C3%A9) (I haven't tried any yet, but multiple people have told me they are a good option for sleeping if you lose the last train. In particular, check out [Kaikatsu Club](https://www.kaikatsu.jp/).)
+        - [Onsens](https://en.wikipedia.org/wiki/Onsen) (they are often nice after hiking, and there are usually some near popular hikes; you only need to bring a change of clothes and a towel)
         - [Kyoto Manga Museum](https://kyotomm.jp/en/)
         - [Ghibli Museum](https://www.ghibli-museum.jp/en/) (good luck getting tickets)
         - Animal Islands ([Okunoshima](https://en.wikipedia.org/wiki/%C5%8Ckunoshima) for rabbits, [Tashirojima](https://en.wikipedia.org/wiki/Tashirojima) for cats, etc.)
