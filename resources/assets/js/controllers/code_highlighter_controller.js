@@ -14,11 +14,13 @@ async function loadPrism() {
         return;
 
     Prism = await import(/* webpackChunkName: "code-highlighter" */ 'prismjs');
-    await import(/* webpackChunkName: "code-highlighter" */ 'prismjs/components/prism-php');
-    await import(/* webpackChunkName: "code-highlighter" */ 'prismjs/components/prism-scss');
+    await import(/* webpackChunkName: "code-highlighter" */ 'prismjs/components/prism-javascript');
     await import(/* webpackChunkName: "code-highlighter" */ 'prismjs/components/prism-json');
     await import(/* webpackChunkName: "code-highlighter" */ 'prismjs/components/prism-markup-templating');
+    await import(/* webpackChunkName: "code-highlighter" */ 'prismjs/components/prism-php');
+    await import(/* webpackChunkName: "code-highlighter" */ 'prismjs/components/prism-scss');
     await import(/* webpackChunkName: "code-highlighter" */ 'prismjs/components/prism-turtle');
+    await import(/* webpackChunkName: "code-highlighter" */ 'prismjs/components/prism-typescript');
 }
 
 async function highlightCodeElement(element, language) {
