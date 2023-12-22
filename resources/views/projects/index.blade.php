@@ -117,6 +117,15 @@
             @endcard
 
             @card([
+                'title' => 'Cypress Solid',
+                'image' => '/img/logos/cypressio.png',
+                'status' => 'v0.1',
+                'url' => 'https://github.com/NoelDeMartin/cypress-solid',
+            ])
+                Cypress plugin to test Solid apps.
+            @endcard
+
+            @card([
                 'title' => 'TailwindCSS Colors Generator',
                 'icon' => 'tailwindcss',
                 'status' => 'v0.1',
