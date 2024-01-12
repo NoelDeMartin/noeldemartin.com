@@ -37,7 +37,7 @@ return [
         - [Ochazuke](https://en.wikipedia.org/wiki/Chazuke)
         - [Curry bread](https://en.wikipedia.org/wiki/Curry_bread)
         - [Melonpan](https://en.wikipedia.org/wiki/Melonpan)
-        - Peaches and other seasonal fruits (Check out [https://duckduckgo.com/?q=japan+fruit+picking](fruit picking farms))
+        - Peaches and other seasonal fruits (Check out [fruit picking farms](https://duckduckgo.com/?q=japan+fruit+picking))
         - [Torikizoku](https://torikizoku.co.jp/) (affordable [izakaya](https://en.wikipedia.org/wiki/Izakaya) branch)
         - If you're vegetarian or vegan, I think you'll have a hard time :(. I heard about [Shojin Ryouri](https://en.wikipedia.org/wiki/Buddhist_cuisine), but I didn't find it anywhere in my trips.
         - Buildings in Japan have restaurants and shops in multiple floors, so don't ignore anything above street level! (pay attention to the signs in the walls).
