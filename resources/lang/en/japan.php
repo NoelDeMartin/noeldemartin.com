@@ -21,7 +21,7 @@ return [
         ## Transport
 
         - [Japan Rail Pass](https://www.japan-experience.com/) (pretty much a must if you plan to leave Tokyo)
-        - I'm still using my Suica card from 2012, but apparently they won't be selling them anymore and you have to use an app :/.
+        - I'm still using my [Suica card](https://www.jreast.co.jp/e/pass/suica.html) from 2012, but apparently they won't be selling them anymore and you have to use an app :/.
         - Public transport closes early in Japan (at least compared to Spain). Always check the last train/bus.
 
         ## Food
@@ -34,9 +34,10 @@ return [
         - [Karaage](https://en.wikipedia.org/wiki/Karaage)
         - [Shabu shabu](https://en.wikipedia.org/wiki/Shabu-shabu)
         - [Chankonabe](https://en.wikipedia.org/wiki/Chankonabe)
+        - [Ochazuke](https://en.wikipedia.org/wiki/Chazuke)
         - [Curry bread](https://en.wikipedia.org/wiki/Curry_bread)
         - [Melonpan](https://en.wikipedia.org/wiki/Melonpan)
-        - Peaches
+        - Peaches and other seasonal fruits (Check out [https://duckduckgo.com/?q=japan+fruit+picking](fruit picking farms))
         - [Torikizoku](https://torikizoku.co.jp/) (affordable [izakaya](https://en.wikipedia.org/wiki/Izakaya) branch)
         - If you're vegetarian or vegan, I think you'll have a hard time :(. I heard about [Shojin Ryouri](https://en.wikipedia.org/wiki/Buddhist_cuisine), but I didn't find it anywhere in my trips.
         - Buildings in Japan have restaurants and shops in multiple floors, so don't ignore anything above street level! (pay attention to the signs in the walls).
