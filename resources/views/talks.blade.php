@@ -7,7 +7,8 @@
             'description' => "I share lessons learned making [Solid Focus](https://noeldemartin.github.io/solid-focus), [Media Kraken](https://noeldemartin.github.io/media-kraken), and [Umai](https://umai.noeldemartin.com) (but the talk is framework agnostic!). If you're curious about Solid, this is the best place to start.",
             'date' => carbon('2023-02-04'),
             'links' => [
-                'Slides & Video (40min)' => 'https://fosdem.org/2023/schedule/event/sovcloud_from_zero_to_hero_with_solid/',
+                'Slides' => 'https://fosdem.org/2023/schedule/event/sovcloud_from_zero_to_hero_with_solid/',
+                'Video (40min)' => 'https://www.youtube.com/watch?v=kPzhykRVDuI',
             ],
         ],
         (object) [
@@ -16,7 +17,7 @@
             'date' => carbon('2021-02-04'),
             'links' => [
                 'Slides' => 'https://speakerdeck.com/noeldemartin/media-kraken-at-solid-world',
-                'Video (15min)' => 'https://vimeo.com/508623332#t=666',
+                'Video (23min)' => 'https://www.youtube.com/watch?v=cajBTJXmKhA',
             ],
         ],
         (object) [
