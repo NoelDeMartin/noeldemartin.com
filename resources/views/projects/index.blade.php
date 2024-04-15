@@ -57,16 +57,6 @@
             @endcard
 
             @card([
-                'title' => 'Quick Pick',
-                'image' => 'https://lincolnschilli.com/img/apps/quickpick.png',
-                'status' => 'LIVE',
-                'platform' => 'android',
-                'url' => 'https://play.google.com/store/apps/details?id=com.lincolnschilli.quickpick',
-            ])
-                Test your memory and speed in a relaxed atmosphere.
-            @endcard
-
-            @card([
                 'title' => 'Freedom Calculator',
                 'status' => 'WIP',
                 'statusColor' => 'blue',
@@ -153,6 +143,15 @@
             @endcard
 
             @card([
+                'title' => 'AerogelJS',
+                'status' => 'WIP',
+                'statusColor' => 'blue',
+                'url' => 'https://aerogel.js.org',
+            ])
+                Web Application Framework
+            @endcard
+
+            @card([
                 'title' => 'Metal',
                 'icon' => 'docker',
                 'iconClasses' => 'px-1',
@@ -198,6 +197,30 @@
         <h2 class="mt-8 font-bold">Discontinued</h2>
         <ul class="grid grid-cols-1 gap-4 list-none ml-0 pl-0 md:grid-cols-2">
             @card([
+                'title' => 'Geemba',
+                'image' => '/img/logos/geemba.png',
+                'platform' => 'Android & iOS',
+                'status' => 'ARCHIVED',
+                'statusColor' => 'yellow',
+                'url' => route('projects.show', 'geemba'),
+                'target' => '_self',
+            ])
+                Access sport facilities near you and pay only by the minute.
+            @endcard
+
+            @card([
+                'title' => 'Beast Masters',
+                'image' => '/img/logos/beastmasters.png',
+                'platform' => 'Android',
+                'status' => 'ARCHIVED',
+                'statusColor' => 'yellow',
+                'url' => route('projects.show', 'beastmasters'),
+                'target' => '_self',
+            ])
+                Recruit powerful beasts and build your deck in this strategy card game.
+            @endcard
+
+            @card([
                 'title' => 'Travel Postcards',
                 'image' => 'https://lincolnschilli.com/img/apps/postcards.png',
                 'status' => 'ARCHIVED',
@@ -214,33 +237,20 @@
                 'status' => 'ARCHIVED',
                 'statusColor' => 'yellow',
                 'platform' => 'Android',
-                'url' => 'https://web.archive.org/web/20201018142318/https://play.google.com/store/apps/details?id=com.lincolnschilli.brainduels',
+                'url' => 'https://web.archive.org/web/20160630211718/https://play.google.com/store/apps/details?id=com.lincolnschilli.brainduels',
             ])
                 Compete with Brain games in an online arena.
             @endcard
 
             @card([
-                'title' => 'Beast Masters',
-                'image' => '/img/logos/beastmasters.png',
-                'platform' => 'Android',
+                'title' => 'Quick Pick',
+                'image' => 'https://lincolnschilli.com/img/apps/quickpick.png',
+                'platform' => 'android',
                 'status' => 'ARCHIVED',
                 'statusColor' => 'yellow',
-                'url' => route('projects.show', 'beastmasters'),
-                'target' => '_self',
+                'url' => 'https://web.archive.org/web/20160630204222/https://play.google.com/store/apps/details?id=com.lincolnschilli.quickpick',
             ])
-                Recruit powerful beasts and build your deck in this strategy card game.
-            @endcard
-
-            @card([
-                'title' => 'Geemba',
-                'image' => '/img/logos/geemba.png',
-                'platform' => 'Android & iOS',
-                'status' => 'ARCHIVED',
-                'statusColor' => 'yellow',
-                'url' => route('projects.show', 'geemba'),
-                'target' => '_self',
-            ])
-                Access sport facilities near you and pay only by the minute.
+                Test your memory and speed in a relaxed atmosphere.
             @endcard
         </ul>
     </article>
