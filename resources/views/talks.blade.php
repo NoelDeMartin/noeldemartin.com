@@ -60,6 +60,8 @@
     <article>
         <h1>Talks</h1>
 
+        <p>You can find more videos in my <a href="https://youtube.com/@noeldemartin" target="_blank">Youtube channel</a>.</p>
+
         @foreach ($talks as $talk)
             @contentcard([
                 'title' => $talk->title,

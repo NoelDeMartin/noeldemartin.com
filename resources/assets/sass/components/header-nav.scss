@@ -48,6 +48,14 @@ header nav {
 
     }
 
+    [data-platform="youtube"] {
+
+        svg {
+            @apply h-8 p-0 -m-1;
+        }
+
+    }
+
     [data-platform="mastodon"] {
 
         path:first-child {
