@@ -3,6 +3,15 @@
 @php
     $talks = [
         (object) [
+            'title' => 'Thoughts on Solid Developer Experience @ Solid Symposium',
+            'description' => "Solid has a bad rap about being difficult to work with. But is it really that hard? In this presentation, I share my take on Developer Experience when making Solid Apps.",
+            'date' => carbon('2024-05-02'),
+            'links' => [
+                'Slides' => 'https://slidr.io/NoelDeMartin/solid-developer-experience',
+                'Video (16min)' => 'https://www.youtube.com/watch?v=ghGmveKKe5Y',
+            ],
+        ],
+        (object) [
             'title' => 'From Zero to Hero with Solid @ FOSDEM',
             'description' => "I share lessons learned making [Solid Focus](https://noeldemartin.github.io/solid-focus), [Media Kraken](https://noeldemartin.github.io/media-kraken), and [Umai](https://umai.noeldemartin.com) (but the talk is framework agnostic!). If you're curious about Solid, this is the best place to start.",
             'date' => carbon('2023-02-04'),
