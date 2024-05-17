@@ -3,6 +3,15 @@
 @php
     $talks = [
         (object) [
+            'title' => 'Solid CRDTs in Practice @ Solid Symposium',
+            'description' => "CRDTs is the technology that enables local-first applications, and in this presentation I share how I learned about them and crafted my own solution for Solid Apps.",
+            'date' => carbon('2024-05-03'),
+            'links' => [
+                'Slides' => 'https://slidr.io/NoelDeMartin/solid-crdts-in-practice',
+                'Video (12min)' => 'https://www.youtube.com/watch?v=vYQmGeaQt8E',
+            ],
+        ],
+        (object) [
             'title' => 'Thoughts on Solid Developer Experience @ Solid Symposium',
             'description' => "Solid has a bad rap about being difficult to work with. But is it really that hard? In this presentation, I share my take on Developer Experience when making Solid Apps.",
             'date' => carbon('2024-05-02'),
