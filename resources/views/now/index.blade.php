@@ -109,4 +109,6 @@
 
     @endforeach
 
+    <p>Do you think this is cool? This is a <a href="https://nownownow.com/about" target="_blank">now page</a>, and you should have one too ;).</p>
+
 @endsection
