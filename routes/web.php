@@ -57,8 +57,8 @@ Route::prefix('projects')->group(function () {
 
 Route::get('health', 'HomeController@health')->name('health');
 
-Route::redirect('solid-world', 'https://speakerdeck.com/noeldemartin/media-kraken-at-solid-world');
-Route::redirect('fosdem', 'https://fosdem.org/2023/schedule/event/sovcloud_from_zero_to_hero_with_solid/');
+Route::redirect('solid-world', 'https://www.youtube.com/watch?v=cajBTJXmKhA');
+Route::redirect('fosdem', 'https://www.youtube.com/watch?v=kPzhykRVDuI');
 Route::redirect('solid-symposium-dx', 'https://www.youtube.com/watch?v=ghGmveKKe5Y');
 Route::redirect('solid-symposium-crdts', 'https://www.youtube.com/watch?v=vYQmGeaQt8E');
 Route::permanentRedirect('about', '/');
