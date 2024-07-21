@@ -46,6 +46,17 @@
             @endcard
 
             @card([
+                'title' => 'Freedom Calculator',
+                'icon' => 'freedom-calculator',
+                'iconClasses' => 'p-2',
+                'status' => 'LIVE',
+                'platform' => 'web',
+                'url' => 'https://freedom-calculator.noeldemartin.com',
+            ])
+                Check your economic runway.
+            @endcard
+
+            @card([
                 'title' => 'Planning Poker',
                 'icon' => 'planning-poker',
                 'iconClasses' => 'px-2',
@@ -54,16 +65,6 @@
                 'url' => 'https://noeldemartin.github.io/planning-poker',
             ])
                 A simple planning poker deck to help you organise your sprints.
-            @endcard
-
-            @card([
-                'title' => 'Freedom Calculator',
-                'status' => 'WIP',
-                'statusColor' => 'blue',
-                'platform' => 'web',
-                'url' => route('experiments.freedom-calculator'),
-            ])
-                Check your economic runway.
             @endcard
 
             @card([

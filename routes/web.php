@@ -28,13 +28,14 @@ Route::prefix('now')->group(function () {
 
 Route::prefix('experiments')->group(function () {
     Route::get('/', 'HomeController@experiments')->name('experiments');
-    Route::get('freedom-calculator', 'ExperimentsController@freedomCalculator')->name('experiments.freedom-calculator');
     Route::get('online-meeting', 'ExperimentsController@onlineMeeting')->name('experiments.online-meeting');
     Route::view('online-meeting/{roomKey}', 'experiments.online_meeting_room')
         ->name('experiments.online-meeting-room')
         ->middleware('semantic-seo:hide');
     Route::get('synonymizer', 'ExperimentsController@synonymizer')->name('experiments.synonymizer');
     Route::post('synonymize-text', 'ExperimentsController@synonymizeText')->name('experiments.synonymize_text');
+
+    Route::permanentRedirect('freedom-calculator', 'https://freedom-calculator.noeldemartin.com')->name('experiments.freedom-calculator');
 });
 
 Route::prefix('tasks')->group(function () {

@@ -82,15 +82,6 @@ return [
         'description' => "Noel De Martin's latest experiments and projects.",
     ],
 
-    'freedom_calculator' => [
-        'title_suffix' => '',
-    ],
-
-    'schema:freedom_calculator' => [
-        'name' => 'Freedom Calculator',
-        'description' => 'Calculate your freedom!',
-    ],
-
     'online_meeting' => [
         'title_suffix' => '',
     ],

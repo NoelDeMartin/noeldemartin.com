@@ -46,10 +46,6 @@
         <priority>0.2</priority>
     </url>
     <url>
-        <loc>{{ route('experiments.freedom-calculator') }}</loc>
-        <priority>0.2</priority>
-    </url>
-    <url>
         <loc>{{ route('now') }}</loc>
         <lastmod>{{ $lastModificationDate->toW3cString() }}</lastmod>
         <priority>1.0</priority>

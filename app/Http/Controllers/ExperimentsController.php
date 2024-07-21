@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\SemanticSEO\Experiments\FreedomCalculator;
 use App\SemanticSEO\Experiments\OnlineMeeting;
 use App\SemanticSEO\Experiments\Synonymizer;
 use Illuminate\Support\Str;
@@ -10,15 +9,6 @@ use NoelDeMartin\SemanticSEO\Support\Facades\SemanticSEO;
 
 class ExperimentsController extends Controller
 {
-    public function freedomCalculator()
-    {
-        SemanticSEO::meta(trans('seo.freedom_calculator'));
-
-        SemanticSEO::is(FreedomCalculator::class);
-
-        return view('experiments.freedom_calculator');
-    }
-
     public function onlineMeeting()
     {
         SemanticSEO::meta(trans('seo.online_meeting'));

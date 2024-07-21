@@ -8,7 +8,6 @@ use App\Models\Task;
 use App\Models\TaskComment;
 use App\SemanticSEO\BlogPost;
 use App\SemanticSEO\Experiments\DCMotorSandbox;
-use App\SemanticSEO\Experiments\FreedomCalculator;
 use App\SemanticSEO\Experiments\JapaneseCharacterRecognition;
 use App\SemanticSEO\Experiments\OnlineMeeting;
 use App\SemanticSEO\Experiments\Synonymizer;
@@ -129,7 +128,6 @@ class HomeController extends Controller
             ->hasPart([
                 Synonymizer::class,
                 OnlineMeeting::class,
-                FreedomCalculator::class,
                 JapaneseCharacterRecognition::class,
                 ZazenMeditationTimer::class,
                 DCMotorSandbox::class,
