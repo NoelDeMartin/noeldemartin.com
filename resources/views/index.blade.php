@@ -102,12 +102,11 @@
             <div class="max-w-readable">
 
                 <p class="mt-0">
-                    I have been working in the software industry since 2011.
-                    I enjoy programming in and of itself, but I've always cared about the impact
-                    of my code. That's what led me to entrepreneurship. I was involved with startups and
-                    bootstrapped projects for some years, but I've recently migrated into
-                    <strong class="font-medium">mission-driven</strong> organizations and I'm working
-                    on my own projects on the side.
+                    I have been working in the software industry since 2011. I enjoy programming in and of itself, but
+                    I've always cared about the impact of my code. That's what led me to <strong class="font-medium">entrepreneurship</strong>,
+                    and I was involved in startups and bootstrapped projects for a while. In 2019 I migrated into
+                    <strong class="font-medium">mission-driven organizations</strong>, but now
+                    <a href="/blog/the-end-of-the-chapter#here-we-go-again">I'm thinking of doing entrepreneurship again</a>.
                 </p>
 
                 <p>
@@ -126,7 +125,7 @@
                 </p>
 
                 <p>
-                    I recently wrote a summary of my career in my blog: <a href="/blog/10-years-as-a-software-developer">
+                    If you want to know more, some years ago I wrote a summary of my career in my blog: <a href="/blog/10-years-as-a-software-developer">
                     10 Years as a Software Developer</a>.
                 </p>
 

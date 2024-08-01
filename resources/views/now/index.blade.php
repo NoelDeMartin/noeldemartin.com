@@ -14,23 +14,7 @@
             <a
                 class="
                     items-center justify-start opacity-75
-                    bg-hey text-white px-2 py-1 rounded no-underline text-sm flex
-                    hover:opacity-100 hover:text-white
-                    focus:opacity-100
-                "
-                href="https://world.hey.com/noeldemartin"
-                aria-label="Subscribe to Newsletter"
-                title="Subscribe to newsletter"
-                target="_blank"
-            >
-                @icon('email', 'inline h-4 text-white fill-current')
-                <span class="text-white ml-1 font-medium">Newsletter</span>
-            </a>
-
-            <a
-                class="
-                    items-center justify-start opacity-75
-                    bg-rss text-white px-2 py-1 rounded no-underline text-sm flex
+                    bg-rss text-white p-1 rounded no-underline text-sm flex
                     hover:opacity-100 hover:text-white
                     focus:opacity-100
                 "
@@ -40,15 +24,12 @@
                 target="_blank"
             >
                 @icon('rss', 'inline h-4 text-white fill-current')
-                <span class="text-white ml-1 font-medium">RSS</span>
             </a>
         </div>
     </div>
 
     <p class="mt-2 max-w-readable">
-        I am currently based in <a href="https://en.wikipedia.org/wiki/Barcelona" target="_blank">Barcelona</a>, working
-        at <a href="https://moodle.com/" target="_blank">Moodle</a>
-        4 days a week, and doing side projects the rest of the time. I practice
+        I am currently based in <a href="https://en.wikipedia.org/wiki/Barcelona" target="_blank">Barcelona</a>. I practice
         <a href="{{ url('blog/open-productivity') }}">Open Productivity</a>, and here
         you can see what I'm up to these days:
     </p>
