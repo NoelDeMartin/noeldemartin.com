@@ -34,6 +34,13 @@ return [
                 'data-platform' => 'mastodon',
             ],
         ],
+        'bluesky' => [
+            'url'  => 'https://bsky.app/profile/noeldemartin.bsky.social',
+            'icon' => 'bluesky',
+            'name' => 'My Bluesky',
+            'short_name' => 'Bluesky',
+            'extras' => ['rel' => 'me'],
+        ],
         'github' => [
             'url'  => 'https://github.com/NoelDeMartin',
             'icon' => 'github',
