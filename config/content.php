@@ -35,7 +35,7 @@ return [
             ],
         ],
         'bluesky' => [
-            'url'  => 'https://bsky.app/profile/noeldemartin.bsky.social',
+            'url'  => 'https://bsky.app/profile/noeldemartin.com',
             'icon' => 'bluesky',
             'name' => 'My Bluesky',
             'short_name' => 'Bluesky',
