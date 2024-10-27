@@ -153,6 +153,17 @@
             @endcard
 
             @card([
+                'title' => 'Vivant',
+                'icon' => 'vivant',
+                'iconClasses' => 'px-1',
+                'status' => 'EXPERIMENTAL',
+                'statusColor' => 'yellow',
+                'url' => 'https://noeldemartin.github.io/vivant/',
+            ])
+                Make your applications feel alive
+            @endcard
+
+            @card([
                 'title' => 'Metal',
                 'icon' => 'docker',
                 'iconClasses' => 'px-1',
