@@ -45,6 +45,17 @@ if (! function_exists('markdown')) {
 
 }
 
+if (! function_exists('markdown_cdata')) {
+
+    function markdown_cdata(string $text)
+    {
+        $html = markdown($text);
+
+        return str_replace(PHP_EOL, '', $html);
+    }
+
+}
+
 if (! function_exists('carbon')) {
 
     function carbon(string $date)

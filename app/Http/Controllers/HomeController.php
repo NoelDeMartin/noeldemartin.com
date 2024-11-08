@@ -115,7 +115,13 @@ class HomeController extends Controller
 
         return response()
             ->view('blog.rss', compact('posts'))
-            ->header('Content-Type', 'application/atom+xml');
+            ->header('Content-Type', 'application/xml');
+    }
+
+    public function blogXsl()
+    {
+        return response(file_get_contents(resource_path('assets/xsl/feed.xsl')))
+            ->header('Content-Type', 'text/xml');
     }
 
     public function experiments()
@@ -173,7 +179,13 @@ class HomeController extends Controller
 
         return response()
             ->view('now.rss', compact('events'))
-            ->header('Content-Type', 'application/atom+xml');
+            ->header('Content-Type', 'application/xml');
+    }
+
+    public function nowXsl()
+    {
+        return response(file_get_contents(resource_path('assets/xsl/feed.xsl')))
+            ->header('Content-Type', 'text/xml');
     }
 
     public function talks()

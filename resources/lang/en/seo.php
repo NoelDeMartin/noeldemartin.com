@@ -175,4 +175,14 @@ return [
         'description' => "A list of all the talks I've given.",
     ],
 
+    'podcast' => [
+        'name' => 'Podcast',
+        'description' => "I don't really have a podcast, but I published an episode once generated with NotebookLM."
+    ],
+
+    'schema:podcast' => [
+        'name' => "Noel De Martin's Podcast",
+        'description' => "I don't really have a podcast, but I published an episode once generated with NotebookLM."
+    ],
+
 ];

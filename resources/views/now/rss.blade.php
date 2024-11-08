@@ -1,11 +1,12 @@
-<?php echo '<?xml version="1.0" encoding="utf-8" ?>'; ?>
+<?php echo '<?xml version="1.0" encoding="utf-8" ?>' . "\n"; ?>
+<?php echo '<?xml-stylesheet type="text/xsl" href="' . route('now.xsl') . '" ?>' . "\n"; ?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title type="text">Noel De Martin [Journal]</title>
     <subtitle type="text">A stream of all my activity</subtitle>
     <updated>{!! $events->first()->date->format(DateTime::ATOM) !!}</updated>
     <id>{!! route('now') !!}</id>
     <link type="text/html" href="{!! route('now') !!}" />
-    <link type="application/atom+xml" rel="self" href="{!! route('now.rss') !!}" />
+    <link type="application/xml" rel="self" href="{!! route('now.rss') !!}" />
     <category term="entrepreneurship"/>
     <category term="development"/>
     <icon>{!! asset('favicon.ico') !!}</icon>
