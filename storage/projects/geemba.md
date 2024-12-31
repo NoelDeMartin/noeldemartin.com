@@ -1,6 +1,6 @@
 # Geemba
 
-*Geemba* was a startup I co-founded that was active from 2016 to 2018. We aimed to make fitness more accessible by granting access to sport facilities charging by the minute, without paying subscriptions. People would download our mobile application, validate the entrance on the reception desk, and use the facilities as long as they wished. Our service would track how much time they spent inside, and charge them accordingly.
+*Geemba* was [a startup I co-founded](/blog/10-years-as-a-software-developer#2016-startup-life) that was active from 2016 to 2018. We aimed to make fitness more accessible by granting access to sport facilities charging by the minute, without paying subscriptions. People would download our mobile application, validate the entrance on the reception desk, and use the facilities as long as they wished. Our service would track how much time they spent inside, and charge them accordingly.
 
 We started the company focusing on mediating the access, but eventually we also began building tools for assisting with training and helping the gym staff. We called this service "Geemba Assistant", and it gave the gym staff tools to organize their work, communicate with customers (all of them, not only the ones using our app), and create personalized training routines.
 
