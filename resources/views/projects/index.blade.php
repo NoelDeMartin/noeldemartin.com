@@ -35,12 +35,12 @@
             @endcard
 
             @card([
-                'title' => 'Solid Focus',
-                'icon' => 'solid-focus',
+                'title' => 'Focus',
+                'icon' => 'focus',
                 'iconClasses' => 'px-1',
                 'status' => 'LIVE',
                 'platform' => 'pwa',
-                'url' => 'https://noeldemartin.github.io/solid-focus',
+                'url' => 'https://focus.noeldemartin.com',
             ])
                 Forget distractions and focus on what's important.
             @endcard
