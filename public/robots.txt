@@ -1,3 +1,2 @@
 User-agent: *
 Disallow:
-Sitemap: https://noeldemartin.com/sitemap.xml

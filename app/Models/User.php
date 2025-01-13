@@ -2,46 +2,47 @@
 
 namespace App\Models;
 
-use Illuminate\Auth\Authenticatable;
-use Illuminate\Auth\Passwords\CanResetPassword;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-use Illuminate\Database\Eloquent\Model;
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-use Laravel\Nova\Actions\Actionable;
-
-class User extends Model implements AuthenticatableContract, CanResetPasswordContract
+class User extends Authenticatable
 {
-    use Authenticatable, CanResetPassword, Actionable;
+    /** @use HasFactory<\Database\Factories\UserFactory> */
+    use HasFactory, Notifiable;
 
     /**
-     * The database table used by the model.
+     * The attributes that are mass assignable.
      *
-     * @var string
+     * @var list<string>
      */
-    protected $table = 'users';
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+    ];
 
     /**
-     * The attributes excluded from the model's JSON form.
+     * The attributes that should be hidden for serialization.
      *
-     * @var array
+     * @var list<string>
      */
-    protected $hidden = ['password', 'remember_token'];
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 
-    protected $fillable = ['username', 'email'];
-
-    protected $guarded = ['id', 'password', 'is_admin', 'is_reviewer'];
-
-    public function getRolesArray()
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
     {
-        $roles = [];
-        if ($this->is_admin) {
-            $roles[] = 'Admin';
-        }
-        if ($this->is_reviewer) {
-            $roles[] = 'Reviewer';
-        }
-
-        return $roles;
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+        ];
     }
 }

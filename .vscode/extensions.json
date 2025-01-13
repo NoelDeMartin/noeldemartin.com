@@ -1,8 +1,0 @@
-{
-    "recommendations": [
-        "bmewburn.vscode-intelephense-client",
-        "dbaeumer.vscode-eslint",
-        "onecentlin.laravel-blade",
-        "octref.vetur"
-    ]
-}
