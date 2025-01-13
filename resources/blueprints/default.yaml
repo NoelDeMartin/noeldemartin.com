@@ -5,18 +5,9 @@ fields:
     field:
       type: markdown
       display: Content
-      localizable: true
+      antlers: true
   -
-    handle: author
+    handle: icon
     field:
-      type: users
-      display: Author
-      default: current
-      localizable: true
-      max_items: 1
-  -
-    handle: template
-    field:
-      type: template
-      display: Template
-      localizable: true
+      type: text
+      display: Icon
