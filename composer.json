@@ -1,12 +1,10 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "statamic/statamic",
+    "name": "noeldemartin/noeldemartin.com",
     "type": "project",
-    "description": "Statamic",
+    "description": "Noel De Martin's Website",
     "keywords": [
         "statamic",
-        "cms",
-        "flat file",
         "laravel"
     ],
     "require": {
