@@ -1,11 +1,24 @@
 title: Default
 fields:
+  - handle: title
+    field:
+      type: text
+      required: true
+      width: 75
+      validate:
+        - required
+  - handle: show_title
+    field:
+      type: toggle
+      display: 'Show title'
+      width: 25
+      default: true
+  - handle: icon
+    field:
+      type: text
+      display: Icon
   - handle: content
     field:
       type: markdown
       display: Content
       antlers: true
-  - handle: icon
-    field:
-      type: text
-      display: Icon

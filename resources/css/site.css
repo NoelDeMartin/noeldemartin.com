@@ -1,9 +1,0 @@
-@import 'tailwindcss';
-@plugin "@tailwindcss/typography";
-@source "../views";
-@source "../../content/collections";
-
-@theme {
-    --spacing-content: 900px;
-    --color-overlay: rgba(0, 0, 0, 0.075);
-}

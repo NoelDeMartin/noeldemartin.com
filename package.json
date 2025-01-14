@@ -7,7 +7,6 @@
         "lint": "prettier . -c"
     },
     "dependencies": {
-        "@tailwindcss/typography": "^0.5.16",
         "tailwindcss": "^4.0.0-beta.9"
     },
     "devDependencies": {

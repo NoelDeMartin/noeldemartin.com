@@ -1,0 +1,7 @@
+@import 'tailwindcss';
+@import './base.css';
+
+@config '../../tailwind.config.js';
+
+@source "../views";
+@source "../../content/collections";

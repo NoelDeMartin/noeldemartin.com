@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{{ $title ?? $site->name }}</title>
-        @vite(["resources/css/site.css"])
+        @vite(["resources/css/main.css"])
     </head>
     <body
         class="h-full w-full bg-white font-sans text-base leading-normal font-normal text-gray-800 antialiased"
@@ -35,13 +35,14 @@
                         class="mr-2 h-16/10 translate-y-[-15%] transform md:mr-4 lg:mr-8 print:h-full print:translate-y-0"
                     />
                     <div class="my-auto grow" style="height: 80%">
-                        <x-icons.site-title
+                        <s:partial
+                            src="icons/site-title"
                             class="h-full fill-current text-black"
                         />
                     </div>
                 </a>
             </div>
-            <nav aria-label="Site navigation" class="w-full">
+            <nav aria-label="Site navigation" class="bg-overlay w-full">
                 <div class="max-w-content mx-auto flex h-full justify-between">
                     <div class="flex space-x-2">
                         <s:nav include_home="true">
@@ -52,8 +53,8 @@
                                     aria-current="page"
                                 @endif
                             >
-                                <x-dynamic-component
-                                    :component="'icons.' . $icon"
+                                <s:partial
+                                    :src="'icons/'.$icon"
                                     class="mr-2 size-5"
                                 />
                                 <span
@@ -69,7 +70,7 @@
         </header>
 
         <main id="main" class="max-w-content relative mx-auto p-4 pt-8 md:px-2">
-            {!! $template_content !!}
+            @yield("main")
         </main>
 
         <!-- Sites Verification -->
