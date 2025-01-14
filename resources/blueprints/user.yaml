@@ -1,28 +1,23 @@
 title: User
 fields:
-  -
-    handle: name
+  - handle: name
     field:
       type: text
       display: Name
-  -
-    handle: email
+  - handle: email
     field:
       type: text
       input: email
       display: Email Address
-  -
-    handle: roles
+  - handle: roles
     field:
       type: user_roles
       width: 50
-  -
-    handle: groups
+  - handle: groups
     field:
       type: user_groups
       width: 50
-  -
-    handle: avatar
+  - handle: avatar
     field:
       type: assets
       max_files: 1

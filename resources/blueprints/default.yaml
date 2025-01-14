@@ -1,13 +1,11 @@
 title: Default
 fields:
-  -
-    handle: content
+  - handle: content
     field:
       type: markdown
       display: Content
       antlers: true
-  -
-    handle: icon
+  - handle: icon
     field:
       type: text
       display: Icon

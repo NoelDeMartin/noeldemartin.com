@@ -1,9 +1,6 @@
-<div class="flex-1 bg-grey-lighter border border-grey-light rounded my-2 p-4 items-center justify-start flex text-center flex-col md:mx-2">
-
-    <span class="my-4 text-2xl font-medium text-blue-darkest">{{ title }}</span>
-
-    <span class="leading-normal">
-        {{ slot }}
-    </span>
-
+<div
+    class="bg-grey-lighter border-grey-light my-2 flex flex-1 flex-col items-center justify-start rounded border p-4 text-center md:mx-2"
+>
+    <span class="text-blue-darkest my-4 text-2xl font-medium">{{ title }}</span>
+    <span class="leading-normal">{{ slot }}</span>
 </div>

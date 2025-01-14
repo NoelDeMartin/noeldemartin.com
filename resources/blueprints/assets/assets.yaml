@@ -1,7 +1,6 @@
 title: Asset
 fields:
-  -
-    handle: alt
+  - handle: alt
     field:
       display: 'Alt Text'
       type: text

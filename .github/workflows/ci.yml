@@ -1,0 +1,33 @@
+name: CI
+on: [push]
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+          extensions: json, dom, curl, libxml, mbstring
+          coverage: none
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+      - name: Prepare The Environment
+        run: cp .env.example .env
+      - name: Install Composer Dependencies
+        run: composer install --no-progress --prefer-dist --optimize-autoloader
+      - name: Install Node Dependencies
+        run: npm ci
+      - name: Generate Keys
+        run: php artisan key:generate
+      - name: Run Duster Lint
+        uses: tighten/duster-action@v3
+        with:
+          args: lint
+      - name: Run Node Lint
+        run: npm run lint
+      - name: Run Static Analysis
+        run: ./vendor/bin/phpstan analyse
+      - name: Run Node Build
+        run: npm run build
