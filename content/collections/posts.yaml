@@ -1,0 +1,5 @@
+title: Posts
+template: blog/show
+mount: blog
+revisions: false
+route: '/{mount}/{slug}'

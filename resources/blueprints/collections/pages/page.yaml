@@ -1,0 +1,45 @@
+title: Page
+tabs:
+  main:
+    display: Main
+    sections:
+      - fields:
+          - handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+          - handle: icon
+            field:
+              type: text
+              display: Icon
+          - handle: content
+            field:
+              type: markdown
+              display: Content
+              antlers: true
+          - handle: template
+            field:
+              type: template
+              display: Template
+  sidebar:
+    display: Sidebar
+    sections:
+      - fields:
+          - handle: slug
+            field:
+              type: slug
+              validate: 'max:200'
+          - handle: show_title
+            field:
+              default: true
+              type: toggle
+              display: 'Show title'
+          - handle: parent
+            field:
+              type: entries
+              collections:
+                - pages
+              max_items: 1
+              listable: false

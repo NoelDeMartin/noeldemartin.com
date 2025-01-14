@@ -1,6 +1,7 @@
 ---
 id: projects
 title: Projects
+blueprint: page
 icon: projects
 ---
 
