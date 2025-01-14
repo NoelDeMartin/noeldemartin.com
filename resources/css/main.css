@@ -7,4 +7,5 @@
 
 @layer base {
     @import './base.css';
+    @import './fonts.css';
 }

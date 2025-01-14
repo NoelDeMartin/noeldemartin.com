@@ -61,7 +61,7 @@ These are my values:
 
 </div>
 
-<div class="relative flex flex-grow self-stretch justify-center mb-4 md:mb-0 md:ml-4">
+<div class="relative flex grow self-stretch justify-center mb-4 md:mb-0 md:ml-4">
     <div class="flex items-center justify-center w-32 h-32 md:absolute md:inset-0 md:m-8 md:w-auto md:h-auto">
         {{ partial:icons/my-values class="w-full" }}
     </div>
@@ -73,7 +73,7 @@ These are my values:
 
 <div class="flex flex-col w-full md:flex-row">
 
-<div class="relative flex flex-grow self-stretch justify-center mb-4 md:mb-0 md:mr-4">
+<div class="relative flex grow self-stretch justify-center mb-4 md:mb-0 md:mr-4">
     <div class="flex items-center justify-center w-32 h-32 md:absolute md:inset-0 md:m-8 md:w-auto md:h-auto">
         {{ partial:icons/my-background class="w-full" }}
     </div>
@@ -109,7 +109,7 @@ On occasion I like going for a hike, and I love traveling and learning about oth
 
 </div>
 
-<div class="relative flex flex-grow self-stretch justify-center mb-4 md:mb-0 md:ml-4">
+<div class="relative flex grow self-stretch justify-center mb-4 md:mb-0 md:ml-4">
     <div class="flex items-center justify-center w-32 h-32 md:absolute md:inset-0 md:m-8 md:w-auto md:h-auto">
         {{ partial:icons/beyond-the-code class="w-full" }}
     </div>

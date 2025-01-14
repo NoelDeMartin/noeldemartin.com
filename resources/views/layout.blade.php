@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ $site->short_locale }}" class="h-full w-full">
+<html lang="{{ $site->short_locale }}">
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -8,7 +8,7 @@
         @vite(["resources/css/main.css"])
     </head>
     <body
-        class="h-full w-full bg-white font-sans text-base leading-normal font-normal text-gray-800 antialiased"
+        class="font-ubuntu text-black-light flex min-h-screen flex-col bg-white text-base leading-tight font-normal antialiased print:block"
     >
         <a
             href="#main"
@@ -69,7 +69,10 @@
             </nav>
         </header>
 
-        <main id="main" class="max-w-content relative mx-auto p-4 pt-8 md:px-2">
+        <main
+            id="main"
+            class="max-w-content relative mx-auto w-full grow p-4 pt-8 md:px-2"
+        >
             @yield("main")
         </main>
 

@@ -1,14 +1,4 @@
-html {
-    @apply font-ubuntu text-black-light text-base leading-tight font-normal;
-}
-
-body {
-    @apply flex min-h-screen flex-col;
-}
-
 main {
-    @apply w-full flex-grow;
-
     a {
         @apply underline;
 
@@ -107,10 +97,6 @@ main {
 
 /* Print */
 @media print {
-    body {
-        @apply block;
-    }
-
     p,
     li {
         page-break-inside: avoid;
