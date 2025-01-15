@@ -42,5 +42,14 @@ class AppServiceProvider extends ServiceProvider
 
             return round($words / 200);
         });
+
+        Collection::computed('apps', 'stateClasses', function (Entry $entry) {
+            switch ($entry->value('state')) {
+                case 'live':
+                    return 'bg-jade-lighter text-jade-darker';
+                default:
+                    return 'bg-blue-lighter text-blue-darker';
+            }
+        });
     }
 }

@@ -1,0 +1,58 @@
+title: App
+tabs:
+  main:
+    display: Main
+    sections:
+      - fields:
+          - handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+              width: 33
+          - handle: link
+            field:
+              input_type: url
+              type: text
+              display: Url
+              width: 66
+          - handle: logo
+            field:
+              type: text
+              display: Logo
+              width: 33
+          - handle: logo_classes
+            field:
+              type: text
+              display: 'Logo classes'
+              width: 66
+          - handle: content
+            field:
+              type: markdown
+              display: Description
+              antlers: true
+  sidebar:
+    display: Sidebar
+    sections:
+      - fields:
+          - handle: state
+            field:
+              options:
+                - key: live
+                  value: LIVE
+                - key: wip
+                  value: WIP
+              type: select
+              display: State
+              validate:
+                - required
+          - handle: platform
+            field:
+              options:
+                - key: pwa
+                  value: PWA
+              type: select
+              display: Platform
+              validate:
+                - required
