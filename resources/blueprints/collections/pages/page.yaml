@@ -10,10 +10,13 @@ tabs:
               required: true
               validate:
                 - required
-          - handle: icon
+              width: 75
+          - handle: show_title
             field:
-              type: text
-              display: Icon
+              type: toggle
+              display: 'Show title'
+              default: true
+              width: 25
           - handle: content
             field:
               type: markdown
@@ -31,11 +34,10 @@ tabs:
             field:
               type: slug
               validate: 'max:200'
-          - handle: show_title
+          - handle: icon
             field:
-              default: true
-              type: toggle
-              display: 'Show title'
+              type: text
+              display: Icon
           - handle: parent
             field:
               type: entries

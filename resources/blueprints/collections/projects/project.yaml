@@ -13,9 +13,8 @@ tabs:
               width: 33
           - handle: link
             field:
-              input_type: url
-              type: text
-              display: Url
+              type: link
+              display: Link
               width: 66
           - handle: logo
             field:
@@ -43,6 +42,8 @@ tabs:
                   value: App
                 - key: tool
                   value: 'Developer Tool'
+                - key: discontinued
+                  value: Discontinued
               type: select
               display: Category
               validate:
@@ -56,6 +57,8 @@ tabs:
                   value: WIP
                 - key: experimental
                   value: Experimental
+                - key: archived
+                  value: Archived
               type: select
               display: State
               validate:
@@ -64,3 +67,34 @@ tabs:
             field:
               type: text
               display: Platform
+  page:
+    display: Page
+    sections:
+      - fields:
+          - handle: team
+            field:
+              type: replicator
+              display: Team
+              sets:
+                team_members:
+                  display: ''
+                  sets:
+                    team_member:
+                      display: 'Team member'
+                      fields:
+                        - handle: name
+                          field:
+                            type: text
+                            display: Name
+                        - handle: avatar
+                          field:
+                            type: text
+                            display: Avatar
+                        - handle: link
+                          field:
+                            type: link
+                            display: Link
+                        - handle: role
+                          field:
+                            type: text
+                            display: Role

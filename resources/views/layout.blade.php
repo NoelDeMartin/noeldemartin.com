@@ -5,7 +5,20 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{{ $title ?? $site->name }}</title>
-        @vite(["resources/css/main.css"])
+        <style>
+            html {
+                --default-display: none;
+            }
+
+            svg {
+                display: var(--default-display);
+            }
+
+            header img {
+                display: var(--default-display);
+            }
+        </style>
+        @vite(["resources/css/main.css", "resources/js/main.js"])
     </head>
     <body
         class="font-ubuntu text-black-light flex min-h-screen flex-col bg-white text-base leading-tight font-normal antialiased print:block"

@@ -1,3 +1,7 @@
+html {
+    --default-display: revert !important;
+}
+
 main {
     a {
         @apply underline;

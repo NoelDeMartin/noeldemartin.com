@@ -2,3 +2,6 @@ tree:
   - entry: home
   - entry: blog
   - entry: projects
+    children:
+      - entry: beastmasters
+      - entry: geemba
