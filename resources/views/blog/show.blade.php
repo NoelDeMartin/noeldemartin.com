@@ -1,11 +1,5 @@
 @extends('layout')
 
-{{--
-    TODO minimal => true
-    TODO code highlighter
-    TODO landmarks / navigation
---}}
-
 @section('main')
     <article>
         <div class="max-w-readable overflow-hidden">

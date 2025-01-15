@@ -1,4 +1,4 @@
-title: App
+title: Project
 tabs:
   main:
     display: Main
@@ -36,23 +36,31 @@ tabs:
     display: Sidebar
     sections:
       - fields:
+          - handle: category
+            field:
+              options:
+                - key: app
+                  value: App
+                - key: tool
+                  value: 'Developer Tool'
+              type: select
+              display: Category
+              validate:
+                - required
           - handle: state
             field:
               options:
                 - key: live
-                  value: LIVE
+                  value: Live
                 - key: wip
                   value: WIP
+                - key: experimental
+                  value: Experimental
               type: select
               display: State
               validate:
                 - required
           - handle: platform
             field:
-              options:
-                - key: pwa
-                  value: PWA
-              type: select
+              type: text
               display: Platform
-              validate:
-                - required

@@ -26,7 +26,7 @@
             <div class="mb-2 flex">
                 <h3 class="my-0 mr-2 text-xl font-medium">{{ $title }}</h3>
                 <span
-                    class="{{ $stateClasses }} self-start rounded-full px-2 py-1 text-xs font-semibold tracking-widest"
+                    class="{{ $stateClasses }} self-start rounded-full px-2 py-1 text-xs font-semibold tracking-widest uppercase"
                 >
                     {{ $state->label() }}
                 </span>
