@@ -31,3 +31,5 @@ jobs:
         run: ./vendor/bin/phpstan analyse
       - name: Run Node Build
         run: npm run build
+      - name: Run Tests
+        run: php artisan test
