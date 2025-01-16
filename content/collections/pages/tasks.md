@@ -1,6 +1,6 @@
 ---
 id: tasks
-blueprint: page
 title: Tasks
+blueprint: page
 template: tasks/index
 ---

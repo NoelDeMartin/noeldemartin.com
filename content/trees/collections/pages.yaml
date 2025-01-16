@@ -5,4 +5,5 @@ tree:
     children:
       - entry: beastmasters
       - entry: geemba
+  - entry: now
   - entry: tasks

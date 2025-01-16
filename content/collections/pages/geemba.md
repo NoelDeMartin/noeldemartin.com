@@ -1,8 +1,7 @@
 ---
 id: geemba
-blueprint: page
 title: Geemba
-show_title: false
+blueprint: page
 template: projects/show
 ---
 

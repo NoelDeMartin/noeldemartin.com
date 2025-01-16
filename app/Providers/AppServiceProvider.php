@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Services\ActivityService;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
@@ -10,6 +11,11 @@ use Statamic\Facades\Collection;
 
 class AppServiceProvider extends ServiceProvider
 {
+    public function register(): void
+    {
+        $this->app->singleton('activity', ActivityService::class);
+    }
+
     public function boot(): void
     {
         $this->bootCarbon();

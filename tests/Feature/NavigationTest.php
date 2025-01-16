@@ -24,3 +24,17 @@ test('Projects', function () {
     $response->assertSee('Soukai');
     $response->assertSee('Geemba');
 });
+
+test('Now', function () {
+    $response = $this->get('/now');
+
+    $response->assertStatus(200);
+    $response->assertSee('Last updated');
+    $response->assertSee('2014');
+    $response->assertSee('Published');
+    $response->assertSee('Started');
+    $response->assertSee('Commented');
+    $response->assertSee('Completed');
+    $response->assertSee('Starting Something New');
+    $response->assertSee('Reading Musashi by Eiji Yoshikawa');
+});

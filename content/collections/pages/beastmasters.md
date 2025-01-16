@@ -1,8 +1,7 @@
 ---
 id: beastmasters
-blueprint: page
 title: 'BeastMasters: Twin Soul Legends'
-show_title: false
+blueprint: page
 template: projects/show
 ---
 

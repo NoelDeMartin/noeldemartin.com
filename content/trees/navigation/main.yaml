@@ -5,3 +5,5 @@ tree:
     entry: blog
   - id: projects-nav
     entry: projects
+  - id: now-nav
+    entry: now
