@@ -1,7 +1,7 @@
 ---
 id: beastmasters-project
 blueprint: project
-title: beastmasters
+title: Beast Masters
 category: discontinued
 logo: /img/logos/beastmasters.png
 link: 'entry::beastmasters'

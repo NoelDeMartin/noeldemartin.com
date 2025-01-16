@@ -50,7 +50,7 @@ main {
     }
 
     hr {
-        @apply bg-grey-dark mt-4 h-px;
+        @apply border-grey-dark mt-4 h-px;
     }
 
     img,

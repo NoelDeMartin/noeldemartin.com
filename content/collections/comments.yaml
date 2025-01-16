@@ -1,0 +1,4 @@
+title: Comments
+revisions: false
+title_format: '{{task:title}} comment'
+slugs: false

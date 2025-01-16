@@ -2,7 +2,7 @@
 id: starting-something-new
 blueprint: post
 title: 'Starting Something New'
-publication_date: '2014-11-10'
+publication_date: '2014-11-10 11:41'
 ---
 
 There is a feeling I enjoy a lot. The feeling of Starting Something New.

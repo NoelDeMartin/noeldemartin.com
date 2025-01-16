@@ -1,13 +1,15 @@
-title: Post
+title: Comment
 tabs:
   main:
     display: Main
     sections:
       - fields:
-          - handle: title
+          - handle: task
             field:
-              type: text
-              required: true
+              collections:
+                - tasks
+              type: link
+              display: Task
               validate:
                 - required
           - handle: content
@@ -15,14 +17,6 @@ tabs:
               type: markdown
               display: Content
               antlers: true
-  sidebar:
-    display: Sidebar
-    sections:
-      - fields:
-          - handle: slug
-            field:
-              type: slug
-              validate: 'max:200'
           - handle: publication_date
             field:
               type: date

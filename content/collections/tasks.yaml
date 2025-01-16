@@ -1,0 +1,5 @@
+title: Tasks
+template: tasks/show
+mount: tasks
+revisions: false
+route: '/{mount}/{slug}'

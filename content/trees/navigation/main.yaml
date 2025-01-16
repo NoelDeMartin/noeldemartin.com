@@ -1,0 +1,7 @@
+tree:
+  - id: home-nav
+    entry: home
+  - id: blog-nav
+    entry: blog
+  - id: projects-nav
+    entry: projects

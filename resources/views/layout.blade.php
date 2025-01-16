@@ -57,8 +57,8 @@
             </div>
             <nav aria-label="Site navigation" class="bg-overlay w-full">
                 <div class="max-w-content mx-auto flex h-full justify-between">
-                    <div class="flex space-x-2">
-                        <s:nav include_home="true">
+                    <div class="flex">
+                        <s:nav handle="main">
                             <a
                                 href="{{ $url }}"
                                 class="group hover:bg-overlay relative flex items-center p-2 font-bold text-black uppercase opacity-50 hover:opacity-100 focus:opacity-100 [&:is([aria-current])]:opacity-100"

@@ -1,4 +1,4 @@
-title: Page
+title: Task
 tabs:
   main:
     display: Main
@@ -10,22 +10,11 @@ tabs:
               required: true
               validate:
                 - required
-              width: 75
-          - handle: show_title
-            field:
-              type: toggle
-              display: 'Show title'
-              default: true
-              width: 25
           - handle: content
             field:
               type: markdown
               display: Content
               antlers: true
-          - handle: template
-            field:
-              type: template
-              display: Template
   sidebar:
     display: Sidebar
     sections:
@@ -34,7 +23,17 @@ tabs:
             field:
               type: slug
               validate: 'max:200'
-          - handle: icon
+          - handle: publication_date
             field:
-              type: text
-              display: Icon
+              type: date
+              time_enabled: true
+              time_seconds_enabled: true
+              display: 'Publication date'
+              validate:
+                - required
+          - handle: completion_date
+            field:
+              type: date
+              time_enabled: true
+              time_seconds_enabled: true
+              display: 'Completion date'

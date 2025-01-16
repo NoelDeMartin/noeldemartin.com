@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
 use Statamic\Entries\Entry;
@@ -9,18 +10,39 @@ use Statamic\Facades\Collection;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
-    public function register(): void
+    public function boot(): void
     {
-        //
+        $this->bootCarbon();
+        $this->bootCollections();
     }
 
-    /**
-     * Bootstrap any application services.
-     */
-    public function boot(): void
+    protected function bootCarbon(): void
+    {
+        Carbon::macro('display', function ($format = 'datetime') {
+            /** @var Carbon $date */
+            $date = $this; // @phpstan-ignore-line
+
+            switch ($format) {
+                case 'date-short':
+                    return $date->format('M d, Y');
+                case 'date':
+                    return $date->format('F d, Y');
+                case 'time':
+                    return $date->format('H:i');
+                case 'month':
+                    return $date->format('F Y');
+                case 'month-short':
+                    return $date->format('M Y');
+                case 'datetime-short':
+                    return $date->format('M d, Y H:i');
+                case 'datetime':
+                default:
+                    return $date->format('F d, Y H:i');
+            }
+        });
+    }
+
+    protected function bootCollections(): void
     {
         Collection::computed('posts', 'summary', function (Entry $entry) {
             if (! isset($entry->content) || ! is_string($entry->content)) {
