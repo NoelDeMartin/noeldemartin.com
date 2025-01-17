@@ -32,3 +32,9 @@ tabs:
               display: 'Publication date'
               validate:
                 - required
+          - handle: modification_date
+            field:
+              type: date
+              time_enabled: true
+              time_seconds_enabled: true
+              display: 'Modification date'

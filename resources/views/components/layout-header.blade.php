@@ -3,7 +3,13 @@
     class="z-10 flex h-16 flex-col items-center md:h-32 lg:h-40"
 >
     <div class="max-w-content flex w-full overflow-hidden">
-        <a href="/" aria-label="Home" title="Home" class="flex" tabindex="-1">
+        <a
+            href="{{ sroute("home") }}"
+            aria-label="Home"
+            title="Home"
+            class="flex"
+            tabindex="-1"
+        >
             <img
                 src="/img/myface.png"
                 alt=""

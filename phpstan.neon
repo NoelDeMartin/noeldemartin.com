@@ -6,3 +6,4 @@ parameters:
         - app/
     excludePaths:
         - app/Services/ActivityService.php
+        - app/Support/helpers.php

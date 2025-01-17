@@ -18,7 +18,7 @@
                 display: var(--default-display);
             }
         </style>
-        @vite(['resources/css/main.css', 'resources/js/main.js'])
+        @vite(['resources/assets/css/main.css', 'resources/assets/js/main.js'])
     </head>
     <body
         class="font-ubuntu text-black-light flex min-h-screen flex-col bg-white text-base leading-tight font-normal antialiased print:block"

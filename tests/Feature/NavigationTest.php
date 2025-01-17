@@ -29,6 +29,14 @@ test('Blog post', function () {
     $response->assertSee('What this blog will be about');
 });
 
+test('Blog RSS', function () {
+    $response = $this->get('/blog/rss.xml');
+
+    $response->assertStatus(200);
+    $response->assertSee('<feed xmlns="http://www.w3.org/2005/Atom">', false);
+    $response->assertSee('Starting Something New');
+});
+
 test('Projects', function () {
     $response = $this->get('/projects');
 

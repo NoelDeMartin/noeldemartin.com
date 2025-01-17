@@ -32,6 +32,6 @@
     </article>
 
     <div class="my-8 text-left md:text-right">
-        <a href="/blog">Read more posts →</a>
+        <a href="{{ sroute('blog') }}">Read more posts →</a>
     </div>
 @endsection

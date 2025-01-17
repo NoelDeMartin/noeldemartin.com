@@ -1,0 +1,12 @@
+@import 'tailwindcss';
+
+@config '../../../tailwind.config.js';
+
+@source "../../views";
+@source "../../../app";
+@source "../../../content";
+
+@layer base {
+    @import './base.css';
+    @import './fonts.css';
+}

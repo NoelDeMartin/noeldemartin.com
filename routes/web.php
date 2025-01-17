@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
+
+Route::get('blog/rss.xml', [BlogController::class, 'feed'])->name('blog.rss');
+Route::get('blog/styles.xsl', [BlogController::class, 'styles'])->name('blog.xsl');
 
 Route::redirect('solid-world', 'https://www.youtube.com/watch?v=cajBTJXmKhA');
 Route::redirect('fosdem', 'https://www.youtube.com/watch?v=kPzhykRVDuI');
