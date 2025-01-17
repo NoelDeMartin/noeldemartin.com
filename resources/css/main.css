@@ -4,7 +4,7 @@
 
 @source "../views";
 @source "../../app";
-@source "../../content/collections";
+@source "../../content";
 
 @layer base {
     @import './base.css';

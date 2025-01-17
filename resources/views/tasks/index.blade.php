@@ -5,7 +5,7 @@
         <h1>All Tasks</h1>
 
         <ul class="ml-0 list-none pl-0">
-            <s:collection from="tasks" sort="date_created:desc">
+            <s:collection from="tasks" sort="publication_date:desc">
                 <li
                     class="mb-4 flex flex-col items-start md:flex-row md:items-center"
                 >

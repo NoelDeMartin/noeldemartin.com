@@ -1,0 +1,43 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      - fields:
+          - handle: email
+            field:
+              type: text
+          - handle: socials
+            field:
+              type: replicator
+              display: Socials
+              sets:
+                accounts:
+                  display: 'Accounts'
+                  sets:
+                    account:
+                      display: Account
+                      fields:
+                        - handle: name
+                          field:
+                            type: text
+                            display: Name
+                        - handle: link
+                          field:
+                            type: text
+                            display: Link
+                            width: 66
+                        - handle: represent
+                          field:
+                            type: toggle
+                            display: Represent
+                            width: 33
+                        - handle: icon
+                          field:
+                            type: text
+                            display: Icon
+                            width: 33
+                        - handle: classes
+                          field:
+                            type: text
+                            display: Classes
+                            width: 66
