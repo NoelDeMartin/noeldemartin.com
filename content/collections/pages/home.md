@@ -24,14 +24,10 @@ Welcome to my personal website. Take your time to look around, and if you want t
     If you want to learn how I...
 </span>
 
-<div class="flex flex-col md:flex-row">
-
+<div class="flex flex-col md:flex-row md:space-x-4">
 {{ partial:home/cta title="Am" }}Keep reading!{{ /partial:home/cta }}
-
-{{ partial:home/cta title="Think" }}Read my [Blog](/blog){{ /partial:home/cta }}
-
-{{ partial:home/cta title="Work" }}Check out my [Projects](/projects)<br/>or [What I'm doing now](/now){{ /partial:home/cta }}
-
+{{ partial:home/cta title="Think" }}Read my <a href="/blog">Blog</a>{{ /partial:home/cta }}
+{{ partial:home/cta title="Work" }}Check out my <a href="/projects">Projects</a><br/>or <a href="/now">What I'm doing now</a>{{ /partial:home/cta }}
 </div>
 
 <h2 class="text-center text-3xl mt-10 md:text-2xl md:text-left" id="my-values">My values</h2>
