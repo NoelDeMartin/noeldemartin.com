@@ -32,7 +32,10 @@
             Skip to content
         </a>
 
-        <x-layout-header :socials="$contact->socials" />
+        <x-layout-header
+            :socials="$contact->socials"
+            :collapsed="$minimal ?? false"
+        />
 
         <main
             id="main"
@@ -41,6 +44,8 @@
         >
             @yield('main')
         </main>
+
+        <x-layout-footer />
 
         <!-- Sites Verification -->
         <div class="hidden">

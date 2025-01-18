@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layout', ['minimal' => true])
 
 @section('main')
     <article class="mx-auto mb-8">

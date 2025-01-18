@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layout', ['minimal' => true])
 
 @section('main')
     <article class="max-w-readable">

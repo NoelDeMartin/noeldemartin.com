@@ -1,5 +1,5 @@
 <header
-    class="bg-chamaleon z-10 flex h-16 flex-col items-center md:h-32 lg:h-40"
+    class="bg-chamaleon {{ $collapsed ? "md:mt-[calc(theme('height.5')+2*theme('height.2')-theme('height.32'))] lg:mt-[calc(theme('height.5')+2*theme('height.2')-theme('height.40'))]" : "" }} z-10 flex h-16 flex-col items-center md:h-32 lg:h-40"
     :class="navigationOpen ? 'fixed top-0 inset-x-0' : ''"
 >
     <div class="max-w-content flex w-full overflow-hidden">
