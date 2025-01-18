@@ -10,3 +10,7 @@
     @import './base.css';
     @import './fonts.css';
 }
+
+@theme {
+    --color-chamaleon: hsl(120, 40%, 80%);
+}

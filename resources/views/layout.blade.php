@@ -21,7 +21,9 @@
         @vite(['resources/assets/css/main.css', 'resources/assets/js/main.js'])
     </head>
     <body
+        x-data="{ navigationOpen: false }"
         class="font-ubuntu text-black-light flex min-h-screen flex-col bg-white text-base leading-tight font-normal antialiased print:block"
+        :class="navigationOpen ? 'overflow-hidden' : ''"
     >
         <a
             href="#main"
@@ -35,6 +37,7 @@
         <main
             id="main"
             class="max-w-content relative mx-auto w-full grow p-4 pt-8 md:px-2"
+            :class="navigationOpen ? 'mt-16' : ''"
         >
             @yield('main')
         </main>

@@ -1,8 +1,15 @@
 <header
-    style="background-color: hsl(120, 40%, 80%)"
-    class="z-10 flex h-16 flex-col items-center md:h-32 lg:h-40"
+    class="bg-chamaleon z-10 flex h-16 flex-col items-center md:h-32 lg:h-40"
+    :class="navigationOpen ? 'fixed top-0 inset-x-0' : ''"
 >
     <div class="max-w-content flex w-full overflow-hidden">
+        <a
+            class="hover:bg-overlay mr-2 flex h-full cursor-pointer items-center px-3 md:hidden print:hidden"
+            @click="navigationOpen = !navigationOpen"
+        >
+            <s:partial src="icons/menu" class="h-8 fill-current" />
+        </a>
+
         <a
             href="{{ sroute("home") }}"
             aria-label="Home"
@@ -23,13 +30,19 @@
             </div>
         </a>
     </div>
-    <nav aria-label="Site navigation" class="bg-overlay w-full">
-        <div class="max-w-content mx-auto flex h-full justify-between">
-            <div class="flex">
+    <nav
+        aria-label="Site navigation"
+        class="md:bg-overlay bg-chamaleon fixed top-16 bottom-0 w-full transition-transform duration-300 md:relative md:top-0"
+        :class="navigationOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'"
+    >
+        <div
+            class="md:max-w-content max-h-full overflow-auto md:mx-auto md:flex md:h-full md:justify-between"
+        >
+            <div class="md:flex">
                 <s:nav handle="main">
                     <a
                         href="{{ $url }}"
-                        class="group hover:bg-overlay relative flex items-center p-2 font-bold text-black uppercase opacity-50 hover:opacity-100 focus:opacity-100 [&:is([aria-current])]:opacity-100"
+                        class="group hover:bg-overlay relative flex items-center px-4 py-3 font-bold text-black uppercase hover:opacity-100 focus:opacity-100 md:px-2 md:py-2 md:opacity-50 [&:is([aria-current])]:opacity-100"
                         @if ($is_current)
                             aria-current="page"
                         @endif
@@ -43,21 +56,23 @@
                     </a>
                 </s:nav>
             </div>
-            <div class="flex">
+            <div class="md:flex">
                 @foreach ($socials as $account)
                     <a
                         href="{{ $account->link }}"
                         aria-label="{{ $account->name }}"
                         title="{{ $account->name }}"
                         target="_blank"
-                        class="hover:bg-overlay flex min-w-10 items-center justify-center px-2 opacity-50 hover:opacity-100 focus:opacity-100"
+                        class="hover:bg-overlay flex min-w-10 items-center justify-start px-4 py-3 hover:opacity-100 focus:opacity-100 md:justify-center md:px-2 md:py-0 md:opacity-50"
                         {{ $account->represent ? 'rel="me"' : "" }}
                     >
                         <s:partial
                             :src="'icons/' . $account->icon"
                             :class="($account->classes ?? '') . ' h-6'"
                         />
-                        <span class="sr-only">{{ $account->name }}</span>
+                        <span class="ml-2 md:sr-only">
+                            {{ $account->name }}
+                        </span>
                     </a>
                 @endforeach
             </div>
