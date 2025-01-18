@@ -69,7 +69,7 @@ if (! function_exists('parse_landmarks')) {
             function ($_, $level, $anchor, $title) {
                 return (object) [
                     'title' => trim(_remove_anchor_from_title($title)),
-                    'anchor' => "#$anchor",
+                    'anchor' => "#{$anchor}",
                     'level' => intval($level),
                 ];
             },
@@ -82,7 +82,8 @@ if (! function_exists('parse_landmarks')) {
         return preg_replace('/<a href="#[^"]+"[^>]*>(.*?)<\/a>/sm', '$1', $title);
     }
 
-    function _create_ancestor_landmark($previousLandmark, $header) {
+    function _create_ancestor_landmark($previousLandmark, $header)
+    {
         while ($previousLandmark->level !== $header->level) {
             $previousLandmark = $previousLandmark->parent;
         }
@@ -100,7 +101,8 @@ if (! function_exists('parse_landmarks')) {
         });
     }
 
-    function _create_descendant_landmark($previousLandmark, $header) {
+    function _create_descendant_landmark($previousLandmark, $header)
+    {
         while ($previousLandmark->level !== $header->level - 1) {
             $childLandmark = (object) [
                 'level' => $previousLandmark->level + 1,
@@ -125,7 +127,8 @@ if (! function_exists('parse_landmarks')) {
         });
     }
 
-    function _clean_landmark_tree($landmark) {
+    function _clean_landmark_tree($landmark)
+    {
         while ($landmark->level !== 1) {
             $landmark = $landmark->parent;
         }
@@ -135,7 +138,8 @@ if (! function_exists('parse_landmarks')) {
         return $landmark;
     }
 
-    function _clean_landmark($landmark) {
+    function _clean_landmark($landmark)
+    {
         unset($landmark->parent);
 
         if (empty($landmark->children)) {
