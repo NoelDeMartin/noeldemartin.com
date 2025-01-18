@@ -15,6 +15,23 @@
                 {{ $lastModificationDate->display('date') }}
             </time>
         </span>
+
+        <div
+            class="mt-2 flex flex-row gap-2 md:absolute md:top-0 md:right-0 md:flex-col"
+        >
+            <a
+                class="bg-rss flex items-center justify-start rounded p-1 text-sm text-white no-underline opacity-75 hover:text-white hover:opacity-100 focus:opacity-100"
+                href="{{ route('now.rss') }}"
+                aria-label="Open RSS feed"
+                title="Open RSS feed"
+                target="_blank"
+            >
+                <s:partial
+                    src="icons/rss"
+                    class="inline h-4 fill-current text-white"
+                />
+            </a>
+        </div>
     </div>
 
     <div class="max-w-readable">
@@ -37,7 +54,7 @@
 
                 <!-- prettier-ignore -->
                 <p class="mt-8 mb-0 text-center text-lg">
-                    Seems like I have completed all my tasks! Come back later or check out my <a href="/tasks">previous tasks</a>.
+                    Seems like I have completed all my tasks! Come back later or check out my <a href="{{ sroute('tasks') }}">previous tasks</a>.
                 </p>
             </div>
         @else
@@ -50,7 +67,7 @@
             @endforeach
 
             <div class="mt-0 text-left md:-mt-8 md:text-right">
-                <a href="/tasks">See previous tasks →</a>
+                <a href="{{ sroute('tasks') }}">See previous tasks →</a>
             </div>
 
             <hr class="border-grey mt-4 hidden w-full md:block" />
