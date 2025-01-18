@@ -50,30 +50,38 @@ class AppServiceProvider extends ServiceProvider
 
     protected function bootCollections(): void
     {
-        Collection::computed('posts', 'summary', function (Entry $entry) {
-            if (! isset($entry->content) || ! is_string($entry->content)) {
+        Collection::computed('posts', 'summary', function (Entry $post) {
+            if (! isset($post->content) || ! is_string($post->content)) {
                 return null;
             }
 
-            $summary = substr($entry->content, 0, strpos($entry->content, '<h2') ?: 0);
+            $summary = substr($post->content, 0, strpos($post->content, '<h2') ?: 0);
             $summary = preg_replace('/<a(\s|>)[^>]*>(.*?)<\/a>/', '$2', $summary) ?: '';
             $summary = preg_replace('/<img[^>]*>/', '', $summary);
 
             return $summary;
         });
 
-        Collection::computed('posts', 'duration', function (Entry $entry) {
-            if (! isset($entry->content) || ! is_string($entry->content)) {
+        Collection::computed('posts', 'duration', function (Entry $post) {
+            if (! isset($post->content) || ! is_string($post->content)) {
                 return null;
             }
 
-            $words = str_word_count(strip_tags($entry->content));
+            $words = str_word_count(strip_tags($post->content));
 
             return round($words / 200);
         });
 
-        Collection::computed('projects', 'stateClasses', function (Entry $entry) {
-            switch ($entry->value('state')) {
+        Collection::computed('posts', 'landmarks', function (Entry $post) {
+            if (! isset($post->content) || ! is_string($post->content)) {
+                return null;
+            }
+
+            return parse_landmarks($post->content);
+        });
+
+        Collection::computed('projects', 'stateClasses', function (Entry $project) {
+            switch ($project->value('state')) {
                 case 'live':
                     return 'bg-jade-lighter text-jade-darker';
                 case 'archived':
@@ -84,8 +92,8 @@ class AppServiceProvider extends ServiceProvider
             }
         });
 
-        Collection::computed('projects', 'images', function (Entry $entry) {
-            $id = $entry->id();
+        Collection::computed('projects', 'images', function (Entry $project) {
+            $id = $project->id();
 
             if (! is_string($id)) {
                 return [];

@@ -2,7 +2,7 @@
 
 @section('main')
     <article>
-        <div class="max-w-readable overflow-hidden">
+        <div class="max-w-readable">
             <h1>{{ $title }}</h1>
 
             <div class="mb-4 flex">
@@ -28,6 +28,11 @@
             @antlers
                 {{ content }}
             @endantlers
+
+            <x-table-of-contents
+                :title="$title"
+                :landmarks="$landmarks->value()"
+            />
         </div>
     </article>
 

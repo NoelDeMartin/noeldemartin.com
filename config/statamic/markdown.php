@@ -18,9 +18,12 @@ return [
     'configs' => [
 
         'default' => [
-            // 'heading_permalink' => [
-            //     'symbol' => '#',
-            // ],
+            'heading_permalink' => [
+                'apply_id_to_heading' => true,
+                'fragment_prefix' => '',
+                'id_prefix' => '',
+                'symbol' => '',
+            ],
         ],
 
     ],

@@ -15,6 +15,7 @@ tabs:
               type: markdown
               display: Content
               antlers: true
+              heading_anchors: true
   sidebar:
     display: Sidebar
     sections:
