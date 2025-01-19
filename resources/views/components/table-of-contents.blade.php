@@ -64,7 +64,7 @@
 
     <button
         type="button"
-        class="group right-[calc(max(0px,(100vw-theme('maxWidth.content'))/2))] fixed top-0 mt-4 mr-4 flex h-12 w-12 items-center justify-center md:mt-16 md:-mr-1 md:h-8 md:w-8"
+        class="group right-[calc(max(0px,(100vw-theme('maxWidth.content'))/2))] fixed top-0 mt-4 mr-4 flex h-12 w-12 items-center justify-center md:mt-16 md:h-8 md:w-8"
         @click="open()"
     >
         <div

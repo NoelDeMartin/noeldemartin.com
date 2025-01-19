@@ -149,6 +149,9 @@ if (! function_exists('parse_landmarks')) {
         }
     }
 
+    /**
+     * @return array<Landmark>
+     */
     function parse_landmarks(string $html): array
     {
         $headings = _parse_html_headings($html);
@@ -166,4 +169,17 @@ if (! function_exists('parse_landmarks')) {
         return _clean_landmark_tree($currentLandmark)->children ?? [];
     }
 
+}
+
+if (! function_exists('antlers_icon')) {
+    function antlers_icon(string $name, string $class = '', array $attrs = []): string
+    {
+        $attrsString = "class=\"{$class}\"";
+
+        foreach ($attrs as $attr => $value) {
+            $attrsString .= " {$attr}=\"{$value}\"";
+        }
+
+        return str_replace('class="{{ class ?? \'\' }}"', $attrsString, file_get_contents(resource_path("views/icons/{$name}.antlers.html")));
+    }
 }

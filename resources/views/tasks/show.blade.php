@@ -31,45 +31,21 @@
 
         <h2 class="mb-6 text-xl">Activity</h2>
 
-        <s:collection
-            from="comments"
-            sort="publication_date:asc"
-            :task:is="'entry::' . $id"
-            as="comments"
-        >
-            <x-comment id="comment-1" :date="$publication_date" :short="true">
-                <p class="flex items-center md:m-0">
-                    Task started
-                    <s:partial src="icons/task-started" class="ml-2 size-4" />
-                </p>
+        @foreach ($comments as $index => $comment)
+            <x-comment
+                :id="'comment-' . ($index + 1)"
+                :date="$comment->publication_date"
+                :short="is_null($comment->task->value())"
+            >
+                @antlers
+                    {{ comment:content }}
+                @endantlers
             </x-comment>
+        @endforeach
 
-            @foreach ($comments as $index => $comment)
-                <x-comment
-                    :id="'comment-' . ($index + 2)"
-                    :date="$comment->publication_date"
-                >
-                    @antlers
-                        {{ comment:content }}
-                    @endantlers
-                </x-comment>
-            @endforeach
-
-            @if (! is_null($completion_date->value()))
-                <x-comment
-                    :id="'comment-' . ($comments->count() + 2)"
-                    :date="$publication_date"
-                    :short="true"
-                >
-                    <p class="flex items-center md:m-0">
-                        Task completed
-                        <s:partial
-                            src="icons/task-completed"
-                            class="ml-2 size-4"
-                        />
-                    </p>
-                </x-comment>
-            @endif
-        </s:collection>
+        <x-table-of-contents
+            :title="$title"
+            :landmarks="$landmarks->value()"
+        />
     </article>
 @endsection

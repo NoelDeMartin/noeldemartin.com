@@ -4,6 +4,11 @@ parameters:
     level: max
     paths:
         - app/
+    universalObjectCratesClasses:
+        - Statamic\Entries\Entry
+    typeAliases:
+        Landmark: 'object{level: int, title: string, anchor: string, parent: object, children: array<object>}'
     excludePaths:
+        - app/Models/Task.php
         - app/Services/ActivityService.php
         - app/Support/helpers.php
