@@ -1,9 +1,5 @@
 <?php echo '<?xml version="1.0" encoding="utf-8" ?>'; ?>
-
-<?php echo '<?xml-stylesheet type="text/xsl" href="' .
-    route('blog.xsl') .
-    '" ?>' .
-    "\n"; ?>
+<?php echo '<?xml-stylesheet type="text/xsl" href="' . route('blog.xsl') . '" ?>' . "\n"; ?>
 
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title type="text">Noel De Martin</title>

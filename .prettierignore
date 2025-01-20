@@ -1,2 +1,5 @@
 composer.lock
+resources/views/blog/rss.blade.php
+resources/views/now/rss.blade.php
+resources/views/podcast/feed.blade.php
 storage

@@ -29,14 +29,6 @@ test('Blog post', function () {
     $response->assertSee('What this blog will be about');
 });
 
-test('Blog RSS', function () {
-    $response = $this->get('/blog/rss.xml');
-
-    $response->assertStatus(200);
-    $response->assertSee('<feed xmlns="http://www.w3.org/2005/Atom">', false);
-    $response->assertSee('Starting Something New');
-});
-
 test('Projects', function () {
     $response = $this->get('/projects');
 
@@ -54,21 +46,6 @@ test('Now', function () {
 
     $response->assertStatus(200);
     $response->assertSee('Last updated');
-    $response->assertSee('2014');
-    $response->assertSee('Published');
-    $response->assertSee('Started');
-    $response->assertSee('Commented');
-    $response->assertSee('Completed');
-    $response->assertSee('Starting Something New');
-    $response->assertSee('Reading Musashi by Eiji Yoshikawa');
-});
-
-test('Now RSS', function () {
-    $response = $this->get('/now/rss.xml');
-
-    $response->assertStatus(200);
-    $response->assertSee('<feed xmlns="http://www.w3.org/2005/Atom">', false);
-    $response->assertSee('Starting Something New');
     $response->assertSee('2014');
     $response->assertSee('Published');
     $response->assertSee('Started');

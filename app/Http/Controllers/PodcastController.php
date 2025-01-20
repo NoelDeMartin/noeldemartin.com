@@ -2,23 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Support\Facades\Activity;
 use Illuminate\Http\Response;
 
-class NowController extends Controller
+class PodcastController extends Controller
 {
     public function feed(): Response
     {
-        $events = Activity::events();
-
         return response()
-            ->view('now.rss', ['events' => $events])
+            ->view('podcast.feed')
             ->header('Content-Type', 'application/xml');
     }
 
     public function styles(): Response
     {
-        $content = file_get_contents(resource_path('assets/xsl/updates.xsl'));
+        $content = file_get_contents(resource_path('assets/xsl/podcast.xsl'));
 
         if (empty($content)) {
             abort(404);

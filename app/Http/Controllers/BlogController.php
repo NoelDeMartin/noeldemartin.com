@@ -18,7 +18,7 @@ class BlogController extends Controller
 
     public function styles(): Response
     {
-        $content = file_get_contents(resource_path('assets/xsl/feed.xsl'));
+        $content = file_get_contents(resource_path('assets/xsl/updates.xsl'));
 
         if (empty($content)) {
             abort(404);
