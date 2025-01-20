@@ -61,7 +61,7 @@ class AppServiceProvider extends ServiceProvider
     protected function bootMarkdown(): void
     {
         Markdown::addExtension(function () {
-            return new ExternalLinkExtension();
+            return new ExternalLinkExtension;
         });
     }
 }
