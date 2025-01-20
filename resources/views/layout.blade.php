@@ -19,6 +19,7 @@
             }
         </style>
         @vite(['resources/assets/css/main.css', 'resources/assets/js/main.js'])
+        @stack('head')
     </head>
     <body
         x-data="{ navigationOpen: false }"

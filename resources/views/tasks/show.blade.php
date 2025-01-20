@@ -1,5 +1,9 @@
 @extends('layout', ['minimal' => true])
 
+@push('head')
+    @vite(['resources/assets/css/code.css', 'resources/assets/js/code.js'])
+@endpush
+
 @section('main')
     <article class="max-w-readable">
         <h1>{{ $title }}</h1>
