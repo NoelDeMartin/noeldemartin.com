@@ -38,7 +38,7 @@ The events I attended were the following:
 
 - Discovering Android design guidelines ([Marten Joensson](https://www.apps-world.net/europe/speakers/marten-joensson/), Google)
 
-* Panel: Designing your next beautiful Android App
+- Panel: Designing your next beautiful Android App
 
 ## Core Ideas
 

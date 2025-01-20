@@ -15,11 +15,11 @@ This is my first blog post, and because of my personality the first thing I did 
 I don't really know if anyone who doesn't already know me will even read this, but well in case that happens here you have what you can also read in the [about](/about) section at the moment.
 
 > Hi there!
-
+>
 > My name is Noel De Martin Fernandez. I am a Problem Solver, Software Architect and Entrepreneur. I created [Lincoln's Chilli](http://www.lincolnschilli.com) and I am in the process of exploring the market and creating my own framework to deliver services and products. I enjoy innovation and collaboration, so I am interested in different technologies and projects that open me to different possibilities.
-
+>
 > I live in Catalonia (Spain) and you can check me out in [Twitter](https://twitter.com/NoelDeMartin) or [LinkedIn](http://www.linkedin.com/pub/noel-de-martin-fernandez/41/a7b/64) for more information. If you want to contact me, don't hesitate on [sending an email](mailto:noeldemartin@gmail.com).
-
+>
 > Cheers
 
 As of my current situation, I recently quit my job (3 months ago) and I'm now trying to follow my dreams and passions. It's not as easy as it sounds, because for starters I don't even know what those are, but as they say “You don’t have to get it right, you just have to get it going”.

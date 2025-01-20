@@ -78,29 +78,29 @@ Ok, so that's nice and all, but what am I actually going to do? I have a few ide
 
 1. **A framework to make Solid Apps.** This would be the most straight-forward, because [I have already started working on it](https://aerogel.js.org/). It also builds on top of everything I've been doing, and since I'm using local-first I can market it to a larger audience. But I also see some problems.
 
-If we're talking about audience, my decision to use Vue over React is probably bad (but it's unlikely to change). I usually wouldn't care too much about it; but I can't see a project like this becoming sustainable without a large audience.
+    If we're talking about audience, my decision to use Vue over React is probably bad (but it's unlikely to change). I usually wouldn't care too much about it; but I can't see a project like this becoming sustainable without a large audience.
 
-Still, many people both in the Solid and local-first communities often mentions the lack of an easy solution to get started. This could be my attempt at making the Ruby on Rails of Solid/local-first.
+    Still, many people both in the Solid and local-first communities often mentions the lack of an easy solution to get started. This could be my attempt at making the Ruby on Rails of Solid/local-first.
 
 2. **A B2C Solid POD.** If I really want to help the ecosystem, this is what I should do. I'd love to make a POD provider that acts as a proxy for different cloud providers (Google Drive, Dropbox, Nextcloud, etc.) using custom domains. That way, it'd be possible to migrate to a "real POD" later on. Also, the familiarity of these providers would remove the barriers to entry for many people, and help them understand how Solid works. I'd certainly focus on the UX, which is the biggest problem most PODs have nowadays. And because it'd be a proxy, I wouldn't be storing anyone's sensitive data (besides their credentials). Finally, this seems the easiest idea to monetize.
 
-There is just one slight problem... I would be starting from scratch 😅. Yes, I've been working with Solid for a while, but it's always been as an app developer. If anything, I've made a point to ignore the server-side stuff leaving it to "the protocol".
+    There is just one slight problem... I would be starting from scratch 😅. Yes, I've been working with Solid for a while, but it's always been as an app developer. If anything, I've made a point to ignore the server-side stuff leaving it to "the protocol".
 
-But it also means that I'd finally get back to work with Laravel, so it's not completely off the table.
+    But it also means that I'd finally get back to work with Laravel, so it's not completely off the table.
 
 3. **More and better apps.** I could just continue doing what I've been doing, but kicking it up a notch. So far, everything I've released has been a byproduct of working in the open. The real audience has always been myself, and I'm fortunate that it seems to have resonated with others (although I don't know how many people is _really_ using my apps). But this time, I would focus on solving others' problems with Solid.
 
-For example, I've been asked multiple times about adding social features. And I think it would be really cool to take advantage of Activity Pub to achieve it. Also, I haven't done any user research. I could definitely do a better job at learning what people wants.
+    For example, I've been asked multiple times about adding social features. And I think it would be really cool to take advantage of Activity Pub to achieve it. Also, I haven't done any user research. I could definitely do a better job at learning what people wants.
 
-However, I should also say that this sounds like [a recipe for disaster](https://noeldemartin.com/blog/working-in-the-open-when-no-one-is-looking#what-is-it-for). I'm not saying it cannot work, but I've struggled to achieve this in the past. If we're adding Solid to the mix, and the fact that I'm not sure how I'd monetize any of this, it sounds even more shaky.
+    However, I should also say that this sounds like [a recipe for disaster](https://noeldemartin.com/blog/working-in-the-open-when-no-one-is-looking#what-is-it-for). I'm not saying it cannot work, but I've struggled to achieve this in the past. If we're adding Solid to the mix, and the fact that I'm not sure how I'd monetize any of this, it sounds even more shaky.
 
 4. **A paid course.** This is the most far-fetched idea, but I'll mention it anyways. Starting with info products [has worked for others before](https://adamwathan.me/the-book-launch-that-let-me-quit-my-job/), and one of the recurrent issues that come up in Solid is the lack of resources to get started. But I see many problems with this one.
 
-If the audience was a problem for my first idea, it is damning for this one. And not just Solid's audience, but my own as well. I still feel like [I have no audience](https://noeldemartin.com/blog/working-in-the-open-when-no-one-is-looking), certainly not enough to make a living with a paid course. But maybe I have [enough people](https://seths.blog/2009/04/first-ten/) to make some of the other ideas work.
+    If the audience was a problem for my first idea, it is damning for this one. And not just Solid's audience, but my own as well. I still feel like [I have no audience](https://noeldemartin.com/blog/working-in-the-open-when-no-one-is-looking), certainly not enough to make a living with a paid course. But maybe I have [enough people](https://seths.blog/2009/04/first-ten/) to make some of the other ideas work.
 
-Additionally, to have even a slight chance to make this work, it would need to be framework agnostic. No Aerogel, no Vue, and certainly no [Soukai](https://github.com/NoelDeMartin/soukai-solid).
+    Additionally, to have even a slight chance to make this work, it would need to be framework agnostic. No Aerogel, no Vue, and certainly no [Soukai](https://github.com/NoelDeMartin/soukai-solid).
 
-Nobody knows what'll happen in the future, but for now; the prospects for this one don't look good. If you're curious to know what this would cover, you can watch a spiritual preview in my FOSDEM talk: [From Zero to Hero with Solid](https://noeldemartin.com/fosdem).
+    Nobody knows what'll happen in the future, but for now; the prospects for this one don't look good. If you're curious to know what this would cover, you can watch a spiritual preview in my FOSDEM talk: [From Zero to Hero with Solid](https://noeldemartin.com/fosdem).
 
 Whichever of these I choose to pursue, it's very unlikely that they become sustainable in the short term. To start with some runway, I'll probably apply for an NLNet grant. If I don't get it, the timeline will be a lot shorter and I may have to relegate my Solid work to side-projects again.
 

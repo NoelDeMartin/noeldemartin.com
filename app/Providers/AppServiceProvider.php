@@ -8,6 +8,8 @@ use App\Models\Task;
 use App\Services\ActivityService;
 use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
+use League\CommonMark\Extension\ExternalLink\ExternalLinkExtension;
+use Statamic\Facades\Markdown;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->bootCarbon();
         $this->bootModels();
+        $this->bootMarkdown();
     }
 
     protected function bootCarbon(): void
@@ -53,5 +56,12 @@ class AppServiceProvider extends ServiceProvider
         Post::boot();
         Task::boot();
         Project::boot();
+    }
+
+    protected function bootMarkdown(): void
+    {
+        Markdown::addExtension(function () {
+            return new ExternalLinkExtension();
+        });
     }
 }

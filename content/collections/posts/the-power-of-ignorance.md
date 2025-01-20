@@ -9,9 +9,9 @@ modification_date: '2015-01-09 20:40:15'
 I have something to confess, I am surprisingly ignorant in many topics of general knowledge. I don't know much about economics, literature, sports or world news. And I'm not ashamed nor do I regret it. But before I explain why, let me tell you who's also ignorant this way: Sherlock Holmes.
 
 > **Dr. Watson:** His ignorance was as remarkable as his knowledge. Of contemporary literature, philosophy and politics he appeared to know next to nothing. […]
-
+>
 > **Sherlock Holmes:** You see, I consider that a man's brain originally is like a little empty attic, and you have to stock it with such furniture as you choose. A fool takes in all the lumber of every sort that he comes across, so that the knowledge which might be useful to him gets crowded out, or at best is jumbled up with a lot of other things so that he has a difficulty in laying his hands upon it. Now the skillful workman is very careful indeed as to what he takes into his brain-attic. He will have nothing but the tools which may help him in doing his work, but of these he has a large assortment, and all in the most perfect order. It is a mistake to think that that little room has elastic walls and can distend to any extent. Depend upon it there comes a time when for every addition of knowledge you forget something that you knew before. It is of the highest importance, therefore, not to have useless facts elbowing out the useful ones.
-
+>
 > -- <cite>Sir Arthur Conan Doyle, A Study in Scarlet</cite>
 
 ## Why
