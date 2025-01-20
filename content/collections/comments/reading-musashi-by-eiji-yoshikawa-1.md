@@ -3,7 +3,7 @@ id: reading-musashi-by-eiji-yoshikawa-1
 blueprint: comment
 title: 'Reading Musashi by Eiji Yoshikawa - 1'
 task: 'entry::reading-musashi-by-eiji-yoshikawa'
-publication_date: '2018-11-20 13:34:04'
+publication_date: '2018-11-20 12:34:04'
 ---
 
 Well, it is time. I finished part 6 so I'll now start reading the last one: Book VII - The Perfect Light.

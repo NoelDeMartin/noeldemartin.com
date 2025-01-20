@@ -1,0 +1,19 @@
+---
+id: implementing-a-media-tracker-using-solid-3
+blueprint: comment
+title: 'Implementing a Media Tracker using Solid - 3'
+task: 'entry::implementing-a-media-tracker-using-solid'
+publication_date: '2020-02-28 19:27:16'
+---
+
+I have finally come up with a name that I like for the project: Media Kraken. It's likely to change at some point, because I've seen that it's already used by others. But it'll do as a codename for a while, at least until I start caring about marketing for this project (which may never happen). And yes, brace for the "release the kraken" jokes because they'll be numerous.
+
+Something else I've done is start using the Type Registry like I mentioned in the last update. This has been particularly easy because I've been able to use the new non-document entities feature that I implemented last time. I have created a [TypeRegistration](https://github.com/NoelDeMartin/media-kraken/commit/34df61a51fb6a0d00aa1a4d6478056adae01c6c4#diff-c21e4d2a1f72d615bb22119749684e0fR4-R29) model and that's it, so the extra work I did last week has already paid off.
+
+And finally, I have also started integrating the application with 3rd parties. Given that it's an application that will allow browsing movies, the data catalog has to come from somewhere. I have to say that I am both surprised and not surprised at how hard it's been to solve this. What I was thinking at first is that it'd be easy to use some API from imdb (just looking at the name gives the impression that it must be queriable). But it's surprisingly closed, the only thing they provide is [downloading some files](https://www.imdb.com/interfaces/) that are updated every day. It is not very convenient, specially given that I am making an application that lives in the frontend with no backend. So yeah, I've been looking for alternatives and there isn't any real open database for this. I shouldn't be surprised because we are in the age of data and the ones who have it don't want to give it away. This is not the first time that I've faced a similar situation, so it's surprising because that's not how I think the world should work but it's not surprising because it's consistent in how things have been so far.
+
+What many do at this point is start scraping. Again, this is not feasible in this application for a variety of reasons. Let's put aside the ethical, moral and legal implications. Since the application lives in the browser, and CORS is a thing, it's not possible to do scraping without recurring to some sort of proxy. I could have gone down that path, but I'm not convinced that it is a good solution in the long run. So what I ended up doing is using the closest thing I could find to an open database, and that is [tmdb.org](https://www.themoviedb.org/). I don't consider this 100% open because it requires an API key. This wouldn't be so bad if I had a backend, but I don't. And I cannot ship the API key in the frontend because it would be exposed. So I ended up creating an AWS Lambda that proxies calls to the api, only in order to keep the API key away from the frontend. This is obviously not ideal, specially since [it isn't possible to limit AWS usage](https://serverfault.com/questions/874176/how-do-i-ensure-my-aws-free-tier-plan-doesnt-exceed-the-free-usage-limit). But I haven't been able to come up with a better solution, if anyone has it I'm all ears.
+
+What I plan to do at some point is allow users to configure their own proxies. But we all know nobody will do it, unless they have to. And that will happen when the AWS Lambda is close to start incurring costs and I shut it down. I don't think that'll happen anytime soon, so for now I won't worry about this.
+
+Now that I've integrated with a data provider, the app is starting to be functional. But not visually, it sucks, so after a couple more features I'll probably be done with the first version and finish this task by implementing a decent UI.

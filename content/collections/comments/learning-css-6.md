@@ -1,0 +1,21 @@
+---
+id: learning-css-6
+blueprint: comment
+title: 'Learning CSS - 6'
+task: 'entry::learning-css'
+publication_date: '2023-10-18 16:03:44'
+---
+
+Hi there!
+
+With all the summer holidays and [various other things](https://web.archive.org/web/20230830022710/https://moodlemoot.org/) going on, it took me a bit more time to go through this module. But now it's done! This one was all about Typography and Images. Even though it may seem trivial at first, there's actually a lot of nuance.
+
+First of all, I must confess my relation with these. And the truth is that it's almost non-existent 😅️. When it comes to fonts, most of the time I use the default from the system. If anything, when an app deserves its own branding, I choose a single font and use it everywhere (for example, I'm using [Montserrat](https://github.com/JulietaUla/Montserrat) for [Media Kraken](https://noeldemartin.github.io/media-kraken/) and [Livvic](https://github.com/Fonthausen/Livvic) for [Umai](https://umai.noeldemartin.com/)). I do take advantage of font weights and sizes to add some variety, but that's as far as I go. My approach to images is not much better. I usually have a single image that is big enough for most screens, and that's it.
+
+I was well aware, even before taking this module, that I have a lot to improve here. But the thing is that for the types of products I work on, these things are an after-thought. As has been made clear with the content in this module, doing these properly takes a lot of time and dedication. And quite honestly, in my list of priorities, these are at the bottom. Still, I appreciate their importance, and I've learned a thing or two in these lessons that I'll be able to apply right away.
+
+One of the first lessons of the module makes a great point that hadn't downed on me. The exact same website is very likely to look different in different devices (even if the screen has the same resolution). Which is obvious if you think about it, there are differences in browsers, operative systems, etc. But I had this idea of "pixel-perfect design", and how websites should be implemented that way. Many things in this course so far have reaffirmed it, like [the attention to detail](https://noeldemartin.com/tasks/learning-css#comment-5) I mentioned in previous entries. But other things like fluid design, and the rendering quirks introduced in this module, make me think otherwise. In reality, the way designs should be implemented is with specific rules, rather than pixels. For example, if something should have a given margin, it shouldn't be in order to make look exactly as you see it in your design tool. It should be to conform to a certain layout (like the popular [12-column grid](https://duckduckgo.com/?q=12-column+grid)), or align to other elements in the UI. Other than that, content should flow freely through the screen, and grow or shrink depending on its contents.
+
+Other than getting conceptual insights, I also learned about a couple of specifics. I was already aware of [Google Fonts](https://fonts.google.com/) and similar websites, but I had been downloading and configuring them by hand to remove the dependency with Google. Turns out there are some tools out there, like this [google-webfonts-helper](https://gwfh.mranftl.com/fonts), that make the process seamless. I also found about a couple of CSS features I didn't even know existed, like the [font-display](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display) property to configure font loading strategies, the concept of [line break opportunities](https://www.w3.org/TR/css-text-3/#line-breaking) to understand how text wraps, the [`<picture>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture) element to control multiple image sources, etc. I was also glad to see one of my biggest pet peeves mentioned: using the optional line length for text readability (50 to 75 characters per line). I learned about it in [Refactoring UI](https://www.refactoringui.com/), and ever since I noticed it, I haven't been able to make any UI without following that rule of thumb.
+
+There is still a lot more I have to learn on the topic of Typography and Images, but this module was definietly a good overview of everything that is important. I'll be sure to revisit it in the future if I ever want to go more in depth.

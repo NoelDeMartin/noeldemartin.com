@@ -1,0 +1,29 @@
+---
+id: implementing-a-recipes-manager-using-solid-1
+blueprint: comment
+title: 'Implementing a Recipes Manager using Solid - 1'
+task: 'entry::implementing-a-recipes-manager-using-solid'
+publication_date: '2020-12-28 13:08:28'
+---
+
+I have been tinkering with many projects under development, so it's been a rough couple of weeks but I'm ready to share some progress now.
+
+First I'll start with [Vue 3](https://github.com/vuejs/vue-next) and [Vite](https://github.com/vitejs/vite). I was really excited to start using those, because I have been hearing about them for a while but I hadn't used them myself. At first it was great, and I think they are the future of my development workflow. But soon, things started to break down. To their credit, it's not exactly their fault.
+
+Vite uses [esbuild](https://esbuild.github.io/) to compile the dependencies during development, and while it makes it really fast, it also means that the libraries have to be compatible with ES modules. There are ways to work around that limitation, but I spend way too much time trying to make things work and I decided to leave it there. To make things worse, Vite uses [Rollup](https://www.rollupjs.org) for production builds. While [I do prefer Rollup over Webpack](https://noeldemartin.com/tasks/housekeeping#comment-6), having two build systems increases the possibility for headaches. In the end, I wasn't even sure if the problem was that the packages were not compatible with ES modules, what I know is that using Webpack all my problems were solved. I hope some time from now this is not the case, because I really liked Vite. But at the moment, I don't think it's worth it if you're going to use third party libraries.
+
+Vue 3, on the other hand, has been a better experience. The only thing I haven't been able to use is [the script setup sugar](https://github.com/vuejs/rfcs/blob/script-setup/active-rfcs/0000-script-setup.md) because it [doesn't work with Vetur](https://github.com/vuejs/vetur/issues/2296). But I am using the [Composition API](https://v3.vuejs.org/guide/composition-api-introduction.html) and everything else has been a smooth sailing.
+
+In other news, something I'm starting to do with this project is using my own domain to serve applications. I'm still hosting them on github pages, but other than removing the domain dependency with github this also helps with sandboxing. I have been serving my apps under `noeldemartin.github.io/{app-name}`, and they are all sharing things like localStorage which is not a good thing. So you can now find my latest finished Solid App at [ramen.noeldemartin.com](https://ramen.noeldemartin.com).
+
+Wait, what? No, I haven't finished this task yet! Let me explain.
+
+One of the things I want to achieve with this task is to test my apps with multiple server implementations. This is the perfect chance because the codebase is really simple, but as it continues evolving it will become too complex to use as a compatibility tool. So [I started making some jokes](https://noeldemartin.social/@noeldemartin/105357581328850005), one thing lead to another, and I decided to make a separate application just for this purpose.
+
+You can learn what it does [in the project's README](https://github.com/NoelDeMartin/ramen/). In a nutshell, it checks if you've got a Ramen recipe in your POD and if you don't you can create it. I was really tempted to use [Mr Jägger's Ramen recipe](https://www.youtube.com/watch?v=9xps6wY6DTI) (click through this link at your own risk), but I ended up using [Jun's Ramen recipe](https://www.youtube.com/watch?v=9WXIrnWsaCo).
+
+I have tested this app with the 4 servers I mentioned for this task, and it only works properly with 2 of them (more details about that also in the README). The two where it doesn't work are still under development, so that's to be expected. But it's been helpful to tinker with them anyways, because I've learned some things I wasn't clear about before. Now I understand the difference between identity providers and POD providers (I learned about it in [this issue](https://github.com/solid/community-server/issues/425)). This lead me to use a new strategy for logging users into my apps. In my other apps, I just send the url that users introduce to the authentication library, but some times that may not work (for example, if they are writing their WebId and the identity provider is hosted on a different server). In this app, I am reading their profile and trying to search for `solid:oidcIssuer` or infer it doing some requests. Most of the time this will result in some unnecessary requests, but it only happens on login and all of them should be very small.
+
+There are still some rough edges with authentication, but some of them are not in my hands so for now I'll leave them as things to improve. Something I don't like but I don't think I'll be able to avoid is using two authentication libraries: [@inrupt/solid-client-authn-browser](https://github.com/inrupt/solid-client-authn-js/) for new servers that support DPoP authentication and [solid-auth-client](https://github.com/solid/solid-auth-client) for old servers that don't. I have been able to avoid increasing the bundle size by code-splitting both libraries and only loading the one that's used (although [I found some problems with the latest version of solid-auth-client](https://github.com/solid/solid-auth-client/issues/177)). But I still haven't found a foolproof way to know if a server doesn't support DPoP authentication, so I'm relying on heuristics and hardcoded domains for now.
+
+And, long as it was, that's it for today's update. With this I think I've covered most of the boring part about this task: authenticating and working with different servers. Now I can get into the fun part: building a recipes manager. For now I am calling it "Umai".
