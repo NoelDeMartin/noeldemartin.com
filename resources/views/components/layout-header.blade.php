@@ -32,8 +32,11 @@
     </div>
     <nav
         aria-label="Site navigation"
-        class="md:bg-overlay bg-chamaleon fixed top-16 bottom-0 w-full transition-transform duration-300 md:relative md:top-0"
-        :class="navigationOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'"
+        class="md:bg-overlay bg-chamaleon fixed top-16 bottom-0 w-full -translate-x-full transition-transform duration-300 md:relative md:top-0 md:translate-x-0"
+        :class="{
+            'translate-x-0': navigationOpen,
+            '-translate-x-full md:translate-x-0': !navigationOpen,
+        }"
     >
         <div
             class="md:max-w-content max-h-full overflow-auto md:mx-auto md:flex md:h-full md:justify-between"

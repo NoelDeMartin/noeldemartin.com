@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Support\Arr;
 use Statamic\Facades\Entry;
 use Statamic\Facades\GlobalSet;
@@ -182,4 +183,13 @@ if (! function_exists('antlers_icon')) {
 
         return str_replace('class="{{ class ?? \'\' }}"', $attrsString, file_get_contents(resource_path("views/icons/{$name}.antlers.html")));
     }
+}
+
+if (! function_exists('carbon')) {
+
+    function carbon(string $date)
+    {
+        return new Carbon($date);
+    }
+
 }

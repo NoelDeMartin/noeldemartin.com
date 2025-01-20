@@ -5,6 +5,8 @@ tree:
     children:
       - entry: beastmasters
       - entry: geemba
+  - entry: talks
   - entry: now
   - entry: tasks
   - entry: site
+  - entry: japan-tips

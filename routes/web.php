@@ -2,12 +2,14 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\NowController;
+use App\Http\Controllers\SiteMap;
 use Illuminate\Support\Facades\Route;
 
 Route::get('blog/rss.xml', [BlogController::class, 'feed'])->name('blog.rss');
 Route::get('blog/styles.xsl', [BlogController::class, 'styles'])->name('blog.xsl');
 Route::get('now/rss.xml', [NowController::class, 'feed'])->name('now.rss');
 Route::get('now/styles.xsl', [NowController::class, 'styles'])->name('now.xsl');
+Route::get('sitemap.xml', SiteMap::class)->name('sitemap');
 
 Route::redirect('fosdem', 'https://www.youtube.com/watch?v=kPzhykRVDuI');
 Route::redirect('solid-world', 'https://www.youtube.com/watch?v=cajBTJXmKhA');
