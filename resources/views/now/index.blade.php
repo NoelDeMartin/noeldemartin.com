@@ -11,7 +11,10 @@
 
         <span class="text-blue-darker text-sm">
             Last updated
-            <time datetime="{{ $lastModificationDate->toDateTimeString() }}">
+            <time
+                datetime="{{ $lastModificationDate->toDateTimeString() }}"
+                x-datetime:date="{{ $lastModificationDate->getTimestamp() }}"
+            >
                 {{ $lastModificationDate->display('date') }}
             </time>
         </span>

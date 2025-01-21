@@ -17,6 +17,10 @@ tabs:
               type: markdown
               display: Content
               antlers: true
+  sidebar:
+    display: Sidebar
+    sections:
+      - fields:
           - handle: publication_date
             field:
               type: date

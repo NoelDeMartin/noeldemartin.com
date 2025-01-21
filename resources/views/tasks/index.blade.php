@@ -22,10 +22,16 @@
                                     : 'bg-blue-lighter text-blue-darker'
                             }} mr-2 rounded-lg px-2 py-1 font-mono text-sm"
                         >
-                            <span class="block md:hidden">
+                            <span
+                                class="block md:hidden"
+                                x-datetime:month="{{ ($completion_date->value() ?? $publication_date->value())->getTimestamp() }}"
+                            >
                                 {{ ($completion_date->value() ?? $publication_date->value())->display('month') }}
                             </span>
-                            <span class="hidden md:block">
+                            <span
+                                class="hidden md:block"
+                                x-datetime:month-short="{{ ($completion_date->value() ?? $publication_date->value())->getTimestamp() }}"
+                            >
                                 {{ ($completion_date->value() ?? $publication_date->value())->display('month-short') }}
                             </span>
                         </time>

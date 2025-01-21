@@ -13,6 +13,7 @@
             <time
                 class="mr-2"
                 datetime="{{ $publication_date->toDateTimeString() }}"
+                x-datetime:date="{{ $publication_date->getTimestamp() }}"
             >
                 {{ $publication_date->display('date') }}
             </time>
@@ -21,7 +22,10 @@
                 <span>(Ongoing)</span>
             @else
                 <span class="mr-2">–</span>
-                <time datetime="{{ $completion_date->toDateTimeString() }}">
+                <time
+                    datetime="{{ $completion_date->toDateTimeString() }}"
+                    x-datetime:date="{{ $completion_date->getTimestamp() }}"
+                >
                     {{ $completion_date->display('date') }}
                 </time>
             @endif

@@ -10,14 +10,22 @@
         datetime="{{ $date->toDateTimeString() }}"
     >
         @if ($short)
-            <span class="block md:hidden">
+            <span
+                class="block md:hidden"
+                x-datetime:datetime="{{ $date->getTimestamp() }}"
+            >
                 {{ $date->display('datetime') }}
             </span>
-            <span class="hidden md:block">
+            <span
+                class="hidden md:block"
+                x-datetime:datetime-short="{{ $date->getTimestamp() }}"
+            >
                 {{ $date->display('datetime-short') }}
             </span>
         @else
-            {{ $date->display('datetime') }}
+            <span x-datetime:datetime="{{ $date->getTimestamp() }}">
+                {{ $date->display('datetime') }}
+            </span>
         @endif
     </time>
 
