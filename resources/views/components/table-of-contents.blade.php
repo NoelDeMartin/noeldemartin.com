@@ -28,7 +28,10 @@
 >
     <aside
         class="fixed inset-y-0 left-0 z-40 w-screen -translate-x-full transform overflow-y-auto bg-white px-8 pt-4 shadow-md transition-transform duration-200 md:w-auto"
-        :class="isOpen ? 'translate-x-0' : '-translate-x-full'"
+        :class="{
+            'translate-x-0': isOpen,
+            '-translate-x-full': !isOpen,
+        }"
     >
         <button
             type="button"

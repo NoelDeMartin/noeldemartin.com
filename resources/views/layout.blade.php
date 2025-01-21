@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="{{ $site->short_locale }}">
+<html lang="{{ $site->short_locale }}" prefix="og: http://ogp.me/ns#">
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>{{ $title ?? $site->name }}</title>
         <style>
             html {
                 --default-display: none;
@@ -18,6 +17,21 @@
                 display: var(--default-display);
             }
         </style>
+        <link
+            rel="alternate"
+            type="application/rss+xml"
+            title="Noel De Martin [Journal]"
+            href="{{ url('now/rss.xml') }}"
+        />
+        <link
+            rel="alternate"
+            type="application/rss+xml"
+            title="Noel De Martin"
+            href="{{ url('blog/rss.xml') }}"
+        />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        @semanticSEO()
         @vite(['resources/assets/css/main.css', 'resources/assets/js/main.js'])
         @stack('head')
     </head>

@@ -16,11 +16,21 @@ class Post extends StatamicModel
         return $summary;
     }
 
+    public function words(): int
+    {
+        return str_word_count(strip_tags($this->content));
+    }
+
     public function duration(): int
     {
-        $words = str_word_count(strip_tags($this->content));
+        return intval(round($this->words() / 200));
+    }
 
-        return intval(round($words / 200));
+    public function imageUrl(): ?string
+    {
+        preg_match('/<img[^>]*src="([^"]*)"/', $this->content, $matches);
+
+        return count($matches) > 1 ? url($matches[1]) : null;
     }
 
     /**

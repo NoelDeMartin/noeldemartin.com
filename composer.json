@@ -11,6 +11,7 @@
         "php": "^8.2",
         "laravel/framework": "^11.31",
         "laravel/tinker": "^2.9",
+        "noeldemartin/laravel-semantic-seo": "^0.3.0",
         "statamic/cms": "^5.0",
         "statamic/eloquent-driver": "^4.19"
     },

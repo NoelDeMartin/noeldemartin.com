@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Support\Facades\File;
 
 /**
- * @method string value(string $key)
  * @method string id()
+ * @method string value(string $key)
  */
 class Project extends StatamicModel
 {
@@ -31,6 +31,10 @@ class Project extends StatamicModel
         $id = $this->id();
         $project = substr($id, 0, strlen($id) - 8);
         $imagesPath = "img/projects/{$project}/images";
+
+        if (! File::exists(public_path($imagesPath))) {
+            return [];
+        }
 
         /** @var array<array{url: string, description: string}> */
         $images = collect(File::files(public_path($imagesPath)))

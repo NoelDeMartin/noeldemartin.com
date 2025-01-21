@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e2f44e4923f570ebaeeceb912120b0ef",
+    "content-hash": "f55df0029a50f513f9a6110a9dd8f55f",
     "packages": [
         {
             "name": "ajthinking/archetype",
@@ -3056,6 +3056,71 @@
                 "source": "https://github.com/nikic/PHP-Parser/tree/v5.4.0"
             },
             "time": "2024-12-30T11:07:19+00:00"
+        },
+        {
+            "name": "noeldemartin/laravel-semantic-seo",
+            "version": "v0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/NoelDeMartin/laravel-semantic-seo.git",
+                "reference": "10dedea0ad3e1dbf17242d66423c0853b17ca87e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/NoelDeMartin/laravel-semantic-seo/zipball/10dedea0ad3e1dbf17242d66423c0853b17ca87e",
+                "reference": "10dedea0ad3e1dbf17242d66423c0853b17ca87e",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": ">=11.0.0",
+                "php": ">=8.2.0"
+            },
+            "require-dev": {
+                "fakerphp/faker": "^1.24",
+                "illuminate/container": "^11.38",
+                "illuminate/routing": "^11.38",
+                "mockery/mockery": "^1.6",
+                "phpunit/phpunit": "^11.5",
+                "tightenco/duster": "^3.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "SemanticSEO": "NoelDeMartin\\SemanticSEO\\Support\\Facades\\SemanticSEO"
+                    },
+                    "providers": [
+                        "NoelDeMartin\\SemanticSEO\\SemanticSEOServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "NoelDeMartin\\SemanticSEO\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Noel De Martin",
+                    "email": "noeldemartin@gmail.com"
+                }
+            ],
+            "description": "Provide utilities to add Semantic SEO to Laravel Applications.",
+            "keywords": [
+                "laravel",
+                "semantic-html",
+                "semantic-seo",
+                "seo"
+            ],
+            "support": {
+                "issues": "https://github.com/NoelDeMartin/laravel-semantic-seo/issues",
+                "source": "https://github.com/NoelDeMartin/laravel-semantic-seo/tree/v0.3.0"
+            },
+            "time": "2025-01-21T16:26:58+00:00"
         },
         {
             "name": "nunomaduro/termwind",
