@@ -8,7 +8,7 @@ use App\SemanticSEO\NoelDeMartinOrganization;
 use App\SemanticSEO\Project;
 use App\SemanticSEO\WebPage;
 use NoelDeMartin\SemanticSEO\Support\Facades\SemanticSEO;
-use Statamic\Entries\Entry;
+use Statamic\Structures\Page;
 
 class Projects
 {
@@ -28,7 +28,7 @@ class Projects
             ->publisher(NoelDeMartinOrganization::class);
     }
 
-    public function show(Entry $project): void
+    public function show(Page $project): void
     {
         SemanticSEO::meta(trans("seo.projects.{$project->slug}"));
         SemanticSEO::is(new Project($project));

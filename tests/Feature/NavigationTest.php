@@ -30,15 +30,9 @@ test('Blog post', function () {
 });
 
 test('Projects', function () {
-    $response = $this->get('/projects');
-
-    $response->assertStatus(200);
-    $response->assertSee('Umai');
-    $response->assertSee('Soukai');
-    $response->assertSee('Geemba');
-
-    $this->get('/projects/geemba')->assertSee('We aimed to make fitness more accessible');
-    $this->get('/projects/beastmasters')->assertSee('an online turn-based card game');
+    $this->get('/projects')->assertStatus(200)->assertSee('Umai')->assertSee('Soukai')->assertSee('Geemba');
+    $this->get('/projects/geemba')->assertStatus(200)->assertSee('We aimed to make fitness more accessible');
+    $this->get('/projects/beastmasters')->assertStatus(200)->assertSee('an online turn-based card game');
 });
 
 test('Now', function () {
