@@ -12,7 +12,7 @@
 }
 
 @theme {
-    --color-chamaleon: hsl(120, 40%, 80%);
+    --color-chamaleon: hsl(180, 40%, 80%);
 }
 
 @layer components {
