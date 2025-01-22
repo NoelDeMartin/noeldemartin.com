@@ -1,7 +1,8 @@
 <header
-    class="bg-chamaleon {{ $collapsed ? "md:mt-[calc(theme('height.5')+2*theme('height.2')-theme('height.32'))] lg:mt-[calc(theme('height.5')+2*theme('height.2')-theme('height.40'))]" : "" }} z-10 flex h-16 flex-col items-center transition-colors duration-300 md:h-32 lg:h-40"
+    class="bg-chamaleon z-10 flex h-16 flex-col items-center transition-[margin-top] duration-500 md:h-32 md:data-[collapsed=true]:mt-[calc(theme('height.5')+2*theme('height.2')-theme('height.32'))] lg:h-40 lg:data-[collapsed=true]:mt-[calc(theme('height.5')+2*theme('height.2')-theme('height.40'))]"
     :class="navigationOpen ? 'fixed top-0 inset-x-0' : ''"
     x-chamaleon
+    data-collapsed="{{ json_encode($collapsed) }}"
 >
     <div class="max-w-content flex w-full overflow-hidden">
         <a
@@ -33,7 +34,7 @@
     </div>
     <nav
         aria-label="Site navigation"
-        class="md:bg-overlay bg-chamaleon fixed top-16 bottom-0 w-full -translate-x-full transition-colors transition-transform duration-300 md:relative md:top-0 md:translate-x-0"
+        class="md:bg-overlay bg-chamaleon fixed top-16 bottom-0 w-full -translate-x-full transition-transform duration-300 md:relative md:top-0 md:translate-x-0"
         :class="{
             'translate-x-0': navigationOpen,
             '-translate-x-full md:translate-x-0': !navigationOpen,

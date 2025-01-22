@@ -7,6 +7,7 @@
         "lint": "prettier . -c"
     },
     "dependencies": {
+        "@hotwired/turbo": "^8.0.12",
         "prismjs": "^1.29.0",
         "tailwindcss": "^4.0.0-beta.9"
     },

@@ -62,4 +62,8 @@
     h6:has(> .heading-permalink):hover .heading-permalink {
         @apply block;
     }
+
+    .turbo-progress-bar {
+        @apply !bg-blue;
+    }
 }
