@@ -1,0 +1,16 @@
+services:
+    app:
+        image: noeldemartin/noeldemartin.com
+        volumes:
+            - ./storage:/app/storage
+            - ./.env:/app/.env
+        restart: unless-stopped
+        networks:
+            default:
+                aliases:
+                    - noeldemartin
+
+networks:
+    default:
+        name: nginx-agora
+        external: true
