@@ -66,3 +66,5 @@ if (document.readyState === 'complete') {
 } else {
     document.addEventListener('DOMContentLoaded', highlightCode);
 }
+
+document.addEventListener('turbo:load', highlightCode);
