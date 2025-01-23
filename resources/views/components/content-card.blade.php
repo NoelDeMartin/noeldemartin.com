@@ -17,7 +17,7 @@
 
         @isset($date)
             <time
-                class="text-blue-darker my-2 flex flex-shrink-0 items-center text-xs font-normal md:my-0 md:h-[28px]"
+                class="text-blue-darker my-2 flex shrink-0 items-center text-xs font-normal md:my-0 md:h-[28px]"
                 datetime="{{ $date->toDateTimeString() }}"
             >
                 <s:partial src="icons/calendar" class="h-4 fill-current" />
@@ -35,7 +35,7 @@
                     <a
                         href="{{ $linkUrl }}"
                         target="_blank"
-                        class="bg-blue hover:bg-blue-darker rounded px-2 py-1 text-sm text-white no-underline visited:text-white hover:text-white"
+                        class="bg-blue hover:bg-blue-darker rounded-sm px-2 py-1 text-sm text-white no-underline visited:text-white hover:text-white"
                     >
                         {{ $linkText }}
                     </a>

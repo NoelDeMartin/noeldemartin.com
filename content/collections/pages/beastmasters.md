@@ -13,7 +13,7 @@ This was a joint effort with multiple disciplines, and it was completely crafted
 
 If you're curious, you can take a look at the images below and download the demo to play against bots. It's very reduced and you won't see everything the game had to offer, but it's enough to give you a taste of what it was. And it works offline, so it won't be a problem that the servers are no longer running.
 
-<a href="/downloads/beastmasters.apk" class="mx-auto h-10 w-56 flex items-center justify-center rounded no-underline font-semibold tracking-wider text-[#3dda84] bg-[#073042] hover:[box-shadow:rgb(255,255,255)_0px_0px_0px_0px,rgb(61,218,132)_0px_0px_0px_4px,rgba(0,0,0,0)_0px_0px_0px_0px] focus:[box-shadow:rgb(255,255,255)_0px_0px_0px_0px,rgb(61,218,132)_0px_0px_0px_4px,rgba(0,0,0,0)_0px_0px_0px_0px]">
+<a href="/downloads/beastmasters.apk" class="mx-auto h-10 w-56 flex items-center justify-center rounded-sm no-underline font-semibold tracking-wider text-[#3dda84] bg-[#073042] hover:[box-shadow:rgb(255,255,255)_0px_0px_0px_0px,rgb(61,218,132)_0px_0px_0px_4px,rgba(0,0,0,0)_0px_0px_0px_0px] focus:[box-shadow:rgb(255,255,255)_0px_0px_0px_0px,rgb(61,218,132)_0px_0px_0px_4px,rgba(0,0,0,0)_0px_0px_0px_0px]">
 {{ partial:icons/android class="size-5 fill-current mr-2" /}}
 Download demo
 </a>

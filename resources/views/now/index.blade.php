@@ -23,7 +23,7 @@
             class="mt-2 flex flex-row gap-2 md:absolute md:top-0 md:right-0 md:flex-col"
         >
             <a
-                class="bg-rss flex items-center justify-start rounded p-1 text-sm text-white no-underline opacity-75 hover:text-white hover:opacity-100 focus:opacity-100"
+                class="bg-rss flex items-center justify-start rounded-sm p-1 text-sm text-white no-underline opacity-75 hover:text-white hover:opacity-100 focus:opacity-100"
                 href="{{ route('now.rss') }}"
                 aria-label="Open RSS feed"
                 title="Open RSS feed"

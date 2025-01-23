@@ -22,7 +22,7 @@
             <body class="bg-gray-50">
                 <div class="mx-auto max-w-prose px-6 py-8">
                     <div class="flex items-center">
-                        <div class="rounded p-2" style="background: #ff6600">
+                        <div class="rounded-sm p-2" style="background: #ff6600">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 430.117 430.118"
@@ -51,7 +51,7 @@
 
                     <div class="space-y-4 pt-2">
                         <xsl:for-each select="item">
-                            <div class="rounded border bg-white px-8 py-4">
+                            <div class="rounded-sm border bg-white px-8 py-4">
                                 <h2 class="text-xl font-semibold">
                                     <xsl:value-of select="title" />
                                 </h2>
@@ -83,7 +83,7 @@
                         Use the following url to listen in your favourite
                         podcast app:
                     </p>
-                    <pre class="mt-2 rounded bg-gray-200 p-2">
+                    <pre class="mt-2 rounded-sm bg-gray-200 p-2">
                         <code><xsl:value-of select="atom:link/@href"/></code>
                     </pre>
                 </div>

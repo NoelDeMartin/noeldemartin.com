@@ -4,7 +4,7 @@
     <h1 class="sr-only">Blog</h1>
 
     <a
-        class="bg-rss float-right hidden items-center justify-center rounded p-1 text-sm text-white no-underline opacity-75 hover:text-white hover:opacity-100 focus:opacity-100 md:flex"
+        class="bg-rss float-right hidden items-center justify-center rounded-sm p-1 text-sm text-white no-underline opacity-75 hover:text-white hover:opacity-100 focus:opacity-100 md:flex"
         href="{{ route('blog.rss') }}"
         title="Open RSS feed"
         target="_blank"
@@ -20,7 +20,7 @@
 
     <div class="flex justify-end">
         <a
-            class="bg-rss flex items-center rounded p-2 text-white no-underline opacity-75 hover:opacity-100 md:hidden"
+            class="bg-rss flex items-center rounded-sm p-2 text-white no-underline opacity-75 hover:opacity-100 md:hidden"
             href="{{ route('blog.rss') }}"
             title="Open RSS feed"
             target="_blank"

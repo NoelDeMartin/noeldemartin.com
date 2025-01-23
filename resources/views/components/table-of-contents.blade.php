@@ -43,7 +43,7 @@
         </button>
         <nav
             aria-label="Table of contents"
-            class="[&_a]:no-underline [&_a]:hover:underline [&_a]:focus:underline [&_a][data-current]:underline"
+            class="[&_a]:no-underline hover:[&_a]:underline focus:[&_a]:underline [&_a][data-current]:underline"
         >
             <a
                 href="#main"
@@ -67,14 +67,20 @@
 
     <button
         type="button"
-        class="group right-[calc(max(0px,(100vw-theme('maxWidth.content'))/2))] fixed top-0 mt-4 mr-4 flex h-12 w-12 items-center justify-center md:mt-16 md:h-8 md:w-8"
+        class="group fixed top-0 right-[calc(max(0px,(100vw-(var(--max-width-content)))/2))] mt-4 mr-4 flex h-12 w-12 items-center justify-center md:mt-16 md:h-8 md:w-8"
         @click="open()"
     >
         <div
             class="bg-grey-light absolute inset-0 hidden rounded-full group-hover:block"
         ></div>
         <div
-            class="md:p-125rem [background-image:conic-gradient(theme('colors.blue-darker')_var(--progress),transparent_0)] absolute inset-0 rounded-full p-1"
+            class="absolute inset-0 rounded-full p-1 md:p-[.125rem]"
+            style="
+                background-image: conic-gradient(
+                    var(--color-blue-darker) var(--progress),
+                    transparent 0
+                );
+            "
         >
             <div
                 class="group-hover:bg-grey-light h-full w-full rounded-full bg-white"

@@ -13,7 +13,7 @@
                     class="mb-4 flex flex-col items-start md:flex-row md:items-center"
                 >
                     <div
-                        class="flex flex-shrink-0 flex-row-reverse items-center md:flex-row"
+                        class="flex shrink-0 flex-row-reverse items-center md:flex-row"
                     >
                         <time
                             class="{{

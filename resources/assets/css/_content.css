@@ -1,0 +1,139 @@
+html {
+    --default-display: revert !important;
+}
+
+main {
+    a {
+        @apply underline;
+
+        &:visited {
+            @apply text-blue-darkest;
+        }
+
+        &:hover {
+            color: var(--color-black-dark);
+        }
+    }
+
+    h1,
+    .h1 {
+        @apply text-blue-darkest mb-4 text-3xl font-medium tracking-wide;
+    }
+
+    h2 {
+        @apply text-blue-darkest my-4 text-2xl font-medium;
+    }
+
+    h3 {
+        @apply text-blue-darkest my-4 text-xl font-medium;
+    }
+
+    p {
+        @apply my-6 leading-normal;
+    }
+
+    ul,
+    ol {
+        @apply ml-4 pl-4;
+    }
+
+    ul {
+        @apply list-disc;
+    }
+
+    ol {
+        @apply list-decimal;
+    }
+
+    li p {
+        @apply my-4;
+    }
+
+    hr {
+        @apply border-grey-dark mt-4 h-px;
+    }
+
+    img,
+    video {
+        @apply mx-auto max-w-full;
+    }
+
+    figure {
+        @apply m-0 mb-6;
+
+        figcaption {
+            @apply mt-1 text-center text-sm italic;
+        }
+    }
+
+    pre {
+        /* screen width - p-4 */
+        max-width: calc(100vw - 2 * --spacing(4));
+    }
+
+    blockquote {
+        @apply border-grey my-4 ml-4 border-l-2 p-2 italic;
+
+        p:first-child {
+            @apply mt-0;
+        }
+
+        p:last-child {
+            @apply mb-0;
+        }
+    }
+
+    h1:has(> .heading-permalink),
+    h2:has(> .heading-permalink),
+    h3:has(> .heading-permalink),
+    h4:has(> .heading-permalink),
+    h5:has(> .heading-permalink),
+    h6:has(> .heading-permalink) {
+        @apply relative;
+
+        .heading-permalink {
+            @apply absolute top-1/2 left-0 hidden size-6 -translate-x-full -translate-y-1/2 pr-1;
+
+            &::before {
+                --clickable-size: 44px;
+                --clickable-inset-by: min(
+                    0px,
+                    calc((100% - var(--clickable-size)) / 2)
+                );
+
+                content: '';
+                position: absolute;
+                top: var(--clickable-inset-by);
+                left: var(--clickable-inset-by);
+                right: var(--clickable-inset-by);
+                bottom: var(--clickable-inset-by);
+            }
+
+            &::after {
+                @apply inline-block size-6;
+
+                content: '';
+
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24'%3E%3Cpath fill='%23888888' d='M17 7h-4v2h4c1.65 0 3 1.35 3 3s-1.35 3-3 3h-4v2h4c2.76 0 5-2.24 5-5s-2.24-5-5-5m-6 8H7c-1.65 0-3-1.35-3-3s1.35-3 3-3h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4zm-3-4h8v2H8z'/%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+                background-size: 1em;
+            }
+        }
+    }
+
+    h1:has(> .heading-permalink):hover .heading-permalink,
+    h2:has(> .heading-permalink):hover .heading-permalink,
+    h3:has(> .heading-permalink):hover .heading-permalink,
+    h4:has(> .heading-permalink):hover .heading-permalink,
+    h5:has(> .heading-permalink):hover .heading-permalink,
+    h6:has(> .heading-permalink):hover .heading-permalink {
+        @apply block;
+    }
+}
+
+@media print {
+    p,
+    li {
+        page-break-inside: avoid;
+    }
+}

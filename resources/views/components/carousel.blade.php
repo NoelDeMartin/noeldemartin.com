@@ -28,14 +28,14 @@
     @keydown.escape.document="hide()"
 >
     <ul
-        class="m-0 grid list-none grid-cols-[repeat(auto-fill,minmax(theme('width.24'),1fr))] gap-2 p-0"
+        class="m-0 grid list-none grid-cols-[repeat(auto-fill,minmax(--spacing(24),1fr))] gap-2 p-0"
     >
         @foreach ($images as $index => $image)
-            <li class="outline-none">
+            <li class="outline-hidden">
                 <button
                     type="button"
                     aria-label="Open {{ $image['description'] }}"
-                    class="pt-full w-full bg-cover bg-center opacity-75 hover:opacity-100 focus:opacity-100"
+                    class="aspect-square w-full bg-cover bg-center opacity-75 hover:opacity-100 focus:opacity-100"
                     style="background-image: url('{{ $image['url'] }}')"
                     @click="show({{ $index }})"
                 ></button>
@@ -51,7 +51,7 @@
             class="z-10 flex items-center justify-center space-x-2 md:space-x-6"
         >
             <button
-                class="bg-grey-lighter h-20 w-10 opacity-50 shadow hover:opacity-100 focus:opacity-100"
+                class="bg-grey-lighter h-20 w-10 opacity-50 shadow-sm hover:opacity-100 focus:opacity-100"
                 type="button"
                 aria-label="Move to next image"
                 @click="next()"
@@ -60,14 +60,14 @@
             </button>
 
             <img
-                class="max-h-[90vh] max-w-[calc(100%-2*theme('width.10')-4*theme('spacing.2'))]"
+                class="max-h-[90vh] max-w-[calc(100%-2*(--spacing(10))-4*(--spacing(2)))]"
                 :src="images[activeImage]?.url"
                 :alt="images[activeImage]?.alt"
                 :title="images[activeImage]?.description"
             />
 
             <button
-                class="bg-grey-lighter h-20 w-10 opacity-50 shadow hover:opacity-100 focus:opacity-100"
+                class="bg-grey-lighter h-20 w-10 opacity-50 shadow-sm hover:opacity-100 focus:opacity-100"
                 type="button"
                 aria-label="Move to previous image"
                 @click="previous()"

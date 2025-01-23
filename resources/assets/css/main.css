@@ -1,70 +1,51 @@
-@import 'tailwindcss';
+@import 'tailwindcss' source('../../../');
 @plugin '@tailwindcss/typography';
 
-@config '../../../tailwind.config.js';
+@theme {
+    --font-ubuntu: 'Ubuntu', 'sans-serif';
+    --font-ubuntu-mono: 'Ubuntu Mono', 'sans-serif';
 
-@source "../../views";
-@source "../../../app";
-@source "../../../content";
+    --color-chamaleon: hsl(180, 40%, 80%);
+    --color-error: #f44336;
+    --color-rss: #ff6600;
+
+    --color-black-light: #4a4a4a;
+    --color-black: #22292f;
+    --color-black-dark: #000000;
+
+    --color-grey-lightest: #f8fafc;
+    --color-grey-lighter: #f1f5f8;
+    --color-grey-light: #dae1e7;
+    --color-grey: #b8c2cc;
+    --color-grey-dark: #8795a1;
+    --color-grey-darker: #606f7b;
+    --color-grey-darkest: #3d4852;
+
+    --color-jade-lighter: #bdead9;
+    --color-jade: #00af6f;
+    --color-jade-darker: #007047;
+
+    --color-blue-lightest: #eff8ff;
+    --color-blue-lighter: #bcdefa;
+    --color-blue-light: #6cb2eb;
+    --color-blue: #3490dc;
+    --color-blue-dark: #2779bd;
+    --color-blue-darker: #266193;
+    --color-blue-darkest: #12283a;
+
+    --color-yellow-lighter: #faf089;
+    --color-yellow-darker: #b7791f;
+    --color-yellow-darkest: #744210;
+
+    --color-overlay: rgba(0, 0, 0, 0.075);
+    --color-overlay-dark: rgba(0, 0, 0, 0.7);
+
+    --max-width-readable: 640px;
+    --max-width-content: 900px;
+}
 
 @layer base {
-    @import './base.css';
-    @import './fonts.css';
-}
-
-@theme {
-    --color-chamaleon: hsl(180, 40%, 80%);
-}
-
-@layer components {
-    h1:has(> .heading-permalink),
-    h2:has(> .heading-permalink),
-    h3:has(> .heading-permalink),
-    h4:has(> .heading-permalink),
-    h5:has(> .heading-permalink),
-    h6:has(> .heading-permalink) {
-        @apply relative;
-
-        .heading-permalink {
-            @apply absolute top-1/2 left-0 hidden size-6 -translate-x-full -translate-y-1/2 pr-1;
-
-            &::before {
-                --clickable-size: 44px;
-                --clickable-inset-by: min(
-                    0px,
-                    calc((100% - var(--clickable-size)) / 2)
-                );
-
-                content: '';
-                position: absolute;
-                top: var(--clickable-inset-by);
-                left: var(--clickable-inset-by);
-                right: var(--clickable-inset-by);
-                bottom: var(--clickable-inset-by);
-            }
-
-            &::after {
-                @apply inline-block size-6;
-
-                content: '';
-
-                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24'%3E%3Cpath fill='%23888888' d='M17 7h-4v2h4c1.65 0 3 1.35 3 3s-1.35 3-3 3h-4v2h4c2.76 0 5-2.24 5-5s-2.24-5-5-5m-6 8H7c-1.65 0-3-1.35-3-3s1.35-3 3-3h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4zm-3-4h8v2H8z'/%3E%3C/svg%3E");
-                background-repeat: no-repeat;
-                background-size: 1em;
-            }
-        }
-    }
-
-    h1:has(> .heading-permalink):hover .heading-permalink,
-    h2:has(> .heading-permalink):hover .heading-permalink,
-    h3:has(> .heading-permalink):hover .heading-permalink,
-    h4:has(> .heading-permalink):hover .heading-permalink,
-    h5:has(> .heading-permalink):hover .heading-permalink,
-    h6:has(> .heading-permalink):hover .heading-permalink {
-        @apply block;
-    }
-
-    .turbo-progress-bar {
-        @apply !bg-blue;
-    }
+    @import './_content.css';
+    @import './_fonts.css';
+    @import './_turbo.css';
 }

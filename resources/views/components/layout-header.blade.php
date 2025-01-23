@@ -1,6 +1,6 @@
 <header
-    class="bg-chamaleon z-10 flex h-16 flex-col items-center transition-[margin-top] duration-500 md:h-32 md:data-[collapsed=true]:mt-[calc(theme('height.5')+2*theme('height.2')-theme('height.32'))] lg:h-40 lg:data-[collapsed=true]:mt-[calc(theme('height.5')+2*theme('height.2')-theme('height.40'))]"
-    :class="navigationOpen ? 'fixed top-0 inset-x-0' : ''"
+    class="bg-chamaleon z-10 flex h-16 flex-col items-center transition-[margin-top] duration-500 md:h-32 md:data-[collapsed=true]:mt-[calc((--spacing(5))+2*(--spacing(2))-(--spacing(32)))] lg:h-40 lg:data-[collapsed=true]:mt-[calc((--spacing(5))+2*(--spacing(2))-(--spacing(40)))]"
+    :class="{ 'fixed top-0 inset-x-0': navigationOpen }"
     x-chamaleon
     data-collapsed="{{ json_encode($collapsed) }}"
 >
@@ -22,7 +22,7 @@
             <img
                 src="/img/myface.png"
                 alt=""
-                class="mr-2 h-16/10 translate-y-[-15%] transform md:mr-4 lg:mr-8 print:h-full print:translate-y-0"
+                class="mr-2 h-[160%] translate-y-[-15%] transform md:mr-4 lg:mr-8 print:h-full print:translate-y-0"
             />
             <div class="my-auto grow" style="height: 80%">
                 <s:partial
@@ -47,7 +47,7 @@
                 <s:nav handle="main">
                     <a
                         href="{{ $url }}"
-                        class="group hover:bg-overlay relative flex items-center px-4 py-3 font-bold text-black uppercase hover:opacity-100 focus:opacity-100 md:px-2 md:py-2 md:opacity-50 [&:is([aria-current])]:opacity-100"
+                        class="group hover:bg-overlay relative flex items-center px-4 py-3 font-bold text-black uppercase hover:opacity-100 focus:opacity-100 aria-[current]:opacity-100 md:px-2 md:py-2 md:opacity-50"
                         @if ($is_current)
                             aria-current="page"
                         @endif

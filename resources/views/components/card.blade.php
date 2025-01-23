@@ -7,7 +7,7 @@
     >
         @if (! empty($image))
             <div
-                class="{{ $imageWrapperClasses ?? 'mr-2' }} h-20 w-20 flex-shrink-0"
+                class="{{ $imageWrapperClasses ?? 'mr-2' }} h-20 w-20 shrink-0"
             >
                 @if (str_starts_with($image, '/img/') || str_starts_with($image, 'https://'))
                     <img
@@ -24,7 +24,7 @@
             </div>
         @else
             <div
-                class="mr-2 flex h-20 w-20 flex-shrink-0 items-center justify-center"
+                class="mr-2 flex h-20 w-20 shrink-0 items-center justify-center"
             >
                 <s:partial
                     src="icons/project"

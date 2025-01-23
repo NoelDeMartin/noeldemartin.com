@@ -13,7 +13,7 @@ We also provided a service to publish dedicated applications for each gym. Peopl
 
 The service has been discontinued, but you can look at the PDF and screenshots below to get an idea of what it was like.
 
-<a href="/downloads/geemba-assistant.pdf" target="_blank" class="mx-auto h-10 w-64 flex items-center justify-center rounded no-underline font-semibold tracking-wider text-white bg-[#00168e] hover:[box-shadow:rgb(255,255,255)_0px_0px_0px_0px,rgba(0,22,142,.5)_0px_0px_0px_4px,rgba(0,0,0,0)_0px_0px_0px_0px] focus:[box-shadow:rgb(255,255,255)_0px_0px_0px_0px,rgba(0,22,142,.5)_0px_0px_0px_4px,rgba(0,0,0,0)_0px_0px_0px_0px]">
+<a href="/downloads/geemba-assistant.pdf" target="_blank" class="mx-auto h-10 w-64 flex items-center justify-center rounded-sm no-underline font-semibold tracking-wider text-white bg-[#00168e] hover:[box-shadow:rgb(255,255,255)_0px_0px_0px_0px,rgba(0,22,142,.5)_0px_0px_0px_4px,rgba(0,0,0,0)_0px_0px_0px_0px] focus:[box-shadow:rgb(255,255,255)_0px_0px_0px_0px,rgba(0,22,142,.5)_0px_0px_0px_4px,rgba(0,0,0,0)_0px_0px_0px_0px]">
 {{ partial:icons/document class="size-5 fill-current mr-2" /}}
 Download overview
 </a>

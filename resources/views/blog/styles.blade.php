@@ -21,7 +21,7 @@
             <body class="bg-gray-50">
                 <div class="mx-auto max-w-prose px-6 py-8">
                     <div class="flex items-center">
-                        <div class="rounded p-2" style="background: #ff6600">
+                        <div class="rounded-sm p-2" style="background: #ff6600">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 430.117 430.118"
@@ -51,7 +51,7 @@
                     <div class="space-y-4 pt-2">
                         <xsl:for-each select="atom:entry">
                             <div
-                                class="prose mt-2 rounded border bg-white px-8 py-4 text-sm"
+                                class="prose mt-2 rounded-sm border bg-white px-8 py-4 text-sm"
                             >
                                 <h2><xsl:value-of select="atom:title" /></h2>
                                 <xsl:value-of

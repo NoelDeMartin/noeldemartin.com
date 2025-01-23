@@ -6,7 +6,7 @@
     {{ $attributes->only('id') }}
 >
     <time
-        class="bg-blue-lighter text-blue-darker flex-shrink-0 self-start rounded-lg px-2 py-1 font-mono text-sm"
+        class="bg-blue-lighter text-blue-darker shrink-0 self-start rounded-lg px-2 py-1 font-mono text-sm"
         datetime="{{ $date->toDateTimeString() }}"
     >
         @if ($short)
@@ -30,7 +30,7 @@
     </time>
 
     <div
-        class="{{ $short ? '' : 'md:ml-4' }} ml-2 [&_pre]:max-w-[calc(100vw-2*theme('spacing.4')-theme('spacing.2'))]"
+        class="{{ $short ? '' : 'md:ml-4' }} ml-2 [&_pre]:max-w-[calc(100vw-2*(--spacing(4))-(--spacing(2)))]"
     >
         {!! $slot !!}
     </div>
