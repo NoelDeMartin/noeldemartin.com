@@ -15,12 +15,8 @@ class PodcastController extends Controller
 
     public function styles(): Response
     {
-        $content = file_get_contents(resource_path('assets/xsl/podcast.xsl'));
-
-        if (empty($content)) {
-            abort(404);
-        }
-
-        return response($content)->header('Content-Type', 'text/xml');
+        return response()
+            ->view('podcast.styles')
+            ->header('Content-Type', 'text/xml');
     }
 }
