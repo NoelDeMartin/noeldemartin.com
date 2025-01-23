@@ -1,17 +1,9 @@
 import Alpine from 'alpinejs';
 
 const FORMATS = {
-    'date-short': {
-        // "M d, Y" in PHP
-        dateStyle: 'medium',
-    },
     date: {
         // "F d, Y" in PHP
         dateStyle: 'long',
-    },
-    time: {
-        // "H:i" in PHP
-        timeStyle: 'short',
     },
     month: {
         // "F Y" in PHP
@@ -25,13 +17,19 @@ const FORMATS = {
     },
     'datetime-short': {
         // "M d, Y H:i" in PHP
-        dateStyle: 'medium',
-        timeStyle: 'short',
+        day: '2-digit',
+        month: 'short',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
     },
     datetime: {
         // "F d, Y H:i" in PHP
-        dateStyle: 'long',
-        timeStyle: 'short',
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
     },
 };
 

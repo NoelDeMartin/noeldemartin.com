@@ -32,12 +32,8 @@ class AppServiceProvider extends ServiceProvider
             $date = $this; // @phpstan-ignore-line
 
             switch ($format) {
-                case 'date-short':
-                    return $date->format('M d, Y');
                 case 'date':
-                    return $date->format('F d, Y');
-                case 'time':
-                    return $date->format('H:i');
+                    return $date->format('F j, Y');
                 case 'month':
                     return $date->format('F Y');
                 case 'month-short':
@@ -46,7 +42,7 @@ class AppServiceProvider extends ServiceProvider
                     return $date->format('M d, Y H:i');
                 case 'datetime':
                 default:
-                    return $date->format('F d, Y H:i');
+                    return $date->format('F j, Y H:i');
             }
         });
     }
