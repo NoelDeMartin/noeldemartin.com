@@ -28,6 +28,10 @@ main {
         @apply text-blue-darkest my-4 text-xl font-medium;
     }
 
+    h4 {
+        @apply text-blue-darkest my-4 text-lg font-medium;
+    }
+
     p {
         @apply my-6 leading-normal;
     }

@@ -10,7 +10,7 @@ It's been a month since I started the sabbatical, and so far it's going well. Be
 
 My intention is stil to blend the two, but I've decided that I'll separate these updates in Life stuff and Tech stuff. That way, if you're only interested in the tech stuff, you can skip all the ramblings about my personal life.
 
-### Life stuff
+#### Life Stuff
 
 As I'm writing this, I'm still in Spain. But the preparations are made to leave for Singapore on September 6th (this Friday). I'll be spending a couple of days there before moving to Malaysia; and so far, I don't have any plans beyond that.
 
@@ -20,7 +20,7 @@ That last one was interesting, because it was my first time camping by myself (I
 
 Right now, I'm going through a mix of excitement and anxiety. Excitement because I've been looking forward to this for a long time, and anxiety because I worry too much about the future and "planning stuff". But whenever I think about it, I realize I have a priviledged life without any real problems. I have to learn to live more in the present!
 
-### Tech stuff
+#### Tech Stuff
 
 Whenever I thought about my sabbatical in the past, I assumed I'd have infinite time to do everything in my TODO list. But of course, that didn't happen. In fact, I've realized something. When you say you're in a sabbatical, everyone around you also assumes you have all the time in the world, and they don't respect your time as much. However, if you say you're self-employed (even if you aren't earning a single cent), people take your "work time" more seriously. So maybe this whole sabbatical thing was a mistake 😅. But I still think it's an experiment worth pursuing, we'll see how it goes.
 

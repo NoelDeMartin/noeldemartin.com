@@ -41,13 +41,10 @@
         >
             <s:partial src="icons/close" class="size-4" />
         </button>
-        <nav
-            aria-label="Table of contents"
-            class="[&_a]:no-underline hover:[&_a]:underline focus:[&_a]:underline [&_a][data-current]:underline"
-        >
+        <nav aria-label="Table of contents">
             <a
                 href="#main"
-                class="text-blue-darkest mb-3 block pr-2 text-lg font-semibold md:pr-0"
+                class="text-blue-darkest mb-3 block pr-2 text-lg font-semibold no-underline hover:underline focus:underline md:pr-0"
                 aria-hidden="true"
                 @click="close()"
             >

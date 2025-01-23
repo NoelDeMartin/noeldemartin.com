@@ -14,11 +14,11 @@ As always, I've gone through the schedule to see which talks I'm more keen to at
 
 I may also attend some [OFFDEM](https://offdem.net/) sessions, but so far I haven't been able to find a schedule so I'm not sure how that will turn out.
 
-### Friday
+#### Friday
 
 - Afternoon / Evening @ Delirium Café - [Unofficial beer event](https://fosdem.org/2024/practical/beer/).
 
-### Saturday
+#### Saturday
 
 - 11:30-12:00 @ H.1301 (Cornil) - [Your web app is taking up too much RAM. Let's fix it!](https://fosdem.org/2024/schedule/event/fosdem-2024-2722-your-web-app-is-taking-up-too-much-ram-let-s-fix-it-/)
 - 13:40-14:10 @ H.1301 (Cornil) - [Staying Ahead of the Game: JavaScript Security](https://fosdem.org/2024/schedule/event/fosdem-2024-2779-staying-ahead-of-the-game-javascript-security/)
@@ -32,7 +32,7 @@ I may also attend some [OFFDEM](https://offdem.net/) sessions, but so far I have
 - 18:30-18:55 @ AW1.126 - [Penpot 2.0 is here!](https://fosdem.org/2024/schedule/event/fosdem-2024-3509-penpot-2-0-is-here-/)
 - Evening @ Hackerspace Brussels (HSBXL)- [ByteNight](https://bytenight.brussels/)
 
-### Sunday
+#### Sunday
 
 - 09:05-09:35 @ UD2.208 (Decroly) - [Streamlining Developer Experience: The Power of CI/CD Standardization and Interoperability](https://fosdem.org/2024/schedule/event/fosdem-2024-2964-streamlining-developer-experience-the-power-of-ci-cd-standardization-and-interoperability/)
 - 10:00-10:30 @ H.2214 - [Better than loading fast… is loading instantly!](https://fosdem.org/2024/schedule/event/fosdem-2024-2003-better-than-loading-fast-is-loading-instantly-/)

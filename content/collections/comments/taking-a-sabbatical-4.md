@@ -10,7 +10,7 @@ Hi again!
 
 I'm now writing from Saigon, Vietnam. I have managed to slow down a bit since my last update, but overall I feel mostly the same way. TLDR: I'm enjoying it, but also I can't wait to get back home.
 
-### Life Stuff
+#### Life Stuff
 
 I won't spend too much time talking about it again, but yeah I still lack time affluence and I'm tired of the nomadic lifestyle. The good news is that we're past the half-way point now, and it's not like I'm being tortured or anything 😅. I'll do my best to enjoy the time we have left, and try to squeeze some time to tinker here and there.
 
@@ -101,7 +101,7 @@ Part of the appeal from Ta Prohm temple is that it has been overrun by nature.
 
 </details>
 
-### Tech Stuff
+#### Tech Stuff
 
 Last time, I mentioned that I was working on some more examples for my animations library, Vivant. And well, this month... I've almost exclusively been doing that 😅. Originally, I intended to use this time to work on small proofs of concept, but this one got a bit out of hand.
 

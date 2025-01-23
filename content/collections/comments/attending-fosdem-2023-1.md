@@ -23,11 +23,11 @@ In any case, that's going well!
 
 Like always, I won't be able to attend all the talks I'd like to. But here's the ones that got my attention:
 
-## Friday
+#### Friday
 
 - Afternoon / Evening @ Delirium Café. Unfortunately, the [Beer event](https://archive.fosdem.org/2020/beerevent/) has been cancelled this year :(. But I'm pretty sure many attendees will be there anyways, so I'll be sure to pay a visit.
 
-## Saturday
+#### Saturday
 
 - 12:20-13:00 @ H.1301 (Cornil) - [Distributed Storage in the Cloud](https://fosdem.org/2023/schedule/event/sovcloud_distributed_storage_in_the_cloud/)
 - 13:10-13:35 @ UB4.136 - [Sharp photos and short movies on a mobile phone](https://fosdem.org/2023/schedule/event/sharp_photos/)
@@ -40,7 +40,7 @@ Like always, I won't be able to attend all the talks I'd like to. But here's the
 - 17:30-17:55 @ K.4.601 - [The Relentless March of Markdown](https://fosdem.org/2023/schedule/event/collab_tiki/)
 - 17:00-17:25 @ UA2.220 (Guillissen) - [Cache The World](https://fosdem.org/2023/schedule/event/mozilla_cachetheworld/)
 
-## Sunday
+#### Sunday
 
 - 10:20-10:35 @ H.2215 (Ferrer) - [Breaking away from Big Tech](https://fosdem.org/2023/schedule/event/breaking_from_big_tech/)
 - 12:15-12:35 @ K.3.401 - [Bridging ActivityPub with Kazarma](https://fosdem.org/2023/schedule/event/bridging_ap_with_kazarma/) (matrix-ActivityPub interoperability)

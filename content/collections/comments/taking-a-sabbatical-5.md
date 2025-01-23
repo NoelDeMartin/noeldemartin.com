@@ -10,7 +10,7 @@ Today, I'm writing from Shanghai, China.
 
 If you read my previous update, you may be thinking that I came here from Vietnam. But actually, I just got back from New Zealand! I haven't made much progress on the tech stuff, but the trip is coming to an end soon, and it was nice to get some change of airs.
 
-### Life Stuff
+#### Life Stuff
 
 Something I didn't mention before is how much I've enjoyed traveling on land. Since we landed in Singapore, we've been moving around on bus, train, and taxi (or TukTuk). If you're curious about the itinerary, make sure to check today's pictures. Obviously, we flew to New Zealand. But first, let's backtrack to my previous update: Vietnam.
 
@@ -110,7 +110,7 @@ We're starting to see Christmas decorations everywhere, though it's funny how in
 
 </details>
 
-### Tech Stuff
+#### Tech Stuff
 
 This month, I haven't spent a lot of time on tech stuff, but I have a couple of things to mention.
 

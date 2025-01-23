@@ -12,7 +12,7 @@ This trip has definitely been _something_, and even though [I would have ended i
 
 I'm dividing this last update into 3 sections: Life Stuff, Tech Stuff, and Conclusion.
 
-### Life Stuff
+#### Life Stuff
 
 Last time, I wrote from China. And man, was it a country that surprised me. I've traveled quite a bit in my life, even before this sabbatical frenzy. But it had been years (if not decades) since I've been this surprised by a country. My impression of China can be summarized with this Willian Gibson's quote "The future has arrived — it’s just not evenly distributed yet".
 
@@ -44,7 +44,7 @@ Yet another example of China's modernity, rental battery packs in the middle of 
 <figure>
 <img src="/img/tasks/sabbatical/shanghai-bike-battery-packs.jpg" alt="A motorbike carrying a portable battery pack station.">
 <figcaption>
-... and you can find these everywhere. Like attached to a bike anywhere in the street. 
+... and you can find these everywhere. Like attached to a bike anywhere in the street.
 </figcaption>
 </figure>
 
@@ -78,7 +78,7 @@ This year's Christmas decorations will feature a Christmas hobbit hole from the 
 
 </details>
 
-### Tech Stuff
+#### Tech Stuff
 
 Following up from my last update, I finished adding ActivityPods support to my [Ramen](https://ramen.noeldemartin.com) app. I didn't end up implementing everything, such as ActivityPub's inbox/outbox, because I think that's too far from Solid's concerns (and hopefully, it won't be a requirement in the future). But for the most part, it works.
 
@@ -94,7 +94,7 @@ Since I had to deploy yet another live server for this, I also used the opportun
 
 Finally, as a last minute addition, I created a [Peertube channel](https://spectra.video/c/noeldemartin/) where I'll be uploading my videos (the same I've been uploading to [my Youtube channel](https://www.youtube.com/@noeldemartin)). I don't particularly enjoy the UX of Peertube, but I think it's really cool that it's part of the fediverse and it is completely interoperable :D. For example, I'm following the `#solid` tag in the fediverse, and I can see when [Angelo](https://angelo.veltens.org) releases one of his [Practical Solid videos](https://tube.tchncs.de/c/practical_solid/videos).
 
-### Conclusion
+#### Conclusion
 
 At the beginning, I said that this would be "a simulation for my retirement". But I have to confess that I've failed miserably 😅. Or at least I hope so, I wouldn't want my retirement to look anything like this!
 

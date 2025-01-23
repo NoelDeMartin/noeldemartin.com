@@ -22,21 +22,21 @@ Something else to mention is that for a while some of the tomato plants started 
 
 And that's about it, I'll probably do one or two more updates before closing the task for this season. But I'm already super happy with the results :).
 
-### June 29th — First tomatoes
+#### June 29th — First tomatoes
 
 ![First tomatoes](/img/tasks/growing-vegetables/june-29th-first-tomatoes.jpg)
 
-### July 15th — Operation holidays! Covering the garden while I'm away
+#### July 15th — Operation holidays! Covering the garden while I'm away
 
 ![Operation holidays](/img/tasks/growing-vegetables/july-15th-operation-holidays.jpg)
 
-### July 24th — First successful harvest!
+#### July 24th — First successful harvest!
 
 I didn't grow the cherries from seed though, that's why I didn't mention them before.
 
 ![First harvest](/img/tasks/growing-vegetables/july-24th-first-harvest.jpg)
 
-### August 16th — The garden today
+#### August 16th — The garden today
 
 ![August 16th jalapeños](/img/tasks/growing-vegetables/august-16th-jalapenos.jpg)
 

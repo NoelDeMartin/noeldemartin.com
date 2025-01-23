@@ -28,19 +28,19 @@ And that's it for now! I'll keep updating this as I go, but the updates will pro
 
 Here's some pictures of the timeline I described:
 
-### March 1st — Seeds planted
+#### March 1st — Seeds planted
 
 ![Seeds planted](/img/tasks/growing-vegetables/march-1st.jpg)
 
-### March 8th — First Basil sprouts
+#### March 8th — First Basil sprouts
 
 ![First Basil sprouts](/img/tasks/growing-vegetables/march-8th.jpg)
 
-### March 18th — First Jalapeño sprouts
+#### March 18th — First Jalapeño sprouts
 
 ![First Jalapeño sprouts](/img/tasks/growing-vegetables/march-18th.jpg)
 
-### April 9th — Tomato, Basil, & Jalapeño seedlings
+#### April 9th — Tomato, Basil, & Jalapeño seedlings
 
 ![Tomato seedings](/img/tasks/growing-vegetables/april-9th-tomatoes.jpg)
 
@@ -48,13 +48,13 @@ Here's some pictures of the timeline I described:
 
 ![Jalapeño seedings](/img/tasks/growing-vegetables/april-9th-jalapenos.jpg)
 
-### May 1st — Transplant
+#### May 1st — Transplant
 
 ![Jalapeños transplant](/img/tasks/growing-vegetables/may-1st-jalapenos.jpg)
 
 ![Basil and Tomatoes transplant](/img/tasks/growing-vegetables/may-1st-basil-and-tomatoes.jpg)
 
-### May 11th — They are growing!
+#### May 11th — They are growing!
 
 ![Jalapeños growing](/img/tasks/growing-vegetables/may-11th-jalapenos.jpg)
 

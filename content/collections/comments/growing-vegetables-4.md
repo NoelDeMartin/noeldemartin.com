@@ -16,18 +16,18 @@ But that doesn't mean there isn't room for improvement, of course. For starters,
 
 And that's it! Here's some pictures to close this down properly:
 
-## August 18th — Jalapeños!
+#### August 18th — Jalapeños!
 
 ![Jalapeños](/img/tasks/growing-vegetables/august-18th-jalapenos.jpg)
 
-## October 3rd — The last tomato
+#### October 3rd — The last tomato
 
 ![The last tomato](/img/tasks/growing-vegetables/october-3rd-last-tomato.jpg)
 
-## October 19th — This jalapeño has a visitor
+#### October 19th — This jalapeño has a visitor
 
 ![The jalapeño has a visitor](/img/tasks/growing-vegetables/october-19th-jalapeno-visitor.jpg)
 
-## November 1st — See you next year, garden!
+#### November 1st — See you next year, garden!
 
 ![The End](/img/tasks/growing-vegetables/november-1st-the-end.jpg)

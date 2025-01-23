@@ -4,6 +4,7 @@
             <li class="mb-1">
                 <a
                     href="{{ $landmark->anchor }}"
+                    class="no-underline hover:underline focus:underline"
                     style="margin-left: {{ $landmark->level - 2 }}rem"
                     @click="close()"
                 >

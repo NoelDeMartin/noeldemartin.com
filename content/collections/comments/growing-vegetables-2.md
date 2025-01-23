@@ -24,36 +24,36 @@ Overall, I'd say I'm happy how it's going, and I think if everything goes well I
 
 Here's some pictures of what's been going on:
 
-### May 20th — Some tomatoes are growing a lot
+#### May 20th — Some tomatoes are growing a lot
 
 ![Tomatoes growing a lot](/img/tasks/growing-vegetables/may-20th-tomatoes.jpg)
 
 ![Jalapeños and Basil](/img/tasks/growing-vegetables/may-20th-jalapenos-and-basil.jpg)
 
-### May 28th — Relocated some plants
+#### May 28th — Relocated some plants
 
 ![Relocated tomatoes](/img/tasks/growing-vegetables/may-28th-tomatoes.jpg)
 
 ![Other plants](/img/tasks/growing-vegetables/may-28th-others.jpg)
 
-### May 29th — New Basil and Lettuce sprouting
+#### May 29th — New Basil and Lettuce sprouting
 
 ![New Basil sprouting](/img/tasks/growing-vegetables/may-29th-basil.jpg)
 
 ![Lettuce sprouting](/img/tasks/growing-vegetables/may-29th-lettuce.jpg)
 
-### June 6th — Tomatoes are too close
+#### June 6th — Tomatoes are too close
 
 ![Tomatoes are too close](/img/tasks/growing-vegetables/june-6th-tomatoes.jpg)
 
-### June 8th — Tomatoes show first flowers!
+#### June 8th — Tomatoes show first flowers!
 
 ![Tomatoes first flowers](/img/tasks/growing-vegetables/june-8th-tomatoes.jpg)
 
-### June 13th — Basil growing flowers
+#### June 13th — Basil growing flowers
 
 ![Basil growing flowers](/img/tasks/growing-vegetables/june-13th-basil.jpg)
 
-### June 18th — The entire garden!
+#### June 18th — The entire garden!
 
 ![The entire garden](/img/tasks/growing-vegetables/june-18th-garden.jpg)

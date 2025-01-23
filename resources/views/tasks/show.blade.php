@@ -42,6 +42,7 @@
         @foreach ($comments as $index => $comment)
             <x-comment
                 :id="'comment-' . ($index + 1)"
+                :heading="3"
                 :date="$comment->publication_date"
                 :short="is_null($comment->task->value())"
             >
