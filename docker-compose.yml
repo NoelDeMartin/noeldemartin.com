@@ -2,6 +2,7 @@ services:
     app:
         image: noeldemartin/noeldemartin.com
         volumes:
+            - ./database/database.sqlite:/app/database/database.sqlite
             - ./storage:/app/storage
             - ./.env:/app/.env
         restart: unless-stopped
