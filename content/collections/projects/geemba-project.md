@@ -12,7 +12,7 @@ team:
       type: team_member
       name: 'Noel De Martin'
       link: 'https://noeldemartin.com'
-      avatar: /img/avatar.jpg
+      avatar: /img/avatar-cv.jpg
       role: 'CTO & Co-founder'
     - id: david
       type: team_member

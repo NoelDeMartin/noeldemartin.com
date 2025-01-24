@@ -12,7 +12,7 @@ team:
       type: team_member
       name: 'Noel De Martin'
       link: 'https://noeldemartin.com'
-      avatar: /img/avatar.jpg
+      avatar: /img/avatar-cv.jpg
       role: 'CTO & Co-founder'
     - id: sergio-sanchez
       type: team_member
