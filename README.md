@@ -32,10 +32,9 @@ These instructions are mostly for me, since I don't expect anyone to serve this 
 I'm using [kanjuro](https://github.com/NoelDeMartin/kanjuro) and [nginx-agora](https://github.com/NoelDeMartin/nginx-agora) to deploy this site with Docker.
 
 ```bash
-git clone https://github.com/NoelDeMartin/noeldemartin.com.git noeldemartin.com --branch kanjuro
+git clone https://github.com/NoelDeMartin/noeldemartin.com.git --branch kanjuro --single-branch
 cd noeldemartin.com
 kanjuro install
-kanjuro permissions
 kanjuro start
 nginx-agora start
 ```

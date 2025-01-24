@@ -23,7 +23,7 @@ jobs:
         run: mv kanjuro/Dockerfile ./
       - name: Build
         run: |
-          npm ci
+          npm ci --no-audit
           npm run build
           docker build . --tag ${{ secrets.DOCKERHUB_USERNAME }}/$GITHUB_REPOSITORY_NAME:$GITHUB_SHA
       - name: Push commit tag

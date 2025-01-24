@@ -47,5 +47,8 @@
 @layer base {
     @import './_content.css';
     @import './_fonts.css';
+}
+
+@layer components {
     @import './_turbo.css';
 }
