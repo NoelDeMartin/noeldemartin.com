@@ -9,14 +9,21 @@ Feel free to dig around. Most of the content is written in Markdown, so if you s
 If you want to tinker with this locally, it's a standard Statamic/Laravel app. So whatever set up you're using for your apps, should work. This is the one I use:
 
 ```bash
-git@github.com:NoelDeMartin/noeldemartin.com.git noeldemartin.com
+git clone git@github.com:NoelDeMartin/noeldemartin.com.git noeldemartin.com
 cd noeldemartin.com
 cp .env.example .env
 composer install
 npm install
 php artisan key:generate
+
+## Only do this if you want to use the control panel
+touch database/database.sqlite
+php artisan migrate:fresh --seed
+
 composer dev
 ```
+
+You should now be able to open the site on [localhost:8000](http://localhost:8000), and use the control panel at [localhost:8000/cp](http://localhost:8000/cp) using the `admin@example.com` username and `secret` password.
 
 ## Production
 
