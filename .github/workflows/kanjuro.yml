@@ -2,7 +2,7 @@ name: Kanjuro
 on:
   push:
     branches:
-      - 'statamic'
+      - 'main'
 
 jobs:
   update-kanjuro:

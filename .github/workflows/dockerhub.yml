@@ -2,7 +2,7 @@ name: DockerHub
 on:
   push:
     branches:
-      - 'statamic'
+      - 'main'
 
 jobs:
   publish-image:
@@ -25,6 +25,10 @@ jobs:
         run: |
           npm ci
           npm run build
-          docker build . --tag ${{ secrets.DOCKERHUB_USERNAME }}/$GITHUB_REPOSITORY_NAME:$(git rev-parse HEAD)
-      - name: Push
-        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/$GITHUB_REPOSITORY_NAME:$(git rev-parse HEAD)
+          docker build . --tag ${{ secrets.DOCKERHUB_USERNAME }}/$GITHUB_REPOSITORY_NAME:$GITHUB_SHA
+      - name: Push commit tag
+        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/$GITHUB_REPOSITORY_NAME:$GITHUB_SHA
+      - name: Push latest tag
+        run: |
+          docker tag ${{ secrets.DOCKERHUB_USERNAME }}/$GITHUB_REPOSITORY_NAME:$GITHUB_SHA ${{ secrets.DOCKERHUB_USERNAME }}/$GITHUB_REPOSITORY_NAME:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/$GITHUB_REPOSITORY_NAME:latest
