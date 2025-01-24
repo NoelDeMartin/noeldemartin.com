@@ -34,14 +34,38 @@
         @endif
 
         <div>
-            <div class="mb-2 flex">
+            <div class="mb-1 flex md:mb-2">
                 <h3 class="my-0 mr-2 text-xl font-medium">{{ $title }}</h3>
                 @isset($state)
                     <span
-                        class="{{ $stateClasses }} self-start rounded-full px-2 py-1 text-xs font-semibold tracking-widest uppercase"
+                        class="{{ $stateClasses }} hidden self-start rounded-full px-2 py-1 text-xs font-semibold tracking-widest uppercase md:block"
                     >
                         {{ $state->label() }}
                     </span>
+
+                    @if ($state->raw() === 'live')
+                        <div
+                            aria-label="{{ $state->label() }}"
+                            class="absolute top-4 right-4 size-3 md:hidden"
+                        >
+                            <span
+                                class="bg-jade absolute inset-0 rounded-full"
+                            ></span>
+                            <span
+                                class="bg-jade absolute inset-0 animate-ping rounded-full"
+                            ></span>
+                        </div>
+                    @else
+                        <span
+                            aria-label="{{ $state->label() }}"
+                            class="{{ $stateClasses }} absolute top-3 right-3 flex size-7 items-center justify-center rounded-full md:hidden"
+                        >
+                            <s:partial
+                                :src="'icons/state-' . $state->raw()"
+                                class="size-4"
+                            />
+                        </span>
+                    @endif
                 @endisset
             </div>
 
