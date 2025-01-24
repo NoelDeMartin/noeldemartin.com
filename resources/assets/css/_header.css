@@ -1,0 +1,51 @@
+.bg-header {
+    background-image: linear-gradient(
+        to right,
+        hsl(180 40% 75%) 0%,
+        hsl(204 40% 75%) 6.67%,
+        hsl(228 40% 75%) 13.33%,
+        hsl(252 40% 75%) 20%,
+        hsl(276 40% 75%) 26.67%,
+        hsl(300 40% 75%) 33.33%,
+        hsl(324 40% 75%) 40%,
+        hsl(348 40% 75%) 46.67%,
+        hsl(12 40% 75%) 53.33%,
+        hsl(36 40% 75%) 60%,
+        hsl(60 40% 75%) 66.67%,
+        hsl(84 40% 75%) 73.33%,
+        hsl(108 40% 75%) 80%,
+        hsl(132 40% 75%) 86.67%,
+        hsl(156 40% 75%) 93.33%,
+        hsl(180 40% 75%) 100%
+    );
+    background-image: linear-gradient(
+        to right,
+        oklch(85% 0.05 200) 0%,
+        oklch(85% 0.05 224) 6.67%,
+        oklch(85% 0.05 248) 13.33%,
+        oklch(85% 0.05 272) 20%,
+        oklch(85% 0.05 296) 26.67%,
+        oklch(85% 0.05 320) 33.33%,
+        oklch(85% 0.05 344) 40%,
+        oklch(85% 0.05 8) 46.67%,
+        oklch(85% 0.05 32) 53.33%,
+        oklch(85% 0.05 56) 60%,
+        oklch(85% 0.05 80) 66.67%,
+        oklch(85% 0.05 104) 73.33%,
+        oklch(85% 0.05 128) 80%,
+        oklch(85% 0.05 152) 86.67%,
+        oklch(85% 0.05 176) 93.33%,
+        oklch(85% 0.05 200) 100%
+    );
+
+    animation: header-background 60s linear infinite alternate;
+}
+
+@keyframes header-background {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-400vw);
+    }
+}

@@ -1,10 +1,10 @@
 <header
-    class="bg-chamaleon z-10 flex h-16 flex-col items-center transition-[margin-top] duration-500 md:h-32 md:data-[collapsed=true]:mt-[calc((--spacing(5))+2*(--spacing(2))-(--spacing(32)))] lg:h-40 lg:data-[collapsed=true]:mt-[calc((--spacing(5))+2*(--spacing(2))-(--spacing(40)))]"
+    class="relative isolate z-10 flex h-16 flex-col items-center transition-[margin-top] duration-500 md:h-32 md:data-[collapsed=true]:mt-[calc((--spacing(5))+2*(--spacing(2))-(--spacing(32)))] lg:h-40 lg:data-[collapsed=true]:mt-[calc((--spacing(5))+2*(--spacing(2))-(--spacing(40)))]"
     :class="{ 'fixed top-0 inset-x-0': navigationOpen }"
-    x-chamaleon
     data-collapsed="{{ json_encode($collapsed) }}"
 >
-    <div class="max-w-content flex w-full overflow-hidden">
+    <div class="bg-header absolute top-0 left-0 z-0 h-full w-[500vw]"></div>
+    <div class="max-w-content z-10 flex w-full overflow-hidden">
         <a
             class="hover:bg-overlay mr-2 flex h-full cursor-pointer items-center px-3 md:hidden print:hidden"
             @click="navigationOpen = !navigationOpen"
@@ -34,7 +34,7 @@
     </div>
     <nav
         aria-label="Site navigation"
-        class="md:bg-overlay bg-chamaleon fixed top-16 bottom-0 w-full -translate-x-full transition-transform duration-300 md:relative md:top-0 md:translate-x-0"
+        class="md:bg-overlay fixed top-16 bottom-0 z-10 w-full -translate-x-full transition-transform duration-300 md:relative md:top-0 md:translate-x-0"
         :class="{
             'translate-x-0': navigationOpen,
             '-translate-x-full md:translate-x-0': !navigationOpen,
