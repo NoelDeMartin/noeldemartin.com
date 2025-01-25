@@ -1,21 +1,14 @@
-let collapsed = document.querySelector('header').dataset.collapsed;
+document.addEventListener('turbo:frame-load', (event) => {
+    const header = document.querySelector('header');
+    const frameData = event.target.firstElementChild.dataset;
+    const currentNav = header.querySelector('[aria-current]');
 
-document.addEventListener('turbo:before-render', (event) => {
-    const newHeader = event.detail.newBody.querySelector('header');
-    const newCollapsed = newHeader.dataset.collapsed;
+    header.dataset.collapsed = frameData.collapsedHeader;
 
-    newHeader.dataset.collapsed = collapsed;
-
-    if (newCollapsed === collapsed) {
-        return;
+    if (currentNav?.href !== frameData.currentPath) {
+        currentNav?.removeAttribute('aria-current');
+        header
+            .querySelector(`[href="${frameData.currentPath}"]`)
+            ?.setAttribute('aria-current', 'page');
     }
-
-    document.addEventListener(
-        'turbo:render',
-        () => {
-            collapsed = newCollapsed;
-            newHeader.dataset.collapsed = newCollapsed;
-        },
-        { once: true },
-    );
 });
