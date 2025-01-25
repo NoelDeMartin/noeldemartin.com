@@ -5,7 +5,7 @@ blueprint: page
 show_title: true
 ---
 
-[https://moodle.net](MoodleNet) is a federated social media platform for educators built by [Moodle](https://moodle.com).
+[MoodleNet](https://moodle.net) is a federated social media platform for educators built by [Moodle](https://moodle.com).
 
 Back in 2020, [I hosted my own instance](/tasks/configuring-a-moodlenet-instance) at <code>https://learn.noeldemartin.social</code> to play around with it. It was my intention to host it for a while, and maybe even end up being the home for my educational resources.
 
