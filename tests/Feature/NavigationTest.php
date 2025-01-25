@@ -14,8 +14,11 @@ test('Blog', function () {
     $response = $this->get('/blog');
 
     $response->assertStatus(200);
+    $response->assertSee('The Curse of Being A Developer');
+    $response->assertSee('I am a software developer, and many people I speak with tell me how lucky I am');
+    $response->assertSee('Dec 3, 2014');
     $response->assertSee('Starting Something New');
-    $response->assertSee('Nov 10, 2014');
+    $response->assertSee('Nov 2014');
 });
 
 test('Blog post', function () {
