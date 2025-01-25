@@ -200,6 +200,4 @@ It's still early days for this space, and I hope that all the variety serves to 
 
 For now, though, I'm staying with Solid.
 
----
-
-What do you think, did I miss something? Let's talk about it, you can join the conversation in the [Solid Forum](https://forum.solidproject.org/t/why-solid/7612).
+_What do you think, did I miss something? Let's talk about it, you can join the conversation in the [Solid Forum](https://forum.solidproject.org/t/why-solid/7612)._

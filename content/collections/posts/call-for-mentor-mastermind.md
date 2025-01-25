@@ -26,4 +26,4 @@ In case someone is reading this and wondering what a Mastermind Group is (I assu
 
 My intentions are to meet approximately twice a month (every two weeks). I always prefer to have interactions in person, but I would like to have feedback from someone with a different perspective to mine (and I am not sure this idea of mentorship/mastermind is practiced in Spain). So I am not against having peers from far away, we'd use video chat and/or email.
 
-If you are interested or know anyone who could be, please let me know at [noeldemartin@gmail.com](mailto:noeldemartin@gmail.com).
+If you are interested or know anyone who could be, please let me know at <a href="mailto:{{contact.email}}">{{contact.email}}</a>.

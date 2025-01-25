@@ -295,6 +295,4 @@ So, that's a good chunk of my thoughts right there! I hope it was useful to you,
 
 I will continue working in the open, so if you want to keep up and see what I learn in real time, you're welcome to [follow along](/now)!
 
----
-
-**2024 Update:** I'm not working at Moodle anymore, you can learn more about why and what I'm doing next in [The End of The Chapter](/blog/the-end-of-the-chapter).
+_**2024 Update:** I'm not working at Moodle anymore, you can learn more about why and what I'm doing next in [The End of The Chapter](/blog/the-end-of-the-chapter)._

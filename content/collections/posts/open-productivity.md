@@ -50,6 +50,4 @@ Starting today, you'll be able to follow my progress in my "now" page at [noelde
 
 I plan to mix it up with my communication channels, so you should also see a difference if you're following me on Twitter, Mastodon or my blog.
 
----
-
-**2020 Update:** I've written a follow up to this post after applying these ideas for a while, check it out: [Working in the Open When No One Is Looking](https://noeldemartin.com/blog/working-in-the-open-when-no-one-is-looking)
+_**2020 Update:** I've written a follow up to this post after applying these ideas for a while, check it out: [Working in the Open When No One Is Looking](https://noeldemartin.com/blog/working-in-the-open-when-no-one-is-looking)_

@@ -58,4 +58,4 @@ The problem is not the operation itself. In order to trust an operation as valid
 
 Blockchain is becoming a buzz word these days, and a lot of scams are disguising themselves with the cloak of this technology. Not to mention the amount of people who [have no idea](https://www.theguardian.com/technology/2017/nov/08/cryptocurrency-300m-dollars-stolen-bug-ether) about what they are doing. So be careful and get informed before getting involved in any blockchain endeavor.
 
-**Part II:** [Blockchains: Innovation or Sham?](https://noeldemartin.com/blog/blockchains-innovation-or-sham-)
+_**Part II:** [Blockchains: Innovation or Sham?](https://noeldemartin.com/blog/blockchains-innovation-or-sham-)_

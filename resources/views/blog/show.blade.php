@@ -40,7 +40,14 @@
         </div>
     </article>
 
-    <div class="my-8 text-left md:text-right">
-        <a href="{{ sroute('blog') }}">Read more posts →</a>
-    </div>
+    <hr class="border-grey mt-12 w-full" />
+
+    <!-- prettier-ignore -->
+    <p class="mt-1.5 text-sm opacity-75">
+        Found any typos? You can fix them
+        <a
+            href="{{ 'https://github.com/NoelDeMartin/noeldemartin.com/tree/main/content/collections/posts/' . $slug->value() . '.md' }}"
+            target="_blank"
+        >on github</a>!
+    </p>
 @endsection

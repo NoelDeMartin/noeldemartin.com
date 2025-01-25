@@ -176,6 +176,4 @@ I am also aware that [money is a story](https://seths.blog/2014/02/most-of-all-m
 
 Finally, you may see this post as a modest critique of Capitalism, not very well articulated. If you're interested in that, you should read DHH's take on the topic: [The enclosure of internet commons](https://world.hey.com/dhh/the-enclosure-of-internet-commons-613ed798).
 
----
-
-If you enjoyed this, I wrote a spiritual follow-up: [Skeuomorphic Software](/blog/skeuomorphic-software)
+_If you enjoyed this, I wrote a spiritual follow-up: [Skeuomorphic Software](/blog/skeuomorphic-software)_

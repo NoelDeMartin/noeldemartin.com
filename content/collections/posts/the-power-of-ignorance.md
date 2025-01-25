@@ -35,5 +35,3 @@ The fragment from A Study in Scarlet I quoted at the beginning is not the only r
 - [**Education is Broken**](http://www.ted.com/talks/ken_robinson_says_schools_kill_creativity): Ken Robinson, in the most popular TED talk of all time, explains why evaluating intelligence based on the knowledge of some pre-established topics is wrong.
 
 - [**Low Information Diet**](http://changethis.com/manifesto/34.04.LowInfo/pdf/34.04.LowInfo.pdf): Tim Ferris, author of the 4 hour work week, defends that selective ignorance and a low information diet is the way to stop the default mode of working for most people, which is an infinite interruption.
-
-Do you know other related concepts? Leave them in the comments.
