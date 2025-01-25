@@ -48,18 +48,7 @@
                     </span>
                 </time>
                 @if ($favorite->value())
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="32"
-                        height="32"
-                        viewBox="0 0 20 20"
-                        class="mr-1 size-5"
-                    >
-                        <path
-                            fill="#888888"
-                            d="m10 15l-5.878 3.09l1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955l6.572.955l-4.756 4.635l1.123 6.545z"
-                        />
-                    </svg>
+                    <s:partial src="icons/favorite" class="mr-1 size-5" />
                 @endif
 
                 <a
