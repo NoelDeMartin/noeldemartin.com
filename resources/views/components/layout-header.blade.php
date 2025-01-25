@@ -1,5 +1,5 @@
 <header
-    class="relative isolate z-10 flex h-16 flex-col items-center transition-[margin-top] duration-500 md:h-32 md:data-[collapsed=true]:mt-[calc((--spacing(5))+2*(--spacing(2))-(--spacing(32)))] lg:h-40 lg:data-[collapsed=true]:mt-[calc((--spacing(5))+2*(--spacing(2))-(--spacing(40)))]"
+    class="relative isolate z-10 flex h-16 flex-col items-center overflow-hidden transition-[margin-top] duration-500 md:h-32 md:data-[collapsed=true]:mt-[calc((--spacing(5))+2*(--spacing(2))-(--spacing(32)))] lg:h-40 lg:data-[collapsed=true]:mt-[calc((--spacing(5))+2*(--spacing(2))-(--spacing(40)))]"
     :class="{ 'fixed top-0 inset-x-0': navigationOpen }"
     data-collapsed="{{ json_encode($collapsed) }}"
 >
