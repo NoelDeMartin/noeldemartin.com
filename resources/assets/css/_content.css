@@ -36,16 +36,16 @@ main {
         @apply my-6 leading-normal;
     }
 
-    ul,
-    ol {
+    ul:not(.list-none),
+    ol:not(.list-none) {
         @apply ml-4 pl-4;
     }
 
-    ul {
+    ul:not(.list-none) {
         @apply list-disc;
     }
 
-    ol {
+    ol:not(.list-none) {
         @apply list-decimal;
     }
 

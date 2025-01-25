@@ -2,6 +2,7 @@
 id: why-solid
 blueprint: post
 title: 'Why Solid?'
+favorite: true
 publication_date: '2024-06-24 15:00:00'
 modification_date: '2024-06-28 05:21:04'
 ---

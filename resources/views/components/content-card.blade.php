@@ -1,8 +1,10 @@
+@php($heading = isset($heading) ? 'h' . $heading : 'h2')
+
 <article class="mb-4 md:mb-8">
     <div
         class="title max-w-readable flex flex-col md:flex-row md:justify-between"
     >
-        <h2 class="text-blue-darkest my-0 font-bold">
+        <{{ $heading }} class="text-blue-darkest my-0 font-bold">
             @isset($url)
                 <a
                     href="{{ $url }}"
@@ -13,7 +15,7 @@
             @else
                 {{ $title }}
             @endisset
-        </h2>
+        </{{ $heading }}>
 
         @isset($date)
             <time

@@ -29,9 +29,10 @@
                 title="Open RSS feed"
                 target="_blank"
             >
+                <span class="mr-1 text-white">Subscribe with RSS</span>
                 <s:partial
                     src="icons/rss"
-                    class="inline h-4 fill-current text-white"
+                    class="inline h-3 fill-current text-white"
                 />
             </a>
         </div>

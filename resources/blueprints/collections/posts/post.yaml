@@ -24,6 +24,10 @@ tabs:
             field:
               type: slug
               validate: 'max:200'
+          - handle: favorite
+            field:
+              type: toggle
+              display: Favorite
           - handle: publication_date
             field:
               type: date

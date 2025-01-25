@@ -2,6 +2,7 @@
 id: the-curse-of-being-a-developer
 blueprint: post
 title: 'The Curse of Being A Developer'
+favorite: true
 publication_date: '2014-12-03 20:36:55'
 modification_date: '2020-12-07 19:19:13'
 ---

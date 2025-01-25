@@ -2,6 +2,7 @@
 id: what-technology-wants
 blueprint: post
 title: 'What Technology Wants'
+favorite: true
 publication_date: '2021-04-21 19:00:00'
 modification_date: '2024-06-25 18:01:02'
 ---

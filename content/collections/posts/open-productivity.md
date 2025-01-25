@@ -2,6 +2,7 @@
 id: open-productivity
 blueprint: post
 title: 'Open Productivity'
+favorite: true
 publication_date: '2018-11-12 22:54:32'
 modification_date: '2020-12-18 08:33:51'
 ---

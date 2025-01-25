@@ -2,6 +2,7 @@
 id: 10-years-as-a-software-developer
 blueprint: post
 title: '10 Years as a Software Developer'
+favorite: true
 publication_date: '2021-07-13 17:00:00'
 modification_date: '2024-08-01 15:19:50'
 ---
