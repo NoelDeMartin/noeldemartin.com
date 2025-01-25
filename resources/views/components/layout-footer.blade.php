@@ -15,6 +15,7 @@
         <a
             href="{{ sroute('site') }}"
             class="hover:text-blue-darkest mt-4 underline md:mt-0"
+            data-turbo-frame="mainframe"
         >
             about this site
         </a>

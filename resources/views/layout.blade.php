@@ -52,7 +52,11 @@
             :collapsed="$minimal ?? false"
         />
 
-        <turbo-frame id="mainframe" data-turbo-action="advance">
+        <turbo-frame
+            id="mainframe"
+            data-turbo-action="advance"
+            class="w-full grow"
+        >
             <main
                 id="main"
                 class="max-w-content relative mx-auto w-full grow p-4 pt-8 md:px-2"

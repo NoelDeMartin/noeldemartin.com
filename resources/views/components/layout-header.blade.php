@@ -14,10 +14,11 @@
 
         <a
             href="{{ sroute("home") }}"
-            aria-label="Home"
+            aria-hidden="true"
             title="Home"
             class="flex"
             tabindex="-1"
+            data-turbo-frame="mainframe"
         >
             <img
                 src="/img/myface.png"
@@ -41,14 +42,16 @@
         }"
     >
         <div
-            class="md:max-w-content max-h-full overflow-auto md:mx-auto md:flex md:h-full md:justify-between"
+            class="md:max-w-content relative isolate h-full overflow-x-hidden overflow-y-auto md:mx-auto md:flex md:h-full md:justify-between"
         >
-            <div class="md:flex">
+            <div
+                class="bg-header absolute inset-0 z-0 w-[500vw] md:opacity-0"
+            ></div>
+            <div class="relative z-10 md:flex">
                 <s:nav handle="main">
                     <a
                         href="{{ $url }}"
                         data-turbo-frame="mainframe"
-                        data-turbo-action="advance"
                         class="group hover:bg-overlay relative flex items-center px-4 py-3 font-bold text-black uppercase hover:opacity-100 focus:opacity-100 aria-[current]:opacity-100 md:px-2 md:py-2 md:opacity-50"
                         @if ($is_current)
                             aria-current="page"
@@ -63,7 +66,7 @@
                     </a>
                 </s:nav>
             </div>
-            <div class="md:flex">
+            <div class="relative z-10 md:flex">
                 @foreach ($socials as $account)
                     <a
                         href="{{ $account->link }}"
