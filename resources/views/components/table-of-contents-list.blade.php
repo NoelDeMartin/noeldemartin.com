@@ -6,6 +6,7 @@
                     href="{{ $landmark->anchor }}"
                     class="no-underline hover:underline focus:underline"
                     style="margin-left: {{ $landmark->level - 2 }}rem"
+                    data-turbo="false"
                     @click="close()"
                 >
                     {!! $landmark->title !!}

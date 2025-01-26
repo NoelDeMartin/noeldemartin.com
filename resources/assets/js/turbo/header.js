@@ -1,3 +1,8 @@
+document.addEventListener('turbo:click', () => {
+    Turbo.navigator.delegate.adapter.progressBar.setValue(0);
+    Turbo.navigator.delegate.adapter.progressBar.show();
+});
+
 document.addEventListener('turbo:frame-load', (event) => {
     const header = document.querySelector('header');
     const frameData = event.target.firstElementChild.dataset;
@@ -11,4 +16,6 @@ document.addEventListener('turbo:frame-load', (event) => {
             .querySelector(`[href="${frameData.currentPath}"]`)
             ?.setAttribute('aria-current', 'page');
     }
+
+    Turbo.navigator.delegate.adapter.progressBar.hide();
 });

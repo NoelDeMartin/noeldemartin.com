@@ -30,7 +30,7 @@ Welcome to my personal website. Take your time to look around, and if you want t
 {{ partial:home/cta title="Work" }}Check out my <a href="/projects">Projects</a><br/>or <a href="/now">What I'm doing now</a>{{ /partial:home/cta }}
 </div>
 
-<h2 class="text-center text-3xl mt-10 md:text-2xl md:text-left" id="my-values">My values</h2>
+<h2 class="text-center text-3xl mt-10 text-blue-darker md:text-2xl md:text-left" id="my-values">My values</h2>
 
 <div class="flex flex-col-reverse w-full md:flex-row">
 
@@ -65,7 +65,7 @@ These are my values:
 
 </div>
 
-<h2 class="text-center text-3xl mt-10 md:text-2xl md:text-left" id="my-background">My background</h2>
+<h2 class="text-center text-3xl text-blue-darker mt-10 md:text-2xl md:text-left" id="my-background">My background</h2>
 
 <div class="flex flex-col w-full md:flex-row">
 
@@ -89,7 +89,7 @@ Or, if you prefer, you can just read [my CV](/cv.pdf).
 
 </div>
 
-<h2 class="text-center text-3xl mt-10 md:text-2xl md:text-left" id="beyond-the-code">Beyond the code</h2>
+<h2 class="text-center text-blue-darker text-3xl mt-10 md:text-2xl md:text-left" id="beyond-the-code">Beyond the code</h2>
 
 <div class="flex flex-col-reverse w-full md:flex-row">
 

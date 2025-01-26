@@ -46,6 +46,7 @@
                 href="#main"
                 class="text-blue-darkest mb-3 block pr-2 text-lg font-semibold no-underline hover:underline focus:underline md:pr-0"
                 aria-hidden="true"
+                data-turbo="false"
                 @click="close()"
             >
                 {{ $title }}

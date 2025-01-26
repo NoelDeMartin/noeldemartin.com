@@ -53,6 +53,7 @@
                         href="{{ $url }}"
                         data-turbo-frame="mainframe"
                         class="group hover:bg-overlay relative flex items-center px-4 py-3 font-bold text-black uppercase hover:opacity-100 focus:opacity-100 aria-[current]:opacity-100 md:px-2 md:py-2 md:opacity-50"
+                        @click="navigationOpen = false"
                         @if ($is_current)
                             aria-current="page"
                         @endif

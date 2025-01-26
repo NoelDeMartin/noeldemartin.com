@@ -78,7 +78,7 @@
         @endif
     </s:collection>
 
-    <h2>Past activity</h2>
+    <h2 class="text-blue-darker">Past activity</h2>
 
     @foreach ($events as $year => $yearEvents)
         <details {{ $loop->first ? 'open' : '' }} class="mb-4">
