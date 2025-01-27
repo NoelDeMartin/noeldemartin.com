@@ -18,7 +18,7 @@ class Task extends StatamicModel
     public function comments(): EntryCollection
     {
         if (is_null($this->id())) {
-            return new EntryCollection();
+            return new EntryCollection;
         }
 
         $comments = Entry::query()->where('collection', 'comments')->where('task', 'entry::' . $this->id())->get();
