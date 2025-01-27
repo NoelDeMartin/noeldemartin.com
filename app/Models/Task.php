@@ -17,6 +17,10 @@ class Task extends StatamicModel
      */
     public function comments(): EntryCollection
     {
+        if (is_null($this->id())) {
+            return new EntryCollection();
+        }
+
         $comments = Entry::query()->where('collection', 'comments')->where('task', 'entry::' . $this->id())->get();
 
         $comments->push(Entry::make()->collection('comments')->id('entry::' . $this->id() . '-started')->data([
@@ -45,6 +49,10 @@ class Task extends StatamicModel
      */
     public function landmarks(): array
     {
+        if (is_null($this->id())) {
+            return [];
+        }
+
         $startDate = $this->publication_date->copy()->subSeconds(1);
 
         return collect($this->comments())
