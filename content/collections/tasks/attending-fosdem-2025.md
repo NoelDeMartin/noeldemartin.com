@@ -3,6 +3,7 @@ id: attending-fosdem-2025
 title: 'Attending FOSDEM 2025'
 blueprint: task
 publication_date: '2025-01-27 10:10:35'
+completion_date: '2025-02-03 10:36:33'
 ---
 
 New year, new [FOSDEM](https://fosdem.org)!
