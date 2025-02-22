@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('main')
-    <article>
+    <article class="pb-4">
         @antlers
             <h1>{{ title }}</h1>
 

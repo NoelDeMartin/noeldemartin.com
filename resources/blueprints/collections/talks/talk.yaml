@@ -1,0 +1,62 @@
+title: Talk
+tabs:
+  main:
+    display: Main
+    sections:
+      - fields:
+          - handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+          - handle: content
+            field:
+              type: markdown
+              display: Content
+              antlers: true
+          - handle: video_url
+            field:
+              type: text
+              display: 'Video Url'
+              width: 66
+          - handle: video_duration
+            field:
+              type: text
+              display: 'Video Duration'
+              width: 33
+          - handle: slides
+            field:
+              type: text
+              display: Slides
+  sidebar:
+    display: Sidebar
+    sections:
+      - fields:
+          - handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          - handle: presentation_date
+            field:
+              type: date
+              display: 'Presentation Date'
+              validate:
+                - required
+          - handle: location
+            field:
+              type: text
+              display: Location
+              validate:
+                - required
+          - handle: conference
+            field:
+              type: text
+              display: Conference
+              width: 33
+          - handle: conference_url
+            field:
+              type: text
+              display: 'Conference Url'
+              width: 66

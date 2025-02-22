@@ -38,6 +38,19 @@ test('Projects', function () {
     $this->get('/projects/beastmasters')->assertStatus(200)->assertSee('an online turn-based card game');
 });
 
+test('Talks', function () {
+    $response = $this->get('/talks');
+
+    $response->assertStatus(200);
+    $response->assertSee('Solid CRDTs in Practice');
+    $response->assertSee('May 3, 2024');
+    $response->assertSee('Solid Symposium');
+    $response->assertSee('Leuven, Belgium');
+    $response->assertSee('CRDTs is the technology that enables local-first applications');
+    $response->assertSee('Video');
+    $response->assertSee('(12 min)');
+});
+
 test('Now', function () {
     $response = $this->get('/now');
 

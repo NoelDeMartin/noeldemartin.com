@@ -5,4 +5,4 @@ blueprint: page
 template: talks/index
 ---
 
-You can find more videos in [my Youtube channel](https://youtube.com/@noeldemartin).
+Here's a list with some talks I've given. You can also find more frequent videos in [my Youtube channel](https://youtube.com/@noeldemartin).

@@ -7,125 +7,135 @@
         {{ content }}
     @endantlers
 
-    <x-content-card
-        title="Solid CRDTs in Practice @ Solid Symposium"
-        :date="carbon('2024-05-03')"
-        :links="[
-            'Slides' => 'https://slidr.io/NoelDeMartin/solid-crdts-in-practice',
-            'Video (12min)' => 'https://www.youtube.com/watch?v=vYQmGeaQt8E',
-        ]"
-    >
-        <s:markdown>
-            CRDTs is the technology that enables local-first applications, and
-            in this presentation I share how I learned about them and crafted my
-            own solution for Solid Apps.
-        </s:markdown>
-    </x-content-card>
+    <s:collection from="talks" sort="presentation_date:desc">
+        <div
+            class="flex border-gray-200 pt-6 md:mb-6 md:border-t [&:first-of-type]:border-0 [&:first-of-type]:pt-0"
+        >
+            <a
+                href="{{ $video_url->value() ?: $slides }}"
+                target="_blank"
+                class="group relative mr-6 hidden w-80 shrink-0 self-center md:block"
+            >
+                <div
+                    class="absolute inset-0 hidden rounded bg-black/50 group-hover:block"
+                >
+                    <div
+                        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white"
+                    >
+                        @if (empty($video_url->value()))
+                            <s:partial
+                                src="icons/slides"
+                                class="size-16 fill-current"
+                            />
+                        @else
+                            <s:partial
+                                src="icons/play"
+                                class="size-16 fill-current"
+                            />
+                        @endif
+                    </div>
+                </div>
+                <img
+                    src="/img/talks/{{ $id }}.png"
+                    alt=""
+                    class="m-0 w-full self-center rounded border border-gray-200"
+                />
+            </a>
+            <div>
+                <h2 class="mt-0 mb-1">{{ $title }}</h2>
 
-    <x-content-card
-        title="Thoughts on Solid Developer Experience @ Solid Symposium"
-        :date="carbon('2024-05-02')"
-        :links="[
-            'Slides' => 'https://slidr.io/NoelDeMartin/solid-developer-experience',
-            'Video (16min)' => 'https://www.youtube.com/watch?v=ghGmveKKe5Y',
-        ]"
-    >
-        <s:markdown>
-            Solid has a bad rap about being difficult to work with. But is it
-            really that hard? In this presentation, I share my take on Developer
-            Experience when making Solid Apps.
-        </s:markdown>
-    </x-content-card>
+                <div
+                    class="text-blue-darker flex space-x-2 text-xs font-normal"
+                >
+                    <time
+                        class="flex items-center"
+                        datetime="{{ $presentation_date->toDateTimeString() }}"
+                    >
+                        <s:partial
+                            src="icons/calendar"
+                            class="h-4 fill-current"
+                            aria-label="Date"
+                        />
+                        <span class="ml-1">
+                            {{ $presentation_date->toFormattedDateString() }}
+                        </span>
+                    </time>
 
-    <x-content-card
-        title="From Zero to Hero with Solid @ FOSDEM"
-        :date="carbon('2023-02-04')"
-        :links="[
-            'Slides' => 'https://fosdem.org/2023/schedule/event/sovcloud_from_zero_to_hero_with_solid/',
-            'Video (40min)' => 'https://www.youtube.com/watch?v=kPzhykRVDuI',
-        ]"
-    >
-        <s:markdown>
-            I share lessons learned making [Solid
-            Focus](https://noeldemartin.github.io/solid-focus), [Media
-            Kraken](https://noeldemartin.github.io/media-kraken), and
-            [Umai](https://umai.noeldemartin.com) (but the talk is framework
-            agnostic!). If you're curious about Solid, this is the best place to
-            start.
-        </s:markdown>
-    </x-content-card>
+                    @if (! empty($conference->value()))
+                        <div class="flex items-center">
+                            <s:partial
+                                src="icons/conference"
+                                class="size-4 fill-current"
+                                aria-label="Conference"
+                            />
 
-    <x-content-card
-        title="Media Kraken @ Solid World"
-        :date="carbon('2021-02-04')"
-        :links="[
-            'Slides' => 'https://speakerdeck.com/noeldemartin/media-kraken-at-solid-world',
-            'Video (23min)' => 'https://www.youtube.com/watch?v=cajBTJXmKhA',
-        ]"
-    >
-        <s:markdown>
-            I introduce [Media
-            Kraken](https://noeldemartin.github.io/media-kraken), explain how it
-            came to be, and go a bit behind the curtain to see how it was built.
-        </s:markdown>
-    </x-content-card>
+                            @if ($conference_url->value())
+                                <a
+                                    href="{{ $conference_url }}"
+                                    target="_blank"
+                                    class="text-blue-darker ml-0.5 no-underline hover:underline focus:underline"
+                                >
+                                    {{ $conference }}
+                                </a>
+                            @else
+                                <span class="ml-0.5">{{ $conference }}</span>
+                            @endif
+                        </div>
+                    @endif
 
-    <x-content-card
-        title="Showcasing an app that uses the Solid protocol for decentralized storage @ Blockchain Spirit"
-        :date="carbon('2020-02-25')"
-        :links="[
-            'Slides & Summary' => 'https://speakerdeck.com/noeldemartin/showcasing-an-app-that-uses-the-solid-protocol-for-decentralized-storage',
-        ]"
-    >
-        <s:markdown>
-            This was a lightning talk about [Solid
-            Focus](https://noeldemartin.github.io/solid-focus) and [Soukai
-            Solid](https://github.com/noeldemartin/soukai-solid).
-        </s:markdown>
-    </x-content-card>
+                    <div class="flex items-center">
+                        <s:partial
+                            src="icons/location"
+                            class="size-4 fill-current"
+                            aria-label="Location"
+                        />
+                        <span class="ml-0.5">{{ $location }}</span>
+                    </div>
+                </div>
 
-    <x-content-card
-        title="An introduction to Solid @ MyData Meetup"
-        :date="carbon('2020-02-18')"
-        :links="[
-            'Slides & Summary' => 'https://speakerdeck.com/noeldemartin/an-introduction-to-solid',
-        ]"
-    >
-        <s:markdown>
-            I explain what [Solid](https://solidproject.org) is, where it came
-            from, and its vision.
-        </s:markdown>
-    </x-content-card>
+                <div
+                    class="prose mt-2.5 [&>p:first-of-type]:mt-0 [&>p:last-of-type]:mb-0"
+                >
+                    @antlers
+                        {{ content }}
+                    @endantlers
+                </div>
 
-    <x-content-card
-        title="TCM Ionic Workshop @ TecnoCampus Mataró"
-        :date="carbon('2017-11-30')"
-        :links="[
-            'Slides' => 'https://speakerdeck.com/noeldemartin/tcm-ionic-workshop',
-            'Source' => 'https://github.com/NoelDeMartin/tcm-ionic-workshop',
-        ]"
-    >
-        <s:markdown>
-            Workshop to build a real-time chat using
-            [Ionic](https://ionicframework.com/) and [Firebase
-            DB](https://firebase.google.com/docs/database/). Given to
-            [TCM](https://www.tecnocampus.cat/en/sobre-el-parc-tecnocampus/sobre-el-tecnocampus)
-            Computer Engineering students.
-        </s:markdown>
-    </x-content-card>
+                <div class="mt-4 flex space-x-2">
+                    @if (! empty($video_url->value()))
+                        <a
+                            href="{{ $video_url }}"
+                            target="_blank"
+                            class="flex items-center rounded bg-white px-2 py-1 text-sm text-gray-900 no-underline ring-1 ring-gray-300 ring-inset hover:bg-gray-50"
+                        >
+                            <s:partial
+                                src="icons/video"
+                                class="size-5 fill-current"
+                            />
+                            <span class="ml-1">
+                                Video
+                                @if (! empty($video_duration->value()))
+                                        ({{ $video_duration }})
+                                @endif
+                            </span>
+                        </a>
+                    @endif
 
-    <x-content-card
-        title="Awesome Tools 2017 @ TecnoCampus Mataró"
-        :date="carbon('2017-06-09')"
-        :links="[
-            'Slides' => 'https://speakerdeck.com/noeldemartin/awesome-tools-2017',
-        ]"
-    >
-        <s:markdown>
-            Showcase of modern technologies we were using at
-            [Geemba](/projects/geemba). Given to
-            [TCM](https://www.tecnocampus.cat/en/sobre-el-parc-tecnocampus/sobre-el-tecnocampus)
-            Computer Engineering students.
-        </s:markdown>
-    </x-content-card>
+                    @if (! empty($slides->value()))
+                        <a
+                            href="{{ $slides }}"
+                            target="_blank"
+                            class="flex items-center rounded bg-white px-2 py-1 text-sm text-gray-900 no-underline ring-1 ring-gray-300 ring-inset hover:bg-gray-50"
+                        >
+                            <s:partial
+                                src="icons/slides"
+                                class="size-5 fill-current"
+                            />
+                            <span class="ml-1">Slides</span>
+                        </a>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </s:collection>
 @endsection
