@@ -40,3 +40,20 @@ uses(TestCase::class)->in('Feature');
 */
 
 //
+
+/*
+|--------------------------------------------------------------------------
+| Architecture
+|--------------------------------------------------------------------------
+|
+| Architecture testing enables you to specify expectations that test whether your application
+| adheres to a set of architectural rules, helping maintain a clean and sustainable codebase.
+| The expectations are determined by different types of namespaces or function names.
+|
+*/
+
+arch()->preset()->laravel();
+arch()
+    ->expect('App')
+    ->toUseStrictTypes()
+    ->not->toUse(['die', 'dd', 'dump']);
