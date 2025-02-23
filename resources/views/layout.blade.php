@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ $site->short_locale }}" prefix="og: http://ogp.me/ns#">
+<html lang="{{ $site->short_locale ?? 'en' }}" prefix="og: http://ogp.me/ns#">
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -47,10 +47,7 @@
             Skip to content
         </a>
 
-        <x-layout-header
-            :socials="$contact->socials"
-            :collapsed="$minimal ?? false"
-        />
+        <x-layout-header :collapsed="$minimal ?? false" />
 
         <turbo-frame
             id="mainframe"

@@ -11,6 +11,7 @@ export default defineConfig({
                 'resources/assets/css/main.css',
                 'resources/assets/js/code.js',
                 'resources/assets/js/main.js',
+                'resources/assets/js/slides.js',
             ],
             refresh: true,
         }),

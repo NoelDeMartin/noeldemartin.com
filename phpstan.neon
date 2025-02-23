@@ -11,6 +11,7 @@ parameters:
     excludePaths:
         - app/Http/Middleware/ApplySemanticSEO.php
         - app/Http/SEO
+        - app/Models/Talk.php
         - app/Models/Task.php
         - app/SemanticSEO
         - app/Services/ActivityService.php

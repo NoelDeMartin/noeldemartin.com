@@ -2,7 +2,6 @@
 id: showcasing-an-app-that-uses-the-solid-protocol-for-decentralized-storage
 title: 'Showcasing an app that uses the Solid protocol for decentralized storage'
 blueprint: talk
-slides: 'https://speakerdeck.com/noeldemartin/showcasing-an-app-that-uses-the-solid-protocol-for-decentralized-storage'
 presentation_date: '2020-02-25'
 location: 'Barcelona, Spain'
 conference: 'Blockchain Spirit'

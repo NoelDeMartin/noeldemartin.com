@@ -2,7 +2,6 @@
 id: awesome-tools-2017
 title: 'Awesome Tools 2017'
 blueprint: talk
-slides: 'https://speakerdeck.com/noeldemartin/awesome-tools-2017'
 presentation_date: '2017-06-09'
 location: 'Mataró, Spain'
 ---

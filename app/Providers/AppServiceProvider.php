@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Post;
 use App\Models\Project;
+use App\Models\Talk;
 use App\Models\Task;
 use App\Services\ActivityService;
 use Carbon\Carbon;
@@ -50,6 +51,7 @@ class AppServiceProvider extends ServiceProvider
     protected function bootModels(): void
     {
         Post::boot();
+        Talk::boot();
         Task::boot();
         Project::boot();
     }

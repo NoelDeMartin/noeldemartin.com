@@ -2,7 +2,6 @@
 id: an-introduction-to-solid
 title: 'An introduction to Solid'
 blueprint: talk
-slides: 'https://speakerdeck.com/noeldemartin/an-introduction-to-solid'
 presentation_date: '2020-02-18'
 location: 'Barcelona, Spain'
 conference: 'MyData Meetup'

@@ -68,21 +68,21 @@
                 </s:nav>
             </div>
             <div class="relative z-10 md:flex">
-                @foreach ($socials as $account)
+                @foreach (sglobal("contact.socials") as $account)
                     <a
-                        href="{{ $account->link }}"
-                        aria-label="{{ $account->name }}"
-                        title="{{ $account->name }}"
+                        href="{{ $account["link"] }}"
+                        aria-label="{{ $account["name"] }}"
+                        title="{{ $account["name"] }}"
                         target="_blank"
                         class="hover:bg-overlay flex min-w-10 items-center justify-start px-4 py-3 hover:opacity-100 focus:opacity-100 md:justify-center md:px-2 md:py-0 md:opacity-50"
-                        {{ $account->represent ? 'rel="me"' : "" }}
+                        {{ $account["represent"] ? 'rel="me"' : "" }}
                     >
                         <s:partial
-                            :src="'icons/' . $account->icon"
-                            :class="($account->classes ?? '') . ' h-6'"
+                            :src="'icons/' . $account['icon']"
+                            :class="($account['classes'] ?? '') . ' h-6'"
                         />
                         <span class="ml-2 md:sr-only">
-                            {{ $account->name }}
+                            {{ $account["name"] }}
                         </span>
                     </a>
                 @endforeach

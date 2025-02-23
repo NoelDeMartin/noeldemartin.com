@@ -4,7 +4,6 @@ title: 'Thoughts on Solid Developer Experience'
 blueprint: talk
 video_url: 'https://www.youtube.com/watch?v=ghGmveKKe5Y'
 video_duration: '16 min'
-slides: 'https://slidr.io/NoelDeMartin/solid-developer-experience'
 presentation_date: '2024-05-02'
 location: 'Leuven, Belgium'
 conference: 'Solid Symposium'

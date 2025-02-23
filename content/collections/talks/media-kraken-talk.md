@@ -1,10 +1,9 @@
 ---
-id: media-kraken-solid-world
+id: media-kraken-talk
 title: 'Media Kraken'
 blueprint: talk
 video_url: 'https://www.youtube.com/watch?v=cajBTJXmKhA'
 video_duration: '23 min'
-slides: 'https://speakerdeck.com/noeldemartin/media-kraken-at-solid-world'
 presentation_date: '2021-02-04'
 location: Online
 conference: 'Solid World'

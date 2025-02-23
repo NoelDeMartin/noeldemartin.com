@@ -25,10 +25,6 @@ tabs:
               type: text
               display: 'Video Duration'
               width: 33
-          - handle: slides
-            field:
-              type: text
-              display: Slides
   sidebar:
     display: Sidebar
     sections:

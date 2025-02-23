@@ -51,6 +51,13 @@ test('Talks', function () {
     $response->assertSee('(12 min)');
 });
 
+test('Slides', function () {
+    $response = $this->get('/slides/interoperable-serendipity');
+
+    $response->assertStatus(200);
+    $response->assertSee('Interoperable Serendipity');
+});
+
 test('Now', function () {
     $response = $this->get('/now');
 

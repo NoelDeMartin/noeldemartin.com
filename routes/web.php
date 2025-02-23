@@ -5,6 +5,7 @@ use App\Http\Controllers\Health;
 use App\Http\Controllers\NowController;
 use App\Http\Controllers\PodcastController;
 use App\Http\Controllers\SiteMap;
+use App\Http\Controllers\SlidesController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('blog/rss.xml', [BlogController::class, 'feed'])->name('blog.rss');
@@ -16,9 +17,11 @@ Route::get('podcast/styles.xsl', [PodcastController::class, 'styles'])->name('po
 Route::get('health', Health::class)->name('health');
 Route::get('sitemap.xml', SiteMap::class)->name('sitemap');
 
+Route::get('slides/{slug}', [SlidesController::class, 'show']);
+
 Route::redirect('fosdem', 'https://www.youtube.com/watch?v=kPzhykRVDuI');
 Route::redirect('solid-world', 'https://www.youtube.com/watch?v=cajBTJXmKhA');
-Route::redirect('solid-world-2025', 'https://slidr.io/NoelDeMartin/interoperable-serendipity');
+Route::redirect('solid-world-2025', '/slides/interoperable-serendipity');
 Route::redirect('solid-symposium-dx', 'https://www.youtube.com/watch?v=ghGmveKKe5Y');
 Route::redirect('solid-symposium-crdts', 'https://www.youtube.com/watch?v=vYQmGeaQt8E');
 Route::redirect('recipes', 'https://umai.noeldemartin.com/viewer?url=https://noeldemartin.solidcommunity.net/cookbook/public%23it');

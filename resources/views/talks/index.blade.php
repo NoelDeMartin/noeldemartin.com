@@ -12,7 +12,7 @@
             class="flex border-gray-200 pt-6 md:mb-6 md:border-t [&:first-of-type]:border-0 [&:first-of-type]:pt-0"
         >
             <a
-                href="{{ $video_url->value() ?: $slides }}"
+                href="{{ $video_url->value() ?: $slidesUrl }}"
                 target="_blank"
                 class="group relative mr-6 hidden w-80 shrink-0 self-center md:block"
             >
@@ -36,13 +36,21 @@
                     </div>
                 </div>
                 <img
-                    src="/img/talks/{{ $id }}.png"
+                    src="{{ $imageUrl }}"
                     alt=""
                     class="m-0 w-full self-center rounded border border-gray-200"
                 />
             </a>
             <div>
-                <h2 class="mt-0 mb-1">{{ $title }}</h2>
+                <h2 class="mt-0 mb-1">
+                    <a
+                        href="{{ $video_url->value() ?: $slidesUrl }}"
+                        class="no-underline hover:underline focus:underline"
+                        target="_blank"
+                    >
+                        {{ $title }}
+                    </a>
+                </h2>
 
                 <div
                     class="text-blue-darker flex space-x-2 text-xs font-normal"
@@ -121,19 +129,17 @@
                         </a>
                     @endif
 
-                    @if (! empty($slides->value()))
-                        <a
-                            href="{{ $slides }}"
-                            target="_blank"
-                            class="flex items-center rounded bg-white px-2 py-1 text-sm text-gray-900 no-underline ring-1 ring-gray-300 ring-inset hover:bg-gray-50"
-                        >
-                            <s:partial
-                                src="icons/slides"
-                                class="size-5 fill-current"
-                            />
-                            <span class="ml-1">Slides</span>
-                        </a>
-                    @endif
+                    <a
+                        href="{{ $slidesUrl }}"
+                        target="_blank"
+                        class="flex items-center rounded bg-white px-2 py-1 text-sm text-gray-900 no-underline ring-1 ring-gray-300 ring-inset hover:bg-gray-50"
+                    >
+                        <s:partial
+                            src="icons/slides"
+                            class="size-5 fill-current"
+                        />
+                        <span class="ml-1">Slides</span>
+                    </a>
                 </div>
             </div>
         </div>
