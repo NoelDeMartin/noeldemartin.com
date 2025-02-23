@@ -144,4 +144,4 @@ For my part, I will continue [working in the open](https://noeldemartin.com/blog
 
 Onwards!
 
-_If you enjoyed this post and want to learn more about the topic, join the conversation in the [Solid Forum](https://forum.solidproject.org/t/interoperable-serendipity/4738) and the [Zero Data Chat](https://chat.0data.app/t/interoperable-serendipity/43)._
+_If you enjoyed this post, I recently gave a talk expanding on the idea. Check it out: [noeldemartin.com/solid-world-2025](https://noeldemartin.com/solid-world-2025)_
