@@ -22,17 +22,17 @@
             @keydown.left.document="previousSlide()"
         ></div>
         <nav
-            class="absolute inset-x-0 bottom-0 z-10 bg-black/50 text-white transition-transform duration-1000"
+            class="absolute inset-x-0 bottom-0 z-10 bg-black/75 text-white transition-transform duration-1000"
             :class="!showNav && 'translate-y-full'"
         >
             <div
-                class="mx-auto grid max-w-(--slides-width) px-2 py-4 [grid-template:'title_title'_'previous_next'] md:grid-cols-[auto_1fr_auto] md:[grid-template:'previous_title_next']"
+                class="portrait-slides:[grid-template:'title_title'_'previous_next'] mx-auto grid max-w-[calc(max(var(--slides-width),75vw))] grid-cols-[auto_1fr_auto] px-2 py-4 [grid-template:'previous_title_next']"
             >
                 <div class="flex justify-start" style="grid-area: previous">
                     <button
                         type="button"
                         @click="previousSlide()"
-                        class="inline-flex items-start rounded px-3 py-2 text-xs font-medium hover:bg-white/25 focus:bg-white/25 md:text-sm"
+                        class="inline-flex items-start rounded px-3 py-2 text-[clamp(var(--text-xs),1vw+.25rem,var(--text-sm))] font-medium hover:bg-white/25 focus:bg-white/25"
                         :class="currentPage === 1 && 'invisible'"
                         :disabled="currentPage === 1"
                     >
@@ -41,7 +41,7 @@
                     </button>
                 </div>
                 <div
-                    class="mb-2 flex items-center justify-center md:mb-0"
+                    class="portrait-slides:mb-0 mb-2 flex flex-wrap items-center justify-center"
                     style="grid-area: title"
                 >
                     <a href="{{ $slides }}" target="_blank" class="mr-1.5">
@@ -51,7 +51,9 @@
                         />
                         <span class="sr-only">Download</span>
                     </a>
-                    <h1 class="text-center text-sm md:text-xl">
+                    <h1
+                        class="text-center text-[clamp(var(--text-sm),2vw+.5rem,var(--text-xl))]"
+                    >
                         {{ $talk->title }}
                         <span x-text="pagination"></span>
                     </h1>
@@ -60,7 +62,7 @@
                     <button
                         type="button"
                         @click="nextSlide()"
-                        class="inline-flex items-center rounded px-3 py-2 text-xs font-medium hover:bg-white/25 focus:bg-white/25 md:text-sm"
+                        class="inline-flex items-center rounded px-3 py-2 text-[clamp(var(--text-xs),1vw+.25rem,var(--text-sm))] font-medium hover:bg-white/25 focus:bg-white/25"
                         :class="currentPage === totalPages && 'invisible'"
                         :disabled="currentPage === totalPages"
                     >

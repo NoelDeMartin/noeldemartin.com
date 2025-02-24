@@ -23,6 +23,10 @@ async function initializeViewer(url, container) {
     linkService.setViewer(viewer);
     linkService.setDocument(document, null);
 
+    window.addEventListener('resize', () => {
+        viewer.currentScaleValue = 'page-width';
+    });
+
     return new Promise((resolve) => {
         eventBus.on('pagesinit', () => {
             viewer.currentScaleValue = 'page-width';
@@ -41,28 +45,33 @@ async function initializeContainer(container, pdfDocument) {
 
     const firstPage = await pdfDocument.getPage(1);
     const slidesAspectRatio = firstPage.view[2] / firstPage.view[3];
-    const pageAspectRatio =
-        document.body.clientWidth / document.body.clientHeight;
+    const updateDimensions = () => {
+        const pageAspectRatio =
+            document.body.clientWidth / document.body.clientHeight;
 
-    if (slidesAspectRatio > pageAspectRatio) {
-        document.body.style.setProperty(
-            '--slides-width',
-            `${document.body.clientWidth}px`,
-        );
-        document.body.style.setProperty(
-            '--slides-height',
-            `${document.body.clientWidth / slidesAspectRatio}px`,
-        );
-    } else {
-        document.body.style.setProperty(
-            '--slides-width',
-            `${document.body.clientHeight * slidesAspectRatio}px`,
-        );
-        document.body.style.setProperty(
-            '--slides-height',
-            `${document.body.clientHeight}px`,
-        );
-    }
+        if (slidesAspectRatio > pageAspectRatio) {
+            document.body.style.setProperty(
+                '--slides-width',
+                `${document.body.clientWidth}px`,
+            );
+            document.body.style.setProperty(
+                '--slides-height',
+                `${document.body.clientWidth / slidesAspectRatio}px`,
+            );
+        } else {
+            document.body.style.setProperty(
+                '--slides-width',
+                `${document.body.clientHeight * slidesAspectRatio}px`,
+            );
+            document.body.style.setProperty(
+                '--slides-height',
+                `${document.body.clientHeight}px`,
+            );
+        }
+    };
+
+    updateDimensions();
+    window.addEventListener('resize', () => updateDimensions());
 
     return container;
 }

@@ -1,0 +1,5 @@
+@custom-variant portrait-slides {
+    @media (width <= 48rem) and (max-aspect-ratio: 1/1) {
+        @slot;
+    }
+}
