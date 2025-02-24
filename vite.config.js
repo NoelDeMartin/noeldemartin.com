@@ -1,6 +1,7 @@
 import laravel from 'laravel-vite-plugin';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vite';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 export default defineConfig({
     plugins: [
@@ -14,6 +15,15 @@ export default defineConfig({
                 'resources/assets/js/slides.js',
             ],
             refresh: true,
+        }),
+        viteStaticCopy({
+            targets: [
+                {
+                    src: 'node_modules/pdfjs-dist/build/pdf.worker.min.mjs',
+                    dest: 'assets',
+                    rename: 'slides.worker.js',
+                },
+            ],
         }),
     ],
 });

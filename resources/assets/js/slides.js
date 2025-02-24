@@ -1,5 +1,4 @@
 import 'pdfjs-dist/web/pdf_viewer.css';
-import 'pdfjs-dist/build/pdf.worker.mjs';
 
 import Alpine from 'alpinejs';
 import * as pdfjsLib from 'pdfjs-dist';
@@ -8,6 +7,8 @@ import {
     getLocationQueryParameter,
     updateLocationQueryParameters,
 } from '@noeldemartin/utils';
+
+pdfjsLib.GlobalWorkerOptions.workerSrc = '/build/assets/slides.worker.js';
 
 async function initializeViewer(url, container) {
     const document = await pdfjsLib.getDocument({ url }).promise;
