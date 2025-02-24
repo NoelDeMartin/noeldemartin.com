@@ -15,11 +15,9 @@
         x-init="initialize('{{ $slides }}')"
         class="flex h-screen w-screen items-center justify-center overflow-hidden bg-black"
     >
-        <s:partial
-            x-ref="loading"
-            src="icons/loading"
-            class="size-20 text-white"
-        />
+        <div x-ref="loading">
+            <s:partial src="icons/loading" class="size-20 text-white" />
+        </div>
         <div
             x-ref="slides-container"
             class="absolute h-(--slides-height) w-(--slides-width)"

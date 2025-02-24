@@ -4,6 +4,10 @@ import 'pdfjs-dist/build/pdf.worker.mjs';
 import Alpine from 'alpinejs';
 import * as pdfjsLib from 'pdfjs-dist';
 import * as pdfjsViewer from 'pdfjs-dist/web/pdf_viewer.mjs';
+import {
+    getLocationQueryParameter,
+    updateLocationQueryParameters,
+} from '@noeldemartin/utils';
 
 async function initializeViewer(url, container) {
     const document = await pdfjsLib.getDocument({ url }).promise;
@@ -109,6 +113,10 @@ document.addEventListener('alpine:init', () => {
         totalPages: 0,
         showNav: true,
         async initialize(url) {
+            const initialSlide = parseInt(
+                getLocationQueryParameter('slide') ?? 1,
+            );
+
             viewer = await initializeViewer(
                 url,
                 this.$refs['slides-container'],
@@ -116,8 +124,10 @@ document.addEventListener('alpine:init', () => {
 
             initializeNav((show) => (this.showNav = show));
 
-            this.currentPage = 1;
+            this.currentPage = initialSlide;
             this.totalPages = viewer.pagesCount;
+            viewer.currentPageNumber = initialSlide;
+            updateLocationQueryParameters({ slide: this.currentPage });
 
             this.$refs['nav'].classList.remove('invisible');
             this.$refs['loading'].remove();
@@ -133,6 +143,8 @@ document.addEventListener('alpine:init', () => {
             viewer.nextPage();
 
             this.currentPage = viewer.currentPageNumber;
+
+            updateLocationQueryParameters({ slide: this.currentPage });
         },
         previousSlide() {
             if (!viewer) {
@@ -142,6 +154,8 @@ document.addEventListener('alpine:init', () => {
             viewer.previousPage();
 
             this.currentPage = viewer.currentPageNumber;
+
+            updateLocationQueryParameters({ slide: this.currentPage });
         },
     }));
 });
