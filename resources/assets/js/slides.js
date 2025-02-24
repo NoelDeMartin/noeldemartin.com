@@ -118,6 +118,9 @@ document.addEventListener('alpine:init', () => {
 
             this.currentPage = 1;
             this.totalPages = viewer.pagesCount;
+
+            this.$refs['nav'].classList.remove('invisible');
+            this.$refs['loading'].remove();
         },
         get pagination() {
             return `(${this.currentPage}/${this.totalPages})`;

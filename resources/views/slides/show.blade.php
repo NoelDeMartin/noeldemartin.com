@@ -15,6 +15,11 @@
         x-init="initialize('{{ $slides }}')"
         class="flex h-screen w-screen items-center justify-center overflow-hidden bg-black"
     >
+        <s:partial
+            x-ref="loading"
+            src="icons/loading"
+            class="size-20 text-white"
+        />
         <div
             x-ref="slides-container"
             class="absolute h-(--slides-height) w-(--slides-width)"
@@ -22,8 +27,9 @@
             @keydown.left.document="previousSlide()"
         ></div>
         <nav
-            class="absolute inset-x-0 bottom-0 z-10 bg-black/75 text-white transition-transform duration-1000"
+            class="invisible absolute inset-x-0 bottom-0 z-10 bg-black/75 text-white transition-transform duration-1000"
             :class="!showNav && 'translate-y-full'"
+            x-ref="nav"
         >
             <div
                 class="portrait-slides:[grid-template:'title_title'_'previous_next'] mx-auto grid max-w-[calc(max(var(--slides-width),75vw))] grid-cols-[auto_1fr_auto] px-2 py-4 [grid-template:'previous_title_next']"
