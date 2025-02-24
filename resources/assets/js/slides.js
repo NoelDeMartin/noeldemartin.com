@@ -81,19 +81,35 @@ async function initializeContainer(container, pdfDocument) {
     return container;
 }
 
-function initializeNav(setShowNav) {
-    if (window.matchMedia('(any-hover: none)').matches) {
-        return;
-    }
+function initializeNav(setShowNav, getShowNav) {
+    const isTouchDevice = window.matchMedia('(any-hover: none)').matches;
 
     let timeout;
-    const duration = 5000;
+    const duration = 3000;
     const showNav = () => {
         setShowNav(true);
 
         timeout && clearTimeout(timeout);
         timeout = setTimeout(() => setShowNav(false), duration);
     };
+
+    document.addEventListener('touchend', (e) => {
+        if (
+            ['a', 'button'].includes(e.target?.tagName.toLowerCase()) ||
+            e.target?.closest('a, button')
+        ) {
+            timeout && clearTimeout(timeout);
+            timeout = setTimeout(() => setShowNav(false), duration);
+
+            return;
+        }
+
+        if (getShowNav()) {
+            setShowNav(false);
+        } else {
+            showNav();
+        }
+    });
 
     document.addEventListener('mousemove', (e) => {
         if (e.clientY < document.body.clientHeight * 0.95) {
@@ -123,7 +139,10 @@ document.addEventListener('alpine:init', () => {
                 this.$refs['slides-container'],
             );
 
-            initializeNav((show) => (this.showNav = show));
+            initializeNav(
+                (show) => (this.showNav = show),
+                () => this.showNav,
+            );
 
             this.currentPage = initialSlide;
             this.totalPages = viewer.pagesCount;
