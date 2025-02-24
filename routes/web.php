@@ -10,14 +10,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('blog/rss.xml', [BlogController::class, 'feed'])->name('blog.rss');
 Route::get('blog/styles.xsl', [BlogController::class, 'styles'])->name('blog.xsl');
+Route::get('slides/{slug}', [SlidesController::class, 'show'])->name('slides.show');
 Route::get('now/rss.xml', [NowController::class, 'feed'])->name('now.rss');
 Route::get('now/styles.xsl', [NowController::class, 'styles'])->name('now.xsl');
 Route::get('podcast/feed.xml', [PodcastController::class, 'feed'])->name('podcast.feed');
 Route::get('podcast/styles.xsl', [PodcastController::class, 'styles'])->name('podcast.xsl');
 Route::get('health', Health::class)->name('health');
 Route::get('sitemap.xml', SiteMap::class)->name('sitemap');
-
-Route::get('slides/{slug}', [SlidesController::class, 'show']);
 
 Route::redirect('fosdem', 'https://www.youtube.com/watch?v=kPzhykRVDuI');
 Route::redirect('solid-world', 'https://www.youtube.com/watch?v=cajBTJXmKhA');
@@ -28,6 +27,7 @@ Route::redirect('recipes', 'https://umai.noeldemartin.com/viewer?url=https://noe
 Route::redirect('recipes/aguachile', 'https://umai.noeldemartin.com/viewer?url=https://noeldemartin.solidcommunity.net/cookbook/aguachile%23it');
 
 Route::permanentRedirect('about', '/');
+Route::permanentRedirect('slides', '/talks');
 Route::permanentRedirect('posts/{tag?}', '/blog/{tag}');
 Route::permanentRedirect('blog/blockchains-how-do-they-work-', '/blog/blockchains-how-do-they-work');
 Route::permanentRedirect('blog/blockchains-innovation-or-sham-', '/blog/blockchains-innovation-or-sham');

@@ -6,6 +6,7 @@ test('Sitemap', function () {
     $response->assertStatus(200);
     $response->assertSee('/blog');
     $response->assertSee('/projects/geemba');
+    $response->assertSee('/slides/interoperable-serendipity');
     $response->assertSee('/tasks/reading-musashi-by-eiji-yoshikawa');
 });
 
@@ -59,6 +60,15 @@ test('Home SEO', function () {
     $response->assertSee('"@type":"AboutPage"', false);
     $response->assertSee('"@type":"Blog"', false);
     $response->assertSee('"@type":"Person"', false);
+});
+
+test('Talk slides SEO', function () {
+    $response = $this->get('/slides/interoperable-serendipity');
+
+    $response->assertStatus(200);
+    $response->assertSee('<title>Interoperable Serendipity | Noel De Martin</title>', false);
+    $response->assertSee('I talk about Interoperable Serendipity', false);
+    $response->assertSee('"@type":"PresentationDigitalDocument"', false);
 });
 
 test('Blog SEO', function () {

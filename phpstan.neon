@@ -9,6 +9,7 @@ parameters:
     typeAliases:
         Landmark: 'object{level: int, title: string, anchor: string, parent: object, children: array<object>}'
     excludePaths:
+        - app/Http/Controllers/SlidesController.php
         - app/Http/Middleware/ApplySemanticSEO.php
         - app/Http/SEO
         - app/Models/Talk.php

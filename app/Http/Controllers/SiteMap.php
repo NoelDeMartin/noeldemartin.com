@@ -16,6 +16,8 @@ class SiteMap extends Controller
             // @phpstan-ignore-next-line
             ->each(fn ($task) => $task->modification_date = $task->completion_date ?? $task->publication_date)
             ->sortBy('modification_date');
+        $talks = collect(Entries::whereCollection('talks')->all())
+            ->sortBy('presentation_date');
         $projects = Entries::whereCollection('projects')
             // @phpstan-ignore-next-line
             ->map(fn ($project) => $project->link->value())
@@ -23,7 +25,7 @@ class SiteMap extends Controller
         $lastModificationDate = Activity::lastModificationDate();
 
         return response()
-            ->view('sitemap.index', ['posts' => $posts, 'tasks' => $tasks, 'projects' => $projects, 'lastModificationDate' => $lastModificationDate])
+            ->view('sitemap.index', ['posts' => $posts, 'tasks' => $tasks, 'projects' => $projects, 'talks' => $talks, 'lastModificationDate' => $lastModificationDate])
             ->header('Content-Type', 'application/xml');
     }
 }

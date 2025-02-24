@@ -34,6 +34,14 @@
         <loc>{{ sroute('talks') }}</loc>
         <priority>0.6</priority>
     </url>
+
+    @foreach ($talks as $talk)
+        <url>
+            <loc>{{ $talk->slidesUrl }}</loc>
+            <priority>0.4</priority>
+        </url>
+    @endforeach
+
     <url>
         <loc>{{ sroute('japan-tips') }}</loc>
         <priority>0.4</priority>

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\SemanticSEO\PresentationDigitalDocument;
 use Illuminate\Http\Response;
+use NoelDeMartin\SemanticSEO\Support\Facades\SemanticSEO;
 use Statamic\Entries\Entry;
 use Statamic\Facades\Entry as Entries;
 
@@ -16,6 +18,9 @@ class SlidesController extends Controller
         if (is_null($talk) || ! file_exists(public_path($slides))) {
             abort(404);
         }
+
+        SemanticSEO::canonical(url($talk->slidesUrl));
+        SemanticSEO::is(new PresentationDigitalDocument($talk));
 
         return response()->view('slides.show', [
             'talk' => $talk,

@@ -14,13 +14,25 @@ class ApplySemanticSEO
 {
     public function handle(Request $request, Closure $next): Response
     {
-        $entry = Entries::findByUri('/' . rtrim(request()->path(), '/'));
+        $entry = $this->findEntry();
 
         if (! is_null($entry)) {
             $this->applyEntry($entry);
         }
 
         return $next($request);
+    }
+
+    protected function findEntry(): ?Entry
+    {
+        if (request()->is('slides/*')) {
+            $slug = explode('/', request()->path())[1];
+
+            return Entries::whereCollection('talks')->firstWhere('id', $slug)
+                ?? Entries::whereCollection('talks')->firstWhere('id', "{$slug}-talk");
+        }
+
+        return Entries::findByUri('/' . rtrim(request()->path(), '/'));
     }
 
     protected function applyEntry(Entry $entry): void
