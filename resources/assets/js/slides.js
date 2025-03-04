@@ -92,12 +92,8 @@ function initializeNav(setShowNav, getShowNav) {
         timeout && clearTimeout(timeout);
         timeout = setTimeout(() => setShowNav(false), duration);
     };
-
-    document.addEventListener('touchend', (e) => {
-        if (
-            ['a', 'button'].includes(e.target?.tagName.toLowerCase()) ||
-            e.target?.closest('a, button')
-        ) {
+    const onClick = (show) => (e) => {
+        if (isClickable(e.target)) {
             timeout && clearTimeout(timeout);
             timeout = setTimeout(() => setShowNav(false), duration);
 
@@ -106,18 +102,24 @@ function initializeNav(setShowNav, getShowNav) {
 
         if (getShowNav()) {
             setShowNav(false);
-        } else {
+        } else if (show) {
             showNav();
         }
-    });
-
-    document.addEventListener('mousemove', (e) => {
-        if (e.clientY < document.body.clientHeight * 0.95) {
+    };
+    const onMove = (e) => {
+        if (
+            isClickable(e.target) ||
+            e.clientY < document.body.clientHeight * 0.95
+        ) {
             return;
         }
 
         showNav();
-    });
+    };
+
+    document.addEventListener('touchend', onClick(true));
+    document.addEventListener('mousedown', onClick(false));
+    document.addEventListener('mousemove', onMove);
 
     showNav();
 }
@@ -179,3 +181,10 @@ document.addEventListener('alpine:init', () => {
         },
     }));
 });
+
+function isClickable(element) {
+    return (
+        ['a', 'button'].includes(element?.tagName.toLowerCase()) ||
+        element?.closest('a, button')
+    );
+}
