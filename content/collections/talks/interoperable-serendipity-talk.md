@@ -2,6 +2,8 @@
 id: interoperable-serendipity-talk
 title: 'Interoperable Serendipity'
 blueprint: talk
+video_url: 'https://www.youtube.com/watch?v=KN9OWj_XdkY'
+video_duration: '24 min'
 presentation_date: '2025-02-24'
 location: Online
 conference: 'Solid World'
