@@ -2,11 +2,8 @@
 
 namespace App\Providers;
 
-use App\Models\Post;
-use App\Models\Project;
-use App\Models\Talk;
-use App\Models\Task;
 use App\Services\ActivityService;
+use App\Support\DiscoverStatamicModels;
 use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
 use League\CommonMark\Extension\ExternalLink\ExternalLinkExtension;
@@ -22,8 +19,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->bootCarbon();
-        $this->bootModels();
         $this->bootMarkdown();
+        $this->bootStatamicModels();
     }
 
     protected function bootCarbon(): void
@@ -48,18 +45,19 @@ class AppServiceProvider extends ServiceProvider
         });
     }
 
-    protected function bootModels(): void
-    {
-        Post::boot();
-        Talk::boot();
-        Task::boot();
-        Project::boot();
-    }
-
     protected function bootMarkdown(): void
     {
         Markdown::addExtension(function () {
             return new ExternalLinkExtension;
         });
+    }
+
+    protected function bootStatamicModels(): void
+    {
+        $models = DiscoverStatamicModels::within(base_path('app/Models'));
+
+        foreach ($models as $model) {
+            $model->getName()::boot();
+        }
     }
 }
