@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Support\Facades\File;
 
 /**
- * @method string id()
+ * @method string|null id()
  * @method string value(string $key)
  */
 class Project extends StatamicModel
@@ -28,6 +28,10 @@ class Project extends StatamicModel
      */
     public function images(): array
     {
+        if (is_null($this->id())) {
+            return [];
+        }
+
         $id = $this->id();
         $project = substr($id, 0, strlen($id) - 8);
         $imagesPath = "img/projects/{$project}/images";

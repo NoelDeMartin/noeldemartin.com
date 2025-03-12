@@ -4,6 +4,7 @@ namespace App\Models;
 
 /**
  * @property string $content
+ * @method string|null id()
  */
 class Post extends StatamicModel
 {
