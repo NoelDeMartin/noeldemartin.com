@@ -144,4 +144,4 @@ For my part, I will continue [working in the open](https://noeldemartin.com/blog
 
 Onwards!
 
-_If you enjoyed this post, I recently gave a talk expanding on the idea. Check it out: [noeldemartin.com/solid-world-2025](https://noeldemartin.com/solid-world-2025)_
+_If you enjoyed this post, I recently gave a talk expanding on the idea: <a href="https://noeldemartin.com/solid-world-2025" target="_blank">Interoperable Serendipity @ Solid World</a>_

@@ -17,8 +17,8 @@ A plan may fail, it may be delayed, it may be underestimated, etc. But any of th
 And of course, we are humans. So we need mental bandwidth and freedom to perform correctly. Here, the rigurosity or looseness of your planning comes into place. Don't let the plan get in your way, let it be your tool.
 
 > When you fail to plan, you plan to fail
-
-> -- <cite>Benjamin Franklin</cite>
+>
+> ― <cite>Benjamin Franklin</cite>
 
 So now, which are the basic concepts for this? In my opinion, a planning should have two core properties: Rigidity and Flexibility (You think these are contradictory? Keep reading).
 

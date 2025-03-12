@@ -22,12 +22,17 @@ This can be modeled as a statements [Tree](https://en.wikipedia.org/wiki/Tree_%2
 
 Since this is a bit too abstract, let me illustrate with an example. Here’s a conversation between person A and person B both in text and in tree form:
 
-> **A:** Cats are better than dogs. <br> > **B:** What? That's not true! <br> > **A:** Yes, because cats are more self-sufficient and smarter. <br> > **B:** They are more self-sufficient, but not smarter. <br> > **A:** They are, because they learn faster and cannot be taught so easily. <br> > **B:** They may learn faster, but you can definitely train your cat. <br>
+> **A:** Cats are better than dogs.
+> **B:** What? That's not true!
+> **A:** Yes, because cats are more self-sufficient and smarter.
+> **B:** They are more self-sufficient, but not smarter.
+> **A:** They are, because they learn faster and cannot be taught so easily.
+> **B:** They may learn faster, but you can definitely train your cat.
 > ...
 
 ![Conversation tree](/img/blog/CatsVsDogs.png)
 
-<p style="text-align: center">*I’m not saying that I like cats more than dogs, maybe I’ll leave my opinion on that for a different post.*</p>
+_I’m not saying that I like cats more than dogs, maybe I’ll leave my opinion on that for a different post._
 
 ## Conversations with human beings
 

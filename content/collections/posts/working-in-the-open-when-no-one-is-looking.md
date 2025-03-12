@@ -74,6 +74,6 @@ For that reason, I added a new section at [noeldemartin.com/projects](/projects)
 
 Another reason why I don't use analytics is because I figured a better way to learn about my audience would be to talk with people. But I never asked for feedback... until now!
 
-The best way to contact me is to [send an email](mailto:noeldemartin@hey.com?subject=Hi+there!). You can also reach me in [Mastodon](https://noeldemartin.social) and [Twitter](https://twitter.com/NoelDeMartin).
+The best way to contact me is to <a href="mailto:{{contact.email}}?subject=Hi+there!">send an email</a>. You can also reach me in [Mastodon](https://noeldemartin.social) and [Twitter](https://twitter.com/NoelDeMartin).
 
 If you've been following my work, I'd really like to hear about you. Maybe I already know you, or maybe I don't. Or maybe no one is really looking!
