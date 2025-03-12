@@ -38,6 +38,10 @@ class Post extends StatamicModel
      */
     public function landmarks(): array
     {
+        if (is_null($this->id())) {
+            return [];
+        }
+
         return parse_landmarks($this->content);
     }
 }
