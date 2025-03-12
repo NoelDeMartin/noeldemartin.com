@@ -81,7 +81,7 @@ And I know, this is kind of obvious when you think about it. But without my real
 
 ## The Instagram effect
 
-Well, I don't even have an instagram account, so I guess I should call it "The RSS effect" because I get most of my information from podcasts and blogs. And that's definitely distorting my vision of reality. I spend my days listening to how great everyone else's life is, and how their passion lead them to a successful career. But [that's only the tip of the iceberg](https://www.reddit.com/r/Instagramreality/comments/hpo4jr/a_little_reminder_that_instagram_is_the_tip_of/).
+Well, I don't even have an Instagram account, so I guess I should call it "The RSS effect" because I get most of my information from podcasts and blogs. And that's definitely distorting my vision of reality. I spend my days listening to how great everyone else's life is, and how their passion lead them to a successful career. But [that's only the tip of the iceberg](https://www.reddit.com/r/Instagramreality/comments/hpo4jr/a_little_reminder_that_instagram_is_the_tip_of/).
 
 I have been listening to too many Steve Jobs quotes:
 
