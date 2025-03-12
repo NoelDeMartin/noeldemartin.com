@@ -2,7 +2,7 @@
 id: the-soul-crushing-reality-of-job-seeking
 blueprint: post
 title: 'The Soul-Crushing Reality of Job Seeking'
-publication_date: '2025-03-12 15:00:00'
+publication_date: '2025-03-12 16:06:00'
 ---
 
 I've found myself looking for a job a couple of times in my career, and it has always been a grueling experience. This time, it doesn't seem like it's getting any better.
@@ -23,21 +23,21 @@ The first few months, I did exactly what I was planning: [I took a break](https:
 
 Given that you're reading this, things didn't quite work out. Long story short, on March 6th (5 months later), I was notified that [I wasn't getting the grant](https://noeldemartin.social/@noeldemartin/114116126924436827). Needless to say, I was bummed out. But not for the reasons you may imagine. Sure, it sucks being rejected; but the worst aspects of the process were the agonizing wait and the lack of feedback throughout.
 
-In case you weren't familiar with NLNet, I decided to apply because many people working in the Solid ecosystem has been funded by them. And from conversations with previous grantees, I learned they usually replied within a few weeks. But I was extremely unlucky with my timing, because they've had noticeable delays in the most recent calls due to an increase in applicants.
+In case you weren't familiar with NLNet, I decided to apply because many people working in the Solid ecosystem have been funded by them. And from conversations with previous grantees, I learned they usually replied within a few weeks. But I was extremely unlucky with my timing, because they've had noticeable delays in the most recent calls due to an increase in applicants.
 
 However, something worse than waiting was the lack of feedback. For months, I only got generic emails about delays and the status of the review. Including one at the end of January revealing that I had been selected for the second round, but also without any specifics about my project. Then, on March 3rd, I finally got some questions about my submission. I replied immediately, and 3 days later my project was rejected. I wonder if my answers to that email were really that bad!
 
-To their credit, I did get me some good feedback after following up. And I can't say I disagree with their reasons, though I also realized that we aren't aligned in some aspects. But it would have been nice to find out sooner.
+To their credit, I got some feedback after following up. And I can't say I disagree with their reasons, though I also realized that we aren't aligned in some aspects. But it would have been nice to find out sooner.
 
-In short, it wasn't a great experience. But the thing is, I cannot blame them. The increase in applicants was just bad luck, but I had no reason to believe that I would get any feedback or that we shared the same ideals. I didn't realize it at the time, but effectively I was entering a process very similar to applying for a job. And as I've learned the hard way, it's very rare to get any feedback or meaningful takeaways from these rejections.
+In short, it wasn't a great experience. But the thing is, I cannot blame them. The increase in applicants was just bad luck, but I had no reason to believe that I would get any feedback. I didn't realize it at the time, but effectively I was entering a process very similar to applying for a job. And as I've learned the hard way, it's very rare to get any feedback or meaningful takeaways from these rejections.
 
-And there is one very particular reason why this happens: network effects.
+And there is one very particular reason why this happens: the power imbalance.
 
-## The network effect
+## The power imbalance
 
-Here's the thing. There is an inherent imbalance in most hiring processes. First of all, people hiring have almost nothing to gain from rejected applicants. But also, the ratio of applicants to reviewers is usually in the hundreds if not thousands. That is, for each reviewer there are probably hundreds of people applying.
+Here's the thing. There is an inherent asymmetry in most hiring processes. First of all, people hiring have almost nothing to gain from rejected applicants. But also, the ratio of applicants to reviewers is usually in the hundreds if not thousands. That is, for each reviewer there are probably hundreds of people applying.
 
-This situation results in a process than can be very for demoralizing for applicants, because it's not feasible to give personalized feedback and attention to everyone. It doesn't matter that you, as an applicant, have spent hours or even days crafting the perfect cover letter and work history. It could all end in 5 minutes, because unless they are convinced that you're worth looking into, they'll move on to the next candidate. There are different ways to deal with these rejections, and I certainly believe ghosting is the worst one, but going through a process that treats all candidates fairly is the exception rather than the rule. And don't even get me started on unpaid interview assignments, [salary negotiations](https://www.kalzumeus.com/2012/01/23/salary-negotiation/), and other hurdles that make it unfair.
+This situation results in a process than can be very for demoralizing for applicants, because it's not feasible to give personalized feedback and attention to everyone. It doesn't matter that you, as an applicant, have spent hours or even days crafting the perfect cover letter and work history. It could all end in 5 minutes, because unless they are convinced that you're worth looking into, they'll move on to the next candidate. There are different ways to deal with these rejections, and I certainly believe ghosting is the worst one, but going through a process that treats all candidates fairly is the exception rather than the rule. And don't even get me started on unpaid interview assignments, [salary negotiations](https://www.kalzumeus.com/2012/01/23/salary-negotiation/), and many other hurdles that make it unfair.
 
 However, there is a cheat code: networking. If you have some connection inside the company, your chances of landing the job increase tremendously. It doesn't mean they'll hire you on the spot, but it does mean they'll at least look at your candidacy more closely. You may even get to skip some parts of the selection process altogether.
 
@@ -45,9 +45,9 @@ I was already aware of this, but I realized it's more relevant than I thought wh
 
 This gets even worse when you consider that many offers don't even make it to a job board, or don't exist at all! It's not uncommon for companies to be heads down on their work, not looking for anyone new. But they will be more than happy to hire the right person if they happen to cross their paths.
 
-Unfortunately, this isn't getting any better in the AI-era. The imbalance is growing ever greater, with applicants flooding job postings with AI applications, tech workers going through massive layoffs, and the uncertainty of whether AI will take our jobs (I don't think so). Today, the human connection is more important than ever.
+Unfortunately, this isn't getting any better in the AI-era. This imbalance is growing ever greater, with applicants flooding job postings with AI applications, tech workers going through massive layoffs, and the uncertainty of whether AI will take our jobs (I don't think so). Today, the human connection is more important than ever.
 
-This realization has led me to believe that skills are not as important as I thought for _getting_ a job. Of course, they must be important for _keeping_ a job. But whilst you're in the hunt, soft skills like marketing and networking may be more impactful than actual skills related with your job (unless, of course, you're working in marketing or sales).
+This realization has led me to believe that skills are not as important as I thought for _getting_ a job. Of course, they must be important for _keeping_ a job. But for job hunting, soft skills like marketing and networking may be more impactful than actual skills related to your job (unless, of course, you're working in marketing or sales).
 
 Also, when I say networking, it doesn't necessarily mean that you have to literally know someone on the inside. But it does mean they have to know you. For example, if you're working in the open and they are familiar with your work, they'll certainly consider your application more carefully. It also doesn't hurt if you're already working at a popular company.
 
@@ -65,7 +65,7 @@ Once upon a time, I was a bright-eyed computer programmer who had just finished 
 
 However, as time went on, I started to learn more about the industry, and I started working on my own side-projects. That's when I realized that I _really_ loved programming, and I was spending more and more of my spare time coding as well. I also developed a taste for the type of code I wanted to write, and I started to think that maybe, I could enjoy my work as much as I enjoyed my side-projects.
 
-I'm sure you've seen this before. Maybe you had a co-worker who also coded in their spare time, or maybe you've done it yourself. And even though it wasn't the reason why I was doing it, I bought the idea that being passionate would bring me better opportunities. Some people even say that caring about quality code and craftsmanship is the key to [avoid getting replaced by AI](https://justinjackson.ca/ai-replace).
+I'm sure you've seen this before. Maybe you had a co-worker who also coded in their spare time, or maybe you've done it yourself. And even though that wasn't the reason why I was doing it, I bought the idea that being passionate would bring me better opportunities. Some people even say that caring about quality code and craftsmanship is the key to [avoid getting replaced by AI](https://justinjackson.ca/ai-replace).
 
 But now, I think that's a lie. Or rather, it's more nuanced than just "being passionate".
 
@@ -75,13 +75,13 @@ In the last 6 years, I've been very public about my work with Solid. And it seem
 
 And yet... I've failed miserably to find an opportunity to work with Solid full-time. The problem is not that I wasn't passionate enough. The crude reality is, put simply, that [there is not enough going on with Solid](https://noeldemartin.com/blog/the-end-of-the-chapter#the-business-of-solid).
 
-The nuance to being passionate is that it really matters what you're passionate about. For example, if you look at classical musicians, [there can only be 2 French Horn soloists in the world making a living at any given time](https://peterattiamd.com/arthurbrooks/). It doesn't matter that you're a great surfer, [you can't surf without a wave](https://justinjackson.ca/surfing).
+The nuance to being passionate is that it really matters what you're passionate about. For example, if you look at classical musicians, [there can only be 2 French Horn soloists in the world making a living at any given time](https://peterattiamd.com/arthurbrooks/). It doesn't matter that you're a great surfer, [you can't surf without a wave](https://justinjackson.ca/surfing). If you simply follow your passion, you may end up at a dead end.
 
 And I know, this is kind of obvious when you think about it. But without my realizing, I had been reinforcing this belief with my media diet.
 
 ## The Instagram effect
 
-Well, I don't even have an instagram account, so I guess you could call it "The RSS effect" because I get most of my information from podcasts and blogs. And that's definitely distorting my vision of reality. I spend my days listening to how great everyone else's life is, and how their passion lead them to a successful career. But [that's only the tip of the iceberg](https://www.reddit.com/r/Instagramreality/comments/hpo4jr/a_little_reminder_that_instagram_is_the_tip_of/).
+Well, I don't even have an instagram account, so I guess I should call it "The RSS effect" because I get most of my information from podcasts and blogs. And that's definitely distorting my vision of reality. I spend my days listening to how great everyone else's life is, and how their passion lead them to a successful career. But [that's only the tip of the iceberg](https://www.reddit.com/r/Instagramreality/comments/hpo4jr/a_little_reminder_that_instagram_is_the_tip_of/).
 
 I have been listening to too many Steve Jobs quotes:
 
@@ -97,11 +97,11 @@ When I should have been listening to Mark Manson's:
 
 One bland and mundane truth of life is that [not everyone can be Aaron Francis](https://x.com/aarondfrancis/status/1768771775897190740).
 
-The problem with living in such environment is that, subconsciously, I've been lead to believe that the only way to be happy (in my professional life) is to work at one of these companies I admire. Or create my own. But the truth is that my job doesn't need to align completely with my passion.
+The problem with living in such environment is that, subconsciously, I've been lead to believe that I'll only be happy if I get to work at one of these companies I admire. Or create my own. But the truth is that my job doesn't need to align completely with my passion.
 
 I have to accept that [I might not make it](https://www.youtube.com/watch?v=-6HOdHEeosc&t=957s).
 
-## Managing your expectations
+## Managing expectations
 
 Shooting for the stars is not inherently wrong, but you shouldn't set unrealistic expectations either. It would be nice if every passionate developer could make a living with their open-source project that is trying to make a better Web. Instead, we live in a world with [billionaires making more money in their sleep than you'll make in your entire life](https://eattherichtextformat.github.io/1-pixel-wealth/).
 
@@ -117,10 +117,10 @@ Indeed, what now?
 
 For one, my involvement with Solid will probably decrease. I don't think I'll stop altogether, because I still believe in its vision and enjoy working on my apps (that's why I started in the first place). But it's definitely going back to being a side-project. Though I may still experiment with some businessy ideas, because I really think I should improve my marketing skills.
 
-Something else I'm changing is my job hunting approach. I already mentioned that I've been too selective in my process, but I've also been applying to very few positions. I had this stupid rule to avoid being in too many selection processes in parallel, because I would hate to get a better offer when I already committed elsewhere. But seeing how things are going, that's very unlikely to happen.
+Something else I'm changing is my job hunting approach. I already mentioned that I've been too selective, and I had this stupid rule to avoid being in too many selection processes in parallel. Mostly because I would hate to get a better offer when I already committed elsewhere. But seeing how things are going, that's very unlikely to happen.
 
 And finally, I'm recalibrating how I'll evaluate new opportunities. Last time I was on the market, I wrote a blog post [outlining what I was looking for](https://noeldemartin.com/blog/finding-opportunities-that-fit-your-values). Astute readers will notice that I didn't even mention compensation, because I've always been frugal and I don't have big expenses. But if I'm going to be working at a job I'm not particularly passionate about, I may as well make the most of it.
 
-The ideal solution would be to find great companies that are not as notorious as the Laravels of the world. I'd be thrilled to work at a small, little known company that is doing quality work. The problem is that, by definition, I don't know how to find them!
+The ideal solution would be to find great companies that are not as notorious as the Laravels of the world. I'd be thrilled to work at a small, little known company that is doing quality work. The problem is that, by definition, it's very difficult to find them!
 
-On that note, if you know of any opportunities that could work out, you know where to find me.
+On that note, if you know of any opportunities that could work for me, please let me know. I'm all ears.
