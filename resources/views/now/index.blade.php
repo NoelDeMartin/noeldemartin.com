@@ -38,6 +38,12 @@
         </div>
     </div>
 
+    <!-- prettier-ignore -->
+    <div class="self-start mb-4 rounded border-1 text-blue-darkest border-blue-lighter/50 bg-blue-lightest px-4 py-3">
+        <strong>Hire me:</strong> I'm open for work, if you're hiring or know of something I may be
+        interested in, <a href="mailto:{{ sglobal('contact.email') }}?subject=Work+opportunity">let me know</a>!
+    </div>
+
     <div class="max-w-readable">
         @antlers
             {{ content }}

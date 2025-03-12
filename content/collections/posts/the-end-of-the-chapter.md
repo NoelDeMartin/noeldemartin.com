@@ -3,7 +3,7 @@ id: the-end-of-the-chapter
 blueprint: post
 title: 'The End of The Chapter'
 publication_date: '2024-08-01 15:00:00'
-modification_date: '2024-08-01 15:08:50'
+modification_date: '2025-03-12 15:00:00'
 ---
 
 Yesterday was my last day working at [Moodle](https://moodle.com/about/), an Open Source LMS that is used [all around the world](https://stats.moodle.org/).
@@ -111,3 +111,5 @@ Having said all that, I'm not starting right away. My savings [won't last foreve
 I'll use this time to ponder where to go next with my career, and possibly start moving some of the pieces. If you've got any thoughts about what I could do next, I'd love to hear them. If all goes well, I should be back to work in January 2025.
 
 The point of the sabbatical, though, is that I won't have any goals. This could mean that I end up working on side-projects more than ever, or I could go afk for months on end. If you're interested to see how that's going, check out my journal in [/now](/now).
+
+_**2025 Update:** I've written a follow up to this post, check it out: [The Soul-Crushing Reality of Job Seeking](/blog/the-soul-crushing-reality-of-job-seeking) (TLDR: the plan didn't work 😅)._
