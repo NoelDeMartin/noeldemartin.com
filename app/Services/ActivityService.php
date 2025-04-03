@@ -82,7 +82,7 @@ class ActivityService
             date: $task->publication_date,
             title: "Started \"{$task->title}\"",
             description: "Started <a href=\"{$url}\">{$task->title}</a>",
-            longDescription: "<p>I just started a new task: {$task->title}</p>{$task->content}",
+            longDescription: "<p>I just started a new task: <a href=\"{$url}\">{$task->title}</a></p>{$task->content}",
             url: $url,
         )];
 
@@ -93,7 +93,7 @@ class ActivityService
                 date: $task->completion_date,
                 title: "Completed \"{$task->title}\"",
                 description: "Completed <a href=\"{$url}\">{$task->title}</a>",
-                longDescription: "<p>I just completed the task {$task->title}.</p>",
+                longDescription: "<p>I just completed the task <a href=\"{$url}\">{$task->title}</a>.</p>",
                 url: $url,
             );
         }
@@ -113,7 +113,7 @@ class ActivityService
             date: $comment->publication_date,
             title: "Commented on \"{$task->title}\"",
             description: "Commented on <a href=\"{$url}\">{$task->title}</a>",
-            longDescription: "<p>I just added the following comment on {$task->title}:</p>{$comment->content}",
+            longDescription: $comment->content,
             url: $url
         )];
     }
