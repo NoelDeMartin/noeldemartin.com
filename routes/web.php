@@ -23,6 +23,7 @@ Route::redirect('solid-world', 'https://www.youtube.com/watch?v=cajBTJXmKhA');
 Route::redirect('solid-world-2025', 'https://www.youtube.com/watch?v=KN9OWj_XdkY');
 Route::redirect('solid-symposium-dx', 'https://www.youtube.com/watch?v=ghGmveKKe5Y');
 Route::redirect('solid-symposium-crdts', 'https://www.youtube.com/watch?v=vYQmGeaQt8E');
+Route::redirect('solid-symposium-2025', '/slides/solid-unleashed');
 Route::redirect('recipes', 'https://umai.noeldemartin.com/viewer?url=https://noeldemartin.solidcommunity.net/cookbook/public%23it');
 Route::redirect('recipes/aguachile', 'https://umai.noeldemartin.com/viewer?url=https://noeldemartin.solidcommunity.net/cookbook/aguachile%23it');
 
