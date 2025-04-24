@@ -13,7 +13,7 @@
     <body
         x-data="slides"
         x-init="initialize('{{ $slides }}')"
-        class="flex h-screen w-screen items-center justify-center overflow-hidden bg-black"
+        class="flex h-[100dvh] w-[100dvw] items-center justify-center overflow-hidden bg-black"
     >
         <div x-ref="loading">
             <s:partial src="icons/loading" class="size-20 text-white" />

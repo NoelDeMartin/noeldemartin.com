@@ -81,9 +81,7 @@ async function initializeContainer(container, pdfDocument) {
     return container;
 }
 
-function initializeNav(setShowNav, getShowNav) {
-    const isTouchDevice = window.matchMedia('(any-hover: none)').matches;
-
+function initializeNav(setShowNav, getShowNav, nextSlide, previousSlide) {
     let timeout;
     const duration = 3000;
     const showNav = () => {
@@ -100,7 +98,13 @@ function initializeNav(setShowNav, getShowNav) {
             return;
         }
 
-        if (getShowNav()) {
+        const x = e.clientX / document.body.clientWidth;
+
+        if (x < 0.4) {
+            previousSlide();
+        } else if (x > 0.6) {
+            nextSlide();
+        } else if (getShowNav()) {
             setShowNav(false);
         } else if (show) {
             showNav();
@@ -144,6 +148,8 @@ document.addEventListener('alpine:init', () => {
             initializeNav(
                 (show) => (this.showNav = show),
                 () => this.showNav,
+                () => this.nextSlide(),
+                () => this.previousSlide(),
             );
 
             this.currentPage = initialSlide;
