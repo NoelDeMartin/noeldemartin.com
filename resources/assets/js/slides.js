@@ -90,7 +90,7 @@ function initializeNav(setShowNav, getShowNav, nextSlide, previousSlide) {
         timeout && clearTimeout(timeout);
         timeout = setTimeout(() => setShowNav(false), duration);
     };
-    const onClick = (show) => (e) => {
+    const onClick = () => (e) => {
         if (isClickable(e.target)) {
             timeout && clearTimeout(timeout);
             timeout = setTimeout(() => setShowNav(false), duration);
@@ -106,7 +106,7 @@ function initializeNav(setShowNav, getShowNav, nextSlide, previousSlide) {
             nextSlide();
         } else if (getShowNav()) {
             setShowNav(false);
-        } else if (show) {
+        } else {
             showNav();
         }
     };
@@ -121,8 +121,7 @@ function initializeNav(setShowNav, getShowNav, nextSlide, previousSlide) {
         showNav();
     };
 
-    document.addEventListener('touchend', onClick(true));
-    document.addEventListener('mousedown', onClick(false));
+    document.addEventListener('mousedown', onClick());
     document.addEventListener('mousemove', onMove);
 
     showNav();
@@ -190,7 +189,7 @@ document.addEventListener('alpine:init', () => {
 
 function isClickable(element) {
     return (
-        ['a', 'button'].includes(element?.tagName.toLowerCase()) ||
+        ['a', 'button'].includes(element?.tagName?.toLowerCase()) ||
         element?.closest('a, button')
     );
 }
