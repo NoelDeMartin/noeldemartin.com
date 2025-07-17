@@ -6,4 +6,4 @@ icon: now
 template: now/index
 ---
 
-I am currently based in [Barcelona](https://en.wikipedia.org/wiki/Barcelona). I practice [Open Productivity](/blog/open-productivity), and here you can see what I'm up to these days:
+I'm currently working at [Accountali](https://accountali.com/), but in this website you'll find my side-projects. I practice [Open Productivity](/blog/open-productivity), and here you can see what I'm up to these days:
