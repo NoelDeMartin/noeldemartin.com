@@ -77,7 +77,7 @@ These are my values:
 
 <div class="max-w-readable [&>p:first-of-type]:mt-0 [&>p:last-of-type]:mb-0">
 
-I have been working in the software industry since 2011. I enjoy programming in and of itself, but I've always cared about the impact of my code. That's what led me to **entrepreneurship**, and I was involved in startups and bootstrapped projects for a while. In 2019 I migrated into **mission-driven organizations**, but now [I'm thinking of doing entrepreneurship again](/blog/the-end-of-the-chapter#here-we-go-again).
+I have been working in the software industry since 2011. I enjoy programming in and of itself, but I've always cared about the impact of my code. That's what led me to **entrepreneurship**, and I've been involved in startups and bootstrapped projects for a while. I'm also an **open source enthusiast**, and I enjoy working in the open. In this website, you can find a lot about my personal projects and look behind the scenes.
 
 I don't like talking about skills, because I think that experience and first principles are what's really important. But skills have an impact on our daily lives and shape our way of thinking, so they are worth mentioning. I've worked as a **fullstack developer** for mobile and web applications, and I love interacting with UI and UX designers. My frameworks of choice are [Laravel](https://laravel.com) for the backend and [Vue](https://vuejs.org) for the frontend (although I don't do much backend these days because [I'm building Solid Apps](/fosdem)). For mobile I prefer building PWAs or hybrid apps. Whenever possible, I rely on The Web and open technologies.
 
