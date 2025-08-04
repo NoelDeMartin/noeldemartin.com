@@ -8,7 +8,7 @@ class WrapEmoji extends Modifier
 {
     public function index(mixed $value): ?string
     {
-        if (!is_string($value)) {
+        if (! is_string($value)) {
             return null;
         }
 
