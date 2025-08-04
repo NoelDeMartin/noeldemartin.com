@@ -4,32 +4,32 @@ test('Home', function () {
     $response = $this->get('/');
 
     $response->assertStatus(200);
-    $response->assertSee('Hi there!');
     $response->assertSee('hey@noeldemartin.com');
     $response->assertSee('My Youtube channel');
     $response->assertSee('https://youtube.com/@noeldemartin');
+    assertSeeIn($response, 'main', 'Hi there!');
 });
 
 test('Blog', function () {
     $response = $this->get('/blog');
 
     $response->assertStatus(200);
-    $response->assertSee('The Curse of Being A Developer');
-    $response->assertSee('I am a software developer, and many people I speak with tell me how lucky I am');
-    $response->assertSee('Dec 3, 2014');
-    $response->assertSee('Starting Something New');
-    $response->assertSee('Nov 2014');
+    assertSeeIn($response, 'main', 'The Curse of Being A Developer');
+    assertSeeIn($response, 'main', 'I am a software developer, and many people I speak with tell me how lucky I am');
+    assertSeeIn($response, 'main', 'Dec 3, 2014');
+    assertSeeIn($response, 'main', 'Starting Something New');
+    assertSeeIn($response, 'main', 'Nov 2014');
 });
 
 test('Blog post', function () {
     $response = $this->get('/blog/starting-something-new');
 
     $response->assertStatus(200);
-    $response->assertSee('Starting Something New');
-    $response->assertSee('Nov 10, 2014');
-    $response->assertSee('3 min.');
-    $response->assertSee('There is a feeling I enjoy a lot. The feeling of Starting Something New.');
-    $response->assertSee('What this blog will be about');
+    assertSeeIn($response, 'article', 'Starting Something New');
+    assertSeeIn($response, 'article', 'Nov 10, 2014');
+    assertSeeIn($response, 'article', '3 min.');
+    assertSeeIn($response, 'article', 'There is a feeling I enjoy a lot. The feeling of Starting Something New.');
+    assertSeeIn($response, 'article', 'What this blog will be about');
 });
 
 test('Projects', function () {
@@ -42,13 +42,13 @@ test('Talks', function () {
     $response = $this->get('/talks');
 
     $response->assertStatus(200);
-    $response->assertSee('Solid CRDTs in Practice');
-    $response->assertSee('May 3, 2024');
-    $response->assertSee('Solid Symposium');
-    $response->assertSee('Leuven, Belgium');
-    $response->assertSee('CRDTs is the technology that enables local-first applications');
-    $response->assertSee('Video');
-    $response->assertSee('(12 min)');
+    assertSeeIn($response, 'main', 'Solid CRDTs in Practice');
+    assertSeeIn($response, 'main', 'May 3, 2024');
+    assertSeeIn($response, 'main', 'Solid Symposium');
+    assertSeeIn($response, 'main', 'Leuven, Belgium');
+    assertSeeIn($response, 'main', 'CRDTs is the technology that enables local-first applications');
+    assertSeeIn($response, 'main', 'Video');
+    assertSeeIn($response, 'main', '(12 min)');
 });
 
 test('Slides', function () {
@@ -62,32 +62,32 @@ test('Now', function () {
     $response = $this->get('/now');
 
     $response->assertStatus(200);
-    $response->assertSee('Last updated');
-    $response->assertSee('2014');
-    $response->assertSee('Published');
-    $response->assertSee('Started');
-    $response->assertSee('Commented');
-    $response->assertSee('Completed');
-    $response->assertSee('Starting Something New');
-    $response->assertSee('Reading Musashi by Eiji Yoshikawa');
+    assertSeeIn($response, 'main', 'Last updated');
+    assertSeeIn($response, 'main', '2014');
+    assertSeeIn($response, 'main', 'Published');
+    assertSeeIn($response, 'main', 'Started');
+    assertSeeIn($response, 'main', 'Commented');
+    assertSeeIn($response, 'main', 'Completed');
+    assertSeeIn($response, 'main', 'Starting Something New');
+    assertSeeIn($response, 'main', 'Reading Musashi by Eiji Yoshikawa');
 });
 
 test('Tasks', function () {
     $response = $this->get('/tasks');
 
     $response->assertStatus(200);
-    $response->assertSee('All Tasks');
-    $response->assertSee('Reading Musashi by Eiji Yoshikawa');
-    $response->assertSee('Housekeeping 2024/25');
+    assertSeeIn($response, 'main', 'All Tasks');
+    assertSeeIn($response, 'main', 'Reading Musashi by Eiji Yoshikawa');
+    assertSeeIn($response, 'main', 'Housekeeping 2024/25');
 });
 
 test('Task comments', function () {
     $response = $this->get('/tasks/reading-musashi-by-eiji-yoshikawa');
 
     $response->assertStatus(200);
-    $response->assertSee('Reading Musashi by Eiji Yoshikawa');
-    $response->assertSee('Task started');
-    $response->assertSee('Well, it is time');
-    $response->assertSee('After looking over my notes');
-    $response->assertSee('Task completed');
+    assertSeeIn($response, 'main', 'Reading Musashi by Eiji Yoshikawa');
+    assertSeeIn($response, 'main', 'Task started');
+    assertSeeIn($response, 'main', 'Well, it is time');
+    assertSeeIn($response, 'main', 'After looking over my notes');
+    assertSeeIn($response, 'main', 'Task completed');
 });

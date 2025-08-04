@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Testing\TestResponse;
+use Symfony\Component\CssSelector\CssSelectorConverter;
 use Tests\TestCase;
 
 /*
@@ -39,7 +41,20 @@ uses(TestCase::class)->in('Feature');
 |
 */
 
-//
+function assertSeeIn(TestResponse $response, string $selector, string $expected): void
+{
+    $dom = new DOMDocument();
+    $converter = new CssSelectorConverter();
+
+    libxml_use_internal_errors(true);
+    $dom->loadHTML($response->getContent());
+    libxml_clear_errors();
+
+    $xpath = new DOMXPath($dom);
+    $elements = $xpath->query($converter->toXPath($selector));
+
+    expect($elements->item(0)->textContent)->toContain($expected);
+}
 
 /*
 |--------------------------------------------------------------------------
