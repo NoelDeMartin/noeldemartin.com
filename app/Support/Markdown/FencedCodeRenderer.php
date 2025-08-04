@@ -32,15 +32,18 @@ class FencedCodeRenderer implements NodeRendererInterface
             $filename = $matches[1];
         }
 
+        /** @var array<string, array<string>|bool|string> $exportedAttrs */
+        $exportedAttrs = $attrs->export();
+
         return new HtmlElement(
             'pre',
             [],
             is_null($filename)
-                ? new HtmlElement('code', $attrs->export(), Xml::escape($node->getLiteral()))
+                ? new HtmlElement('code', $exportedAttrs, Xml::escape($node->getLiteral()))
                 :
             [
                 new HtmlElement('span', ['class' => 'code-filename'], $filename),
-                new HtmlElement('code', $attrs->export(), Xml::escape($node->getLiteral())),
+                new HtmlElement('code', $exportedAttrs, Xml::escape($node->getLiteral())),
             ],
         );
     }
@@ -50,6 +53,9 @@ class FencedCodeRenderer implements NodeRendererInterface
         return 'code_block';
     }
 
+    /**
+     * @return array<string, string>
+     */
     public function getXmlAttributes(Node $_node): array
     {
         $node = $this->castNode($_node);
@@ -65,6 +71,7 @@ class FencedCodeRenderer implements NodeRendererInterface
     {
         FencedCode::assertInstanceOf($node);
 
+        /** @var FencedCode $node */
         return $node;
     }
 }
