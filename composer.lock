@@ -4771,16 +4771,16 @@
         },
         {
             "name": "statamic/cms",
-            "version": "v5.50.0",
+            "version": "v5.61.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/statamic/cms.git",
-                "reference": "1bb28a16b3e312c47e1723c1019bc77a6582add8"
+                "reference": "d97e46f420ed21861e6ffd723000708618566f90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/statamic/cms/zipball/1bb28a16b3e312c47e1723c1019bc77a6582add8",
-                "reference": "1bb28a16b3e312c47e1723c1019bc77a6582add8",
+                "url": "https://api.github.com/repos/statamic/cms/zipball/d97e46f420ed21861e6ffd723000708618566f90",
+                "reference": "d97e46f420ed21861e6ffd723000708618566f90",
                 "shasum": ""
             },
             "require": {
@@ -4865,7 +4865,7 @@
             ],
             "support": {
                 "issues": "https://github.com/statamic/cms/issues",
-                "source": "https://github.com/statamic/cms/tree/v5.50.0"
+                "source": "https://github.com/statamic/cms/tree/v5.61.0"
             },
             "funding": [
                 {
@@ -4873,25 +4873,25 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-03-10T15:26:11+00:00"
+            "time": "2025-07-25T18:03:04+00:00"
         },
         {
             "name": "statamic/eloquent-driver",
-            "version": "v4.20.1",
+            "version": "v4.30.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/statamic/eloquent-driver.git",
-                "reference": "070feabe700c6064a6902625798f55972ca4402d"
+                "reference": "38c6b3898de46765f01942fb69bcb2151834cb73"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/statamic/eloquent-driver/zipball/070feabe700c6064a6902625798f55972ca4402d",
-                "reference": "070feabe700c6064a6902625798f55972ca4402d",
+                "url": "https://api.github.com/repos/statamic/eloquent-driver/zipball/38c6b3898de46765f01942fb69bcb2151834cb73",
+                "reference": "38c6b3898de46765f01942fb69bcb2151834cb73",
                 "shasum": ""
             },
             "require": {
                 "php": "^8.1",
-                "statamic/cms": "^5.41"
+                "statamic/cms": "^5.48"
             },
             "require-dev": {
                 "doctrine/dbal": "^3.8",
@@ -4923,9 +4923,9 @@
             "description": "Allows you to store Statamic data in a database.",
             "support": {
                 "issues": "https://github.com/statamic/eloquent-driver/issues",
-                "source": "https://github.com/statamic/eloquent-driver/tree/v4.20.1"
+                "source": "https://github.com/statamic/eloquent-driver/tree/v4.30.0"
             },
-            "time": "2025-03-11T13:48:04+00:00"
+            "time": "2025-07-24T06:34:37+00:00"
         },
         {
             "name": "statamic/stringy",

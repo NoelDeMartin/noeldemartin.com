@@ -25,6 +25,8 @@ jobs:
         uses: tighten/duster-action@v3
         with:
           args: lint
+      - name: Run Rector
+        run: ./vendor/bin/rector
       - name: Run Node Lint
         run: npm run lint
       - name: Run Static Analysis

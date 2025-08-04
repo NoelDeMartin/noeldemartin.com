@@ -132,6 +132,10 @@ main {
     h6:has(> .heading-permalink):hover .heading-permalink {
         @apply block;
     }
+
+    .emoji {
+        font-family: system-ui, sans-serif;
+    }
 }
 
 @media print {

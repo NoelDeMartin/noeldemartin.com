@@ -30,7 +30,7 @@
             </div>
 
             @antlers
-                {{ content }}
+                {{ content | wrap_emoji }}
             @endantlers
 
             <x-table-of-contents

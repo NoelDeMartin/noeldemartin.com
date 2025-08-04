@@ -6,10 +6,24 @@ code {
     color: #266193;
     font-size: 0.875em;
     font-weight: 400;
-    padding: 0.25rem 0.5rem;
 }
 
 :not(pre) > code[class*='language-'],
 pre[class*='language-'] {
     border-radius: 0.5rem;
+    position: relative;
+}
+
+pre:has(.code-filename) {
+    padding-top: 40px;
+}
+
+pre .code-filename {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: var(--color-blue-darker);
+    color: var(--color-blue-lighter);
+    right: 0;
+    padding: 4px 16px;
 }

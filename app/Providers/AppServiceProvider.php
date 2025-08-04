@@ -4,8 +4,10 @@ namespace App\Providers;
 
 use App\Services\ActivityService;
 use App\Support\DiscoverStatamicModels;
+use App\Support\Markdown\FencedCodeRenderer;
 use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
+use League\CommonMark\Extension\CommonMark\Node\Block\FencedCode;
 use League\CommonMark\Extension\ExternalLink\ExternalLinkExtension;
 use Statamic\Facades\Markdown;
 
@@ -47,9 +49,8 @@ class AppServiceProvider extends ServiceProvider
 
     protected function bootMarkdown(): void
     {
-        Markdown::addExtension(function () {
-            return new ExternalLinkExtension;
-        });
+        Markdown::addExtension(fn () => new ExternalLinkExtension);
+        Markdown::addRenderer(fn () => [FencedCode::class, new FencedCodeRenderer]);
     }
 
     protected function bootStatamicModels(): void

@@ -32,7 +32,7 @@
         </div>
 
         @antlers
-            {{ content }}
+            {{ content | wrap_emoji }}
         @endantlers
 
         <hr class="border-grey mt-2 hidden w-full md:block" />
