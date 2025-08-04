@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Rector\CodeQuality\Rector\FunctionLike\SimplifyUselessVariableRector;
 use Rector\Config\RectorConfig;
+use Rector\Php74\Rector\Closure\ClosureToArrowFunctionRector;
 use Rector\Php80\Rector\Class_\ClassPropertyAssignToConstructorPromotionRector;
 use Rector\Php81\Rector\Property\ReadOnlyPropertyRector;
 use Rector\TypeDeclaration\Rector\Closure\AddClosureVoidReturnTypeWhereNoReturnRector;
@@ -31,6 +32,9 @@ return RectorConfig::configure()
         ReadOnlyPropertyRector::class,
         SimplifyUselessVariableRector::class,
         ClassPropertyAssignToConstructorPromotionRector::class,
+        ClosureToArrowFunctionRector::class => [
+            __DIR__ . '/app/Models/StatamicModel.php',
+        ],
         AddClosureVoidReturnTypeWhereNoReturnRector::class => [
             __DIR__ . '/tests',
         ],
