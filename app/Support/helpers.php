@@ -67,13 +67,11 @@ if (! function_exists('parse_landmarks')) {
         preg_match_all('/<h(\d) id="([^"]+)"[^>]*>(.+?)<\/h\d>/sm', $html, $matches);
 
         return array_map(
-            function ($_, $level, $anchor, $title) {
-                return (object) [
-                    'title' => trim(_remove_anchor_from_title($title)),
-                    'anchor' => "#{$anchor}",
-                    'level' => intval($level),
-                ];
-            },
+            fn ($_, $level, $anchor, $title) => (object) [
+                'title' => trim(_remove_anchor_from_title($title)),
+                'anchor' => "#{$anchor}",
+                'level' => intval($level),
+            ],
             ...$matches
         );
     }
@@ -97,7 +95,7 @@ if (! function_exists('parse_landmarks')) {
             'children' => [],
         ];
 
-        return tap($landmark, function ($landmark) use ($previousLandmark) {
+        return tap($landmark, function ($landmark) use ($previousLandmark): void {
             $previousLandmark->parent->children[] = $landmark;
         });
     }
@@ -123,7 +121,7 @@ if (! function_exists('parse_landmarks')) {
             'children' => [],
         ];
 
-        return tap($landmark, function ($landmark) use ($previousLandmark) {
+        return tap($landmark, function ($landmark) use ($previousLandmark): void {
             $previousLandmark->children[] = $landmark;
         });
     }
@@ -139,7 +137,7 @@ if (! function_exists('parse_landmarks')) {
         return $landmark;
     }
 
-    function _clean_landmark($landmark)
+    function _clean_landmark($landmark): void
     {
         unset($landmark->parent);
 
@@ -187,7 +185,7 @@ if (! function_exists('antlers_icon')) {
 
 if (! function_exists('carbon')) {
 
-    function carbon(string $date)
+    function carbon(string $date): Carbon
     {
         return new Carbon($date);
     }

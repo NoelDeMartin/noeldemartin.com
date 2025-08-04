@@ -20,7 +20,7 @@ class Tasks
         SemanticSEO::is(ItemList::class)
             ->setAttributes(trans('seo.schema:tasks'))
             ->url(sroute('tasks'))
-            ->items($tasks->map(fn ($task) => new Task($task))->all())
+            ->items($tasks->map(fn ($task): Task => new Task($task))->all())
             ->numberOfItems($tasks->count())
             ->image(Logo::class);
     }

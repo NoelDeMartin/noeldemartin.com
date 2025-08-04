@@ -22,7 +22,7 @@ class ActivityService
         return Cache::remember(
             'events_' . $lastModificationDate->timestamp,
             86400, // 24 hours
-            fn () => $this->getEvents(),
+            fn (): Collection => $this->getEvents(),
         );
     }
 
@@ -48,7 +48,7 @@ class ActivityService
         $this->fillRelations($entries);
 
         return $entries
-            ->flatMap(fn ($entry) => call_user_func([$this, 'createEventsFrom' . Str::studly($entry->value('blueprint'))], $entry))
+            ->flatMap(fn ($entry): mixed => call_user_func([$this, 'createEventsFrom' . Str::studly($entry->value('blueprint'))], $entry))
             ->sortByDesc->date;
     }
 
@@ -59,7 +59,7 @@ class ActivityService
         foreach ($entries->where('blueprint', 'task') as $task) {
             $taskLink = 'entry::' . $task->id;
             $taskComments = $comments
-                ->filter(fn ($comment) => $comment->value('task') === $taskLink)
+                ->filter(fn ($comment): bool => $comment->value('task') === $taskLink)
                 ->sortBy->publication_date
                 ->values();
 

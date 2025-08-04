@@ -15,7 +15,7 @@ class ActionStatusType extends Thing
 
     const POTENTIAL = 'https://schema.org/PotentialActionStatus';
 
-    public static function values()
+    public static function values(): array
     {
         return [
             self::ACTIVE,

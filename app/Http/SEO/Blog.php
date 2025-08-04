@@ -28,7 +28,7 @@ class Blog
                 'https://medium.com/@NoelDeMartin',
                 'https://steemit.com/@noeldemartin',
             ])
-            ->hasPart($posts->map(fn ($post) => new BlogPost($post))->all())
+            ->hasPart($posts->map(fn ($post): BlogPost => new BlogPost($post))->all())
             ->discussionUrl(trans('seo.discussion_urls'))
             ->inLanguage('English')
             ->author(NoelDeMartin::class)

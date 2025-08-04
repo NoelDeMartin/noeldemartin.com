@@ -21,10 +21,7 @@ abstract class StatamicModel
         $collection = Str::snake(Str::pluralStudly(class_basename(static::class)));
 
         foreach ($methods as $method) {
-            Collection::computed($collection, $method, function (Entry $entry) use ($method) {
-                // @phpstan-ignore-next-line
-                return (new static($entry))->{$method}();
-            });
+            Collection::computed($collection, $method, fn (Entry $entry): static => new static($entry))?->{$method}();
         }
     }
 

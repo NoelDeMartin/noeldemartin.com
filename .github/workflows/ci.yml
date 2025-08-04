@@ -26,7 +26,7 @@ jobs:
         with:
           args: lint
       - name: Run Rector
-        run: ./vendor/bin/rector
+        run: ./vendor/bin/rector --dry-run
       - name: Run Node Lint
         run: npm run lint
       - name: Run Static Analysis

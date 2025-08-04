@@ -21,7 +21,7 @@ class SiteMap extends Controller
         $projects = Entries::whereCollection('projects')
             // @phpstan-ignore-next-line
             ->map(fn ($project) => $project->link->value())
-            ->filter(fn ($project) => $project instanceof Entry);
+            ->filter(fn ($project): bool => $project instanceof Entry);
         $lastModificationDate = Activity::lastModificationDate();
 
         return response()

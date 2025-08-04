@@ -31,26 +31,20 @@ class AppServiceProvider extends ServiceProvider
             /** @var Carbon $date */
             $date = $this; // @phpstan-ignore-line
 
-            switch ($format) {
-                case 'date':
-                    return $date->format('F j, Y');
-                case 'month':
-                    return $date->format('F Y');
-                case 'month-short':
-                    return $date->format('M Y');
-                case 'datetime-short':
-                    return $date->format('M d, Y H:i');
-                case 'datetime':
-                default:
-                    return $date->format('F j, Y H:i');
-            }
+            return match ($format) {
+                'date' => $date->format('F j, Y'),
+                'month' => $date->format('F Y'),
+                'month-short' => $date->format('M Y'),
+                'datetime-short' => $date->format('M d, Y H:i'),
+                default => $date->format('F j, Y H:i'),
+            };
         });
     }
 
     protected function bootMarkdown(): void
     {
-        Markdown::addExtension(fn () => new ExternalLinkExtension);
-        Markdown::addRenderer(fn () => [FencedCode::class, new FencedCodeRenderer]);
+        Markdown::addExtension(fn (): ExternalLinkExtension => new ExternalLinkExtension);
+        Markdown::addRenderer(fn (): array => [FencedCode::class, new FencedCodeRenderer]);
     }
 
     protected function bootStatamicModels(): void

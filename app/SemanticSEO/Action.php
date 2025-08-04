@@ -33,15 +33,15 @@ class Action extends Thing
     }
 
     // TODO move this to Thing class instead
-    protected function isType(string $type, $value): bool
+    protected function isType(string $type, mixed $value): bool
     {
         if (Str::startsWith($type, 'enumeration:')) {
             $enumValues = explode(',', substr($type, 12));
 
             return in_array($value, $enumValues);
-        } else {
-            return parent::isType($type, $value);
         }
+
+        return parent::isType($type, $value);
     }
 
     // TODO move this to Thing class instead
@@ -51,8 +51,8 @@ class Action extends Thing
             $castedValue = (string) $value;
 
             return $this->isType($type, $castedValue) ? $castedValue : null;
-        } else {
-            return parent::castValue($type, $value);
         }
+
+        return parent::castValue($type, $value);
     }
 }

@@ -26,8 +26,11 @@ class DiscoverStatamicModels
             } catch (ReflectionException) {
                 continue;
             }
+            if (! $model->isInstantiable()) {
+                continue;
+            }
 
-            if (! $model->isInstantiable() || ! $model->isSubclassOf(StatamicModel::class)) {
+            if (! $model->isSubclassOf(StatamicModel::class)) {
                 continue;
             }
 

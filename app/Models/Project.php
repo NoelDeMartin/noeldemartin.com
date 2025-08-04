@@ -12,15 +12,11 @@ class Project extends StatamicModel
 {
     public function stateClasses(): string
     {
-        switch ($this->value('state')) {
-            case 'live':
-                return 'bg-jade-lighter text-jade-darker';
-            case 'archived':
-            case 'experimental':
-                return 'bg-yellow-lighter text-yellow-darker';
-            default:
-                return 'bg-blue-lighter text-blue-darker';
-        }
+        return match ($this->value('state')) {
+            'live' => 'bg-jade-lighter text-jade-darker',
+            'archived', 'experimental' => 'bg-yellow-lighter text-yellow-darker',
+            default => 'bg-blue-lighter text-blue-darker',
+        };
     }
 
     /**
@@ -42,7 +38,7 @@ class Project extends StatamicModel
 
         /** @var array<array{url: string, description: string}> */
         $images = collect(File::files(public_path($imagesPath)))
-            ->map(function ($file, $index) use ($imagesPath) {
+            ->map(function ($file, $index) use ($imagesPath): array {
                 $filename = $file->getFilename();
                 $number = $index + 1;
 
