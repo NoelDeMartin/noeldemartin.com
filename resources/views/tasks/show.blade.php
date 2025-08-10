@@ -47,7 +47,7 @@
                 :short="is_null($comment->task->value())"
             >
                 @antlers
-                    {{ comment:content }}
+                    {{ (comment:content) | wrap_emoji }}
                 @endantlers
             </x-comment>
         @endforeach
