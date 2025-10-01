@@ -13,7 +13,7 @@
     <body
         x-data="slides"
         x-init="initialize('{{ $slides }}')"
-        class="flex h-[100dvh] w-[100dvw] items-center justify-center overflow-hidden bg-black"
+        class="isolate flex h-[100dvh] w-[100dvw] items-center justify-center overflow-hidden bg-black"
     >
         <div x-ref="loading">
             <s:partial src="icons/loading" class="size-20 text-white" />
@@ -80,5 +80,43 @@
                 </div>
             </div>
         </nav>
+
+        @if ($talk->video_url)
+            <template x-if="showRecording">
+                <aside
+                    class="fixed isolate z-10 flex h-screen w-screen items-center justify-center"
+                    @keydown.escape.document="showRecording = false"
+                >
+                    <div
+                        @click="showRecording = false"
+                        class="absolute inset-0 bg-black/60"
+                    ></div>
+                    <div
+                        class="z-10 flex max-w-prose flex-col items-center justify-center rounded-md bg-white p-8"
+                    >
+                        <p class="text-lg">
+                            Looking for the recording? Watch it here 👇
+                        </p>
+
+                        <a
+                            href="{{ $talk->video_url }}"
+                            target="_blank"
+                            class="mt-4 flex items-center rounded bg-white px-2 py-1 text-gray-900 no-underline ring-1 ring-gray-300 ring-inset hover:bg-gray-50"
+                        >
+                            <s:partial
+                                src="icons/video"
+                                class="size-5 fill-current"
+                            />
+                            <span class="ml-1">
+                                Video
+                                @if (! empty($talk->video_duration))
+                                        ({{ $talk->video_duration }})
+                                @endif
+                            </span>
+                        </a>
+                    </div>
+                </aside>
+            </template>
+        @endif
     </body>
 </html>

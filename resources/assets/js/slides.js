@@ -5,6 +5,7 @@ import * as pdfjsLib from 'pdfjs-dist';
 import * as pdfjsViewer from 'pdfjs-dist/web/pdf_viewer.mjs';
 import {
     getLocationQueryParameter,
+    hasLocationQueryParameter,
     updateLocationQueryParameters,
 } from '@noeldemartin/utils';
 
@@ -134,10 +135,13 @@ document.addEventListener('alpine:init', () => {
         currentPage: 0,
         totalPages: 0,
         showNav: true,
+        showRecording: false,
         async initialize(url) {
             const initialSlide = parseInt(
                 getLocationQueryParameter('slide') ?? 1,
             );
+
+            this.showRecording = hasLocationQueryParameter('showRecording');
 
             viewer = await initializeViewer(
                 url,
