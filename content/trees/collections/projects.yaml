@@ -6,7 +6,6 @@ tree:
   - entry: planning-poker
   - entry: zazen-meditation-timer
   - entry: soukai
-  - entry: soukai-solid
   - entry: cypress-laravel
   - entry: cypress-solid
   - entry: laravel-dusk-mocking
