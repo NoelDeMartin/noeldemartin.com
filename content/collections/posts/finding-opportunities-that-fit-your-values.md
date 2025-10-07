@@ -14,7 +14,7 @@ I have to confess that I didn't even know what I wanted. So I put my head down a
 
 ## Vision
 
-I want to work somewhere with a vision that motivates me and shares [my values](https://noeldemartin.com/#values). Putting this in less abstract terms, I want to help solving a problem I care about and I don’t think is already solved or has a market saturated with solutions.
+I want to work somewhere with a vision that motivates me and shares [my values](https://noeldemartin.com/#my-values). Putting this in less abstract terms, I want to help solving a problem I care about and I don’t think is already solved or has a market saturated with solutions.
 
 - Examples of suitable visions: privacy, education, open source.
 - Examples of unsuitable visions: yet another task manager, consulting, analytics/marketing, blockchain.
