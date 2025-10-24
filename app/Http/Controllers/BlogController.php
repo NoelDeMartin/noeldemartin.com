@@ -3,16 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Cache;
 use Statamic\Facades\Entry;
 
 class BlogController extends Controller
 {
     public function feed(): Response
     {
-        $posts = Entry::whereCollection('posts')->sortByDesc('publication_date')->all();
+        $xml = Cache::remember('blog-rss', 3600, function () {
+            $posts = Entry::whereCollection('posts')->sortByDesc('publication_date')->all();
 
-        return response()
-            ->view('blog.rss', ['posts' => $posts])
+            return view('blog.rss', ['posts' => $posts])->render();
+        });
+
+        return response($xml)
             ->header('Content-Type', 'application/xml');
     }
 
