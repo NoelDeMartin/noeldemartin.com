@@ -10,6 +10,9 @@ class NowController extends Controller
 {
     public function feed(): Response
     {
+        /**
+         * @var string
+         */
         $xml = Cache::remember('now-rss', 3600, function () {
             $events = Activity::events();
 
