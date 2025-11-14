@@ -8,13 +8,13 @@ tree:
   - entry: soukai
   - entry: cypress-laravel
   - entry: cypress-solid
-  - entry: laravel-dusk-mocking
   - entry: laravel-semantic-seo
   - entry: aerogel
   - entry: vivant
   - entry: rireki
   - entry: nginx-agora
   - entry: autonomous-data
+  - entry: laravel-dusk-mocking
   - entry: geemba-project
   - entry: beastmasters-project
   - entry: travel-postcards

@@ -5,7 +5,7 @@ blueprint: project
 category: tool
 logo: laravel
 link: 'https://github.com/NoelDeMartin/laravel-dusk-mocking'
-state: live
+state: archived
 ---
 
 Laravel package adding mocking capabilities to Laravel Dusk tests.
