@@ -11,7 +11,7 @@ The frontend is built with [TailwindCSS](https://tailwindcss.com) and [AlpineJS]
 
 You can see [the source code in GitHub](https://github.com/noeldemartin/noeldemartin.com), and most of the content is written in [Markdown](https://en.wikipedia.org/wiki/Markdown). Feel free to dig around, and if you see any typo I'd appreciate it if you open a PR!
 
-Finally, this is currently hosted on [Hetzner](https://www.hetzner.com/) in the Helsinki region, using Docker and [nginx-agora](https://github.com/noelDeMartin/nginx-agora).
+Finally, this is currently hosted on [Hetzner](https://www.hetzner.com/) in the Helsinki region, using [kanjuro](https://github.com/NoelDeMartin/kanjuro) (Docker) and [nginx-agora](https://github.com/NoelDeMartin/nginx-agora).
 
 <a href="https://github.com/noeldemartin/noeldemartin.com" target="_blank" class="inline-flex items-center justify-center rounded-md bg-black px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black no-underline">
 {{ partial:icons/github class="size-4 fill-current mr-1.5" /}}
