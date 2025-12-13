@@ -10,6 +10,7 @@ async function loadPrism() {
     await import('prismjs/components/prism-json');
     await import('prismjs/components/prism-markup-templating');
     await import('prismjs/components/prism-php');
+    await import('prismjs/components/prism-jsx');
     await import('prismjs/components/prism-scss');
     await import('prismjs/components/prism-turtle');
     await import('prismjs/components/prism-typescript');
