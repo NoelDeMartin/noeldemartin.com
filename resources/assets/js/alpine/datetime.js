@@ -33,7 +33,6 @@ const FORMATS = {
     },
 };
 
-const timezoneOffset = new Date().getTimezoneOffset() * 60000;
 const formatters = Object.entries(FORMATS).reduce(
     (others, [name, options]) => ({
         [name]: new Intl.DateTimeFormat('en-US', options),
@@ -43,7 +42,7 @@ const formatters = Object.entries(FORMATS).reduce(
 );
 
 Alpine.directive('datetime', (el, { value, expression }, { evaluate }) => {
-    const localDate = new Date(evaluate(expression) * 1000 - timezoneOffset);
+    const localDate = new Date(evaluate(expression) * 1000);
     const format = value ?? 'datetime';
     const formatter = formatters[format];
 
