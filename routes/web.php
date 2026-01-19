@@ -30,7 +30,8 @@ Route::redirect('recipes/aguachile', 'https://umai.noeldemartin.com/viewer?url=h
 
 Route::permanentRedirect('about', '/');
 Route::permanentRedirect('slides', '/talks');
-Route::permanentRedirect('posts/{tag?}', '/blog/{tag}');
+Route::permanentRedirect('posts', '/blog');
+Route::permanentRedirect('posts/{tag}', '/blog/{tag}');
 Route::permanentRedirect('blog/blockchains-how-do-they-work-', '/blog/blockchains-how-do-they-work');
 Route::permanentRedirect('blog/blockchains-innovation-or-sham-', '/blog/blockchains-innovation-or-sham');
 Route::permanentRedirect('tasks/attending-laracon-us', 'tasks/attending-laracon-eu');
