@@ -1,7 +1,7 @@
 ---
 id: housekeeping-3
 blueprint: comment
-title: 'ousekeepin - 3'
+title: 'Housekeeping - 3'
 task: 'entry::housekeeping'
 publication_date: '2020-10-15 11:22:01'
 ---
