@@ -6,6 +6,14 @@ publication_date: '2021-10-12 08:00:00'
 modification_date: '2021-10-14 05:03:17'
 ---
 
+{{ partial:components/callout title="Check out the video!"
+    content="Interoperable Serendipity @ Solid World"
+    url="https://noeldemartin.com/solid-world-2025"
+    image="/img/talks/interoperable-serendipity.png"
+    icon="icons/play"
+    target="_blank"
+/}}
+
 If you had asked my thoughts on interoperability some years ago, I wouldn't have had much to say. Nowadays, it has become one of my most revered ideals. And today, I want to take you along for a journey towards its summum: Interoperable Serendipity.
 
 ## Preface
@@ -143,5 +151,3 @@ But that shouldn't be discouraging, on the contrary. The fact that this is even 
 For my part, I will continue [working in the open](https://noeldemartin.com/blog/open-productivity) and sharing what I learn along the way. The Zero Data ecosystem is still in its infancy, but I am hopeful that eventually it will blossom.
 
 Onwards!
-
-_If you enjoyed this post, I recently gave a talk expanding on the idea: <a href="https://noeldemartin.com/solid-world-2025" target="_blank">Interoperable Serendipity @ Solid World</a>_

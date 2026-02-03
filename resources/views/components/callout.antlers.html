@@ -1,0 +1,24 @@
+<aside
+    class="group bg-grey-lightest border-grey-light relative isolate mb-4 flex rounded-lg border p-2 transition-all duration-300 hover:scale-105 hover:shadow-lg {{ $xl ? 'gap-3' : 'gap-2' }}"
+>
+    <div class="relative">
+        <img
+            src="{{ $image }}"
+            alt=""
+            class="m-0 rounded-md {{ $xl ? 'w-42' : 'w-32' }}"
+        />
+        {{ partial:if_exists :src="icon" class="size-8 absolute top-1/2 left-1/2
+        -translate-x-1/2 -translate-y-1/2 hidden! group-hover:block!" /}}
+    </div>
+    <div class="my-auto">
+        <a
+            class="block font-medium no-underline {{ $xl ? 'text-xl mb-.05' : 'text-lg' }}"
+            href="{{ $url }}"
+            target="{{ $target ?? '' }}"
+        >
+            {{ $title }}
+            <span class="absolute inset-0 z-10" />
+        </a>
+        <span class="text-grey-darker text-sm"> {{ $content }} </span>
+    </div>
+</aside>

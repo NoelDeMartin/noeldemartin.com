@@ -3,7 +3,7 @@
         href="{{ $link }}"
         aria-label="{{ $title }}"
         {{ str_starts_with($link, '/') ? '' : 'target="_blank"' }}
-        class="bg-grey-lightest border-grey-light relative flex h-full transform rounded-lg border p-4 no-underline shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg focus:scale-105 focus:shadow-lg"
+        class="bg-grey-lightest border-grey-light relative flex h-full transform rounded-lg border p-4 no-underline transition-all duration-300 hover:scale-105 hover:shadow-lg focus:scale-105 focus:shadow-lg"
     >
         @if (! empty($image))
             <div
