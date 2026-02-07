@@ -32,6 +32,7 @@ class AppServiceProvider extends ServiceProvider
             $date = $this; // @phpstan-ignore-line
 
             return match ($format) {
+                'day' => $date->format('F d'),
                 'date' => $date->format('F j, Y'),
                 'month' => $date->format('F Y'),
                 'month-short' => $date->format('M Y'),

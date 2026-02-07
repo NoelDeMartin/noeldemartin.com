@@ -17,7 +17,11 @@ class ActivityService
      */
     public function events(): Collection
     {
-        $lastModificationDate = $this->lastModificationDate();
+        $lastModificationDate = Cache::remember(
+            'last_modification_date',
+            300, // 5 minutes
+            fn (): Carbon => $this->lastModificationDate(),
+        );
 
         return Cache::remember(
             'events_' . $lastModificationDate->timestamp,
@@ -33,6 +37,7 @@ class ActivityService
             Entries::whereCollection('tasks')->sortByDesc('publication_date')->first()->publication_date,
             Entries::whereCollection('comments')->sortByDesc('publication_date')->first()->publication_date,
             Entries::whereCollection('posts')->sortByDesc('publication_date')->first()->publication_date,
+            Entries::whereCollection('talks')->sortByDesc('presentation_date')->first()->presentation_date,
         ])
             ->sort()
             ->last();
@@ -43,7 +48,7 @@ class ActivityService
      */
     private function getEvents(): Collection
     {
-        $entries = collect(Entries::whereInCollection(['tasks', 'comments', 'posts'])->all());
+        $entries = collect(Entries::whereInCollection(['tasks', 'comments', 'posts', 'talks'])->all());
 
         $this->fillRelations($entries);
 
@@ -74,11 +79,37 @@ class ActivityService
     /**
      * @return array<ActivityEvent>
      */
+    private function createEventsFromTalk(Entry $talk): array
+    {
+        if ($talk->presentation_date->isFuture()) {
+            return [];
+        }
+
+        $url = $talk->video_url ?: $talk->slidesUrl;
+
+        return [
+            new ActivityEvent(
+                emoji: '🎤',
+                date: $talk->presentation_date,
+                title: "Presented \"{$talk->title}\"",
+                description: "Presented <a href=\"{$url}\">{$talk->title}</a>",
+                longDescription: $talk->conference
+                    ? "<p>Today I'm giving a talk at {$talk->conference}: <a href=\"{$url}\">{$talk->title}</a></p>"
+                    : "<p>Today I'm giving a talk: <a href=\"{$url}\">{$talk->title}</a></p>",
+                url: $url,
+            )
+        ];
+    }
+
+    /**
+     * @return array<ActivityEvent>
+     */
     private function createEventsFromTask(Entry $task): array
     {
         $url = url($task->url);
 
         $events = [new ActivityEvent(
+            emoji: '⏳',
             date: $task->publication_date,
             title: "Started \"{$task->title}\"",
             description: "Started <a href=\"{$url}\">{$task->title}</a>",
@@ -90,6 +121,7 @@ class ActivityService
             $url .= '#comment-' . $task->totalComments + 2;
 
             $events[] = new ActivityEvent(
+                emoji: '✅',
                 date: $task->completion_date,
                 title: "Completed \"{$task->title}\"",
                 description: "Completed <a href=\"{$url}\">{$task->title}</a>",
@@ -110,6 +142,7 @@ class ActivityService
         $url = url($task->url) . '#comment-' . $comment->position;
 
         return [new ActivityEvent(
+            emoji: '💬',
             date: $comment->publication_date,
             title: "Commented on \"{$task->title}\"",
             description: "Commented on <a href=\"{$url}\">{$task->title}</a>",
@@ -126,6 +159,7 @@ class ActivityService
         $url = url($post->url);
 
         return [new ActivityEvent(
+            emoji: '✍️',
             date: $post->publication_date,
             title: "Published \"{$post->title}\"",
             description: "Published <a href=\"{$url}\">{$post->title}</a>",

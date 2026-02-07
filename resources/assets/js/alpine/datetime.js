@@ -1,8 +1,13 @@
 import Alpine from 'alpinejs';
 
 const FORMATS = {
+    day: {
+        // "F d" in PHP
+        day: '2-digit',
+        month: 'short',
+    },
     date: {
-        // "F d, Y" in PHP
+        // "F j, Y" in PHP
         dateStyle: 'long',
     },
     month: {

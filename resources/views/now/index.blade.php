@@ -90,8 +90,10 @@
 
             <ul class="ml-0 list-none p-0">
                 @foreach ($yearEvents as $event)
-                    <x-comment tag="li" :date="$event->date" short="true">
-                        <p class="md:m-0">{!! $event->description !!}</p>
+                    <x-comment tag="li" :date="$event->date" day short inline>
+                        <p class="m-0 truncate">
+                            {{ $event->emoji }} {!! $event->description !!}
+                        </p>
                     </x-comment>
                 @endforeach
             </ul>
