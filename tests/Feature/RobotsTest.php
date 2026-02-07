@@ -31,6 +31,7 @@ test('Now RSS', function () {
     $response->assertSee('Completed');
     $response->assertSee('Starting Something New');
     $response->assertSee('Reading Musashi by Eiji Yoshikawa');
+    $response->assertSee('Solid Unleashed');
 });
 
 test('Health', function () {

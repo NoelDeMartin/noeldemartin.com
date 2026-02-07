@@ -70,6 +70,7 @@ test('Now', function () {
     assertSeeIn($response, 'main', 'Completed');
     assertSeeIn($response, 'main', 'Starting Something New');
     assertSeeIn($response, 'main', 'Reading Musashi by Eiji Yoshikawa');
+    assertSeeIn($response, 'main', 'Solid Unleashed');
 });
 
 test('Tasks', function () {
