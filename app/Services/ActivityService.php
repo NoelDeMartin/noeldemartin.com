@@ -97,7 +97,7 @@ class ActivityService
                     ? "<p>Today I'm giving a talk at {$talk->conference}: <a href=\"{$url}\">{$talk->title}</a></p>"
                     : "<p>Today I'm giving a talk: <a href=\"{$url}\">{$talk->title}</a></p>",
                 url: $url,
-            )
+            ),
         ];
     }
 
