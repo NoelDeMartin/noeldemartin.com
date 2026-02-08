@@ -90,6 +90,14 @@ return [
             'driver' => 'octane',
         ],
 
+        'failover' => [
+            'driver' => 'failover',
+            'stores' => [
+                'database',
+                'array',
+            ],
+        ],
+
         'static_cache' => [
             'driver' => 'file',
             'path' => storage_path('statamic/static-urls-cache'),

@@ -91,4 +91,6 @@ test('Task comments', function () {
     assertSeeIn($response, 'main', 'Well, it is time');
     assertSeeIn($response, 'main', 'After looking over my notes');
     assertSeeIn($response, 'main', 'Task completed');
+    assertSeeIn($response, 'main', 'December 14, 2018 00:55');
+    assertSeeInHTML($response, '1544745341');
 });

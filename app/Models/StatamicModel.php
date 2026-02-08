@@ -23,7 +23,7 @@ abstract class StatamicModel
         foreach ($methods as $method) {
             Collection::computed($collection, $method, function (Entry $entry) use ($method) {
                 // @phpstan-ignore-next-line
-                return (new static($entry))->{$method}();
+                return new static($entry)->{$method}();
             });
         }
     }

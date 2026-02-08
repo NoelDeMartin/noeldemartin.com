@@ -2,7 +2,7 @@
 id: showcasing-an-app-that-uses-the-solid-protocol-for-decentralized-storage
 title: 'Showcasing an app that uses the Solid protocol for decentralized storage'
 blueprint: talk
-presentation_date: '2020-02-25'
+presentation_date: '2020-02-25 12:00:00+01:00'
 location: 'Barcelona, Spain'
 conference: 'Blockchain Spirit'
 conference_url: 'https://blockchainspirit.splashthat.com/'

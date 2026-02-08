@@ -53,25 +53,8 @@ return [
     */
 
     'widgets' => [
-        'getting_started',
+        //
     ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Date Format
-    |--------------------------------------------------------------------------
-    |
-    | When a date is encountered throughout the Control Panel, it will be
-    | rendered in the following format unless overridden in specific
-    | fields, and so on. Any PHP date variables are permitted.
-    |
-    | This takes precedence over the date_format in system.php.
-    |
-    | https://www.php.net/manual/en/function.date.php
-    |
-    */
-
-    'date_format' => 'Y-m-d',
 
     /*
     |--------------------------------------------------------------------------
@@ -109,18 +92,6 @@ return [
     */
 
     'support_url' => env('STATAMIC_SUPPORT_URL', 'https://statamic.com/support'),
-
-    /*
-    |--------------------------------------------------------------------------
-    | Theme
-    |--------------------------------------------------------------------------
-    |
-    | Optionally spice up the login and other outside-the-control-panel
-    | screens. You may choose between "rad" or "business" themes.
-    |
-    */
-
-    'theme' => env('STATAMIC_THEME', 'rad'),
 
     /*
     |--------------------------------------------------------------------------

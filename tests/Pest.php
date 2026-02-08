@@ -56,6 +56,13 @@ function assertSeeIn(TestResponse $response, string $selector, string $expected)
     expect($elements->item(0)->textContent)->toContain($expected);
 }
 
+function assertSeeInHTML(TestResponse $response, string $expected): void
+{
+    $html = $response->getContent();
+
+    expect($html)->toContain($expected);
+}
+
 /*
 |--------------------------------------------------------------------------
 | Architecture

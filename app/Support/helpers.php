@@ -67,7 +67,7 @@ if (! function_exists('parse_landmarks')) {
         preg_match_all('/<h(\d) id="([^"]+)"[^>]*>(.+?)<\/h\d>/sm', $html, $matches);
 
         return array_map(
-            fn ($_, $level, $anchor, $title) => (object) [
+            fn ($_, $level, $anchor, string $title) => (object) [
                 'title' => trim(_remove_anchor_from_title($title)),
                 'anchor' => "#{$anchor}",
                 'level' => intval($level),
@@ -144,7 +144,7 @@ if (! function_exists('parse_landmarks')) {
         if (empty($landmark->children)) {
             unset($landmark->children);
         } else {
-            array_map('_clean_landmark', $landmark->children);
+            array_map(_clean_landmark(...), $landmark->children);
         }
     }
 

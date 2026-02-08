@@ -9,10 +9,12 @@ use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
 use League\CommonMark\Extension\CommonMark\Node\Block\FencedCode;
 use League\CommonMark\Extension\ExternalLink\ExternalLinkExtension;
+use Override;
 use Statamic\Facades\Markdown;
 
 class AppServiceProvider extends ServiceProvider
 {
+    #[Override]
     public function register(): void
     {
         $this->app->singleton('activity', ActivityService::class);
@@ -29,15 +31,18 @@ class AppServiceProvider extends ServiceProvider
     {
         Carbon::macro('display', function ($format = 'datetime') {
             /** @var Carbon $date */
-            $date = $this; // @phpstan-ignore-line
+            $date = $this;
+
+            // @phpstan-ignore cast.string
+            $timezoneDate = $date->clone()->setTimezone((string) config('app.timezone'));
 
             return match ($format) {
-                'day' => $date->format('F d'),
-                'date' => $date->format('F j, Y'),
-                'month' => $date->format('F Y'),
-                'month-short' => $date->format('M Y'),
-                'datetime-short' => $date->format('M d, Y H:i'),
-                default => $date->format('F j, Y H:i'),
+                'day' => $timezoneDate->format('F d'),
+                'date' => $timezoneDate->format('F j, Y'),
+                'month' => $timezoneDate->format('F Y'),
+                'month-short' => $timezoneDate->format('M Y'),
+                'datetime-short' => $timezoneDate->format('M d, Y H:i'),
+                default => $timezoneDate->format('F j, Y H:i'),
             };
         });
     }

@@ -3,6 +3,7 @@
 namespace App\SemanticSEO;
 
 use NoelDeMartin\SemanticSEO\Types\Article;
+use Override;
 use Statamic\Entries\Entry;
 
 class BlogPost extends Article
@@ -27,6 +28,7 @@ class BlogPost extends Article
         $this->dateModified(max($post->publication_date, $post->modification_date));
     }
 
+    #[Override]
     protected function getType(): string
     {
         return 'Article';

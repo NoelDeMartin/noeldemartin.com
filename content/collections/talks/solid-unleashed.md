@@ -4,7 +4,7 @@ title: 'Solid Unleashed'
 blueprint: talk
 video_url: 'https://www.youtube.com/watch?v=7pfUw_t6rCk'
 video_duration: '23 min'
-presentation_date: '2025-04-25'
+presentation_date: '2025-04-25 12:00:00+01:00'
 location: 'Leiden, the Netherlands'
 conference: 'Solid Symposium'
 conference_url: 'https://sosy2025.eu'

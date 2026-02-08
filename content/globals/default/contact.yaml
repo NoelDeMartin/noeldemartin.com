@@ -1,0 +1,47 @@
+email: hey@noeldemartin.com
+socials:
+  - id: youtube
+    name: 'My Youtube channel'
+    icon: youtube
+    link: 'https://youtube.com/@noeldemartin'
+    classes: '!h-8 p-0 -m-1'
+    represent: true
+    type: account
+    enabled: true
+  - id: twitter
+    name: 'My Twitter'
+    link: 'https://twitter.com/NoelDeMartin'
+    represent: true
+    icon: twitter
+    classes: '[&_path]:stroke-width-[10px] [&_path]:stroke-[rgba(0,0,0,.2)]'
+    type: account
+    enabled: true
+  - id: mastodon
+    name: 'My Mastodon'
+    link: 'https://noeldemartin.social'
+    represent: true
+    icon: mastodon
+    classes: '[&_path]:stroke-width-[10px] [&_path]:stroke-[rgba(0,0,0,.2)]'
+    type: account
+    enabled: true
+  - id: bluesky
+    name: 'My Bluesky'
+    link: 'https://bsky.app/profile/noeldemartin.com'
+    represent: true
+    icon: bluesky
+    type: account
+    enabled: true
+  - id: github
+    name: 'My GitHub'
+    link: 'https://github.com/NoelDeMartin'
+    represent: true
+    icon: github
+    type: account
+    enabled: true
+  - id: email
+    name: 'My Email'
+    link: 'mailto:hey@noeldemartin.com?subject=Hi there!'
+    represent: false
+    icon: email
+    type: account
+    enabled: true

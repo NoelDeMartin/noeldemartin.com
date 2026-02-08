@@ -125,8 +125,6 @@ return [
 
     'nocache' => 'cache',
 
-    'nocache_js_position' => 'body',
-
     /*
     |--------------------------------------------------------------------------
     | Replacers
@@ -155,6 +153,22 @@ return [
     'warm_queue' => env('STATAMIC_STATIC_WARM_QUEUE'),
 
     'warm_queue_connection' => env('STATAMIC_STATIC_WARM_QUEUE_CONNECTION'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Background Re-cache
+    |--------------------------------------------------------------------------
+    |
+    | When this enabled, Statamic will re-cache URLs in the background,
+    | overwriting the existing cache, without removing it first.
+    |
+    */
+
+    'background_recache' => env('STATAMIC_BACKGROUND_RECACHE', false),
+
+    'recache_token' => env('STATAMIC_RECACHE_TOKEN'),
+
+    'recache_token_parameter' => '__recache',
 
     /*
     |--------------------------------------------------------------------------

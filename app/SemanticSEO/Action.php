@@ -7,9 +7,11 @@ use NoelDeMartin\SemanticSEO\SemanticSEO;
 use NoelDeMartin\SemanticSEO\Types\Organization;
 use NoelDeMartin\SemanticSEO\Types\Person;
 use NoelDeMartin\SemanticSEO\Types\Thing;
+use Override;
 
 class Action extends Thing
 {
+    #[Override]
     public function beforeRender(SemanticSEO $seo): void
     {
         $seo->twitter(
@@ -22,6 +24,7 @@ class Action extends Thing
         parent::beforeRender($seo);
     }
 
+    #[Override]
     protected function getAttributeDefinitions(): array
     {
         return array_merge(parent::getAttributeDefinitions(), [
@@ -33,6 +36,7 @@ class Action extends Thing
     }
 
     // TODO move this to Thing class instead
+    #[Override]
     protected function isType(string $type, mixed $value): bool
     {
         if (Str::startsWith($type, 'enumeration:')) {
@@ -45,6 +49,7 @@ class Action extends Thing
     }
 
     // TODO move this to Thing class instead
+    #[Override]
     protected function castValue(string $type, mixed $value): mixed
     {
         if (Str::startsWith($type, 'enumeration:')) {

@@ -3,6 +3,7 @@
 namespace App\SemanticSEO;
 
 use NoelDeMartin\SemanticSEO\Types\Organization;
+use Override;
 
 class NoelDeMartinOrganization extends Organization
 {
@@ -20,6 +21,7 @@ class NoelDeMartinOrganization extends Organization
         $this->url(sroute('home'));
     }
 
+    #[Override]
     protected function getType(): string
     {
         return 'Organization';

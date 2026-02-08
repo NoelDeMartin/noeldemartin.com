@@ -3,6 +3,7 @@
 namespace App\SemanticSEO;
 
 use Illuminate\Support\Str;
+use Override;
 use Statamic\Entries\Entry;
 
 class Task extends Action
@@ -26,6 +27,7 @@ class Task extends Action
         }
     }
 
+    #[Override]
     protected function getType(): string
     {
         return 'Action';

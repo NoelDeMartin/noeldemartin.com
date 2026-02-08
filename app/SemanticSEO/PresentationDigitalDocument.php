@@ -3,6 +3,7 @@
 namespace App\SemanticSEO;
 
 use NoelDeMartin\SemanticSEO\Types\CreativeWork;
+use Override;
 use Statamic\Entries\Entry;
 
 class PresentationDigitalDocument extends CreativeWork
@@ -24,6 +25,7 @@ class PresentationDigitalDocument extends CreativeWork
         $this->dateModified($talk->presentation_date);
     }
 
+    #[Override]
     protected function getType(): string
     {
         return 'PresentationDigitalDocument';

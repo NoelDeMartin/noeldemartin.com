@@ -19,7 +19,7 @@ return RectorConfig::configure()
         __DIR__ . '/tests',
     ])
     ->withPhpSets()
-    ->withPhpVersion(80300)
+    ->withPhpVersion(80500)
     ->withSets([LaravelLevelSetList::UP_TO_LARAVEL_120])
     ->withPreparedSets(
         deadCode: true,

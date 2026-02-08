@@ -8,28 +8,28 @@
         "laravel"
     ],
     "require": {
-        "php": "^8.2",
-        "laravel/framework": "^11.31",
-        "laravel/nightwatch": "^1.7",
-        "laravel/tinker": "^2.9",
+        "php": "^8.5",
+        "laravel/framework": "^12.0",
+        "laravel/nightwatch": "^1.22",
+        "laravel/tinker": "^2.10",
         "noeldemartin/laravel-semantic-seo": "^0.3.0",
-        "statamic/cms": "^5.0",
-        "statamic/eloquent-driver": "^4.19"
+        "statamic/cms": "^6.0",
+        "statamic/eloquent-driver": "^5.1"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.8.1",
-        "driftingly/rector-laravel": "^2.0",
+        "fruitcake/laravel-debugbar": "^4.0",
+        "driftingly/rector-laravel": "^2.1",
         "fakerphp/faker": "^1.23",
-        "larastan/larastan": "^3.0",
-        "laravel/pail": "^1.1",
-        "laravel/pint": "^1.13",
-        "laravel/sail": "^1.26",
+        "larastan/larastan": "^3.9",
+        "laravel/pail": "^1.2",
+        "laravel/pint": "^1.24",
+        "laravel/sail": "^1.41",
         "mockery/mockery": "^1.6",
-        "nunomaduro/collision": "^8.1",
-        "pestphp/pest": "^3.7",
-        "rector/rector": "^2.0",
-        "spatie/laravel-ignition": "^2.4",
-        "tightenco/duster": "^3.1"
+        "nunomaduro/collision": "^8.6",
+        "pestphp/pest": "^4.0",
+        "rector/rector": "^2.3",
+        "spatie/laravel-ignition": "^2.9",
+        "tightenco/duster": "^3.3"
     },
     "autoload": {
         "files": [
@@ -82,6 +82,6 @@
             "pixelfear/composer-dist-plugin": true
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true
 }

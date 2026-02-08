@@ -3,6 +3,7 @@
 namespace App\SemanticSEO;
 
 use NoelDeMartin\SemanticSEO\Types\Person;
+use Override;
 
 class NoelDeMartin extends Person
 {
@@ -20,6 +21,7 @@ class NoelDeMartin extends Person
         $this->url(sroute('home'));
     }
 
+    #[Override]
     protected function getType(): string
     {
         return 'Person';

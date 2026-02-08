@@ -89,8 +89,8 @@ class ActivityService
 
         return [
             new ActivityEvent(
-                emoji: '🎤',
                 date: $talk->presentation_date,
+                emoji: '🎤',
                 title: "Presented \"{$talk->title}\"",
                 description: "Presented <a href=\"{$url}\">{$talk->title}</a>",
                 longDescription: $talk->conference
@@ -109,8 +109,8 @@ class ActivityService
         $url = url($task->url);
 
         $events = [new ActivityEvent(
-            emoji: '⏳',
             date: $task->publication_date,
+            emoji: '⏳',
             title: "Started \"{$task->title}\"",
             description: "Started <a href=\"{$url}\">{$task->title}</a>",
             longDescription: "<p>I just started a new task: <a href=\"{$url}\">{$task->title}</a></p>{$task->content}",
@@ -121,8 +121,8 @@ class ActivityService
             $url .= '#comment-' . $task->totalComments + 2;
 
             $events[] = new ActivityEvent(
-                emoji: '✅',
                 date: $task->completion_date,
+                emoji: '✅',
                 title: "Completed \"{$task->title}\"",
                 description: "Completed <a href=\"{$url}\">{$task->title}</a>",
                 longDescription: "<p>I just completed the task <a href=\"{$url}\">{$task->title}</a>.</p>",
@@ -142,8 +142,8 @@ class ActivityService
         $url = url($task->url) . '#comment-' . $comment->position;
 
         return [new ActivityEvent(
-            emoji: '💬',
             date: $comment->publication_date,
+            emoji: '💬',
             title: "Commented on \"{$task->title}\"",
             description: "Commented on <a href=\"{$url}\">{$task->title}</a>",
             longDescription: $comment->content,
@@ -159,8 +159,8 @@ class ActivityService
         $url = url($post->url);
 
         return [new ActivityEvent(
-            emoji: '✍️',
             date: $post->publication_date,
+            emoji: '✍️',
             title: "Published \"{$post->title}\"",
             description: "Published <a href=\"{$url}\">{$post->title}</a>",
             longDescription: "<p>I just published a new blog post: <a href=\"{$url}\">{$post->title}</a></p>",

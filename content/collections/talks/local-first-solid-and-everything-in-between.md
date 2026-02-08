@@ -4,7 +4,7 @@ title: 'Local-First, Solid, and Everything in Between'
 blueprint: talk
 video_url: https://www.youtube.com/live/GDQMLt3oqio?t=246s
 video_duration: 15min
-presentation_date: '2025-09-30'
+presentation_date: '2025-09-30 12:00:00+01:00'
 location: 'Online'
 conference: LoFi.so
 conference_url: 'https://lofi.so/'
