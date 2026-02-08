@@ -4,7 +4,7 @@ title: 'Media Kraken'
 blueprint: talk
 video_url: 'https://www.youtube.com/watch?v=cajBTJXmKhA'
 video_duration: '23 min'
-presentation_date: '2021-02-04 12:00:00+01:00'
+presentation_date: '2021-02-04T12:00:00+01:00'
 location: Online
 conference: 'Solid World'
 ---

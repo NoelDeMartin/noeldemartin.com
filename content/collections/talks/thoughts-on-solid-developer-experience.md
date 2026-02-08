@@ -4,7 +4,7 @@ title: 'Thoughts on Solid Developer Experience'
 blueprint: talk
 video_url: 'https://www.youtube.com/watch?v=ghGmveKKe5Y'
 video_duration: '16 min'
-presentation_date: '2024-05-02 12:00:00+01:00'
+presentation_date: '2024-05-02T12:00:00+02:00'
 location: 'Leuven, Belgium'
 conference: 'Solid Symposium'
 conference_url: 'https://events.vito.be/sosy2024'

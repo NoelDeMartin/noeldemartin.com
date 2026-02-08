@@ -4,7 +4,7 @@ title: 'Interoperable Serendipity'
 blueprint: talk
 video_url: 'https://www.youtube.com/watch?v=KN9OWj_XdkY'
 video_duration: '24 min'
-presentation_date: '2025-02-24 12:00:00+01:00'
+presentation_date: '2025-02-24T12:00:00+01:00'
 location: Online
 conference: 'Solid World'
 conference_url: https://www.eventbrite.co.uk/e/solid-world-february-2025-tickets-1224731427669

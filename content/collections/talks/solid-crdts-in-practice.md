@@ -4,7 +4,7 @@ title: 'Solid CRDTs in Practice'
 blueprint: talk
 video_url: 'https://www.youtube.com/watch?v=vYQmGeaQt8E'
 video_duration: '12 min'
-presentation_date: '2024-05-03 12:00:00+01:00'
+presentation_date: '2024-05-03T12:00:00+02:00'
 location: 'Leuven, Belgium'
 conference: 'Solid Symposium'
 conference_url: 'https://events.vito.be/sosy2024'
