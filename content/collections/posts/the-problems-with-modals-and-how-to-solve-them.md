@@ -170,13 +170,13 @@ export async function showModal(modal, args) {
     :key="modal.id"
     :is="modal.component"
     v-bind="modal.props"
-    @close="modal.close($event)"
+    @_close="modal.close($event)"
 />
 ```
 
 ```html [MyModal.vue]
 <template>
-    <button @click="$emit('close', 'The Answer')">Close Modal</button>
+    <button @_click="$emit('close', 'The Answer')">Close Modal</button>
 </template>
 ```
 
@@ -266,7 +266,7 @@ TLDR, after following this guide, you'll be able to use Vue modals like this:
 ```html [MyModal.vue]
 <template>
     <Modal title="My Awesome Modal">
-        <button @click="$emit('close', { answer: `Hello, ${name}!` })">
+        <button @_click="$emit('close', { answer: `Hello, ${name}!` })">
             Close
         </button>
     </Modal>
