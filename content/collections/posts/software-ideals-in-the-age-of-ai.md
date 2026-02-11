@@ -17,7 +17,7 @@ In the age of AI, we need better defaults.
 
 ## My Software Ideals
 
-A few months ago, I gave [a short presentation](https://noeldemartin.com/local-first) talking about my side-projects, and one of the slides included a list of my software ideals. But, what are software ideals?
+A few months ago, I gave <a href="https://noeldemartin.com/local-first" target="_blank">a short presentation</a> talking about my side-projects, and one of the slides included a list of my software ideals. But, what are software ideals?
 
 Basically, they are the guiding principles that shape the architecture and design of the software I build. As well as the one I'd want to use. Calling them "features" would be a disservice, because they are a lot more than that. They convey my platonic ideal for what software should be.
 
