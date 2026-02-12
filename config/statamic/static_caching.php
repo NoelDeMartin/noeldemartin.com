@@ -30,7 +30,7 @@ return [
 
         'half' => [
             'driver' => 'application',
-            'expiry' => null,
+            'expiry' => 60, // 1 hour
         ],
 
         'full' => [
