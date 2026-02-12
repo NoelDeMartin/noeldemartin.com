@@ -71,8 +71,8 @@ class AppServiceProvider extends ServiceProvider
     protected function bootNightwatch(): void
     {
         Nightwatch::rejectCacheEvents(function (CacheEvent $cacheEvent): bool {
-            return Str::startsWith($cacheEvent->key, 'stache::')
-                || Str::startsWith($cacheEvent->key, 'static-caching::');
+            return Str::startsWith($cacheEvent->key, 'stache:')
+                || Str::startsWith($cacheEvent->key, 'static-caching:');
         });
     }
 }
