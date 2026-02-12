@@ -7,6 +7,9 @@ use App\Support\DiscoverStatamicModels;
 use App\Support\Markdown\FencedCodeRenderer;
 use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
+use Laravel\Nightwatch\Facades\Nightwatch;
+use Laravel\Nightwatch\Records\CacheEvent;
 use League\CommonMark\Extension\CommonMark\Node\Block\FencedCode;
 use League\CommonMark\Extension\ExternalLink\ExternalLinkExtension;
 use Override;
@@ -22,9 +25,12 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        ini_set('memory_limit', '512M');
+
         $this->bootCarbon();
         $this->bootMarkdown();
         $this->bootStatamicModels();
+        $this->bootNightwatch();
     }
 
     protected function bootCarbon(): void
@@ -60,5 +66,10 @@ class AppServiceProvider extends ServiceProvider
         foreach ($models as $model) {
             $model->getName()::boot();
         }
+    }
+
+    protected function bootNightwatch(): void
+    {
+        Nightwatch::rejectCacheEvents(fn (CacheEvent $cacheEvent) => Str::startsWith($cacheEvent->key, 'stache::'));
     }
 }

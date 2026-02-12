@@ -94,3 +94,11 @@ test('Task comments', function () {
     assertSeeIn($response, 'main', 'December 14, 2018 00:55');
     assertSeeInHTML($response, '1544745341');
 });
+
+test('Content', function () {
+    $this->get('/blog/10-years-as-a-software-developer')->assertStatus(200);
+    $this->get('/blog/why-solid')->assertStatus(200);
+    $this->get('/blog/interoperable-serendipity')->assertStatus(200);
+    $this->get('/blog/the-problems-with-modals-and-how-to-solve-them')->assertStatus(200);
+    $this->get('/tasks/implementing-a-recipes-manager-using-solid')->assertStatus(200);
+});

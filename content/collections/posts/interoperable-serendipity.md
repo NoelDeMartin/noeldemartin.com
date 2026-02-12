@@ -6,7 +6,13 @@ publication_date: '2021-10-12 08:00:00'
 modification_date: '2021-10-14 05:03:17'
 ---
 
-🎥 <a href="https://noeldemartin.com/solid-world-2025" target="_blank">Check out the video!</a>
+{{ partial:components/callout title="Check out the video!"
+    content="Interoperable Serendipity @ Solid World"
+    url="https://noeldemartin.com/solid-world-2025"
+    image="/img/talks/interoperable-serendipity.png"
+    icon="icons/play"
+    target="_blank"
+/}}
 
 If you had asked my thoughts on interoperability some years ago, I wouldn't have had much to say. Nowadays, it has become one of my most revered ideals. And today, I want to take you along for a journey towards its summum: Interoperable Serendipity.
 

@@ -29,7 +29,9 @@
                 </time>
             </div>
 
-            {!! $content !!}
+            @antlers
+                {{ content | wrap_emoji }}
+            @endantlers
 
             <x-table-of-contents
                 :title="$title"

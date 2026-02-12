@@ -164,21 +164,25 @@ export async function showModal(modal, args) {
 }
 ```
 
+{{ noparse }}
+
 ```html [ModalsPortal.vue]
 <component
     v-for="modal of modals"
     :key="modal.id"
     :is="modal.component"
     v-bind="modal.props"
-    @_close="modal.close($event)"
+    @close="modal.close($event)"
 />
 ```
 
 ```html [MyModal.vue]
 <template>
-    <button @_click="$emit('close', 'The Answer')">Close Modal</button>
+    <button @click="$emit('close', 'The Answer')">Close Modal</button>
 </template>
 ```
+
+{{ /noparse }}
 
 And that's about it!
 
@@ -263,10 +267,12 @@ export async function showModal<T extends Component>(
 
 TLDR, after following this guide, you'll be able to use Vue modals like this:
 
+{{ noparse }}
+
 ```html [MyModal.vue]
 <template>
     <Modal title="My Awesome Modal">
-        <button @_click="$emit('close', { answer: `Hello, ${name}!` })">
+        <button @click="$emit('close', { answer: `Hello, ${name}!` })">
             Close
         </button>
     </Modal>
@@ -284,6 +290,8 @@ import { showModal } from './modals';
 
 const { answer } = await showModal(MyModal, { name: 'Guest' });
 ```
+
+{{ /noparse }}
 
 Isn't that beautiful!
 
