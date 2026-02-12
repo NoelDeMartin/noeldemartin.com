@@ -100,7 +100,7 @@ Ok, so that's nice and all, but what am I actually going to do? I have a few ide
 
     Additionally, to have even a slight chance to make this work, it would need to be framework agnostic. No Aerogel, no Vue, and certainly no [Soukai](https://github.com/NoelDeMartin/soukai-solid).
 
-    Nobody knows what'll happen in the future, but for now; the prospects for this one don't look good. If you're curious to know what this would cover, you can watch a spiritual preview in my FOSDEM talk: [From Zero to Hero with Solid](https://noeldemartin.com/fosdem).
+    Nobody knows what'll happen in the future, but for now; the prospects for this one don't look good. If you're curious to know what this would cover, you can watch a spiritual preview in my FOSDEM talk: <a href="https://noeldemartin.com/fosdem" target="_blank">From Zero to Hero with Solid</a>.
 
 Whichever of these I choose to pursue, it's very unlikely that they become sustainable in the short term. To start with some runway, I'll probably apply for an NLNet grant. If I don't get it, the timeline will be a lot shorter and I may have to relegate my Solid work to side-projects again.
 

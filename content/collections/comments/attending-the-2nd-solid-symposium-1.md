@@ -8,7 +8,7 @@ publication_date: '2024-04-26 07:25:40'
 
 Yes, it's finally happening. My first Solid conference!
 
-This is something I've been looking forward for a long time. I've attended some Solid-adjacent events, like local meetups or [presenting at FOSDEM](https://noeldemartin.com/fosdem). But I have never been to a conference exclusive to Solid (not that there are many that I'm aware of). However, I'm trying to keep my expectations in check because I already [had a bittersweet experience with a Laravel conference](https://noeldemartin.com/tasks/attending-laracon-eu).
+This is something I've been looking forward for a long time. I've attended some Solid-adjacent events, like local meetups or <a href="https://noeldemartin.com/fosdem" target="_blank">presenting at FOSDEM</a>. But I have never been to a conference exclusive to Solid (not that there are many that I'm aware of). However, I'm trying to keep my expectations in check because I already [had a bittersweet experience with a Laravel conference](https://noeldemartin.com/tasks/attending-laracon-eu).
 
 The main thing I'm looking forward to, honestly, is meeting people. This is not always the case; when I attend FOSDEM I'm very much looking forward to the presentations themselves. But I guess I've been into Solid for so long that I don't think anything will be revealing to me. I'm looking forward to being suprised, though!
 

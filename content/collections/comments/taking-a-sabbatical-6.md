@@ -111,7 +111,7 @@ Here's a summary of everything I did during the trip:
 - I built a Solid Server from scratch: [LSS](https://github.com/noelDeMartin/lss).
 - I submitted 3 proposals for [NLNet's October call](https://nlnet.nl/news/2024/20240601-call.html) (I'm still waiting to hear back from them, btw 😅).
 - I explored new tooling and folder structure for my packages, and implemented my own animations library: [Vivant](https://noeldemartin.github.io/vivant/).
-- I played with [NotebookLM](https://notebooklm.google.com/) and [RSS stylesheets](https://www.rss.style/), publishing my first (and maybe last) [podcast episode](https://noeldemartin.com/podcast/feed.xml).
+- I played with [NotebookLM](https://notebooklm.google.com/) and [RSS stylesheets](https://www.rss.style/), publishing my first (and maybe last) <a href="https://noeldemartin.com/podcast/feed.xml" target="_blank">podcast episode</a>.
 - I learned more about [SAI](https://solid.github.io/data-interoperability-panel/specification/), and added [ActivityPods support](https://github.com/NoelDeMartin/ramen/blob/main/docs/activitypods.md) to [Ramen](https://ramen.noeldemartin.com).
 
 Not bad!
