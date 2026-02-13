@@ -72,7 +72,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Nightwatch::rejectCacheEvents(function (CacheEvent $cacheEvent): bool {
             return Str::startsWith($cacheEvent->key, 'stache:')
-                || Str::startsWith($cacheEvent->key, 'static-caching:');
+                || Str::startsWith($cacheEvent->key, 'static-cache:');
         });
     }
 }
