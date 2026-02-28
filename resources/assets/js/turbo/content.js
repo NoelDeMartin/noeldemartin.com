@@ -22,6 +22,22 @@ document.addEventListener('turbo:before-visit', (event) => {
     lastClickedUrl = null;
 });
 
+document.addEventListener('turbo:fetch-request-error', async (event) => {
+    if (event.originalTarget?.tagName !== 'TURBO-FRAME') {
+        return;
+    }
+
+    // Handle redirects that may be causing CORS errors.
+    const manualResponse = await fetch(event.detail.request.url, {
+        redirect: 'manual',
+    });
+
+    if (manualResponse.type === 'opaqueredirect') {
+        window.open(event.detail.request.url, '_blank');
+        Turbo.navigator.delegate.adapter.progressBar.hide();
+    }
+});
+
 document.addEventListener('turbo:load', async () => {
     if (!isClickNavigation) {
         lastClickedUrl = null;
