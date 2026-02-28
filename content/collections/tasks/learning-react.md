@@ -3,6 +3,7 @@ id: learning-react
 blueprint: task
 title: 'Learning React'
 publication_date: '2025-11-26 20:15:00'
+completion_date: '2026-02-28T11:40:32+01:00'
 ---
 
 I've been avoiding it since 2019, but I cannot run away anymore: I'm learning React.
