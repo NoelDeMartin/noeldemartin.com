@@ -13,11 +13,11 @@ use RectorLaravel\Set\LaravelLevelSetList;
 
 return RectorConfig::configure()
     ->withPaths([
-        __DIR__.'/app',
-        __DIR__.'/lang',
-        __DIR__.'/resources',
-        __DIR__.'/routes',
-        __DIR__.'/tests',
+        __DIR__ . '/app',
+        __DIR__ . '/lang',
+        __DIR__ . '/resources',
+        __DIR__ . '/routes',
+        __DIR__ . '/tests',
     ])
     ->withPhpSets()
     ->withPhpVersion(80500)
@@ -35,10 +35,10 @@ return RectorConfig::configure()
         ReturnBinaryOrToEarlyReturnRector::class,
         ClassPropertyAssignToConstructorPromotionRector::class,
         ClosureToArrowFunctionRector::class => [
-            __DIR__.'/app/Models/StatamicModel.php',
-            __DIR__.'/app/Providers/AppServiceProvider.php',
+            __DIR__ . '/app/Models/StatamicModel.php',
+            __DIR__ . '/app/Providers/AppServiceProvider.php',
         ],
         AddClosureVoidReturnTypeWhereNoReturnRector::class => [
-            __DIR__.'/tests',
+            __DIR__ . '/tests',
         ],
     ]);
