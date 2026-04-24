@@ -12,6 +12,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->append(ApplySemanticSEO::class);
+        $middleware->encryptCookies(except: ['hire_me_dismissed']);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

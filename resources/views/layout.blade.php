@@ -48,6 +48,7 @@
         </a>
 
         <x-layout-header :collapsed="$minimal ?? false" />
+        <x-hire-me :collapsed="$minimal ?? false" />
 
         <turbo-frame
             id="mainframe"
@@ -58,7 +59,7 @@
                 id="main"
                 class="max-w-content relative mx-auto w-full grow p-4 pt-8 md:px-2"
                 :class="navigationOpen ? 'mt-16' : ''"
-                data-collapsed-header="{{ json_encode($minimal ?? false) }}"
+                data-minimal-layout="{{ json_encode($minimal ?? false) }}"
                 data-current-path="{{ '/' . ltrim(request()->path(), '/') }}"
             >
                 @yield('main')

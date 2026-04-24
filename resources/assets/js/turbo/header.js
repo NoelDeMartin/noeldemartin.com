@@ -8,7 +8,7 @@ document.addEventListener('turbo:frame-load', (event) => {
     const frameData = event.target.firstElementChild.dataset;
     const currentNav = header.querySelector('[aria-current]');
 
-    header.dataset.collapsed = frameData.collapsedHeader;
+    header.dataset.collapsed = frameData.minimalLayout;
 
     if (currentNav?.href !== frameData.currentPath) {
         currentNav?.removeAttribute('aria-current');
