@@ -22,9 +22,7 @@ jobs:
       - name: Generate Keys
         run: php artisan key:generate
       - name: Run Duster Lint
-        uses: tighten/duster-action@v3
-        with:
-          args: lint
+        run: ./vendor/bin/duster lint
       - name: Run Rector
         run: ./vendor/bin/rector process --dry-run
       - name: Run Node Lint

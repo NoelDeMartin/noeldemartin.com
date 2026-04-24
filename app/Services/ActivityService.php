@@ -24,7 +24,7 @@ class ActivityService
         );
 
         return Cache::remember(
-            'events_'.$lastModificationDate->timestamp,
+            'events_' . $lastModificationDate->timestamp,
             86400, // 24 hours
             fn (): Collection => $this->getEvents(),
         );
@@ -53,7 +53,7 @@ class ActivityService
         $this->fillRelations($entries);
 
         return $entries
-            ->flatMap(fn ($entry): mixed => call_user_func([$this, 'createEventsFrom'.Str::studly($entry->value('blueprint'))], $entry))
+            ->flatMap(fn ($entry): mixed => call_user_func([$this, 'createEventsFrom' . Str::studly($entry->value('blueprint'))], $entry))
             ->sortByDesc->date;
     }
 
@@ -62,7 +62,7 @@ class ActivityService
         $comments = $entries->where('blueprint', 'comment');
 
         foreach ($entries->where('blueprint', 'task') as $task) {
-            $taskLink = 'entry::'.$task->id;
+            $taskLink = 'entry::' . $task->id;
             $taskComments = $comments
                 ->filter(fn ($comment): bool => $comment->value('task') === $taskLink)
                 ->sortBy->publication_date
@@ -118,7 +118,7 @@ class ActivityService
         )];
 
         if ($task->completion_date) {
-            $url .= '#comment-'.$task->totalComments + 2;
+            $url .= '#comment-' . $task->totalComments + 2;
 
             $events[] = new ActivityEvent(
                 date: $task->completion_date,
@@ -139,7 +139,7 @@ class ActivityService
     private function createEventsFromComment(Entry $comment): array
     {
         $task = $comment->task->value();
-        $url = url($task->url).'#comment-'.$comment->position;
+        $url = url($task->url) . '#comment-' . $comment->position;
 
         return [new ActivityEvent(
             date: $comment->publication_date,

@@ -21,22 +21,22 @@ class Task extends StatamicModel
             return new EntryCollection;
         }
 
-        $comments = Entry::query()->where('collection', 'comments')->where('task', 'entry::'.$this->id())->get();
+        $comments = Entry::query()->where('collection', 'comments')->where('task', 'entry::' . $this->id())->get();
 
-        $comments->push(Entry::make()->collection('comments')->id('entry::'.$this->id().'-started')->data([
+        $comments->push(Entry::make()->collection('comments')->id('entry::' . $this->id() . '-started')->data([
             'publication_date' => $this->publication_date->copy()->subSeconds(1),
-            'content' => '<p class="flex items-center md:m-0">'.
-                'Task started '.
-                antlers_icon('task-started', 'size-4 ml-2').
+            'content' => '<p class="flex items-center md:m-0">' .
+                'Task started ' .
+                antlers_icon('task-started', 'size-4 ml-2') .
             '</p>',
         ]));
 
         if (! is_null($this->completion_date)) {
-            $comments->push(Entry::make()->collection('comments')->id('entry::'.$this->id().'-completed')->data([
+            $comments->push(Entry::make()->collection('comments')->id('entry::' . $this->id() . '-completed')->data([
                 'publication_date' => $this->completion_date,
-                'content' => '<p class="flex items-center md:m-0">'.
-                    'Task completed '.
-                    antlers_icon('task-completed', 'size-4 ml-2').
+                'content' => '<p class="flex items-center md:m-0">' .
+                    'Task completed ' .
+                    antlers_icon('task-completed', 'size-4 ml-2') .
                 '</p>',
             ]));
         }
@@ -73,7 +73,7 @@ class Task extends StatamicModel
                 return (object) [
                     'level' => 2,
                     'title' => "<div class=\"flex font-mono\">{$icon} <span>{$title}</span></div>",
-                    'anchor' => '#comment-'.($index + 1),
+                    'anchor' => '#comment-' . ($index + 1),
                 ];
             })
             ->toArray();
