@@ -22,7 +22,7 @@ class FencedCodeRenderer implements NodeRendererInterface
         if (count($infoWords) !== 0 && $infoWords[0] !== '') {
             $class = $infoWords[0];
             if (! str_starts_with($class, 'language-')) {
-                $class = 'language-' . $class;
+                $class = 'language-'.$class;
             }
 
             $attrs->append('class', $class);

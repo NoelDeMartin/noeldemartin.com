@@ -29,7 +29,7 @@ class Action extends Thing
     {
         return array_merge(parent::getAttributeDefinitions(), [
             'agent' => [Organization::class, Person::class],
-            'actionStatus' => 'enumeration:' . implode(',', ActionStatusType::values()),
+            'actionStatus' => 'enumeration:'.implode(',', ActionStatusType::values()),
             'startTime' => 'date',
             'endTime' => 'date',
         ]);

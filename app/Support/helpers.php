@@ -17,7 +17,7 @@ if (! function_exists('sroute')) {
         $entry = empty($parameters) ? Entry::find($name) : null;
 
         if (is_null($entry)) {
-            $path = '/' . implode('/', array_merge([$name], Arr::wrap($parameters)));
+            $path = '/'.implode('/', array_merge([$name], Arr::wrap($parameters)));
             $entry = Entry::findByUri($path);
         }
 

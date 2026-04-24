@@ -43,8 +43,8 @@ uses(TestCase::class)->in('Feature');
 
 function assertSeeIn(TestResponse $response, string $selector, string $expected): void
 {
-    $dom = new DOMDocument();
-    $converter = new CssSelectorConverter();
+    $dom = new DOMDocument;
+    $converter = new CssSelectorConverter;
 
     libxml_use_internal_errors(true);
     $dom->loadHTML($response->getContent());

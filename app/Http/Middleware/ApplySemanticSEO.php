@@ -32,7 +32,7 @@ class ApplySemanticSEO
                 ?? Entries::whereCollection('talks')->firstWhere('id', "{$slug}-talk");
         }
 
-        return Entries::findByUri('/' . rtrim(request()->path(), '/'));
+        return Entries::findByUri('/'.rtrim(request()->path(), '/'));
     }
 
     protected function applyEntry(Entry $entry): void
@@ -43,7 +43,7 @@ class ApplySemanticSEO
         SemanticSEO::title(trim($entry->value('title') ?? '') ?: trans('seo.site_name'));
 
         $uriParts = array_values(array_filter(explode('/', rtrim(request()->path(), '/'))));
-        $handlerClass = 'App\Http\SEO\\' . Str::studly($uriParts[0] ?? 'home');
+        $handlerClass = 'App\Http\SEO\\'.Str::studly($uriParts[0] ?? 'home');
 
         if (! class_exists($handlerClass)) {
             return;
