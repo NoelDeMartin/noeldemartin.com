@@ -39,6 +39,6 @@ In general, I'm ok with AI contributions, though I'd prefer it if you write the 
 
 The code itself can also be AI-generated, as long as you're not infringing any copyright or stealing someone else's code (which can be hard to prove, I know). Ideally, you should include a `Co-Authored-By` line in your AI-assisted commits. In any case, your job when opening a PR is to [contribute code that you have proven to work](https://feeds.simonwillison.net/2025/Dec/18/code-proven-to-work/). If you're happy with the PR, and you're confident that it's good code that solves the problem you're trying to address, I don't mind if it was hand-written or AI-generated. Just avoid vibe-coded solutions where you haven't even looked at the code.
 
-### CONTRIBUTIONS.md
+### CONTRIBUTING.md
 
-These are general rules for most of my projects, but some of them may have particular exceptions or things to note. If you're going to contribute to a repository, make sure to see if there is a `CONTRIBUTIONS.md` file with some additional comments.
+These are general rules for most of my projects, but some of them may have particular exceptions or things to note. If you're going to contribute to a repository, make sure to see if there is a `CONTRIBUTING.md` file with some additional comments.
