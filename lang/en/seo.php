@@ -93,6 +93,16 @@ return [
         'description' => 'A list of tips I\'ve gathered from my trips to Japan',
     ],
 
+    'open-source' => [
+        'title' => 'About my Open Source work',
+        'description' => 'Some details about my Open Source contributions and how to participate.',
+    ],
+
+    'schema:open-source' => [
+        'name' => 'About my Open Source work',
+        'description' => 'Some details about my Open Source contributions and how to participate.',
+    ],
+
     'site' => [
         'description' => 'Description of technologies used at noeldemartin.com',
     ],

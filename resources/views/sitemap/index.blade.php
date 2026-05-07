@@ -43,6 +43,10 @@
     @endforeach
 
     <url>
+        <loc>{{ sroute('open-source') }}</loc>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>{{ sroute('japan-tips') }}</loc>
         <priority>0.4</priority>
     </url>
