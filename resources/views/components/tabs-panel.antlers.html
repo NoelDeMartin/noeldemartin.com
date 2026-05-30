@@ -1,0 +1,9 @@
+<section
+    x-show="isSelected($id(namespace, whichChild($el, $el.parentElement)))"
+    :aria-labelledby="$id(namespace, whichChild($el, $el.parentElement))"
+    role="tabpanel"
+    tabindex="0"
+    class="outline-hidden prose [&>p:first-child]:mt-0 [&>p:last-child]:mb-0"
+>
+    {{ slot }}
+</section>

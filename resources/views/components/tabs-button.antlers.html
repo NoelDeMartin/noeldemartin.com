@@ -1,0 +1,12 @@
+<li>
+    <button
+        x-bind="tab"
+        type="button"
+        role="tab"
+        aria-label="{{ label }}"
+        class="inline-flex whitespace-nowrap items-center justify-center rounded-t-lg border border-b-0 px-4 py-3 outline-hidden transition-colors"
+        :class="isSelected($el.id) ? 'border-grey-light bg-white' : 'border-transparent bg-transparent hover:bg-grey-lighter hover:rounded-lg hover:pb-2'"
+    >
+        {{ slot }}
+    </button>
+</li>

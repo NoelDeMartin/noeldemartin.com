@@ -1,0 +1,17 @@
+<div x-data="tabs('{{ namespace }}')" x-id="['{{ namespace }}']" class="my-6">
+    <ul
+        x-bind="tablist"
+        role="tablist"
+        aria-label="{{ label }}"
+        class="-mb-px flex list-none items-stretch gap-1 overflow-x-auto p-0"
+    >
+        {{ slot:buttons }}
+    </ul>
+
+    <div
+        role="tabpanels"
+        class="border-grey-light rounded-b-lg border bg-white p-6"
+    >
+        {{ slot:panels }}
+    </div>
+</div>
