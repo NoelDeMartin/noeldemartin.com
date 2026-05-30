@@ -1,0 +1,83 @@
+{{ collection:talks id:is="{id}" }}
+    <details class="group not-prose rounded-lg border border-gray-200">
+        <summary
+            class="hover:text-blue-darkest focus:text-blue-darkest flex cursor-pointer list-none items-center gap-2 px-4 py-3 text-base font-medium [&::-webkit-details-marker]:hidden"
+        >
+            {{ partial src="icons/chevron-right" class="size-4 shrink-0 fill-current transition-transform group-open:rotate-90" /}}
+            {{ title }}
+        </summary>
+
+        <div class="px-4 pt-0 pb-4">
+            <div class="flex gap-4">
+                <img
+                    src="{{ imageUrl }}"
+                    alt=""
+                    class="m-0 hidden w-42 shrink-0 self-start rounded border border-gray-200 md:block"
+                />
+
+                <div class="min-w-0 flex-1">
+                    <div
+                        class="text-blue-darker flex flex-wrap gap-x-2 gap-y-1 text-xs font-normal"
+                    >
+                        <time
+                            class="flex items-center"
+                            datetime="{{ presentation_date format="Y-m-d\TH:i:sP" }}"
+                        >
+                            {{ partial src="icons/calendar" class="h-4 fill-current" aria-label="Date" /}}
+                            <span class="ml-1">
+                                {{ presentation_date format="F j, Y" }}
+                            </span>
+                        </time>
+
+                        {{ if conference }}
+                            <div class="flex items-center">
+                                {{ partial src="icons/conference" class="size-4 fill-current" aria-label="Conference" /}}
+
+                                {{ if conference_url }}
+                                    <a
+                                        href="{{ conference_url }}"
+                                        target="_blank"
+                                        class="text-blue-darker ml-0.5 no-underline hover:underline focus:underline"
+                                    >
+                                        {{ conference }}
+                                    </a>
+                                {{ else }}
+                                    <span class="ml-0.5">{{ conference }}</span>
+                                {{ /if }}
+                            </div>
+                        {{ /if }}
+
+                        <div class="flex items-center">
+                            {{ partial src="icons/location" class="size-4 fill-current" aria-label="Location" /}}
+                            <span class="ml-0.5">{{ location }}</span>
+                        </div>
+                    </div>
+
+                    <div
+                        class="prose mt-2.5 [&>p:first-of-type]:mt-0 [&>p:last-of-type]:mb-0"
+                    >
+                        {{ content }}
+                    </div>
+                </div>
+            </div>
+
+            {{ if video_url }}
+                <div class="mt-4">
+                    <a
+                        href="{{ video_url }}"
+                        target="_blank"
+                        class="bg-grey-lightest hover:bg-red-50 flex w-full items-center justify-center rounded px-4 py-2 text-sm text-gray-900 no-underline"
+                    >
+                        {{ partial src="icons/youtube" class="size-5 fill-current text-[#FF0000]" /}}
+                        <span class="ml-1">
+                            Watch on Youtube
+                            {{ if video_duration }}
+                                ({{ video_duration }})
+                            {{ /if }}
+                        </span>
+                    </a>
+                </div>
+            {{ /if }}
+        </div>
+    </details>
+{{ /collection:talks }}

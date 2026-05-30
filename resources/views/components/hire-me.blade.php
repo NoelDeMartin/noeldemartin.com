@@ -12,8 +12,7 @@
             <!-- prettier-ignore -->
             <span>
             <strong>Hire me:</strong>
-                I'm available for work. If you're hiring or want to work with me,
-                <a href="mailto:{{ sglobal('contact.email') }}?subject=Work+with+me" class="underline">let me know</a>!
+                I'm available for work. If you're hiring or want to work with me, <a href="{{ sroute('brag') }}" class="underline">check this out</a>!
             </span>
 
             <button

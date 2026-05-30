@@ -1,0 +1,28 @@
+{{ partial:components/tabs namespace="career" label="Career highlights" }}
+    {{ slot:buttons }}
+        {{ partial:components/tabs-button label="Moodle" }}
+            <div class="w-20 h-12 flex items-center justify-center overflow-hidden">
+                {{ partial src="icons/moodle" class="size-20" /}}
+            </div>
+        {{ /partial:components/tabs-button }}
+        {{ partial:components/tabs-button label="Geemba" }}
+            <div class="w-20 h-12 flex items-center justify-center overflow-hidden">
+                {{ partial src="icons/geemba" class="size-20" /}}
+            </div>
+        {{ /partial:components/tabs-button }}
+        {{ partial:components/tabs-button label="Side-projects" }}
+            <img src="/img/myface-small.png" alt="" class="m-0 size-12" />
+        {{ /partial:components/tabs-button }}
+    {{ /slot:buttons }}
+    {{ slot:panels }}
+        {{ partial:components/tabs-panel }}
+            {{ partial:components/snippet id="brag-career-highlights-moodle" /}}
+        {{ /partial:components/tabs-panel }}
+        {{ partial:components/tabs-panel }}
+            {{ partial:components/snippet id="brag-career-highlights-geemba" /}}
+        {{ /partial:components/tabs-panel }}
+        {{ partial:components/tabs-panel }}
+            {{ partial:components/snippet id="brag-career-highlights-side-projects" /}}
+        {{ /partial:components/tabs-panel }}
+    {{ /slot:panels }}
+{{ /partial:components/tabs }}

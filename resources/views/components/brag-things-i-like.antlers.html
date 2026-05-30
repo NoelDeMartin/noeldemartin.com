@@ -1,0 +1,30 @@
+{{ partial:components/tabs namespace="tab" label="Technologies I like" }}
+    {{ slot:buttons }}
+        {{ partial:components/tabs-button label="Laravel" }}
+            {{ partial src="icons/laravel" class="size-12" /}}
+        {{ /partial:components/tabs-button }}
+        {{ partial:components/tabs-button label="Vue" }}
+            {{ partial src="icons/vue" class="size-12" /}}
+        {{ /partial:components/tabs-button }}
+        {{ partial:components/tabs-button label="Solid" }}
+            {{ partial src="icons/solid" class="size-12" /}}
+        {{ /partial:components/tabs-button }}
+        {{ partial:components/tabs-button label="TypeScript" }}
+            {{ partial src="icons/typescript" class="size-12" /}}
+        {{ /partial:components/tabs-button }}
+    {{ /slot:buttons }}
+    {{ slot:panels }}
+        {{ partial:components/tabs-panel }}
+            {{ partial:components/snippet id="brag-things-i-like-laravel" /}}
+        {{ /partial:components/tabs-panel }}
+        {{ partial:components/tabs-panel }}
+            {{ partial:components/snippet id="brag-things-i-like-vue" /}}
+        {{ /partial:components/tabs-panel }}
+        {{ partial:components/tabs-panel }}
+            {{ partial:components/snippet id="brag-things-i-like-solid" /}}
+        {{ /partial:components/tabs-panel }}
+        {{ partial:components/tabs-panel }}
+            {{ partial:components/snippet id="brag-things-i-like-typescript" /}}
+        {{ /partial:components/tabs-panel }}
+    {{ /slot:panels }}
+{{ /partial:components/tabs }}

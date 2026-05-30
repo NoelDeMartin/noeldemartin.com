@@ -1,6 +1,7 @@
 ---
 id: geemba
 title: Geemba
+logoIcon: geemba
 blueprint: page
 template: projects/show
 ---

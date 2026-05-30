@@ -31,6 +31,11 @@
     @endforeach
 
     <url>
+        <loc>{{ sroute('brag') }}</loc>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
         <loc>{{ sroute('talks') }}</loc>
         <priority>0.6</priority>
     </url>

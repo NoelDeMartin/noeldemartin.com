@@ -1,0 +1,17 @@
+title: Snippet
+tabs:
+  main:
+    display: Main
+    sections:
+      - fields:
+          - handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+          - handle: content
+            field:
+              type: markdown
+              display: Content
+              antlers: true

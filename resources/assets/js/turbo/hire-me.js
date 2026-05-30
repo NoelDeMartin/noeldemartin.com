@@ -1,7 +1,7 @@
 const aside = document.querySelector('#hire-me');
 
 document.addEventListener('turbo:frame-load', (event) => {
-    const frameData = event.target.firstElementChild.dataset;
+    const frameData = event.target.querySelector('#main').dataset;
 
     aside.dataset.collapsed = frameData.minimalLayout;
 });
