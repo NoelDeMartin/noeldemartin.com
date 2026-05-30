@@ -131,6 +131,15 @@ return [
         'description' => 'A collection of all my ongoing and completed tasks.',
     ],
 
+    'brag' => [
+        'description' => "A short page of things I'm good at.",
+    ],
+
+    'schema:brag' => [
+        'name' => "Noel De Martin's Brag document",
+        'description' => "A short page of things I'm good at.",
+    ],
+
     'talks' => [
         'description' => "A list of all the talks I've given.",
     ],

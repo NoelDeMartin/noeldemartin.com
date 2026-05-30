@@ -14,6 +14,7 @@ parameters:
         - app/Http/SEO
         - app/Models/Talk.php
         - app/Models/Task.php
+        - app/Models/Page.php
         - app/SemanticSEO
         - app/Services/ActivityService.php
         - app/Support/helpers.php

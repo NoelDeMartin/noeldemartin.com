@@ -4,12 +4,19 @@
     <article class="mx-auto mb-8">
         <h1 class="sr-only">{{ $title }}</h1>
 
-        <img
-            src="/img/projects/{{ $slug }}/logo.png"
-            alt="{{ $title }} — Logo"
-            title="{{ $title }} — Logo"
-            class="mb-4 w-112 max-w-full md:mb-8"
-        />
+        @isset($logoIcon)
+            <s:partial
+                :src="'icons/' . $logoIcon"
+                class="mx-auto mb-4 block! w-112 max-w-full md:mb-8"
+            />
+        @else
+            <img
+                src="/img/projects/{{ $slug }}/logo.png"
+                alt="{{ $title }} — Logo"
+                title="{{ $title }} — Logo"
+                class="mb-4 w-112 max-w-full md:mb-8"
+            />
+        @endif
 
         @antlers
             {{ content }}

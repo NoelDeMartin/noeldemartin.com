@@ -1,0 +1,36 @@
+{{ partial:components/tabs namespace="career" label="Career highlights" }}
+    {{ slot:buttons }}
+        {{ partial:components/tabs-button label="Fullstack" }}
+            Fullstack
+        {{ /partial:components/tabs-button }}
+        {{ partial:components/tabs-button label="Design Engineering" }}
+            Design Engineering
+        {{ /partial:components/tabs-button }}
+        {{ partial:components/tabs-button label="Architecture" }}
+            Architecture
+        {{ /partial:components/tabs-button }}
+        {{ partial:components/tabs-button label="Product" }}
+            Product
+        {{ /partial:components/tabs-button }}
+        {{ partial:components/tabs-button label="Learning" }}
+            Learning
+        {{ /partial:components/tabs-button }}
+    {{ /slot:buttons }}
+    {{ slot:panels }}
+        {{ partial:components/tabs-panel }}
+            {{ partial:components/snippet id="brag-things-im-good-at-fullstack" /}}
+        {{ /partial:components/tabs-panel }}
+        {{ partial:components/tabs-panel }}
+        {{ partial:components/snippet id="brag-things-im-good-at-design-engineering" /}}
+        {{ /partial:components/tabs-panel }}
+        {{ partial:components/tabs-panel }}
+            {{ partial:components/snippet id="brag-things-im-good-at-architecture" /}}
+        {{ /partial:components/tabs-panel }}
+        {{ partial:components/tabs-panel }}
+            {{ partial:components/snippet id="brag-things-im-good-at-product" /}}
+        {{ /partial:components/tabs-panel }}
+        {{ partial:components/tabs-panel }}
+            {{ partial:components/snippet id="brag-things-im-good-at-learning" /}}
+        {{ /partial:components/tabs-panel }}
+    {{ /slot:panels }}
+{{ /partial:components/tabs }}

@@ -129,17 +129,19 @@
                         </a>
                     @endif
 
-                    <a
-                        href="{{ $slidesUrl }}"
-                        target="_blank"
-                        class="flex items-center rounded bg-white px-2 py-1 text-sm text-gray-900 no-underline ring-1 ring-gray-300 ring-inset hover:bg-gray-50"
-                    >
-                        <s:partial
-                            src="icons/slides"
-                            class="size-5 fill-current"
-                        />
-                        <span class="ml-1">Slides</span>
-                    </a>
+                    @if (! isset($slides_missing))
+                        <a
+                            href="{{ $slidesUrl }}"
+                            target="_blank"
+                            class="flex items-center rounded bg-white px-2 py-1 text-sm text-gray-900 no-underline ring-1 ring-gray-300 ring-inset hover:bg-gray-50"
+                        >
+                            <s:partial
+                                src="icons/slides"
+                                class="size-5 fill-current"
+                            />
+                            <span class="ml-1">Slides</span>
+                        </a>
+                    @endif
                 </div>
             </div>
         </div>
