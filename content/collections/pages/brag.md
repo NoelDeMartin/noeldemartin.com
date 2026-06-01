@@ -23,7 +23,7 @@ I feel like I could build <em>anything</em> with these 4 technologies:
 
 {{ partial:components/brag-things-i-like /}}
 
-These are my favorite _tools_. But the truth is that I don't care that much about my stack 😅. If you look at my CV, you'll notice I've barely used these technologies at the companies I worked, and that's because I care a lot more about the mission and values of the organizations I join.
+These are my favorite _tools_. But the truth is that I don't care that much about my stack 😅. If you look at my CV, you'll notice I've barely used these technologies at the companies I worked, and that's because I care a lot more about the mission and values of the organizations I join. Everything else, is just [years of irrelevance](https://signalvnoise.com/posts/833-years-of-irrelevance).
 
 Still, I have a lot of side-projects. When I'm in full control, these are my tools of choice :).
 
