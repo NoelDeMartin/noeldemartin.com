@@ -6,7 +6,7 @@
         aria-label="{{ label }}"
         class="inline-flex whitespace-nowrap items-center justify-center rounded-t-lg border border-b-0 px-4 py-3 outline-hidden transition-colors"
         :class="isSelected($el.id) ? 'border-grey-light bg-white' : 'border-transparent bg-transparent hover:bg-grey-lighter hover:rounded-lg hover:pb-2'"
-        @click="$event.target.scrollIntoView({ behavior: 'smooth', inline: 'start', container: 'nearest' })"
+        @click="$event.target.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' })"
     >
         {{ slot }}
     </button>
