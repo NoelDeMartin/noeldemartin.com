@@ -7,7 +7,7 @@
             <h1>{{ title }}</h1>
             {{ /if }}
 
-            {{ content }}
+            {{ content | wrap_emoji }}
         @endantlers
     </article>
 @endsection
