@@ -5,7 +5,7 @@ title: 'Programming Patterns'
 publication_date: '2026-07-06T15:43:00+02:00'
 ---
 
-<img src="/img/blog/ProgrammingPatterns.jpg)" alt="" class="sr-only" />
+<img src="/img/blog/ProgrammingPatterns.jpg" alt="" class="sr-only" />
 
 A few years ago, I thought it would be cool to celebrate [my 15 years as a Software Developer](https://noeldemartin.com/blog/10-years-as-a-software-developer) by sharing 15 programming tips. But then, AI came and changed our jobs forever.
 
