@@ -2,8 +2,17 @@
 id: the-problems-with-modals-and-how-to-solve-them
 blueprint: post
 title: 'The Problems With Modals, and How to Solve Them'
-publication_date: '2025-08-04 17:28:00'
+publication_date: '2025-08-04T17:28:00+02:00'
+modification_date: '2026-07-06T15:43:00+02:00'
 ---
+
+{{ partial:components/callout title="Programming Patterns"
+    content="This is part of my Programming Patterns series, check it out to find more."
+    url="https://noeldemartin.com/blog/programming-patterns"
+    image="/img/blog/ProgrammingPatternsSeries.jpg"
+    icon="icons/blog"
+    target="_blank"
+/}}
 
 ![](/img/blog/VueModals.png)
 
@@ -298,6 +307,8 @@ Isn't that beautiful!
 You can of course start doing this yourself, as I've been doing in multiple projects [over the years](https://github.com/euvl/vue-js-modal/pull/175).
 
 But I got tired of rewriting this time and again, so I also started working on a package to make this easier. If you want to start doing this in your apps, or dive deeper into the code, check it out in GitHub: [github.com/NoelDeMartin/vue-modals](https://github.com/NoelDeMartin/vue-modals/).
+
+You can also teach your LLMs to follow this approach by using [my Skills](https://github.com/NoelDeMartin/skills).
 
 ## Going further
 
