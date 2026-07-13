@@ -12,6 +12,7 @@ class Post extends StatamicModel
     public function summary(): string
     {
         $summary = substr($this->content, 0, strpos($this->content, '<h2') ?: 0);
+        $summary = preg_replace('/\{\{.*?\}\}/s', '', $summary) ?: '';
         $summary = preg_replace('/<a(\s|>)[^>]*>(.*?)<\/a>/', '$2', $summary) ?: '';
         $summary = preg_replace('/<img[^>]*>/', '', $summary) ?: '';
 
