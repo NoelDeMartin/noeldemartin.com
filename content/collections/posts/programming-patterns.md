@@ -3,6 +3,7 @@ id: programming-patterns
 blueprint: post
 title: 'Programming Patterns'
 publication_date: '2026-07-06T15:43:00+02:00'
+modification_date: '2026-07-13T16:10:00+02:00'
 ---
 
 <img src="/img/blog/ProgrammingPatterns.jpg" alt="" class="sr-only" />
@@ -35,8 +36,9 @@ However, take this description with a pinch of salt. Some of them are about git 
 
 For every pattern, I'm going to publish a blog post and a set of LLM skills. Because apparently, that's what we're doing now. I hope you still read the posts, though!
 
-Here you'll be able to find an up-to-date list with all the patterns (next coming out next week!):
+Here you'll be able to find an up-to-date list with all the patterns:
 
-1. [Better Modals](https://noeldemartin.com/blog/the-problems-with-modals-and-how-to-solve-them#skills) (frontend)
+1. [Better Modals](https://noeldemartin.com/blog/the-problems-with-modals-and-how-to-solve-them) (Frontend)
+2. [Magic Objects](https://noeldemartin.com/blog/programming-patterns-magic-objects) (JavaScript)
 
 If you want to use them with your programming agents, you can also find them distilled for AI in my LLM skills: [github.com/noeldemartin/skills](https://github.com/noeldemartin/skills)
