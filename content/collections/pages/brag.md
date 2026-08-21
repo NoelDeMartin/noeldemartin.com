@@ -54,6 +54,7 @@ Maybe the best way to get a _feel_ of me is to watch me speak at a conference. I
 If you don't know where to start, these are some of my favorites:
 
 {{ partial:components/brag-talk id="interoperable-serendipity-talk" /}}
+{{ partial:components/brag-talk id="thoughts-on-solid-developer-experience" /}}
 {{ partial:components/brag-talk id="moodle-app-testing" /}}
 {{ partial:components/brag-talk id="from-zero-to-hero-with-solid" /}}
 
