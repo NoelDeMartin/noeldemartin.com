@@ -18,7 +18,7 @@
     },
     "require-dev": {
         "fruitcake/laravel-debugbar": "^4.0",
-        "driftingly/rector-laravel": "^2.1",
+        "driftingly/rector-laravel": "^2.6",
         "fakerphp/faker": "^1.23",
         "larastan/larastan": "^3.9",
         "laravel/pail": "^1.2",
@@ -27,7 +27,7 @@
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.6",
         "pestphp/pest": "^4.0",
-        "rector/rector": "^2.3",
+        "rector/rector": "^2.6",
         "spatie/laravel-ignition": "^2.9",
         "tightenco/duster": "^3.3"
     },
@@ -66,8 +66,27 @@
             "Composer\\Config::disableProcessTimeout",
             "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite"
         ],
+        "lint": [
+            "duster fix"
+        ],
+        "lint:check": [
+            "duster lint"
+        ],
+        "rector": [
+            "rector process"
+        ],
+        "rector:check": [
+            "rector process --dry-run"
+        ],
         "types:check": [
             "phpstan analyse"
+        ],
+        "test": [
+            "@php artisan config:clear --ansi",
+            "@lint:check",
+            "@rector:check",
+            "@types:check",
+            "@php artisan test"
         ]
     },
     "extra": {

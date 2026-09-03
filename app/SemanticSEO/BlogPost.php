@@ -16,7 +16,7 @@ class BlogPost extends Article
         $this->headline($post->value('title'));
         $this->description(trim(strip_tags($post->summary)));
         $this->url($post->url());
-        $this->image(is_null($post->value('imageUrl')) ? Logo::class : $post->value('imageUrl'));
+        $this->image($post->value('imageUrl') ?? Logo::class);
         $this->wordCount($post->value('words'));
         $this->articleSection('Blog');
         $this->author(NoelDeMartin::class);

@@ -22,9 +22,9 @@ jobs:
       - name: Generate Keys
         run: php artisan key:generate
       - name: Run Duster Lint
-        run: ./vendor/bin/duster lint
+        run: composer lint:check
       - name: Run Rector
-        run: ./vendor/bin/rector process --dry-run
+        run: composer rector:check
       - name: Run Node Lint
         run: npm run lint
       - name: Run Static Analysis
