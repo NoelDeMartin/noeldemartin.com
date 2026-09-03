@@ -28,7 +28,7 @@ jobs:
       - name: Run Node Lint
         run: npm run lint
       - name: Run Static Analysis
-        run: ./vendor/bin/phpstan analyse
+        run: composer types:check
       - name: Run Node Build
         run: npm run build
       - name: Run Tests

@@ -4,6 +4,8 @@ parameters:
     level: max
     paths:
         - app/
+        - bootstrap/
+        - routes/
     universalObjectCratesClasses:
         - Statamic\Entries\Entry
     typeAliases:
