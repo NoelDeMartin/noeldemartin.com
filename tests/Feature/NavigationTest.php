@@ -95,6 +95,17 @@ test('Task comments', function () {
     assertSeeInHTML($response, '1544745341');
 });
 
+test('Brag', function () {
+    $response = $this->get('/brag');
+
+    $response->assertStatus(200);
+    assertSeeIn($response, 'main', 'Brag Document');
+    assertSeeIn($response, 'main', 'Things I like');
+    assertSeeIn($response, 'main', 'Things I\'m good at');
+    assertSeeIn($response, 'main', 'Career Highlights');
+    assertSeeIn($response, 'main', 'Interoperable Serendipity');
+});
+
 test('Content', function () {
     $this->get('/blog/10-years-as-a-software-developer')->assertStatus(200);
     $this->get('/blog/why-solid')->assertStatus(200);

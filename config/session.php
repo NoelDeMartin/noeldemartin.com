@@ -214,4 +214,18 @@ return [
 
     'partitioned' => env('SESSION_PARTITIONED_COOKIE', false),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Session Serialization
+    |--------------------------------------------------------------------------
+    |
+    | When set to "json", session data will be serialized using JSON instead
+    | of PHP serialization to prevent deserialization vulnerabilities.
+    |
+    | Supported: "php", "json"
+    |
+    */
+
+    'serialization' => env('SESSION_SERIALIZATION', 'json'),
+
 ];

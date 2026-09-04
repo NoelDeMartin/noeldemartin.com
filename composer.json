@@ -9,9 +9,9 @@
     ],
     "require": {
         "php": "^8.5",
-        "laravel/framework": "^12.0",
+        "laravel/framework": "^13.0",
         "laravel/nightwatch": "^1.22",
-        "laravel/tinker": "^2.10",
+        "laravel/tinker": "^3.0",
         "noeldemartin/laravel-semantic-seo": "^0.3.0",
         "statamic/cms": "^6.0",
         "statamic/eloquent-driver": "^5.1"

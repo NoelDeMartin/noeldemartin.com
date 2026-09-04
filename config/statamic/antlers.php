@@ -57,4 +57,21 @@ return [
 
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | User content allowlists
+    |--------------------------------------------------------------------------
+    |
+    | These control which tags and modifiers will be permitted in user-supplied
+    | Antlers (e.g. fields with `antlers: true`). Include the literal string
+    | `@default` in the array to merge Statamic's defaults with your own.
+    |
+    */
+
+    'allowedContentTags' => [
+        '@default',
+        'partial',
+        'partial:*',
+    ],
+
 ];
