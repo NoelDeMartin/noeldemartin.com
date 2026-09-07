@@ -11,7 +11,7 @@ return [
     |
     */
 
-    'enabled' => env('CP_ENABLED', true),
+    'enabled' => env('CP_ENABLED', false),
 
     'route' => env('CP_ROUTE', 'cp'),
 
