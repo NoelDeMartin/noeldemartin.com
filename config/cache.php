@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\ActivityEvent;
 use Illuminate\Support\Str;
 
 return [
@@ -129,6 +130,8 @@ return [
     |
     */
 
-    'serializable_classes' => false,
+    'serializable_classes' => [
+        ActivityEvent::class,
+    ],
 
 ];
