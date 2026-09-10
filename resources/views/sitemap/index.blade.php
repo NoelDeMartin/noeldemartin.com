@@ -24,10 +24,12 @@
         <priority>1.0</priority>
     </url>
     @foreach ($projects as $project)
-        <url>
-            <loc>{{ $project->url() }}</loc>
-            <priority>0.8</priority>
-        </url>
+        @if ($project->link?->value() instanceof \Statamic\Entries\Entry)
+            <url>
+                <loc>{{ $project->link->value()->url() }}</loc>
+                <priority>0.8</priority>
+            </url>
+        @endif
     @endforeach
 
     <url>

@@ -8,7 +8,7 @@ use Statamic\Facades\Collection;
 
 abstract class StatamicModel
 {
-    private Entry $entry;
+    protected Entry $entry;
 
     public function __construct(Entry $entry)
     {

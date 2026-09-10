@@ -2,21 +2,29 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\Health;
+use App\Http\Controllers\LLMsTxt;
 use App\Http\Controllers\NowController;
+use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PodcastController;
 use App\Http\Controllers\SiteMap;
 use App\Http\Controllers\SlidesController;
+use App\Http\Controllers\TalksController;
+use App\Http\Controllers\TasksController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('blog/rss.xml', [BlogController::class, 'feed'])->name('blog.rss');
 Route::get('blog/styles.xsl', [BlogController::class, 'styles'])->name('blog.xsl');
+Route::get('blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
+Route::get('talks/{slug}', [TalksController::class, 'show'])->name('talks.show');
 Route::get('slides/{slug}', [SlidesController::class, 'show'])->name('slides.show');
 Route::get('now/rss.xml', [NowController::class, 'feed'])->name('now.rss');
 Route::get('now/styles.xsl', [NowController::class, 'styles'])->name('now.xsl');
+Route::get('tasks/{slug}', [TasksController::class, 'show'])->name('tasks.show');
 Route::get('podcast/feed.xml', [PodcastController::class, 'feed'])->name('podcast.feed');
 Route::get('podcast/styles.xsl', [PodcastController::class, 'styles'])->name('podcast.xsl');
 Route::get('health', Health::class)->name('health');
 Route::get('sitemap.xml', SiteMap::class)->name('sitemap');
+Route::get('llms.txt', LLMsTxt::class)->name('llms');
 
 Route::redirect('fosdem', 'https://www.youtube.com/watch?v=kPzhykRVDuI');
 Route::redirect('solid-world', 'https://www.youtube.com/watch?v=cajBTJXmKhA');
@@ -39,3 +47,5 @@ Route::permanentRedirect('experiments', 'https://web.archive.org/web/20250120164
 Route::permanentRedirect('experiments/freedom-calculator', 'https://freedom-calculator.noeldemartin.com');
 Route::permanentRedirect('experiments/online-meeting', 'https://github.com/NoelDeMartin/noeldemartin.com/blob/c19b46c7be28e5de7fc903294554756dcaa2dae9/resources/assets/js/experiments/online-meeting.js');
 Route::permanentRedirect('experiments/synonymizer', 'https://github.com/NoelDeMartin/noeldemartin.com/blob/0c99cb3149b846ffc9b9ae07c0f0d709beedf66a/app/Http/Controllers/ExperimentsController.php#L30..L53');
+
+Route::get('{slug}', [PagesController::class, 'show'])->where('slug', '.+')->name('pages.show');

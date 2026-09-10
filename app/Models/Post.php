@@ -19,6 +19,13 @@ class Post extends StatamicModel
         return $summary;
     }
 
+    public function summaryText(): string
+    {
+        $decoded = html_entity_decode($this->summary(), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+
+        return preg_replace('/\s+/', ' ', trim(strip_tags($decoded))) ?? '';
+    }
+
     public function words(): int
     {
         return str_word_count(strip_tags($this->content));

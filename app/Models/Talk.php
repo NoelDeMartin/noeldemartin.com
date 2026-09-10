@@ -2,27 +2,60 @@
 
 namespace App\Models;
 
+use DateTimeInterface;
+
 class Talk extends StatamicModel
 {
-    public function imageUrl(): ?string
+    public function talkSlug(): ?string
     {
         if (is_null($this->id())) {
             return null;
         }
 
-        $slug = preg_replace('/\\-talk$/', '', $this->id());
+        return preg_replace('/\\-talk$/', '', $this->id());
+    }
+
+    public function imageUrl(): ?string
+    {
+        $slug = $this->talkSlug();
+
+        if (is_null($slug)) {
+            return null;
+        }
 
         return "/img/talks/{$slug}.png";
     }
 
     public function slidesUrl(): ?string
     {
-        if (is_null($this->id())) {
+        $slug = $this->talkSlug();
+
+        if (is_null($slug)) {
             return null;
         }
 
-        $slug = preg_replace('/\\-talk$/', '', $this->id());
-
         return "/slides/{$slug}";
+    }
+
+    public function markdownUrl(): ?string
+    {
+        $slug = $this->talkSlug();
+
+        if (is_null($slug)) {
+            return null;
+        }
+
+        return "/talks/{$slug}.md";
+    }
+
+    public function details(): string
+    {
+        $year = $this->presentation_date instanceof DateTimeInterface
+            ? $this->presentation_date->format('Y')
+            : null;
+
+        return collect([$this->value('conference'), $this->value('location'), $year])
+            ->filter()
+            ->implode(', ');
     }
 }

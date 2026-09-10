@@ -7,6 +7,7 @@ test('Home', function () {
     $response->assertSee('hey@noeldemartin.com');
     $response->assertSee('My Youtube channel');
     $response->assertSee('https://youtube.com/@noeldemartin');
+    $response->assertDontSee('type="text/markdown"');
     assertSeeIn($response, 'main', 'Hi there!');
 });
 

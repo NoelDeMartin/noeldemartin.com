@@ -3,9 +3,11 @@
 namespace App\Providers;
 
 use App\Services\ActivityService;
+use App\Services\AlternateUrlsService;
 use App\Support\DiscoverStatamicModels;
 use App\Support\Markdown\FencedCodeRenderer;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Nightwatch\Facades\Nightwatch;
@@ -21,16 +23,23 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->singleton('activity', ActivityService::class);
+        $this->app->scoped('alternate-urls', AlternateUrlsService::class);
     }
 
     public function boot(): void
     {
         ini_set('memory_limit', '512M');
 
+        $this->bootBladeDirectives();
         $this->bootCarbon();
         $this->bootMarkdown();
         $this->bootStatamicModels();
         $this->bootNightwatch();
+    }
+
+    protected function bootBladeDirectives(): void
+    {
+        Blade::directive('alternateUrls', fn (): string => "<?php echo app('alternate-urls')->render(); ?>");
     }
 
     protected function bootCarbon(): void

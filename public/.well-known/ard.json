@@ -39,6 +39,18 @@
             "tags": ["sitemap", "index"]
         },
         {
+            "identifier": "urn:air:noeldemartin.com:site:llms",
+            "displayName": "LLMs.txt",
+            "type": "text/plain",
+            "url": "https://noeldemartin.com/llms.txt",
+            "description": "Compact machine-readable markdown overview of Noel De Martin's site and content for AI agents.",
+            "representativeQueries": [
+                "Noel De Martin site overview for AI",
+                "Machine-readable markdown index of noeldemartin.com"
+            ],
+            "tags": ["llmstxt", "ai", "markdown", "index"]
+        },
+        {
             "identifier": "urn:air:noeldemartin.com:skills:index",
             "displayName": "Agent Skills Index",
             "type": "application/json",

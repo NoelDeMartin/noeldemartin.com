@@ -31,7 +31,8 @@
         />
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-        @semanticSEO()
+        @semanticSEO
+        @alternateUrls
         @vite(['resources/assets/css/main.css', 'resources/assets/js/main.js'])
         @stack('head')
     </head>

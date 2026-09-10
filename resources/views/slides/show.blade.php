@@ -9,6 +9,7 @@
         @vite(['resources/assets/js/slides.js'])
         @vite(['resources/assets/css/main.css', 'resources/assets/js/main.js'])
         @semanticSEO
+        @alternateUrls
     </head>
     <body
         x-data="slides"

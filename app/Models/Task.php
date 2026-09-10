@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Statamic\Entries\Entry as EntryModel;
 use Statamic\Entries\EntryCollection;
 use Statamic\Facades\Entry;
 
@@ -13,7 +14,7 @@ use Statamic\Facades\Entry;
 class Task extends StatamicModel
 {
     /**
-     * @return EntryCollection<Comment>
+     * @return EntryCollection<int, EntryModel>
      */
     public function comments(): EntryCollection
     {

@@ -80,6 +80,7 @@ class ApplySemanticSEO
     {
         $response->headers->set('Link', [
             '</sitemap.xml>; rel="sitemap"',
+            '</llms.txt>; rel="describedby"; type="text/plain"',
             '</blog/rss.xml>; rel="alternate"; type="application/atom+xml"',
             '</now/rss.xml>; rel="alternate"; type="application/atom+xml"',
             '</.well-known/ard.json>; rel="ard"',

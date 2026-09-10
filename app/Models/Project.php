@@ -19,6 +19,14 @@ class Project extends StatamicModel
         };
     }
 
+    public function description(): string
+    {
+        $content = $this->entry->value('content');
+        $decoded = html_entity_decode(is_string($content) ? $content : '', ENT_QUOTES | ENT_HTML5, 'UTF-8');
+
+        return preg_replace('/\s+/', ' ', trim(strip_tags($decoded))) ?? '';
+    }
+
     /**
      * @return array<array{url: string, description: string}>
      */

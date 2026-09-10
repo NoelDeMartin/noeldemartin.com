@@ -7,12 +7,37 @@ test('Link headers', function () {
     $response->assertHeader('Link');
     expect($response->headers->all('Link'))->toEqual([
         '</sitemap.xml>; rel="sitemap"',
+        '</llms.txt>; rel="describedby"; type="text/plain"',
         '</blog/rss.xml>; rel="alternate"; type="application/atom+xml"',
         '</now/rss.xml>; rel="alternate"; type="application/atom+xml"',
         '</.well-known/ard.json>; rel="ard"',
         '</.well-known/ard.json>; rel="ai-catalog"',
         '</.well-known/agent-skills/index.json>; rel="agent-skills"',
     ]);
+});
+
+test('LLMs.txt', function () {
+    $response = $this->get('/llms.txt');
+
+    $response->assertStatus(200);
+    $response->assertHeader('Content-Type', 'text/plain; charset=utf-8');
+    $response->assertSee('# Noel De Martin', false);
+    $response->assertSee('## Main Pages', false);
+    $response->assertSee('## Blog posts', false);
+    $response->assertSee('## Talks & Presentations', false);
+    $response->assertSee('## Projects', false);
+    $response->assertSee('/blog/starting-something-new.md', false);
+    $response->assertSee('/talks/interoperable-serendipity.md', false);
+    $response->assertSee('https://umai.noeldemartin.com', false);
+    $response->assertSee('https://soukai.js.org', false);
+    $response->assertSee('/projects/geemba.md', false);
+});
+
+test('Robots.txt', function () {
+    $content = file_get_contents(public_path('robots.txt'));
+
+    expect($content)->toContain('/llms.txt');
+    expect($content)->toContain('Content-Signal: search=yes, ai-input=yes, ai-train=yes');
 });
 
 test('Agent discovery files', function () {
