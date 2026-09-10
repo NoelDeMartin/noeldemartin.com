@@ -1,0 +1,68 @@
+{
+    "$context": "https://agenticresourcediscovery.org/context/v1",
+    "specVersion": "1.0",
+    "host": {
+        "name": "Noel De Martin",
+        "url": "https://noeldemartin.com",
+        "description": "Personal website, software portfolio, and blog of Noel De Martin."
+    },
+    "entries": [
+        {
+            "identifier": "urn:air:noeldemartin.com:feeds:blog",
+            "displayName": "Blog Atom Feed",
+            "type": "application/atom+xml",
+            "url": "https://noeldemartin.com/blog/rss.xml",
+            "description": "Atom feed containing Noel De Martin's latest articles.",
+            "representativeQueries": ["Noel De Martin blog posts"],
+            "tags": ["blog", "atom", "rss"]
+        },
+        {
+            "identifier": "urn:air:noeldemartin.com:feeds:now",
+            "displayName": "Now Activity Feed",
+            "type": "application/atom+xml",
+            "url": "https://noeldemartin.com/now/rss.xml",
+            "description": "Atom feed of Noel De Martin's ongoing activities, reading updates, and milestones.",
+            "representativeQueries": ["What is Noel De Martin working on now"],
+            "tags": ["now", "updates", "activity", "atom", "rss"]
+        },
+        {
+            "identifier": "urn:air:noeldemartin.com:site:sitemap",
+            "displayName": "Site Map",
+            "type": "application/xml",
+            "url": "https://noeldemartin.com/sitemap.xml",
+            "description": "Complete sitemap index of all pages, articles, talks, and tasks on noeldemartin.com.",
+            "representativeQueries": [
+                "Index of pages on noeldemartin.com",
+                "List of URLs on Noel De Martin's website",
+                "All posts and talks on noeldemartin.com"
+            ],
+            "tags": ["sitemap", "index"]
+        },
+        {
+            "identifier": "urn:air:noeldemartin.com:skills:index",
+            "displayName": "Agent Skills Index",
+            "type": "application/json",
+            "url": "https://noeldemartin.com/.well-known/agent-skills/index.json",
+            "description": "Agent Skills Discovery RFC index for Noel De Martin.",
+            "representativeQueries": [
+                "Noel De Martin agent skills discovery",
+                "Available developer skills index",
+                "Agent skills published by Noel De Martin"
+            ],
+            "tags": ["agent-skills", "discovery", "ai-agents"]
+        },
+        {
+            "identifier": "urn:air:noeldemartin.com:skills:programming",
+            "displayName": "Programming Skills",
+            "type": "text/html",
+            "url": "https://github.com/noeldemartin/skills",
+            "description": "Curated collection of AI agent skills and programming patterns published by Noel De Martin.",
+            "representativeQueries": [
+                "Noel De Martin agent skills",
+                "Programming skills for AI agents",
+                "Software architecture patterns by Noel De Martin"
+            ],
+            "tags": ["agent-skills", "skills", "github", "programming-patterns"]
+        }
+    ]
+}

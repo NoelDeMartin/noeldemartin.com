@@ -9,7 +9,23 @@ test('Link headers', function () {
         '</sitemap.xml>; rel="sitemap"',
         '</blog/rss.xml>; rel="alternate"; type="application/atom+xml"',
         '</now/rss.xml>; rel="alternate"; type="application/atom+xml"',
+        '</.well-known/ard.json>; rel="ard"',
+        '</.well-known/ard.json>; rel="ai-catalog"',
+        '</.well-known/agent-skills/index.json>; rel="agent-skills"',
     ]);
+});
+
+test('Agent discovery files', function () {
+    $ard = json_decode(file_get_contents(public_path('.well-known/ard.json')), true);
+    expect($ard)->toBeArray();
+    expect($ard['specVersion'])->toBe('1.0');
+
+    $skillsIndex = json_decode(file_get_contents(public_path('.well-known/agent-skills/index.json')), true);
+    expect($skillsIndex)->toBeArray();
+
+    $skill = $skillsIndex['skills'][0];
+    $skillContent = file_get_contents(public_path('.well-known/agent-skills/noeldemartin-skills/SKILL.md'));
+    expect($skill['digest'])->toBe('sha256:' . hash('sha256', $skillContent));
 });
 
 test('Sitemap', function () {

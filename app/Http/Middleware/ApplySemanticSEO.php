@@ -82,6 +82,9 @@ class ApplySemanticSEO
             '</sitemap.xml>; rel="sitemap"',
             '</blog/rss.xml>; rel="alternate"; type="application/atom+xml"',
             '</now/rss.xml>; rel="alternate"; type="application/atom+xml"',
+            '</.well-known/ard.json>; rel="ard"',
+            '</.well-known/ard.json>; rel="ai-catalog"',
+            '</.well-known/agent-skills/index.json>; rel="agent-skills"',
         ], false);
     }
 }
