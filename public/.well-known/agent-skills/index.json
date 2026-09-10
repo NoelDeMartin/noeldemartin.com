@@ -1,12 +1,12 @@
 {
-  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
-  "skills": [
-    {
-      "name": "noeldemartin-skills",
-      "type": "skill-md",
-      "description": "Discovers and installs Noel De Martin's programming pattern skills for AI agents from https://github.com/noeldemartin/skills.",
-      "url": "https://noeldemartin.com/.well-known/agent-skills/noeldemartin-skills/SKILL.md",
-      "digest": "sha256:cb990df63b449bac8883d849dd5b1120f4b3b7965ae2f82da557a435e908e6a9"
-    }
-  ]
+    "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+    "skills": [
+        {
+            "name": "noeldemartin-skills",
+            "type": "skill-md",
+            "description": "Discovers and installs Noel De Martin's programming pattern skills for AI agents from https://github.com/noeldemartin/skills.",
+            "url": "https://noeldemartin.com/.well-known/agent-skills/noeldemartin-skills/SKILL.md",
+            "digest": "sha256:cb990df63b449bac8883d849dd5b1120f4b3b7965ae2f82da557a435e908e6a9"
+        }
+    ]
 }
