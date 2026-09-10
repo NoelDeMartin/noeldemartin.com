@@ -1,5 +1,17 @@
 <?php
 
+test('Link headers', function () {
+    $response = $this->get('/');
+
+    $response->assertStatus(200);
+    $response->assertHeader('Link');
+    expect($response->headers->all('Link'))->toEqual([
+        '</sitemap.xml>; rel="sitemap"',
+        '</blog/rss.xml>; rel="alternate"; type="application/atom+xml"',
+        '</now/rss.xml>; rel="alternate"; type="application/atom+xml"',
+    ]);
+});
+
 test('Sitemap', function () {
     $response = $this->get('/sitemap.xml');
 

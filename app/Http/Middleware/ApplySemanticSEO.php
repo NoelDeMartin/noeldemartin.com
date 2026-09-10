@@ -16,11 +16,17 @@ class ApplySemanticSEO
     {
         $entry = $this->findEntry();
 
-        if (! is_null($entry)) {
-            $this->applyEntry($entry);
+        if (is_null($entry)) {
+            return $next($request);
         }
 
-        return $next($request);
+        $this->applyEntry($entry);
+
+        $response = $next($request);
+
+        $this->applyLinkHeaders($response);
+
+        return $response;
     }
 
     protected function findEntry(): ?Entry
@@ -68,5 +74,14 @@ class ApplySemanticSEO
 
             return;
         }
+    }
+
+    protected function applyLinkHeaders(Response $response): void
+    {
+        $response->headers->set('Link', [
+            '</sitemap.xml>; rel="sitemap"',
+            '</blog/rss.xml>; rel="alternate"; type="application/atom+xml"',
+            '</now/rss.xml>; rel="alternate"; type="application/atom+xml"',
+        ], false);
     }
 }
