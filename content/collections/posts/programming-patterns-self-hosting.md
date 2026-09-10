@@ -144,6 +144,8 @@ One of the reasons why I'm confident running my own software is that I know it's
 That's mostly everything I wanted to talk about, but there's still a couple of things I wanted to mention. I'll end the post by sharing some rapid-fire tips & tricks:
 
 - All these Docker updates can end up consuming a lot of space, so I have configured a cron job that runs `docker system prune -f` once a week.
+- You should also regularly prune Docker container logs, which you can do by configuring a global log rotation in `/etc/docker/daemon.json` (for example, `"max-size": "20m"` and `"max-file": "3"`).
+- If you configure an automated nginx + certbot system, make sure to set up [a renewal hook](https://eff-certbot.readthedocs.io/en/stable/using.html#setting-up-automated-renewal) to reload your Docker containers.
 - You may have noticed that I don't have any automatic deploys set up. That's a conscious choice, I prefer to simply log into the server and run the commands.
 - I have been thinking about my digital legacy, and what's going to happen with all of this once I'm gone. So I'm keeping an eye on [keepsite.org](https://keepsite.org/).
 - Also check out Derek Sivers' [Tech Independence guide](https://sive.rs/ti) for similar tips, with step-by-step instructions to set this all up yourself.
