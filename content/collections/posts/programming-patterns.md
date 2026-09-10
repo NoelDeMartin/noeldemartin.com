@@ -3,7 +3,7 @@ id: programming-patterns
 blueprint: post
 title: 'Programming Patterns'
 publication_date: '2026-07-06T15:43:00+02:00'
-modification_date: '2026-07-13T16:10:00+02:00'
+modification_date: '2026-09-10T19:41:00+02:00'
 ---
 
 <img src="/img/blog/ProgrammingPatterns.jpg" alt="" class="sr-only" />
@@ -40,5 +40,6 @@ Here you'll be able to find an up-to-date list with all the patterns:
 
 1. [Better Modals](https://noeldemartin.com/blog/the-problems-with-modals-and-how-to-solve-them) (Frontend)
 2. [Magic Objects](https://noeldemartin.com/blog/programming-patterns-magic-objects) (JavaScript)
+3. [Self-hosting](https://noeldemartin.com/blog/programming-patterns-self-hosting)
 
 If you want to use them with your programming agents, you can also find them distilled for AI in my LLM skills: [github.com/noeldemartin/skills](https://github.com/noeldemartin/skills)
