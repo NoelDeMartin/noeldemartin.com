@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\Health;
-use App\Http\Controllers\LLMsTxt;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NowController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PodcastController;
@@ -12,6 +12,8 @@ use App\Http\Controllers\TalksController;
 use App\Http\Controllers\TasksController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/', [HomeController::class, 'html'])->name('home');
+Route::get('llms.txt', [HomeController::class, 'markdown'])->name('llms.txt');
 Route::get('blog/rss.xml', [BlogController::class, 'feed'])->name('blog.rss');
 Route::get('blog/styles.xsl', [BlogController::class, 'styles'])->name('blog.xsl');
 Route::get('blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
@@ -24,7 +26,6 @@ Route::get('podcast/feed.xml', [PodcastController::class, 'feed'])->name('podcas
 Route::get('podcast/styles.xsl', [PodcastController::class, 'styles'])->name('podcast.xsl');
 Route::get('health', Health::class)->name('health');
 Route::get('sitemap.xml', SiteMap::class)->name('sitemap');
-Route::get('llms.txt', LLMsTxt::class)->name('llms');
 
 Route::redirect('fosdem', 'https://www.youtube.com/watch?v=kPzhykRVDuI');
 Route::redirect('solid-world', 'https://www.youtube.com/watch?v=cajBTJXmKhA');

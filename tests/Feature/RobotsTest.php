@@ -6,8 +6,9 @@ test('Link headers', function () {
     $response->assertStatus(200);
     $response->assertHeader('Link');
     expect($response->headers->all('Link'))->toEqual([
+        '</llms.txt>; rel="alternate"; type="text/markdown"',
         '</sitemap.xml>; rel="sitemap"',
-        '</llms.txt>; rel="describedby"; type="text/plain"',
+        '</llms.txt>; rel="describedby"; type="text/markdown"',
         '</blog/rss.xml>; rel="alternate"; type="application/atom+xml"',
         '</now/rss.xml>; rel="alternate"; type="application/atom+xml"',
         '</.well-known/ard.json>; rel="ard"',
@@ -20,7 +21,8 @@ test('LLMs.txt', function () {
     $response = $this->get('/llms.txt');
 
     $response->assertStatus(200);
-    $response->assertHeader('Content-Type', 'text/plain; charset=utf-8');
+    $response->assertHeader('Content-Type', 'text/markdown; charset=utf-8');
+    $response->assertHeaderMissing('Vary');
     $response->assertSee('# Noel De Martin', false);
     $response->assertSee('## Main Pages', false);
     $response->assertSee('## Blog posts', false);

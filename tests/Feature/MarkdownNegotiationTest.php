@@ -129,16 +129,40 @@ test('Slides HTML advertises talks markdown alternate', function () {
     $response->assertSee('href="' . url('/talks/interoperable-serendipity.md') . '"', false);
 });
 
+test('Home page markdown negotiation returns llms.txt content', function () {
+    $llmsResponse = $this->get('/llms.txt');
+
+    $response = $this->withHeader('Accept', 'text/markdown')->get('/');
+
+    $response->assertStatus(200);
+    $response->assertHeader('Content-Type', 'text/markdown; charset=utf-8');
+    $response->assertHeader('Vary', 'Accept');
+    $response->assertHeader('Content-Signal', 'search=yes, ai-input=yes, ai-train=yes');
+    $response->assertHeader('x-markdown-tokens');
+    expect($response->getContent())->toEqual($llmsResponse->getContent());
+
+    $xMarkdownResponse = $this->withHeader('Accept', 'text/x-markdown')->get('/');
+    $xMarkdownResponse->assertStatus(200);
+    $xMarkdownResponse->assertHeader('Content-Type', 'text/markdown; charset=utf-8');
+    expect($xMarkdownResponse->getContent())->toEqual($llmsResponse->getContent());
+});
+
+test('Home page HTML response advertises llms.txt markdown alternate Link header and tag', function () {
+    $response = $this->get('/');
+
+    $response->assertStatus(200);
+    $response->assertHeader('Content-Type', 'text/html; charset=utf-8');
+    $response->assertHeader('Vary', 'Accept');
+    expect($response->headers->all('Link'))->toContain('</llms.txt>; rel="alternate"; type="text/markdown"');
+    $response->assertSee('type="text/markdown"', false);
+    $response->assertSee('href="' . url('/llms.txt') . '"', false);
+});
+
 test('Non-markdown entries keep sending HTML even when text/markdown is accepted', function () {
     // /blog is a listing page
     $blogResponse = $this->withHeader('Accept', 'text/markdown')->get('/blog');
     $blogResponse->assertStatus(200);
     $blogResponse->assertHeader('Content-Type', 'text/html; charset=utf-8');
-
-    // / is the home page
-    $homeResponse = $this->withHeader('Accept', 'text/markdown')->get('/');
-    $homeResponse->assertStatus(200);
-    $homeResponse->assertHeader('Content-Type', 'text/html; charset=utf-8');
 
     // /now is a dynamic activity page
     $nowResponse = $this->withHeader('Accept', 'text/markdown')->get('/now');
