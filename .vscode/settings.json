@@ -6,5 +6,9 @@
                 "cmd": "npx prettier ${file} --write"
             }
         ]
-    }
+    },
+    "intelephense.environment.includePaths": [
+        "vendor/rector/rector/src",
+        "vendor/rector/rector/rules"
+    ]
 }
