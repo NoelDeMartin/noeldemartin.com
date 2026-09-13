@@ -71,6 +71,18 @@ test('Blog RSS', function () {
     $response->assertStatus(200);
     $response->assertSee('<feed xmlns="http://www.w3.org/2005/Atom">', false);
     $response->assertSee('Starting Something New');
+    $response->assertSee('Programming Patterns: Self-hosting');
+    $response->assertSee('I have been self-hosting for more than a decade');
+    $response->assertSee('hey@noeldemartin.com');
+    $response->assertDontSee('&lt;aside', false);
+    $response->assertDontSee('<aside');
+    $response->assertDontSee('{{ partial:components/callout');
+    $response->assertDontSee('{{ noparse');
+    $response->assertDontSee('{{ /noparse');
+    $response->assertDontSee('{{contact.email}}');
+    $response->assertDontSee('@{{');
+    $this->assertDoesNotMatchRegularExpression('/\{\{.*?\}\}/', $response->getContent());
+    $this->assertDoesNotMatchRegularExpression('/@\{\{.*?\}\}/', $response->getContent());
 });
 
 test('Now RSS', function () {
@@ -87,6 +99,9 @@ test('Now RSS', function () {
     $response->assertSee('Starting Something New');
     $response->assertSee('Reading Musashi by Eiji Yoshikawa');
     $response->assertSee('Solid Unleashed');
+    $response->assertSee('I\'ve wanted to grow vegetables at home for a long time');
+    $response->assertDontSee('@{{');
+    $response->assertDontSee('{{contact:email}}');
 });
 
 test('Health', function () {

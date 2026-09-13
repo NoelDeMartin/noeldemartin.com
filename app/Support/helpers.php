@@ -4,6 +4,9 @@ use Carbon\Carbon;
 use Illuminate\Support\Arr;
 use Statamic\Facades\Entry;
 use Statamic\Facades\GlobalSet;
+use Statamic\Facades\Markdown;
+use Statamic\Globals\GlobalSet as GlobalSetModel;
+use Statamic\Globals\Variables;
 use Statamic\Statamic;
 use Symfony\Component\Routing\Exception\RouteNotFoundException;
 
@@ -188,6 +191,53 @@ if (! function_exists('carbon')) {
     function carbon(string $date): Carbon
     {
         return new Carbon($date);
+    }
+
+}
+
+if (! function_exists('clean_markdown')) {
+
+    function clean_markdown(string $content): string
+    {
+        $contact = GlobalSet::findByHandle('contact');
+        $contactSite = $contact instanceof GlobalSetModel ? $contact->inDefaultSite() : null;
+        $email = $contactSite instanceof Variables ? $contactSite->get('email') : null;
+        $contactEmail = is_string($email) ? $email : config()->string('mail.from.address', 'hey@noeldemartin.com');
+
+        $content = str_replace(
+            ['{{contact.email}}', '{{contact:email}}'],
+            $contactEmail,
+            $content,
+        );
+
+        $content = str_replace(
+            ["{{ noparse }}\n", '{{ noparse }}', "{{ /noparse }}\n", '{{ /noparse }}'],
+            '',
+            $content,
+        );
+
+        $content = str_replace('@{{', '{{', $content);
+
+        $content = preg_replace('/\{\{\s*partial[:\s][^}]+\/\}\}/', '', $content) ?? $content;
+
+        return preg_replace('/\{\{\s*partial[:\s][^}]+\}\}[\s\S]*?\{\{\s*\/partial:[^}]+\}\}/', '', $content) ?? $content;
+    }
+
+}
+
+if (! function_exists('clean_entry_html')) {
+
+    function clean_entry_html(\Statamic\Entries\Entry $entry): string
+    {
+        $content = $entry->value('content') ?? $entry->get('content');
+
+        if (! is_string($content) || $content === '') {
+            return '';
+        }
+
+        $cleaned = clean_markdown($content);
+
+        return (string) Markdown::parse($cleaned);
     }
 
 }

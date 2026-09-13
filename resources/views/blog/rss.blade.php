@@ -44,7 +44,7 @@
                 type="html"
                 xml:base="{!! sroute('blog', $post->slug) !!}"
             >
-                {!! htmlspecialchars($post->content) !!}
+                {!! htmlspecialchars(clean_entry_html($post)) !!}
             </content>
         </entry>
     @endforeach

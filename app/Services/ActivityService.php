@@ -113,7 +113,7 @@ class ActivityService
             emoji: '⏳',
             title: "Started \"{$task->title}\"",
             description: "Started <a href=\"{$url}\">{$task->title}</a>",
-            longDescription: "<p>I just started a new task: <a href=\"{$url}\">{$task->title}</a></p>{$task->content}",
+            longDescription: "<p>I just started a new task: <a href=\"{$url}\">{$task->title}</a></p>" . clean_entry_html($task),
             url: $url,
         )];
 
@@ -146,7 +146,7 @@ class ActivityService
             emoji: '💬',
             title: "Commented on \"{$task->title}\"",
             description: "Commented on <a href=\"{$url}\">{$task->title}</a>",
-            longDescription: $comment->content,
+            longDescription: clean_entry_html($comment),
             url: $url
         )];
     }

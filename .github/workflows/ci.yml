@@ -32,4 +32,4 @@ jobs:
       - name: Run Node Build
         run: npm run build
       - name: Run Tests
-        run: php artisan test
+        run: php artisan test --parallel

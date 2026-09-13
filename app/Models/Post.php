@@ -11,12 +11,14 @@ class Post extends StatamicModel
 {
     public function summary(): string
     {
-        $summary = substr($this->content, 0, strpos($this->content, '<h2') ?: 0);
-        $summary = preg_replace('/\{\{.*?\}\}/s', '', $summary) ?: '';
+        $cleanContent = clean_entry_html($this->entry);
+        $summary = substr($cleanContent, 0, strpos($cleanContent, '<h2') ?: 0);
+        $summary = preg_replace('/<aside[^>]*>.*?<\/aside>/s', '', $summary) ?: '';
         $summary = preg_replace('/<a(\s|>)[^>]*>(.*?)<\/a>/', '$2', $summary) ?: '';
         $summary = preg_replace('/<img[^>]*>/', '', $summary) ?: '';
+        $summary = preg_replace('/<p>\s*<\/p>/', '', $summary) ?: '';
 
-        return $summary;
+        return trim($summary);
     }
 
     public function summaryText(): string

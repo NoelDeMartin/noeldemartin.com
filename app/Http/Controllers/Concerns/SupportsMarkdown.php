@@ -5,9 +5,6 @@ namespace App\Http\Controllers\Concerns;
 use App\Support\Facades\AlternateUrls;
 use Illuminate\Http\Response;
 use Statamic\Entries\Entry;
-use Statamic\Facades\GlobalSet;
-use Statamic\Globals\GlobalSet as GlobalSetModel;
-use Statamic\Globals\Variables;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 use Symfony\Component\Yaml\Yaml;
 
@@ -81,30 +78,6 @@ trait SupportsMarkdown
         $rawContent = $entry->value('content') ?? $entry->get('content');
         $body = is_string($rawContent) ? $rawContent : '';
 
-        return $this->cleanMarkdownBody($body);
-    }
-
-    public function cleanMarkdownBody(string $body): string
-    {
-        $contact = GlobalSet::findByHandle('contact');
-        $contactSite = $contact instanceof GlobalSetModel ? $contact->inDefaultSite() : null;
-        $email = $contactSite instanceof Variables ? $contactSite->get('email') : null;
-        $contactEmail = is_string($email) ? $email : config()->string('mail.from.address', 'hey@noeldemartin.com');
-
-        $body = str_replace(
-            ['{{contact.email}}', '{{contact:email}}'],
-            $contactEmail,
-            $body,
-        );
-
-        $body = str_replace(
-            ["{{ noparse }}\n", '{{ noparse }}', "{{ /noparse }}\n", '{{ /noparse }}'],
-            '',
-            $body,
-        );
-
-        $body = preg_replace('/\{\{\s*partial[:\s][^}]+\/\}\}/', '', $body) ?? $body;
-
-        return preg_replace('/\{\{\s*partial[:\s][^}]+\}\}[\s\S]*?\{\{\s*\/partial:[^}]+\}\}/', '', $body) ?? $body;
+        return clean_markdown($body);
     }
 }

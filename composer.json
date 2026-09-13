@@ -86,7 +86,7 @@
             "@lint:check",
             "@rector:check",
             "@types:check",
-            "@php artisan test"
+            "@php artisan test --parallel"
         ]
     },
     "extra": {

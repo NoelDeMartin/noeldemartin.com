@@ -50,7 +50,7 @@ class BlogController extends Controller
          * @var string
          */
         $xml = Cache::remember('blog-rss', 3600, function () {
-            $posts = Entry::whereCollection('posts')->sortByDesc('publication_date')->all();
+            $posts = Entry::whereCollection('posts')->sortByDesc('publication_date')->values()->all();
 
             return view('blog.rss', ['posts' => $posts])->render();
         });
