@@ -2,26 +2,24 @@
 
 @section('main')
     <article
-        class="text-black-light isolate mx-auto max-w-[80ch] space-y-10 py-6"
+        class="text-black-light isolate mx-auto max-w-[80ch] space-y-10 sm:py-6"
     >
         <header
             class="relative z-10 m-0 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between sm:bg-white"
         >
             <div class="flex flex-1 flex-col justify-center">
                 <h1
-                    class="text-blue-darkest m-0 text-center text-3xl font-medium tracking-tight sm:text-left sm:text-4xl"
+                    class="text-blue-darkest m-0 text-3xl font-medium tracking-tight sm:text-4xl"
                 >
                     {{ $basics['name'] }}
                 </h1>
-                <p
-                    class="text-blue-darker m-0 text-center text-lg sm:text-left"
-                >
+                <p class="text-blue-darker m-0 text-lg">
                     {{ $basics['label'] }}
                 </p>
             </div>
 
             <div
-                class="text-blue-darkest mx-auto grid w-fit grid-cols-[auto_auto] gap-x-1.5 gap-y-1.5 sm:mr-0 sm:ml-auto sm:text-sm"
+                class="text-blue-darkest grid w-fit grid-cols-[auto_auto] gap-x-1.5 gap-y-1.5 sm:mr-0 sm:ml-auto sm:text-sm"
             >
                 <div class="col-span-2 grid grid-cols-subgrid items-center">
                     <span class="sr-only">Location:</span>
@@ -70,7 +68,7 @@
 
         <x-table-of-contents
             title="Noel De Martin"
-            button-class="sm:mt-16! sm:mr-22!"
+            button-class="z-20 sm:z-0 mt-10! sm:mt-16! sm:mr-22!"
             :landmarks="$landmarks"
         />
 
