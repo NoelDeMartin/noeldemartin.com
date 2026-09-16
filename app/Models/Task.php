@@ -62,13 +62,13 @@ class Task extends StatamicModel
                 $title = $comment->publication_date->display('datetime-short');
 
                 if ($comment->publication_date->eq($startDate)) {
-                    $icon = antlers_icon('task-started', 'size-4 mr-2');
+                    $icon = antlers_icon('task-started', 'size-4 shrink-0 mr-2');
                 } elseif (! is_null($this->completion_date) && $comment->publication_date->eq($this->completion_date)) {
-                    $icon = antlers_icon('task-completed', 'size-4 mr-2');
+                    $icon = antlers_icon('task-completed', 'size-4 shrink-0 mr-2');
                 } elseif (! is_null($this->completion_date) && $comment->publication_date->gt($this->completion_date)) {
-                    $icon = antlers_icon('checkmark', 'size-4 mr-2 text-jade-darker fill-current');
+                    $icon = antlers_icon('checkmark', 'size-4 shrink-0 mr-2 text-jade-darker fill-current');
                 } else {
-                    $icon = antlers_icon('timer', 'size-4 mr-2 text-blue-darker fill-current');
+                    $icon = antlers_icon('timer', 'size-4 shrink-0 mr-2 text-blue-darker fill-current');
                 }
 
                 return (object) [

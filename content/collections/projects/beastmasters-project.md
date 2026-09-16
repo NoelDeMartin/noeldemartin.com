@@ -3,7 +3,7 @@ id: beastmasters-project
 blueprint: project
 title: Beast Masters
 category: discontinued
-logo: /img/logos/beastmasters.png
+logo: /img/logos/beastmasters.jpg
 link: 'entry::beastmasters'
 state: archived
 platform: Android

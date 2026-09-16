@@ -1,3 +1,8 @@
+@php
+    $bare ??= false;
+    $minimal ??= $bare ?? false;
+@endphp
+
 <!DOCTYPE html>
 <html lang="{{ $site->short_locale ?? 'en' }}" prefix="og: http://ogp.me/ns#">
     <head>
@@ -48,27 +53,31 @@
             Skip to content
         </a>
 
-        <x-layout-header :collapsed="$minimal ?? false" />
+        @if (! $bare)
+            <x-layout-header :collapsed="$minimal" />
+        @endif
 
         <turbo-frame
             id="mainframe"
             data-turbo-action="advance"
             class="w-full grow"
         >
-            <x-hire-me :collapsed="$minimal ?? false" />
+            <x-hire-me :collapsed="$minimal" />
 
             <main
                 id="main"
                 class="max-w-content relative mx-auto w-full grow p-4 pt-8 md:px-2"
                 :class="navigationOpen ? 'mt-16' : ''"
-                data-minimal-layout="{{ json_encode($minimal ?? false) }}"
+                data-minimal-layout="{{ json_encode($minimal) }}"
                 data-current-path="{{ '/' . ltrim(request()->path(), '/') }}"
             >
                 @yield('main')
             </main>
         </turbo-frame>
 
-        <x-layout-footer />
+        @if (! $bare)
+            <x-layout-footer />
+        @endif
 
         <!-- Sites Verification -->
         <div class="hidden">

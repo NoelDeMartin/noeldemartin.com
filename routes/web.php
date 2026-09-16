@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\Cv;
+use App\Http\Controllers\CvPdf;
 use App\Http\Controllers\Health;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NowController;
@@ -24,6 +26,8 @@ Route::get('now/styles.xsl', [NowController::class, 'styles'])->name('now.xsl');
 Route::get('tasks/{slug}', [TasksController::class, 'show'])->name('tasks.show');
 Route::get('podcast/feed.xml', [PodcastController::class, 'feed'])->name('podcast.feed');
 Route::get('podcast/styles.xsl', [PodcastController::class, 'styles'])->name('podcast.xsl');
+Route::get('cv', Cv::class)->name('cv');
+Route::get('cv.pdf', CvPdf::class)->name('cv.pdf');
 Route::get('health', Health::class)->name('health');
 Route::get('sitemap.xml', SiteMap::class)->name('sitemap');
 

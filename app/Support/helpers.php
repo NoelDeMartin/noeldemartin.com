@@ -2,6 +2,9 @@
 
 use Carbon\Carbon;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+use League\CommonMark\Extension\CommonMark\Node\Inline\Link;
+use League\CommonMark\Extension\DefaultAttributes\DefaultAttributesExtension;
 use Statamic\Facades\Entry;
 use Statamic\Facades\GlobalSet;
 use Statamic\Facades\Markdown;
@@ -191,6 +194,22 @@ if (! function_exists('carbon')) {
     function carbon(string $date): Carbon
     {
         return new Carbon($date);
+    }
+
+}
+
+if (! function_exists('inline_markdown')) {
+
+    function inline_markdown(string $content): string
+    {
+        return Str::inlineMarkdown($content, [
+            'default_attributes' => [
+                Link::class => [
+                    'target' => '_blank',
+                    'rel' => 'noopener noreferrer',
+                ],
+            ],
+        ], [new DefaultAttributesExtension]);
     }
 
 }

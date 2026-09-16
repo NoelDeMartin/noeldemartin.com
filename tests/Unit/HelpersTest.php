@@ -1,5 +1,17 @@
 <?php
 
+test('inline_markdown opens all links in a new tab', function () {
+    $html = inline_markdown('See [brag](/brag) and [Ànima](https://anima.noeldemartin.com/).');
+
+    expect($html)
+        ->toContain('target="_blank"')
+        ->toContain('rel="noopener noreferrer"')
+        ->toContain('href="/brag"')
+        ->toContain('href="https://anima.noeldemartin.com/"');
+
+    expect(substr_count($html, 'target="_blank"'))->toBe(2);
+});
+
 test('Parse landmarks', function () {
     $html = <<<'EOF'
         <h2 id="level-1">

@@ -3,7 +3,7 @@ id: geemba-project
 blueprint: project
 title: Geemba
 category: discontinued
-logo: /img/logos/geemba.png
+logo: /img/logos/geemba.jpg
 link: 'entry::geemba'
 state: archived
 platform: 'Android & iOS'

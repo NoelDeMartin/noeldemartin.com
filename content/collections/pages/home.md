@@ -83,7 +83,7 @@ I don't like talking about skills, because I think that experience and first pri
 
 If you want to know more, some years ago I wrote a summary of my career in my blog: [10 Years as a Software Developer](/blog/10-years-as-a-software-developer).
 
-Or, if you prefer, you can just read [my CV](/cv.pdf).
+Or, if you prefer, you can just read [my CV](/cv).
 
 </div>
 

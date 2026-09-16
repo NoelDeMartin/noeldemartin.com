@@ -9,6 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.5
+          extensions: json, dom, curl, libxml, mbstring
+          coverage: none
+      - uses: typst-community/setup-typst@v3
       - uses: actions/setup-node@v7
         with:
           node-version-file: '.nvmrc'
@@ -23,6 +29,7 @@ jobs:
         run: mv kanjuro/Dockerfile ./
       - name: Build
         run: |
+          composer cv
           npm ci --no-audit
           npm run build
           docker build . --tag ${{ secrets.DOCKERHUB_USERNAME }}/$GITHUB_REPOSITORY_NAME:$GITHUB_SHA

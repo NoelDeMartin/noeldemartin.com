@@ -1,0 +1,225 @@
+{
+    "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+    "basics": {
+        "name": "Noel De Martin",
+        "label": "Senior Product Engineer",
+        "summary": "I'm a Senior Product Engineer with 10+ years of experience. I have led multiple shifts in architecture, as well as built systems from scratch. I thrive in remote environments, and I love to bridge engineering and design in order to deliver the best product and user experience.",
+        "email": "hey@noeldemartin.com",
+        "url": "https://noeldemartin.com",
+        "location": {
+            "city": "Barcelona",
+            "country": "Spain",
+            "countryCode": "ES",
+            "address": "Barcelona, Spain"
+        }
+    },
+    "workIntro": "(Psst, if you want a TLDR of my skills and experience check out [noeldemartin.com/brag](/brag))",
+    "work": [
+        {
+            "name": "Altworth",
+            "note": "Seed stage startup",
+            "image": "/img/logos/altworth.jpg",
+            "position": "Fullstack Developer",
+            "url": "https://altworth.com/",
+            "startDate": "2025-12",
+            "endDate": "2026-04",
+            "duration": "5 months",
+            "period": "December 2025 – April 2026",
+            "dateDisplay": "5 months (December 2025 – April 2026)",
+            "location": "Remote",
+            "highlights": [
+                "Architected the frontend and Backend-for-Frontend for a collectibles e-commerce platform, bridging the payment system with the user interface.",
+                "Modernized the codebase by introducing SOLID principles, automated testing, and strict TypeScript typing."
+            ],
+            "technologies": ["React", "Next.js", "Node.js backend"]
+        },
+        {
+            "name": "Accountali",
+            "note": "Seed stage startup",
+            "image": "/img/logos/accountali.jpg",
+            "position": "Fullstack Developer",
+            "url": "https://accountali.com/",
+            "startDate": "2025-05",
+            "endDate": "2025-12",
+            "duration": "7 months",
+            "period": "May 2025 – December 2025",
+            "dateDisplay": "7 months (May 2025 – December 2025)",
+            "location": "Mataró, Barcelona (Spain)",
+            "highlights": [
+                "Architected an accounting B2B SaaS platform, integrating with Amazon's Selling Partner API and creating processing pipelines.",
+                "Automated Amazon Seller Central invoice processing with a custom browser extension.",
+                "Managed infrastructure, DevOps, and deployments."
+            ],
+            "technologies": ["NestJS", "MongoDB", "VueJS", "TailwindCSS", "WXT"]
+        },
+        {
+            "name": "Moodle",
+            "image": "/img/logos/moodle.jpg",
+            "position": "Fullstack Developer",
+            "url": "https://moodle.com/",
+            "startDate": "2019-11",
+            "endDate": "2024-07",
+            "duration": "4 years, 9 months",
+            "period": "November 2019 – July 2024",
+            "dateDisplay": "4 years, 9 months (November 2019 – July 2024)",
+            "location": "Remote & Barcelona (Spain)",
+            "highlights": [
+                "Lead the architecture and development of the [Apps Portal](https://apps.moodle.com/), a bespoke billing platform.",
+                "Achieved WCAG 2.1AA accreditation for the [Moodle App](https://moodle.com/solutions/moodle-app/), an Open Source mobile app with millions of daily active users.",
+                "Improved testing strategy and code quality of the Apps team, see this presentation for details: [Moodle App Testing: Then and Now](https://www.youtube.com/watch?v=LYDFpaDv27o)."
+            ],
+            "technologies": [
+                "Ionic Framework",
+                "Angular",
+                "PHP",
+                "Moodle",
+                "Chargebee"
+            ]
+        },
+        {
+            "name": "MusicList",
+            "image": "/img/logos/musiclist.jpg",
+            "position": "Fullstack Developer",
+            "url": "https://web.archive.org/web/20200511064326/https://musiclist.com/",
+            "startDate": "2018-06",
+            "endDate": "2019-11",
+            "duration": "1 year, 6 months",
+            "period": "June 2018 – November 2019",
+            "dateDisplay": "1 year, 6 months (June 2018 – November 2019)",
+            "location": "Barcelona (Spain)",
+            "highlights": [
+                "Scaled website with more than 200,000 unique monthly visitors.",
+                "Architected data synchronization pipelines by integrating with various 3rd-party services (Spotify, Apple Music, etc.).",
+                "Coordinated cross-functional UI/UX and engineering teams to prototype, build, and launch mobile and web applications."
+            ],
+            "technologies": [
+                "Laravel",
+                "MySQL",
+                "React Native (Android & iOS)",
+                "VueJS"
+            ]
+        },
+        {
+            "name": "Geemba",
+            "image": "/img/logos/geemba.jpg",
+            "position": "Co-founder",
+            "url": "https://noeldemartin.com/projects/geemba",
+            "startDate": "2016-04",
+            "endDate": "2018-01",
+            "duration": "1 year, 9 months",
+            "period": "April 2016 – January 2018",
+            "dateDisplay": "1 year, 9 months (April 2016 – January 2018)",
+            "location": "Mataró, Barcelona (Spain)",
+            "highlights": [
+                "Co-founded and architected a SaaS platform, designing a microservices architecture and a custom \"pay-per-minute\" billing engine using Stripe.",
+                "Led a cross-functional product team of designers and developers."
+            ],
+            "technologies": [
+                "Laravel",
+                "MySQL",
+                "MongoDB",
+                "Ionic Framework",
+                "Vue",
+                "Angular",
+                "Stripe",
+                "Azure"
+            ]
+        },
+        {
+            "name": "Beast Masters",
+            "image": "/img/logos/beastmasters.jpg",
+            "position": "Technical Lead",
+            "summary": "Worked with illustrators, designers, and sound artists to create a cross-platform mobile multiplayer game.",
+            "url": "https://noeldemartin.com/projects/beastmasters",
+            "startDate": "2014-09",
+            "endDate": "2016-03",
+            "duration": "1 year, 7 months",
+            "period": "September 2014 – March 2016",
+            "dateDisplay": "1 year, 7 months (September 2014 – March 2016)",
+            "location": "Remote (Spain)",
+            "technologies": [
+                "Laravel",
+                "NodeJS",
+                "MySQL",
+                "LibGDX",
+                "Android",
+                "jQuery",
+                "Digital Ocean"
+            ]
+        },
+        {
+            "name": "Toro Intl",
+            "image": "/img/logos/toro-intl.png",
+            "position": "Software Developer",
+            "summary": "Relocated 5 months to Taiwan, and implemented a UI toolkit from scratch using drawing primitives in J2ME.",
+            "url": "https://web.archive.org/web/20140625063816/http://www.toro-intl.com/",
+            "startDate": "2012-08",
+            "endDate": "2014-08",
+            "duration": "2 years",
+            "period": "August 2012 – August 2014",
+            "dateDisplay": "2 years (August 2012 – August 2014)",
+            "location": "Taiwan & Spain",
+            "technologies": [
+                "J2ME",
+                "Android",
+                "Akami ASM (Proprietary language)"
+            ]
+        },
+        {
+            "name": "Veziko",
+            "image": "/img/logos/veziko.jpg",
+            "position": "Web Developer",
+            "summary": "Implemented a SaaS platform for restaurants, participating in multiple entrepreneurship formation programs.",
+            "url": "https://www.linkedin.com/company/veziko/",
+            "startDate": "2011-07",
+            "endDate": "2012-07",
+            "duration": "1 year",
+            "period": "July 2011 – July 2012",
+            "dateDisplay": "1 year (July 2011 – July 2012)",
+            "location": "Mataró, Barcelona (Spain)",
+            "technologies": [
+                "CodeIgniter (PHP)",
+                "MySQL",
+                "Amazon Web Services",
+                "jQuery"
+            ]
+        }
+    ],
+    "projects": [
+        {
+            "name": "Apps, Dev tools, and AI",
+            "image": "/img/myface.png",
+            "description": "I'm always exploring new technologies and learning with side projects, you can find all about them in my website (and [GitHub](https://github.com/noeldemartin)!):",
+            "url": "https://noeldemartin.com/projects",
+            "highlights": [
+                "Working on an AI harness called [Ànima](https://anima.noeldemartin.com/).",
+                "Designed and implemented multiple apps, including [Umai](https://umai.noeldemartin.com/), [Media Kraken](https://noeldemartin.github.io/media-kraken/), and [Focus](https://focus.noeldemartin.com/).",
+                "Creating [a JavaScript framework](/tasks/making-a-web-application-framework) and [Active Record library](https://soukai.js.org) to make interoperable local-first applications (using the Solid Protocol).",
+                "Presented technical deep-dives on my work at various conferences, check out [my talks](/talks)."
+            ],
+            "technologies": [
+                "VueJS",
+                "Laravel",
+                "Tailwind CSS",
+                "Solid Protocol",
+                "Vercel's AI SDK",
+                "Typescript"
+            ]
+        }
+    ],
+    "education": [
+        {
+            "institution": "Universitat Autònoma de Barcelona",
+            "image": "/img/logos/UAB.jpg",
+            "url": "http://uab.cat/",
+            "area": "Software Engineering",
+            "studyType": "Bachelor’s in Software Engineering",
+            "startDate": "2008",
+            "endDate": "2011",
+            "duration": "3 years",
+            "period": "2008 – 2011",
+            "dateDisplay": "3 years (2008 – 2011)",
+            "location": "Sabadell, Barcelona (Spain)"
+        }
+    ]
+}
