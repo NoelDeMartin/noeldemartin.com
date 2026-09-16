@@ -5,6 +5,13 @@ document.addEventListener('turbo:click', () => {
 
 document.addEventListener('turbo:frame-load', (event) => {
     const header = document.querySelector('header');
+
+    if (!header) {
+        Turbo.navigator.delegate.adapter.progressBar.hide();
+
+        return;
+    }
+
     const frameData = event.target.querySelector('#main').dataset;
     const currentNav = header.querySelector('[aria-current]');
 
