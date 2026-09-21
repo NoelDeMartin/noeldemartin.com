@@ -20,20 +20,14 @@
                     {{ $position }}
                 </h3>
 
-                <div class="flex gap-1">
-                    <a
-                        href="{{ $url }}"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="text-blue-darkest text-sm underline"
-                    >
-                        {{ $name }}
-                    </a>
-
-                    @if (isset($note) && ! empty($note))
-                        <span class="text-sm">({{ $note }})</span>
-                    @endif
-                </div>
+                <a
+                    href="{{ $url }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-blue-darkest text-sm underline"
+                >
+                    {{ $name }}
+                </a>
             </div>
         </div>
 
@@ -76,12 +70,16 @@
                 @endforeach
             </ul>
         @endif
+
+        @if (isset($note) && ! empty($note))
+            <p class="text-xs italic">Note: {{ $note }}</p>
+        @endif
     </div>
 
     @if (isset($technologies) && ! empty($technologies))
         <p class="text-black-light mt-2 text-sm leading-normal">
             <span class="text-blue-darkest font-semibold">Technologies:</span>
-            {{ implode(', ', $technologies) }}
+            {{ implode(', ', $technologies) }}.
         </p>
     @endif
 </article>

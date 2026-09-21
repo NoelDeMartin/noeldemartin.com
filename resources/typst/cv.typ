@@ -129,9 +129,6 @@
         [
           #text(weight: "bold", size: 11pt, fill: color-black)[#title] \
           #link(url)[#text(size: 9.5pt, fill: color-blue-darkest)[#subtitle]]
-          #if note != none and note != "" [
-            #text(size: 9.5pt, fill: color-black-light)[ (#note)]
-          ]
         ],
         [
           #text(fill: color-grey-darker, weight: "regular", size: 9.5pt)[#period] \
@@ -162,10 +159,15 @@
             )
         ]
 
+        #if note != none and note != "" [
+          #v(0.25em)
+          #text(size: 8.5pt, style: "italic", fill: color-black-light)[Note: #note]
+        ]
+
         #if technologies.len() > 0 [
           #v(0.25em)
           #text(size: 9pt)[
-            #text(weight: "bold", fill: color-blue-darkest)[Technologies:] #text(fill: color-grey-darkest)[#technologies.join(", ")]
+            #text(weight: "bold", fill: color-blue-darkest)[Technologies:] #text(fill: color-grey-darkest)[#technologies.join(", ").]
           ]
         ]
       ]
