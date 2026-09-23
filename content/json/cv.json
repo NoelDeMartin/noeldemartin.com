@@ -16,6 +16,20 @@
     "workIntro": "(Psst, if you want a TLDR of my skills and experience check out [noeldemartin.com/brag](/brag))",
     "work": [
         {
+            "name": "Solid Protocol",
+            "image": "/img/logos/solid-protocol.png",
+            "position": "Freelance Developer",
+            "url": "https://solidproject.org",
+            "startDate": "2026-05",
+            "endDate": "present",
+            "period": "May 2026 – present",
+            "location": "Remote",
+            "highlights": [
+                "Built [Design System for SolidOS](https://solidos.solidcommunity.net/public/2026/NLnet%20Grant%20Milestone%203m%20and%203p.html)."
+            ],
+            "technologies": ["VueJS", "Web Components", "TypeScript"]
+        },
+        {
             "name": "Altworth",
             "note": "role concluded as startup was unable to secure funding.",
             "image": "/img/logos/altworth.jpg",

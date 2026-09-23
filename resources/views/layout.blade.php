@@ -62,8 +62,6 @@
             data-turbo-action="advance"
             class="w-full grow"
         >
-            <x-hire-me :collapsed="$minimal" />
-
             <main
                 id="main"
                 class="max-w-content relative mx-auto w-full grow p-4 pt-8 md:px-2"

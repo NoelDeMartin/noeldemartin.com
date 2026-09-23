@@ -175,6 +175,68 @@
   ]
 }
 
+#let work-entry(job) = {
+  let img-path = "../../public" + job.image
+  let subtitle = if job.at("position", default: "") != job.name {
+    job.name
+  } else {
+    job.at("displayUrl", default: job.at("url", default: ""))
+  }
+
+  bookmarked-job(bookmark-entry(start-year(job), job.position, job.name))
+  cv-card(
+    title: job.position,
+    subtitle: subtitle,
+    note: job.at("note", default: none),
+    url: job.at("url", default: none),
+    period: job.at("dateDisplay", default: job.period),
+    location: job.at("location", default: none),
+    image-path: img-path,
+    summary: job.at("summary", default: none),
+    highlights: job.at("highlights", default: ()),
+    technologies: job.at("technologies", default: ()),
+  )
+  v(0.85em)
+}
+
+#let project-entry(project) = {
+  let img-path = "../../public" + project.image
+  let project-display = project.url.replace(regex("^https?://"), "").replace(regex("/$"), "")
+
+  cv-card(
+    title: project.name,
+    subtitle: project-display,
+    url: project.url,
+    image-path: img-path,
+    summary: project.at("description", default: none),
+    highlights: project.at("highlights", default: ()),
+    technologies: project.at("technologies", default: ()),
+  )
+  v(0.85em)
+}
+
+#let education-entry(edu) = {
+  let img-path = "../../public" + edu.image
+
+  bookmarked-job(bookmark-entry(
+    start-year(edu),
+    edu.at("studyType", default: edu.area),
+    edu.institution,
+  ))
+  cv-card(
+    title: edu.at("studyType", default: edu.area),
+    subtitle: edu.institution,
+    url: edu.at("url", default: none),
+    period: edu.at("dateDisplay", default: edu.period),
+    location: edu.at("location", default: none),
+    image-path: img-path,
+    summary: edu.at("summary", default: none),
+    highlights: edu.at("highlights", default: ()),
+    technologies: edu.at("technologies", default: ()),
+  )
+  v(0.85em)
+}
+
 // ==========================================
 // HEADER
 // ==========================================
@@ -216,83 +278,45 @@
 // ==========================================
 // WORK HISTORY
 // ==========================================
-#cv-heading("Work History")
-#v(-2em)
-#text(size: 9pt, style: "italic", fill: color-grey-darker)[#render-text(cv.at("workIntro", default: ""))]
-#v(0.5em)
-
-#for job in cv.at("work", default: ()) [
-  #let img-path = "../../public" + job.image
-
-  #let subtitle = if job.at("position", default: "") != job.name {
-    job.name
-  } else {
-    job.at("displayUrl", default: job.at("url", default: ""))
-  }
-
-  #bookmarked-job(bookmark-entry(start-year(job), job.position, job.name))
-  #cv-card(
-    title: job.position,
-    subtitle: subtitle,
-    note: job.at("note", default: none),
-    url: job.at("url", default: none),
-    period: job.at("dateDisplay", default: job.period),
-    location: job.at("location", default: none),
-    image-path: img-path,
-    summary: job.at("summary", default: none),
-    highlights: job.at("highlights", default: ()),
-    technologies: job.at("technologies", default: ()),
-  )
-  #v(0.85em)
+#let jobs = cv.at("work", default: ())
+#if jobs.len() > 0 [
+  // Keep heading (+ intro) with the first entry so it can't orphan at a page break
+  #block(breakable: false)[
+    #cv-heading("Work History")
+    #v(-2em)
+    #text(size: 9pt, style: "italic", fill: color-grey-darker)[#render-text(cv.at("workIntro", default: ""))]
+    #v(0.5em)
+    #work-entry(jobs.at(0))
+  ]
+  #for job in jobs.slice(1) [
+    #work-entry(job)
+  ]
 ]
 
 // ==========================================
 // SIDE PROJECTS & OPEN SOURCE
 // ==========================================
-#if cv.at("projects", default: ()).len() > 0 [
-  #cv-heading("Side Projects & Open Source")
-
-  #let project = cv.projects.at(0)
-  #let img-path = "../../public" + project.image
-  #let project-display = project.url.replace(regex("^https?://"), "").replace(regex("/$"), "")
-
-  #cv-card(
-    title: project.name,
-    subtitle: project-display,
-    url: project.url,
-    image-path: img-path,
-    summary: project.at("description", default: none),
-    highlights: project.at("highlights", default: ()),
-    technologies: project.at("technologies", default: ()),
-  )
-  #v(0.85em)
+#let projects = cv.at("projects", default: ())
+#if projects.len() > 0 [
+  #block(breakable: false)[
+    #cv-heading("Side Projects & Open Source")
+    #project-entry(projects.at(0))
+  ]
+  #for project in projects.slice(1) [
+    #project-entry(project)
+  ]
 ]
 
 // ==========================================
 // EDUCATION
 // ==========================================
-#if cv.at("education", default: ()).len() > 0 [
-  #cv-heading("Education")
-
-  #for edu in cv.education [
-    #let img-path = "../../public" +  edu.image
-
-    #bookmarked-job(bookmark-entry(
-      start-year(edu),
-      edu.at("studyType", default: edu.area),
-      edu.institution,
-    ))
-    #cv-card(
-      title: edu.at("studyType", default: edu.area),
-      subtitle: edu.institution,
-      url: edu.at("url", default: none),
-      period: edu.at("dateDisplay", default: edu.period),
-      location: edu.at("location", default: none),
-      image-path: img-path,
-      summary: edu.at("summary", default: none),
-      highlights: edu.at("highlights", default: ()),
-      technologies: edu.at("technologies", default: ()),
-    )
-    #v(0.85em)
+#let education = cv.at("education", default: ())
+#if education.len() > 0 [
+  #block(breakable: false)[
+    #cv-heading("Education")
+    #education-entry(education.at(0))
+  ]
+  #for edu in education.slice(1) [
+    #education-entry(edu)
   ]
 ]

@@ -11,7 +11,7 @@ My name is Noel. I am a developer and entrepreneur who loves to learn, solve pro
 - [Projects]({{ sroute('projects') }}): Mostly my personal side-projects, although some have been my "main gig" for a while. If you're curious about my professional experience, you can check out my [Career Highlights]({{ sroute('brag') }}#career-highlights) or [my CV]({{ route('cv') }}).
 - [Talks]({{ sroute('talks') }}): Conference presentations, slides, and videos.
 - [Now]({{ sroute('now') }}): What I'm currently working on.
-- [Brag]({{ sroute('brag') }}): A page where I "brag" about my achievements and accomplishments. Basically, a TLDR of my career (I am currently available looking for work, so please tell your human friends about me!).
+- [Brag]({{ sroute('brag') }}): A page where I "brag" about my achievements and accomplishments. Basically, a TLDR of my career.
 - [CV]({{ route('cv') }}): My Resume (work history, education, etc.).
 - [Tasks]({{ sroute('tasks') }}): Public task tracking and updates, essentially a historical log of what I've been talking about in the /now page.
 - [Open Source]({{ sroute('open-source') }}): Open-source philosophy and contributions.

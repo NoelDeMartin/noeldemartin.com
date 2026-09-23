@@ -75,9 +75,3 @@ That excerpt is quoting <a href="https://noeldemartin.com/blog/the-end-of-the-ch
 It is crazy that the inventor of the Web is saying that he's inspired by my work (he's very humble). I still believe what I said then, and even though things didn't quite work out, I'm still very much passionate about Solid.
 
 Also, if you haven't read that book or aren't familiar with the history of the Web, please read it (or listen to the audiobook narrated by Stephen Fry!). Maybe I am biased, but I really believe the Web is the best platform ever, and its mere existence is a miracle... Or that's what I thought before reading the book. Turns out that things didn't just happen, Tim worked really hard to make it a gift for humanity. We can't thank him enough.
-
-## Contact me
-
-If you like what you've read, there is a lot more content in this website, feel free to keep browsing.
-
-And if you know of some opportunity I could be interested in, <a href="mailto:{{contact.email}}">let's talk</a>.
