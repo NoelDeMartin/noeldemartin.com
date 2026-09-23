@@ -4,6 +4,7 @@ blueprint: project
 title: Geemba
 category: discontinued
 logo: /img/logos/geemba.jpg
+logo_classes: rounded-lg
 link: 'entry::geemba'
 state: archived
 platform: 'Android & iOS'

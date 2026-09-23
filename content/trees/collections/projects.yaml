@@ -1,21 +1,19 @@
 tree:
+  - entry: anima
   - entry: umai
   - entry: media-kraken
   - entry: focus
   - entry: podcast-enhancer
   - entry: freedom-calculator
-  - entry: planning-poker
-  - entry: zazen-meditation-timer
   - entry: soukai
-  - entry: cypress-laravel
-  - entry: cypress-solid
-  - entry: laravel-semantic-seo
   - entry: aerogel
-  - entry: vivant
+  - entry: ai-skills
+  - entry: playwright-solid
   - entry: rireki
   - entry: nginx-agora
+  - entry: kanjuro
+  - entry: lss
   - entry: autonomous-data
-  - entry: laravel-dusk-mocking
   - entry: geemba-project
   - entry: beastmasters-project
   - entry: travel-postcards

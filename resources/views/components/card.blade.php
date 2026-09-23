@@ -38,7 +38,7 @@
                 <h3 class="my-0 mr-2 text-xl font-medium">{{ $title }}</h3>
                 @isset($state)
                     <span
-                        class="{{ $stateClasses }} hidden self-start rounded-full px-2 py-1 text-xs font-semibold tracking-widest uppercase md:block"
+                        class="{{ $stateClasses }} hidden self-center rounded-full px-2 py-1 text-xs font-semibold tracking-widest uppercase md:block"
                     >
                         {{ $state->label() }}
                     </span>

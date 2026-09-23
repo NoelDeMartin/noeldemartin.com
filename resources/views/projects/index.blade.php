@@ -20,5 +20,8 @@
         <x-project-cards title="Apps" category="app" title-class="mt-0" />
         <x-project-cards title="Developer Tools" category="tool" />
         <x-project-cards title="Discontinued" category="discontinued" />
+
+        <!-- prettier-ignore -->
+        <p>You can find more on <a href="https://github.com/NoelDeMartin" target="_blank">my GitHub</a>.</p>
     </article>
 @endsection

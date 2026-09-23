@@ -2,10 +2,11 @@
 id: autonomous-data
 title: Autonomous Data
 blueprint: project
-category: tool
+category: discontinued
 logo: autonomous-data
 link: 'https://autonomous-data.noeldemartin.com'
-state: experimental
+state: archived
+platform: Web
 ---
 
 Application architecture that respects users privacy and data ownership.

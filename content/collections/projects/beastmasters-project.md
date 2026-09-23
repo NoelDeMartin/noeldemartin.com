@@ -4,6 +4,7 @@ blueprint: project
 title: Beast Masters
 category: discontinued
 logo: /img/logos/beastmasters.jpg
+logo_classes: rounded-lg
 link: 'entry::beastmasters'
 state: archived
 platform: Android
