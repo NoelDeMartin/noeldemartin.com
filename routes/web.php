@@ -38,6 +38,7 @@ Route::redirect('solid-symposium-dx', '/slides/thoughts-on-solid-developer-exper
 Route::redirect('solid-symposium-crdts', '/slides/solid-crdts-in-practice?showRecording=true');
 Route::redirect('solid-symposium-2025', '/slides/solid-unleashed?showRecording=true');
 Route::redirect('local-first', '/slides/local-first-solid-and-everything-in-between?showRecording=true');
+Route::redirect('local-first-2026', '/slides/interoperable-local-first-in-the-age-of-ai?showRecording=true');
 Route::redirect('recipes', 'https://umai.noeldemartin.com/viewer?url=https://noeldemartin.solidcommunity.net/cookbook/public%23it');
 Route::redirect('recipes/aguachile', 'https://umai.noeldemartin.com/viewer?url=https://noeldemartin.solidcommunity.net/cookbook/aguachile%23it');
 
