@@ -31,12 +31,12 @@ Route::get('cv.pdf', CvPdf::class)->name('cv.pdf');
 Route::get('health', Health::class)->name('health');
 Route::get('sitemap.xml', SiteMap::class)->name('sitemap');
 
-Route::redirect('fosdem', 'https://www.youtube.com/watch?v=kPzhykRVDuI');
-Route::redirect('solid-world', 'https://www.youtube.com/watch?v=cajBTJXmKhA');
-Route::redirect('solid-world-2025', 'https://www.youtube.com/watch?v=KN9OWj_XdkY');
-Route::redirect('solid-symposium-dx', 'https://www.youtube.com/watch?v=ghGmveKKe5Y');
-Route::redirect('solid-symposium-crdts', 'https://www.youtube.com/watch?v=vYQmGeaQt8E');
-Route::redirect('solid-symposium-2025', 'https://www.youtube.com/watch?v=7pfUw_t6rCk');
+Route::redirect('fosdem', '/slides/from-zero-to-hero-with-solid?showRecording=true');
+Route::redirect('solid-world', '/slides/media-kraken?showRecording=true');
+Route::redirect('solid-world-2025', '/slides/interoperable-serendipity?showRecording=true');
+Route::redirect('solid-symposium-dx', '/slides/thoughts-on-solid-developer-experience?showRecording=true');
+Route::redirect('solid-symposium-crdts', '/slides/solid-crdts-in-practice?showRecording=true');
+Route::redirect('solid-symposium-2025', '/slides/solid-unleashed?showRecording=true');
 Route::redirect('local-first', '/slides/local-first-solid-and-everything-in-between?showRecording=true');
 Route::redirect('recipes', 'https://umai.noeldemartin.com/viewer?url=https://noeldemartin.solidcommunity.net/cookbook/public%23it');
 Route::redirect('recipes/aguachile', 'https://umai.noeldemartin.com/viewer?url=https://noeldemartin.solidcommunity.net/cookbook/aguachile%23it');

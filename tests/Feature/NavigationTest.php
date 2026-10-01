@@ -43,6 +43,7 @@ test('Talks', function () {
     $response = $this->get('/talks');
 
     $response->assertStatus(200);
+    $response->assertSee('href="/slides/from-zero-to-hero-with-solid"', false);
     assertSeeIn($response, 'main', 'Solid CRDTs in Practice');
     assertSeeIn($response, 'main', 'May 3, 2024');
     assertSeeIn($response, 'main', 'Solid Symposium');

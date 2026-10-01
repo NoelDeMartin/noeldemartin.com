@@ -37,6 +37,17 @@ class Talk extends StatamicModel
         return "/slides/{$slug}";
     }
 
+    public function hasSlides(): bool
+    {
+        $url = $this->slidesUrl();
+
+        if (is_null($url)) {
+            return false;
+        }
+
+        return is_file(public_path("{$url}.pdf"));
+    }
+
     public function markdownUrl(): ?string
     {
         $slug = $this->talkSlug();

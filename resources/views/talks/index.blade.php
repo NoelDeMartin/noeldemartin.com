@@ -129,7 +129,7 @@
                         </a>
                     @endif
 
-                    @if (! isset($slides_missing))
+                    @if ($hasSlides->value())
                         <a
                             href="{{ $slidesUrl }}"
                             target="_blank"

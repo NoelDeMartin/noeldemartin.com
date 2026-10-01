@@ -4,7 +4,6 @@ title: 'Moodle App Testing: Then and Now'
 blueprint: talk
 video_url: https://www.youtube.com/watch?v=LYDFpaDv27o
 video_duration: 30min
-slides_missing: True
 presentation_date: '2023-09-21T11:30:00+01:00'
 location: 'Barcelona, Spain'
 conference: MoodleMoot Global 2023
