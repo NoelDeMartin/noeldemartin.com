@@ -103,7 +103,7 @@ You may have heard about the "3-2-1" rule of backups: you should have 3 copies o
 
 To be completely honest, I was a bit hesitant to publish this. If someone wants to hack me, they couldn't get a better Getting Started guide than this blog post. But in reality, that sort of hesitation only comes from [security through obscurity](https://en.wikipedia.org/wiki/Security_through_obscurity).
 
-I've never been a huge fan of that, but now in The Age of AI, it's less relevant than ever. One of the advantages of having a small audience is that I'm not very likely to be a target for hackers, but now that AIs are becoming good at this, we're more likely to see automated attempts. I don't think any of the information I've revealed in this post would take a decent agent more than an afternoon to obtain on their own.
+I've never been a huge fan of that, but now in The Age of AI, it's less relevant than ever. One of the advantages of [having a small audience](https://noeldemartin.com/blog/working-in-the-open-when-no-one-is-looking) is that I'm not very likely to be a target for hackers, but now that AIs are becoming good at this, we're more likely to see automated attempts. I don't think any of the information I've revealed in this post would take a decent agent more than an afternoon to obtain on their own.
 
 The first line of defense is, of course, at the network level. I have configured my VPS in such a way that the only ports reachable from the outside are 80 and 443. Yes, I can't even ssh into the server myself. I have a "development" firewall rule that I activate sometimes, which opens the 22 port for my home IP. But most of the time, I just use Hetzner's console to log in directly on the VPS.
 
