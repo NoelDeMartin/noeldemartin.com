@@ -2,6 +2,8 @@
 id: interoperable-local-first-in-the-age-of-ai
 title: 'Interoperable Local-First in The Age of AI'
 blueprint: talk
+video_url: 'https://www.youtube.com/watch?v=2KFlz9BMrDI'
+video_duration: '45 min'
 presentation_date: '2026-10-01T14:00:00+02:00'
 location: 'Online'
 conference: ailishi
