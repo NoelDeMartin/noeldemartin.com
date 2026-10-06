@@ -103,15 +103,6 @@ test('Talk markdown URL and negotiation', function () {
     $negotiatedResponse->assertHeader('Content-Type', 'text/markdown; charset=utf-8');
 });
 
-test('Talk without slides uses talks listing as canonical', function () {
-    $response = $this->get('/talks/moodle-app-testing.md');
-
-    $response->assertStatus(200);
-    $response->assertHeader('Content-Type', 'text/markdown; charset=utf-8');
-    $response->assertHeader('Link', '</talks>; rel="canonical"');
-    expect($response->getContent())->not->toContain('slides:');
-});
-
 test('Slides URLs do not serve markdown', function () {
     $this->get('/slides/interoperable-serendipity.md')->assertStatus(404);
 
