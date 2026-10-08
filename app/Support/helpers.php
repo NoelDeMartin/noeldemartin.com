@@ -260,3 +260,20 @@ if (! function_exists('clean_entry_html')) {
     }
 
 }
+
+if (! function_exists('is_secondary_fatal_error')) {
+
+    /**
+     * Check if the error is a secondary fatal error when Laravel tries to render a 500
+     * response for exceptions thrown post-response (e.g. after fastcgi_finish_request()).
+     *
+     * See https://github.com/symfony/symfony/issues/60603
+     * See https://github.com/laravel/framework/issues/55894
+     */
+    function is_secondary_fatal_error(Throwable $e): bool
+    {
+        return str_contains($e->getMessage(), 'Cannot modify header information - headers already sent in')
+            && str_contains($e->getMessage(), 'Response.php');
+    }
+
+}

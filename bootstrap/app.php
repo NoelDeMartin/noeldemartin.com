@@ -15,5 +15,5 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->encryptCookies(except: ['hire_me_dismissed']);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        //
+        $exceptions->dontReportWhen(fn (Throwable $e) => is_secondary_fatal_error($e));
     })->create();
