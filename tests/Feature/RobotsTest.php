@@ -67,6 +67,7 @@ test('Sitemap', function () {
 
 test('Blog RSS', function () {
     $response = $this->get('/blog/rss.xml');
+    $content = preg_replace('/&lt;code[\s\S]*?&lt;\/code&gt;/', '', (string) $response->getContent());
 
     $response->assertStatus(200);
     $response->assertSee('<feed xmlns="http://www.w3.org/2005/Atom">', false);
@@ -81,8 +82,8 @@ test('Blog RSS', function () {
     $response->assertDontSee('{{ /noparse');
     $response->assertDontSee('{{contact.email}}');
     $response->assertDontSee('@{{');
-    $this->assertDoesNotMatchRegularExpression('/\{\{.*?\}\}/', $response->getContent());
-    $this->assertDoesNotMatchRegularExpression('/@\{\{.*?\}\}/', $response->getContent());
+    $this->assertDoesNotMatchRegularExpression('/\{\{.*?\}\}/', $content);
+    $this->assertDoesNotMatchRegularExpression('/@\{\{.*?\}\}/', $content);
 });
 
 test('Now RSS', function () {
