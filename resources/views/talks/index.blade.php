@@ -142,6 +142,20 @@
                             <span class="ml-1">Slides</span>
                         </a>
                     @endif
+
+                    @if (! empty($transcript_url->value()))
+                        <a
+                            href="{{ $transcript_url }}"
+                            target="_blank"
+                            class="flex items-center rounded bg-white px-2 py-1 text-sm text-gray-900 no-underline ring-1 ring-gray-300 ring-inset hover:bg-gray-50"
+                        >
+                            <s:partial
+                                src="icons/document"
+                                class="size-4 fill-current"
+                            />
+                            <span class="ml-1">Transcript</span>
+                        </a>
+                    @endif
                 </div>
             </div>
         </div>

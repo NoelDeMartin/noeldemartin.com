@@ -71,6 +71,10 @@ class TalksController extends Controller
             $frontmatter['video_url'] = $talk->value('video_url');
         }
 
+        if ($talk->value('transcript_url')) {
+            $frontmatter['transcript_url'] = $talk->value('transcript_url');
+        }
+
         if ($hasSlides) {
             $frontmatter['slides'] = url("/slides/{$slug}.pdf");
         }

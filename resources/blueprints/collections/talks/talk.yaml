@@ -25,6 +25,10 @@ tabs:
               type: text
               display: 'Video Duration'
               width: 33
+          - handle: transcript_url
+            field:
+              type: text
+              display: 'Transcript Url'
   sidebar:
     display: Sidebar
     sections:
