@@ -24,9 +24,10 @@ This is not a good strategy.
 
 A better approach is to decide what you care about and ignore the rest. It comes down to efficiency. You can improve anything, but you can't improve everything. You may as well focus on the things you care about the most.
 
-![Spheres of control](/img/blog/SpheresOfControl.png)
-
-<div class="text-center"><em>Spheres of Control</em></div>
+<figure>
+    <img src="/img/blog/SpheresOfControl.png" alt="Spheres of control">
+    <figcaption>Spheres of Control</figcaption>
+</figure>
 
 If you care a lot about something, there isn't much you can do about it if it's outside your sphere of control. If it is only in your sphere of influence, that's all you can do: have influence over it.
 

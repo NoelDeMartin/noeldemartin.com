@@ -36,8 +36,8 @@ This is for example how things like podcast players and email clients work. User
 Unfortunately, this is a vestige of the past and that's not how most apps work anymore.
 
 <figure>
-	<img src="/img/blog/WalledGardens.jpg" alt="An image of walled gardens like facebook, myspace, etc.">
-	<figcaption>Walled Gardens, by David Simonds<figcaption>
+    <img src="/img/blog/WalledGardens.jpg" alt="An image of walled gardens like facebook, myspace, etc.">
+    <figcaption>Walled Gardens, by David Simonds</figcaption>
 </figure>
 
 If people don't care about privacy, talking about silos and vendor lock-in is a different story. Most non-technical people won't understand what those words mean, but once you explain it — and they learn that it's [a technical choice and not a limitation](https://noeldemartin.com/blog/what-technology-wants) — you've got their attention.
@@ -189,10 +189,10 @@ Like everything, Solid has positives and negatives. But overall, I still believe
 I should mention, I also like many of the alternatives too. It's not that I dislike anything that isn't Solid, and there are many interesting projects out there. I'm happy to see that we have many people working on this. But every time I hear about an "alternative to Solid", I can't help but think of this:
 
 <figure>
-	<a href="https://xkcd.com/927/" target="_blank">
-		<img src="https://imgs.xkcd.com/comics/standards.png" alt="XKCD webcomic about how standards proliferate">
-	</a>
-	<figcaption>Standards, by xkcd</figcaption>
+    <a href="https://xkcd.com/927/" target="_blank">
+        <img src="https://imgs.xkcd.com/comics/standards.png" alt="XKCD webcomic about how standards proliferate">
+    </a>
+    <figcaption>Standards, by xkcd</figcaption>
 </figure>
 
 This comes up so often that it's trite at this point. But it doesn't make it any less true.

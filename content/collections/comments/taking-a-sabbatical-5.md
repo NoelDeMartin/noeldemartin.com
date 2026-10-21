@@ -39,73 +39,53 @@ Now, we're back to Asia. In what is probably the region's most interesting count
 <summary>Pictures</summary>
 
 <figure>
-<img src="/img/tasks/sabbatical/singapore-malaysia-thailand.jpg" alt="Screenshot of map itinerary in Singapore, Malaysia, and Thailand.">
-<figcaption>
-Itinerary in Singapore, Malaysia, and Thailand.
-</figcaption>
+    <img src="/img/tasks/sabbatical/singapore-malaysia-thailand.jpg" alt="Screenshot of map itinerary in Singapore, Malaysia, and Thailand.">
+    <figcaption>Itinerary in Singapore, Malaysia, and Thailand.</figcaption>
 </figure>
 
 <figure>
-<img src="/img/tasks/sabbatical/cambodia-vietnam.jpg" alt="Screenshot of map itinerary in Cambodia and Vietnam.">
-<figcaption>
-Itinerary in Cambodia and Vietnam.
-</figcaption>
+    <img src="/img/tasks/sabbatical/cambodia-vietnam.jpg" alt="Screenshot of map itinerary in Cambodia and Vietnam.">
+    <figcaption>Itinerary in Cambodia and Vietnam.</figcaption>
 </figure>
 
 <figure>
-<img src="/img/tasks/sabbatical/vietnam-bicycle.jpg" alt="A bicycle carrying many fruits for sale.">
-<figcaption>
-Indeed, they have a lot of bikes in Vietnam. Both motor and human-powered!
-</figcaption>
+    <img src="/img/tasks/sabbatical/vietnam-bicycle.jpg" alt="A bicycle carrying many fruits for sale.">
+    <figcaption>Indeed, they have a lot of bikes in Vietnam. Both motor and human-powered!</figcaption>
 </figure>
 
 <figure>
-<img src="/img/tasks/sabbatical/vietnam-mobile-helmet.jpg" alt="A motorbike with a phone stand that has a mini-helmet.">
-<figcaption>
-In Vietnam, most people wore a helmet. Even mobile phones did!
-</figcaption>
+    <img src="/img/tasks/sabbatical/vietnam-mobile-helmet.jpg" alt="A motorbike with a phone stand that has a mini-helmet.">
+    <figcaption>In Vietnam, most people wore a helmet. Even mobile phones did!</figcaption>
 </figure>
 
 <figure>
-<img src="/img/tasks/sabbatical/wellington-seals.jpg" alt="Myself walking amongst some cute Sea Lions.">
-<figcaption>
-Walking amongst Sea Lions in a colony near Wellington.
-</figcaption>
+    <img src="/img/tasks/sabbatical/wellington-seals.jpg" alt="Myself walking amongst some cute Sea Lions.">
+    <figcaption>Walking amongst Sea Lions in a colony near Wellington.</figcaption>
 </figure>
 
 <figure>
-<img src="/img/tasks/sabbatical/kauri-forest.jpg" alt="A disinfecting area in the entrance to a Kauri forest.">
-<figcaption>
-Everything in new Zealand is very well taken care of thanks to the DoC (Department of Conservation). Like this <a href="https://en.wikipedia.org/wiki/Agathis_australis" target="_blank">Kauri</a> forest in the middle of <a href="https://en.wikipedia.org/wiki/309_Road" target="_blank">road 309</a>. Even <a href="https://www.doc.govt.nz/" target="_blank">their websites</a> are nice!
-</figcaption>
+    <img src="/img/tasks/sabbatical/kauri-forest.jpg" alt="A disinfecting area in the entrance to a Kauri forest.">
+    <figcaption>Everything in new Zealand is very well taken care of thanks to the DoC (Department of Conservation). Like this <a href="https://en.wikipedia.org/wiki/Agathis_australis" target="_blank">Kauri</a> forest in the middle of <a href="https://en.wikipedia.org/wiki/309_Road" target="_blank">road 309</a>. Even <a href="https://www.doc.govt.nz/" target="_blank">their websites</a> are nice!</figcaption>
 </figure>
 
 <figure>
-<img src="/img/tasks/sabbatical/gandalf.jpg" alt="Statue of Gandalf the Grey.">
-<figcaption>
-"All we have to decide is what to do with the time that is given us" — Gandalf
-</figcaption>
+    <img src="/img/tasks/sabbatical/gandalf.jpg" alt="Statue of Gandalf the Grey.">
+    <figcaption>"All we have to decide is what to do with the time that is given us" — Gandalf</figcaption>
 </figure>
 
 <figure>
-<img src="/img/tasks/sabbatical/weta-troll.jpg" alt="Myself with a troll behind.">
-<figcaption>
-Trolls at the doors of the Wētā Workshop!
-</figcaption>
+    <img src="/img/tasks/sabbatical/weta-troll.jpg" alt="Myself with a troll behind.">
+    <figcaption>Trolls at the doors of the Wētā Workshop!</figcaption>
 </figure>
 
 <figure>
-<img src="/img/tasks/sabbatical/hobbiton.jpg" alt="Hobbiton">
-<figcaption>
-How amazing is that this is real? We could also get into the <a href="https://www.hobbitontours.com/discover/the-green-dragon-inn/" target="_blank">Green Dragon Inn</a> to have some drinks, which was awesome.
-</figcaption>
+    <img src="/img/tasks/sabbatical/hobbiton.jpg" alt="Hobbiton">
+    <figcaption>How amazing is that this is real? We could also get into the <a href="https://www.hobbitontours.com/discover/the-green-dragon-inn/" target="_blank">Green Dragon Inn</a> to have some drinks, which was awesome.</figcaption>
 </figure>
 
 <figure>
-<img src="/img/tasks/sabbatical/new-zealand-christmas.jpg" alt="A Christmas postcards featuring barbacues and ice-cream.">
-<figcaption>
-We're starting to see Christmas decorations everywhere, though it's funny how in New Zealand Christmas is Barbecue season!
-</figcaption>
+    <img src="/img/tasks/sabbatical/new-zealand-christmas.jpg" alt="A Christmas postcards featuring barbacues and ice-cream.">
+    <figcaption>We're starting to see Christmas decorations everywhere, though it's funny how in New Zealand Christmas is Barbecue season!</figcaption>
 </figure>
 
 </details>

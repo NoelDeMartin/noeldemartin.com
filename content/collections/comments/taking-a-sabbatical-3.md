@@ -33,48 +33,28 @@ And that's mostly it for the life updates! Here's some pictures from the trip:
 <summary>Pictures</summary>
 
 <figure>
-<img src="/img/tasks/sabbatical/singapore-chicken.jpg" alt="A chicken in the streets of Singapore">
-<figcaption>
-
-There were chickens roaming in the streets of Singapore, which was funny in contrast with the otherwise modern landscape.
-
-</figcaption>
+    <img src="/img/tasks/sabbatical/singapore-chicken.jpg" alt="A chicken in the streets of Singapore">
+    <figcaption>There were chickens roaming in the streets of Singapore, which was funny in contrast with the otherwise modern landscape.</figcaption>
 </figure>
 
 <figure>
-<img src="/img/tasks/sabbatical/beanie-seats.jpg" alt="Beanie seats">
-<figcaption>
-
-We watched <a href="https://www.imdb.com/title/tt2049403/" target="_blank">Beetlejuice Beetlejuice</a> in Malaysia's Beanie seats, which was a fun experience (<a href="https://www.sayaiday.com/2014/10/tgv-beanie-movie.html" target="_blank">not my picture</a> though, the ones we made weren't good 😅).
-
-</figcaption>
+    <img src="/img/tasks/sabbatical/beanie-seats.jpg" alt="Beanie seats">
+    <figcaption>We watched <a href="https://www.imdb.com/title/tt2049403/" target="_blank">Beetlejuice Beetlejuice</a> in Malaysia's Beanie seats, which was a fun experience (<a href="https://www.sayaiday.com/2014/10/tgv-beanie-movie.html" target="_blank">not my picture</a> though, the ones we made weren't good 😅).</figcaption>
 </figure>
 
 <figure>
-<img src="/img/tasks/sabbatical/perak-cave-temple.jpg" alt="Perak Cave Temple">
-<figcaption>
-
-<a href="https://en.wikipedia.org/wiki/Sam_Poh_Tong_Temple" target="_blank">Perak Cave Temple</a> (or Sam Poh Tong Temple). A cave with many Buddha statues and paintings. Probably my favourite temple so far, even though it's not super well-known. (By the way, can you spot the dog? :D)
-
-</figcaption>
+    <img src="/img/tasks/sabbatical/perak-cave-temple.jpg" alt="Perak Cave Temple">
+    <figcaption><a href="https://en.wikipedia.org/wiki/Sam_Poh_Tong_Temple" target="_blank">Perak Cave Temple</a> (or Sam Poh Tong Temple). A cave with many Buddha statues and paintings. Probably my favourite temple so far, even though it's not super well-known. (By the way, can you spot the dog? :D)</figcaption>
 </figure>
 
 <figure>
-<img src="/img/tasks/sabbatical/face-peanuts.jpg" alt="A bag of peanuts resembling my website logo">
-<figcaption>
-
-I found the peanuts brand resembling my website's logo that <a href="https://mastodon.online/@rosano/110285917330021729" target="_blank">Rosano mentioned last year</a> :D.
-
-</figcaption>
+    <img src="/img/tasks/sabbatical/face-peanuts.jpg" alt="A bag of peanuts resembling my website logo">
+    <figcaption>I found the peanuts brand resembling my website's logo that <a href="https://mastodon.online/@rosano/110285917330021729" target="_blank">Rosano mentioned last year</a> :D.</figcaption>
 </figure>
 
 <figure>
-<img src="/img/tasks/sabbatical/meeting-moo-deng.jpg" alt="Meeting Moo Deng">
-<figcaption>
-
-This is the first time I've met a meme in real life, <a href="https://knowyourmeme.com/memes/moo-deng-the-baby-hippo" target="_blank">Moo Deng the Hippo</a>. There were hoards of visitors, and it was a weekday at 8am!
-
-</figcaption>
+    <img src="/img/tasks/sabbatical/meeting-moo-deng.jpg" alt="Meeting Moo Deng">
+    <figcaption>This is the first time I've met a meme in real life, <a href="https://knowyourmeme.com/memes/moo-deng-the-baby-hippo" target="_blank">Moo Deng the Hippo</a>. There were hoards of visitors, and it was a weekday at 8am!</figcaption>
 </figure>
 
 </details>

@@ -9,8 +9,8 @@ publication_date: '2023-01-27 15:53:37'
 I've been to FOSDEM twice, in [2019](https://noeldemartin.com/tasks/attending-fosdem) and [2020](https://noeldemartin.com/tasks/attending-fosdem-2020). It's probably my favourite conference, so I'm really looking forward to being there again! (not that I attend that many, though). This year it's also extra special, because I'm also presenting for the first time:
 
 <figure>
-  <img src="/img/tasks/fosdem-2023-talk.png" alt="From Zero to Hero with Solid">
-  <figcaption class="text-sm">(Yes, I spent way more time making this slide than I care to admit 😅️)</figcaption>
+    <img src="/img/tasks/fosdem-2023-talk.png" alt="From Zero to Hero with Solid">
+    <figcaption>(Yes, I spent way more time making this slide than I care to admit 😅️)</figcaption>
 </figure>
 
 I've also had a couple of people from the Solid community telling me they'll be there, so in a way this will be my first in-person Solid meetup as well :).

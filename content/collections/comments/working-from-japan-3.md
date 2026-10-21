@@ -17,57 +17,41 @@ However, even coming to this realization, I'm not sure if I'll change my habits.
 This time I won't leave you with a list of highlights; instead I'll link to this [list of tips I wrote](/japan-tips) and leave you with some pictures:
 
 <figure>
-<img src="/img/tasks/japan/observation-deck.jpg" alt="Observation deck">
-<figcaption>
-This is an observation deck I often visited to do some exercise :D.
-</figcaption>
+    <img src="/img/tasks/japan/observation-deck.jpg" alt="Observation deck">
+    <figcaption>This is an observation deck I often visited to do some exercise :D.</figcaption>
 </figure>
 
 <figure>
-<img src="/img/tasks/japan/sendai-daikannon.jpg" alt="Sendai Daikannon">
-<figcaption>
-The <a href="https://en.wikipedia.org/wiki/Sendai_Daikannon" target="_blank">Sendai Daikannon</a>, a 92m statue.
-</figcaption>
+    <img src="/img/tasks/japan/sendai-daikannon.jpg" alt="Sendai Daikannon">
+    <figcaption>The <a href="https://en.wikipedia.org/wiki/Sendai_Daikannon" target="_blank">Sendai Daikannon</a>, a 92m statue.</figcaption>
 </figure>
 
 <figure>
-<img src="/img/tasks/japan/ramen-shrine.jpg" alt="Ramen Shrine">
-<figcaption>
-Ramen Shrine in <a href="https://en.wikipedia.org/wiki/Kitakata%2C_Fukushima" target="_blank">Kitakata</a>.
-</figcaption>
+    <img src="/img/tasks/japan/ramen-shrine.jpg" alt="Ramen Shrine">
+    <figcaption>Ramen Shrine in <a href="https://en.wikipedia.org/wiki/Kitakata%2C_Fukushima" target="_blank">Kitakata</a>.</figcaption>
 </figure>
 
 <figure>
-<img src="/img/tasks/japan/jump-shop.jpg" alt="Jump Shop">
-<figcaption>
-Luffy statue in <a href="https://www.shonenjump.com/j/jumpshop/" target="_blank">Jump Shop</a>.
-</figcaption>
+    <img src="/img/tasks/japan/jump-shop.jpg" alt="Jump Shop">
+    <figcaption>Luffy statue in <a href="https://www.shonenjump.com/j/jumpshop/" target="_blank">Jump Shop</a>.</figcaption>
 </figure>
 
 <figure>
-<img src="/img/tasks/japan/shinjuku-cat.jpg" alt="Shinjuku Cat">
-<figcaption>
-3D cat in <a href="https://en.wikipedia.org/wiki/Shinjuku" target="_blank">Shinjuku</a>.
-</figcaption>
+    <img src="/img/tasks/japan/shinjuku-cat.jpg" alt="Shinjuku Cat">
+    <figcaption>3D cat in <a href="https://en.wikipedia.org/wiki/Shinjuku" target="_blank">Shinjuku</a>.</figcaption>
 </figure>
 
 <figure>
-<img src="/img/tasks/japan/tashirojima.jpg" alt="Tashirojima">
-<figcaption>
-Cats of <a href="https://en.wikipedia.org/wiki/Tashirojima" target="_blank">Tashirojima</a>, cat island.
-</figcaption>
+    <img src="/img/tasks/japan/tashirojima.jpg" alt="Tashirojima">
+    <figcaption>Cats of <a href="https://en.wikipedia.org/wiki/Tashirojima" target="_blank">Tashirojima</a>, cat island.</figcaption>
 </figure>
 
 <figure>
-<img src="/img/tasks/japan/tashirojima-2.jpg" alt="Tashirojima 2">
-<figcaption>
-More cats of Tashirojima (ok, I'll stop with the cats).
-</figcaption>
+    <img src="/img/tasks/japan/tashirojima-2.jpg" alt="Tashirojima 2">
+    <figcaption>More cats of Tashirojima (ok, I'll stop with the cats).</figcaption>
 </figure>
 
 <figure>
-<img src="/img/tasks/japan/shonen-jump.jpg" alt="Weekly Shonen Jump No. 30, 1990">
-<figcaption>
-<a href="https://comicvine.gamespot.com/weekly-shonen-jump-1116-no-30-1990/4000-541602/" target="_blank">Weekly Shonen Jump Number 30 from 1990</a>, released on the week I was born. It's crazy that I could buy it for just 400¥ (~3€) 🤯️.
-</figcaption>
+    <img src="/img/tasks/japan/shonen-jump.jpg" alt="Weekly Shonen Jump No. 30, 1990">
+    <figcaption><a href="https://comicvine.gamespot.com/weekly-shonen-jump-1116-no-30-1990/4000-541602/" target="_blank">Weekly Shonen Jump Number 30 from 1990</a>, released on the week I was born. It's crazy that I could buy it for just 400¥ (~3€) 🤯️.</figcaption>
 </figure>

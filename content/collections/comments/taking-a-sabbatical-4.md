@@ -37,66 +37,38 @@ Here's some more pics:
 <summary>Pictures</summary>
 
 <figure>
-<img src="/img/tasks/sabbatical/thailand-traffic.jpg" alt="4 people riding on a motorcycle (2 kids, 2 adults)">
-<figcaption>
-
-The traffic is _nuts_ in Thailand.
-
-</figcaption>
+    <img src="/img/tasks/sabbatical/thailand-traffic.jpg" alt="4 people riding on a motorcycle (2 kids, 2 adults)">
+    <figcaption>The traffic is <em>nuts</em> in Thailand.</figcaption>
 </figure>
 
 <figure>
-<img src="/img/tasks/sabbatical/cambodia-traffic.jpg" alt="a man and a dog riding on a motorcycle, the dog seems to be driving">
-<figcaption>
-
-It isn't better in Cambodia :/. Hey, at least someone is wearing a helmet!
-
-</figcaption>
+    <img src="/img/tasks/sabbatical/cambodia-traffic.jpg" alt="a man and a dog riding on a motorcycle, the dog seems to be driving">
+    <figcaption>It isn't better in Cambodia :/. Hey, at least someone is wearing a helmet!</figcaption>
 </figure>
 
 <figure>
-<img src="/img/tasks/sabbatical/cambodia-tuktuk.jpg" alt="A huge container full of watermelons attached to a motorbike">
-<figcaption>
-
-This is what most Tuk Tuks are like in Cambodia. As you can see, they're not only used to transport people. And this isn't even the heaviest I've seen.
-
-</figcaption>
+    <img src="/img/tasks/sabbatical/cambodia-tuktuk.jpg" alt="A huge container full of watermelons attached to a motorbike">
+    <figcaption>This is what most Tuk Tuks are like in Cambodia. As you can see, they're not only used to transport people. And this isn't even the heaviest I've seen.</figcaption>
 </figure>
 
 <figure>
-<img src="/img/tasks/sabbatical/yaowarat-cat.jpg" alt="A cat wearing a vest on top of a market stall">
-<figcaption>
-
-A friendly cat tending to customers in <a href="https://en.wikipedia.org/wiki/Chinatown,_Bangkok" target="_blank">Yaowarat</a>. There are actually _a lot_ of cats in Thailand, another reason why I liked it so much.
-
-</figcaption>
+    <img src="/img/tasks/sabbatical/yaowarat-cat.jpg" alt="A cat wearing a vest on top of a market stall">
+    <figcaption>A friendly cat tending to customers in <a href="https://en.wikipedia.org/wiki/Chinatown,_Bangkok" target="_blank">Yaowarat</a>. There are actually <em>a lot</em> of cats in Thailand, another reason why I liked it so much.</figcaption>
 </figure>
 
 <figure>
-<img src="/img/tasks/sabbatical/lamphun-temple.jpg" alt="Thousands of lanterns hanging from cables">
-<figcaption>
-
-We were lucky to visit the <a href="https://en.wikipedia.org/wiki/Wat_Phra_That_Hariphunchai" target="_blank">Wat Phra That Hariphunchai</a> temple in Lamphun during the <a href="https://www.nationthailand.com/life/travel/40042267" target="_blank">100,000 Lantern Festival</a>.
-
-</figcaption>
+    <img src="/img/tasks/sabbatical/lamphun-temple.jpg" alt="Thousands of lanterns hanging from cables">
+    <figcaption>We were lucky to visit the <a href="https://en.wikipedia.org/wiki/Wat_Phra_That_Hariphunchai" target="_blank">Wat Phra That Hariphunchai</a> temple in Lamphun during the <a href="https://www.nationthailand.com/life/travel/40042267" target="_blank">100,000 Lantern Festival</a>.</figcaption>
 </figure>
 
 <figure>
-<img src="/img/tasks/sabbatical/wukong-shrine.jpg" alt="A mural with humanoid monkeys doing various things like meditating and riding on yellow clouds">
-<figcaption>
-
-This <a href="https://maps.app.goo.gl/WeWJPVZhFtgVny3h6" target="_blank">Sun Wukong Shrine</a> reminded me of... Dragon Ball, obviously.
-
-</figcaption>
+    <img src="/img/tasks/sabbatical/wukong-shrine.jpg" alt="A mural with humanoid monkeys doing various things like meditating and riding on yellow clouds">
+    <figcaption>This <a href="https://maps.app.goo.gl/WeWJPVZhFtgVny3h6" target="_blank">Sun Wukong Shrine</a> reminded me of... Dragon Ball, obviously.</figcaption>
 </figure>
 
 <figure>
-<img src="/img/tasks/sabbatical/taprohm-temple.jpg" alt="A giant tree growing on the ruins of a temple">
-<figcaption>
-
-Part of the appeal from Ta Prohm temple is that it has been overrun by nature.
-
-</figcaption>
+    <img src="/img/tasks/sabbatical/taprohm-temple.jpg" alt="A giant tree growing on the ruins of a temple">
+    <figcaption>Part of the appeal from Ta Prohm temple is that it has been overrun by nature.</figcaption>
 </figure>
 
 </details>

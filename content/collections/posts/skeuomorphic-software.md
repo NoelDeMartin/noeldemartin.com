@@ -19,8 +19,8 @@ The word "[skeuomorphic](https://en.wiktionary.org/wiki/skeuomorph)" comes from 
 You may already be familiar with skeuomorphic design, or skeuomorphism. In software, it has been used to describe graphical elements that resemble objects from the physical world: a floppy disk used to save files, a trash can that holds deleted files, etc.
 
 <figure>
-<img src="/img/blog/LibreofficeTaskbar.png" alt="">
-<figcaption>Libreoffice's taskbar is a good example of skeuomorphic design</figcaption>
+    <img src="/img/blog/LibreofficeTaskbar.png" alt="">
+    <figcaption>Libreoffice's taskbar is a good example of skeuomorphic design</figcaption>
 </figure>
 
 For a long time, we used it to transition from the physical world to the digital world. Today, we're moving on. Digital is already part of most people's life, and the bridge is no longer necessary.

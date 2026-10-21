@@ -35,45 +35,33 @@ Finally, we concluded our trip by coming back to Europe in one of the best airli
 <summary>Pictures</summary>
 
 <figure>
-<img src="/img/tasks/sabbatical/shanghai-battery-packs.jpg" alt="Mobile battery packs for rental in the middle of the street.">
-<figcaption>
-Yet another example of China's modernity, rental battery packs in the middle of the street. Which you rent using a QR code, of course.
-</figcaption>
+    <img src="/img/tasks/sabbatical/shanghai-battery-packs.jpg" alt="Mobile battery packs for rental in the middle of the street.">
+    <figcaption>Yet another example of China's modernity, rental battery packs in the middle of the street. Which you rent using a QR code, of course.</figcaption>
 </figure>
 
 <figure>
-<img src="/img/tasks/sabbatical/shanghai-bike-battery-packs.jpg" alt="A motorbike carrying a portable battery pack station.">
-<figcaption>
-... and you can find these everywhere. Like attached to a bike anywhere in the street.
-</figcaption>
+    <img src="/img/tasks/sabbatical/shanghai-bike-battery-packs.jpg" alt="A motorbike carrying a portable battery pack station.">
+    <figcaption>... and you can find these everywhere. Like attached to a bike anywhere in the street.</figcaption>
 </figure>
 
 <figure>
-<img src="/img/tasks/sabbatical/beijing-great-wall-cat.jpg" alt="A cat atop the Great Wall of China.">
-<figcaption>
-Yep, even atop the Great Wall of China you can find cats :).
-</figcaption>
+    <img src="/img/tasks/sabbatical/beijing-great-wall-cat.jpg" alt="A cat atop the Great Wall of China.">
+    <figcaption>Yep, even atop the Great Wall of China you can find cats :).</figcaption>
 </figure>
 
 <figure>
-<img src="/img/tasks/sabbatical/beijing-maliandao-tea-market.jpg" alt="Statue of a man drinking tea.">
-<figcaption>
-A <a href="https://en.wikipedia.org/wiki/Lu_Yu" target="_blank">Lu Yu</a> statue outside a Tea Mall in Beijing's Maliandao street. You read that right, <em>a tea mall</em>. 3 floors full of tea shops. One of my favourite places of the trip :D.
-</figcaption>
+    <img src="/img/tasks/sabbatical/beijing-maliandao-tea-market.jpg" alt="Statue of a man drinking tea.">
+    <figcaption>A <a href="https://en.wikipedia.org/wiki/Lu_Yu" target="_blank">Lu Yu</a> statue outside a Tea Mall in Beijing's Maliandao street. You read that right, <em>a tea mall</em>. 3 floors full of tea shops. One of my favourite places of the trip :D.</figcaption>
 </figure>
 
 <figure>
-<img src="/img/tasks/sabbatical/home-gaiwan.jpg" alt="A Gaiwan tea set in my desk.">
-<figcaption>
-Finally back home, I'm looking forward to using my new Gaiwan set whilst I work. If you don't know what that is, check out <a href="https://notesonwork.transistor.fm/episodes/how-to-drink-tea" target="_blank">how to drink tea</a>.
-</figcaption>
+    <img src="/img/tasks/sabbatical/home-gaiwan.jpg" alt="A Gaiwan tea set in my desk.">
+    <figcaption>Finally back home, I'm looking forward to using my new Gaiwan set whilst I work. If you don't know what that is, check out <a href="https://notesonwork.transistor.fm/episodes/how-to-drink-tea" target="_blank">how to drink tea</a>.</figcaption>
 </figure>
 
 <figure>
-<img src="/img/tasks/sabbatical/home-hobbit-hole.jpg" alt="A Christmas hobbit hole figurine.">
-<figcaption>
-This year's Christmas decorations will feature a Christmas hobbit hole from the <a href="https://www.wetaworkshop.com/" target="_blank">Wētā Workshop</a>, next to a <a href="https://en.wikipedia.org/wiki/Gr%C3%BDla" target="_blank">Grýla</a> statue from Iceland.
-</figcaption>
+    <img src="/img/tasks/sabbatical/home-hobbit-hole.jpg" alt="A Christmas hobbit hole figurine.">
+    <figcaption>This year's Christmas decorations will feature a Christmas hobbit hole from the <a href="https://www.wetaworkshop.com/" target="_blank">Wētā Workshop</a>, next to a <a href="https://en.wikipedia.org/wiki/Gr%C3%BDla" target="_blank">Grýla</a> statue from Iceland.</figcaption>
 </figure>
 
 </details>

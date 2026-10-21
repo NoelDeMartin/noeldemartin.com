@@ -12,9 +12,10 @@ This isn't a book summary, it's a Lessons Learned summary. Don't be afraid to ke
 
 ## About The Book
 
-![Miyamoto Musashi](/img/blog/Musashi.jpg)
-
-<div class="text-center">*Depiction of [Miyamoto Musashi](https://en.wikipedia.org/wiki/Miyamoto_Musashi)*</div>
+<figure>
+    <img src="/img/blog/Musashi.jpg" alt="Miyamoto Musashi">
+    <figcaption>Depiction of <a href="https://en.wikipedia.org/wiki/Miyamoto_Musashi" target="_blank">Miyamoto Musashi</a></figcaption>
+</figure>
 
 Musashi is a japanese novel written in 1953 by Eiji Yoshikawa. It relates the journey of Miyamoto Musashi, a real-life samurai from the 1600s who decided to follow the Way of the Sword. It's an interesting novel because some of the events related in the book are documented to have happened in real life. I'm not sure how much of the book is real or fiction, but I don't think it matters. Some works remain written by the real Miyamoto Musashi, the most famous of which is The Book of Five Rings.
 
