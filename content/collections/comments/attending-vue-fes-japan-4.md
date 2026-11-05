@@ -1,0 +1,15 @@
+---
+id: attending-vue-fes-japan-4
+blueprint: comment
+title: 'Attending Vue Fes Japan - 4'
+task: 'entry::attending-vue-fes-japan'
+publication_date: '2026-11-05T14:02+09:00'
+---
+
+Today I'm going back home, so it is time to close this task. I won't be sharing anything technical or about Vue in this update either, it's going to be all about my experience in Japan. So if you're not interested in that, feel free to close this now. Thanks for reading :).
+
+So, Japan. I mentioned I probably wouldn't have much to say about Tokyo, and I was mostly right, but I do have a couple of things to share :D. First of all, [Kaikatsu Club](https://www.kaikatsu.jp/). This is a chain of internet cafes that is basically everywhere in Tokyo, and I had always wanted to visit them but never actually had the chance... until now! In fact, I'm writing this update from one :). If you haven't visited an internet cafe in Japan, you may think they are like the ones in Europe (or at least, in Spain... basically a chair with a computer). But they're a lot more than that. Yes, you get a chair and a computer with internet, but the first improvement is that you can get a private room with different levels of comfort (mat, chair, office, etc.). And the top tiers are so good that many people, unironically, recommend it as a place to sleep (mind you, they're definitely not hotels, but they're perfectly fine to crash for a few hours or one night... they even have showers!). You also get unlimited free access to a bunch of things: tea, juice, nuts, ice-cream, soup, etc. And finally, maybe my favorite one, there's manga everywhere! Whenever I have to work abroad, I always struggle where to go. I'm not a huge fan of coffee shops; mostly for the environment, but I also feel bad staying a few hours just ordering a tea (also, most of the time the tea sucks and I struggle with internet or power outlets). But in Japan, the answer is clear: Kaikatsu Club!
+
+Something else I mentioned in my initial note was autumn. Honestly, it didn't feel much like autumn, and the first days it even felt like summer. Which isn't that bad, given that summer is my favorite season, but I can't say I noticed as much difference as I expected. There were some differences, though, like decorations in many shops and the prominence of sweet potatoes and chestnuts in advertised food. I also attended [a Halloween parade in Ikebukuro](https://www.youtube.com/watch?v=5N2QhbfEsT0), but was surprised by the lack of scary costumes, it seemed more like an anime convention (again, I'm not complaining!). It also surprised me the lack of noise during the parade. In Spain, it would have been impossible for people to stay silent for so long (and I suspect that would be the case in most countries).
+
+Finally, I managed to watch the new Godzilla movie in Shinjuku's Toho theater, the one with [a Godzilla head looming over the entrance](https://en.wikipedia.org/wiki/Godzilla_head) :D. Despite the fact that I watched it in Japanese without subtitles, I understood most of what was going on... but not thanks to my Japanese skills, the movie is just easy to follow :(. I definitely have a long way to go!
