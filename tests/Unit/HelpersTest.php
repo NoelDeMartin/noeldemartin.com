@@ -77,3 +77,14 @@ test('Parse landmarks', function () {
         ],
     ]);
 });
+
+test('is_secondary_fatal_error identifies header already sent fatal errors', function () {
+    $error = new Error(
+        'Uncaught ErrorException: Cannot modify header information - headers already sent by (output started at /app/vendor/symfony/http-foundation/Response.php:393) in /app/vendor/symfony/http-foundation/Response.php:328'
+    );
+
+    expect(is_secondary_fatal_error($error))->toBeTrue();
+    expect(is_secondary_fatal_error(new Exception('Something else', previous: $error)))->toBeTrue();
+    expect(is_secondary_fatal_error(new Exception('Cannot modify header information - headers already sent by something else in SomeFile.php')))->toBeFalse();
+    expect(is_secondary_fatal_error(new Exception('Normal exception')))->toBeFalse();
+});

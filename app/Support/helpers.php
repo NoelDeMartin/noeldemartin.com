@@ -272,8 +272,16 @@ if (! function_exists('is_secondary_fatal_error')) {
      */
     function is_secondary_fatal_error(Throwable $e): bool
     {
-        return str_contains($e->getMessage(), 'Cannot modify header information - headers already sent in')
-            && str_contains($e->getMessage(), 'Response.php');
+        do {
+            if (
+                str_contains($e->getMessage(), 'Cannot modify header information - headers already sent')
+                && str_contains($e->getMessage(), 'Response.php')
+            ) {
+                return true;
+            }
+        } while ($e = $e->getPrevious());
+
+        return false;
     }
 
 }
